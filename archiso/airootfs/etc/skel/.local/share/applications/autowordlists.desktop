@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Auto Wordlists
+Comment=Auto Wordlists
+Icon=/usr/share/icons/hicolor/scalable/apps/kali-wordlists.svg
+Exec=cool-retro-term -e fish -c "if test -d /usr/share/payloads/Auto_Wordlists;cd /usr/share/payloads/Auto_Wordlists;fish;else;echo \"Auto Wordlists not found. I'm retrieving it for you...\";sudo git clone https://github.com/carlospolop/Auto_Wordlists /usr/share/payloads/Auto_Wordlists;cd /usr/share/payloads/Auto_Wordlists;fish;end;"
+Terminal=false
+Categories=Tags;Describing;Application

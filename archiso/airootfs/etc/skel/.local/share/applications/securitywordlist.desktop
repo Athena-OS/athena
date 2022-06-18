@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Security Wordlist
+Comment=Security Wordlist
+Icon=/usr/share/icons/hicolor/scalable/apps/kali-golismero.svg
+Exec=cool-retro-term -e fish -c "if test -d /usr/share/payloads/Security-Wordlist;cd /usr/share/payloads/Security-Wordlist;fish;else;echo \"Security Wordlist not found. I'm retrieving it for you...\";sudo git clone https://github.com/DragonJAR/Security-Wordlist /usr/share/payloads/Security-Wordlist;cd /usr/share/payloads/Security-Wordlist;fish;end;"
+Terminal=false
+Categories=Tags;Describing;Application

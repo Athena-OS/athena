@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=FuzzDB
+Comment=FuzzDB
+Icon=/usr/share/icons/hicolor/scalable/apps/kali-ike-scan.svg
+Exec=cool-retro-term -e fish -c "if test -d /usr/share/payloads/FuzzDB;cd /usr/share/payloads/FuzzDB;fish;else;echo \"FuzzDB not found. I'm retrieving it for you...\";sudo git clone https://github.com/fuzzdb-project/fuzzdb /usr/share/payloads/FuzzDB;cd /usr/share/payloads/FuzzDB;fish;end;"
+Terminal=false
+Categories=Tags;Describing;Application
