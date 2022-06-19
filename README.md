@@ -74,6 +74,8 @@ Currently, I didn't have the time to test every scenario, but I can suggest you 
 12. Wait for the end of installation
 13. Enjoy Athena OS!
 
+Note: Athena Welcome App is based on ArcoLinux project. Currently, the links are still referred to ArcoLinux.
+
 <br>
 
 ## Usage
@@ -123,6 +125,8 @@ If you detect any issues during your experience, please [open an issue](https://
 | `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
 | `tree` | Recursive directory listing program that produces a depth indented listing of files. |
 | `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
+
+Vim configuration is based on https://github.com/amix/vimrc so it implements smart and useful [plugins](https://github.com/amix/vimrc#included-plugins), [color schemes](https://github.com/amix/vimrc#included-color-schemes) and [modes](https://github.com/amix/vimrc#included-modes).
 
 ## Shortcuts
 Main keybindings in Athena OS for speeding up your work:
