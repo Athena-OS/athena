@@ -18,10 +18,15 @@ Athena OS
   </a>
 </p>
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/83867734/174485047-633dacc8-84a9-4811-b13f-5637586f1fc5.png" data-canonical-src="https://user-images.githubusercontent.com/83867734/174485047-633dacc8-84a9-4811-b13f-5637586f1fc5.png" width="600" height="496" />
+</p>
+
 <h3 align="center">
   🏅Born for InfoSec Professionals, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
 </h3>
 <br>
+
 
 ### Why Athena?
 * *Pentesting*: Athena can access to [BlackArch repository](https://blackarch.org/tools.html), the **biggest pentesting tool warehouse**, whereas Debian-based distros cannot.
