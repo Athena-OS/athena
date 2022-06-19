@@ -40,7 +40,7 @@ The heritage of Arch Linux impacts positively Athena OS with respect to other pe
 * Better performance: pacman is faster than apt 
 * Focused: Athena can be developed and maintained down to the smallest detail 
 * Much more security tools: Athena can rely on BlackArch repository, that contains much more security tools than Debian repositories 
-* reedom: during the installation, you can choose to build your Athena with any resource or service you need. 
+* Freedom: during the installation, you can choose to build your Athena with any resource or service you need. 
 * Documentation: Arch Linux is very well documented on Internet for any need
 
 Athena's environment is based on GNOME Wayland that provide exciting features the user can enjoy!
