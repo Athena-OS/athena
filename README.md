@@ -19,7 +19,7 @@ Athena OS
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/83867734/174485047-633dacc8-84a9-4811-b13f-5637586f1fc5.png" data-canonical-src="https://user-images.githubusercontent.com/83867734/174485047-633dacc8-84a9-4811-b13f-5637586f1fc5.png" width="600" height="496" />
+  <img src="https://user-images.githubusercontent.com/83867734/174499581-e0f74d41-36ce-4c01-af0d-6ecd98841a64.png" data-canonical-src="https://user-images.githubusercontent.com/83867734/174499581-e0f74d41-36ce-4c01-af0d-6ecd98841a64.png" width="600" height="496" />
 </p>
 
 <h3 align="center">
