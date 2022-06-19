@@ -2,6 +2,7 @@
 ##                            PACKAGES AVAILABLE
 #####################################################################
 
+#iwd
 alsa-utils
 amd-ucode
 arch-install-scripts
@@ -37,7 +38,6 @@ intel-ucode
 ipw2100-fw
 ipw2200-fw
 irssi
-#iwd
 jfsutils
 less
 libfido2
@@ -45,8 +45,8 @@ libusb-compat
 linux
 linux-atm
 linux-firmware
-linux-firmware-qlogic
 linux-firmware-marvell
+linux-firmware-qlogic
 lsscsi
 lvm2
 man-db
@@ -103,8 +103,8 @@ usbmuxd
 usbutils
 vim
 vpnc
-wireless-regdb
 wireless_tools
+wireless-regdb
 wpa_supplicant
 wvdial
 xfsprogs
@@ -270,22 +270,22 @@ athena-welcome-app
 ###########################################################################
 
 #ckbcomp
-upower
-kcoreaddons
-kconfig
-ki18n
-kservice
-kwidgetsaddons
-kpmcore
-boost-libs
-libpwquality
-squashfs-tools
-plasma-framework
-hwinfo
-qt5-xmlpatterns
+adobe-source-han-sans-cn-fonts
 adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
-adobe-source-han-sans-cn-fonts
+boost-libs
+hwinfo
+kconfig
+kcoreaddons
+ki18n
+kpmcore
+kservice
+kwidgetsaddons
+libpwquality
+plasma-framework
+qt5-xmlpatterns
+squashfs-tools
+upower
 
 ###########################################################################
 #                                DISPLAY MANAGERS
@@ -310,98 +310,34 @@ gdm
 gnome
 gnome-tweaks
 
-###########################################################################
-#                              BLACKARCH
-###########################################################################
-
-### Information Gathering
-#dmitry
-#nmap
-#spiderfoot
-#theharvester
-#enum4linux
-#wafw00f
-#fierce
-
-### Vuln Analysis
-#legion
-#nikto
-#unix-privesc-check
-
-### Web App Analysis
-#wpscan
-#burpsuite
-#dirb
-#dirbuster
-#ffuf
-#wfuzz
-#sqlmap
-
-### Password Attacks
-#john
-#hashcat
-#hydra
-#cewl
-#crunch
-#rsmangler
-#medusa
-
-### Sniffing
-#mitmproxy
-#responder
-#wireshark-qt
-
-### Wireless Testing
-#aircrack-ng
-#kismet
-#reaver
-#wifite
-#fern-wifi-cracker
-#spooftooph
-
-### Reverse Eng
-#nasm
-#radare2
-
-### Exploitation
-#exploitdb
-#metasploit
-#set
-
-### Post Exploitation
-#powersploit
-#mimikatz
-#evil-winrm
-#proxychains-ng
-#weevely
 
 ###########################################################################
 #                              ATHENA SPECIFIC
 ###########################################################################
 
-athena-system-installation
+archlinux-tweak-tool
+athena-gnome-themes
 athena-system-config
+athena-system-installation
+athena-vscode-themes
+code
+cool-retro-term
 firefox-esr-bin
-powershell-bin
-which
 fish
+gnome-themes-extra
+hyper-athena-config
+hyper-bin
 libwnck3
 mkinitcpio-openswap
-wayland
-gnome-themes-extra
-code
-athena-vscode-themes
-athena-gnome-themes
-cool-retro-term
-hyper-bin
-hyper-athena-config
 paru
-archlinux-tweak-tool
+powershell-bin
+wayland
+which
 
 #archlinux-tweak-tool dependencies:
 python-distro
-python-psutil
 python-numpy
+python-psutil
 
 #for wd719x-firmware:
 lha

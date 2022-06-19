@@ -2,34 +2,41 @@
 ###                  BASIC PACKAGES                 ###
 #######################################################
 
+amd-ucode
+base
+base-devel
+btrfs-progs
+dialog
+dosfstools
+edk2-shell
+efibootmgr
+grub
+inetutils
+intel-ucode
 linux
 linux-headers
-pv
-nano
-mkinitcpio-archiso
-mkinitcpio-openswap
-syslinux
-edk2-shell
-memtest86+
-rsync
-networkmanager
-wpa_supplicant
-wireless_tools
-netctl
-inetutils
-dialog
 lvm2
-sudo
-grub
-dosfstools
-os-prober
-mtools
-efibootmgr
-intel-ucode
-amd-ucode
-base-devel
 man-db
 man-pages
+memtest86+
+mesa
+mesa-utils
+mkinitcpio-archiso
+mkinitcpio-nfs-utils
+mkinitcpio-openswap
+mtools
+nano
+nbd
+netctl
+networkmanager
+os-prober
+pv
+rsync
+squashfs-tools
+sudo
+syslinux
+wireless_tools
+wpa_supplicant
 
 #######################################################
 ###                   DEPENDENCIES                  ###
@@ -40,8 +47,8 @@ libwnck3
 
 #archlinux-tweak-tool dependencies:
 python-distro
-python-psutil
 python-numpy
+python-psutil
 
 #######################################################
 ###                 DISPLAY MANAGERS                ###
@@ -54,38 +61,40 @@ gdm
 ###                    UTILITIES                    ###
 #######################################################
 
-gnome
-gnome-tweaks
-gnome-themes-extra
-wayland
-fish
-neofetch
-wget
-which
-git
+archlinux-tweak-tool
+bat
 code
 cool-retro-term
+fish
+git
+gnome
+gnome-themes-extra
+gnome-tweaks
+lsd
+neofetch
 paru
-archlinux-tweak-tool
 polkit
 polkit-gnome
 tree
 ufw
 unzip
-
+vim
+wayland
+wget
+which
 
 #######################################################
 ###                ATHENA REPOSITORY                ###
 #######################################################
 
-firefox-esr-bin
-powershell-bin
 athena-calamares
 athena-calamares-config
-athena-welcome-app
-athena-system-installation
-athena-system-config
-athena-vscode-themes
 athena-gnome-themes
-hyper-bin
+athena-system-config
+athena-system-installation
+athena-vscode-themes
+athena-welcome-app
+firefox-esr-bin
 hyper-athena-config
+hyper-bin
+powershell-bin
