@@ -114,6 +114,7 @@ If you detect any issues during your experience, please [open an issue](https://
 | `gnome-extensions` | Gnome Extension manager. |
 | `gnome-tweaks` | Configure looks and functionality of your desktop. |
 | `hyper` | A terminal built on web technologies. |
+| `la` | An `ls -la` alias. |
 | `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
 | `nano` | Simple terminal-based text editor. |
 | `nautilus` | File Manager. |
