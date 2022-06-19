@@ -154,6 +154,11 @@ Main keybindings in Athena OS for speeding up your work:
 
 ![image](https://user-images.githubusercontent.com/83867734/174467971-c1f229bc-0349-44fc-9200-88df28bb6359.png)
 
+## Athena Roadmap
+* Implementation of different themes that can be chosen at time of the installation
+* Dash 2 Dock evaluation
+* Wiki documentation
+
 ## Credits
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extension
 * [HackTheBox](https://www.hackthebox.com/): Bash and PowerShell icons
