@@ -20,7 +20,8 @@ if [ -f "$FLAGFILE" ]; then
     cat $HOME/dconf-preferences.ini | dconf load /org/gnome/desktop/wm/preferences/
     cat $HOME/dconf-shell.ini | dconf load /org/gnome/shell/
     
-
+    sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
+    
     rm -rf $HOME/flypie@schneegans.github.com.zip $HOME/burn-my-windows@schneegans.github.com.zip 
     rm -rf $HOME/dconf-interface.ini $HOME/dconf-login-screen.ini $HOME/dconf-background.ini $HOME/dconf-screensaver.ini $HOME/dconf-preferences.ini $HOME/dconf-shell.ini
 fi
