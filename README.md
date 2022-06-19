@@ -104,7 +104,6 @@ If you detect any issues during your experience, please [open an issue](https://
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
 | `code` | Core engine of Visual Studio Code.  |
 | `cool-retro-term` | Retro-style terminal.  |
-| `code` | Core engine of Visual Studio Code. |
 | `eog` | Image viewer. |
 | `fish` | A smart and user-friendly command line shell. |
 | `git` | Fast, scalable, distributed revision control system. |
