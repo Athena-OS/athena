@@ -98,7 +98,17 @@ The application menu environment can be accessed by pressing the `WIN` button on
 
 Of course, Athena can retrieve much more security tools, almost 3000! It is possible because it relies on [BlackArch repository](https://blackarch.org/tools.html), so if you need another tool not shown on PentOX menu, you can install it directly by `sudo pacman -S <tool-name>`. If you are a lover of a specific hacking category, you can install one shot all the tools related to a specific category. For example, if you are a lover of exploitation, you can install all related tools by `sudo pacman -S blackarch-exploitation`. For other categories or specific tools, please refer to the BlackArch link.
   
-In Athena OS, Firefox ESR comes with preinstalled extensions that can support you during your pentesting activity. Furthermore, Athena supports also git, so be creative to make your own security tool and publish it on GitHub!
+In Athena OS, Firefox ESR comes with preinstalled extensions that can support you during your pentesting activity and privacy navigation:
+* Cookie Quick Manager: manage (view, search, create, edit, delete, backup, restore) cookies
+* Dark Reader: Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing
+* FoxyProxy: Proxy Management tool
+* HacKontext: inject HTTP header and body of the active browser tab on InfoSec command-line tools to improve and speed up their usage
+* HTTPS Everywhere: encrypt the Web! Automatically use HTTPS security on many sites
+* Privacy Badger: automatically learn to block invisible trackers
+* uBlock Origin: an efficient blocker. Easy on CPU and memory
+* Wappalyzer: uncover the technologies used on websites. It detects content management systems, eCommerce platforms, web servers, JavaScript frameworks, analytics tools and many more.
+
+Furthermore, Athena supports also git, so be creative to make your own security tool and publish it on GitHub!
 
 There are other spicy features on Athena, but for now I shut my mind. 🔥Discover them!🔥
 <br>
@@ -174,6 +184,7 @@ Main keybindings in Athena OS for speeding up your work:
 * Wiki documentation
 
 ## Credits
+* [ArcoLinux Project](https://www.arcolinux.info/): Resources and Learning materials
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extension
 * [HackTheBox](https://www.hackthebox.com/): Bash and PowerShell icons
 * [Offensive Security](https://www.offensive-security.com/): Kali Linux security tools icons
