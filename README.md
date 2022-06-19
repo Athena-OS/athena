@@ -96,6 +96,30 @@ There are other spicy features on Athena, but for now I shut my mind. 🔥Discov
 If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues) on athena-iso GitHub repository.
 <br>
 <br>
+
+## Utility Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `bat` | A `cat` clone with syntax highlighting and Git integration. |
+| `code` | Core engine of Visual Studio Code.  |
+| `cool-retro-term` | Retro-style terminal.  |
+| `code` | Core engine of Visual Studio Code. |
+| `eog` | Image viewer. |
+| `fish` | A smart and user-friendly command line shell. |
+| `git` | Fast, scalable, distributed revision control system. |
+| `gnome-extensions` | Gnome Extension manager. |
+| `gnome-tweaks` | Configure looks and functionality of your desktop. |
+| `hyper` | A terminal built on web technologies. |
+| `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
+| `nano` | Simple terminal-based text editor. |
+| `nautilus` | File Manager. |
+| `neofetch` | CLI system information tool written in BASH. |
+| `pacman` | Arch Linux package manager. |
+| `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
+| `tree` | Recursive directory listing program that produces a depth indented listing of files. |
+| `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
+
 ## Shortcuts
 Main keybindings in Athena OS for speeding up your work:
 | Keybind | Description |
