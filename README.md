@@ -18,9 +18,10 @@ Athena OS
   </a>
 </p>
 
-<p align="center">
-  Born for InfoSec Professionals, Bug Bounty Hunters, Passionate Students and Spicy Hackers!
-</p>
+<h3 align="center">
+  🏅Born for InfoSec Professionals, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
+</h3>
+<br>
 
 ### Why Athena?
 * *Pentesting*: Athena can access to [BlackArch repository](https://blackarch.org/tools.html), the **biggest pentesting tool warehouse**, whereas Debian-based distros cannot.
