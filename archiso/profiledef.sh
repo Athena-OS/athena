@@ -24,4 +24,5 @@ file_permissions=(
   ["/etc/sudoers.d"]="0:0:750"
   ["/etc/grub.d/40_custom"]="0:0:755"
   ["/usr/local/bin/strap.sh"]="0:0:755"
+  ["/usr/local/bin/athena-snapper"]="0:0:755"
 )
