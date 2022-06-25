@@ -191,3 +191,4 @@ Main keybindings in Athena OS for speeding up your work:
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extensions
 * [HackTheBox](https://www.hackthebox.com/): Bash and PowerShell icons
 * [Offensive Security](https://www.offensive-security.com/): Kali Linux security tools icons
+* [Kitsunekun](https://www.furaffinity.net/view/23914148/): Athena Chibi Logo
