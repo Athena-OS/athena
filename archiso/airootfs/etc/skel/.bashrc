@@ -302,7 +302,7 @@ alias personal='cp -Rf /personal/* ~'
 
 # reporting tools - install when not installed
 # commented all because I run one of them by alacritty.yml file
-#neofetch
+neofetch | lolcat
 #screenfetch
 #alsi
 #paleofetch

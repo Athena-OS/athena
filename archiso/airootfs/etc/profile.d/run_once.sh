@@ -13,6 +13,10 @@ if [ -f "$FLAGFILE" ]; then
     gnome-extensions install burn-my-windows@schneegans.github.com.zip
     gnome-extensions enable burn-my-windows@schneegans.github.com
 
+    wget https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip  
+    gnome-extensions install appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
+    gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+
     cat $HOME/dconf-interface.ini | dconf load /org/gnome/desktop/interface/
     cat $HOME/dconf-login-screen.ini | dconf load /io/github/realmazharhussain/GdmSettings/appearance/
     cat $HOME/dconf-background.ini | dconf load /org/gnome/desktop/background/
@@ -22,7 +26,7 @@ if [ -f "$FLAGFILE" ]; then
     
     sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
     
-    rm -rf $HOME/flypie@schneegans.github.com.zip $HOME/burn-my-windows@schneegans.github.com.zip 
+    rm -rf $HOME/flypie@schneegans.github.com.zip $HOME/burn-my-windows@schneegans.github.com.zip $HOME/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
     rm -rf $HOME/dconf-interface.ini $HOME/dconf-login-screen.ini $HOME/dconf-background.ini $HOME/dconf-screensaver.ini $HOME/dconf-preferences.ini $HOME/dconf-shell.ini
 fi
 
