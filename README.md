@@ -183,6 +183,9 @@ Main keybindings in Athena OS for speeding up your work:
 * Dash 2 Dock evaluation
 * Wiki documentation
 
+## Troubleshooting
+* After the installation, if Fly-Pie extension (PenTOXIC menu) and Burn My Windows extension don't work, reinstall the operating system on a separate VM and check again.
+
 ## Credits
 * [ArcoLinux Project](https://www.arcolinux.info/): Resources and Learning materials
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extensions
