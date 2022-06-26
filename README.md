@@ -202,8 +202,9 @@ Main keybindings in Athena OS for speeding up your work:
 * After the installation, if Fly-Pie extension (PenTOXIC menu) and Burn My Windows extension don't work, reinstall the operating system on a separate VM and check again.
 
 ## Credits
-* [ArcoLinux Project](https://www.arcolinux.info/): Resources and Learning materials
+* [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extensions
-* [HackTheBox](https://www.hackthebox.com/): Bash and PowerShell icons
-* [Offensive Security](https://www.offensive-security.com/): Kali Linux security tools icons
-* [Kitsunekun](https://www.furaffinity.net/view/23914148/): Athena Chibi Logo
+* [HackTheBox](https://www.hackthebox.com): Bash and PowerShell icons; Hack The Box icon
+* [Offensive Security](https://www.offensive-security.com): Kali Linux security tools icons; Offensive Security icon
+* [Kitsunekun](https://www.furaffinity.net/view/23914148): Athena Chibi Logo
+* [Red Team Village](https://redteamvillage.io): PWNage menu icon
