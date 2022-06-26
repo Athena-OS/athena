@@ -42,6 +42,21 @@ Athena OS
 * *Flexibility*: for its Arch nature, Athena is **flexible** and can easily evolve to the new needs of the users.
 <br>
 
+## Incoming Updates
+Here I would like to inform you about new features already tested and implemented that will be published in the next release, for keeping you always informed in a comfortable way.
+
+The next release will provide:
+* Improved **PenTOXIC menu** responsiveness from 1 second on the current release to some milliseconds (almost instantaneous) on the new release
+* Removed some Hyper terminal plugins (hyperpower, hyperterm-dibdabs, hyper-startup) for improving the responsiveness of Hyper Terminal. The user can install these plugins autonomously
+* Implemented **Discord Arch Electron** application. It is an official Discord client with improved security and performance
+* Implemented **Discord top bar icon**
+* Implemented **lolcat**
+* Implemented **Athena Remote Repository** for rolling updates
+* Implemented a new menu: **PWNage**. No spoilers, just some image:
+![image](https://user-images.githubusercontent.com/83867734/175814103-b0047645-a92e-480d-a8b5-a4f7e16933eb.png)
+
+I will take some time for getting feedbacks by users and then I will publish the next release!
+
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
 
