@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=Powersploit
 Comment=Powersploit
 Icon=/usr/share/icons/hicolor/128x128/apps/kali-powershell-empire-128x128.png
-Exec=cool-retro-term -e fish -c "if test -d /usr/share/windows/powersploit;cd /usr/share/windows/powersploit;fish;else;echo \"Powersploit is not installed. I'm retrieving it for you...\";sudo pacman -S powersploit;cd /usr/share/windows/powersploit;fish;end;"
+Exec=gnome-terminal -- fish -c "if test -d /usr/share/windows/powersploit;cd /usr/share/windows/powersploit;fish;else;echo \"Powersploit is not installed. I'm retrieving it for you...\";sudo pacman -S powersploit;cd /usr/share/windows/powersploit;fish;end;"
 Terminal=false
 Categories=Tags;Describing;Application
