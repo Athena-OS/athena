@@ -48,9 +48,11 @@ Here I would like to inform you about new features already tested and implemente
 The next release will provide:
 * Improved **PenTOXIC menu** responsiveness from 1 second on the current release to some milliseconds (almost instantaneous) on the new release
 * Removed some Hyper terminal plugins (hyperpower, hyperterm-dibdabs, hyper-startup) for improving the responsiveness of Hyper Terminal. The user can install these plugins autonomously
-* Implemented **Discord Arch Electron** application. It is an official Discord client with improved security and performance
+* Implemented **Discord** application
 * Implemented **Discord top bar icon**
+* Implemented **BetterDiscord**
 * Implemented **lolcat**
+* Changed cool-retro-term to gnome-terminal for running security tools from PenTOXIC menu because graphically less bulky
 * Implemented **Athena Remote Repository** for rolling updates
 * Implemented a new menu: **PWNage**. No spoilers, just some image:
 ![image](https://user-images.githubusercontent.com/83867734/175814103-b0047645-a92e-480d-a8b5-a4f7e16933eb.png)
