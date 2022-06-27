@@ -50,7 +50,6 @@ The next release will provide:
 * Removed some Hyper terminal plugins (hyperpower, hyperterm-dibdabs, hyper-startup) for improving the responsiveness of Hyper Terminal. The user can install these plugins autonomously
 * Implemented **Discord** application
 * Implemented **Discord top bar icon**
-* Implemented **BetterDiscord**
 * Implemented **lolcat**
 * Changed cool-retro-term to gnome-terminal for running security tools from PenTOXIC menu because graphically less bulky
 * Implemented **Athena Remote Repository** for rolling updates
