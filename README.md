@@ -201,7 +201,7 @@ Main keybindings in Athena OS for speeding up your work:
 
 ## Troubleshooting
 * After the installation, if Fly-Pie extension (PenTOXIC menu) and Burn My Windows extension don't work, reinstall the operating system on a separate VM and check again;
-* After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the problem will be fixed.
+* After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 
 ## Credits
 * [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
