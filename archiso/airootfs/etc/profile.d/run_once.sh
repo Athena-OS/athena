@@ -23,8 +23,6 @@ if [ -f "$FLAGFILE" ]; then
     cat $HOME/dconf-screensaver.ini | dconf load /org/gnome/desktop/screensaver/
     cat $HOME/dconf-preferences.ini | dconf load /org/gnome/desktop/wm/preferences/
     cat $HOME/dconf-shell.ini | dconf load /org/gnome/shell/
-
-    echo -n "require(\"$HOME/.config/BetterDiscord/data/betterdiscord.asar\");" >> $HOME/.config/discord/*/modules/discord_desktop_core/index.js
     
     sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
     
