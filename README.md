@@ -52,7 +52,7 @@ The next release will provide:
 * Implemented **Discord top bar icon**
 * Implemented **lolcat**
 * Added Ghidra and EDB Debugger in PenTOXIC
-* Added support of the screen extension in VMWare Live Environment
+* Added support of the screen extension in VMWare and VirtualBox Live Environment
 * Implemented **hexedit**
 * Changed cool-retro-term to gnome-terminal for running security tools from PenTOXIC menu because graphically less bulky
 * Implemented **Athena Remote Repository** for rolling updates
