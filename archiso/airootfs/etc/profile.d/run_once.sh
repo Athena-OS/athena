@@ -4,7 +4,7 @@ FLAGFILE="$HOME/flag-work-once"
 
 if [ -f "$FLAGFILE" ]; then
     rm -rf "$FLAGFILE"
-
+    
     wget https://github.com/Schneegans/Fly-Pie/releases/latest/download/flypie@schneegans.github.com.zip
     gnome-extensions install flypie@schneegans.github.com.zip
     gnome-extensions enable flypie@schneegans.github.com

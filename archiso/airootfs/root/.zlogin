@@ -4,3 +4,4 @@ if grep -Fq 'accessibility=' /proc/cmdline &> /dev/null; then
 fi
 
 ~/.automated_script.sh
+~/strap.sh

@@ -131,6 +131,16 @@ echo
 	echo "Making mkarchiso verbose"
 	sudo sed -i 's/quiet="y"/quiet="n"/g' /usr/bin/mkarchiso
 
+        echo "- Copying BlackArch keys from /usr/share/pacman/keyrings/ to ../archiso/airootfs/usr/share/pacman/keyrings/"
+        if [ -f "/usr/share/pacman/keyrings/blackarch.gpg" ]; then
+           echo "/usr/share/pacman/keyrings/blackarch.gpg exists."
+        else 
+           echo "/usr/share/pacman/keyrings/blackarch.gpg does not exist. Running strap.sh"
+           sudo ../archiso/airootfs/root/strap.sh
+        fi
+        cp -rf /usr/share/pacman/keyrings/blackarch.gpg ../archiso/airootfs/usr/share/pacman/keyrings/
+        cp -rf /usr/share/pacman/keyrings/blackarch-revoked ../archiso/airootfs/usr/share/pacman/keyrings/
+        cp -rf /usr/share/pacman/keyrings/blackarch-trusted ../archiso/airootfs/usr/share/pacman/keyrings/
 echo
 echo "################################################################## "
 tput setaf 2
@@ -227,8 +237,6 @@ echo
 # 	date_build=$(date -d now)
 # 	echo "Iso build on : "$date_build
 # 	sudo sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/archiso/airootfs/etc/dev-rel
-
-
 echo
 echo "################################################################## "
 tput setaf 2
