@@ -8,3 +8,5 @@ sudo pacman-key --init
 sudo pacman-key --populate
 
 sed -i '/pacman/d' $HOME/.config/fish/config.fish
+sed -i '/^$/d' $HOME/.config/fish/config.fish
+sed -i '/sed/d' $HOME/.config/fish/config.fish
