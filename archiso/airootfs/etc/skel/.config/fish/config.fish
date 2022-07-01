@@ -7,4 +7,4 @@ sudo rm -rf /etc/pacman.d/gnupg
 sudo pacman-key --init
 sudo pacman-key --populate
 
-sed '/pacman/d' $HOME/.config/fish/config.fish
+sed -i '/pacman/d' $HOME/.config/fish/config.fish
