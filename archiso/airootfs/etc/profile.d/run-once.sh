@@ -22,9 +22,20 @@ if [ -f "$FLAGFILE" ]; then
     cat $HOME/dconf-screensaver.ini | dconf load /org/gnome/desktop/screensaver/
     cat $HOME/dconf-preferences.ini | dconf load /org/gnome/desktop/wm/preferences/
     cat $HOME/dconf-shell.ini | dconf load /org/gnome/shell/
-    
+        
     sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
     
+    package=athena-sweet-dark-theme
+    if pacman -Qq $package > /dev/null ; then
+       gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+       gsettings set org.gnome.desktop.interface gtk-theme Sweet-Dark
+       gsettings set org.gnome.desktop.wm.preferences theme Sweet-Dark
+       gsettings set org.gnome.desktop.interface icon-theme Sweet-Purple
+       gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/default/neon_circle.jpg
+       gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/default/neon_circle.jpg
+       gsettings set org.gnome.desktop.background picture-options stretched
+    fi
+
     rm -rf $HOME/flypie@schneegans.github.com.zip $HOME/burn-my-windows@schneegans.github.com.zip $HOME/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
     rm -rf $HOME/dconf-interface.ini $HOME/dconf-login-screen.ini $HOME/dconf-screensaver.ini $HOME/dconf-preferences.ini $HOME/dconf-shell.ini
 fi
