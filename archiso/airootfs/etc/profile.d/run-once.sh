@@ -36,6 +36,17 @@ if [ -f "$FLAGFILE" ]; then
        gsettings set org.gnome.desktop.background picture-options stretched
     fi
 
+    package=athena-graphite-theme
+    if pacman -Qq $package > /dev/null ; then
+       gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+       gsettings set org.gnome.desktop.interface gtk-theme Graphite-Dark-compact
+       gsettings set org.gnome.desktop.wm.preferences theme Graphite-Dark-compact
+       gsettings set org.gnome.desktop.interface icon-theme Tela-circle-black-dark
+       gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/default/arch-ascii.png
+       gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/default/arch-ascii.png
+       gsettings set org.gnome.desktop.background picture-options stretched
+    fi
+
     rm -rf $HOME/flypie@schneegans.github.com.zip $HOME/burn-my-windows@schneegans.github.com.zip $HOME/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
     rm -rf $HOME/dconf-interface.ini $HOME/dconf-login-screen.ini $HOME/dconf-screensaver.ini $HOME/dconf-preferences.ini $HOME/dconf-shell.ini
 fi
