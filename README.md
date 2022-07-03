@@ -78,9 +78,6 @@ The newest release provides:
     * SecurityCert
     * TryHackMe 
 
-![image](https://user-images.githubusercontent.com/83867734/175814103-b0047645-a92e-480d-a8b5-a4f7e16933eb.png)
-
-
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
 
@@ -96,6 +93,27 @@ The heritage of Arch Linux impacts positively Athena OS with respect to other pe
 Athena's environment is based on GNOME Wayland that provide exciting features the user can enjoy!
 
 Let's give a detailed look on Athena! 
+<br>
+<br>
+
+## Elements
+
+### PenTOXIC Menu
+
+PenTOXIC Menu is born for organizing in pretty manner all main security tools you need to start your hacking activity. It consists in two levels:
+* 1st level containing the several **hacking categories** as submenu, plus **Firefox** browser and **Code OSS** as editor
+* 2nd level consisting in the **hacking tools** deployed for each category
+
+![image](https://user-images.githubusercontent.com/83867734/177038161-261c745d-79f8-44d7-8e8b-ec2e9dd439be.png)
+
+### PWNage Menu
+
+PWNage Menu allows you to access quickly to the main hacking platforms for learning purposes and to join the main Discord InfoSec Communities:
+* 1st shell deploys all quick links to the main hacking platforms
+* 2nd shell can be accessed by the Discurity icon on top where the user has the opportunity to join several Discord InfoSec servers or open Discord App.ù
+
+![image](https://user-images.githubusercontent.com/83867734/177038794-05892fb5-2c05-40be-9d1b-ea1b56410a57.png)
+
 <br>
 <br>
 ## Installation
