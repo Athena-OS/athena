@@ -114,8 +114,21 @@ PWNage Menu allows you to access quickly to the main hacking platforms for learn
 
 ![image](https://user-images.githubusercontent.com/83867734/177038794-05892fb5-2c05-40be-9d1b-ea1b56410a57.png)
 
+### Firefox ESR Hack Mode
+
+Firefox ESR has been modified in order to integrate at the installation time the addons you need for your web application pentesting activity. The preinstalled addons are:
+* Cookie Quick Manager
+* Dark Reader
+* FoxyProxy Standard
+* HacKontext
+* HTTPS Everywhere
+* Privacy 
+* uBlock Origin
+* Wappalyzer
+
 <br>
 <br>
+
 ## Installation
 
 Download the latest Athena release .iso file from the related section. According to your need, you can choose to install Athena on your computer natively, or implement it on a Virtual Machine (e.g., VMware or VirtualBox).
