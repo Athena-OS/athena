@@ -11,7 +11,7 @@ export PAGER='most'
 #export XMODIFIERS=@im=dbus
 #export QT_IM_MODULE=ibus
 
-PS1="\e[34m\]┌──[HQ🚀\e[32m\]$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}')⚔️ \u\e[34m\]]==>\033[1;34m\]W34p0ns R34dy 2 Eng4g3!\e[0m\]\e[34m\]\n└──╼[👾]\[\e[36m\]\W $ \[\e[0m\]"
+PS1="\e[34m\]┌──[HQ🚀\e[32m\]$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}')⚔️ \u\e[34m\]]\n└──╼[👾]\[\e[36m\]\W $ \[\e[0m\]"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
