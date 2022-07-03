@@ -113,7 +113,7 @@ Currently, I didn't have the time to test every scenario, but I can suggest you 
 6. On `Virtual Machine` set `VMware Virtual Machine`
 7. On `Login` set `Display Manager: Gdm`
 8. On `Theme` set what you prefer
-9. On `Location` and `Keyboard` set what you wish. Note: currently Calamares has a bug on the timezone setting because if the user clicks on a point of the map, usually the timezone is set to en_AG. Choose manually your preferences. This bug will be fixed in the next release of Calamares (you will need only a `pacman -Syu`).
+9. On `Location` and `Keyboard` set what you wish. Note: currently Calamares has a bug on the timezone setting because if the user clicks on a point of the map, usually the timezone is set to en_AG. Choose manually your preferences on the right-bottom part of the window (if need, expand installer window). This bug will be fixed in the next release of Calamares (you will need only a `pacman -Syu`).
 10. On `Partitions` set `Erase disk` and feel free to set up the Swap or not, and use btrfs
 11. On `Users` set the user details you wish
 12. Confirm the choices summary
