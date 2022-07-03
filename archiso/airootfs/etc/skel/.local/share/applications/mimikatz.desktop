@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=Mimikatz
 Comment=Mimikatz
 Icon=/usr/share/icons/hicolor/128x128/apps/kali-mimikatz-128x128.png
-Exec=gnome-terminal -- fish -c "if test -d /usr/share/windows/mimikatz;cd /usr/share/windows/mimikatz;fish;else;echo \"Mimikatz is not installed. I'm retrieving it for you...\";sudo pacman -S mimikatz;cd /usr/share/windows/mimikatz;fish;end;"
+Exec=gnome-terminal -- fish -c "if test -d /usr/share/windows/mimikatz;cd /usr/share/windows/mimikatz;bash;else;echo \"Mimikatz is not installed. I'm retrieving it for you...\";sudo pacman -S mimikatz;cd /usr/share/windows/mimikatz;bash;end;"
 Terminal=false
 Categories=Tags;Describing;Application

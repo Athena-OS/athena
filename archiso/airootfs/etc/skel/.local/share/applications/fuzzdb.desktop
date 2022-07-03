@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=FuzzDB
 Comment=FuzzDB
 Icon=/usr/share/icons/hicolor/128x128/apps/kali-ike-scan-128x128.png
-Exec=gnome-terminal -- fish -c "if test -d /usr/share/payloads/FuzzDB;cd /usr/share/payloads/FuzzDB;fish;else;echo \"FuzzDB not found. I'm retrieving it for you...\";sudo git clone https://github.com/fuzzdb-project/fuzzdb /usr/share/payloads/FuzzDB;cd /usr/share/payloads/FuzzDB;fish;end;"
+Exec=gnome-terminal -- fish -c "if test -d /usr/share/payloads/FuzzDB;cd /usr/share/payloads/FuzzDB;bash;else;echo \"FuzzDB not found. I'm retrieving it for you...\";sudo git clone https://github.com/fuzzdb-project/fuzzdb /usr/share/payloads/FuzzDB;cd /usr/share/payloads/FuzzDB;bash;end;"
 Terminal=false
 Categories=Tags;Describing;Application
