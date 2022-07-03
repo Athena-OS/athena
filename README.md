@@ -56,6 +56,8 @@ The next release will provide:
 * Implemented **hexedit**
 * Changed cool-retro-term to **gnome-terminal** for running security tools from PenTOXIC menu because graphically less bulky
 * Implemented **Athena Remote Repository** for rolling updates
+* Implemented Theme Choice on the Installer
+* Implement a new theme: Graphite Dark
 * Implemented a new menu: **PWNage**. No spoilers, just some image:
 ![image](https://user-images.githubusercontent.com/83867734/175814103-b0047645-a92e-480d-a8b5-a4f7e16933eb.png)
 
@@ -91,13 +93,14 @@ Currently, I didn't have the time to test every scenario, but I can suggest you 
 4. On `Kernel` select `Linux kernel - installed by default`
 5. On `Drivers` and `Drivers Nv` leaves blank
 6. On `Virtual Machine` set `VMware Virtual Machine`
-7. On `Login` set `Login Manager: Gdm`
-8. On `Location` and `Keyboard` set what you wish
-9. On `Partitions` set `Erase disk` and feel free to set up the Swap or not, and use btrfs
-10. On `Users` set the user details you wish
-11. Confirm the choices summary
-12. Wait for the end of installation
-13. Enjoy Athena OS!
+7. On `Login` set `Display Manager: Gdm`
+8. On `Theme` set what you prefer
+9. On `Location` and `Keyboard` set what you wish
+10. On `Partitions` set `Erase disk` and feel free to set up the Swap or not, and use btrfs
+11. On `Users` set the user details you wish
+12. Confirm the choices summary
+13. Wait for the end of installation
+14. Enjoy Athena OS!
 
 Note: Athena Welcome App is based on ArcoLinux project. Currently, the links are still referred to ArcoLinux.
 
@@ -168,6 +171,7 @@ Main keybindings in Athena OS for speeding up your work:
 | Keybind | Description |
 | ------- | ----------- |
 | `CTRL+SPACE` | PentOX menu |
+| `CTRL+TAB` | PWNage menu |
 | `WIN` | Switch between desktop and application menu |
 | **Hyper Terminal** | |
 | `CTRL+SHIFT+N` | New Window |
@@ -188,8 +192,6 @@ Main keybindings in Athena OS for speeding up your work:
 ![image](https://user-images.githubusercontent.com/83867734/174466501-22401754-b879-45b8-8c22-88c1db158371.png)
 
 ![image](https://user-images.githubusercontent.com/83867734/174466454-d9701dff-bb1b-4f96-b1fa-f3b6f319c960.png)
-
-![image](https://user-images.githubusercontent.com/83867734/174466558-def86eec-f687-4d53-a4ef-a76ec2691091.png)
 
 ![image](https://user-images.githubusercontent.com/83867734/174466786-2a9e772f-0c6e-498e-812f-d2ffa3a4b8c7.png)
 
