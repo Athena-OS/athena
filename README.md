@@ -245,9 +245,7 @@ Main keybindings in Athena OS for speeding up your work:
 <br>
 
 ## Screenshots
-![image](https://user-images.githubusercontent.com/83867734/174466390-e8e259aa-4fb7-4daa-9a7a-334dcded25d7.png)
-
-![image](https://user-images.githubusercontent.com/83867734/177029415-166b6610-0e70-4948-a9e2-bad3b1d3d3ac.png)
+![image](https://user-images.githubusercontent.com/83867734/177039614-dbd8b314-a083-4153-96ea-6f1eff3d604a.png)
 
 ![image](https://user-images.githubusercontent.com/83867734/174466454-d9701dff-bb1b-4f96-b1fa-f3b6f319c960.png)
 
