@@ -56,8 +56,8 @@ The next release will provide:
 * Implemented **hexedit**
 * Changed cool-retro-term to **gnome-terminal** for running security tools from PenTOXIC menu because graphically less bulky
 * Implemented **Athena Remote Repository** for rolling updates
-* Implemented Theme Choice on the Installer
-* Implement a new theme: Graphite Dark
+* Implemented **Theme Choice** on the Installer
+* Implement a new theme: **Graphite Dark**
 * Implemented a new menu: **PWNage**. No spoilers, just some image:
 ![image](https://user-images.githubusercontent.com/83867734/175814103-b0047645-a92e-480d-a8b5-a4f7e16933eb.png)
 
