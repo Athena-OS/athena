@@ -42,12 +42,13 @@ Athena OS
 * *Flexibility*: for its Arch nature, Athena is **flexible** and can easily evolve to the new needs of the users.
 <br>
 
-## Incoming Updates
-Here I would like to inform you about new features already tested and implemented that will be published in the next release, for keeping you always informed in a comfortable way.
+## Latest Updates
+Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-The next release will provide:
+The newest release provides:
 * Improved **PenTOXIC menu** responsiveness from 1 second on the current release to some milliseconds (almost instantaneous) on the new release
 * Removed some Hyper terminal plugins (hyperpower, hyperterm-dibdabs, hyper-startup) for improving the responsiveness of **Hyper Terminal**. The user can install these plugins autonomously
+* Disabled Burn My Window effects because some users prefer no bulky graphics. It can be enabled quickly as explained in **Utility Commands** section
 * Implemented **Discord** application
 * Implemented **Discord top bar icon**
 * Implemented **lolcat**
@@ -58,10 +59,27 @@ The next release will provide:
 * Implemented **Athena Remote Repository** for rolling updates
 * Implemented **Theme Choice** on the Installer
 * Implement a new theme: **Graphite Dark**
-* Implemented a new menu: **PWNage**. No spoilers, just some image:
+* Implemented a new menu: **PWNage**!
+  * The most worthy hacking platforms in one click! Prepare your hacking tools!
+    * [Hack The Box](https://www.hackthebox.com)
+    * [PentesterLab](https://pentesterlab.com/)
+    * [PortSwigger](https://portswigger.net/web-security/all-labs)
+    * [Proving Grounds](https://www.offensive-security.com/labs)
+    * [PWNX](https://pwnx.io)
+    * [Root Me](https://www.root-me.org/?lang=en)
+    * [TryHackMe](https://tryhackme.com)
+
+  * Study, Learn, Share and Join the Discord InfoSec Community!
+    * CybeeSec
+    * Hack The Box
+    * Offensive Security
+    * PWNX
+    * Root Me
+    * SecurityCert
+    * TryHackMe 
+
 ![image](https://user-images.githubusercontent.com/83867734/175814103-b0047645-a92e-480d-a8b5-a4f7e16933eb.png)
 
-I will take some time for getting feedbacks by users and then I will publish the next release!
 
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
@@ -88,7 +106,7 @@ When you mount the ISO to your pendrive or your Virtual Machine and boot up Athe
 
 Currently, I didn't have the time to test every scenario, but I can suggest you an installation scenario that I tested, and it is based on the installation of Athena on a VMware Virtual Machine:
 1. Boot up Athena on VMware
-2. On Athena Welcome App select `Advanced Installation`
+2. Wait for the Installer appearing. If not, on Athena Welcome App select `Advanced Installation`
 3. On `Welcome` select your preferred language
 4. On `Kernel` select `Linux kernel - installed by default`
 5. On `Drivers` and `Drivers Nv` leaves blank
@@ -166,11 +184,13 @@ If you detect any issues during your experience, please [open an issue](https://
 
 Vim configuration is based on https://github.com/amix/vimrc so it implements smart and useful [plugins](https://github.com/amix/vimrc#included-plugins), [color schemes](https://github.com/amix/vimrc#included-color-schemes) and [modes](https://github.com/amix/vimrc#included-modes).
 
-If you would like to edit or disable Burn My Window opening and closing effect:
+If you would like to enable, edit or disable Burn My Window opening and closing effect:
 ```
 gnome-extensions prefs burn-my-windows@schneegans.github.com
 ```
 and check or uncheck your effects.
+
+Change your themes and icons by `gnome-tweaks`.
 
 ## Shortcuts
 Main keybindings in Athena OS for speeding up your work:
@@ -193,17 +213,13 @@ Main keybindings in Athena OS for speeding up your work:
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/83867734/174466390-e8e259aa-4fb7-4daa-9a7a-334dcded25d7.png)
 
-![image](https://user-images.githubusercontent.com/83867734/174466429-dfea6b99-5c9d-413c-bb9b-b913977b37f7.png)
+![image](https://user-images.githubusercontent.com/83867734/177029415-166b6610-0e70-4948-a9e2-bad3b1d3d3ac.png)
 
 ![image](https://user-images.githubusercontent.com/83867734/174466501-22401754-b879-45b8-8c22-88c1db158371.png)
 
 ![image](https://user-images.githubusercontent.com/83867734/174466454-d9701dff-bb1b-4f96-b1fa-f3b6f319c960.png)
 
 ![image](https://user-images.githubusercontent.com/83867734/174466786-2a9e772f-0c6e-498e-812f-d2ffa3a4b8c7.png)
-
-![image](https://user-images.githubusercontent.com/83867734/174466654-499e34bf-3087-48c0-b913-35bab5c2e5d0.png)
-
-![image](https://user-images.githubusercontent.com/83867734/174467971-c1f229bc-0349-44fc-9200-88df28bb6359.png)
 
 ## Athena Roadmap
 * Implementation of different themes that can be chosen at time of the installation
