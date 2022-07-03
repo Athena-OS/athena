@@ -96,7 +96,7 @@ Let's give a detailed look on Athena!
 <br>
 <br>
 
-## Elements
+## Main Elements
 
 ### PenTOXIC Menu
 
@@ -126,7 +126,6 @@ Firefox ESR has been modified in order to integrate at the installation time the
 * uBlock Origin
 * Wappalyzer
 
-<br>
 <br>
 
 ## Installation
