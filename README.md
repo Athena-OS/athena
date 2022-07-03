@@ -43,7 +43,7 @@ Athena OS
 <br>
 
 ## Latest Updates
-Here I would like to inform you about new features already tested and implemented that will be published in the next release, for keeping you always informed in a comfortable way.
+Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
 The next release will provide:
 * Improved **PenTOXIC menu** responsiveness from 1 second on the current release to some milliseconds (almost instantaneous) on the new release
