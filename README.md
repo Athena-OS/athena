@@ -48,6 +48,7 @@ Here I would like to inform you about new features already tested and implemente
 The next release will provide:
 * Improved **PenTOXIC menu** responsiveness from 1 second on the current release to some milliseconds (almost instantaneous) on the new release
 * Removed some Hyper terminal plugins (hyperpower, hyperterm-dibdabs, hyper-startup) for improving the responsiveness of **Hyper Terminal**. The user can install these plugins autonomously
+* Disabled Burn My Window effects because some users prefer no bulky graphics. It can be enabled quickly as explained in **Utility Commands** section
 * Implemented **Discord** application
 * Implemented **Discord top bar icon**
 * Implemented **lolcat**
