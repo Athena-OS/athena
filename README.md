@@ -95,7 +95,7 @@ Currently, I didn't have the time to test every scenario, but I can suggest you 
 6. On `Virtual Machine` set `VMware Virtual Machine`
 7. On `Login` set `Display Manager: Gdm`
 8. On `Theme` set what you prefer
-9. On `Location` and `Keyboard` set what you wish
+9. On `Location` and `Keyboard` set what you wish. Note: currently Calamares has a bug on the timezone setting because if the user clicks on a point of the map, usually the timezone is set to en_AG. Choose manually your preferences. This bug will be fixed in the next release of Calamares (you will need only a `pacman -Syu`).
 10. On `Partitions` set `Erase disk` and feel free to set up the Swap or not, and use btrfs
 11. On `Users` set the user details you wish
 12. Confirm the choices summary
@@ -165,6 +165,12 @@ If you detect any issues during your experience, please [open an issue](https://
 | `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
 
 Vim configuration is based on https://github.com/amix/vimrc so it implements smart and useful [plugins](https://github.com/amix/vimrc#included-plugins), [color schemes](https://github.com/amix/vimrc#included-color-schemes) and [modes](https://github.com/amix/vimrc#included-modes).
+
+If you would like to edit or disable Burn My Window opening and closing effect:
+```
+gnome-extensions prefs burn-my-windows@schneegans.github.com
+```
+and check or uncheck your effects.
 
 ## Shortcuts
 Main keybindings in Athena OS for speeding up your work:
