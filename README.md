@@ -126,6 +126,10 @@ Firefox ESR has been modified in order to integrate at the installation time the
 * uBlock Origin
 * Wappalyzer
 
+### BlackArch Repository
+
+BlackArch Linux is an Arch Linux-based penetration testing distribution for penetration testers and security researchers. Its repository contains [2800+ tools](https://blackarch.org/tools.html), classified for categories. You can install tools individually or in groups according to the categories they belong. BlackArch Repository is compatible with only Arch-based distributions as Athena OS.
+
 <br>
 
 ## Installation
