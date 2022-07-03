@@ -126,6 +126,19 @@ Firefox ESR has been modified in order to integrate at the installation time the
 * uBlock Origin
 * Wappalyzer
 
+### Payload to Dock
+
+Payload to Dock keeps the access to the most famous payload repositories. It allows you to get the latest version of payloads and accessing their path directly by the shell. It shows:
+* Auto Wordlists
+* FuzzDB
+* PayloadAllTheThings
+* SecLists
+* Security Wordlist
+
+The Dock contains also links to Mimikatz and Powersploit.
+
+![image](https://user-images.githubusercontent.com/83867734/177040060-ae74270f-0528-4e4b-972f-a2c293578263.png)
+
 ### BlackArch Repository
 
 BlackArch Linux is an Arch Linux-based penetration testing distribution for penetration testers and security researchers. Its repository contains [2800+ tools](https://blackarch.org/tools.html), classified for categories. You can install tools individually or in groups according to the categories they belong. BlackArch Repository is compatible with only Arch-based distributions as Athena OS.
