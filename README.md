@@ -166,7 +166,7 @@ If you detect any issues during your experience, please [open an issue](https://
 
 Vim configuration is based on https://github.com/amix/vimrc so it implements smart and useful [plugins](https://github.com/amix/vimrc#included-plugins), [color schemes](https://github.com/amix/vimrc#included-color-schemes) and [modes](https://github.com/amix/vimrc#included-modes).
 
-If you would like to edit or disable Burn My Window opening and closing effect:
+If you would like to enable, edit or disable Burn My Window opening and closing effect:
 ```
 gnome-extensions prefs burn-my-windows@schneegans.github.com
 ```
