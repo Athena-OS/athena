@@ -116,6 +116,10 @@ PWNage Menu allows you to access quickly to the main hacking platforms for learn
 
 ### Firefox ESR Hack Mode
 
+<p align="center">
+  <img width="200" height="200" src="https://user-images.githubusercontent.com/83867734/177051677-d8a7efa4-cfb3-407e-8569-195ba8a483b3.png">
+</p>
+
 Firefox ESR has been modified in order to integrate at the installation time the addons you need for your web application pentesting activity. The preinstalled addons are:
 * Cookie Quick Manager
 * Dark Reader
@@ -140,6 +144,10 @@ The Dock contains also links to Mimikatz and Powersploit.
 ![image](https://user-images.githubusercontent.com/83867734/177040060-ae74270f-0528-4e4b-972f-a2c293578263.png)
 
 ### BlackArch Repository
+
+<p align="center">
+  <img width="400" height="400" src="https://user-images.githubusercontent.com/83867734/177051929-9a248a26-fc4f-4741-bc14-af679e2eb7b2.png">
+</p>
 
 BlackArch Linux is an Arch Linux-based penetration testing distribution for penetration testers and security researchers. Its repository contains [2800+ tools](https://blackarch.org/tools.html), classified for categories. You can install tools individually or in groups according to the categories they belong. BlackArch Repository is compatible with only Arch-based distributions as Athena OS.
 
