@@ -42,6 +42,8 @@ Athena OS
 * *Flexibility*: for its Arch nature, Athena is **flexible** and can easily evolve to the new needs of the users.
 <br>
 
+Wiki: https://github.com/Athena-OS/athena-iso/wiki
+
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
