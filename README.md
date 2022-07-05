@@ -254,7 +254,7 @@ Change your themes and icons by `gnome-tweaks`.
 Main keybindings in Athena OS for speeding up your work:
 | Keybind | Description |
 | ------- | ----------- |
-| `CTRL+SPACE` | PentOX menu |
+| `CTRL+SPACE` | PenTOXIC menu |
 | `CTRL+TAB` | PWNage menu |
 | `WIN` | Switch between desktop and Payload to Dock |
 | `WIN+WIN` | Switch between desktop and "Show Applications" menu |
