@@ -65,5 +65,6 @@ if ! nmcli c show --active | grep -q tun ; then
   
 fi
 
-python /usr/local/bin/htb-update
+/usr/local/bin/htb-update
+
 export SHELL=$(which fish)
