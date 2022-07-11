@@ -23,8 +23,6 @@ mesa
 mesa-utils
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
-mkinitcpio-openswap
-most
 mtools
 nano
 nbd
@@ -61,6 +59,13 @@ python-psutil
 electron
 libappindicator-gtk3
 
+#bfetch dependencies
+exa
+
+#tmux dependencies
+python-libtmux
+sassc
+
 #######################################################
 ###                 DISPLAY MANAGERS                ###
 #######################################################
@@ -78,7 +83,6 @@ gnu-free-fonts
 ###                    UTILITIES                    ###
 #######################################################
 
-archlinux-tweak-tool-git
 bat
 code
 cowsay
@@ -91,12 +95,16 @@ gnome-themes-extra
 gnome-tweaks
 gtk-engine-murrine
 hexedit
+imagemagick
+jq
 lolcat
 lsd
 neofetch
+openvpn
 paru
 polkit
 polkit-gnome
+tmux
 tree
 ufw
 unzip
@@ -104,6 +112,14 @@ vim
 wayland
 wget
 which
+
+#######################################################
+###                   CHAOTIC AUR                   ###
+#######################################################
+
+firefox-esr
+mkinitcpio-openswap
+powershell
 
 #######################################################
 ###                ATHENA REPOSITORY                ###
@@ -119,10 +135,10 @@ athena-system-config
 athena-system-installation
 athena-vscode-themes
 athena-welcome
-firefox-esr-bin
-hyper-athena-config
-hyper-bin
-powershell-bin
+figlet-fonts
+htb-tools
+notion-app-enhanced
+superbfetch-git
 
 #######################################################
 ###                 LIVE ENVIRONMENT                ###

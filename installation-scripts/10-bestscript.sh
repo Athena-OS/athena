@@ -142,6 +142,10 @@ echo
         cp -rf /usr/share/pacman/keyrings/blackarch-revoked ../archiso/airootfs/usr/share/pacman/keyrings/
         cp -rf /usr/share/pacman/keyrings/blackarch-trusted ../archiso/airootfs/usr/share/pacman/keyrings/
 
+        cp -rf /usr/share/pacman/keyrings/chaotic.gpg ../archiso/airootfs/usr/share/pacman/keyrings/
+        cp -rf /usr/share/pacman/keyrings/chaotic-revoked ../archiso/airootfs/usr/share/pacman/keyrings/
+        cp -rf /usr/share/pacman/keyrings/chaotic-trusted ../archiso/airootfs/usr/share/pacman/keyrings/
+
 echo
 echo "################################################################## "
 tput setaf 2
