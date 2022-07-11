@@ -9,10 +9,9 @@ alias updte='sudo pacman -Syyu'
 alias updqte='sudo pacman -Syyu'
 alias upqll='paru -Syu --noconfirm'
 alias upal='paru -Syu --noconfirm'
+
 # Alias's for multiple directory listing commands
 alias la='lsd -Alh' # show hidden files
-alias ls='lsd'
-#alias ls='ls --color=always' # add colors and file type extensions
 alias ls='lsd --color=auto'
 alias la='lsd -a'
 alias lx='lsd -lXBh' # sort by extension
