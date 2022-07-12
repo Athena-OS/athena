@@ -58,6 +58,8 @@ if [ -f "$FLAGFILE" ]; then
 
     rm -rf $HOME/flypieschneegans.github.com.v16.shell-extension.zip $HOME/dash-to-dock $HOME/dingrastersoft.com.v46.shell-extension.zip $HOME/burn-my-windowsschneegans.github.com.v18.shell-extension.zip $HOME/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
     rm -rf $HOME/dconf-interface.ini $HOME/dconf-login-screen.ini $HOME/dconf-screensaver.ini $HOME/dconf-preferences.ini $HOME/dconf-shell.ini
+
+    $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
 
 #If tun0 is down (i.e., after a reboot), the shell prompt must be updated with the running interfaces
