@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=PayloadsAllTheThings
 Comment=PayloadsAllTheThings
 Icon=/usr/share/icons/hicolor/128x128/apps/kali-commix-128x128.png
-Exec=gnome-terminal -- fish -c "if test -d /usr/share/payloads/PayloadsAllTheThings;cd /usr/share/payloads/PayloadsAllTheThings;bash;else;echo \"PayloadsAllTheThings not found. I'm retrieving it for you...\";sudo git clone https://github.com/swisskyrepo/PayloadsAllTheThings /usr/share/payloads/PayloadsAllTheThings;cd /usr/share/payloads/PayloadsAllTheThings;bash;end;"
+Exec=kitty /usr/bin/fish -c "if test -d /usr/share/payloads/PayloadsAllTheThings;cd /usr/share/payloads/PayloadsAllTheThings;fish;else;echo \"PayloadsAllTheThings not found. I'm retrieving it for you...\";sudo git clone https://github.com/swisskyrepo/PayloadsAllTheThings /usr/share/payloads/PayloadsAllTheThings;cd /usr/share/payloads/PayloadsAllTheThings;fish;end;"
 Terminal=false
 Categories=Tags;Describing;Application

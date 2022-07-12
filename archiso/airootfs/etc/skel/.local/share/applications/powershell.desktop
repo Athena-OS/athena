@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=PowerShell
 Comment=PowerShell
 Icon=/usr/share/icons/shells/powershell.svg
-Exec=gnome-terminal -- fish -c 'pwsh;bash'
+Exec=kitty /usr/bin/fish -c 'pwsh;fish'
 Terminal=false
 Categories=Tags;Describing;Application

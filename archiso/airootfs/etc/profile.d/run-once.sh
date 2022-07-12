@@ -4,7 +4,9 @@ FLAGFILE="$HOME/flag-work-once"
 
 if [ -f "$FLAGFILE" ]; then
     rm -rf "$FLAGFILE"
-
+    
+    xdg-mime default org.gnome.Nautilus.desktop inode/directory
+    
     wget https://extensions.gnome.org/extension-data/flypieschneegans.github.com.v16.shell-extension.zip
     gnome-extensions install flypieschneegans.github.com.v16.shell-extension.zip
     gnome-extensions enable flypie@schneegans.github.com
