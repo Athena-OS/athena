@@ -18,7 +18,7 @@ fi
 #export XMODIFIERS=@im=dbus
 #export QT_IM_MODULE=ibus
 
-PS1="\e[92m┌──[HQ🚀\e[92m$(ip -4 addr | grep -v 127.0.0.1 | grep -v secondary | grep -Po "inet \K[\d.]+" | sed -z "s/\n/|/g;s/|$/\n/")⚔️\u\e[34m]\n└──╼[👾]\e[36m\$(pwd) $ \e[0m"
+PS1="\e[92m┌──[HQ🚀\e[92m$(ip -4 addr | grep -v 127.0.0.1 | grep -v secondary | grep -Po "inet \K[\d.]+" | sed -z "s/\n/|/g;s/|$/\n/")⚔️\u\e[34m]\n└──╼[👾]\[\e[36m\]\$(pwd) $\[\e[0m\]"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -227,18 +227,17 @@ buffer_clean(){
 #export BFETCH_ART="$HOME/.local/textart/fetch/unix.textart"                                                                                                      
 #export PF_INFO="Unix Genius"
 
-
 #export BFETCH_INFO="curl --silent --location 'wttr.in/rome?0pq'"                                                                                                   
 #export BFETCH_ART="printf \"\033[35m\"; figlet -f Bloody Spooky"                                                                                                    
 #export BFETCH_COLOR="$HOME/.local/textart/color/icon/ghosts.textart"
 
-export BFETCH_INFO="exa -la"                                                                                                                                         
-export BFETCH_ART="$HOME/.local/textart/fetch/pacman-maze.textart"                                                                                                 
-export BFETCH_COLOR="$HOME/.local/textart/color/icon/pacman.textart"
+#export BFETCH_INFO="exa -la"                                                                                                                                         
+#export BFETCH_ART="$HOME/.local/textart/fetch/pacman-maze.textart"                                                                                                 
+#export BFETCH_COLOR="$HOME/.local/textart/color/icon/pacman.textart"
 
-#export BFETCH_INFO="pfetch"                                                                                                                                          
-#export BFETCH_ART="cowsay '<3 Athena OS'"                                                                                                                           
-#export BFETCH_COLOR="$HOME/.local/textart/color/icon/panes.textart"
+export BFETCH_INFO="pfetch"                                                                                                                                          
+export BFETCH_ART="cowsay '<3 Athena OS'"                                                                                                                           
+export BFETCH_COLOR="$HOME/.local/textart/color/icon/panes.textart"
 
 if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} ]]
 then

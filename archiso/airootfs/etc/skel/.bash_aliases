@@ -77,7 +77,10 @@ alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
 
 #free
-alias free="free -mt"
+#alias free="free -mt"
+
+#python
+alias pyserver='python3 -m http.server'
 
 #continue download
 alias wget="wget -c"
