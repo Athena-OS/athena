@@ -63,7 +63,7 @@ The newest release provides:
 * Implemented additional **aliases** shared between FISH and BASH
 * Implemented **Figlet** and **spicy fonts**
 * Implemented **Notion App Enhanced**
-* Full integration with Hack The Box platform
+* Full integration with **Hack The Box** platform
 
 
 ## Introduction
