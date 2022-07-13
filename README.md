@@ -187,7 +187,7 @@ Athena OS is just born and wait only for being used by the InfoSec community!
 
 Athena is divided in two environment: desktop and application menu.
 
-In the desktop environment, you can invoke **PentOX** by `CTRL + SPACE`, a special menu based on [Fly-Pie](https://github.com/Schneegans/Fly-Pie) project showing hacking categories containing the most used security tools we use for our pentesting activities. PentOX gives you the possibility to quickly access to **Firefox ESR**, **Code OSS** and **Hyper** terminal. It is born to be also used on touchscreens.
+In the desktop environment, you can invoke **PentOX** by `CTRL + SPACE`, a special menu based on [Fly-Pie](https://github.com/Schneegans/Fly-Pie) project showing hacking categories containing the most used security tools we use for our pentesting activities. PentOX gives you the possibility to quickly access to **Firefox ESR**, **Code OSS** and **Kitty** terminal. It is born to be also used on touchscreens.
 
 At the first usage of Athena, the security tools are not installed but if you click on one of them, Athena will install it for you. It helps the user to save disk space and install only the tools they need. The security tools invoked by PentOX menu are run by cool-retro-term terminal, and you can customise it by right-click on it and settings.
 
@@ -221,14 +221,14 @@ If you detect any issues during your experience, please [open an issue](https://
 | Command | Description |
 | ------- | ----------- |
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
+| `bfetch` | SuperB general-purpose fetch displayer . |
 | `code` | Core engine of Visual Studio Code.  |
-| `cool-retro-term` | Retro-style terminal.  |
 | `eog` | Image viewer. |
 | `fish` | A smart and user-friendly command line shell. |
 | `git` | Fast, scalable, distributed revision control system. |
 | `gnome-extensions` | Gnome Extension manager. |
 | `gnome-tweaks` | Configure looks and functionality of your desktop. |
-| `hyper` | A terminal built on web technologies. |
+| `kitty` | The fast, feature-rich, GPU based terminal emulator. |
 | `la` | An `ls -a` alias. |
 | `ll` | An `ls -alFh` alias. |
 | `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
