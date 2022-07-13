@@ -23,17 +23,19 @@ Athena OS
 </p>
 
 <h3 align="center">
+  💞
   <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
-  💞Download Athena OS Now💞
+  Download Athena OS Now
     </a>
+  💞
 </h3>
 
 <h3 align="center">
   🎥
   <a href="https://www.youtube.com/watch?v=4_ZY9Tj4U_8">
-  Athena OS - Spicy Pentesting OS
+  Athena OS - Spicy Pentesting OS Demo
     </a>
-    Demo🎥
+   🎥
 </h3>
 
 
