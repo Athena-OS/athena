@@ -279,7 +279,6 @@ Main keybindings in Athena OS for speeding up your work:
 
 ## Athena Roadmap
 * Implementation of different themes that can be chosen at time of the installation
-* Dash 2 Dock evaluation
 * Wiki documentation
 
 ## Troubleshooting
