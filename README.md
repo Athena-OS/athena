@@ -112,7 +112,7 @@ PenTOXIC Menu is born for organizing in pretty manner all main security tools yo
 
 PWNage Menu allows you to access quickly to the main hacking platforms for learning purposes and to join the main Discord InfoSec Communities:
 * 1st shell deploys all quick links to the main hacking platforms
-* 2nd shell can be accessed by the Discurity icon on top where the user has the opportunity to join several Discord InfoSec servers or open Discord App.ù
+* 2nd shell can be accessed by the Discurity icon on top where the user has the opportunity to join several Discord InfoSec servers or open Discord App.
 
 ![image](https://user-images.githubusercontent.com/83867734/177038794-05892fb5-2c05-40be-9d1b-ea1b56410a57.png)
 
@@ -258,13 +258,6 @@ Main keybindings in Athena OS for speeding up your work:
 | `CTRL+TAB` | PWNage menu |
 | `WIN` | Switch between desktop and Payload to Dock |
 | `WIN+WIN` | Switch between desktop and "Show Applications" menu |
-| **Hyper Terminal** | |
-| `CTRL+SHIFT+N` | New Window |
-| `CTRL+SHIFT+T` | New Tab |
-| `CTRL+SHIFT+E` | Split Down |
-| `CTRL+SHIFT+D` | Split Right |
-| `CTRL+SHIFT+W` | Close Window |
-| `CTRL+SHIFT+Q` | Quit |
 
 
 <br>
