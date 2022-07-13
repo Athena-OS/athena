@@ -4,17 +4,17 @@ Athena OS
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Maintained%3F-Yes-CD8335" target="_blank">
-  <img src="https://img.shields.io/github/downloads/Athena-OS/athena-iso/total?label=Downloads&logo=github&color=6EA340" target="_blank">
-  <img src="https://badgen.net/github/release/Athena-OS/athena-iso" target="_blank">
-  <img src="https://badgen.net/github/stars/Athena-OS/athena-iso" target="_blank">
-  <img src="https://badgen.net/github/open-issues/Athena-OS/athena-iso" target="_blank">
-  <img src="https://badgen.net/github/license/Athena-OS/athena-iso" target="_blank">
+  <img src="https://img.shields.io/badge/Maintained%3F-Yes-CD8335">
+  <img src="https://img.shields.io/github/downloads/Athena-OS/athena-iso/total?label=Downloads&logo=github&color=6EA340">
+  <img src="https://badgen.net/github/release/Athena-OS/athena-iso">
+  <img src="https://badgen.net/github/stars/Athena-OS/athena-iso">
+  <img src="https://badgen.net/github/open-issues/Athena-OS/athena-iso">
+  <img src="https://badgen.net/github/license/Athena-OS/athena-iso">
 </p>
 
 <p align="center">
-  <a href="https://discord.gg/GuDyREsNkj" target="_blank">
-    <img src="https://img.shields.io/badge/Join%20on%20Discord-Ya?logo=discord&logoColor=white&color=%235865F2&style=['for-the-badge']&url=https%3A%2F%2Fdiscord.gg%2FGuDyREsNkj" target="_blank">
+  <a href="https://discord.gg/GuDyREsNkj">
+    <img src="https://img.shields.io/badge/Join%20on%20Discord-Ya?logo=discord&logoColor=white&color=%235865F2&style=['for-the-badge']&url=https%3A%2F%2Fdiscord.gg%2FGuDyREsNkj">
   </a>
 </p>
 
@@ -24,7 +24,7 @@ Athena OS
 
 <h3 align="center">
   💞
-  <a href="https://github.com/Athena-OS/athena-iso/releases/latest" target="_blank">
+  <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
   Download Athena OS Now
     </a>
   💞
@@ -32,7 +32,7 @@ Athena OS
 
 <h3 align="center">
   🎥
-  <a href="https://www.youtube.com/watch?v=4_ZY9Tj4U_8" target="_blank">
+  <a href="https://www.youtube.com/watch?v=4_ZY9Tj4U_8">
   Spicy Pentesting OS Demo
     </a>
    🎥
@@ -286,10 +286,10 @@ Main keybindings in Athena OS for speeding up your work:
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 
 ## Credits
-* [ArcoLinux Project](https://www.arcolinux.info){:target="_blank"}: Resources and Learning materials
-* [Calamares Team](https://calamares.io){:target="_blank"}: Calamares Installer
-* [Simon Schneegans](https://github.com/Schneegans){:target="_blank"}: Fly-Pie menu and Burn My Window extensions
-* [HackTheBox](https://www.hackthebox.com){:target="_blank"}: Bash and PowerShell icons; Hack The Box icon
-* [Offensive Security](https://www.offensive-security.com){:target="_blank"}: Kali Linux security tools icons; Offensive Security icon
-* [Kitsunekun](https://www.furaffinity.net/view/23914148){:target="_blank"}: Athena Chibi Logo
-* [Red Team Village](https://redteamvillage.io){:target="_blank"}: PWNage menu icon
+* [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
+* [Calamares Team](https://calamares.io): Calamares Installer
+* [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extensions
+* [HackTheBox](https://www.hackthebox.com): Bash and PowerShell icons; Hack The Box icon
+* [Offensive Security](https://www.offensive-security.com): Kali Linux security tools icons; Offensive Security icon
+* [Kitsunekun](https://www.furaffinity.net/view/23914148): Athena Chibi Logo
+* [Red Team Village](https://redteamvillage.io): PWNage menu icon
