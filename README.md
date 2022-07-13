@@ -220,6 +220,7 @@ If you detect any issues during your experience, please [open an issue](https://
 
 | Command | Description |
 | ------- | ----------- |
+| `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
 | `bfetch` | SuperB general-purpose fetch displayer . |
 | `code` | Core engine of Visual Studio Code.  |
@@ -237,6 +238,7 @@ If you detect any issues during your experience, please [open an issue](https://
 | `neofetch` | CLI system information tool written in BASH. |
 | `pacman` | Arch Linux package manager. |
 | `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
+| `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
 | `tree` | Recursive directory listing program that produces a depth indented listing of files. |
 | `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
 
