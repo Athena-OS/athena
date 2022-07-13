@@ -292,6 +292,7 @@ Main keybindings in Athena OS for speeding up your work:
 
 ## Credits
 * [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
+* [Calamares Team](https://calamares.io): Calamares Installer
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extensions
 * [HackTheBox](https://www.hackthebox.com): Bash and PowerShell icons; Hack The Box icon
 * [Offensive Security](https://www.offensive-security.com): Kali Linux security tools icons; Offensive Security icon
