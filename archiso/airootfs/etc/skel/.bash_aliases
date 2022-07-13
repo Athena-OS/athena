@@ -10,6 +10,9 @@ alias updqte='sudo pacman -Syyu'
 alias upqll='paru -Syu --noconfirm'
 alias upal='paru -Syu --noconfirm'
 
+#tmux
+alias tmux='tmux -u'
+
 # Alias's for multiple directory listing commands
 alias la='lsd -Alh' # show hidden files
 alias ls='lsd --color=auto'
