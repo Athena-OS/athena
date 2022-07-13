@@ -29,7 +29,7 @@ Athena OS
 </h3>
 
 <h3 align="center">
-  🏅Born for InfoSec Professionals, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
+  🏅Born 4 InfoSec Specialists, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
 </h3>
 <br>
 
@@ -112,7 +112,7 @@ PenTOXIC Menu is born for organizing in pretty manner all main security tools yo
 
 PWNage Menu allows you to access quickly to the main hacking platforms for learning purposes and to join the main Discord InfoSec Communities:
 * 1st shell deploys all quick links to the main hacking platforms
-* 2nd shell can be accessed by the Discurity icon on top where the user has the opportunity to join several Discord InfoSec servers or open Discord App.ù
+* 2nd shell can be accessed by the Discurity icon on top where the user has the opportunity to join several Discord InfoSec servers or open Discord App.
 
 ![image](https://user-images.githubusercontent.com/83867734/177038794-05892fb5-2c05-40be-9d1b-ea1b56410a57.png)
 
@@ -187,7 +187,7 @@ Athena OS is just born and wait only for being used by the InfoSec community!
 
 Athena is divided in two environment: desktop and application menu.
 
-In the desktop environment, you can invoke **PentOX** by `CTRL + SPACE`, a special menu based on [Fly-Pie](https://github.com/Schneegans/Fly-Pie) project showing hacking categories containing the most used security tools we use for our pentesting activities. PentOX gives you the possibility to quickly access to **Firefox ESR**, **Code OSS** and **Hyper** terminal. It is born to be also used on touchscreens.
+In the desktop environment, you can invoke **PentOX** by `CTRL + SPACE`, a special menu based on [Fly-Pie](https://github.com/Schneegans/Fly-Pie) project showing hacking categories containing the most used security tools we use for our pentesting activities. PentOX gives you the possibility to quickly access to **Firefox ESR**, **Code OSS** and **Kitty** terminal. It is born to be also used on touchscreens.
 
 At the first usage of Athena, the security tools are not installed but if you click on one of them, Athena will install it for you. It helps the user to save disk space and install only the tools they need. The security tools invoked by PentOX menu are run by cool-retro-term terminal, and you can customise it by right-click on it and settings.
 
@@ -220,23 +220,25 @@ If you detect any issues during your experience, please [open an issue](https://
 
 | Command | Description |
 | ------- | ----------- |
+| `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
+| `bfetch` | SuperB general-purpose fetch displayer . |
 | `code` | Core engine of Visual Studio Code.  |
-| `cool-retro-term` | Retro-style terminal.  |
 | `eog` | Image viewer. |
 | `fish` | A smart and user-friendly command line shell. |
 | `git` | Fast, scalable, distributed revision control system. |
 | `gnome-extensions` | Gnome Extension manager. |
 | `gnome-tweaks` | Configure looks and functionality of your desktop. |
-| `hyper` | A terminal built on web technologies. |
-| `la` | An `ls -a` alias. |
-| `ll` | An `ls -alFh` alias. |
+| `kitty` | The fast, feature-rich, GPU based terminal emulator. |
+| `la` | An `lsd -a` alias. |
+| `ll` | An `lsd -alFh` alias. |
 | `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
 | `nano` | Simple terminal-based text editor. |
 | `nautilus` | File Manager. |
 | `neofetch` | CLI system information tool written in BASH. |
 | `pacman` | Arch Linux package manager. |
 | `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
+| `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
 | `tree` | Recursive directory listing program that produces a depth indented listing of files. |
 | `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
 
@@ -258,13 +260,6 @@ Main keybindings in Athena OS for speeding up your work:
 | `CTRL+TAB` | PWNage menu |
 | `WIN` | Switch between desktop and Payload to Dock |
 | `WIN+WIN` | Switch between desktop and "Show Applications" menu |
-| **Hyper Terminal** | |
-| `CTRL+SHIFT+N` | New Window |
-| `CTRL+SHIFT+T` | New Tab |
-| `CTRL+SHIFT+E` | Split Down |
-| `CTRL+SHIFT+D` | Split Right |
-| `CTRL+SHIFT+W` | Close Window |
-| `CTRL+SHIFT+Q` | Quit |
 
 
 <br>
