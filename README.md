@@ -29,7 +29,7 @@ Athena OS
 </h3>
 
 <h3 align="center">
-  🏅Born 4 InfoSec Specialists, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
+  🏅Born for InfoSec Professionals, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
 </h3>
 <br>
 
@@ -48,37 +48,18 @@ Wiki: https://github.com/Athena-OS/athena-iso/wiki
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
 The newest release provides:
-* Improved **PenTOXIC menu** responsiveness from 1 second on the current release to some milliseconds (almost instantaneous) on the new release
-* Removed some Hyper terminal plugins (hyperpower, hyperterm-dibdabs, hyper-startup) for improving the responsiveness of **Hyper Terminal**. The user can install these plugins autonomously
-* Disabled Burn My Window effects because some users prefer no bulky graphics. It can be enabled quickly as explained in **Utility Commands** section
-* Implemented **Discord** application
-* Implemented **Discord top bar icon**
-* Implemented **lolcat**
-* Added **Ghidra** and **EDB Debugger** in PenTOXIC
-* Added support of the **auto-size screen** in VMWare and VirtualBox Live Environment
-* Implemented **hexedit**
-* Changed cool-retro-term to **gnome-terminal** for running security tools from PenTOXIC menu because graphically less bulky
-* Implemented **Athena Remote Repository** for rolling updates
-* Implemented **Theme Choice** on the Installer
-* Implement a new theme: **Graphite Dark**
-* Implemented a new menu: **PWNage**!
-  * The most worthy hacking platforms in one click! Prepare your hacking tools!
-    * [Hack The Box](https://www.hackthebox.com)
-    * [PentesterLab](https://pentesterlab.com/)
-    * [PortSwigger](https://portswigger.net/web-security/all-labs)
-    * [Proving Grounds](https://www.offensive-security.com/labs)
-    * [PWNX](https://pwnx.io)
-    * [Root Me](https://www.root-me.org/?lang=en)
-    * [TryHackMe](https://tryhackme.com)
+* Implemented **Bfetch** tool
+* Implemented **Bashtop** tool
+* Implemented **Dash 2 Dock** bar
+* Implemented **Desktop Icon NG**
+* Removed Hyper due to poor performance terminal
+* Implemented **Kitty** for high performance terminal
+* Implemented **TMUX** as terminal multiplexing
+* Implemented additional **aliases** shared between FISH and BASH
+* Implemented **Figlet** and **spicy fonts**
+* Implemented **Notion App Enhanced**
+* Full integration with Hack The Box platform
 
-  * Study, Learn, Share and Join the Discord InfoSec Community!
-    * CybeeSec
-    * Hack The Box
-    * Offensive Security
-    * PWNX
-    * Root Me
-    * SecurityCert
-    * TryHackMe 
 
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
@@ -116,6 +97,18 @@ PWNage Menu allows you to access quickly to the main hacking platforms for learn
 
 ![image](https://user-images.githubusercontent.com/83867734/177038794-05892fb5-2c05-40be-9d1b-ea1b56410a57.png)
 
+### Hack The Box Integration
+
+Cannot you wait for opening browser and accessing to Hack The Box website? Athena gives you the possibility to play Hack The Box machines directly on your Operating System environment in a quick and comfortable manner. Athena offers:
+* Connect/Disconnect to/from Hack The Box VPN servers
+* Play any active free machine you wish
+* Reset the active machine
+* Stop any active machine
+* Submit a flag and write a review about your hacking experience!
+* ... and of course you can access to the Hack The Box website in one click
+
+![image](https://user-images.githubusercontent.com/83867734/178805340-d3491817-25ae-4418-9d4a-9a723e709ecd.png)
+
 ### Firefox ESR Hack Mode
 
 <p align="center">
@@ -134,7 +127,7 @@ Firefox ESR has been modified in order to integrate at the installation time the
 
 ### Payload to Dock
 
-Payload to Dock keeps the access to the most famous payload repositories. It allows you to get the latest version of payloads and accessing their path directly by the shell. It shows:
+Payload to Dock is based on Dash 2 Dock and keeps the access to the most famous payload repositories. It allows you to get the latest version of payloads and accessing their path directly by the shell. It shows:
 * Auto Wordlists
 * FuzzDB
 * PayloadAllTheThings
@@ -181,17 +174,29 @@ Note: Athena Welcome App is based on ArcoLinux project. Currently, the links are
 
 <br>
 
+## Configuration
+
+After the installation and the first boot:
+1. please Logout and Login from the current session. It is needed for initializing the GNOME keyring for storing your Hack The Box API key in a secure manner.
+2. open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
+
+The Hack The Box API Key can be retrieved by your Hack The Box profile settings -> "Create App Token".
+
+Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
+
 ## Usage
 
 Athena OS is just born and wait only for being used by the InfoSec community!
 
 Athena is divided in two environment: desktop and application menu.
 
-In the desktop environment, you can invoke **PentOX** by `CTRL + SPACE`, a special menu based on [Fly-Pie](https://github.com/Schneegans/Fly-Pie) project showing hacking categories containing the most used security tools we use for our pentesting activities. PentOX gives you the possibility to quickly access to **Firefox ESR**, **Code OSS** and **Kitty** terminal. It is born to be also used on touchscreens.
+In the desktop environment, you can invoke **PenTOXIC** by `CTRL + SPACE`, a special menu based on [Fly-Pie](https://github.com/Schneegans/Fly-Pie) project showing hacking categories containing the most used security tools we use for our pentesting activities. PenTOXIC gives you the possibility to quickly access to **Firefox ESR**, **Code OSS** and **Kitty** terminal. It is born to be also used on touchscreens.
 
 At the first usage of Athena, the security tools are not installed but if you click on one of them, Athena will install it for you. It helps the user to save disk space and install only the tools they need. The security tools invoked by PentOX menu are run by cool-retro-term terminal, and you can customise it by right-click on it and settings.
 
-The application menu environment can be accessed by pressing the `WIN` button on the keyboard. This environment is used for giving you quick access to a battery of payloads you can use for your pentesting activity as **SecLists** and **PayloadAllTheThings**.
+The second main element in the desktop is **PWNage**, a menu that offers you learning and support resources for people entering in the Cybersecurity world, and accessible by `CTRL + TAB`. In details, PWNage consists in two levels: the first one composed of Hacking Platform resources for learning and training, and the second one composed of InfoSec discord servers where you can find any kind of support. PWNage is fully integrated with **Hack The Box**, so you can play any active free machine directly on your desktop environment!
+
+The application menu environment can be accessed by pressing the `WIN` button on the keyboard. This environment is used for giving you quick access to a battery of payloads you can use for your pentesting activity as **SecLists** and **PayloadAllTheThings**. These resources are also shown in the desktop by the **Payload to Dock**.
 
 Of course, Athena can retrieve much more security tools, almost 3000! It is possible because it relies on [BlackArch repository](https://blackarch.org/tools.html), so if you need another tool not shown on PentOX menu, you can install it directly by `sudo pacman -S <tool-name>`. If you are a lover of a specific hacking category, you can install one shot all the tools related to a specific category. For example, if you are a lover of exploitation, you can install all related tools by `sudo pacman -S blackarch-exploitation`. For other categories or specific tools, please refer to the BlackArch link.
   
