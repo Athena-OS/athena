@@ -229,8 +229,8 @@ If you detect any issues during your experience, please [open an issue](https://
 | `gnome-extensions` | Gnome Extension manager. |
 | `gnome-tweaks` | Configure looks and functionality of your desktop. |
 | `kitty` | The fast, feature-rich, GPU based terminal emulator. |
-| `la` | An `ls -a` alias. |
-| `ll` | An `ls -alFh` alias. |
+| `la` | An `lsd -a` alias. |
+| `ll` | An `lsd -alFh` alias. |
 | `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
 | `nano` | Simple terminal-based text editor. |
 | `nautilus` | File Manager. |
