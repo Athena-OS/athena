@@ -28,9 +28,9 @@ Athena OS
     </a>
 </h3>
 
-<h3 align="center">
+<h4 align="center">
   🏅Born for InfoSec Professionals, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
-</h3>
+</h4>
 <br>
 
 
