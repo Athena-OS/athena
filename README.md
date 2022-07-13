@@ -29,7 +29,7 @@ Athena OS
 </h3>
 
 <h3 align="center">
-  🏅Born for InfoSec Specialists, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
+  🏅Born 4 InfoSec Specialists, Bug Bounty Hunters, Passionate Students and Spicy Hackers🏅
 </h3>
 <br>
 
