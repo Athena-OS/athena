@@ -14,7 +14,7 @@ Athena OS
 
 <p align="center">
   <a href="https://discord.gg/GuDyREsNkj" target="_blank">
-    <img src="https://img.shields.io/badge/Join%20on%20Discord-Ya?logo=discord&logoColor=white&color=%235865F2&style=['for-the-badge']&url=https%3A%2F%2Fdiscord.gg%2FGuDyREsNkj">
+    <img src="https://img.shields.io/badge/Join%20on%20Discord-Ya?logo=discord&logoColor=white&color=%235865F2&style=['for-the-badge']&url=https%3A%2F%2Fdiscord.gg%2FGuDyREsNkj" target="_blank">
   </a>
 </p>
 
