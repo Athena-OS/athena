@@ -268,7 +268,7 @@ Main keybindings in Athena OS for speeding up your work:
 | ------- | ----------- |
 | `CTRL+SPACE` | PenTOXIC menu |
 | `CTRL+TAB` | PWNage menu |
-| `WIN` | Switch between desktop and Payload to Dock |
+| `WIN` | Multi-desktop environment |
 | `WIN+WIN` | Switch between desktop and "Show Applications" menu |
 
 
