@@ -163,6 +163,8 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for pene
 
 Download the latest Athena release .iso file from the related section. According to your need, you can choose to install Athena on your computer natively, or implement it on a Virtual Machine (e.g., VMware or VirtualBox).
 
+Currently VirtualBox is affected by a bug is enabling 3D Acceleration, so keep it disabled.
+
 When you mount the ISO to your pendrive or your Virtual Machine and boot up Athena, you will meet Athena Calamares Installer, that allows you to customise your future Athena OS as you wish.
 
 Currently, I didn't have the time to test every scenario, but I can suggest you an installation scenario that I tested, and it is based on the installation of Athena on a VMware Virtual Machine:
