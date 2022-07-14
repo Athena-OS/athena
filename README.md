@@ -273,7 +273,7 @@ and check or uncheck your effects.
 Change your themes and icons by `gnome-tweaks`.
 
 ## Shortcuts
-Main keybindings in Athena OS for speeding up your work:
+Main keybindings in Athena OS for speeding up your work.
 ### Menu Keybindings
 | Keybind | Description |
 | ------- | ----------- |
