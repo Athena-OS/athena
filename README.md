@@ -53,6 +53,8 @@ Athena OS
 
 Wiki: https://github.com/Athena-OS/athena-iso/wiki
 
+For a correct Post Installation setting, please follow the [Configuration](https://github.com/Athena-OS/athena-iso#configuration) section.
+
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
@@ -192,6 +194,8 @@ After the installation and the first boot:
 The Hack The Box API Key can be retrieved by your Hack The Box profile settings -> "Create App Token".
 
 Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
+
+<br>
 
 ## Usage
 
