@@ -275,8 +275,9 @@ and check or uncheck your effects.
 Change your themes and icons by `gnome-tweaks`.
 
 ## Shortcuts
-Main keybindings in Athena OS for speeding up your work.
-### Menu Keybindings
+Keybindings in Athena OS for speeding up your work.
+
+![logo](https://user-images.githubusercontent.com/83867734/179193319-e72540a0-d284-4b81-ac0a-fedd29484355.png)
 | Keybind | Description |
 | ------- | ----------- |
 | `CTRL+SPACE` | PenTOXIC menu |
@@ -284,31 +285,34 @@ Main keybindings in Athena OS for speeding up your work.
 | `WIN` | Multi-desktop environment |
 | `WIN+WIN` | Switch between desktop and "Show Applications" menu |
 
-### Tmux Keybindings
+<br>
+<br>
+
+![image](https://user-images.githubusercontent.com/83867734/179191651-fe161356-2d4b-401c-8bea-1318bc481046.png)
 | Keybind | Description |
 | ------- | ----------- |
-| Super/Mod Key | `CTRL + s`|
-| Split Panel Vertically |  `Mod_Key + \` |
-| Split Panel Horizontal | `Mod_Key + -` |
-| Reload Tmux |  `Mod_Key + r` |
-| Install Plugins | `Mod_Key + SHIFT + i` | 
-| Update Plugins | `Mod_Key + SHIFT + u` |
-| New Tab | `Mod_Key + c` |
-| Switch Between Tabs | `SHIFT + Right/Left Arrow Key` or `Modkey + n` |
-| Switch Between Splitted Panels | `Mod_Key + Right/Left/Up/Down Arrow Key` |
-| List All Windows and Panels |  `Mod_Key + w` |
-| Kill Tab or Panel | `Mod_Key + x` |
-| Kill Window | `Mod_Key + &` |
-| Show Panel or Tab Number | `Mod_key + q` |
-| Clock | `Mod_Key + t` |
-| Copy Selected Text to Clipboard | `Mod_Key + y` |
-| Copy Working Directory (need xclip package) | `Mod_Key + SHIFT + y` |
-| Paste | `Mod_Key + p` |
-| Detach Terminal | `Mod_Key + d` |
-| Find | `Mod_Key + f` |
-| Make Panel Full Window | `Mod_Key + z` |
-| Start Monitoring Panel | `Mod_Key + m` |
-| Rename Session | `Mod_key + $` |
+| `CTRL + s`| Super/Mod Key |
+| `Mod_Key + \` | Split Panel Vertically |
+| `Mod_Key + -` | Split Panel Horizontal |
+| `Mod_Key + r` | Reload Tmux |
+| `Mod_Key + SHIFT + i` | Install Plugins | 
+| `Mod_Key + SHIFT + u` | Update Plugins |
+| `Mod_Key + c` | New Tab |
+| `SHIFT + Right/Left Arrow Key` or `Modkey + n` | Switch Between Tabs |
+| `Mod_Key + Right/Left/Up/Down Arrow Key` | Switch Between Splitted Panels |
+| `Mod_Key + w` | List All Windows and Panels |
+| `Mod_Key + x` | Kill Tab or Panel |
+| `Mod_Key + &` | Kill Window |
+| `Mod_key + q` | Show Panel or Tab Number |
+| `Mod_Key + t` | Clock |
+| `Mod_Key + y` | Copy Selected Text to Clipboard |
+| `Mod_Key + SHIFT + y` | Copy Working Directory (need xclip package) |
+| `Mod_Key + p` | Paste |
+| `Mod_Key + d` | Detach Terminal |
+| `Mod_Key + f` | Find |
+| `Mod_Key + z` | Make Panel Full Window |
+| `Mod_Key + m` | Start Monitoring Panel |
+| `Mod_key + $` | Rename Session |
 
 <br>
 
