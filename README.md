@@ -197,6 +197,8 @@ The Hack The Box API Key can be retrieved by your Hack The Box profile settings 
 
 Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
 
+Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the first option.
+
 <br>
 
 ## Usage
@@ -282,31 +284,31 @@ Main keybindings in Athena OS for speeding up your work.
 | `WIN` | Multi-desktop environment |
 | `WIN+WIN` | Switch between desktop and "Show Applications" menu |
 
-### TMUX Keybindings
+### Tmux Keybindings
 | Keybind | Description |
 | ------- | ----------- |
-| `Super/Mod Key` | Ctrl + s|
-| `Split panel Vertically` |  Mod_Key + \ |
-| `Split panel Horizontal` | Mod_Key + - |
-| `Reload tmux` |  Mod_Key + r |
-| `To Install Plugins` | Mod_Key + shift + i | 
-| `To Update Plugins` | Mod_Key + shift + u |
-| `New Tab` | Mod_Key + c |
-| `Switch Between Tabs` | Shift + right/left arrow key or Modkey + n |
-| `Switch Between split panels` | Mod_Key + right/left/up/down arrorw key |
-| `List all windows and panels` |  Mod_Key + w |
-| `To kill tab or panel` | Mod_Key + x |
-| `To kill window` | Mod_Key + & |
-| `To see panel or tab number` | Mod_key + q |
-| `Clock` | Mod_Key + t |
-| `Copy selected text to system clipboard` | Mod_Key + y |
-| `To copy present working dir(xlip)` | Mod_Key + shift + y |
-| `Paste` | Mod_Key + p |
-| `Detach Terminal` | Mod_Key + d |
-| `Find` | Mod_Key + f |
-| `Make panel full window` | Mod_Key + z |
-| `To start monitoring Panel` | Mod_Key + m |
-| `To rename the session` | Mod_key + $ |
+| Super/Mod Key | `CTRL + s`|
+| Split Panel Vertically |  `Mod_Key + \` |
+| Split Panel Horizontal | `Mod_Key + -` |
+| Reload Tmux |  `Mod_Key + r` |
+| Install Plugins | `Mod_Key + SHIFT + i` | 
+| Update Plugins | `Mod_Key + SHIFT + u` |
+| New Tab | `Mod_Key + c` |
+| Switch Between Tabs | `SHIFT + Right/Left Arrow Key` or `Modkey + n` |
+| Switch Between Splitted Panels | `Mod_Key + Right/Left/Up/Down Arrow Key` |
+| List All Windows and Panels |  `Mod_Key + w` |
+| Kill Tab or Panel | `Mod_Key + x` |
+| Kill Window | `Mod_Key + &` |
+| Show Panel or Tab Number | `Mod_key + q` |
+| Clock | `Mod_Key + t` |
+| Copy Selected Text to Clipboard | `Mod_Key + y` |
+| Copy Working Directory (need xclip package) | `Mod_Key + SHIFT + y` |
+| Paste | `Mod_Key + p` |
+| Detach Terminal | `Mod_Key + d` |
+| Find | `Mod_Key + f` |
+| Make Panel Full Window | `Mod_Key + z` |
+| Start Monitoring Panel | `Mod_Key + m` |
+| Rename Session | `Mod_key + $` |
 
 <br>
 
