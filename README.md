@@ -283,7 +283,30 @@ Main keybindings in Athena OS for speeding up your work.
 | `WIN+WIN` | Switch between desktop and "Show Applications" menu |
 
 ### TMUX Keybindings
-
+| Keybind | Description |
+| ------- | ----------- |
+| `Super/Mod Key` | Ctrl + s|
+| `Split panel Vertically` |  Mod_Key + \ |
+| `Split panel Horizontal` | Mod_Key + - |
+| `Reload tmux` |  Mod_Key + r |
+| `To Install Plugins` | Mod_Key + shift + i | 
+| `To Update Plugins` | Mod_Key + shift + u |
+| `New Tab` | Mod_Key + c |
+| `Switch Between Tabs` | Shift + right/left arrow key or Modkey + n |
+| `Switch Between split panels` | Mod_Key + right/left/up/down arrorw key |
+| `List all windows and panels` |  Mod_Key + w |
+| `To kill tab or panel` | Mod_Key + x |
+| `To kill window` | Mod_Key + & |
+| `To see panel or tab number` | Mod_key + q |
+| `Clock` | Mod_Key + t |
+| `Copy selected text to system clipboard` | Mod_Key + y |
+| `To copy present working dir(xlip)` | Mod_Key + shift + y |
+| `Paste` | Mod_Key + p |
+| `Detach Terminal` | Mod_Key + d |
+| `Find` | Mod_Key + f |
+| `Make panel full window` | Mod_Key + z |
+| `To start monitoring Panel` | Mod_Key + m |
+| `To rename the session` | Mod_key + $ |
 
 <br>
 
