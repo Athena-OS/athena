@@ -91,6 +91,48 @@ Let's give a detailed look on Athena!
 <br>
 <br>
 
+## Installation
+
+Download the latest Athena release .iso file from the related section. According to your need, you can choose to install Athena on your computer natively, or implement it on a Virtual Machine (e.g., VMware or VirtualBox).
+
+Currently VirtualBox is affected by a bug is enabling 3D Acceleration, so keep it disabled.
+
+When you mount the ISO to your pendrive or your Virtual Machine and boot up Athena, you will meet Athena Calamares Installer, that allows you to customise your future Athena OS as you wish.
+
+Currently, I didn't have the time to test every scenario, but I can suggest you an installation scenario that I tested, and it is based on the installation of Athena on a VMware Virtual Machine:
+1. Boot up Athena on VMware
+2. Wait for the Installer appearing. If not, on Athena Welcome App select `Advanced Installation`
+3. On `Welcome` select your preferred language
+4. On `Kernel` select `Linux kernel - installed by default`
+5. On `Drivers` and `Drivers Nv` leaves blank
+6. On `Virtual Machine` set `VMware Virtual Machine`
+7. On `Login` set `Display Manager: Gdm`
+8. On `Theme` set what you prefer
+9. On `Location` and `Keyboard` set what you wish. Note: currently Calamares has a bug on the timezone setting because if the user clicks on a point of the map, usually the timezone is set to en_AG. Choose manually your preferences on the right-bottom part of the window (if need, expand installer window). This bug will be fixed in the next release of Calamares (you will need only a `pacman -Syu`).
+10. On `Partitions` set `Erase disk` and feel free to set up the Swap or not, and use btrfs
+11. On `Users` set the user details you wish
+12. Confirm the choices summary
+13. Wait for the end of installation
+14. Enjoy Athena OS!
+
+Note: Athena Welcome App is based on ArcoLinux project. Currently, the links are still referred to ArcoLinux.
+
+<br>
+
+## Configuration
+
+After the installation and the first boot:
+1. please Logout and Login from the current session. It is needed for initializing the GNOME keyring for storing your Hack The Box API key in a secure manner.
+2. open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
+
+The Hack The Box API Key can be retrieved by your Hack The Box profile settings -> "Create App Token".
+
+Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
+
+Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the first option.
+
+<br>
+
 ## Main Elements
 
 ### PenTOXIC Menu
@@ -157,48 +199,6 @@ The Dock contains also links to Mimikatz and Powersploit.
 </p>
 
 BlackArch Linux is an Arch Linux-based penetration testing distribution for penetration testers and security researchers. Its repository contains [2800+ tools](https://blackarch.org/tools.html), classified for categories. You can install tools individually or in groups according to the categories they belong. BlackArch Repository is compatible with only Arch-based distributions as Athena OS.
-
-<br>
-
-## Installation
-
-Download the latest Athena release .iso file from the related section. According to your need, you can choose to install Athena on your computer natively, or implement it on a Virtual Machine (e.g., VMware or VirtualBox).
-
-Currently VirtualBox is affected by a bug is enabling 3D Acceleration, so keep it disabled.
-
-When you mount the ISO to your pendrive or your Virtual Machine and boot up Athena, you will meet Athena Calamares Installer, that allows you to customise your future Athena OS as you wish.
-
-Currently, I didn't have the time to test every scenario, but I can suggest you an installation scenario that I tested, and it is based on the installation of Athena on a VMware Virtual Machine:
-1. Boot up Athena on VMware
-2. Wait for the Installer appearing. If not, on Athena Welcome App select `Advanced Installation`
-3. On `Welcome` select your preferred language
-4. On `Kernel` select `Linux kernel - installed by default`
-5. On `Drivers` and `Drivers Nv` leaves blank
-6. On `Virtual Machine` set `VMware Virtual Machine`
-7. On `Login` set `Display Manager: Gdm`
-8. On `Theme` set what you prefer
-9. On `Location` and `Keyboard` set what you wish. Note: currently Calamares has a bug on the timezone setting because if the user clicks on a point of the map, usually the timezone is set to en_AG. Choose manually your preferences on the right-bottom part of the window (if need, expand installer window). This bug will be fixed in the next release of Calamares (you will need only a `pacman -Syu`).
-10. On `Partitions` set `Erase disk` and feel free to set up the Swap or not, and use btrfs
-11. On `Users` set the user details you wish
-12. Confirm the choices summary
-13. Wait for the end of installation
-14. Enjoy Athena OS!
-
-Note: Athena Welcome App is based on ArcoLinux project. Currently, the links are still referred to ArcoLinux.
-
-<br>
-
-## Configuration
-
-After the installation and the first boot:
-1. please Logout and Login from the current session. It is needed for initializing the GNOME keyring for storing your Hack The Box API key in a secure manner.
-2. open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
-
-The Hack The Box API Key can be retrieved by your Hack The Box profile settings -> "Create App Token".
-
-Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
-
-Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the first option.
 
 <br>
 
