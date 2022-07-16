@@ -307,7 +307,7 @@ Keybindings in Athena OS for speeding up your work.
 | `Mod_key + q` | Show Panel or Tab Number |
 | `Mod_Key + t` | Clock |
 | `Mod_Key + y` | Copy Selected Text to Clipboard |
-| `Mod_Key + SHIFT + y` | Copy Working Directory |
+| `Mod_Key + SHIFT + y` | Copy Working Directory (install `xclip` package) |
 | `Mod_Key + p` | Paste |
 | `Mod_Key + d` | Detach Terminal |
 | `Mod_Key + f` | Find |
