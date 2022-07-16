@@ -69,8 +69,13 @@ The newest release provides:
 * Implemented **tmux** as terminal multiplexing
 * Implemented additional **aliases** shared between FISH and BASH
 * Implemented **Figlet** and **spicy fonts**
-* Implemented **Notion App Enhanced**
 * Full integration with **Hack The Box** platform
+* Fixed critical issue on WiFi adapters
+* Fixed secret-tool HTB key storing after first boot. The user does not need anymore to logout and login after the first boot
+* Fixed HTB Update in order to remove unlinked objects after the first boot
+* Fixed left panel size of Calamares installer
+* Removed Notion App Enhanced because currently not in line with the nature of OS. Users can install it by `paru -S notion-app-enhanced`
+* Small changes on Athena Welcome GUI
 
 
 ## Introduction
