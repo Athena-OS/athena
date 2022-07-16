@@ -134,7 +134,7 @@ The Hack The Box API Key can be retrieved by your Hack The Box profile settings 
 
 Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
 
-### Release earlier than v22.07.16:
+### Release earlier than v22.07.16
 After the installation and the first boot:
 * open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
 * Logout and Login from the current session. It is needed for initializing the GNOME keyring for storing your Hack The Box API key in a secure manner.
