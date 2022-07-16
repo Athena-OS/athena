@@ -7,23 +7,19 @@ if [ -f "$FLAGFILE" ]; then
     
     xdg-mime default org.gnome.Nautilus.desktop inode/directory
     
-    wget https://extensions.gnome.org/extension-data/flypieschneegans.github.com.v16.shell-extension.zip
-    gnome-extensions install flypieschneegans.github.com.v16.shell-extension.zip
+     
+    gnome-extensions install $HOME/flypieschneegans.github.com.v16.shell-extension.zip
     gnome-extensions enable flypie@schneegans.github.com
 
-    wget https://extensions.gnome.org/extension-data/burn-my-windowsschneegans.github.com.v18.shell-extension.zip
-    gnome-extensions install burn-my-windowsschneegans.github.com.v18.shell-extension.zip
+    gnome-extensions install $HOME/burn-my-windowsschneegans.github.com.v18.shell-extension.zip
     gnome-extensions enable burn-my-windows@schneegans.github.com
 
-    wget https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
-    gnome-extensions install appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
+    gnome-extensions install $HOME/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip
     gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
-    git clone https://github.com/micheleg/dash-to-dock.git -b ubuntu-dock
-    make -C dash-to-dock install
+    make -C $HOME/dash-to-dock install
 
-    wget https://extensions.gnome.org/extension-data/dingrastersoft.com.v46.shell-extension.zip
-    gnome-extensions install dingrastersoft.com.v46.shell-extension.zip
+    gnome-extensions install $HOME/dingrastersoft.com.v46.shell-extension.zip
     gnome-extensions enable ding@rastersoft.com
 
     cat $HOME/dconf-interface.ini | dconf load /org/gnome/desktop/interface/
@@ -69,6 +65,7 @@ if ! nmcli c show --active | grep -q tun ; then
 
 fi
 
+killall gnome-keyring-daemon
 /usr/local/bin/htb-update
 
 export SHELL=$(which fish)
