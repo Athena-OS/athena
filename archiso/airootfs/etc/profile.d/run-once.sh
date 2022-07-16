@@ -65,7 +65,6 @@ if ! nmcli c show --active | grep -q tun ; then
 
 fi
 
-killall gnome-keyring-daemon
 /usr/local/bin/htb-update
-
 export SHELL=$(which fish)
+gsettings set org.gnome.shell disable-user-extensions false
