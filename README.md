@@ -8,7 +8,7 @@ Athena OS
   <img src="https://img.shields.io/github/downloads/Athena-OS/athena-iso/total?label=Downloads&logo=github&color=6EA340">
   <img src="https://badgen.net/github/release/Athena-OS/athena-iso">
   <img src="https://badgen.net/github/stars/Athena-OS/athena-iso">
-  <img src="https://img.shields.io/github/issues-raw/Athena-OS/athena-iso>
+  <img src="https://img.shields.io/github/issues-raw/Athena-OS/athena-iso">
   <img src="https://img.shields.io/github/issues-closed-raw/Athena-OS/athena-iso">
   <img src="https://img.shields.io/github/license/Athena-OS/athena-iso">
 </p>
