@@ -65,7 +65,7 @@ The newest release provides:
 * Implemented **Desktop Icon NG**
 * Removed Hyper due to poor performance terminal
 * Implemented **Kitty** for high performance terminal
-* Implemented **TMUX** as terminal multiplexing
+* Implemented **tmux** as terminal multiplexing
 * Implemented additional **aliases** shared between FISH and BASH
 * Implemented **Figlet** and **spicy fonts**
 * Implemented **Notion App Enhanced**
@@ -294,7 +294,7 @@ Keybindings in Athena OS for speeding up your work.
 | `CTRL + s`| Super/Mod Key |
 | `Mod_Key + \` | Split Panel Vertically |
 | `Mod_Key + -` | Split Panel Horizontal |
-| `Mod_Key + r` | Reload Tmux |
+| `Mod_Key + r` | Reload tmux |
 | `Mod_Key + SHIFT + i` | Install Plugins | 
 | `Mod_Key + SHIFT + u` | Update Plugins |
 | `Mod_Key + c` | New Tab |
@@ -306,7 +306,7 @@ Keybindings in Athena OS for speeding up your work.
 | `Mod_key + q` | Show Panel or Tab Number |
 | `Mod_Key + t` | Clock |
 | `Mod_Key + y` | Copy Selected Text to Clipboard |
-| `Mod_Key + SHIFT + y` | Copy Working Directory (need xclip package) |
+| `Mod_Key + SHIFT + y` | Copy Working Directory |
 | `Mod_Key + p` | Paste |
 | `Mod_Key + d` | Detach Terminal |
 | `Mod_Key + f` | Find |
