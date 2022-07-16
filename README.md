@@ -127,12 +127,15 @@ Note: Athena Welcome App is based on ArcoLinux project. Currently, the links are
 ## Configuration
 
 After the installation and the first boot:
-1. please Logout and Login from the current session. It is needed for initializing the GNOME keyring for storing your Hack The Box API key in a secure manner.
-2. open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
+* open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
 
 The Hack The Box API Key can be retrieved by your Hack The Box profile settings -> "Create App Token".
 
 Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
+
+Only for versions < v22.07.16:
+
+After the first boot, please Logout and Login from the current session. It is needed for initializing the GNOME keyring for storing your Hack The Box API key in a secure manner.
 
 Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the "Extensions" option.
 
