@@ -129,7 +129,7 @@ The Hack The Box API Key can be retrieved by your Hack The Box profile settings 
 
 Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
 
-Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the first option.
+Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the "Extensions" option.
 
 <br>
 
