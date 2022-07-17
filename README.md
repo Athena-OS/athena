@@ -173,6 +173,8 @@ Cannot you wait for opening browser and accessing to Hack The Box website? Athen
 
 ![image](https://user-images.githubusercontent.com/83867734/178805340-d3491817-25ae-4418-9d4a-9a723e709ecd.png)
 
+For playing Active HTB Machines, use PWNage Menu. For playing Retired Machines, just run `htb-play` and type the name of the machine you want to play.
+
 ### Firefox ESR Hack Mode
 
 <p align="center">
@@ -262,6 +264,7 @@ If you detect any issues during your experience, please [open an issue](https://
 | `git` | Fast, scalable, distributed revision control system. |
 | `gnome-extensions` | Gnome Extension manager. |
 | `gnome-tweaks` | Configure looks and functionality of your desktop. |
+| `htb-play` | Select any Hack The Box you want to play. |
 | `kitty` | The fast, feature-rich, GPU based terminal emulator. |
 | `la` | An `lsd -a` alias. |
 | `ll` | An `lsd -alFh` alias. |
