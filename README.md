@@ -76,6 +76,7 @@ The newest release provides:
 * Fixed left panel size of Calamares installer
 * Removed Notion App Enhanced because currently not in line with the nature of OS. Users can install it by `paru -S notion-app-enhanced`
 * Small changes on Athena Welcome GUI
+* Implemented `htb-play` command for playing retired machines. Run `sudo pacman -Syyu` for updating the HTB package
 
 
 ## Introduction
