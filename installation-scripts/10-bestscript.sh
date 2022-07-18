@@ -131,21 +131,6 @@ echo
 	echo "Making mkarchiso verbose"
 	sudo sed -i 's/quiet="y"/quiet="n"/g' /usr/bin/mkarchiso
 
-        echo "- Copying BlackArch keys from /usr/share/pacman/keyrings/ to ../archiso/airootfs/usr/share/pacman/keyrings/"
-        if [ -f "/usr/share/pacman/keyrings/blackarch.gpg" ]; then
-           echo "/usr/share/pacman/keyrings/blackarch.gpg exists."
-        else 
-           echo "/usr/share/pacman/keyrings/blackarch.gpg does not exist. Running strap.sh"
-           sudo ../archiso/airootfs/usr/local/bin/strap.sh
-        fi
-        cp -rf /usr/share/pacman/keyrings/blackarch.gpg ../archiso/airootfs/usr/share/pacman/keyrings/
-        cp -rf /usr/share/pacman/keyrings/blackarch-revoked ../archiso/airootfs/usr/share/pacman/keyrings/
-        cp -rf /usr/share/pacman/keyrings/blackarch-trusted ../archiso/airootfs/usr/share/pacman/keyrings/
-
-        cp -rf /usr/share/pacman/keyrings/chaotic.gpg ../archiso/airootfs/usr/share/pacman/keyrings/
-        cp -rf /usr/share/pacman/keyrings/chaotic-revoked ../archiso/airootfs/usr/share/pacman/keyrings/
-        cp -rf /usr/share/pacman/keyrings/chaotic-trusted ../archiso/airootfs/usr/share/pacman/keyrings/
-
 echo
 echo "################################################################## "
 tput setaf 2
