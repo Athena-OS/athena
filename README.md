@@ -142,6 +142,12 @@ After the installation and the first boot:
 
 Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the "Extensions" option.
 
+If you install Metasploit, after its installation, type the following:
+```
+cd /opt/metasploit
+bundle install
+```
+These commands will be integrated directly in the next Athena release.
 <br>
 
 ## Main Elements
