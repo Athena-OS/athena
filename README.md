@@ -59,25 +59,23 @@ For a correct Post Installation setting, please follow the [Configuration](https
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-The newest release provides:
-* Implemented **Bfetch** tool
-* Implemented **Bashtop** tool
-* Implemented **Dash 2 Dock** bar
-* Implemented **Desktop Icon NG**
-* Removed Hyper due to poor performance terminal
-* Implemented **Kitty** for high performance terminal
-* Implemented **tmux** as terminal multiplexing
-* Implemented additional **aliases** shared between FISH and BASH
-* Implemented **Figlet** and **spicy fonts**
-* Full integration with **Hack The Box** platform
-* Fixed critical issue on WiFi adapters
-* Fixed secret-tool HTB key storing after first boot. The user does not need anymore to logout and login after the first boot
-* Fixed HTB Update in order to remove unlinked objects after the first boot
-* Fixed left panel size of Calamares installer
-* Removed Notion App Enhanced because currently not in line with the nature of OS. Users can install it by `paru -S notion-app-enhanced`
-* Small changes on Athena Welcome GUI
-* Implemented `htb-play` command for playing also retired machines. Run `sudo pacman -Syyu` for updating the HTB package
+On the **1st August** a new version of **Athena** will be released!
 
+The new release will provide:
+* Implemented `htb-play` command for playing also retired machines
+* Implemented `xcp`, a smart and fast copy command
+* Implemented `zoxide`, a smart change directory command
+* Implemented `dunst` as a flexible tool for desktop popup notifications
+* Implemented three new wonderful themes
+* Full integration with NIST NVD by an exclusive for Athena: NIST Feed!
+![image](https://user-images.githubusercontent.com/83867734/182011107-6e8ed18a-b8e2-410c-8126-7dd2606ef759.png)
+
+NIST Feed is a special tool able to inform you as soon as possible about a new published or updated CVE by a popup notification!
+The notification contains a description of the CVE. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the official NIST NVD page for further details.
+
+You can decide which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
+
+Be aware of new vulnerabilities by NIST Feed!
 
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
@@ -221,6 +219,19 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for pene
 
 <br>
 
+### NIST Feed
+
+NIST Feed is a special tool able to inform you as soon as possible about a new published or updated CVE by a popup notification!
+The notification contains a description of the CVE. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the official NIST NVD page for further details. Do you want to quickly close the popup notification? Right-click on it!
+
+You can decide which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
+
+Be aware of new vulnerabilities by NIST Feed!
+
+![image](https://user-images.githubusercontent.com/83867734/182011107-6e8ed18a-b8e2-410c-8126-7dd2606ef759.png)
+
+<br>
+
 ## Usage
 
 Athena OS is just born and wait only for being used by the InfoSec community!
@@ -284,6 +295,8 @@ If you detect any issues during your experience, please [open an issue](https://
 | `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
 | `tree` | Recursive directory listing program that produces a depth indented listing of files. |
 | `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
+| `xcp` | An extended `cp` command. |
+| `z` | A smarter `cd` command for your terminal. |
 
 Vim configuration is based on https://github.com/amix/vimrc so it implements smart and useful [plugins](https://github.com/amix/vimrc#included-plugins), [color schemes](https://github.com/amix/vimrc#included-color-schemes) and [modes](https://github.com/amix/vimrc#included-modes).
 
