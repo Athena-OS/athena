@@ -69,7 +69,7 @@ The new release will provide:
 * Implemented `cron` as **task scheduler**
 * Implemented **three new wonderful themes** with a graphically dedicated mouse pointer
 * Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
-![image](https://user-images.githubusercontent.com/83867734/182011107-6e8ed18a-b8e2-410c-8126-7dd2606ef759.png)
+![image](https://user-images.githubusercontent.com/83867734/182049777-cba4583a-a067-4932-b03b-aefb2c08a915.png)
 
 **NIST Feed** is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
 The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details.
@@ -229,7 +229,7 @@ You can **decide** which kind of CVE you wish to be informed about, for example 
 
 Be aware of new vulnerabilities by NIST Feed!
 
-![image](https://user-images.githubusercontent.com/83867734/182011107-6e8ed18a-b8e2-410c-8126-7dd2606ef759.png)
+![image](https://user-images.githubusercontent.com/83867734/182049777-cba4583a-a067-4932-b03b-aefb2c08a915.png)
 
 <br>
 
