@@ -66,6 +66,7 @@ The new release will provide:
 * Implemented `xcp`, a **smart** and **fast copy** command
 * Implemented `zoxide`, a **smart change directory** command
 * Implemented `dunst` as a flexible tool for **desktop popup notification**
+* Implemented `cron` as **task scheduler**
 * Implemented **three new wonderful themes** with a graphically dedicated mouse pointer
 * Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
 ![image](https://user-images.githubusercontent.com/83867734/182011107-6e8ed18a-b8e2-410c-8126-7dd2606ef759.png)
