@@ -67,13 +67,13 @@ The new release will provide:
 * Implemented `zoxide`, a smart change directory command
 * Implemented `dunst` as a flexible tool for desktop popup notifications
 * Implemented three new wonderful themes
-* Full integration with NIST NVD by an exclusive for Athena: NIST Feed!
+* Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
 ![image](https://user-images.githubusercontent.com/83867734/182011107-6e8ed18a-b8e2-410c-8126-7dd2606ef759.png)
 
-NIST Feed is a special tool able to inform you as soon as possible about a new published or updated CVE by a popup notification!
-The notification contains a description of the CVE. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the official NIST NVD page for further details.
+NIST Feed is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
+The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details.
 
-You can decide which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
+You can **decide** which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
 
 Be aware of new vulnerabilities by NIST Feed!
 
@@ -221,10 +221,10 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for pene
 
 ### NIST Feed
 
-NIST Feed is a special tool able to inform you as soon as possible about a new published or updated CVE by a popup notification!
-The notification contains a description of the CVE. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the official NIST NVD page for further details. Do you want to quickly close the popup notification? Right-click on it!
+**NIST Feed** is a special tool able to **inform** you as soon as possible about a **new published** or **updated** CVE by a **popup notification**!
+The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details. Do you want to quickly close the popup notification? Right-click on it!
 
-You can decide which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
+You can **decide** which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
 
 Be aware of new vulnerabilities by NIST Feed!
 
