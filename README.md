@@ -353,6 +353,12 @@ Keybindings in Athena OS for speeding up your work.
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/83867734/177039614-dbd8b314-a083-4153-96ea-6f1eff3d604a.png)
 
+![image](https://user-images.githubusercontent.com/83867734/182011599-2cdb9723-0cb4-4ae2-a6bb-7c642f5365c4.png)
+
+![image](https://user-images.githubusercontent.com/83867734/182011603-660322d8-9f99-4d71-aeed-32c1796c63aa.png)
+
+![image](https://user-images.githubusercontent.com/83867734/182011606-ef4cc286-fca1-4bd2-8a6f-1a2522cb849e.png)
+
 ## Athena Roadmap
 * Implementation of different themes that can be chosen at time of the installation
 * Wiki documentation
