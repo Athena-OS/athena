@@ -233,7 +233,7 @@ You can **decide** which kind of CVE you wish to be informed about, for example 
 
 Be aware of new vulnerabilities by NIST Feed!
 
-![image](https://user-images.githubusercontent.com/83867734/182049777-cba4583a-a067-4932-b03b-aefb2c08a915.png)
+![image](https://user-images.githubusercontent.com/83867734/182053892-a59ac1f8-7724-44e9-be61-e819e2f9f40e.png)
 
 <br>
 
