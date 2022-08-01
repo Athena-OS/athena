@@ -73,12 +73,12 @@ The new release will provide:
 * Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
 ![image](https://user-images.githubusercontent.com/83867734/182050829-72d8dc68-1767-42e2-abc0-02a4929f1ef1.png)
 
-**NIST Feed** is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
-The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details.
+   **NIST Feed** is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
+   The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details.
 
-You can **decide** which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
+   You can **decide** which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
 
-Be aware of new vulnerabilities by NIST Feed!
+   Be aware of new vulnerabilities by NIST Feed!
 
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
