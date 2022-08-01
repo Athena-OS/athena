@@ -72,6 +72,7 @@ The new release will provide:
 * Implemented **tmux themes** set according to the installed desktop theme
 * Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
    <br>
+   
    ![image](https://user-images.githubusercontent.com/83867734/182050829-72d8dc68-1767-42e2-abc0-02a4929f1ef1.png)
 
    **NIST Feed** is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
