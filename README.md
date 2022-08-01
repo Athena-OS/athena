@@ -30,7 +30,7 @@ Athena OS
 <h3 align="center">
   💞
   <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
-  Download Athena OS Now
+  Download Athena OS "Promachos" Now
     </a>
   💞
 </h3>
@@ -59,17 +59,19 @@ For a correct Post Installation setting, please follow the [Configuration](https
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-On the **1st August** a new version of **Athena** will be released!
+**Athena OS**, code name **"Promachos"** (ancient Greek: "First in Battle"), comes with several important fixes and new implementations.
 
 The new release will provide:
+* Fixed **cowspace** issue on dual boot installation
 * Implemented `htb-play` command for playing also **retired machines**
 * Implemented `xcp`, a **smart** and **fast copy** command
 * Implemented `zoxide`, a **smart change directory** command
 * Implemented `dunst` as a flexible tool for **desktop popup notification**
 * Implemented `cron` as **task scheduler**
 * Implemented **three new wonderful themes** with a graphically dedicated mouse pointer
+* Implemented **tmux themes** set according to the installed desktop theme
 * Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
-![image](https://user-images.githubusercontent.com/83867734/182049777-cba4583a-a067-4932-b03b-aefb2c08a915.png)
+![image](https://user-images.githubusercontent.com/83867734/182050829-72d8dc68-1767-42e2-abc0-02a4929f1ef1.png)
 
 **NIST Feed** is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
 The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details.
