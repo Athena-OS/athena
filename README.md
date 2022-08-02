@@ -29,7 +29,7 @@ Athena OS
 
 <h3 align="center">
   💞
-  <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
+  <a href="https://github.com/Athena-OS/athena-iso/releases/tag/v22.08.01">
   Download Athena OS "Promachos" Now
     </a>
   💞
