@@ -79,7 +79,37 @@ The new release will provide:
    The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details.
 
    You can **decide** which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
+   
+   Some examples:
 
+   Set Desktop Notifications for latest or updated CVE with CRITICAL severity:
+   ```
+   nist-feed -n -l -s CRITICAL
+   ```
+   Show details about the last three CVEs. No Desktop Notifications:
+   ```
+   nist-feed -r 3
+   ```
+   Show details about the last twenty CVEs with PHYSICAL as attack vector and MEDIUM severity. No Desktop Notifications:
+   ```
+   nist-feed -V AV:P -s MEDIUM
+   ```
+   Set Desktop Notifications for latest or updated CVE having high Confidentiality, Integrity and Availability impact:
+   ```
+   nist-feed -n -l -m C:H/I:H/A:H
+   ```
+   or
+   ```
+   nist-feed -n -l -c C:H -i I:H -a A:H
+   ```
+   Set Desktop Notifications for latest or updated CVE with HIGH attack complexity and NETWORK as attack vector:
+   ```
+   nist-feed -n -l -A AC:H -V AV:N
+   ```
+   Disable NIST NVD Desktop Notifications:
+   ```
+   nist-feed -z
+   ```
    Be aware of new vulnerabilities by NIST Feed!
 
 ## Introduction
@@ -230,6 +260,12 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for pene
 The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details. Do you want to quickly close the popup notification? Right-click on it!
 
 You can **decide** which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
+
+Just execute:
+```
+nist-feed -h
+```
+for getting more details.
 
 Be aware of new vulnerabilities by NIST Feed!
 
