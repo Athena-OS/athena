@@ -367,6 +367,8 @@ Keybindings in Athena OS for speeding up your work.
 ## Athena Roadmap
 * Ongoing implementation of different themes that can be chosen at time of the installation
 * Integration between ExploitDB and NIST Feed
+* Feasibility study on changing PenTOXIC icons according to the current Athena theme
+* Implementation of Docker Engine
 
 ## Troubleshooting
 * After the installation, if Fly-Pie extension (PenTOXIC menu) and Burn My Windows extension don't work, reinstall the operating system on a separate VM and check again;
