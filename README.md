@@ -69,13 +69,14 @@ The new release will provide:
 * Implemented `cron` as **task scheduler**
 * Implemented **three new wonderful themes** with a graphically dedicated mouse pointer
 * Implemented **tmux themes** set according to the installed desktop theme
-* Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
 * Fixed **Calamares Installer** bug related to the timezone
 * Implemented **Athena Theme Tweak**
 * Now PenTOXIC changes its look according to the applied theme:
+   <br>
    ![image](https://user-images.githubusercontent.com/83867734/187024893-364af14b-e198-43f7-a979-625a01480e38.png)
    <br>
-   
+* Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
+   <br>
    ![image](https://user-images.githubusercontent.com/83867734/182050829-72d8dc68-1767-42e2-abc0-02a4929f1ef1.png)
 
    **NIST Feed** is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
