@@ -197,7 +197,7 @@ PenTOXIC Menu is born for organizing in pretty manner all main security tools yo
 
 ![image](https://user-images.githubusercontent.com/83867734/177038161-261c745d-79f8-44d7-8e8b-ec2e9dd439be.png)
 
-According to the theme, PenTOXIC will change its look!
+PenTOXIC changes its look according to the applied theme!
 
 ![image](https://user-images.githubusercontent.com/83867734/187024893-364af14b-e198-43f7-a979-625a01480e38.png)
 
