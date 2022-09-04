@@ -1,6 +1,6 @@
 ---
-name: "\U0001F41EBug report"
-about: Create a report to help Athena OS improve
+name: Bug report
+about: Create a report to help us improve
 title: "[BUG]"
 labels: bug
 assignees: D3vil0per
