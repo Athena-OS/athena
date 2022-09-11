@@ -61,7 +61,7 @@ Here I would like to inform you about new features already tested and implemente
 **Athena OS**, code name **"Ergane"** (ancient Greek: "The Industrious"), comes with several important fixes and new implementations.
 
 The new release will provide:
-* Environment variables for payload repositories: `$SECLISTS`, `$PAYLOADSALLTHETHINGS`, `$FUZZDB`, `$AUTOWORDLISTS`, `$SECURITYWORDLIST`, `$MIMIKATZ`, `$POWERSPLOIT`
+* Environment variables for payload repositories: **$SECLISTS**, **$PAYLOADSALLTHETHINGS**, **$FUZZDB**, **$AUTOWORDLISTS**, **$SECURITYWORDLIST**, **$MIMIKATZ**, **$POWERSPLOIT**
     * As example, the user can use an env variable for accessing directly to the payloads:`ffuf -u <target_url> -w $SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt`. You don't need to remember the path of your payload repositories anymore.
 * Implemented **OpenCL runtime** for more efficient cracking experience (i.e., by using Hashcat)
 * A **Red Team Machine** button for making your Athena machine a Red Machine by retrieving the main tools and repositories you need in one click
