@@ -29,7 +29,7 @@ Athena OS
 <h3 align="center">
   💞
   <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
-  Download Athena OS "Promachos" Now
+  Download Athena OS "Ergane" Now
     </a>
   💞
 </h3>
@@ -61,60 +61,18 @@ Here I would like to inform you about new features already tested and implemente
 **Athena OS**, code name **"Promachos"** (ancient Greek: "First in Battle"), comes with several important fixes and new implementations.
 
 The new release will provide:
-* Fixed **cowspace** issue on dual boot installation
-* Implemented `htb-play` command for playing also **retired machines**
-* Implemented `xcp`, a **smart** and **fast copy** command
-* Implemented `zoxide`, a **smart change directory** command
-* Implemented `dunst` as a flexible tool for **desktop popup notification**
-* Implemented `cron` as **task scheduler**
-* Implemented **three new wonderful themes** with a graphically dedicated mouse pointer
-* Implemented **tmux themes** set according to the installed desktop theme
-* Fixed **Calamares Installer** bug related to the timezone
-* Implemented **Athena Theme Tweak**
-* Now PenTOXIC changes its look according to the applied theme:
-   <br>
-   ![image](https://user-images.githubusercontent.com/83867734/187024893-364af14b-e198-43f7-a979-625a01480e38.png)
-   <br>
-* Full integration with NIST NVD by an exclusive for Athena: **NIST Feed**!
-   <br>
-   ![image](https://user-images.githubusercontent.com/83867734/182050829-72d8dc68-1767-42e2-abc0-02a4929f1ef1.png)
+* Environment variables for payload repositories: `$SECLISTS`, `$PAYLOADSALLTHETHINGS`, `$FUZZDB`, `$AUTOWORDLISTS`, `$SECURITYWORDLIST`, `$MIMIKATZ`, `$POWERSPLOIT`
+    * As example, the user can use an env variable for accessing directly to the payloads:`ffuf -u <target_url> -w $SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt`. You don't need to remember the path of your payload repositories anymore.
+* Implemented **OpenCL runtime** for more efficient cracking experience (i.e., by using Hashcat)
+* A **Red Team Machine** button for making your Athena machine a Red Machine by retrieving the main tools and repositories you need in one click
+* **Athena Welcome** app at user login
+* Dynamic update of **fastest mirrors** for Arch Linux, BlackArch and Chaotic repositories
+* New fonts for Chinese, Japanese and Korean users.
+* Automatic scheduled task for clear page cache, dentries and inode in order to increase performance
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/83867734/189543598-9d293938-9896-4cee-9149-726629d62c57.png" data-canonical-src="https://user-images.githubusercontent.com/83867734/189543598-9d293938-9896-4cee-9149-726629d62c57.png" width="781" height="645" />
+</p>  
 
-   **NIST Feed** is a special tool able to inform you as soon as possible about a new published or updated CVE by a **popup notification**!
-   The notification contains a **description of the CVE**. Are you curious about it and would like to access to details? Left-click on it and you will be redirected to the **official NIST NVD page** for further details.
-
-   You can **decide** which kind of CVE you wish to be informed about, for example CVEs with an high impact on the confidentiality and integrity, or CRITICAL CVEs.
-   
-   Some examples:
-
-   Set Desktop Notifications for latest or updated CVE with CRITICAL severity:
-   ```
-   nist-feed -n -l -s CRITICAL
-   ```
-   Show details about the last three CVEs. No Desktop Notifications:
-   ```
-   nist-feed -r 3
-   ```
-   Show details about the last twenty CVEs with PHYSICAL as attack vector and MEDIUM severity. No Desktop Notifications:
-   ```
-   nist-feed -V AV:P -s MEDIUM
-   ```
-   Set Desktop Notifications for latest or updated CVE having high Confidentiality, Integrity and Availability impact:
-   ```
-   nist-feed -n -l -m C:H/I:H/A:H
-   ```
-   or
-   ```
-   nist-feed -n -l -c C:H -i I:H -a A:H
-   ```
-   Set Desktop Notifications for latest or updated CVE with HIGH attack complexity and NETWORK as attack vector:
-   ```
-   nist-feed -n -l -A AC:H -V AV:N
-   ```
-   Disable NIST NVD Desktop Notifications:
-   ```
-   nist-feed -z
-   ```
-   Be aware of new vulnerabilities by NIST Feed!
 
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
