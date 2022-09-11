@@ -58,7 +58,7 @@ For a correct Post Installation setting, please follow the [Configuration](https
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-**Athena OS**, code name **"Promachos"** (ancient Greek: "First in Battle"), comes with several important fixes and new implementations.
+**Athena OS**, code name **"Ergane"** (ancient Greek: "The Industrious"), comes with several important fixes and new implementations.
 
 The new release will provide:
 * Environment variables for payload repositories: `$SECLISTS`, `$PAYLOADSALLTHETHINGS`, `$FUZZDB`, `$AUTOWORDLISTS`, `$SECURITYWORDLIST`, `$MIMIKATZ`, `$POWERSPLOIT`
