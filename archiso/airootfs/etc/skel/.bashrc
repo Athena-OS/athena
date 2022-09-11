@@ -242,6 +242,16 @@ export BFETCH_INFO="pfetch"
 export BFETCH_ART="cowsay '<3 Athena OS'"                                                                                                                           
 export BFETCH_COLOR="$HOME/.local/textart/color/icon/panes.textart"
 
+export PAYLOADS="/usr/share/payloads"
+export SECLISTS="$PAYLOADS/SecLists"
+export PAYLOADSALLTHETHINGS="$PAYLOADS/PayloadsAllTheThings"
+export FUZZDB="$PAYLOADS/FuzzDB"
+export AUTOWORDLISTS="$PAYLOADS/Auto_Wordlists"
+export SECURITYWORDLIST="$PAYLOADS/Security-Wordlist"
+
+export MIMIKATZ="/usr/share/windows/mimikatz/"
+export POWERSPLOIT="/usr/share/windows/powersploit/"
+
 if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} ]]
 then
 	exec fish

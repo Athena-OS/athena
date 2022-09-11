@@ -31,6 +31,7 @@ netctl
 networkmanager
 os-prober
 pv
+python2
 rsync
 squashfs-tools
 sudo
@@ -68,6 +69,11 @@ python-libtmux
 python-pip
 sassc
 
+#Hashcat for using CPU
+hwloc 
+ocl-icd
+pocl
+
 #######################################################
 ###                 DISPLAY MANAGERS                ###
 #######################################################
@@ -78,16 +84,21 @@ gdm
 #######################################################
 ###                      FONTS                      ###
 #######################################################
+adobe-source-han-sans-cn-fonts
 adobe-source-han-sans-jp-fonts
+adobe-source-han-sans-kr-fonts
 gnu-free-fonts
 ttf-jetbrains-mono
+
 
 #######################################################
 ###                    UTILITIES                    ###
 #######################################################
 
+asciinema
 bashtop
 bat
+cmatrix
 code
 cowsay
 cron
@@ -95,6 +106,7 @@ discord
 dunst
 figlet
 fish
+fortune-mod
 git
 gnome
 gnome-themes-extra
@@ -103,20 +115,25 @@ gtk-engine-murrine
 hexedit
 gparted
 imagemagick
+jdk-openjdk
 jq
 kitty
 lolcat
 lsd
 neofetch
+nyancat
 openvpn
+p7zip
 paru
 pfetch
 polkit
 polkit-gnome
 reflector
+sl
 textart
 tk
 tmux
+toilet
 tree
 ufw
 unzip
@@ -162,10 +179,13 @@ athena-system-installation
 athena-theme-tweak
 athena-vscode-themes
 athena-welcome
+bastet
 figlet-fonts
 htb-tools
+myman
 nist-feed
 superbfetch-git
+toilet-fonts
 
 #######################################################
 ###                 LIVE ENVIRONMENT                ###
