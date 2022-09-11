@@ -195,7 +195,7 @@ PenTOXIC Menu is born for organizing in pretty manner all main security tools yo
 * 1st level containing the several **hacking categories** as submenu, plus **Firefox** browser and **Code OSS** as editor
 * 2nd level consisting in the **hacking tools** deployed for each category
 
-![image](https://user-images.githubusercontent.com/83867734/177038161-261c745d-79f8-44d7-8e8b-ec2e9dd439be.png)
+![image](https://user-images.githubusercontent.com/83867734/189539230-aa91b12c-8b93-424f-8473-9295cca8ad6b.png)
 
 PenTOXIC changes its look according to the applied theme!
 
