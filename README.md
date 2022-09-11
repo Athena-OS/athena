@@ -411,12 +411,11 @@ Keybindings in Athena OS for speeding up your work.
 ## Athena Roadmap
 * Ongoing implementation of different themes that can be chosen at time of the installation
 * Integration between ExploitDB and NIST Feed
-* Feasibility study on changing PenTOXIC icons according to the current Athena theme
 * Implementation of Docker Engine
 
 ## Troubleshooting
-* After the installation, if Fly-Pie extension (PenTOXIC menu) and Burn My Windows extension don't work, reinstall the operating system on a separate VM and check again;
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
+* During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
 
 ## Credits
 * [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
