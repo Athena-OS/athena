@@ -322,6 +322,8 @@ Keybindings in Athena OS for speeding up your work.
 
 | Command | Description |
 | ------- | ----------- |
+| `athena-theme-tweak` | Switch to different Athena themes. |
+| `athena-welcome` | Welcome application that allows main security tools installation and mirrorlist update. |
 | `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
 | `bfetch` | SuperB general-purpose fetch displayer . |
