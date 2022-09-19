@@ -177,7 +177,9 @@ Cannot you wait for opening browser and accessing to Hack The Box website? Athen
 * Submit a flag and write a review about your hacking experience!
 * ... and of course you can access to the Hack The Box website in one click
 
-![image](https://user-images.githubusercontent.com/83867734/178805340-d3491817-25ae-4418-9d4a-9a723e709ecd.png)
+<p align="center">
+  <img width="835" height="360" src="https://user-images.githubusercontent.com/83867734/191096793-01782e89-af27-412a-b897-a9aaac58e39c.png">
+</p>
 
 For playing Active HTB Machines, use PWNage Menu. For playing Retired Machines, just run `htb-play` and type the name of the machine you want to play.
 
@@ -208,7 +210,9 @@ Payload to Dock is based on Dash 2 Dock and keeps the access to the most famous 
 
 The Dock contains also links to Mimikatz and Powersploit.
 
-![image](https://user-images.githubusercontent.com/83867734/177040060-ae74270f-0528-4e4b-972f-a2c293578263.png)
+<p align="center">
+  <img width="883" height="159" src="https://user-images.githubusercontent.com/83867734/177040060-ae74270f-0528-4e4b-972f-a2c293578263.png">
+</p>
 
 ### BlackArch Repository
 
@@ -290,6 +294,21 @@ Keybindings in Athena OS for speeding up your work.
 <br>
 <br>
 
+![bash-icon](https://user-images.githubusercontent.com/83867734/191123292-b9e9c912-b78c-46af-8c54-3b75c050ee37.png)
+| Environment Variable | Value |
+| -------------------- | ----- |
+| **$PAYLOADS** | `/usr/share/payloads` |
+| **$SECLISTS** | `/usr/share/payloads/SecLists` |
+| **$PAYLOADSALLTHETHINGS** | `/usr/share/payloads/PayloadsAllTheThings` |
+| **$FUZZDB** | `/usr/share/payloads/FuzzDB` |
+| **$AUTOWORDLISTS** | `/usr/share/payloads/Auto_Wordlists` |
+| **$SECURITYWORDLIST** | `/usr/share/payloads/Security-Wordlist` |
+| **$MIMIKATZ** | `/usr/share/windows/mimikatz` |
+| **$POWERSPLOIT** | `/usr/share/windows/powersploit` |
+
+<br>
+<br>
+
 ![image](https://user-images.githubusercontent.com/83867734/179191651-fe161356-2d4b-401c-8bea-1318bc481046.png)
 | Keybind | Description |
 | ------- | ----------- |
@@ -326,7 +345,7 @@ Keybindings in Athena OS for speeding up your work.
 | `athena-welcome` | Welcome application that allows main security tools installation and mirrorlist update. |
 | `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
-| `bfetch` | SuperB general-purpose fetch displayer . |
+| `bfetch` | SuperB general-purpose fetch displayer. |
 | `code` | Core engine of Visual Studio Code.  |
 | `eog` | Image viewer. |
 | `fish` | A smart and user-friendly command line shell. |
@@ -358,6 +377,8 @@ gnome-extensions prefs burn-my-windows@schneegans.github.com
 and check or uncheck your effects.
 
 Change your themes and icons by `gnome-tweaks`.
+
+<br>
 
 ## Funny Commands
 
