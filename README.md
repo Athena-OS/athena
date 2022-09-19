@@ -276,45 +276,6 @@ If you detect any issues during your experience, please [open an issue](https://
 <br>
 <br>
 
-## Utility Commands
-
-| Command | Description |
-| ------- | ----------- |
-| `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
-| `bat` | A `cat` clone with syntax highlighting and Git integration. |
-| `bfetch` | SuperB general-purpose fetch displayer . |
-| `code` | Core engine of Visual Studio Code.  |
-| `eog` | Image viewer. |
-| `fish` | A smart and user-friendly command line shell. |
-| `git` | Fast, scalable, distributed revision control system. |
-| `gnome-extensions` | Gnome Extension manager. |
-| `gnome-tweaks` | Configure looks and functionality of your desktop. |
-| `htb-play` | Select any Hack The Box you want to play. |
-| `kitty` | The fast, feature-rich, GPU based terminal emulator. |
-| `la` | An `lsd -a` alias. |
-| `ll` | An `lsd -alFh` alias. |
-| `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
-| `nano` | Simple terminal-based text editor. |
-| `nautilus` | File Manager. |
-| `neofetch` | CLI system information tool written in BASH. |
-| `pacman` | Arch Linux package manager. |
-| `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
-| `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
-| `tree` | Recursive directory listing program that produces a depth indented listing of files. |
-| `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
-| `xcp` | An extended `cp` command. |
-| `z` | A smarter `cd` command for your terminal. |
-
-Vim configuration is based on https://github.com/amix/vimrc so it implements smart and useful [plugins](https://github.com/amix/vimrc#included-plugins), [color schemes](https://github.com/amix/vimrc#included-color-schemes) and [modes](https://github.com/amix/vimrc#included-modes).
-
-If you would like to enable, edit or disable Burn My Window opening and closing effect:
-```
-gnome-extensions prefs burn-my-windows@schneegans.github.com
-```
-and check or uncheck your effects.
-
-Change your themes and icons by `gnome-tweaks`.
-
 ## Shortcuts
 Keybindings in Athena OS for speeding up your work.
 
@@ -354,6 +315,63 @@ Keybindings in Athena OS for speeding up your work.
 | `Mod_Key + z` | Make Panel Full Window |
 | `Mod_Key + m` | Start Monitoring Panel |
 | `Mod_key + $` | Rename Session |
+
+<br>
+
+## Utility Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
+| `bat` | A `cat` clone with syntax highlighting and Git integration. |
+| `bfetch` | SuperB general-purpose fetch displayer . |
+| `code` | Core engine of Visual Studio Code.  |
+| `eog` | Image viewer. |
+| `fish` | A smart and user-friendly command line shell. |
+| `git` | Fast, scalable, distributed revision control system. |
+| `gnome-extensions` | Gnome Extension manager. |
+| `gnome-tweaks` | Configure looks and functionality of your desktop. |
+| `htb-play` | Select any Hack The Box you want to play. |
+| `kitty` | The fast, feature-rich, GPU based terminal emulator. |
+| `la` | An `lsd -a` alias. |
+| `ll` | An `lsd -alFh` alias. |
+| `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
+| `nano` | Simple terminal-based text editor. |
+| `nautilus` | File Manager. |
+| `neofetch` | CLI system information tool written in BASH. |
+| `pacman` | Arch Linux package manager. |
+| `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
+| `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
+| `tree` | Recursive directory listing program that produces a depth indented listing of files. |
+| `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
+| `xcp` | An extended `cp` command. |
+| `z` | A smarter `cd` command for your terminal. |
+
+Vim configuration is based on https://github.com/amix/vimrc so it implements smart and useful [plugins](https://github.com/amix/vimrc#included-plugins), [color schemes](https://github.com/amix/vimrc#included-color-schemes) and [modes](https://github.com/amix/vimrc#included-modes).
+
+If you would like to enable, edit or disable Burn My Window opening and closing effect:
+```
+gnome-extensions prefs burn-my-windows@schneegans.github.com
+```
+and check or uncheck your effects.
+
+Change your themes and icons by `gnome-tweaks`.
+
+## Funny Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `bastet` | Tetris clone which tries to give you the worst possible block. |
+| `cmatrix` | Scrolling Matrix like screen in the terminal. |
+| `cowsay` | Generate an ASCII picture of a cow saying something provided by the user. |
+| `devil` | Quotes by devil eyes. |
+| `figlet` | Print input using large characters made up of ordinary screen characters. |
+| `fortune` | Print a random, hopefully interesting, adage. |
+| `lolcat` | Concatenate files, or standard input, to standard output, and add rainbow coloring to it. |
+| `myman` | Text-mode Pac-Man. |
+| `nyancat` | Animated, color, ANSI-text program that renders a loop of the classic Nyan Cat animation. |
+| `toilet` | prints text using large characters made of smaller characters. |
+| `train` | Choo-choo! |
 
 <br>
 
