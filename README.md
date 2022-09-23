@@ -305,6 +305,13 @@ Keybindings in Athena OS for speeding up your work.
 | **$SECURITYWORDLIST** | `/usr/share/payloads/Security-Wordlist` |
 | **$MIMIKATZ** | `/usr/share/windows/mimikatz` |
 | **$POWERSPLOIT** | `/usr/share/windows/powersploit` |
+| **$ROCKYOU** | `/usr/share/payloads/SecLists/Passwords/Leaked-Databases/rockyou.txt` |
+| **$DIRSMALL** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt` |
+| **$DIRMEDIUM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt` |
+| **$DIRBIG** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt` |
+| **$WEBAPI** | `/usr/share/payloads/SecLists/Discovery/Web-Content/api/api-endpoints.txt` |
+| **$WEBCOMMON** | `/usr/share/payloads/SecLists/Discovery/Web-Content/common.txt` |
+| **$WEBPARAM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/burp-parameter-names.txt` |
 
 <br>
 <br>
