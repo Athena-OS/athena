@@ -252,6 +252,14 @@ export SECURITYWORDLIST="$PAYLOADS/Security-Wordlist"
 export MIMIKATZ="/usr/share/windows/mimikatz/"
 export POWERSPLOIT="/usr/share/windows/powersploit/"
 
+export ROCKYOU="$SECLISTS/Passwords/Leaked-Databases/rockyou.txt"
+export DIRSMALL="$SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt"
+export DIRMEDIUM="$SECLISTS/Discovery/Web-Content/directory-list-2.3-medium.txt"
+export DIRBIG="$SECLISTS/Discovery/Web-Content/directory-list-2.3-big.txt"
+export WEBAPI="$SECLISTS/Discovery/Web-Content/api/api-endpoints.txt"
+export WEBCOMMON="$SECLISTS/Discovery/Web-Content/common.txt"
+export WEBPARAM="$SECLISTS/Discovery/Web-Content/burp-parameter-names.txt"
+
 if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} ]]
 then
 	exec fish
