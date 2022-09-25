@@ -125,6 +125,8 @@ Let's give a detailed look on Athena!
 Download the latest Athena release .iso file from the related section. According to your need, you can choose to install Athena on your computer natively, or implement it on a Virtual Machine (e.g., VMware or VirtualBox).
 
 Currently VirtualBox is affected by a bug is enabling 3D Acceleration, so keep it disabled.
+3D Acceleration also makes intermittent freezes on the environment if enabled on VMware or VirtualBox if you use xorg.
+It is strongly suggested to keep it disabled.
 
 When you mount the ISO to your pendrive or your Virtual Machine and boot up Athena, you will meet Athena Calamares Installer, that allows you to customise your future Athena OS as you wish.
 
