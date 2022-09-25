@@ -72,7 +72,24 @@ Here I would like to inform you about new features already tested and implemente
 **Athena OS**, code name **"Ergane"** (ancient Greek: "The Industrious"), comes with several important fixes and new implementations.
 
 The new release will provide:
-* Environment variables for payload repositories: **$SECLISTS**, **$PAYLOADSALLTHETHINGS**, **$FUZZDB**, **$AUTOWORDLISTS**, **$SECURITYWORDLIST**, **$MIMIKATZ**, **$POWERSPLOIT**, **ROCKYOU**, **DIRSMALL**, **DIRMEDIUM**, **DIRBIG**, **WEBAPI**, **WEBCOMMON**, **WEBPARAM**
+* Environment variables for payload repositories and resources:
+  | Environment Variable | Value |
+  | -------------------- | ----- |
+  | **$PAYLOADS** | `/usr/share/payloads` |
+  | **$SECLISTS** | `/usr/share/payloads/SecLists` |
+  | **$PAYLOADSALLTHETHINGS** | `/usr/share/payloads/PayloadsAllTheThings` |
+  | **$FUZZDB** | `/usr/share/payloads/FuzzDB` |
+  | **$AUTOWORDLISTS** | `/usr/share/payloads/Auto_Wordlists` |
+  | **$SECURITYWORDLIST** | `/usr/share/payloads/Security-Wordlist` |
+  | **$MIMIKATZ** | `/usr/share/windows/mimikatz` |
+  | **$POWERSPLOIT** | `/usr/share/windows/powersploit` |
+  | **$ROCKYOU** | `/usr/share/payloads/SecLists/Passwords/Leaked-Databases/rockyou.txt` |
+  | **$DIRSMALL** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt` |
+  | **$DIRMEDIUM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt` |
+  | **$DIRBIG** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt` |
+  | **$WEBAPI** | `/usr/share/payloads/SecLists/Discovery/Web-Content/api/api-endpoints.txt` |
+  | **$WEBCOMMON** | `/usr/share/payloads/SecLists/Discovery/Web-Content/common.txt` |
+  | **$WEBPARAM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/burp-parameter-names.txt` |
     * As example, the user can use an env variable for accessing directly to the payloads:`ffuf -u <target_url> -w $SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt`. You don't need to remember the path of your payload repositories anymore.
 * Implemented **OpenCL runtime** for more efficient cracking experience (i.e., by using Hashcat)
 * A **Red Team Machine** button for making your Athena machine a Red Machine by retrieving the main tools and repositories you need in one click
