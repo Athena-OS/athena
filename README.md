@@ -90,7 +90,7 @@ The new release will provide:
   | **$WEBAPI** | `/usr/share/payloads/SecLists/Discovery/Web-Content/api/api-endpoints.txt` |
   | **$WEBCOMMON** | `/usr/share/payloads/SecLists/Discovery/Web-Content/common.txt` |
   | **$WEBPARAM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/burp-parameter-names.txt` |
-    * As example, the user can use an env variable for accessing directly to the payloads:`ffuf -u <target_url> -w $SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt`. You don't need to remember the path of your payload repositories anymore.
+    * As example, the user can use an env variable for accessing directly to the payloads:`ffuf -u <target_url> -w $SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt` or `john file.hash --wordlist=$ROCKYOU`. You don't need to remember the path of your payload repositories anymore.
 * Implemented **OpenCL runtime** for more efficient cracking experience (i.e., by using Hashcat)
 * A **Red Team Machine** button for making your Athena machine a Red Machine by retrieving the main tools and repositories you need in one click
 * **Athena Welcome** app at user login
