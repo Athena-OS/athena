@@ -189,6 +189,80 @@ PenTOXIC changes its look according to the applied theme!
 
 ![image](https://user-images.githubusercontent.com/83867734/187024893-364af14b-e198-43f7-a979-625a01480e38.png)
 
+The list of the PenTOXIC menu, also deployable by Red Team Button, is:
+<table>
+  <tr>
+    <th>Information Gathering</th>
+    <td>Dmitry</td>
+    <td>Nmap</td>
+    <td>Spiderfoot</td>
+    <td>TheHarvester</td>
+    <td>enum4linux</td>
+    <td>wafw00f</td>
+    <td>Fierce</td>
+  </tr>
+  <tr>
+    <th>Vulnerability Analysis</th>
+    <td>Legion</td>
+    <td>Nikto</td>
+    <td>unix-privesc-check</td>
+  </tr>
+  <tr>
+    <th>Web Application Analysis</th>
+    <td>WPScan</td>
+    <td>Burpsuite</td>
+    <td>dirb</td>
+    <td>dirbuster</td>
+    <td>ffuf</td>
+    <td>Wfuzz</td>
+    <td>sqlmap</td>
+  </tr>
+  <tr>
+    <th>Password Attacks</th>
+    <td>John</td>
+    <td>Hashcat</td>
+    <td>Hydra</td>
+    <td>CEWL</td>
+    <td>CRUNCH</td>
+    <td>RSMangler</td>
+    <td>Medusa</td>
+  </tr>
+  <tr>
+    <th>Sniffing</th>
+    <td>mitmproxy</td>
+    <td>Responder</td>
+    <td>Wireshark</td>
+  </tr>
+  <tr>
+    <th>Wireless Testing</th>
+    <td>Aircrack-ng</td>
+    <td>Kismet</td>
+    <td>Reaver</td>
+    <td>Wifite</td>
+    <td>Fern Wifi Cracker</td>
+    <td>Spooftooph</td>
+  </tr>
+  <tr>
+    <th>Reverse Engineering</th>
+    <td>NASM</td>
+    <td>Radare2</td>
+  </tr>
+  <tr>
+    <th>Exploitation</th>
+    <td>SearchSploit</td>
+    <td>Metasploit</td>
+    <td>SEToolkit</td>
+  </tr>
+  <tr>
+    <th>Post Exploitation</th>
+    <td>PowerSploit</td>
+    <td>Mimikatz</td>
+    <td>evil-winrm</td>
+    <td>proxychains-ng</td>
+    <td>weevely</td>
+  </tr>
+</table>
+
 ### PWNage Menu
 
 PWNage Menu allows you to access quickly to the main hacking platforms for learning purposes and to join the main Discord InfoSec Communities:
