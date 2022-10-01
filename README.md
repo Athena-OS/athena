@@ -107,6 +107,7 @@ Here I would like to inform you about new features already tested and implemente
 * Updated all GNOME extensions
 * Implemented LightDM as Display Manager
 * Implemented user choice for the Display Manager in Calamares. Now, as Login Manager, can choose among:
+  
   **GDM**
   ![gdm-screen](https://user-images.githubusercontent.com/83867734/193427068-bc88f2ab-e5af-41e7-a7a2-9a3ca9b6522c.png)
   
