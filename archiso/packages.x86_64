@@ -4,6 +4,8 @@
 ###                  BASIC PACKAGES                 ###
 #######################################################
 
+#accountservice is also a dependency of LightDM
+accountsservice
 amd-ucode
 base
 base-devel
@@ -84,7 +86,6 @@ gdm
 #lightdm
 
 ####LIGHTDM DEPENDENCIES
-accountsservice
 #lightdm-webkit2-greeter
 #plymouth
 #xorg-server-xephyr
