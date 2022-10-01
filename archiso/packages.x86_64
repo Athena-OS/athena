@@ -80,14 +80,14 @@ pocl
 ###                 DISPLAY MANAGERS                ###
 #######################################################
 
-#gdm
-lightdm
+gdm
+#lightdm
 
 ####LIGHTDM DEPENDENCIES
-accountsservice
+#accountsservice
 #lightdm-webkit2-greeter
-plymouth
-xorg-server-xephyr
+#plymouth
+#xorg-server-xephyr
 
 #######################################################
 ###                      FONTS                      ###
@@ -183,7 +183,7 @@ athena-calamares
 athena-calamares-config
 athena-graphite-theme
 athena-keyring
-athena-lightdm-webkit-theme-aether
+#athena-lightdm-webkit-theme-aether
 athena-pentoxic-menu
 athena-pwnage-menu
 #athena-sweet-dark-theme
@@ -195,12 +195,14 @@ athena-welcome
 bastet
 figlet-fonts
 htb-tools
-lightdm-webkit2-greeter
+#lightdm-webkit2-greeter
 myman
 nist-feed
 superbfetch-git
 toilet-fonts
-webkit2gtk
+#webkit2gtk
+
+#Commented LightDM dependencies are managed by Calamares Installer
 
 #######################################################
 ###                 LIVE ENVIRONMENT                ###
