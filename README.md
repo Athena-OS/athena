@@ -392,9 +392,11 @@ Keybindings in Athena OS for speeding up your work.
 | ------- | ----------- |
 | `CTRL+SPACE` | PenTOXIC menu |
 | `CTRL+TAB` | PWNage menu |
-| `WIN` | Multi-desktop environment |
-| `WIN+WIN` | Switch between desktop and "Show Applications" menu |
+| `Super` | Multi-desktop environment |
+| `Super+Super` | Switch between desktop and "Show Applications" menu |
+| `Super+L` | Screen Lock |
 
+Note that `Super` key corresponds to the button showing Windows icon in the usual keyboards.
 <br>
 <br>
 
