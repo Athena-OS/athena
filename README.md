@@ -104,9 +104,10 @@ Here I would like to inform you about new features already tested and implemente
 **Athena Ergane v3** will add:
 * `Super+L` shortcut for Screen Lock
 * `htb-play` now implements `-m <machine_name>` argument for playing directly a Hack The Box machine
-* Updated all GNOME extensions
-* Implemented LightDM as Display Manager
-* Implemented user choice for the Display Manager in Calamares. Now, as Login Manager, can choose among:
+* Updated all **GNOME extensions**
+* Implemented **comMENTOR** tool in Athena Repository
+* Implemented **LightDM** as Display Manager
+* Implemented **user choice** for the Display Manager in Calamares. Now, as Login Manager, can choose among:
   
   **GDM**
   ![gdm-screen](https://user-images.githubusercontent.com/83867734/193427068-bc88f2ab-e5af-41e7-a7a2-9a3ca9b6522c.png)
@@ -115,7 +116,7 @@ Here I would like to inform you about new features already tested and implemente
   ![lightdm-aether-screen](https://user-images.githubusercontent.com/83867734/193427072-e600786d-8582-432a-b9a4-935504eb22de.png)
   Move the mouse pointer to the bottom-left part of the screen for accessing to the customization settings and set it as you wish.
   Click on Arch logo and enjoy!
-* Ah, I left a small challenge for you inside the system! The tip is clear enough...
+* Ah, I left a **small challenge for you** inside the system! The tip is clear enough...
 
 ## Introduction
 The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
