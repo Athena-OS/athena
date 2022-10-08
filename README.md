@@ -118,7 +118,19 @@ Here I would like to inform you about new features already tested and implemente
   Click on Arch logo and enjoy!
 * Ah, I left a **small challenge for you** inside the system! The tip is clear enough...
 
-## Introduction
+## Contents
+
+- [🎉 Introduction](#intro)
+- [🎁 Installation](#install)
+- [📐 Configuration](#config)
+- [🔥 Resources](#res)
+- [📷 Screenshots](#shots)
+- [🛣️ Roadmap](#map)
+- [❓ Support](#techsupport)
+- [❤️ Credits](#creds)
+
+<a id="intro"></a>
+## 🎉 Introduction
 Athena is designed from scratch, so already during the development phase useless modules and services have been excluded in order to improve performance and resource consumption. Furthermore, this design approach allowed to review in detailed manner each single package and component to include inside the distribution. It led the OS to build a user-friendly environment, despite based on Arch Linux.
 
 The heritage of Arch Linux impacts positively Athena OS:
@@ -134,7 +146,8 @@ Let's give a detailed look on Athena!
 <br>
 <br>
 
-## Installation
+<a id="install"></a>
+## 🎁 Installation
 
 Download the latest Athena release .iso file from the related section. According to your need, you can choose to install Athena on your computer natively, or implement it on a Virtual Machine (e.g., VMware or VirtualBox).
 
@@ -146,7 +159,8 @@ When you mount the ISO to your pendrive or your Virtual Machine and boot up Athe
 
 <br>
 
-## Configuration
+<a id="config"></a>
+## 📐 Configuration
 
 ### Latest Release
 After the installation and the first boot:
@@ -158,7 +172,8 @@ Until your API key will be valid, your system will update the Hack The Box conte
 
 <br>
 
-## Main Elements
+<a id="res"></a>
+## 🔥 Resources
 
 ### PenTOXIC Menu
 
@@ -272,9 +287,7 @@ For playing Active HTB Machines, use PWNage Menu. For playing Retired Machines, 
 
 ### Firefox ESR Hack Mode
 
-<p align="center">
-  <img width="200" height="200" src="https://user-images.githubusercontent.com/83867734/177051677-d8a7efa4-cfb3-407e-8569-195ba8a483b3.png">
-</p>
+<img src="https://user-images.githubusercontent.com/83867734/177051677-d8a7efa4-cfb3-407e-8569-195ba8a483b3.png" align=right width=100px>
 
 Firefox ESR has been modified in order to integrate at the installation time the addons you need for your web application pentesting activity. The preinstalled addons are:
 * Cookie Quick Manager
@@ -301,10 +314,7 @@ The Dock contains also links to Mimikatz and Powersploit.
 
 ### BlackArch Repository
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/83867734/177051929-9a248a26-fc4f-4741-bc14-af679e2eb7b2.png" align=right width=100px>
-</p>
-
+<img src="https://user-images.githubusercontent.com/83867734/177051929-9a248a26-fc4f-4741-bc14-af679e2eb7b2.png" align=right width=150px>
 
 BlackArch Linux is an Arch Linux-based penetration testing distribution for penetration testers and security researchers. Its repository contains [2800+ tools](https://blackarch.org/tools.html), classified for categories. You can install tools individually or in groups according to the categories they belong. BlackArch Repository is compatible with only Arch-based distributions as Athena OS.
 
@@ -329,16 +339,10 @@ Be aware of new vulnerabilities by NIST Feed!
 
 <br>
 
-## Support
-
-If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues) on athena-iso GitHub repository.
-<br>
-<br>
-
-## Shortcuts
+### Shortcuts
 Keybindings in Athena OS for speeding up your work.
 
-![logo](https://user-images.githubusercontent.com/83867734/179193319-e72540a0-d284-4b81-ac0a-fedd29484355.png)
+![athena_icon-128x128](https://user-images.githubusercontent.com/83867734/194703224-22cf3ddc-58b7-4d1f-a799-f893d0543f13.png)
 | Keybind | Description |
 | ------- | ----------- |
 | `CTRL+SPACE` | PenTOXIC menu |
@@ -401,7 +405,7 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 
 <br>
 
-## Utility Commands
+### Utility Commands
 
 | Command | Description |
 | ------- | ----------- |
@@ -445,7 +449,7 @@ Change your themes and icons by `gnome-tweaks`.
 
 <br>
 
-## Funny Commands
+### Funny Commands
 
 | Command | Description |
 | ------- | ----------- |
@@ -463,19 +467,27 @@ Change your themes and icons by `gnome-tweaks`.
 
 <br>
 
-## Screenshots
+<a id="shots"></a>
+## 📷 Screenshots
 ![screenshots](https://user-images.githubusercontent.com/83867734/194702590-62858690-e5d5-462d-871f-9b89eb30f227.gif)
 
-## Athena Roadmap
+<a id="map"></a>
+## 🛣️ Roadmap
 * Ongoing implementation of different themes that can be chosen at time of the installation
 * Integration between ExploitDB and NIST Feed
 * Implementation of Docker Engine
 
-## Troubleshooting
+<a id="techsupport"></a>
+## ❓ Support
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 * During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
 
-## Credits
+If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues) on athena-iso GitHub repository.
+<br>
+<br>
+
+<a id="creds"></a>
+## ❤️ Credits
 * [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
 * [Calamares Team](https://calamares.io): Calamares Installer
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extensions
