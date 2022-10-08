@@ -273,6 +273,8 @@ PWNage Menu allows you to access quickly to the main hacking platforms for learn
 
 ### Hack The Box Integration
 
+<img src="https://user-images.githubusercontent.com/83867734/194704118-27225478-35e3-4b21-94a9-9fb8f0aea305.png" align=right width=100px>
+
 Cannot you wait for opening browser and accessing to Hack The Box website? Athena gives you the possibility to play Hack The Box machines directly on your Operating System environment in a quick and comfortable manner. Athena offers:
 * Connect/Disconnect to/from Hack The Box VPN servers
 * Play any active free machine you wish
