@@ -64,8 +64,6 @@ Athena OS
 
 Wiki: https://github.com/Athena-OS/athena-iso/wiki
 
-For a correct Post Installation setting, please follow the [Configuration](https://github.com/Athena-OS/athena-iso#configuration) section.
-
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
