@@ -75,14 +75,10 @@ Here I would like to inform you about new features already tested and implemente
 * Updated all **GNOME extensions**
 * Implemented **comMENTOR** tool in Athena Repository
 * Implemented **LightDM** as Display Manager
-* Implemented **user choice** for the Display Manager in Calamares. Now, as Login Manager, can choose among:
-  
-  **GDM**
-  ![gdm-screen](https://user-images.githubusercontent.com/83867734/193427068-bc88f2ab-e5af-41e7-a7a2-9a3ca9b6522c.png)
-  
-  **LightDM**
-  ![lightdm-aether-screen](https://user-images.githubusercontent.com/83867734/193427072-e600786d-8582-432a-b9a4-935504eb22de.png)
-  Move the mouse pointer to the bottom-left part of the screen for accessing to the customization settings and set it as you wish.
+* Implemented **user choice** for the Display Manager in Calamares. Now, as Login Manager, can choose between **GDM** and **LightDM**:
+  ![display-manager](https://user-images.githubusercontent.com/83867734/194728673-98181454-3ebf-4860-a6b7-285d45abf2d2.gif)
+
+  On LightDM, move the mouse pointer to the bottom-left part of the screen for accessing to the customization settings and set it as you wish.
   Click on Arch logo and enjoy!
 * Ah, I left a **small challenge for you** inside the system! The tip is clear enough...
 
