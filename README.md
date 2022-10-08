@@ -490,7 +490,6 @@ If you detect any issues during your experience, please [open an issue](https://
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 * During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
 
-<br>
 <a id="creds"></a>
 ## ❤️ Credits
 * [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
