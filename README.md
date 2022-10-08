@@ -259,6 +259,8 @@ The list of the PenTOXIC menu, also deployable by Red Team Button, is:
   </tr>
 </table>
 
+<br>
+
 ### PWNage Menu
 
 PWNage Menu allows you to access quickly to the main hacking platforms for learning purposes and to join the main Discord InfoSec Communities:
@@ -266,6 +268,8 @@ PWNage Menu allows you to access quickly to the main hacking platforms for learn
 * 2nd shell can be accessed by the Discurity icon on top where the user has the opportunity to join several Discord InfoSec servers or open Discord App.
 
 ![image](https://user-images.githubusercontent.com/83867734/177038794-05892fb5-2c05-40be-9d1b-ea1b56410a57.png)
+
+<br>
 
 ### Hack The Box Integration
 
@@ -283,6 +287,8 @@ Cannot you wait for opening browser and accessing to Hack The Box website? Athen
 
 For playing Active HTB Machines, use PWNage Menu. For playing Retired Machines, just run `htb-play` and type the name of the machine you want to play.
 
+<br>
+
 ### Firefox ESR Hack Mode
 
 <img src="https://user-images.githubusercontent.com/83867734/177051677-d8a7efa4-cfb3-407e-8569-195ba8a483b3.png" align=right width=100px>
@@ -296,6 +302,7 @@ Firefox ESR has been modified in order to integrate at the installation time the
 * Privacy 
 * uBlock Origin
 * Wappalyzer
+<br>
 
 ### Payload to Dock
 
@@ -309,6 +316,8 @@ Payload to Dock is based on Dash 2 Dock and keeps the access to the most famous 
 The Dock contains also links to Mimikatz and Powersploit.
 
   <img width="883" height="159" src="https://user-images.githubusercontent.com/83867734/177040060-ae74270f-0528-4e4b-972f-a2c293578263.png">
+
+<br>
 
 ### BlackArch Repository
 
@@ -468,7 +477,7 @@ Change your themes and icons by `gnome-tweaks`.
 <a id="shots"></a>
 ## 📷 Screenshots
 ![screenshots](https://user-images.githubusercontent.com/83867734/194702590-62858690-e5d5-462d-871f-9b89eb30f227.gif)
-
+<br>
 <a id="map"></a>
 ## 🛣️ Roadmap
 * Ongoing implementation of different themes that can be chosen at time of the installation
@@ -477,13 +486,11 @@ Change your themes and icons by `gnome-tweaks`.
 
 <a id="techsupport"></a>
 ## ❓ Support
+If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues) on athena-iso GitHub repository. Current troubleshooting:
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 * During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
 
-If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues) on athena-iso GitHub repository.
 <br>
-<br>
-
 <a id="creds"></a>
 ## ❤️ Credits
 * [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
