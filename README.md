@@ -119,15 +119,13 @@ Here I would like to inform you about new features already tested and implemente
 * Ah, I left a **small challenge for you** inside the system! The tip is clear enough...
 
 ## Introduction
-The purpose of Athena project arises to offer a different experience than the most used pentesting distributions. These distros are mainly based on Debian, and they rely mainly on Debian or GitHub repositories for retrieving security tools that don't store all security tools and are hard to maintain. Furthermore, these OSes come already with a big amount of tools and services of which a good percentage is never used by the average of users, and it becomes a space waste and could cause performance degradation.
-
 Athena is designed from scratch, so already during the development phase useless modules and services have been excluded in order to improve performance and resource consumption. Furthermore, this design approach allowed to review in detailed manner each single package and component to include inside the distribution. It led the OS to build a user-friendly environment, despite based on Arch Linux.
 
-The heritage of Arch Linux impacts positively Athena OS with respect to other pentesting Debian-based OSes:
+The heritage of Arch Linux impacts positively Athena OS:
 * Better performance: pacman is faster than apt 
 * Focused: Athena can be developed and maintained down to the smallest detail 
-* Much more security tools: Athena can rely on BlackArch repository, that contains much more security tools than Debian repositories 
-* Freedom: during the installation, you can choose to build your Athena with any resource or service you need. 
+* Much more security tools: Athena can rely on BlackArch repository, that contains much more security tools than APT repositories 
+* Freedom: during the installation, you can configure your Athena with any resource or service you need. 
 * Documentation: Arch Linux is very well documented on Internet for any need
 
 Athena's environment is based on GNOME Wayland that provide exciting features the user can enjoy!
@@ -146,24 +144,6 @@ It is strongly suggested to keep it disabled.
 
 When you mount the ISO to your pendrive or your Virtual Machine and boot up Athena, you will meet Athena Calamares Installer, that allows you to customise your future Athena OS as you wish.
 
-Currently, I didn't have the time to test every scenario, but I can suggest you an installation scenario that I tested, and it is based on the installation of Athena on a VMware Virtual Machine:
-1. Boot up Athena on VMware
-2. Wait for the Installer appearing. If not, on Athena Welcome App select `Advanced Installation`
-3. On `Welcome` select your preferred language
-4. On `Kernel` select `Linux kernel - installed by default`
-5. On `Drivers` and `Drivers Nv` leaves blank
-6. On `Virtual Machine` set `VMware Virtual Machine`
-7. On `Login` set `Display Manager: Gdm`
-8. On `Theme` set what you prefer
-9. On `Location` and `Keyboard` set what you wish. Note: currently Calamares has a bug on the timezone setting because if the user clicks on a point of the map, usually the timezone is set to en_AG. Choose manually your preferences on the right-bottom part of the window (if need, expand installer window). This bug will be fixed in the next release of Calamares (you will need only a `pacman -Syu`).
-10. On `Partitions` set `Erase disk` and feel free to set up the Swap or not, and use btrfs
-11. On `Users` set the user details you wish
-12. Confirm the choices summary
-13. Wait for the end of installation
-14. Enjoy Athena OS!
-
-Note: Athena Welcome App is based on ArcoLinux project. Currently, the links are still referred to ArcoLinux.
-
 <br>
 
 ## Configuration
@@ -176,19 +156,6 @@ The Hack The Box API Key can be retrieved by your Hack The Box profile settings 
 
 Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
 
-### Release earlier than v22.07.16
-After the installation and the first boot:
-* open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
-* Logout and Login from the current session. It is needed for initializing the GNOME keyring for storing your Hack The Box API key in a secure manner.
-
-Note that GNOME, for safety reason, after a reboot could disable GNOME extensions, so PenTOXIC and PWNage menu could not work. For re-enable then again easily, just go to the Menu Application, search for `Extensions`, and enable the "Extensions" option.
-
-If you install Metasploit, after its installation, type the following:
-```
-cd /opt/metasploit
-bundle install
-```
-These commands will be integrated directly in the next Athena release.
 <br>
 
 ## Main Elements
@@ -330,15 +297,14 @@ Payload to Dock is based on Dash 2 Dock and keeps the access to the most famous 
 
 The Dock contains also links to Mimikatz and Powersploit.
 
-<p align="center">
   <img width="883" height="159" src="https://user-images.githubusercontent.com/83867734/177040060-ae74270f-0528-4e4b-972f-a2c293578263.png">
-</p>
 
 ### BlackArch Repository
 
 <p align="center">
-  <img width="400" height="400" src="https://user-images.githubusercontent.com/83867734/177051929-9a248a26-fc4f-4741-bc14-af679e2eb7b2.png">
+  <img src="https://user-images.githubusercontent.com/83867734/177051929-9a248a26-fc4f-4741-bc14-af679e2eb7b2.png" align=right width=100px>
 </p>
+
 
 BlackArch Linux is an Arch Linux-based penetration testing distribution for penetration testers and security researchers. Its repository contains [2800+ tools](https://blackarch.org/tools.html), classified for categories. You can install tools individually or in groups according to the categories they belong. BlackArch Repository is compatible with only Arch-based distributions as Athena OS.
 
@@ -359,41 +325,10 @@ for getting more details.
 
 Be aware of new vulnerabilities by NIST Feed!
 
-![image](https://user-images.githubusercontent.com/83867734/182053892-a59ac1f8-7724-44e9-be61-e819e2f9f40e.png)
+![nist-feed](https://user-images.githubusercontent.com/83867734/194702130-a753eb5b-53bf-4303-87a8-dba897bde7ef.png)
 
 <br>
 
-## Usage
-
-Athena OS is just born and wait only for being used by the InfoSec community!
-
-Athena is divided in two environment: desktop and application menu.
-
-In the desktop environment, you can invoke **PenTOXIC** by `CTRL + SPACE`, a special menu based on [Fly-Pie](https://github.com/Schneegans/Fly-Pie) project showing hacking categories containing the most used security tools we use for our pentesting activities. PenTOXIC gives you the possibility to quickly access to **Firefox ESR**, **Code OSS** and **Kitty** terminal. It is born to be also used on touchscreens.
-
-At the first usage of Athena, the security tools are not installed but if you click on one of them, Athena will install it for you. It helps the user to save disk space and install only the tools they need. The security tools invoked by PentOX menu are run by cool-retro-term terminal, and you can customise it by right-click on it and settings.
-
-The second main element in the desktop is **PWNage**, a menu that offers you learning and support resources for people entering in the Cybersecurity world, and accessible by `CTRL + TAB`. In details, PWNage consists in two levels: the first one composed of Hacking Platform resources for learning and training, and the second one composed of InfoSec discord servers where you can find any kind of support. PWNage is fully integrated with **Hack The Box**, so you can play any active free machine directly on your desktop environment!
-
-The application menu environment can be accessed by pressing the `WIN` button on the keyboard. This environment is used for giving you quick access to a battery of payloads you can use for your pentesting activity as **SecLists** and **PayloadAllTheThings**. These resources are also shown in the desktop by the **Payload to Dock**.
-
-Of course, Athena can retrieve much more security tools, almost 3000! It is possible because it relies on [BlackArch repository](https://blackarch.org/tools.html), so if you need another tool not shown on PentOX menu, you can install it directly by `sudo pacman -S <tool-name>`. If you are a lover of a specific hacking category, you can install one shot all the tools related to a specific category. For example, if you are a lover of exploitation, you can install all related tools by `sudo pacman -S blackarch-exploitation`. For other categories or specific tools, please refer to the BlackArch link.
-  
-In Athena OS, Firefox ESR comes with preinstalled extensions that can support you during your pentesting activity and privacy navigation:
-* Cookie Quick Manager: manage (view, search, create, edit, delete, backup, restore) cookies
-* Dark Reader: Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing
-* FoxyProxy: Proxy Management tool
-* HacKontext: inject HTTP header and body of the active browser tab on InfoSec command-line tools to improve and speed up their usage
-* HTTPS Everywhere: encrypt the Web! Automatically use HTTPS security on many sites
-* Privacy Badger: automatically learn to block invisible trackers
-* uBlock Origin: an efficient blocker. Easy on CPU and memory
-* Wappalyzer: uncover the technologies used on websites. It detects content management systems, eCommerce platforms, web servers, JavaScript frameworks, analytics tools and many more.
-
-Furthermore, Athena supports also git, so be creative to make your own security tool and publish it on GitHub!
-
-There are other spicy features on Athena, but for now I shut my mind. 🔥Discover them!🔥
-<br>
-<br>
 ## Support
 
 If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues) on athena-iso GitHub repository.
@@ -529,13 +464,7 @@ Change your themes and icons by `gnome-tweaks`.
 <br>
 
 ## Screenshots
-![image](https://user-images.githubusercontent.com/83867734/177039614-dbd8b314-a083-4153-96ea-6f1eff3d604a.png)
-
-![image](https://user-images.githubusercontent.com/83867734/182011599-2cdb9723-0cb4-4ae2-a6bb-7c642f5365c4.png)
-
-![image](https://user-images.githubusercontent.com/83867734/182142063-91a6ef3b-0982-4699-b140-43f2af6413e3.png)
-
-![image](https://user-images.githubusercontent.com/83867734/182011606-ef4cc286-fca1-4bd2-8a6f-1a2522cb849e.png)
+![screenshots](https://user-images.githubusercontent.com/83867734/194702590-62858690-e5d5-462d-871f-9b89eb30f227.gif)
 
 ## Athena Roadmap
 * Ongoing implementation of different themes that can be chosen at time of the installation
