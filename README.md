@@ -437,7 +437,7 @@ Change your themes and icons by `gnome-tweaks`.
 | `lolcat` | Concatenate files, or standard input, to standard output, and add rainbow coloring to it. |
 | `myman` | Text-mode Pac-Man. |
 | `nyancat` | Animated, color, ANSI-text program that renders a loop of the classic Nyan Cat animation. |
-| `toilet` | prints text using large characters made of smaller characters. |
+| `toilet` | Print text using large characters made of smaller characters. |
 | `train` | Choo-choo! |
 
 <br>
