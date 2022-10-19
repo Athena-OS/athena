@@ -451,6 +451,7 @@ Change your themes and icons by `gnome-tweaks`.
 * Ongoing implementation of different themes that can be chosen at time of the installation
 * Integration between ExploitDB and NIST Feed
 * Athena Docker Container
+* Removal of gnome applications and services not in scope of the system
 * Other spicy secret stuff
 
 <a id="techsupport"></a>
