@@ -452,6 +452,9 @@ Change your themes and icons by `gnome-tweaks`.
 * Integration between ExploitDB and NIST Feed
 * Athena Docker Container
 * Removal of gnome applications and services not in scope of the system
+* Adding certification exam report templates
+* Reviewing system performance at low level
+* Implementation of Blue Team tools
 * Other spicy secret stuff
 
 <a id="techsupport"></a>
