@@ -85,13 +85,16 @@ Here I would like to inform you about new features already tested and implemente
 ## Contents
 
 - [🎉 Introduction](#intro)
+- [⚓ System Requirements](#requirement)
 - [🎁 Installation](#install)
 - [📐 Configuration](#config)
 - [🔥 Resources](#res)
 - [📷 Screenshots](#shots)
 - [🛣️ Roadmap](#map)
 - [❓ Support](#techsupport)
+- [📢 Publications](#publ)
 - [❤️ Credits](#creds)
+
 
 <a id="intro"></a>
 ## 🎉 Introduction
@@ -108,6 +111,14 @@ Athena's environment is based on GNOME Wayland that provide exciting features th
 
 Let's give a detailed look on Athena! 
 <br>
+<br>
+
+<a id="requirement"></a>
+## ⚓ System Requirements
+Recommended system requirements for smooth usage in Athena are:
+* 50 GB of hard disk space, SSD preferred
+* At least 4GB of RAM
+
 <br>
 
 <a id="install"></a>
@@ -462,6 +473,10 @@ Change your themes and icons by `gnome-tweaks`.
 If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues/new/choose) on athena-iso GitHub repository. Current troubleshooting:
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 * During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
+
+<a id="publ"></a>
+## 📢 Publications
+PenTest Magazine: https://pentestmag.com/product/pentest-open-source-pentesting-toolkit/
 
 <a id="creds"></a>
 ## ❤️ Credits
