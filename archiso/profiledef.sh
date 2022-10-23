@@ -2,10 +2,10 @@
 # shellcheck disable=SC2034
 
 iso_name="athena"
-iso_label="athena-2022.10.01"
+iso_label="athena-2022.11.05"
 iso_publisher="Athena <https://github.com/Athena-OS/athena-iso>"
 iso_application="Athena Live/Rescue CD"
-iso_version="2022.10.01"
+iso_version="2022.11.05"
 install_dir="arch"
 buildmodes=('iso')
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito'
