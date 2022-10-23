@@ -47,14 +47,6 @@ bind "set completion-ignore-case on"
 # COLOURS! YAAAY!
 export TERM=xterm-256color
 
-# Personal binaries
-export PATH=${PATH}:~/bin:~/.local/bin:~/etc/scripts
-
-# I'd quite like for Go to work please.
-export PATH=${PATH}:/usr/local/go/bin
-export GOPATH=~
-
-
 # Change up a variable number of directories
 # E.g:
 #   cu   -> cd ../
@@ -197,6 +189,7 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
 export PROMPT_COMMAND='source ~/.bashrc'
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
