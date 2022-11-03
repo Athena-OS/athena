@@ -347,18 +347,19 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | Environment Variable | Value |
 | -------------------- | ----- |
 | **$PAYLOADS** | `/usr/share/payloads` |
-| **$SECLISTS** | `/usr/share/payloads/SecLists` |
-| **$PAYLOADSALLTHETHINGS** | `/usr/share/payloads/PayloadsAllTheThings` |
-| **$FUZZDB** | `/usr/share/payloads/FuzzDB` |
 | **$AUTOWORDLISTS** | `/usr/share/payloads/Auto_Wordlists` |
+| **$FUZZDB** | `/usr/share/payloads/FuzzDB` |
+| **$PAYLOADSALLTHETHINGS** | `/usr/share/payloads/PayloadsAllTheThings` |
+| **$SECLISTS** | `/usr/share/payloads/SecLists` |
 | **$SECURITYWORDLIST** | `/usr/share/payloads/Security-Wordlist` |
 | **$MIMIKATZ** | `/usr/share/windows/mimikatz` |
 | **$POWERSPLOIT** | `/usr/share/windows/powersploit` |
 | **$ROCKYOU** | `/usr/share/payloads/SecLists/Passwords/Leaked-Databases/rockyou.txt` |
-| **$DIRSMALL** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt` |
-| **$DIRMEDIUM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt` |
 | **$DIRBIG** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt` |
-| **$WEBAPI** | `/usr/share/payloads/SecLists/Discovery/Web-Content/api/api-endpoints.txt` |
+| **$DIRMEDIUM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt` |
+| **$DIRSMALL** | `/usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt` |
+| **$WEBAPI_COMMON** | `/usr/share/payloads/SecLists/Discovery/Web-Content/api/api-endpoints.txt` |
+| **$WEBAPI_MAZEN** | `/usr/share/payloads/SecLists/Discovery/Web-Content/common-api-endpoints-mazen160.txt` |
 | **$WEBCOMMON** | `/usr/share/payloads/SecLists/Discovery/Web-Content/common.txt` |
 | **$WEBPARAM** | `/usr/share/payloads/SecLists/Discovery/Web-Content/burp-parameter-names.txt` |
 
