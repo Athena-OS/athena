@@ -65,6 +65,8 @@ Athena OS
 
 Wiki: https://github.com/Athena-OS/athena-iso/wiki
 
+IMPORTANT NOTE: Recently, due to GNOME upgrade to the new version, the installation of Athena could fail due to some mutter conflicts. This issue will be solved with the next release in the next days, hours, ...
+
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
