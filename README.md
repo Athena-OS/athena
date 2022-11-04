@@ -70,20 +70,41 @@ IMPORTANT NOTE: Recently, due to GNOME upgrade to the new version, the installat
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-**Athena OS**, code name **"Ergane"** (ancient Greek: "The Industrious"), comes with several important fixes and new implementations.
+**Athena OS**, code name **"Nike"** (ancient Greek: "Victory"), comes with several important fixes and new implementations.
 
-**Athena Ergane v3** will add:
-* `Super+L` shortcut for Screen Lock
-* `htb-play` now implements `-m <machine_name>` argument for playing directly a Hack The Box machine
-* Updated all **GNOME extensions**
-* Implemented **comMENTOR** tool in Athena Repository
-* Implemented **LightDM** as Display Manager
-* Implemented **user choice** for the Display Manager in Calamares. Now, as Login Manager, can choose between **GDM** and **LightDM**:
-  ![display-manager](https://user-images.githubusercontent.com/83867734/194728673-98181454-3ebf-4860-a6b7-285d45abf2d2.gif)
+**Athena Nike** will provide:
+* Hacking roles: you can choose among several roles for your hacking activity
+* Hacking environment variable viewer: you can easily list the set of environment variables you need for your activity
+* Autotiling feature: you can now tile windows by Autotiling icon on the top-right of the screen
+* `osert` tool: Markdown Templates for Offensive Security exam reports. Just get it by pacman!
+* BASH and ZSH as shells to be chosen
+* GRUB Athena background
+* A lot of Security resources as bookmarks in Firefox ESR
+* Hack-Tools extension in Firefox ESR
+* `CTRL+ALT+T` for invoking the terminal
+* Snapper for creating snapshots of your system for recovering purpose
+* Octopi as graphical package manager
 
-  On LightDM, move the mouse pointer to the bottom-left part of the screen for accessing to the customization settings and set it as you wish.
-  Click on Arch logo and enjoy!
-* Ah, I left a **small challenge for you** inside the system! The tip is clear enough...
+Furthermore, heavy changes come at system level for improving the performance of the system:
+* Migration to GNOME 43
+* Firefox run on RAM for speeding up the performance
+* Parallel code compilation
+* Building from files in RAM
+* OOM handling
+* Process priority managers
+  * Ananicy
+  * IRQBalance
+* Improved kernel characteristics:
+  * Dirty Ratio
+  * Dirty Background Ratio
+  * OOM Dump Tasks
+  * OOM Kill Allocating Task
+  * Overcommit Memory
+  * Swappiness
+  * VFS Cache Pressure
+  * CFS zen tweaks for non-zen kernels
+  
+* Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
 
 ## Contents
 
