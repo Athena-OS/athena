@@ -115,8 +115,11 @@ Furthermore, heavy changes come at system level for improving the performance of
   
 Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
 
+Screenshots:
+
 ![image](https://user-images.githubusercontent.com/83867734/200061914-0343c02f-9dd7-499b-8c0c-61b05bc6bc4f.png)
 
+![image](https://user-images.githubusercontent.com/83867734/200062602-8a4c3ed4-8d9f-45b0-af73-b54c72f67897.png)
 ## Contents
 
 - [🎉 Introduction](#intro)
