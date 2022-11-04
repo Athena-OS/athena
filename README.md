@@ -73,7 +73,16 @@ Here I would like to inform you about new features already tested and implemente
 **Athena OS**, code name **"Nike"** (ancient Greek: "Victory"), comes with several important fixes and new implementations, and carries the new **GNOME 43**!
 
 **Athena Nike** will provide:
-* **Hacking roles**: you can choose among several roles for your hacking activity
+* **Hacking roles**: you can choose among several roles for your hacking activity:
+  * Bug Bounty Hunter
+  * Cracker
+  * Enthusiast Student
+  * Forensic Analyst
+  * Malware Analyst
+  * Mobile Analyst
+  * Network Analyst
+  * Red Teamer
+  * Web Pentester 
 * Hacking **environment variable** viewer: you can easily list the set of environment variables you need for your activity
 * **Autotiling** feature: you can now tile windows by Autotiling icon on the top-right of the screen
 * `osert` tool: Markdown Templates for Offensive Security exam reports. Just get it by pacman!
