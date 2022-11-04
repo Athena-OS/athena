@@ -70,31 +70,31 @@ IMPORTANT NOTE: Recently, due to GNOME upgrade to the new version, the installat
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-**Athena OS**, code name **"Nike"** (ancient Greek: "Victory"), comes with several important fixes and new implementations.
+**Athena OS**, code name **"Nike"** (ancient Greek: "Victory"), comes with several important fixes and new implementations, and carries the new **GNOME 43**!
 
 **Athena Nike** will provide:
-* Hacking roles: you can choose among several roles for your hacking activity
-* Hacking environment variable viewer: you can easily list the set of environment variables you need for your activity
-* Autotiling feature: you can now tile windows by Autotiling icon on the top-right of the screen
+* **Hacking roles**: you can choose among several roles for your hacking activity
+* Hacking **environment variable** viewer: you can easily list the set of environment variables you need for your activity
+* **Autotiling** feature: you can now tile windows by Autotiling icon on the top-right of the screen
 * `osert` tool: Markdown Templates for Offensive Security exam reports. Just get it by pacman!
-* BASH and ZSH as shells to be chosen
+* **BASH** and **ZSH** as shells to be chosen
 * GRUB Athena background
-* A lot of Security resources as bookmarks in Firefox ESR
-* Hack-Tools extension in Firefox ESR
+* A lot of **security resources** as bookmarks in Firefox ESR
+* **Hack-Tools** extension in Firefox ESR
 * `CTRL+ALT+T` for invoking the terminal, `SUPER+D` for minimizing all the windows, `SUPER+E` for opening the Home folder
-* Snapper for creating snapshots of your system for recovering purpose
-* Octopi as graphical package manager
+* Snapper for creating **snapshots** of your system for recovering purpose
+* Octopi as **graphical package manager**
 
 Furthermore, heavy changes come at system level for improving the performance of the system:
-* Migration to GNOME 43
-* Firefox run on RAM for speeding up the performance
-* Parallel code compilation
-* Building from files in RAM
-* OOM handling
-* Process priority managers
+* Migration to **GNOME 43**
+* **Firefox run on RAM** for speeding up the performance
+* **Parallel** code compilation
+* Building from **files in RAM**
+* **OOM** handling
+* Process **priority** managers
   * Ananicy
   * IRQBalance
-* Improved kernel characteristics:
+* Improved **kernel** characteristics:
   * Dirty Ratio
   * Dirty Background Ratio
   * OOM Dump Tasks
