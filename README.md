@@ -81,7 +81,7 @@ Here I would like to inform you about new features already tested and implemente
 * GRUB Athena background
 * A lot of Security resources as bookmarks in Firefox ESR
 * Hack-Tools extension in Firefox ESR
-* `CTRL+ALT+T` for invoking the terminal
+* `CTRL+ALT+T` for invoking the terminal, `SUPER+D` for minimizing all the windows, `SUPER+E` for opening the Home folder
 * Snapper for creating snapshots of your system for recovering purpose
 * Octopi as graphical package manager
 
