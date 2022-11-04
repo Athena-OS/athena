@@ -41,7 +41,7 @@ Athena OS
 <h3 align="center">
   💞
   <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
-  Download Athena OS "Ergane" Now
+  Download Athena OS "Nike" Now
     </a>
   💞
 </h3>
