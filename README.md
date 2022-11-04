@@ -104,7 +104,9 @@ Furthermore, heavy changes come at system level for improving the performance of
   * VFS Cache Pressure
   * CFS zen tweaks for non-zen kernels
   
-* Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
+Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
+
+![image](https://user-images.githubusercontent.com/83867734/200061914-0343c02f-9dd7-499b-8c0c-61b05bc6bc4f.png)
 
 ## Contents
 
