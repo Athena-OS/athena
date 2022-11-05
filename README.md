@@ -169,6 +169,19 @@ It is strongly suggested to keep it disabled.
 
 When you mount the ISO to your pendrive or your Virtual Machine and boot up Athena, you will meet Athena Calamares Installer, that allows you to customise your future Athena OS as you wish.
 
+**Bare Metal Installation**
+In case you are installing Athena in Bare Metal by a USB stick, at the boot the mount point will be different than the one set during an installation on a VM with an attached ISO. For avoiding errors like `Bad unpackfs configuration. Details: The source filesystem "/run/archiso/bootmnt/arch/x86_64/airootfs.sfs" does not exist`, you should edit `/etc/calamares/modules/unpackfs.conf` file as `sudo` in the live environment by replacing it with the following content:
+```
+unpack:
+    -   source: "/run/media/liveuser/athena-2022.11.05/arch/x86_64/airootfs.sfs"
+        sourcefs: "squashfs"
+        destination: ""
+    -   source: "/run/media/liveuser/athena-2022.11.05/arch/boot/x86_64/vmlinuz-linux"
+        sourcefs: "file"
+        destination: "/boot/vmlinuz-linux"
+```
+Note that `athena-2022.11.05` must be changed according to the current label of your USB key.
+
 <br>
 
 <a id="config"></a>
