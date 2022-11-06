@@ -15,6 +15,7 @@ Athena OS
 
 <p align="center">
   <a href="https://discord.gg/GuDyREsNkj">
+    <img src="https://img.shields.io/badge/Follow%20us%20on%20Instagram-Ya?logo=instagram&logoColor=white&color=%23e95950&style=['for-the-badge']&url=https://www.instagram.com/athenaos_sec/">
     <img src="https://img.shields.io/badge/Join%20on%20Discord-Ya?logo=discord&logoColor=white&color=%235865F2&style=['for-the-badge']&url=https%3A%2F%2Fdiscord.gg%2FGuDyREsNkj">
   </a>
 </p>
@@ -514,19 +515,16 @@ Change your themes and icons by `gnome-tweaks`.
 * Ongoing implementation of different themes that can be chosen at time of the installation
 * Integration between ExploitDB and NIST Feed
 * Athena Docker Container
-* Removal of gnome applications and services not in scope of the system
-* Adding certification exam report templates
-* Reviewing system performance at low level
 * Implementation of Blue Team tools
-* Other spicy secret stuff
 
 <a id="techsupport"></a>
 ## ❓ Support
 If you detect any issues during your experience, please [open an issue](https://github.com/Athena-OS/athena-iso/issues/new/choose) on athena-iso GitHub repository. Current troubleshooting:
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 * During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
-* AkameGaKill theme cannot apply red theme for legacy windows due to GTK 4.0 files missing
-* Visual Code does not show close, maximize and minimize buttons due to a bug in Electron19 19.1.4
+* AkameGaKill theme cannot apply red theme for legacy windows due to GTK 4.0 files missing.
+* Visual Code does not show close, maximize and minimize buttons due to a bug in Electron19 19.1.4.
+* For Bare-Metal installation, read the "Installation" section.
 
 <a id="publ"></a>
 ## 📢 Publications
