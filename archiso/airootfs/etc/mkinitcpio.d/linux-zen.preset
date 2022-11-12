@@ -1,0 +1,8 @@
+# mkinitcpio preset file for the 'linux-zen' package on archiso
+
+PRESETS=('archiso')
+
+ALL_kver='/boot/vmlinuz-linux-zen'
+ALL_config='/etc/mkinitcpio.conf'
+
+archiso_image="/boot/initramfs-linux-zen.img"
