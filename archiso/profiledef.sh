@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="athena"
-iso_label="athena-os"
+iso_label="ATHENA-OS"
 iso_publisher="Athena <https://github.com/Athena-OS/athena-iso>"
 iso_application="Athena Live/Rescue CD"
 iso_version="2022.11.13"
