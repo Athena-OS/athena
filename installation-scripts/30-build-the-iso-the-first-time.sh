@@ -2,14 +2,13 @@
 #set -e
 ##################################################################################################################
 # Author	:	Erik Dubois
-# Website	:	https://www.erikdubois.online
+# Website	:	https://www.erikdubois.be
 # Website	:	https://www.arcolinux.info
 # Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
 # Website	:	https://www.arcolinuxb.com
 # Website	:	https://www.arcolinuxiso.com
 # Website	:	https://www.arcolinuxforum.com
-# Website	:	https://www.alci.online
 ##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -27,23 +26,31 @@ echo
 	#Let us set the desktop"
 	#First letter of desktop is small letter
 
-	#desktop="xfce"
-	#lightdmDesktop="xfce"
+	desktop="gnome"
+	dmDesktop="gnome"
 
-	#arcolinuxVersion='v21.03.1'
+	athenaVersion='v22.11.13'
 
-	#isoLabel='arcolinux-next-'$arcolinuxVersion'-x86_64.iso'
+	isoLabel='athena-'$athenaVersion'-x86_64.iso'
 
 	# setting of the general parameters
-	archisoRequiredVersion="archiso 64-1"
+	archisoRequiredVersion="archiso 68-1"
 	buildFolder=$HOME"/athena-build"
 	outFolder=$HOME"/Athena-Out"
 	archisoVersion=$(sudo pacman -Q archiso)
+	
+	# If you are ready to use your personal repo and personal packages
+	# https://arcolinux.com/use-our-knowledge-and-create-your-own-icon-theme-combo-use-github-to-saveguard-your-work/
+	# 1. set variable personalrepo to true in this file (default:false)
+	# 2. change the file personal-repo to reflect your repo
+	# 3. add your applications to the file packages-personal-repo.x86_64
+
+	personalrepo=false
 
 	echo "################################################################## "
-	#echo "Building the desktop                   : "$desktop
-	#echo "Building version                       : "$arcolinuxVersion
-	#echo "Iso label                              : "$isoLabel
+	echo "Building the desktop                   : "$desktop
+	echo "Building version                       : "$athenaVersion
+	echo "Iso label                              : "$isoLabel
 	echo "Do you have the right archiso version? : "$archisoVersion
 	echo "What is the required archiso version?  : "$archisoRequiredVersion
 	echo "Build folder                           : "$buildFolder
@@ -62,8 +69,6 @@ echo
 	echo "You need to install the correct version of Archiso"
 	echo "Use 'sudo downgrade archiso' to do that"
 	echo "or update your system"
-	echo "If a new archiso package comes in and you want to test if you can still build"
-	echo "the iso then change the version in line 37."
 	echo "###################################################################################################"
 	tput sgr0
 	fi
@@ -73,7 +78,7 @@ echo "################################################################## "
 tput setaf 2
 echo "Phase 2 :"
 echo "- Checking if archiso is installed"
-echo "- Saving current archiso version to archiso.md"
+echo "- Saving current archiso version to readme"
 echo "- Making mkarchiso verbose"
 tput sgr0
 echo "################################################################## "
@@ -105,7 +110,14 @@ echo
 			echo "################################################################"
 			trizen -S --noconfirm --needed --noedit $package
 
-		fi
+		elif pacman -Qi paru &> /dev/null; then
+
+                        echo "################################################################"
+                        echo "######### Installing with paru"
+                        echo "################################################################"
+                        paru -S --noconfirm --needed --noedit $package
+		
+                fi
 
 		# Just checking if installation was successful
 		if pacman -Qi $package &> /dev/null; then
@@ -125,8 +137,8 @@ echo
 	fi
 
 	echo
-	#echo "Saving current archiso version to archiso.md"
-	#sudo sed -i "s/\(^archiso-version=\).*/\1$archisoVersion/" ../archiso.md
+	echo "Saving current archiso version to readme"
+	sudo sed -i "s/\(^archiso-version=\).*/\1$archisoVersion/" ../archiso.readme
 	echo
 	echo "Making mkarchiso verbose"
 	sudo sed -i 's/quiet="y"/quiet="n"/g' /usr/bin/mkarchiso
@@ -147,93 +159,103 @@ echo
 	echo "Copying the Archiso folder to build work"
 	echo
 	mkdir $buildFolder
-	cp -r ../archiso $buildFolder/
+	cp -r ../archiso $buildFolder/archiso
 
-# echo
-# echo "################################################################## "
-# tput setaf 2
-# echo "Phase 4 :"
-# echo "- Deleting any files in /etc/skel"
-# echo "- Getting the last version of bashrc in /etc/skel"
-# echo "- Removing the old packages.x86_64 file from build folder"
-# echo "- Copying the new packages.x86_64 file to the build folder"
-# echo "- Changing group for polkit folder"
-# tput sgr0
-# echo "################################################################## "
-# echo
-
-#	echo "Deleting any files in /etc/skel"
-#	rm -rf $buildFolder/archiso/airootfs/etc/skel/.* 2> /dev/null
-#	echo
-
-#	echo "Getting the last version of bashrc in /etc/skel"
-#	echo
-#	wget https://raw.githubusercontent.com/arcolinux/arcolinux-root/master/etc/skel/.bashrc-latest -O $buildFolder/archiso/airootfs/etc/skel/.bashrc
-
-#	echo "Removing the old packages.x86_64 file from build folder"
-#	rm $buildFolder/archiso/packages.x86_64
-#	echo
-#	echo "Copying the new packages.x86_64 file to the build folder"
-#	cp -f ../archiso/packages.x86_64 $buildFolder/archiso/packages.x86_64
-#	echo
-#	echo "Changing group for polkit folder"
-#	sudo chgrp polkitd $buildFolder/archiso/airootfs/etc/polkit-1/rules.d
-#	#is not working so fixing this during calamares installation
-
-# echo
-# echo "################################################################## "
-# tput setaf 2
-# echo "Phase 5 : "
-# echo "- Changing all references"
-# echo "- Adding time to /etc/dev-rel"
-# tput sgr0
-# echo "################################################################## "
-# echo
-#
-# 	#Setting variables
-#
-# 	#profiledef.sh
-# 	oldname1='iso_name=arcolinux'
-# 	newname1='iso_name=arcolinux'
-#
-# 	oldname2='iso_label="arcolinux'
-# 	newname2='iso_label="arcolinux'
-#
-# 	oldname3='ArcoLinux'
-# 	newname3='ArcoLinux'
-#
-# 	#hostname
-# 	oldname4='ArcoLinux'
-# 	newname4='ArcoLinux'
-#
-# 	#lightdm.conf user-session
-# 	oldname5='user-session=xfce'
-# 	newname5='user-session='$lightdmDesktop
-#
-# 	#lightdm.conf autologin-session
-# 	oldname6='#autologin-session='
-# 	newname6='autologin-session='$lightdmDesktop
-#
-# 	echo "Changing all references"
-# 	echo
-# 	sed -i 's/'$oldname1'/'$newname1'/g' $buildFolder/archiso/profiledef.sh
-# 	sed -i 's/'$oldname2'/'$newname2'/g' $buildFolder/archiso/profiledef.sh
-# 	sed -i 's/'$oldname3'/'$newname3'/g' $buildFolder/archiso/airootfs/etc/dev-rel
-# 	sed -i 's/'$oldname4'/'$newname4'/g' $buildFolder/archiso/airootfs/etc/hostname
-# 	sed -i 's/'$oldname5'/'$newname5'/g' $buildFolder/archiso/airootfs/etc/lightdm/lightdm.conf
-# 	sed -i 's/'$oldname6'/'$newname6'/g' $buildFolder/archiso/airootfs/etc/lightdm/lightdm.conf
-#
-# 	echo "Adding time to /etc/dev-rel"
-# 	date_build=$(date -d now)
-# 	echo "Iso build on : "$date_build
-# 	sudo sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/archiso/airootfs/etc/dev-rel
 echo
 echo "################################################################## "
+tput setaf 2
+echo "Phase 4 :"
+echo "- Deleting any files in /etc/skel"
+echo "- Getting the last version of bashrc in /etc/skel"
+echo "- Removing the old packages.x86_64 file from build folder"
+echo "- Copying the new packages.x86_64 file to the build folder"
+echo "- Add our own personal repo + add your packages to packages-personal-repo.x86_64"
+tput sgr0
+echo "################################################################## "
+echo
+
+	echo "Deleting any files in /etc/skel"
+	rm -rf $buildFolder/archiso/airootfs/etc/skel/.* 2> /dev/null
+	echo
+
+	echo "Getting the last version of bashrc in /etc/skel"
+	echo
+	wget https://raw.githubusercontent.com/Athena-OS/athena-iso/main/archiso/airootfs/etc/skel/.bashrc -O $buildFolder/archiso/airootfs/etc/skel/.bashrc
+
+	echo "Removing the old packages.x86_64 file from build folder"
+	rm $buildFolder/archiso/packages.x86_64
+	#rm $buildFolder/archiso/packages-personal-repo.x86_64
+	echo
+
+	echo "Copying the new packages.x86_64 file to the build folder"
+	cp -f ../archiso/packages.x86_64 $buildFolder/archiso/packages.x86_64
+	echo
+
+	if [ $personalrepo == true ]; then
+		echo "Adding packages from your personal repository - packages-personal-repo.x86_64"
+		printf "\n" | sudo tee -a $buildFolder/archiso/packages.x86_64
+		cat ../archiso/packages-personal-repo.x86_64 | sudo tee -a $buildFolder/archiso/packages.x86_64
+	fi
+
+	if [ $personalrepo == true ]; then
+		echo "Adding our own repo to /etc/pacman.conf"
+		printf "\n" | sudo tee -a $buildFolder/archiso/pacman.conf
+		printf "\n" | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+		cat personal-repo | sudo tee -a $buildFolder/archiso/pacman.conf
+		cat personal-repo | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+	fi
+
+echo
+echo "################################################################## "
+tput setaf 2
+echo "Phase 5 : "
+echo "- Changing all references"
+echo "- Adding time to /etc/dev-rel"
+tput sgr0
+echo "################################################################## "
+echo
+
+	#Setting variables
+
+	#profiledef.sh
+	oldname1='iso_name="athena"'
+	newname1='iso_name="athena"'
+
+	oldname2='iso_label="athena"'
+	newname2='iso_label="athena"'
+
+	oldname3='Athena'
+	newname3='Athena'
+
+	#hostname
+	oldname4='Athena'
+	newname4='Athena'
+
+	#sddm.conf user-session
+	oldname5='Session=gnome'
+	newname5='Session='$dmDesktop
+
+	echo "Changing all references"
+	echo
+	sed -i 's/'$oldname1'/'$newname1'/g' $buildFolder/archiso/profiledef.sh
+	sed -i 's/'$oldname2'/'$newname2'/g' $buildFolder/archiso/profiledef.sh
+	sed -i 's/'$oldname3'/'$newname3'/g' $buildFolder/archiso/airootfs/etc/dev-rel
+	sed -i 's/'$oldname4'/'$newname4'/g' $buildFolder/archiso/airootfs/etc/hostname
+	#sed -i 's/'$oldname5'/'$newname5'/g' $buildFolder/archiso/airootfs/etc/sddm.conf
+
+	echo "Adding time to /etc/dev-rel"
+	date_build=$(date -d now)
+	echo "Iso build on : "$date_build
+	sudo sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/archiso/airootfs/etc/dev-rel
+
+
+echo
+echo "###########################################################"
 tput setaf 2
 echo "Phase 6 :"
 echo "- Cleaning the cache from /var/cache/pacman/pkg/"
 tput sgr0
-echo "################################################################## "
+echo "###########################################################"
 echo
 
 	echo "Cleaning the cache from /var/cache/pacman/pkg/"
@@ -254,37 +276,35 @@ echo
 
 
 
-# echo
-# echo "###################################################################"
-# tput setaf 2
-# echo "Phase 8 :"
-# echo "- Creating checksums"
-# echo "- Copying pgklist"
-# tput sgr0
-# echo "###################################################################"
-# echo
-#
-# 	cd $outFolder
-#
-# 	echo "Creating checksums for : "$isoLabel
-# 	echo "##################################################################"
-# 	echo
-# 	echo "Building sha1sum"
-# 	echo "########################"
-# 	sha1sum $isoLabel | tee $isoLabel.sha1
-# 	echo "Building sha256sum"
-# 	echo "########################"
-# 	sha256sum $isoLabel | tee $isoLabel.sha256
-# 	echo "Building md5sum"
-# 	echo "########################"
-# 	md5sum $isoLabel | tee $isoLabel.md5
-# 	echo
- 	echo "Moving pkglist.x86_64.txt"
- 	echo "########################"
-	rename=$(date +%Y-%m-%d)
- 	cp $buildFolder/iso/arch/pkglist.x86_64.txt  $outFolder/archlinux-$rename-pkglist.txt
+echo
+echo "###################################################################"
+tput setaf 2
+echo "Phase 8 :"
+echo "- Creating checksums"
+echo "- Copying pgklist"
+tput sgr0
+echo "###################################################################"
+echo
 
+	cd $outFolder
 
+	echo "Creating checksums for : "$isoLabel
+	echo "##################################################################"
+	echo
+	echo "Building sha1sum"
+	echo "########################"
+	sha1sum $isoLabel | tee $isoLabel.sha1
+	echo "Building sha256sum"
+	echo "########################"
+	sha256sum $isoLabel | tee $isoLabel.sha256
+	echo "Building md5sum"
+	echo "########################"
+	md5sum $isoLabel | tee $isoLabel.md5
+	echo
+	echo "Moving pkglist.x86_64.txt"
+	echo "########################"
+	cp $buildFolder/iso/arch/pkglist.x86_64.txt  $outFolder/$isoLabel".pkglist.txt"
+	
 echo
 echo "##################################################################"
 tput setaf 2
@@ -294,8 +314,8 @@ tput sgr0
 echo "################################################################## "
 echo
 
-	#echo "Deleting the build folder if one exists - takes some time"
-	#[ -d $buildFolder ] && sudo rm -rf $buildFolder
+	echo "Deleting the build folder if one exists - takes some time"
+	[ -d $buildFolder ] && sudo rm -rf $buildFolder
 
 echo
 echo "##################################################################"
