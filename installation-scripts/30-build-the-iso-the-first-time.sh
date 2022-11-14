@@ -115,7 +115,7 @@ echo
                         echo "################################################################"
                         echo "######### Installing with paru"
                         echo "################################################################"
-                        paru -S --noconfirm --needed --noedit $package
+                        paru -S --noconfirm --needed $package
 		
                 fi
 
