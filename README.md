@@ -121,6 +121,12 @@ Screenshots:
 ![image](https://user-images.githubusercontent.com/83867734/200061914-0343c02f-9dd7-499b-8c0c-61b05bc6bc4f.png)
 
 ![image](https://user-images.githubusercontent.com/83867734/200062602-8a4c3ed4-8d9f-45b0-af73-b54c72f67897.png)
+
+### Known Third-Party Issues
+
+* VSCode does not show close, maximize and minimize buttons due to some bug related to Electron19. Bug already reported: microsoft/vscode#161586
+  * Workaround: `sudo downgrade electron19` and select version `19.0.13`
+
 ## Contents
 
 - [🎉 Introduction](#intro)
