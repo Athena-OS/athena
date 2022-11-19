@@ -500,7 +500,6 @@ Change your themes and icons by `gnome-tweaks`.
 
 | Command | Description |
 | ------- | ----------- |
-| `bastet` | Tetris clone which tries to give you the worst possible block. |
 | `cmatrix` | Scrolling Matrix like screen in the terminal. |
 | `cowsay` | Generate an ASCII picture of a cow saying something provided by the user. |
 | `devil` | Quotes by devil eyes. |
