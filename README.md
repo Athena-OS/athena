@@ -126,6 +126,29 @@ Screenshots:
 
 * VSCode does not show close, maximize and minimize buttons due to some bug related to Electron19. Bug already reported: microsoft/vscode#161586
   * Workaround: `sudo downgrade electron19` and select version `19.0.13`
+* Evil-WinRM does not work and produces the following output:
+  ```
+  Error: An error of type OpenSSL::Digest::DigestError happened, message is Digest initialization failed: initialization error
+
+  Error: Exiting with code 1
+  ```
+  * Workaround: edit `/etc/ssl/openssl.cnf` by adding `legacy = legacy_sect` under `default = default_sect` in order to appear as:
+    ```
+    [openssl_init]
+    providers = provider_sect
+
+    # List of providers to load
+    [provider_sect]
+    default = default_sect
+    legacy = legacy_sect
+    ```
+    and by uncommenting `#activate = 1` under `[default_sect]` and adding `[legacy_sect]` and `activate = 1` under them in order to appear as:
+    ```
+    [default_sect]
+    activate = 1
+    [legacy_sect]
+    activate = 1
+    ```
 
 ## Contents
 
@@ -177,20 +200,6 @@ Currently VirtualBox is affected by a bug is enabling 3D Acceleration, so keep i
 It is strongly suggested to keep it disabled.
 
 When you mount the ISO to your pendrive or your Virtual Machine and boot up Athena, you will meet Athena Calamares Installer, that allows you to customise your future Athena OS as you wish.
-
-**Bare Metal Installation**
-
-In case you are installing Athena in Bare Metal by a USB stick, at the boot the mount point will be different than the one set during an installation on a VM with an attached ISO. For avoiding errors like `Bad unpackfs configuration. Details: The source filesystem "/run/archiso/bootmnt/arch/x86_64/airootfs.sfs" does not exist`, you should edit `/etc/calamares/modules/unpackfs.conf` file as `sudo` in the live environment by replacing it with the following content:
-```
-unpack:
-    -   source: "/run/media/liveuser/athena-2022.11.05/arch/x86_64/airootfs.sfs"
-        sourcefs: "squashfs"
-        destination: ""
-    -   source: "/run/media/liveuser/athena-2022.11.05/arch/boot/x86_64/vmlinuz-linux"
-        sourcefs: "file"
-        destination: "/boot/vmlinuz-linux"
-```
-Note that `athena-2022.11.05` must be changed according to the current label of your USB key.
 
 <br>
 
@@ -531,7 +540,6 @@ If you detect any issues during your experience, please [open an issue](https://
 * During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
 * AkameGaKill theme cannot apply red theme for legacy windows due to GTK 4.0 files missing.
 * Visual Code does not show close, maximize and minimize buttons due to a bug in Electron19 19.1.4.
-* For Bare-Metal installation, read the "Installation" section.
 
 <a id="publ"></a>
 ## 📢 Publications
