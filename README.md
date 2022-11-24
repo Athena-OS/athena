@@ -126,7 +126,7 @@ Screenshots:
 
 * VSCode does not show close, maximize and minimize buttons due to some bug related to Electron19. Bug already reported: microsoft/vscode#161586
   * Workaround: `sudo downgrade electron19` and select version `19.0.13`
-* Evil-WinRM does not work and produces the following output:
+* Evil-WinRM does not currently work in all Arch-based distros and produces the following output:
   ```
   Error: An error of type OpenSSL::Digest::DigestError happened, message is Digest initialization failed: initialization error
 
