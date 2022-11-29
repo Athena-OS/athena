@@ -184,7 +184,7 @@ Let's give a detailed look on Athena!
 <a id="requirement"></a>
 ## ⚓ System Requirements
 Recommended system requirements for smooth usage in Athena are:
-* 50 GB of hard disk space, SSD preferred
+* 20 GB of hard disk space, SSD preferred
 * At least 4GB of RAM
 * Processor with at least two cores
 
