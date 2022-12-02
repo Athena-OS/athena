@@ -470,6 +470,7 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
 | `bfetch` | SuperB general-purpose fetch displayer. |
+| `bless` | High-quality, full-featured hex editor. |
 | `code` | Core engine of Visual Studio Code. |
 | `commentor` | Extract all comments from the specified URL resource. |
 | `eog` | Image viewer. |
