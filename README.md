@@ -343,10 +343,11 @@ For playing Active HTB Machines, use PWNage Menu. For playing Retired Machines, 
 
 Firefox ESR has been modified in order to integrate at the installation time the addons you need for your web application pentesting activity. The preinstalled addons are:
 * Cookie Quick Manager
-* Dark Reader
 * FoxyProxy Standard
+* Hack-Tools
 * HacKontext
 * HTTPS Everywhere
+* Penetration Testing Kit
 * Privacy 
 * uBlock Origin
 * Wappalyzer
@@ -486,11 +487,13 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | `nano` | Simple terminal-based text editor. |
 | `nautilus` | File Manager. |
 | `neofetch` | CLI system information tool written in BASH. |
+| `orca` | Screen reader that provides access to the graphical desktop via speech and refreshable braille. |
 | `pacman` | Arch Linux package manager. |
 | `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
 | `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
 | `tree` | Recursive directory listing program that produces a depth indented listing of files. |
 | `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
+| `vnstat` | Console-based network traffic monitor. |
 | `xcp` | An extended `cp` command. |
 | `z` | A smarter `cd` command for your terminal. |
 
