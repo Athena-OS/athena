@@ -124,6 +124,11 @@ Screenshots:
 
 ### Known Third-Party Issues
 
+* On Bloodhound, when neo4j database is run by `sudo neo4j console`, we can get some errors like:
+  ```
+  Exception in thread "main" java.lang.LinkageError: Cannot to link java.nio.DirectByteBuffer
+  ```
+  For solving it, just run `sudo archlinux-java set java-11-openjdk` and re-run `sudo neo4j console`. A Pull Request has been opened on BlackArch repository for solving this issue: https://github.com/BlackArch/blackarch/pull/3619
 * VSCode does not show close, maximize and minimize buttons due to some bug related to Electron19. Bug already reported: microsoft/vscode#161586
   * Workaround: `sudo downgrade electron19` and select version `19.0.13`. The issue will be solved on December when the new VSCode version will be released.
 * Evil-WinRM does not currently work in all Arch-based distros and produces the following output:
