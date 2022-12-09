@@ -130,7 +130,7 @@ Screenshots:
   ```
   For solving it, just run neo4j server by `systemctl start neo4j`. You can check the proof that the server is correctly running by `systemctl status neo4j`.
 * VSCode does not show close, maximize and minimize buttons due to some bug related to Electron19. Bug already reported: microsoft/vscode#161586
-  * Workaround: `sudo downgrade electron19` and select version `19.0.13`. The issue will be solved on December when the new VSCode version will be released.
+  * Issue solved by VSCode Team: just update it `sudo pacman -Syu`.
 * Evil-WinRM does not currently work in all Arch-based distros and produces the following output:
   ```
   Error: An error of type OpenSSL::Digest::DigestError happened, message is Digest initialization failed: initialization error
