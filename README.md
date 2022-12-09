@@ -154,6 +154,8 @@ Screenshots:
     [legacy_sect]
     activate = 1
     ```
+* Zsteg does not show the entire output when run `zsteg -a image.png`. It occurs due to `file` tool bug. In the next `file` release the bug will be fixed.
+  * Workaround: run  `sudo downgrade file` and select `5.39`.
 
 ## Contents
 
