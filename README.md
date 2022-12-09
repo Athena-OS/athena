@@ -147,7 +147,7 @@ Screenshots:
     default = default_sect
     legacy = legacy_sect
     ```
-    and by uncommenting `#activate = 1` under `[default_sect]` and adding `[legacy_sect]` and `activate = 1` under them in order to appear as:
+    and by uncommenting `# activate = 1` under `[default_sect]` and adding `[legacy_sect]` and `activate = 1` under them in order to appear as:
     ```
     [default_sect]
     activate = 1
