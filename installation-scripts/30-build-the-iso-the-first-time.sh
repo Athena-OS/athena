@@ -281,7 +281,7 @@ echo "###################################################################"
 tput setaf 2
 echo "Phase 8 :"
 echo "- Creating checksums"
-echo "- Copying pgklist"
+echo "- Copying pkglist"
 tput sgr0
 echo "###################################################################"
 echo
