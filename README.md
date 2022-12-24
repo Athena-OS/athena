@@ -123,7 +123,23 @@ Screenshots:
 ![image](https://user-images.githubusercontent.com/83867734/200062602-8a4c3ed4-8d9f-45b0-af73-b54c72f67897.png)
 
 ### Known Third-Party Issues
+* Currently, due to some Arch Linux PGP key issue, the Athena installation will fail for the current release. It will be solved in the next release that contains a logic to autofix repository key issues.
+  * Run the ISO but dont run the Installation. Then:
+    ```
+    sudo nano /etc/calamares/modules/shellprocess-before.conf
+    ```
+    At the end of the file, add the following lines:
+    ```
+    - command: "pacman -Syy"
+    - command: "pacman -S --noconfirm archlinux-keyring"
+    - command: "pacman-key --init"
+    - command: "pacman-key --populate"
+    ```
+    Note:  keep "command" rows aligned with the already existing ones.
+    Save the file, close it.
+    Run the installer
 
+    Note that, if you choose Sweet Dark as theme, you need to do some small manual fix because I updated the Sweet Dark theme package to be compliant with the next release automatically. It means you need to open GNOME Tweaks from application, go to Appearance, go to Legacy Applications and select Sweet-Dark. 
 * On Bloodhound, when neo4j database is run by `sudo neo4j console`, we can get some errors like:
   ```
   Exception in thread "main" java.lang.LinkageError: Cannot to link java.nio.DirectByteBuffer
