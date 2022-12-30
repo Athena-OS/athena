@@ -17,8 +17,8 @@ Athena OS
   <a href="https://www.instagram.com/athenaos_sec">
     <img src="https://img.shields.io/badge/Follow%20us%20on%20Instagram-Ya?logo=instagram&logoColor=white&color=%23e95950&style=['for-the-badge']&url=https://www.instagram.com/athenaos_sec">
     </a>
-  <a href="https://discord.gg/GuDyREsNkj">
-    <img src="https://img.shields.io/badge/Join%20on%20Discord-Ya?logo=discord&logoColor=white&color=%235865F2&style=['for-the-badge']&url=https%3A%2F%2Fdiscord.gg%2FGuDyREsNkj">
+  <a href="https://discord.gg/DNjvQkb5Ad">
+    <img src="https://img.shields.io/badge/Join%20on%20Discord-Ya?logo=discord&logoColor=white&color=%235865F2&style=['for-the-badge']&url=https://discord.gg/DNjvQkb5Ad">
   </a>
 </p>
 
