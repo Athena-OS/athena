@@ -34,7 +34,7 @@ echo
 	isoLabel='athena-'$athenaVersion'-x86_64.iso'
 
 	# setting of the general parameters
-	archisoRequiredVersion="archiso 68-1"
+	archisoRequiredVersion="archiso 69-1"
 	buildFolder=$HOME"/athena-build"
 	outFolder=$HOME"/Athena-Out"
 	archisoVersion=$(sudo pacman -Q archiso)
@@ -94,30 +94,30 @@ echo
 			echo "Archiso is already installed"
 
 	else
-
+			sudo pacman -S --noconfirm archiso
 		#checking which helper is installed
-		if pacman -Qi yay &> /dev/null; then
+		#if pacman -Qi yay &> /dev/null; then
 
-			echo "################################################################"
-			echo "######### Installing with yay"
-			echo "################################################################"
-			yay -S --noconfirm $package
+		#	echo "################################################################"
+		#	echo "######### Installing with yay"
+		#	echo "################################################################"
+		#	yay -S --noconfirm $package
 
-		elif pacman -Qi trizen &> /dev/null; then
+		#elif pacman -Qi trizen &> /dev/null; then
 
-			echo "################################################################"
-			echo "######### Installing with trizen"
-			echo "################################################################"
-			trizen -S --noconfirm --needed --noedit $package
+		#	echo "################################################################"
+		#	echo "######### Installing with trizen"
+		#	echo "################################################################"
+		#	trizen -S --noconfirm --needed --noedit $package
 
-		elif pacman -Qi paru &> /dev/null; then
+		#elif pacman -Qi paru &> /dev/null; then
 
-                        echo "################################################################"
-                        echo "######### Installing with paru"
-                        echo "################################################################"
-                        paru -S --noconfirm --needed $package
+        #                echo "################################################################"
+        #                echo "######### Installing with paru"
+        #                echo "################################################################"
+        #                paru -S --noconfirm --needed $package
 		
-                fi
+        #        fi
 
 		# Just checking if installation was successful
 		if pacman -Qi $package &> /dev/null; then
