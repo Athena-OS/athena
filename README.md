@@ -555,7 +555,7 @@ Change your themes and icons by `gnome-tweaks`.
 
 <a id="shots"></a>
 ## 📷 Screenshots
-![screenshots](https://user-images.githubusercontent.com/83867734/194702590-62858690-e5d5-462d-871f-9b89eb30f227.gif)
+![athena-themes](https://user-images.githubusercontent.com/83867734/211237687-e238ad4c-8793-45df-9eb7-944b6cc98520.gif)
 <br>
 <a id="map"></a>
 ## 🛣️ Roadmap
