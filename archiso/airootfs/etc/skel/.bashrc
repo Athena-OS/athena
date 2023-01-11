@@ -1,5 +1,5 @@
 ### EXPORT ###
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 export VISUAL='nano'
 export HISTCONTROL=ignoreboth:erasedups:ignorespace
 HISTSIZE=100000
