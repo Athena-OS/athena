@@ -75,7 +75,7 @@ Wiki: https://github.com/Athena-OS/athena-iso/wiki
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-**Athena OS**, code name **"Parthenos"** (ancient Greek: "Virgin"), will be released in the next days, and comes with several important fixes and new implementations, and carries the new **GNOME 43**!
+**Athena OS**, code name **"Parthenos"** (ancient Greek: "Virgin"), will be released in the next days, and comes with several important fixes and new implementations!
 
 **Athena Parthenos** will provide:
 * **Hacking roles**: added new roles for your hacking activity:
