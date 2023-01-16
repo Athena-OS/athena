@@ -75,58 +75,41 @@ Wiki: https://github.com/Athena-OS/athena-iso/wiki
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-**Athena OS**, code name **"Nike"** (ancient Greek: "Victory"), comes with several important fixes and new implementations, and carries the new **GNOME 43**!
+**Athena OS**, code name **"Parthenos"** (ancient Greek: "Virgin"), will be released in the next days, and comes with several important fixes and new implementations, and carries the new **GNOME 43**!
 
-**Athena Nike** will provide:
-* **Hacking roles**: you can choose among several roles for your hacking activity:
-  * Bug Bounty Hunter
-  * Cracker
-  * Enthusiast Student
-  * Forensic Analyst
-  * Malware Analyst
-  * Mobile Analyst
-  * Network Analyst
-  * Red Teamer
-  * Web Pentester 
-* Hacking **environment variable** viewer: you can easily list the set of environment variables you need for your activity
-* **Autotiling** feature: you can now tile windows by Autotiling icon on the top-right of the screen
-* `osert` tool: Markdown Templates for Offensive Security exam reports. Just get it by pacman!
-* **BASH** and **ZSH** as shells to be chosen
-* GRUB Athena background
-* A lot of **security resources** as bookmarks in Firefox ESR
-* **Hack-Tools** extension in Firefox ESR
-* `CTRL+ALT+T` for invoking the terminal, `SUPER+D` for minimizing all the windows, `SUPER+E` for opening the Home folder
-* Snapper for creating **snapshots** of your system for recovering purpose
-* Octopi as **graphical package manager**
-
-Furthermore, heavy changes come at system level for improving the performance of the system:
-* Migration to **GNOME 43**
-* **Firefox run on RAM** for speeding up the performance
-* **Parallel** code compilation
-* Building from **files in RAM**
-* **OOM** handling
-* Process **priority** managers
-  * Ananicy
-  * IRQBalance
-* Improved **kernel** characteristics:
-  * Dirty Ratio
-  * Dirty Background Ratio
-  * OOM Dump Tasks
-  * OOM Kill Allocating Task
-  * Overcommit Memory
-  * Swappiness
-  * VFS Cache Pressure
-  * CFS zen tweaks for non-zen kernels
+**Athena Parthenos** will provide:
+* **Hacking roles**: added new roles for your hacking activity:
+  * Black Hat Omniscient
+  * OSINT Specialist
+* Implemented **Tool Recipe** in Athena Welcome for checking which are the utility tools installed in Athena
+* Implemented **Athena Upgrade** in Athena Welcome for upgrading the system to the next build
+* Implemented OpenAI ChatGPT Desktop client
+* Implemented **NVIDIA** as OpenGL Renderer for Baremetal installation
+* **Penetration Testing Kit** added on the browser
+* NetworkManager integrated with **OpenVPN**
+* Implemented **Orca** on the target system to increase accessibility
+* Implemented **vnstat** as network control monitoring
+* Integrated **Hack The Box VIP** contents
+* Updated **HTB Tools** for managing API key, shell prompt and target hosts
+* Implemented browser choice between **Firefox** and **Brave**
+* Implemented **Neovim**
+* Implemented **mirrorlist** for BlackArch repository
+* Implemented **NightTab** on the browser
+* Implemented **Note-Taking app** choice in Calamares (Notion App Enhanced, CherryTree, Obsidian)
+* Athena Theme Tweak now manages the set of the browser icon in PenTOXIC menu
+* Implemented **SOF Firmware** and **ALSA utils**
+* Added **Timeline Project**
+* **Keyring fix** at installation time
   
 Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
 
 Screenshots:
 
-![image](https://user-images.githubusercontent.com/83867734/200061914-0343c02f-9dd7-499b-8c0c-61b05bc6bc4f.png)
+![image](https://user-images.githubusercontent.com/83867734/212759455-401edb7b-c812-491a-9fca-e7ff7b16ebf6.png)
 
-![image](https://user-images.githubusercontent.com/83867734/200062602-8a4c3ed4-8d9f-45b0-af73-b54c72f67897.png)
+![image](https://user-images.githubusercontent.com/83867734/212759643-10bcfcb7-91ea-40f7-b478-7f4d7750d171.png)
 
-### Known Third-Party Issues
+<!--### Known Third-Party Issues
 * Currently, due to some Arch Linux PGP key issue, the Athena installation will fail for the current release. It will be solved in the next release that contains a logic to autofix repository key issues.
   * Run the ISO but dont run the Installation. Then:
     ```
@@ -143,40 +126,8 @@ Screenshots:
     Save the file, close it.
     Run the installer
 
-    Note that, if you choose Sweet Dark as theme, you need to do some small manual fix because I updated the Sweet Dark theme package to be compliant with the next release automatically. It means you need to open GNOME Tweaks from application, go to Appearance, go to Legacy Applications and select Sweet-Dark. 
-* On Bloodhound, when neo4j database is run by `sudo neo4j console`, we can get some errors like:
-  ```
-  Exception in thread "main" java.lang.LinkageError: Cannot to link java.nio.DirectByteBuffer
-  ```
-  For solving it, just run neo4j server by `systemctl start neo4j`. You can check the proof that the server is correctly running by `systemctl status neo4j`.
-* VSCode does not show close, maximize and minimize buttons due to some bug related to Electron19. Bug already reported: microsoft/vscode#161586
-  * Issue solved by VSCode Team: just update it `sudo pacman -Syu`.
-* Evil-WinRM does not currently work in all Arch-based distros and produces the following output:
-  ```
-  Error: An error of type OpenSSL::Digest::DigestError happened, message is Digest initialization failed: initialization error
-
-  Error: Exiting with code 1
-  ```
-  * Workaround: edit `/etc/ssl/openssl.cnf` by adding `legacy = legacy_sect` under `default = default_sect` in order to appear as:
-    ```
-    [openssl_init]
-    providers = provider_sect
-
-    # List of providers to load
-    [provider_sect]
-    default = default_sect
-    legacy = legacy_sect
-    ```
-    and by uncommenting `# activate = 1` under `[default_sect]` and adding `[legacy_sect]` and `activate = 1` under them in order to appear as:
-    ```
-    [default_sect]
-    activate = 1
-    [legacy_sect]
-    activate = 1
-    ```
-* Zsteg does not show the entire output when run `zsteg -a image.png`. It occurs due to `file` tool bug. In the next `file` release the bug will be fixed.
-  * Workaround: run  `sudo downgrade file` and select `5.39`.
-
+    Note that, if you choose Sweet Dark as theme, you need to do some small manual fix because I updated the Sweet Dark theme package to be compliant with the next release automatically. It means you need to open GNOME Tweaks from application, go to Appearance, go to Legacy Applications and select Sweet-Dark.-->
+    
 ## Contents
 
 - [🎉 Introduction](#intro)
@@ -211,7 +162,7 @@ Let's give a detailed look on Athena!
 <a id="requirement"></a>
 ## ⚓ System Requirements
 Recommended system requirements for smooth usage in Athena are:
-* 20 GB of hard disk space, SSD preferred
+* 30 GB of hard disk space, SSD preferred
 * At least 4GB of RAM
 * Processor with at least two cores
 
@@ -235,11 +186,11 @@ When you mount the ISO to your pendrive or your Virtual Machine and boot up Athe
 
 ### Latest Release
 After the installation and the first boot:
-* open Kitty terminal, run `htb-update` and copy and paste your Hack The Box API key.
+* open Athena Welcome, clck on `HTB Update` and copy and paste your Hack The Box API key.
 
 The Hack The Box API Key can be retrieved by your Hack The Box profile settings -> "Create App Token".
 
-Until your API key will be valid, your system will update the Hack The Box contents automatically for you at each login or when `htb-update` is run.
+Remember to update Hack The Box machines by the `HTB Update` button periodically.
 
 <br>
 
@@ -351,6 +302,8 @@ PWNage Menu allows you to access quickly to the main hacking platforms for learn
 Cannot you wait for opening browser and accessing to Hack The Box website? Athena gives you the possibility to play Hack The Box machines directly on your Operating System environment in a quick and comfortable manner. Athena offers:
 * Connect/Disconnect to/from Hack The Box VPN servers
 * Play any active free machine you wish
+* Play Starting Point machines
+* Play Retired machines
 * Reset the active machine
 * Stop any active machine
 * Submit a flag and write a review about your hacking experience!
@@ -364,11 +317,12 @@ For playing Active HTB Machines, use PWNage Menu. For playing Retired Machines, 
 
 <br>
 
-### Firefox ESR Hack Mode
+### Browser Hack Mode
 
+<img src="https://user-images.githubusercontent.com/83867734/212761188-a99fb192-87a3-4ad4-8393-9db5b97761ae.png" align=right width=100px>
 <img src="https://user-images.githubusercontent.com/83867734/177051677-d8a7efa4-cfb3-407e-8569-195ba8a483b3.png" align=right width=100px>
 
-Firefox ESR has been modified in order to integrate at the installation time the addons you need for your web application pentesting activity. The preinstalled addons are:
+Firefox ESR and Brave have been modified in order to integrate at the installation time the addons you need for your web application pentesting activity. The preinstalled addons are:
 * Cookie Quick Manager
 * FoxyProxy Standard
 * Hack-Tools
@@ -429,7 +383,7 @@ Keybindings in Athena OS for speeding up your work.
 | Keybind | Description |
 | ------- | ----------- |
 | `CTRL+SPACE` | PenTOXIC menu |
-| `CTRL+TAB` | PWNage menu |
+| `CTRL+SHIFT+SPACE` | PWNage menu |
 | `Super` | Multi-desktop environment |
 | `Super+Super` | Switch between desktop and "Show Applications" menu |
 | `Super+L` | Screen Lock |
@@ -493,20 +447,28 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 
 | Command | Description |
 | ------- | ----------- |
+| `asciinema` | Record and share your terminal sessions. |
 | `athena-theme-tweak` | Switch to different Athena themes. |
 | `athena-welcome` | Welcome application that allows main security tools installation and mirrorlist update. |
 | `bashtop` | Resource monitor that shows usage and stats for processor, memory, disks, network and processes. |
 | `bat` | A `cat` clone with syntax highlighting and Git integration. |
 | `bfetch` | SuperB general-purpose fetch displayer. |
 | `bless` | High-quality, full-featured hex editor. |
+| `btrfs-assistant` | GUI management tool to make managing a Btrfs filesystem easier. |
+| `chat-gpt` | ChatGPT Desktop application. |
 | `code` | Core engine of Visual Studio Code. |
 | `commentor` | Extract all comments from the specified URL resource. |
+| `convert` | Convert between image formats as well as resize an image, blur, crop, despeckle, dither, and much more. |
+| `discord` | Cross-platform, all-in-one voice and text chat application. |
+| `downgrade` | Downgrade one (or multiple) packages by using the pacman cache or the Arch Rollback Machine. |
 | `eog` | Image viewer. |
 | `fish` | A smart and user-friendly command line shell. |
 | `git` | Fast, scalable, distributed revision control system. |
 | `gnome-extensions` | Gnome Extension manager. |
 | `gnome-tweaks` | Configure looks and functionality of your desktop. |
+| `gparted` | GNOME Partition Editor for creating, reorganizing, and deleting disk partitions. |
 | `htb-play` | Select any Hack The Box you want to play. |
+| `htb-update` | Set, update or delete your Hack The Box App Token and update Hack The Box machine data. |
 | `kitty` | The fast, feature-rich, GPU based terminal emulator. |
 | `la` | An `lsd -a` alias. |
 | `ll` | An `lsd -alFh` alias. |
@@ -514,9 +476,16 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | `nano` | Simple terminal-based text editor. |
 | `nautilus` | File Manager. |
 | `neofetch` | CLI system information tool written in BASH. |
+| `nist-feed` | NIST notifier about the newest published CVEs according to your filters. |
+| `nvim` | Vim-fork focused on extensibility and usability. |
+| `octopi` | A powerful Pacman (Package Manager) front end using Qt libs. |
 | `orca` | Screen reader that provides access to the graphical desktop via speech and refreshable braille. |
 | `pacman` | Arch Linux package manager. |
+| `pactree` | Package dependency tree viewer. |
+| `pfetch` | A pretty system information tool written in POSIX sh. |
 | `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
+| `pywhat` | Identify anything. It easily lets you identifying emails, IP addresses, and more. |
+| `timeline` | Cross-platform application for displaying and navigating events on a timeline. |
 | `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
 | `tree` | Recursive directory listing program that produces a depth indented listing of files. |
 | `vim` | Highly configurable text editor built to make creating and changing any kind of text very efficient. |
@@ -548,6 +517,7 @@ Change your themes and icons by `gnome-tweaks`.
 | `lolcat` | Concatenate files, or standard input, to standard output, and add rainbow coloring to it. |
 | `myman` | Text-mode Pac-Man. |
 | `nyancat` | Animated, color, ANSI-text program that renders a loop of the classic Nyan Cat animation. |
+| `sl` | A steam locomotive running across your screen. Next time write `ls` in a good manner. |
 | `toilet` | Print text using large characters made of smaller characters. |
 | `train` | Choo-choo! |
 
@@ -570,7 +540,11 @@ If you detect any issues during your experience, please [open an issue](https://
 * After the first login of Discord App, at the next access on the application, if it freezes during the starting, reboot the system and the issue will be fixed.
 * During the installation or usage, if you are getting issues related to the blackarch.db retrieving packages or keys, check for any firewall your traffic is routed through and whitelist `blackarch.org`.
 * AkameGaKill theme cannot apply red theme for legacy windows due to GTK 4.0 files missing.
-* Visual Code does not show close, maximize and minimize buttons due to a bug in Electron19 19.1.4.
+* On Bloodhound, when neo4j database is run by `sudo neo4j console`, we can get some errors like:
+  ```
+  Exception in thread "main" java.lang.LinkageError: Cannot to link java.nio.DirectByteBuffer
+  ```
+  For solving it, just run neo4j server by `systemctl start neo4j`. You can check the proof that the server is correctly running by `systemctl status neo4j`.
 
 <a id="publ"></a>
 ## 📢 Publications
