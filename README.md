@@ -297,7 +297,7 @@ PWNage Menu allows you to access quickly to the main hacking platforms for learn
 
 ### Hack The Box Integration
 
-<img src="https://user-images.githubusercontent.com/83867734/212765538-4d6c7030-0891-4fe6-880b-b1475b3c3004.png" align=right width=100px>
+<img src="https://user-images.githubusercontent.com/83867734/194704118-27225478-35e3-4b21-94a9-9fb8f0aea305" align=right width=100px>
 
 Cannot you wait for opening browser and accessing to Hack The Box website? Athena gives you the possibility to play Hack The Box machines directly on your Operating System environment in a quick and comfortable manner. Athena offers:
 * Connect/Disconnect to/from Hack The Box VPN servers
@@ -310,7 +310,7 @@ Cannot you wait for opening browser and accessing to Hack The Box website? Athen
 * ... and of course you can access to the Hack The Box website in one click
 
 <p align="center">
-  <img width="835" height="360" src="https://user-images.githubusercontent.com/83867734/191096793-01782e89-af27-412a-b897-a9aaac58e39c.png">
+  <img width="835" height="360" src="https://user-images.githubusercontent.com/83867734/212765538-4d6c7030-0891-4fe6-880b-b1475b3c3004.png">
 </p>
 
 For playing Active HTB Machines, use PWNage Menu. For playing Retired Machines, just run `htb-play` and type the name of the machine you want to play.
