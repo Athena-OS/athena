@@ -86,11 +86,14 @@ Here I would like to inform you about new features already tested and implemente
 * Implemented "Tool Recipe" viewer for having at hands all the productivity commands you need to improve your work
 * Implemented OpenAI ChatGPT Desktop client, mainly intended for users that need to understand how a security tool works
 * Implemented browser choice between Firefox and Brave
+* Implemented Flameshot choice at installation time
 * Implemented browser quick access graphical interface to hacking web resources (i.e., Hack The Box, TryHackMe, PWNX, Offensive Security) an online tools (i.e., RevShell generator, GTFOBins, CyberChef, CrackStation)
 * Added more security bookmarks
 * Implemented Penetration Testing Kit on browser
+* Implemented PyWhat for identifying all you need
 * Implemented Note-Taking app choice (CherryTree, Notion App Enhanced, Obsidian) and Utility app choice at installation time
 * Implemented logic for automating the usage of NVIDIA driver in Xorg and Wayland for baremetal installation
+* Implemented border and borderless window theme choice
 * NetworkMananger integrates with OpenVPN
 * Implemented Orca for improving the accessibility
 * Implemented Neovim Nvchad
