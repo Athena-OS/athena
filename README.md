@@ -83,7 +83,7 @@ Here I would like to inform you about new features already tested and implemente
   * OSINT Specialist
 * Implemented **Tool Recipe** in Athena Welcome for checking which are the utility tools installed in Athena
 * Implemented **Athena Upgrade** in Athena Welcome for upgrading the system to the next build
-* Implemented OpenAI ChatGPT Desktop client
+* Implemented **OpenAI ChatGPT** Desktop client
 * Implemented **NVIDIA** as OpenGL Renderer for Baremetal installation
 * **Penetration Testing Kit** added on the browser
 * NetworkManager integrated with **OpenVPN**
