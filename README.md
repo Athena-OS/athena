@@ -48,7 +48,7 @@ Athena OS
 <h3 align="center">
   💞
   <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
-  Download Athena OS "Nike" Now
+  Download Athena OS "Parthenos" Now
     </a>
   💞
 </h3>
@@ -81,25 +81,23 @@ Here I would like to inform you about new features already tested and implemente
 * **Hacking roles**: added new roles for your hacking activity:
   * Black Hat Omniscient
   * OSINT Specialist
-* Implemented **Tool Recipe** in Athena Welcome for checking which are the utility tools installed in Athena
-* Implemented **Athena Upgrade** in Athena Welcome for upgrading the system to the next build
-* Implemented **OpenAI ChatGPT** Desktop client
-* Implemented **NVIDIA** as OpenGL Renderer for Baremetal installation
-* **Penetration Testing Kit** added on the browser
-* NetworkManager integrated with **OpenVPN**
-* Implemented **Orca** on the target system to increase accessibility
+* Integrated Hack The Box VIP contents for playing retired machines
+* HTB Tools now manage API key, shell prompt and target host according to the user preferences
+* Implemented "Tool Recipe" viewer for having at hands all the productivity commands you need to improve your work
+* Implemented OpenAI ChatGPT Desktop client, mainly intended for users that need to understand how a security tool works
+* Implemented browser choice between Firefox and Brave
+* Implemented browser quick access graphical interface to hacking web resources (i.e., Hack The Box, TryHackMe, PWNX, Offensive Security) an online tools (i.e., RevShell generator, GTFOBins, CyberChef, CrackStation)
+* Added more security bookmarks
+* Implemented Penetration Testing Kit on browser
+* Implemented Note-Taking app choice (CherryTree, Notion App Enhanced, Obsidian) and Utility app choice at installation time
+* Implemented logic for automating the usage of NVIDIA driver in Xorg and Wayland for baremetal installation
+* NetworkMananger integrates with OpenVPN
+* Implemented Orca for improving the accessibility
+* Implemented Neovim Nvchad
+* Implemented mirrorlist for BlackArch repository
+* Implemented Timeline Project application for displaying and navigating events on a timeline
 * Implemented **vnstat** as network control monitoring
-* Integrated **Hack The Box Starting Point** machines
-* Integrated **Hack The Box VIP** contents
-* Updated **HTB Tools** for managing API key, shell prompt and target hosts
-* Implemented browser choice between **Firefox** and **Brave**
-* Implemented **Neovim**
-* Implemented **mirrorlist** for BlackArch repository
-* Implemented **NightTab** on the browser
-* Implemented **Note-Taking app** choice in Calamares (Notion App Enhanced, CherryTree, Obsidian)
-* Athena Theme Tweak now manages the set of the browser icon in PenTOXIC menu
 * Implemented **SOF Firmware** and **ALSA utils**
-* Added **Timeline Project**
 * **Keyring fix** at installation time
   
 Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
