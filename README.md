@@ -81,27 +81,26 @@ Here I would like to inform you about new features already tested and implemente
 * **Hacking roles**: added new roles for your hacking activity:
   * Black Hat Omniscient
   * OSINT Specialist
-* Integrated Hack The Box VIP contents for playing retired machines
-* HTB Tools now manage API key, shell prompt and target host according to the user preferences
-* Implemented "Tool Recipe" viewer for having at hands all the productivity commands you need to improve your work
-* Implemented OpenAI ChatGPT Desktop client, mainly intended for users that need to understand how a security tool works
-* Implemented browser choice between Firefox and Brave
-* Implemented Flameshot choice at installation time
-* Implemented browser quick access graphical interface to hacking web resources (i.e., Hack The Box, TryHackMe, PWNX, Offensive Security) an online tools (i.e., RevShell generator, GTFOBins, CyberChef, CrackStation)
-* Added more security bookmarks
-* Implemented Penetration Testing Kit on browser
-* Implemented PyWhat for identifying all you need
-* Implemented Note-Taking app choice (CherryTree, Notion App Enhanced, Obsidian) and Utility app choice at installation time
-* Implemented logic for automating the usage of NVIDIA driver in Xorg and Wayland for baremetal installation
-* Implemented border and borderless window theme choice
-* NetworkMananger integrates with OpenVPN
-* Implemented Orca for improving the accessibility
-* Implemented Neovim Nvchad
-* Implemented mirrorlist for BlackArch repository
-* Implemented Timeline Project application for displaying and navigating events on a timeline
+* Integrated **Hack The Box VIP** contents for playing retired machines
+* HTB Tools now manage **API key**, **shell prompt** and **target host** according to the user preferences
+* Implemented **Tool Recipe** viewer for having at hands all the productivity commands you need to improve your work
+* Implemented **OpenAI ChatGPT** Desktop client, mainly intended for users that need to understand how a security tool works
+* Implemented **browser choice** between **Firefox** and **Brave**
+* Implemented **Flameshot** choice at installation time
+* Implemented browser **quick access graphical interface** to hacking web resources (i.e., Hack The Box, TryHackMe, PWNX, Offensive Security) an online tools (i.e., RevShell generator, GTFOBins, CyberChef, CrackStation)
+* Added more **security bookmarks**
+* Implemented **Penetration Testing Kit** on browser
+* Implemented **PyWhat** for identifying all you need
+* Implemented **Note-Taking app** choice (CherryTree, Notion App Enhanced, Obsidian) and **Utility app** choice at installation time
+* Implemented logic for automating the usage of **NVIDIA** driver in Xorg and Wayland for baremetal installation
+* Implemented **border** and **borderless** window theme choice
+* NetworkMananger integrates with **OpenVPN**
+* Implemented **Orca** for improving the accessibility
+* Implemented **Neovim Nvchad**
+* Implemented **mirrorlist** for **BlackArch** repository
+* Implemented **Timeline Project** application for displaying and navigating events on a timeline
 * Implemented **vnstat** as network control monitoring
 * Implemented **SOF Firmware** and **ALSA utils**
-* **Keyring fix** at installation time
   
 Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
 
