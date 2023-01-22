@@ -89,6 +89,7 @@ Here I would like to inform you about new features already tested and implemente
 * NetworkManager integrated with **OpenVPN**
 * Implemented **Orca** on the target system to increase accessibility
 * Implemented **vnstat** as network control monitoring
+* Integrated **Hack The Box Starting Point** machines
 * Integrated **Hack The Box VIP** contents
 * Updated **HTB Tools** for managing API key, shell prompt and target hosts
 * Implemented browser choice between **Firefox** and **Brave**
