@@ -97,7 +97,7 @@ Here I would like to inform you about new features already tested and implemente
 * NetworkMananger integrates with **OpenVPN**
 * Implemented **Orca** for improving the accessibility
 * Implemented **Neovim Nvchad**
-* Implemented **mirrorlist** for **BlackArch** repository
+* Implemented **mirrorlist** for **BlackArch repository**
 * Implemented **Timeline Project** application for displaying and navigating events on a timeline
 * Implemented **vnstat** as network control monitoring
 * Implemented **SOF Firmware** and **ALSA utils**
