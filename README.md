@@ -46,6 +46,14 @@ Athena OS
 </h3>
 
 <h3 align="center">
+  🌌
+  <a href="https://distrowatch.com/dwres.php?resource=submit">
+  Please, give your "Recommend" to Athena OS on DistroWatch
+    </a>
+  🌌
+</h3>
+
+<h3 align="center">
   💞
   <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
   Download Athena OS "Parthenos" Now
