@@ -556,7 +556,7 @@ PenTest Magazine: https://pentestmag.com/product/pentest-open-source-pentesting-
 * [ArcoLinux Project](https://www.arcolinux.info): Resources and Learning materials
 * [Calamares Team](https://calamares.io): Calamares Installer
 * [Simon Schneegans](https://github.com/Schneegans): Fly-Pie menu and Burn My Window extensions
-* [HackTheBox](https://www.hackthebox.com): Bash and PowerShell icons; Hack The Box icon
+* [Hack The Box](https://www.hackthebox.com): Bash and PowerShell icons; Hack The Box icon
 * [Offensive Security](https://www.offensive-security.com): Kali Linux security tools icons; Offensive Security icon
 * [Kitsunekun](https://www.furaffinity.net/view/23914148): Athena Chibi Logo
 * [Red Team Village](https://redteamvillage.io): PWNage menu icon
