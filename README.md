@@ -534,6 +534,7 @@ Change your themes and icons by `gnome-tweaks`.
 * Integration between ExploitDB and NIST Feed
 * Athena Docker Container
 * Implementation of Blue Team tools
+* Adding BSPWM 
 
 <a id="techsupport"></a>
 ## ❓ Support
