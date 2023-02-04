@@ -140,6 +140,7 @@ Screenshots:
 - [🛣️ Roadmap](#map)
 - [❓ Support](#techsupport)
 - [📢 Publications](#publ)
+- [🫶 Partnerships](#part)
 - [❤️ Credits](#creds)
 
 
@@ -550,7 +551,17 @@ If you detect any issues during your experience, please [open an issue](https://
 
 <a id="publ"></a>
 ## 📢 Publications
-PenTest Magazine: https://pentestmag.com/product/pentest-open-source-pentesting-toolkit/
+PenTest Magazine: https://pentestmag.com/product/pentest-open-source-pentesting-toolkit/ (Click **Download** for getting the complete Magazine!)
+
+<a id="part"></a>
+## 🫶 Partnerships
+A **huge thanks** to all Partners of Athena OS! They strongly contribute on making Athena reachable to new users and greater!
+
+<p align="left">
+  <a href="https://fosstorrents.com/">
+  <img src="https://user-images.githubusercontent.com/83867734/216740581-7b67a925-73eb-4188-87fa-30872c828f71.png" data-canonical-src="https://user-images.githubusercontent.com/83867734/216740581-7b67a925-73eb-4188-87fa-30872c828f71.png" width="500" height="68" />
+  </a>
+</p>
 
 <a id="creds"></a>
 ## ❤️ Credits
