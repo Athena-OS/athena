@@ -61,17 +61,6 @@ Athena OS
    🎥
 </h3>
 
-### Sponsors
-
-Dedicating my spare time to Athena OS in order to keep it stable, updated, flawless and with fixed tools is not easy, but providing your support will motivate me to invest my time to keep the project stable and updated.
-
-<h2 align="center">🥉 Current Bronze Sponsors</h2>
-<p align="center">
-  <a href='https://github.com/Martian1337'>@Martian1337</a><br>
-</p>
-
-Do you like it too? You may [become a sponsor for as little as 1$ / month](https://github.com/sponsors/Athena-OS)! 
-
 ### Why Athena?
 * *Pentesting*: Athena can access to [BlackArch repository](https://blackarch.org/tools.html), the **biggest pentesting tool warehouse**.
 * *User-oriented*: if Arch is born for experienced users, Athena is conceived for **decreasing complexity** and **improving user experience**.
@@ -81,6 +70,22 @@ Do you like it too? You may [become a sponsor for as little as 1$ / month](https
 <br>
 
 Wiki: https://github.com/Athena-OS/athena-iso/wiki
+<br>
+<br>
+
+## Sponsors
+
+Dedicating my spare time to Athena OS in order to keep it stable, updated, flawless and with fixed tools is not easy, but providing your support will motivate me to invest my time to keep the project stable and updated.
+<br>
+<br>
+<h2 align="center">🥉 Current Bronze Sponsors 🥉</h2>
+<p align="center">
+  <a href='https://github.com/Martian1337'>@Martian1337</a><br>
+</p>
+<br>
+Do you like it too? You may [become a sponsor for as little as 1$ / month](https://github.com/sponsors/Athena-OS)! 
+<br>
+<br>
 
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
