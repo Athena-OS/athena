@@ -457,6 +457,7 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | `Mod_Key + z` | Make Panel Full Window |
 | `Mod_Key + m` | Start Monitoring Panel |
 | `Mod_key + $` | Rename Session |
+| `Mod_key + Esc` | Enter in vim mode|
 
 <br>
 
