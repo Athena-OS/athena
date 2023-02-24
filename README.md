@@ -78,9 +78,14 @@ Wiki: https://github.com/Athena-OS/athena-iso/wiki
 Dedicating my spare time to Athena OS in order to keep it stable, updated, flawless and with fixed tools is not easy, but providing your support will motivate me to invest my time to keep the project stable and updated.
 <br>
 <br>
-<h2 align="center">🥉 Current Bronze Sponsors 🥉</h2>
+<h2 align="center">🥉 Bronze Sponsors 🥉</h2>
 <p align="center">
   <a href='https://github.com/Martian1337'>@Martian1337</a><br>
+</p>
+<br>
+<h2 align="center">☕ Coffee Sponsors ☕</h2>
+<p align="center">
+  <a href='https://github.com/SinSiXX'>@SinSiXX</a><br>
 </p>
 <br>
 Do you like it too? You may [become a sponsor for as little as 1$ / month](https://github.com/sponsors/Athena-OS)! 
