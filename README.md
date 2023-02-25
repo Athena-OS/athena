@@ -88,7 +88,7 @@ Dedicating my spare time to Athena OS in order to keep it stable, updated, flawl
   <a href='https://github.com/SinSiXX'>@SinSiXX</a><br>
 </p>
 <br>
-Do you like it too? You may [become a sponsor for as little as 1$ / month](https://github.com/sponsors/Athena-OS)! 
+Do you like it too? You may <a href="https://github.com/sponsors/Athena-OS">become a sponsor by offering me one coffee ☕ / month</a>!
 <br>
 <br>
 
