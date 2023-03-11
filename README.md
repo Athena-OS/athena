@@ -95,6 +95,14 @@ Do you like it too? You may <a href="https://github.com/sponsors/Athena-OS">beco
 <br>
 <br>
 
+## Known issues
+Due to some errors of `r2.garudalinux.org` mirror during the installation, before starting the installation, run:
+```
+sudo pacman -Syy
+sudo pacman -S athena-calamares-config
+```
+then, run the installation.
+
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
