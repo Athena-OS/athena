@@ -95,7 +95,7 @@ Do you like it too? You may <a href="https://github.com/sponsors/Athena-OS">beco
 <br>
 <br>
 
-## Known issues
+## Known Issues
 Due to some errors of `r2.garudalinux.org` mirror during the installation, before starting the installation, run:
 ```
 sudo pacman -Syy
