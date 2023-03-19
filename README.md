@@ -80,7 +80,6 @@ Dedicating my spare time to Athena OS in order to keep it stable, updated, flawl
 <h2 align="center">🥉 Bronze Sponsors 🥉</h2>
 <p align="center">
   <a href='https://github.com/Martian1337'>@Martian1337</a><br>
-  <a href='https://github.com/Biaogo'>@Biaogo</a><br>
 </p>
 <br>
 <h2 align="center">☕ Coffee Sponsors ☕</h2>
