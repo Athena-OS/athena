@@ -88,7 +88,6 @@ Dedicating my spare time to Athena OS in order to keep it stable, updated, flawl
   <a href='https://github.com/SinSiXX'>@SinSiXX</a><br>
   <a href='https://github.com/anker023'>@anker023</a><br>
   <a href='https://github.com/CriminalShrimp'>@CriminalShrimp</a><br>
-  CriminalShrimp
 </p>
 <br>
 Do you like it too? You may <a href="https://github.com/sponsors/Athena-OS">become a sponsor by offering me one coffee ☕ / month</a>!
