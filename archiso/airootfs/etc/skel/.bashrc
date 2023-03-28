@@ -21,7 +21,7 @@ eval "$(zoxide init bash)"
 #export XMODIFIERS=@im=dbus
 #export QT_IM_MODULE=ibus
 
-PS1="\e[1;32m┌──[HQ🚀\e[1;31m$(ip -4 addr | grep -v 127.0.0.1 | grep -v secondary | grep -Po "inet \K[\d.]+" | sed -z "s/\n/|/g;s/|$/\n/")⚔️\u\e[1;32m]\n└──╼[👾]\[\e[1;36m\]\$(pwd) $ \[\e[0m\]"
+PS1="\e[1;32m┌──[HQ🚀\e[1;31m$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev)⚔️\u\e[1;32m]\n└──╼[👾]\[\e[1;36m\]\$(pwd) $ \[\e[0m\]"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
