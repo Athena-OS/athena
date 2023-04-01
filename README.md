@@ -508,6 +508,7 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | `lsd` | An `ls` command with a lot of pretty colors and some other stuff. |
 | `nano` | Simple terminal-based text editor. |
 | `nautilus` | File Manager. |
+| `ncdu` | Check which directories are using your disk space. |
 | `neofetch` | CLI system information tool written in BASH. |
 | `nist-feed` | NIST notifier about the newest published CVEs according to your filters. |
 | `nvim` | Vim-fork focused on extensibility and usability. |
