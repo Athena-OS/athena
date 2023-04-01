@@ -516,8 +516,8 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | `orca` | Screen reader that provides access to the graphical desktop via speech and refreshable braille. |
 | `pacman` | Arch Linux package manager. |
 | `pactree` | Package dependency tree viewer. |
-| `pfetch` | A pretty system information tool written in POSIX sh. |
 | `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
+| `pfetch` | A pretty system information tool written in POSIX sh. |
 | `probe` | Probe for hardware, check operability and find drivers. |
 | `pywhat` | Identify anything. It easily lets you identifying emails, IP addresses, and more. |
 | `timeline` | Cross-platform application for displaying and navigating events on a timeline. |
