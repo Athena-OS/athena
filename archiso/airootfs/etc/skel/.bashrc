@@ -26,7 +26,6 @@ PS1="\e[1;32m┌──[HQ🚀\e[1;31m$(ip -4 addr | grep -v '127.0.0.1' | grep -
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 # Bash aliases
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
