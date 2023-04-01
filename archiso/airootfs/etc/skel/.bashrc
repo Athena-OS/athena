@@ -7,10 +7,6 @@ HISTFILESIZE=2000000
 shopt -s histappend
 export PAGER='most'
 
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
 #Configure zoxide for bash
 eval "$(zoxide init bash)"
 
@@ -22,6 +18,10 @@ eval "$(zoxide init bash)"
 #export QT_IM_MODULE=ibus
 
 PS1="\e[1;32m┌──[HQ🚀\e[1;31m$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev)⚔️\u\e[1;32m]\n└──╼[👾]\[\e[1;36m\]\$(pwd) $ \[\e[0m\]"
+
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
