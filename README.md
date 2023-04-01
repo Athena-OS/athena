@@ -518,6 +518,7 @@ Note that `Super` key corresponds to the button showing Windows icon in the usua
 | `pactree` | Package dependency tree viewer. |
 | `pfetch` | A pretty system information tool written in POSIX sh. |
 | `paru` | Pacman wrapping AUR helper with lots of features and minimal interaction. |
+| `probe` | Probe for hardware, check operability and find drivers. |
 | `pywhat` | Identify anything. It easily lets you identifying emails, IP addresses, and more. |
 | `timeline` | Cross-platform application for displaying and navigating events on a timeline. |
 | `tmux` | Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal. |
