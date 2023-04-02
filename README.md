@@ -364,6 +364,7 @@ Firefox ESR and Brave have been modified in order to integrate at the installati
 * Privacy 
 * uBlock Origin
 * Wappalyzer
+* Wayback Machine
 <br>
 
 ### Payload to Dock
