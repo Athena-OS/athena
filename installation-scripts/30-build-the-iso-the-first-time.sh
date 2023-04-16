@@ -224,8 +224,8 @@ echo
 	oldname2='iso_label="athena"'
 	newname2='iso_label="athena"'
 
-	oldname3='Athena'
-	newname3='Athena'
+	oldname3='Athena OS'
+	newname3='Athena OS'
 
 	#hostname
 	oldname4='Athena'
