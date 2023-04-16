@@ -1,9 +1,9 @@
 ---
 name: "\U0001F4A1Feature request"
 about: Suggest an idea for this project
-title: "[ENHANCEMENT]"
+title: "[ENHANCEMENT]:"
 labels: enhancement
-assignees: D3vil0per
+assignees: ''
 
 ---
 
