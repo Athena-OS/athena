@@ -1,0 +1,84 @@
+---
+name: "Athena OS - Bug Report"
+description: Report a bug on Athena OS
+body:
+- type: markdown
+  attributes:
+    value: |
+      Please [search for existing issues](https://github.com/Athena-OS/athena-iso/issues) before creating a new one.
+
+- type: input
+  attributes:
+    label: Athena OS version
+    description: |
+      Please run `cat /etc/dev-rel | grep "ISO_RELEASE" | awk -F"=" '{print $2}'` to get the build of Athena OS you are on.
+      You can get additional information about the version where possible, e.g. on Debian / Ubuntu, run `lsb_release -a`
+    placeholder: "Athena OS v[xx.yy.zz]"
+  validations:
+    required: true
+
+- type: checkboxes
+  attributes:
+    label: Are you using baremetal or virtual machine?
+    description: |
+      Tell us whether the issue is on baremetal or virtual machine. 
+    options:
+      - label: "Baremetal"
+      - label: "VirtualBox Virtual Machine"
+      - label: "VMware Virtual Machine"
+
+- type: input
+  attributes:
+    label: Kernel Version
+    description: |
+      Please tell us what version of the Linux kernel you are using, or if you are using a custom kernel. 
+      You can run `uname -r` if that command is available to you, or by running `cat /proc/version`.
+    placeholder: "6.2.11-zen1-1-zen"
+  validations:
+    required: false
+
+- type: textarea
+  attributes:
+    label: Other Software
+    description: If you're reporting a bug involving Athena OS interaction with other applications, please tell us. What applications? What versions?
+    placeholder: |
+      docker), version 3.2.2
+      traceroute, Version: 1:2.0.21-1
+      code 1.54.3 with Remote-WSL Extension 0.54.6
+      MyCustomApplication
+  validations:
+    required: false
+
+- type: textarea
+  attributes:
+    label: Repro Steps
+    description: Please list out the steps to reproduce your bug.  
+    placeholder: Your steps go here. Include relevant environmental variables or any other configuration.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Expected Behavior
+    description: What were you expecting to see? Include any relevant examples or documentation links.
+    placeholder: If you want to include screenshots, paste them into the text area or follow up with a separate comment. 
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Actual Behavior
+    description: What happened instead?
+    placeholder: Include the terminal output, straces of the failing command, etc. as necessary.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Diagnostic Logs
+    description: | 
+      Please provide additional diagnostics if needed.
+      You can run `probe` and `sudo journalctl | tb` to generate link with logs accessible online.
+    placeholder: Your links to logs or other information go here.
+  validations:
+    required: false
