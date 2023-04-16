@@ -13,7 +13,7 @@ body:
     label: Athena OS version
     description: |
       Please run `cat /etc/dev-rel | grep "ISO_RELEASE" | awk -F"=" '{print $2}'` to get the build of Athena OS you are on.
-      You can get additional information about the version where possible, e.g. on Debian / Ubuntu, run `lsb_release -a`
+      You can get additional information about the version where possible, e.g. run `lsb_release -a`
     placeholder: "Athena OS v[xx.yy.zz]"
   validations:
     required: true
