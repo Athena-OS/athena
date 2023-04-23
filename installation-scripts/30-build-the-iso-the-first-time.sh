@@ -29,15 +29,16 @@ echo
 	desktop="gnome"
 	dmDesktop="gnome"
 
-	athenaVersion='v20.02.23'
+	athenaVersion='v20.05.01'
 
 	isoLabel='athena-'$athenaVersion'-x86_64.iso'
 
 	# setting of the general parameters
-	archisoRequiredVersion="archiso 69-1"
+	archisoRequiredVersion="archiso 70-1"
 	buildFolder=$HOME"/athena-build"
-	outFolder=$HOME"/Athena-Out"
-	archisoVersion=$(sudo pacman -Q archiso)
+	# outFolder=$HOME"/Athena-Out"
+        outFolder="/mnt/hgfs/VirtualShare/Athena-Out"
+        archisoVersion=$(sudo pacman -Q archiso)
 	
 	# If you are ready to use your personal repo and personal packages
 	# https://arcolinux.com/use-our-knowledge-and-create-your-own-icon-theme-combo-use-github-to-saveguard-your-work/
@@ -293,13 +294,13 @@ echo
 	echo
 	echo "Building sha1sum"
 	echo "########################"
-	sha1sum $isoLabel | tee $isoLabel.sha1
+	sha1sum $outFolder/$isoLabel | tee $outFolder/$isoLabel.sha1
 	echo "Building sha256sum"
 	echo "########################"
-	sha256sum $isoLabel | tee $isoLabel.sha256
+	sha256sum $outFolder/$isoLabel | tee $outFolder/$isoLabel.sha256
 	echo "Building md5sum"
 	echo "########################"
-	md5sum $isoLabel | tee $isoLabel.md5
+	md5sum $outFolder/$isoLabel | tee $outFolder/$isoLabel.md5
 	echo
 	echo "Moving pkglist.x86_64.txt"
 	echo "########################"
