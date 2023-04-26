@@ -177,7 +177,7 @@ ex ()
   fi
 }
 
-#export SHELL=$(which bash)
+export SHELL=$(which bash)
 export PROMPT_COMMAND='source ~/.bashrc'
 
 buffer_clean(){
