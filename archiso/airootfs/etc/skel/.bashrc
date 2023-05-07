@@ -10,6 +10,10 @@ export PAGER='most'
 #Configure zoxide for bash
 eval "$(zoxide init bash)"
 
+#Bindkeys
+bind '"\e[1;5C":forward-word'
+bind '"\e[1;5D":backward-word'
+
 #Ibus settings if you need them
 #type ibus-setup in terminal to change settings and start the daemon
 #delete the hashtags of the next lines and restart
