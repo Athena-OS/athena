@@ -1,4 +1,6 @@
-### EXPORT ###
+# ~/.bashrc
+
+### EXPORT ### Should be before the change of the shell
 export EDITOR=/usr/bin/nvim
 export VISUAL='nano'
 export HISTCONTROL=ignoreboth:erasedups:ignorespace
@@ -7,13 +9,6 @@ HISTFILESIZE=2000000
 shopt -s histappend
 export PAGER='most'
 
-#Configure zoxide for bash
-eval "$(zoxide init bash)"
-
-#Bindkeys
-bind '"\e[1;5C":forward-word'
-bind '"\e[1;5D":backward-word'
-
 #Ibus settings if you need them
 #type ibus-setup in terminal to change settings and start the daemon
 #delete the hashtags of the next lines and restart
@@ -21,22 +16,66 @@ bind '"\e[1;5D":backward-word'
 #export XMODIFIERS=@im=dbus
 #export QT_IM_MODULE=ibus
 
-PS1="\e[1;32m┌──[HQ🚀🌐\e[1;31m$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev)🔥\u\e[1;32m]\n└──╼[👾]\[\e[1;36m\]\$(pwd) $ \[\e[0m\]"
+# COLOURS! YAAAY!
+export TERM=xterm-256color
+
+export SHELL=$(which bash)
+
+#export BFETCH_INFO="pfetch"
+#export BFETCH_ART="$HOME/.local/textart/fetch/unix.textart"
+#export PF_INFO="Unix Genius"
+
+#export BFETCH_INFO="curl --silent --location 'wttr.in/rome?0pq'"
+#export BFETCH_ART="printf \"\033[35m\"; figlet -f Bloody Spooky"
+#export BFETCH_COLOR="$HOME/.local/textart/color/icon/ghosts.textart"
+
+#export BFETCH_INFO="exa -la"
+#export BFETCH_ART="$HOME/.local/textart/fetch/pacman-maze.textart"
+#export BFETCH_COLOR="$HOME/.local/textart/color/icon/pacman.textart"
+
+export BFETCH_INFO="pfetch"
+export BFETCH_ART="cowsay '<3 Athena OS'"
+export BFETCH_COLOR="$HOME/.local/textart/color/icon/panes.textart"
+
+export PAYLOADS="/usr/share/payloads"
+export SECLISTS="$PAYLOADS/SecLists"
+export PAYLOADSALLTHETHINGS="$PAYLOADS/PayloadsAllTheThings"
+export FUZZDB="$PAYLOADS/FuzzDB"
+export AUTOWORDLISTS="$PAYLOADS/Auto_Wordlists"
+export SECURITYWORDLIST="$PAYLOADS/Security-Wordlist"
+
+export MIMIKATZ="/usr/share/windows/mimikatz/"
+export POWERSPLOIT="/usr/share/windows/powersploit/"
+
+export ROCKYOU="$SECLISTS/Passwords/Leaked-Databases/rockyou.txt"
+export DIRSMALL="$SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt"
+export DIRMEDIUM="$SECLISTS/Discovery/Web-Content/directory-list-2.3-medium.txt"
+export DIRBIG="$SECLISTS/Discovery/Web-Content/directory-list-2.3-big.txt"
+export WEBAPI_COMMON="$SECLISTS/Discovery/Web-Content/api/api-endpoints.txt"
+export WEBAPI_MAZEN="$SECLISTS/Discovery/Web-Content/common-api-endpoints-mazen160.txt"
+export WEBCOMMON="$SECLISTS/Discovery/Web-Content/common.txt"
+export WEBPARAM="$SECLISTS/Discovery/Web-Content/burp-parameter-names.txt"
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# switch shell
+[[ $(ps --no-header --pid=$PPID --format=comm) != "${SHELL#/usr/bin/}" && -z ${BASH_EXECUTION_STRING} && ${SHELL} != "/usr/bin/bash" ]] && exec $SHELL
+
+#Configure zoxide for bash
+eval "$(zoxide init bash)"
+
+PS1="\e[1;32m┌──[HQ🚀🌐\e[1;31m$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev)🔥\u\e[1;32m]\n└──╼[👾]\[\e[1;36m\]\$(pwd) $ \[\e[0m\
+\]"
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
 # Bash aliases
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
-
-# COLOURS! YAAAY!
-export TERM=xterm-256color
 
 # Change up a variable number of directories
 # E.g:
@@ -62,7 +101,7 @@ function vimod {
 }
 
 # Open files modified in a git commit in vim tabs; defaults to HEAD. Pop it in your .bashrc
-# Examples: 
+# Examples:
 #     virev 49808d5
 #     virev HEAD~3
 function virev {
@@ -136,13 +175,8 @@ pointerC="${txtgrn}"
 normalC="${txtwht}"
 
 # Red name for root
-if [ "${UID}" -eq "0" ]; then 
-  nameC="${txtred}" 
-fi
-
-# Local settings go last
-if [ -f ~/.localrc ]; then 
-  source ~/.localrc
+if [ "${UID}" -eq "0" ]; then
+  nameC="${txtred}"
 fi
 
 #shopt
@@ -152,7 +186,6 @@ shopt -s cmdhist # save multi-line commands in history as single line
 shopt -s dotglob
 shopt -s histappend # do not overwrite history
 shopt -s expand_aliases # expand aliases
-
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
@@ -181,16 +214,11 @@ ex ()
   fi
 }
 
-export SHELL=$(which bash)
-export PROMPT_COMMAND='source ~/.bashrc'
+export PROMPT_COMMAND='source ~/.bashrc without-blesh'
 
 buffer_clean(){
-	free -h && sudo sh -c 'echo 1 >  /proc/sys/vm/drop_caches' && free -h
+  free -h && sudo sh -c 'echo 1 >  /proc/sys/vm/drop_caches' && free -h
 }
-#create a file called .bashrc-personal and put all your personal aliases
-#in there. They will not be overwritten by skel.
-
-[[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 # reporting tools - install when not installed
 #neofetch | lolcat
@@ -208,37 +236,7 @@ buffer_clean(){
 #colorscript random
 
 #bfetch configuration:
-#export BFETCH_INFO="pfetch"                                                                                                                                          
-#export BFETCH_ART="$HOME/.local/textart/fetch/unix.textart"                                                                                                      
-#export PF_INFO="Unix Genius"
 
-#export BFETCH_INFO="curl --silent --location 'wttr.in/rome?0pq'"                                                                                                   
-#export BFETCH_ART="printf \"\033[35m\"; figlet -f Bloody Spooky"                                                                                                    
-#export BFETCH_COLOR="$HOME/.local/textart/color/icon/ghosts.textart"
-
-#export BFETCH_INFO="exa -la"                                                                                                                                         
-#export BFETCH_ART="$HOME/.local/textart/fetch/pacman-maze.textart"                                                                                                 
-#export BFETCH_COLOR="$HOME/.local/textart/color/icon/pacman.textart"
-
-export BFETCH_INFO="pfetch"                                                                                                                                          
-export BFETCH_ART="cowsay '<3 Athena OS'"                                                                                                                           
-export BFETCH_COLOR="$HOME/.local/textart/color/icon/panes.textart"
-
-export PAYLOADS="/usr/share/payloads"
-export SECLISTS="$PAYLOADS/SecLists"
-export PAYLOADSALLTHETHINGS="$PAYLOADS/PayloadsAllTheThings"
-export FUZZDB="$PAYLOADS/FuzzDB"
-export AUTOWORDLISTS="$PAYLOADS/Auto_Wordlists"
-export SECURITYWORDLIST="$PAYLOADS/Security-Wordlist"
-
-export MIMIKATZ="/usr/share/windows/mimikatz/"
-export POWERSPLOIT="/usr/share/windows/powersploit/"
-
-export ROCKYOU="$SECLISTS/Passwords/Leaked-Databases/rockyou.txt"
-export DIRSMALL="$SECLISTS/Discovery/Web-Content/directory-list-2.3-small.txt"
-export DIRMEDIUM="$SECLISTS/Discovery/Web-Content/directory-list-2.3-medium.txt"
-export DIRBIG="$SECLISTS/Discovery/Web-Content/directory-list-2.3-big.txt"
-export WEBAPI_COMMON="$SECLISTS/Discovery/Web-Content/api/api-endpoints.txt"
-export WEBAPI_MAZEN="$SECLISTS/Discovery/Web-Content/common-api-endpoints-mazen160.txt"
-export WEBCOMMON="$SECLISTS/Discovery/Web-Content/common.txt"
-export WEBPARAM="$SECLISTS/Discovery/Web-Content/burp-parameter-names.txt"
+if [[ $1 != without-blesh ]]; then
+  source /usr/share/blesh/ble.sh
+fi
