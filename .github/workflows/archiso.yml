@@ -1,0 +1,27 @@
+name: Build ArchISO
+on:
+  # push:
+  workflow_dispatch:
+  # schedule:
+  #   - cron:  '0 0 */7 * *'
+  
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container:
+      image: athenaos:base
+      options: --privileged 
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm archiso git
+          
+      - name: Retrieve Athena ISO
+        run: git clone https://github.com/Athena-OS/athena-iso
+        
+      - name: Build ArchISO
+        run: |
+          cd athena-iso/installation-scripts
+          ./30-build-the-iso-the-first-time.sh
