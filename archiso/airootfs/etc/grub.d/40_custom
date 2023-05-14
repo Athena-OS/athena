@@ -5,12 +5,12 @@ exec tail -n +3 $0
 # menu entries you want to add after this comment.  Be careful not to change
 # the 'exec tail' line above.
 
-menuentry "Restart" --class restart {
+menuentry "Restart" --class reboot --class restart {
 	echo "System rebooting..."
 	reboot
 }
 
-menuentry "Shutdown" --class shutdown {
+menuentry "Shutdown" --class poweroff --class shutdown {
 	echo "System shutting down..."
 	halt
 }

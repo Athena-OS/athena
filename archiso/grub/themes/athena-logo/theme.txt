@@ -1,0 +1,45 @@
+# Dark Matter GRUB theme (1080p)
+
+desktop-image: "background.png"
+title-text: ""
+terminal-font: "Hack Bold 18"
+terminal-left: "20%"
+terminal-top: "35%"
+terminal-width: "60%"
+terminal-height: "40%"
+terminal-box: "menu_bkg_*.png"
+
++ boot_menu {
+    menu_pixmap_style = "boot_menu_*.png"
+    left = 10%
+    width = 45%
+    top = 30%
+    height = 40%
+    item_font = "Norwester Regular 20"
+    item_color = "#6b6b6b"
+    selected_item_font = "Norwester Regular 22"
+    selected_item_color = "#ffffff"
+    icon_width = 32
+    icon_height = 32
+    item_icon_space = 20
+    item_height = 36
+    item_padding = 5
+    item_spacing = 10
+    selected_item_pixmap_style = "select_*.png"
+    scrollbar = true
+    scrollbar_width = 10
+    scrollbar_thumb = "slider_*.png"
+}
+
++ progress_bar {
+    id = "__timeout__"
+    left = 10%
+    width = 45%
+    top = 75%
+    height = 20
+    text = ""
+    text_color = "#ffffff"
+    font = "Norwester Regular 16"
+    bar_style = "progress_bar_*.png"
+    highlight_style = "progress_highlight_*.png"
+}

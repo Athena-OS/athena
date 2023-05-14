@@ -1,0 +1,57 @@
+#! /bin/sh
+set -e
+
+# grub-mkconfig helper script.
+# Copyright (C) 2020  Free Software Foundation, Inc.
+#
+# GRUB is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# GRUB is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+
+prefix="/usr"
+exec_prefix="/usr"
+datarootdir="/usr/share"
+
+export TEXTDOMAIN=grub
+export TEXTDOMAINDIR="${datarootdir}/locale"
+
+. "$pkgdatadir/grub-mkconfig_lib"
+
+LABEL="UEFI Firmware Settings"
+
+gettext_printf "Adding boot menu entry for UEFI Firmware Settings ...\n" >&2
+
+cat << EOF
+if [ "\$grub_platform" = "efi" ]; then
+	if [ "\$grub_cpu" == "x86_64" ]; then
+        menuentry 'Run Memtest86+ (RAM test)' --class memtest86 --class memtest --class gnu --class tool {
+            set gfxpayload=800x600,1024x768
+            linux /boot/memtest86+/memtest.efi
+        }
+        menuentry 'UEFI Shell' --class efi {
+            insmod chain
+            chainloader /shellx64.efi
+        }
+    elif [ "\$grub_cpu" == "i386" ]; then
+        menuentry 'UEFI Shell' --class efi {
+            insmod chain
+            chainloader /shellia32.efi
+        }
+    fi
+	fwsetup --is-supported
+	if [ "\$?" = 0 ]; then
+		menuentry '$LABEL' --class efi \$menuentry_id_option 'uefi-firmware' {
+			fwsetup
+		}
+	fi
+fi
+EOF
