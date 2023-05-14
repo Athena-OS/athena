@@ -36,9 +36,8 @@ echo
 	# setting of the general parameters
 	archisoRequiredVersion="archiso 70-1"
 	buildFolder=$HOME"/athena-build"
-	# outFolder=$HOME"/Athena-Out"
+	outFolder=$HOME"/Athena-Out"
         # outFolder="/mnt/hgfs/VirtualShare/Athena-Out"
-	outFolder="Athena-Out"
         archisoVersion=$(sudo pacman -Q archiso)
 	
 	# If you are ready to use your personal repo and personal packages
