@@ -57,7 +57,7 @@ Athena OS
   <a href="https://hub.docker.com/u/athenaos"><img src="https://user-images.githubusercontent.com/83867734/224526828-b4f2a470-d539-494d-9ac0-34568a75af3a.png" data-canonical-src="https://user-images.githubusercontent.com/83867734/224526828-b4f2a470-d539-494d-9ac0-34568a75af3a.png" width="150" height="128" /></a>
 </p>
 <h5 align="center">
-Click docker button to explore Athena OS Docker containers!
+Click docker icon above to explore Athena OS Docker containers!
 </h5>
 
 ### Why Athena?
@@ -94,6 +94,9 @@ Dedicating my spare time to Athena OS in order to keep it stable, updated, flawl
 Do you like it too? You may <a href="https://github.com/sponsors/Athena-OS">become a sponsor by offering me one coffee ☕ / month</a>!
 <br>
 <br>
+
+## Athena Beta testing process ongoing
+Would you like to test the latest changes and improvements offered on the next release of Athena OS? Join our [Discord community](https://discord.gg/DNjvQkb5Ad) and ask for entering in the Beta Project!
 
 ## Known Issues
 Due to some errors of `r2.garudalinux.org` mirror during the installation, before starting the installation, run:
