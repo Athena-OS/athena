@@ -95,7 +95,7 @@ Do you like it too? You may <a href="https://github.com/sponsors/Athena-OS">beco
 <br>
 <br>
 
-## Athena Beta testing process ongoing
+## Athena Beta Testing
 Would you like to test the latest changes and improvements offered on the next release of Athena OS? Join our [Discord community](https://discord.gg/DNjvQkb5Ad) and ask for entering in the Beta Project!
 
 ## Known Issues
