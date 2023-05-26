@@ -29,7 +29,7 @@ echo
 	desktop="gnome"
 	dmDesktop="gnome"
 
-	athenaVersion='2023.05.01'
+	athenaVersion='2023.06.01'
 
 	isoLabel='athena-'$athenaVersion'-x86_64.iso'
 
