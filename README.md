@@ -421,8 +421,12 @@ Keybindings in Athena OS for speeding up your work.
 | ------- | ----------- |
 | `CTRL+SPACE` | PenTOXIC menu |
 | `CTRL+SHIFT+SPACE` | PWNage menu |
+| `CTRL+ALT+T` | Open terminal |
 | `Super` | Multi-desktop environment |
 | `Super+Super` | Switch between desktop and "Show Applications" menu |
+| `Super+D` | Show Desktop |
+| `Super+E` | Open Home folder |
+| `Super+F` | Open Aylur's Widgets dashboard |
 | `Super+L` | Screen Lock |
 
 Note that `Super` key corresponds to the button showing Windows icon in the usual keyboards.
