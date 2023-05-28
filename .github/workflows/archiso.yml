@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm archiso git openssh
+        run: pacman -Syyu --noconfirm archiso git openssh sshpass
           
       - name: Retrieve Athena ISO
         run: git clone https://github.com/Athena-OS/athena-iso
@@ -29,4 +29,4 @@ jobs:
           
       - name: Upload to SourceForge
         run: |
-          scp $HOME/Athena-Out/athena-2023.06.01-x86_64.iso ${{ secrets.SOURCEFORGE_USER }}:${{ secrets.SOURCEFORGE_TOKEN }}@frs.sourceforge.net:/home/frs/project/athena-iso/unstable
+          sshpass -p ${{ secrets.SOURCEFORGE_TOKEN }} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $HOME/Athena-Out/athena-2023.06.01-x86_64.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/unstable 2>&1 | grep -v debug1
