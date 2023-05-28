@@ -33,4 +33,4 @@ jobs:
           
       - name: Upload to SourceForge
         run: |
-          sshpass -p ${{ secrets.SOURCEFORGE_TOKEN }} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}} 2>&1 | grep -v debug1
+          sshpass -p "${{ secrets.SOURCEFORGE_TOKEN }}" rsync -avP -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}}
