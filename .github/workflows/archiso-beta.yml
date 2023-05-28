@@ -7,6 +7,8 @@ on:
   
 jobs:
   build:
+    env:
+      ATHENA_VERSION: 'unstable'
     runs-on: ubuntu-22.04
     container:
       image: athenaos/base-devel:latest
@@ -29,4 +31,4 @@ jobs:
           
       - name: Upload to SourceForge
         run: |
-          sshpass -p ${{ secrets.SOURCEFORGE_TOKEN }} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $HOME/Athena-Out/athena-2023.06.01-x86_64.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/unstable 2>&1 | grep -v debug1
+          sshpass -p ${{ secrets.SOURCEFORGE_TOKEN }} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $HOME/Athena-Out/athena-2023.06.01-x86_64.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}} 2>&1 | grep -v debug1
