@@ -1,0 +1,34 @@
+name: Build ArchISO Stable
+on:
+  # push:
+  workflow_dispatch:
+  # schedule:
+  #   - cron:  '0 0 */7 * *'
+  
+jobs:
+  build:
+    env:
+      ATHENA_VERSION: 'v23.06.01'
+    runs-on: ubuntu-22.04
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged 
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm archiso git openssh sshpass
+          
+      - name: Retrieve Athena ISO
+        run: git clone https://github.com/Athena-OS/athena-iso
+        
+      - name: Build ArchISO
+        run: |
+          sed -i 's/install -m 0644 -- "\${files_to_copy\[@\]}"/cp -r -- "\${files_to_copy\[@\]}"/g' /usr/bin/mkarchiso
+          cd athena-iso/installation-scripts
+          ./30-build-the-iso-the-first-time.sh
+          
+      - name: Upload to SourceForge
+        run: |
+          sshpass -p ${{ secrets.SOURCEFORGE_TOKEN }} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $HOME/Athena-Out/athena-2023.06.01-x86_64.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}} 2>&1 | grep -v debug1
