@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm archiso git
+        run: pacman -Syyu --noconfirm archiso git openssh
           
       - name: Retrieve Athena ISO
         run: git clone https://github.com/Athena-OS/athena-iso
@@ -26,3 +26,7 @@ jobs:
           sed -i 's/install -m 0644 -- "\${files_to_copy\[@\]}"/cp -r -- "\${files_to_copy\[@\]}"/g' /usr/bin/mkarchiso
           cd athena-iso/installation-scripts
           ./30-build-the-iso-the-first-time.sh
+          
+      - name: Upload to SourceForge
+        run: |
+          scp $HOME/Athena-Out/athena-2023.06.01-x86_64.iso ${{ secrets.SOURCEFORGE_USER }}:${{ secrets.SOURCEFORGE_TOKEN }}@frs.sourceforge.net:/home/frs/project/athena-iso/unstable
