@@ -9,6 +9,8 @@ jobs:
   build:
     env:
       ATHENA_VERSION: 'v23.06.01'
+      ISO_VERSION: '2023.06.01' # It must be the same on profiledef.sh and installation_script
+      ISO_ARCHITECTURE: 'x86_64'
     runs-on: ubuntu-22.04
     container:
       image: athenaos/base-devel:latest
@@ -31,4 +33,4 @@ jobs:
           
       - name: Upload to SourceForge
         run: |
-          sshpass -p ${{ secrets.SOURCEFORGE_TOKEN }} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $HOME/Athena-Out/athena-2023.06.01-x86_64.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}} 2>&1 | grep -v debug1
+          sshpass -p ${{ secrets.SOURCEFORGE_TOKEN }} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}} 2>&1 | grep -v debug1
