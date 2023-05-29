@@ -39,7 +39,7 @@ jobs:
           DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
           DROPBOX_DESTINATION_PATH_PREFIX: "/"
           GLOB: "$HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso"
-          DEBUG: false
+          DEBUG: true
           
 #      - name: Upload to SourceForge
 #        run: |
