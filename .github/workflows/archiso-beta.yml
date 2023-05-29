@@ -29,7 +29,8 @@ jobs:
         run: |
           sed -i 's/install -m 0644 -- "\${files_to_copy\[@\]}"/cp -r -- "\${files_to_copy\[@\]}"/g' /usr/bin/mkarchiso
           mkdir -p $HOME/Athena-Out
-          touch athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso
+          touch $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso
+          echo "ciao" > $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso
 #          cd athena-iso/installation-scripts
 #          ./30-build-the-iso-the-first-time.sh
           
