@@ -40,7 +40,6 @@ jobs:
           accessToken: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
           destination: "/"
           file: "$HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso"
-          displayProgress: true
           
 #      - name: Upload to SourceForge
 #        run: |
