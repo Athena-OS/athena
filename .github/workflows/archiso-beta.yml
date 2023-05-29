@@ -28,19 +28,19 @@ jobs:
       - name: Build ArchISO
         run: |
           sed -i 's/install -m 0644 -- "\${files_to_copy\[@\]}"/cp -r -- "\${files_to_copy\[@\]}"/g' /usr/bin/mkarchiso
-          mkdir -p $HOME/Athena-Out
-          touch $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso
-          echo "ciao" > $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso
-#          cd athena-iso/installation-scripts
-#          ./30-build-the-iso-the-first-time.sh
+          cd athena-iso/installation-scripts
+          ./30-build-the-iso-the-first-time.sh
+#          mkdir -p $HOME/Athena-Out
+#          touch $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso
+#          echo "ciao" > $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso
           
-      - name: Deploy to Dropbox
-        uses: whalemare/action-dropbox@v1.0.0
-        with:
-          accessToken: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
-          destination: "/"
-          file: "$HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso"
+#      - name: Deploy to Dropbox
+#        uses: whalemare/action-dropbox@v1.0.0
+#        with:
+#          accessToken: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+#          destination: "/"
+#          file: "$HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso"
           
-#      - name: Upload to SourceForge
-#        run: |
-#          sshpass -p "${{ secrets.SOURCEFORGE_TOKEN }}" rsync -avP -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}}
+      - name: Upload to SourceForge
+        run: |
+          sshpass -p "${{ secrets.SOURCEFORGE_TOKEN }}" rsync -avP -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}}
