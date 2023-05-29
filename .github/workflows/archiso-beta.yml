@@ -35,12 +35,12 @@ jobs:
 #          ./30-build-the-iso-the-first-time.sh
           
       - name: Deploy to Dropbox
-        uses: aTable/deploy-to-dropbox@v1.0.7
+        uses: whalemare/action-dropbox@v1.0.0
         with:
-          DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
-          DROPBOX_DESTINATION_PATH_PREFIX: "/"
-          GLOB: "$HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso"
-          DEBUG: true
+          accessToken: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          destination: "/"
+          file: "$HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso"
+          displayProgress: true
           
 #      - name: Upload to SourceForge
 #        run: |
