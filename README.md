@@ -48,7 +48,7 @@ Athena OS
 <h3 align="center">
   💞
   <a href="https://github.com/Athena-OS/athena-iso/releases/latest">
-  Download Athena OS "Parthenos" Now
+  Download Athena OS "Polias" Now
     </a>
   💞
 </h3>
@@ -95,7 +95,7 @@ Do you like it too? You may <a href="https://github.com/sponsors/Athena-OS">beco
 <br>
 <br>
 
-## Athena Beta Testing
+<!--## Athena Beta Testing
 Would you like to test the latest changes and improvements offered on the next release of Athena OS? Join our [Discord community](https://discord.gg/DNjvQkb5Ad) and ask for entering in the Beta Project!
 
 ## Known Issues
@@ -105,63 +105,54 @@ sudo pacman -Syy
 sudo pacman -S athena-calamares-config
 ```
 then, run the installation.
+-->
 
 ## Latest Updates
 Here I would like to inform you about new features already tested and implemented that have been published in the newest release, for keeping you always informed in a comfortable way.
 
-**Athena OS**, code name **"Parthenos"** (ancient Greek: "Virgin"), will be released in the next days, and comes with several important fixes and new implementations!
+**Athena OS**, code name **"Polias"** (ancient Greek: Πολιάς "of the city"), comes with several important fixes and new implementations!
 
-**Athena Parthenos** will provide:
-* **Hacking roles**: added new roles for your hacking activity:
-  * Black Hat Omniscient
-  * OSINT Specialist
-* Integrated **Hack The Box VIP** contents for playing retired machines
-* HTB Tools now manage **API key**, **shell prompt** and **target host** according to the user preferences
-* Implemented **Tool Recipe** viewer for having at hands all the productivity commands you need to improve your work
-* Implemented **OpenAI ChatGPT** Desktop client, mainly intended for users that need to understand how a security tool works
-* Implemented **browser choice** between **Firefox** and **Brave**
-* Implemented **Flameshot** choice at installation time
-* Implemented browser **quick access graphical interface** to hacking web resources (i.e., Hack The Box, TryHackMe, PWNX, Offensive Security) an online tools (i.e., RevShell generator, GTFOBins, CyberChef, CrackStation)
-* Added more **security bookmarks**
-* Implemented **Penetration Testing Kit** on browser
-* Implemented **PyWhat** for identifying all you need
-* Implemented **Note-Taking app** choice (CherryTree, Notion App Enhanced, Obsidian) and **Utility app** choice at installation time
-* Implemented logic for automating the usage of **NVIDIA** driver in Xorg and Wayland for baremetal installation
-* Implemented **border** and **borderless** window theme choice
-* NetworkMananger integrates with **OpenVPN**
-* Implemented **Orca** for improving the accessibility
-* Implemented **Neovim Nvchad**
-* Implemented **mirrorlist** for **BlackArch repository**
-* Implemented **Timeline Project** application for displaying and navigating events on a timeline
-* Implemented **vnstat** as network control monitoring
-* Implemented **SOF Firmware** and **ALSA utils**
+If you like it, please [support Athena OS](https://github.com/sponsors/Athena-OS)! It is appreciated.
+
+**Athena Polias** will provide:
+* **Blue Team** circular menu!
+* New hacking roles: **Blue Teamer** and **DoS Attacker**
+* **10 terminals** to be chosen during the installation of Athena
+* **CyberChef** as APPLICATION! If you need to decode or encode what you wish, you don't need to use the browser for connecting to CyberChef. Athena gives you CyberChef as application! Give a look on the menu dock!
+* Automatic install of the right drivers for your PC. Now Athena can recognize your **GPU** and install the right drivers with no user interaction
+* **Xorg** now is set as default because of being more stable than Wayland (i.e., Screen Share)
+* Automatic recognition of **environment** (if **Virtual** or **Baremetal**) and install the right drivers for it
+* Automatic recognition of the selected **File System** and install of related management tools
+* Implemented **Environment choice** during the installation (currently only "No Desktop" and "GNOME" options)
+* Implemented several **GNOME extensions** for improving the **productivity** of the environment
+* Installed modules on **PowerShell**
+* Implemented **BASH autosuggestion** and **ZSH autosuggestion**
+* Implemented **Offline Install**
+* Implemented **Nano syntax highlighting** for highlighting your files opened by `nano` according to its programming language
+* After the installation, Athena recognizes what are the **fastest** Arch Linux, BlackArch and Chaotic mirrors and set them **automatically** in your new system.
+* Added **cpc** alias for copying file contents directly on the clipboard without opening files
+* Implemented **Athena Grub Theme**
+* Discord replaced by **ArmCord** for removing Discord telemetry and improve the **Privacy** of the OS
+* Added **Mullvad Browser** choice in order to have a further browser designed for **Privacy** (it integrates by OpenVPN too)
+* VSCode replaced by **Codium** for removing Microsoft telemetry (Codium is also faster than VSCode)
+* **Android mobile smartphones** can be recognized by Athena when connected by USB
+* `htb-play` now tracks the machines you found **user** or **root flags**
+* Added **more bookmarks** and **Wayback Machine extension** on the browser
+* HTB Update now should **refresh** the HTB Active Machines on PWNage menu each 15 days
+* Implementation of **OnionShare** for sharing in **anonymous way** all the info you need with your peer!
+* Added **Tor Browser**
+* Added **Edex-UI**: a cinematic terminal environment!
+* Implemented **GNOME Gestures Improvements** for improving the experience of users using touchpads
+* ZSWAP replaced by **ZRAM**
+
+Athena implemented also massive technical changes on her backend to improve her performance!
   
 Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
 
 Screenshots:
+![image](https://github.com/Athena-OS/athena-iso/assets/83867734/a6492b39-35b7-4bfb-a95e-9c4187b43545)
 
-![image](https://user-images.githubusercontent.com/83867734/212759455-401edb7b-c812-491a-9fca-e7ff7b16ebf6.png)
-
-![image](https://user-images.githubusercontent.com/83867734/212759643-10bcfcb7-91ea-40f7-b478-7f4d7750d171.png)
-
-<!--### Known Third-Party Issues
-* Currently, due to some Arch Linux PGP key issue, the Athena installation will fail for the current release. It will be solved in the next release that contains a logic to autofix repository key issues.
-  * Run the ISO but dont run the Installation. Then:
-    ```
-    sudo nano /etc/calamares/modules/shellprocess-before.conf
-    ```
-    At the end of the file, add the following lines:
-    ```
-    - command: "pacman -Syy"
-    - command: "pacman -S --noconfirm archlinux-keyring"
-    - command: "pacman-key --init"
-    - command: "pacman-key --populate"
-    ```
-    Note:  keep "command" rows aligned with the already existing ones.
-    Save the file, close it.
-    Run the installer
-
-    Note that, if you choose Sweet Dark as theme, you need to do some small manual fix because I updated the Sweet Dark theme package to be compliant with the next release automatically. It means you need to open GNOME Tweaks from application, go to Appearance, go to Legacy Applications and select Sweet-Dark.-->
+![image](https://github.com/Athena-OS/athena-iso/assets/83867734/6141d589-e6ae-407a-876b-0c7993830d8e)
     
 ## Contents
 
