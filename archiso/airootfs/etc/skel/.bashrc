@@ -1,5 +1,17 @@
 # ~/.bashrc
 
+# Append "$1" to $PATH when not already in.
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+append_path "$HOME/bin"
+append_path "$HOME/.local/bin"
+
 ### EXPORT ### Should be before the change of the shell
 export EDITOR=/usr/bin/nvim
 export VISUAL='nano'
