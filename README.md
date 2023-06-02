@@ -149,7 +149,6 @@ Athena implemented also massive technical changes on her backend to improve her 
   
 Remember, I left a **small challenge for you** inside the system! The tip is clear enough when you login...
 
-Screenshots:
 ![image](https://github.com/Athena-OS/athena-iso/assets/83867734/a6492b39-35b7-4bfb-a95e-9c4187b43545)
 
 ![image](https://github.com/Athena-OS/athena-iso/assets/83867734/6141d589-e6ae-407a-876b-0c7993830d8e)
