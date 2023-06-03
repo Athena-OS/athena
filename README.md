@@ -161,7 +161,6 @@ Remember, I left a **small challenge for you** inside the system! The tip is cle
 - [📐 Configuration](#config)
 - [🔥 Resources](#res)
 - [📷 Screenshots](#shots)
-- [🛣️ Roadmap](#map)
 - [❓ Support](#techsupport)
 - [📢 Publications](#publ)
 - [🫶 Partnerships](#part)
@@ -562,12 +561,6 @@ Change your themes and icons by `gnome-tweaks`.
 ![athena-themes](https://user-images.githubusercontent.com/83867734/211237687-e238ad4c-8793-45df-9eb7-944b6cc98520.gif)
 <br>
 <a id="map"></a>
-## 🛣️ Roadmap
-* Ongoing implementation of different themes that can be chosen at time of the installation
-* Integration between ExploitDB and NIST Feed
-* Athena Docker Container
-* Implementation of Blue Team tools
-* Implementation of bspwm
 
 <a id="techsupport"></a>
 ## ❓ Support
