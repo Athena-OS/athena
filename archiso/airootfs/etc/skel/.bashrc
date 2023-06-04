@@ -229,25 +229,15 @@ ex ()
   fi
 }
 
-export PROMPT_COMMAND='source ~/.bashrc without-blesh'
+export PROMPT_COMMAND='source ~/.bashrc no-repeat-flag'
 
 buffer_clean(){
   free -h && sudo sh -c 'echo 1 >  /proc/sys/vm/drop_caches' && free -h
 }
 
-# reporting tools - install when not installed
-#neofetch | lolcat
-#screenfetch
-#alsi
-#paleofetch
-#fetch
-#hfetch
-#sfetch
-#ufetch
-#pfetch
-#sysinfo
-#sysinfo-retro
-#cpufetch
-#colorscript random
+# reporting tools - install when not installed and uncomment your favourite
+if [[ $1 != no-repeat-flag ]]; then
+  neofetch
+fi
 
-[[ $1 != without-blesh && -f /usr/share/blesh/ble.sh ]] && source /usr/share/blesh/ble.sh
+[[ $1 != no-repeat-flag && -f /usr/share/blesh/ble.sh ]] && source /usr/share/blesh/ble.sh
