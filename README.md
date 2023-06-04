@@ -22,13 +22,10 @@ Athena OS
   </a>
 </p>
 
-<p align="center">
-<a href="https://www.paypal.com/donate/?hosted_button_id=MTYRF2NQT2BWA"><img width="32px" src="https://raw.githubusercontent.com/Kungger-git/files/master/imgs/ppal.png" alt="Support my work via Paypal"></a>
-</p>
-
-<p align="center">
+<!--<p align="center">
   <img src="https://user-images.githubusercontent.com/83867734/174499581-e0f74d41-36ce-4c01-af0d-6ecd98841a64.png" data-canonical-src="https://user-images.githubusercontent.com/83867734/174499581-e0f74d41-36ce-4c01-af0d-6ecd98841a64.png" width="600" height="496" />
-</p>
+</p>-->
+![image](https://github.com/Athena-OS/athena-iso/assets/83867734/b130dd25-5e7f-4cc8-bc16-6f384b4210f3)
 
 <!--
 <p align="center">
