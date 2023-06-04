@@ -23,7 +23,7 @@ jobs:
         run: |
           pacman-key --init
           pacman-key --populate
-          rm -rf .gnupg
+          rm -rf $HOME/.gnupg
           pacman -Syyu
 
       - name: Install dependencies
