@@ -18,7 +18,14 @@ jobs:
     steps:
       - name: Checkout files
         uses: actions/checkout@v3
-
+        
+      - name: Initialize repository keys
+        run: |
+          sudo pacman-key --init
+          sudo pacman-key --populate
+          sudo rm /var/lib/pacman/sync/blackarch.db.sig
+          sudo pacman -Syyu
+          
       - name: Install dependencies
         run: pacman -Syyu --noconfirm archiso git openssh rsync sshpass wget
           
