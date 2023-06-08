@@ -58,7 +58,7 @@ Click Docker icon above to explore Athena OS Docker containers!
 </h5>
 <br>
 <p align="center">
-  <a href="https://apps.microsoft.com/store/detail/athena-os/9N1M7Q4F1KQF"><img src="https://github.com/Athena-OS/athena-iso/assets/83867734/e995c742-aa3b-46c9-bf3f-823574be9d2a" width="250" height="90" /></a>
+  <a href="https://apps.microsoft.com/store/detail/athena-os/9N1M7Q4F1KQF"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Get_it_from_Microsoft_Badge.svg" width="250" height="90" /></a>
 </p>
 <h5 align="center">
 Click the icon above to explore Athena OS WSL in Microsoft Store App!
