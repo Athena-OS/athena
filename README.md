@@ -54,14 +54,14 @@ Athena OS
   <a href="https://hub.docker.com/u/athenaos"><img src="https://user-images.githubusercontent.com/83867734/224526828-b4f2a470-d539-494d-9ac0-34568a75af3a.png" width="150" height="128" /></a>
 </p>
 <h5 align="center">
-Click docker icon above to explore Athena OS Docker containers!
+Click Docker icon above to explore Athena OS Docker containers!
 </h5>
 <br>
 <p align="center">
-  <a href="ms-windows-store://pdp/?productid=9N1M7Q4F1KQF"><img src="https://github.com/Athena-OS/athena-iso/assets/83867734/e995c742-aa3b-46c9-bf3f-823574be9d2a" width="250" height="90" /></a>
+  <a href="https://apps.microsoft.com/store/detail/athena-os/9N1M7Q4F1KQF"><img src="https://github.com/Athena-OS/athena-iso/assets/83867734/e995c742-aa3b-46c9-bf3f-823574be9d2a" width="250" height="90" /></a>
 </p>
 <h5 align="center">
-Click icon above to explore Athena OS WSL in Microsoft Store App!
+Click the icon above to explore Athena OS WSL in Microsoft Store App!
 </h5>
 
 ### Why Athena?
