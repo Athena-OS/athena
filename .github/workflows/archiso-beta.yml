@@ -9,7 +9,7 @@ jobs:
   build:
     env:
       ATHENA_VERSION: 'unstable'
-      ISO_VERSION: 'test' # It must be the same on profiledef.sh and installation_script
+      ISO_VERSION: '2023.06.03' # It must be the same on profiledef.sh and installation_script
       ISO_ARCHITECTURE: 'x86_64'
     runs-on: ubuntu-22.04
     container:
