@@ -96,7 +96,6 @@ Dedicating my spare time to Athena OS in order to keep it stable, updated, flawl
   @IlMioAmicoAle<br>
   <a href='https://github.com/mcfly76'>@mcfly76</a><br>
   <a href='https://github.com/SinSiXX'>@SinSiXX</a><br>
-  <a href='https://github.com/anker023'>@anker023</a><br>
   <a href='https://github.com/CriminalShrimp'>@CriminalShrimp</a><br>
 </p>
 <br>
