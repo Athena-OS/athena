@@ -31,6 +31,7 @@ mesa
 mesa-utils
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
+mkinitcpio-openswap
 most
 mtools
 nbd
@@ -67,21 +68,10 @@ zram-generator
 ###                   DEPENDENCIES                  ###
 #######################################################
 
-#archlinux-tweak-tool dependencies:
-#python-distro
-#python-numpy
-#python-psutil
-
-#discord top bar icon dependencies
-#electron
-#libappindicator-gtk3
-
 #bfetch dependencies
 exa
 
 #Hashcat for using CPU
-hwloc
-ocl-icd
 pocl
 
 #######################################################
@@ -89,12 +79,6 @@ pocl
 #######################################################
 
 athena-gdm-config
-#lightdm
-
-####LIGHTDM DEPENDENCIES
-#lightdm-webkit2-greeter
-#plymouth
-#xorg-server-xephyr
 
 #######################################################
 ###                      FONTS                      ###
@@ -134,16 +118,6 @@ figlet
 file-roller
 fortune-mod
 git
-gnome-characters
-gnome-control-center
-gnome-gesture-improvements
-gnome-keyring
-gnome-menus
-gnome-shell-extensions
-gnome-system-monitor
-gnome-terminal
-gnome-themes-extra
-gnome-tweaks
 gparted
 grub-customizer
 gtk-engine-murrine
@@ -157,8 +131,8 @@ jq
 lib32-glibc
 lolcat
 lsd
-malcontent
 mtpfs
+myman
 nano-syntax-highlighting
 nautilus
 ncdu
@@ -173,11 +147,7 @@ p7zip
 paru
 pfetch
 polkit
-polkit-gnome
 python-pywhat
-qgnomeplatform-qt5
-qgnomeplatform-qt6
-qqc2-desktop-style
 reflector
 sl
 ######## hw-probe deps ########
@@ -186,43 +156,22 @@ sl
 snap-pac
 snap-pac-grub
 snapper
+superbfetch-git
 textart
 tidy
 tk
-toilet
+toilet-fonts
 tor-browser
 tree
 ufw
 unzip
 vnstat
-wayland
 wget
 which
 xclip
 xcp
-######## Flameshot deps ########
-xdg-desktop-portal
-xdg-desktop-portal-gnome
-################################
 xmlstarlet
 zoxide
-
-#######################################################
-###                 GNOME EXTENSIONS                ###
-#######################################################
-
-gnome-shell-extension-appindicator-git
-gnome-shell-extension-aylur-widgets-git
-gnome-shell-extension-compiz-windows-effect-git
-gnome-shell-extension-desktop-icons-ng-git
-gnome-shell-extension-fly-pie-git
-gnome-shell-extension-hide-activities-git
-gnome-shell-extension-logo-menu-git
-gnome-shell-extension-pop-shell-git
-gnome-shell-extension-remove-app-menu-git
-gnome-shell-extension-top-bar-organizer
-gnome-shell-extension-ubuntu-dock-git
-gnome-shell-extension-vitals-git
 
 #######################################################
 ###                   CHAOTIC AUR                   ###
@@ -230,7 +179,6 @@ gnome-shell-extension-vitals-git
 
 chaotic-keyring
 chaotic-mirrorlist
-mkinitcpio-openswap
 
 #######################################################
 ###                    BLACKARCH                    ###
@@ -262,10 +210,7 @@ athena-vscodium-themes
 athena-welcome
 figlet-fonts
 htb-tools
-myman
 nist-feed
-superbfetch-git
-toilet-fonts
 
 #Commented LightDM dependencies are managed by Calamares Installer
 
