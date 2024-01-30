@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Memory used by percentage
+mem_perc() {
+	printf "%.0f\n" $(free -m | grep Mem | awk '{print ($3/$2)*100}')
+}
+
+# Memory used by value
+mem_val() {
+	printf $(free -h --si | grep Mem | awk '{print($3)}')
+}
+
+# Swap
+swap_val() {
+	printf $(free -h --si | grep Swap | awk '{print($3)}')	
+}
+
+# Swap (Percentage)
+swap_perc() {
+	printf "%.0f\n" $(free -m | grep Swap | awk '{print ($3/$2)*100}')
+}
+
+if [[ "$1" == "--mem_perc" ]]; then
+	mem_perc
+elif [[ "$1" == "--mem_val" ]]; then
+	mem_val
+elif [[ "$1" == "--swap_perc" ]]; then
+	swap_perc
+elif [[ "$1" == "--swap_val" ]]; then
+	swap_val
+fi

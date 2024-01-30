@@ -1,0 +1,24 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+"http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+  <Name>Applications</Name>
+  <MergeFile type="parent">/etc/xdg/menus/gnome-applications.menu</MergeFile>
+  <Directory>X-GNOME-Menu-Applications.directory</Directory>
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+  <DefaultMergeDirs/>
+
+  <Menu>
+    <Name>Blue Team</Name>
+    <Directory>00-blue-team.directory</Directory>
+    <MergeFile>../blue-applications.menu</MergeFile>
+  </Menu>
+
+  <Menu>
+    <Name>Red Team</Name>
+    <Directory>00-red-team.directory</Directory>
+    <MergeFile>../red-applications.menu</MergeFile>
+  </Menu>
+
+</Menu>

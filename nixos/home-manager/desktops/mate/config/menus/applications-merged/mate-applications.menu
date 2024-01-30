@@ -1,0 +1,30 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+
+  <Name>Applications</Name>
+  <MergeFile type="parent">/etc/xdg/menus/mate-applications.menu</MergeFile>
+  <Directory>mate-menu-applications.directory</Directory>
+
+  <!-- Read standard .directory and .desktop file locations -->
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+
+  <!-- Read in overrides and child menus from applications-merged/ -->
+  <DefaultMergeDirs/>
+  <MergeDir>applications-merged</MergeDir>
+
+  <Menu>
+    <Name>Blue Team</Name>
+    <Directory>00-blue-team.directory</Directory>
+    <MergeFile>../blue-applications.menu</MergeFile>
+  </Menu>
+
+  <Menu>
+    <Name>Red Team</Name>
+    <Directory>00-red-team.directory</Directory>
+    <MergeFile>../red-applications.menu</MergeFile>
+  </Menu>
+
+</Menu> <!-- End Applications -->

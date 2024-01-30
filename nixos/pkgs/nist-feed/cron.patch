@@ -1,0 +1,10 @@
+--- a/nist-feed	2024-01-28 19:03:44.721621784 +0530
++++ b/nist-feed	2024-01-28 19:07:35.724932362 +0530
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-pkill -f "/usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications"
++ps aux | grep gjs | awk '{print $2}' | xargs kill
+ 
+ ############################################################
+ # Colors                                                   #

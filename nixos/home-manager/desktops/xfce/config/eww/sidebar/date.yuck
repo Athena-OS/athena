@@ -1,0 +1,17 @@
+(defwidget date []
+    (box :class "genwin"
+    	 (box 	:orientation "v"
+    	 		:space-evenly "false"
+    	 		:halign "start"
+    	 		:valign "center"
+
+    	 		(label  :text "${day}"
+    	 				:halign "start"
+    	 				:class "title")
+
+        		(label  :text "${month} ${date}"
+        				:class "description"
+        				:halign "start")
+        )
+    )
+)

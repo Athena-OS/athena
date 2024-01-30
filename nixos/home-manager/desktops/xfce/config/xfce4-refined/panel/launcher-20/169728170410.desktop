@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Security Wordlist
+Comment=Security Wordlist
+Icon=kali-golismero
+Exec=exo-open --launch TerminalEmulator /usr/bin/bash -c "if test -d /usr/share/payloads/Security-Wordlist;then cd /usr/share/payloads/Security-Wordlist;$SHELL;else echo \\"Security Wordlist not found. I'm retrieving it for you...\\";sudo git clone https://github.com/DragonJAR/Security-Wordlist /usr/share/payloads/Security-Wordlist;cd /usr/share/payloads/Security-Wordlist;$SHELL;fi;"
+Terminal=false
+Categories=Tags;Describing;Application
+X-XFCE-Source=file:///usr/share/applications/securitywordlist.desktop

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+## Get output volume with amixer
+get_vol() {
+	amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'
+}
+
+## Microphone
+get_micro() {
+	amixer -D pulse sget Capture | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'
+}
+
+if [[ "$1" == "--vol" ]]; then
+	get_vol
+elif [[ "$1" == "--micro" ]]; then
+	get_micro
+fi

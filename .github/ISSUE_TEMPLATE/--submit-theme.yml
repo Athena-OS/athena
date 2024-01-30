@@ -1,0 +1,94 @@
+name: "🖼️Submit theme"
+description: Submit a theme
+title: "[THEME]: "
+labels: ["theme"]
+body:
+- type: markdown
+  attributes:
+    value: |
+      Refer to [Submitting Themes](https://www.athenaos.org/en/community/submitting-themes/) to know how to submit a theme.
+
+- type: checkboxes
+  attributes:
+    label: Which environment the theme is intended for?
+    description: |
+      Tell us which environment the theme is intended for. 
+    options:
+      - label: "GNOME"
+      - label: "KDE Plasma"
+      - label: "Cinnamon"
+      - label: "MATE"
+      - label: "XFCE"
+      - label: "Hyprland"
+      
+- type: input
+  attributes:
+    label: GTK Theme
+    description: |
+      Type the source of the GTK Theme.
+    placeholder: "https://github.com/EliverLara/Sweet"
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Icon Theme
+    description: |
+      Type the source of the Icon Theme.
+    placeholder: "https://github.com/EliverLara/candy-icons"
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Cursor Theme
+    description: |
+      Type the source of the Cursor Theme.
+    placeholder: "https://github.com/varlesh/oreo-cursors"
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Kitty Theme
+    description: |
+      Type the name of the Kitty Theme.
+    placeholder: "Kitty theme name"
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: VSCodium Theme
+    description: |
+      Type the name of the VSCodium Theme.
+    placeholder: "VSCodium theme name"
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Tmux Theme
+    description: |
+      Type the name of the Tmux Theme.
+    placeholder: "Tmux theme name"
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Setting Instructions
+    description: Report the instructions for setting the theme correctly.
+    placeholder: |
+      Detailed instructions.
+  validations:
+    required: false
+
+- type: textarea
+  attributes:
+    label: Screenshots
+    description: Show your rice.
+    placeholder: |
+      Paste your images or use ![Image Label](https://link-to-your-image)
+  validations:
+    required: false

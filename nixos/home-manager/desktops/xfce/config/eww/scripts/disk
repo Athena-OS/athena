@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+## Get Free Disk Space
+get_disk() {
+    free=$(df -h / | awk '{print $3}' | tail -n 1 | sed 's/G/GB/')
+    echo "$free"
+}
+
+get_disk

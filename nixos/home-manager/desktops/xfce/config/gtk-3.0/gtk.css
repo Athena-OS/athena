@@ -1,0 +1,243 @@
+/*
+	Buttload of CSS
+	For beauty, probably!
+
+	NOTE:
+	Don't expect everything inside this thing to work out of the box. Why?
+	If you look at the IDs (starting with `#`), you'll see that many of them
+	end with a number (example: `#pager-4`). Well, that number is set by the
+	system and you gotta figure out the number ID of the thing yourself,
+	using gtk inspector:
+
+	GTK_DEBUG=interactive <application_name>
+*/
+
+
+/**************** xfce4-panel stuffs **********************/
+
+.xfce4-panel button,
+.genmon_plugin,
+#docklike-plugin .group {
+    transition: 0.2s;
+    border-radius: 3px;
+    margin: 5px;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.xfce4-panel.background .tasklist button {
+    font-size: 12px;
+}
+
+.xfce4-panel.background button:active,
+.xfce4-panel.background button:hover,
+.xfce4-panel.background button:active:hover,
+.xfce4-panel.background .tasklist button:active,
+.xfce4-panel.background .tasklist button:hover,
+.xfce4-panel.background .tasklist button:active:hover,
+#docklike-plugin .hover_group {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.xfce4-panel button:checked {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/*
+.genmon_plugin {
+	padding: 5px;
+}
+
+.genmon_plugin image {
+	margin-left: 5px;
+}
+
+.genmon_plugin label {
+	margin-left: 0px;
+}
+*/
+
+/* Docklike plugin */
+#docklike-plugin .group {
+    margin: 5px 2.5px;
+}
+
+#docklike-plugin button:first-child {
+    margin-left: 5px;
+}
+
+#docklike-plugin button:last-child {
+    margin-right: 5px;
+}
+
+/* Workspace indicator... */
+#pager-4 grid {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin: 4px;
+    border-radius: 3px;
+}
+
+#pager-4 button {
+    padding: 3px;
+    margin: 5px;
+    background-color: transparent;
+}
+
+#pager-4 button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#pager-4 button:checked {
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FFF;
+}
+
+/* 2 Separators before and after the genmon applets */
+#separator-12,
+#separator-2 {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Whiskermenu */
+#whiskermenu-8 button {
+    background-color: #67b0e8;
+}
+
+window#whiskermenu-window>frame>border {
+    border: 5px solid transparent;
+}
+
+window#whiskermenu-window scrolledwindow {
+    margin: 2px;
+    border: none;
+}
+
+#whiskermenu-window treeview {
+    padding: 7px 0px 7px 10px;
+}
+
+#whiskermenu-window iconview {
+    font-size: 12px;
+    padding: 5px 0px;
+    border-radius: 3px;
+}
+
+/*********** Power button on the panel **************/
+#launcher-1 button {
+    background-color: #8ccf7e;
+}
+
+/******************* Thunar *************************/
+
+* {
+    -ThunarAbstractIconView-row-spacing: 10px;
+    -ThunarAbstractIconView-column-spacing: 10px;
+}
+
+.thunar .standard-view .view {
+    padding: 5px 14px;
+}
+
+.thunar .sidebar .view {
+    padding-left: 0px;
+}
+
+.thunar .sidebar .view:selected {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 2px solid #6695a3;
+}
+
+
+/************* VTE Terminal (Padding) *******************/
+
+VteTerminal,
+vte-terminal {
+    padding: 15px;
+}
+
+
+/************* Xfsession logout dialog ******************/
+
+.xfsm-logout-dialog {
+    border: 2px solid #181f21;
+}
+
+.xfsm-logout-dialog * {
+    margin: 3px;
+}
+
+
+/**************** Xfce notificaton **********************/
+
+#XfceNotifyWindow {
+    border: 0px;
+    /* Let picom decide the border radius */
+    border-radius: 0px;
+
+}
+
+#XfceNotifyWindow progressbar {
+    border-radius: 5px;
+}
+
+#XfceNotifyWindow progressbar progress,
+#XfceNotifyWindow progressbar trough {
+    min-height: 4px;
+}
+
+#XfceNotifyWindow image {
+    -gtk-icon-transform: scale(0.5);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+
+/********* Context menus / Right click menus ***************/
+
+menu,
+.context-menu {
+    border: none;
+}
+
+menu menuitem,
+.menu menuitem,
+.context-menu menuitem {
+    padding: 6px 16px;
+}
+
+menu menuitem:hover,
+.menu menuitem:hover,
+.context-menu menuitem:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    color: white;
+}
+
+.csd.popup decoration {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.45), 0px 0px 0px 0px #181f21;
+}
+
+
+/**************** Alt+Tab window **********************/
+
+#xfwm-tabwin {
+    border-radius: 5px;
+    border: none;
+}
+
+#xfwm-tabwin button {
+    padding: 6px 10px;
+}
+
+
+/********************* Misc ***************************/
+
+headerbar label {
+    color: inherit;
+}
+
+calendar {
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Auto Wordlists
+Comment=Auto Wordlists
+Icon=kali-wordlists
+Exec=exo-open --launch TerminalEmulator /usr/bin/bash -c "if test -d /usr/share/payloads/Auto_Wordlists;then cd /usr/share/payloads/Auto_Wordlists;$SHELL;else echo \\"Auto Wordlists not found. I'm retrieving it for you...\\";sudo pacman -S --noconfirm athena-auto-wordlists;cd /usr/share/payloads/Auto_Wordlists;$SHELL;fi;"
+Terminal=false
+Categories=Tags;Describing;Application
+X-XFCE-Source=file:///usr/share/applications/autowordlists.desktop

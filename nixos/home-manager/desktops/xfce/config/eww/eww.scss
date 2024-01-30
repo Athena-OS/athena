@@ -1,0 +1,206 @@
+/** Color variables ***********************************/
+
+$background: #21282a;
+$background-alt: #181f21;
+$background-alt-light: #2c3335;
+$foreground: #dadada;
+$accent: #6695a3;
+
+$red: #e06e6e;
+$blue: #67b0e8;
+$green: #8ccf7e;
+$yellow: #E5C76B;
+
+
+/** Global *******************************************/
+
+* {
+	all: unset;
+}
+
+scale trough {
+    background-color: $background-alt-light;
+    border-radius: 3px;
+    min-height: 4px;
+    min-width: 16em;
+}
+trough highlight {
+	border-radius: 3px;
+}
+
+.description {
+	font-family: Roboto Condensed;
+	font-size: 18;
+	margin-top: -2px;
+}
+
+.title {
+	font-family: Roboto Condensed;
+	font-size: 14;
+}
+
+
+/** Generic window ***********************************/
+
+.genwin {
+	background-color: $background;
+	color: $foreground;
+	margin: 6px;
+	padding: 10px 15px;
+	border-radius: 3px;
+	font-family: Roboto Condensed;
+	font-size: 14;
+}
+
+
+/** Container widget *********************************/
+
+.container {
+	background-color: $background-alt;
+	padding: 10px;
+}
+
+
+/** Profile ******************************************/
+.profile {
+	background-color: $background-alt;
+}
+
+.username {
+	font-size: 18px;
+	color: #ececec;
+}
+
+.profile .extra-info {
+	font-size: 14px;
+}
+
+/*background-image is not the icon on menu button of vertical bar. It is specified in xfce4-perchannel config files*/
+.profile-picture {
+	background-image: url('images/athenaos-blue-crest.svg');
+	background-size: cover;
+	border-radius: 50%;
+}
+
+
+/** Battery and RAM circular widget ******************/
+
+.res-circle {
+	background-color: $background-alt-light;
+	border-radius: 100%;
+}
+
+.res-circle-small {
+	padding: 25px;
+	background-color: $background;
+	font-family: "feather";
+	font-size: 20px;
+}
+
+.res-mem {
+	color: $blue;
+}
+
+.res-bat {
+	color: $green;
+}
+
+.res-swap {
+	background-color: $background;
+}
+
+
+/** Weather ******************************************/
+
+.weathicon {
+	font-family: "JetBrainsMono Nerd Font";
+	font-size: 32px;
+	color: $yellow;
+}
+
+.weather .title {
+	font-size: 16px;
+}
+
+.weather .description {
+	font-size: 22px;
+	margin-top: 2px;
+}
+
+.location {
+	font-size: 14px;
+	font-family: Roboto Condensed, "feather";
+}
+
+.reload {
+	font-family: "feather"
+}
+
+
+/** Directories ***************************************/
+
+.dirs {
+	font-size: 16px;
+	padding: 10px 5px;
+	font-family: Roboto Condensed, "feather"
+}
+
+.dirs button {
+	transition: 0.1s;
+	border-radius: 3px;
+	padding: 4px 9px;
+}
+
+.dirs button:hover, .reload:hover {
+	background-color: $background-alt-light;
+}
+.dirs button:active, .reload:active {
+	background-color: $accent;
+}
+
+.disk-usage-box {
+	background-color: rgba(255,255,255,0.07);
+	border-radius: 3px;
+	padding: 20px;
+	margin: 13px;
+	font-size: 18px;
+	font-family: Roboto Condensed, "feather";
+}
+.disk-usage-icon {
+	font-size: 24px;
+}
+
+
+/** System *****************************************/
+
+.system {
+	padding: 20px;
+}
+
+.volume-icon,
+.brightness-icon,
+.mic-icon {
+	font-size: 20px;
+	font-family: "feather";
+}
+
+.volume-icon {
+	color: $green;
+}
+.volbar trough highlight {
+	background-color: $green;
+}
+        
+.brightness-icon {
+	color: $yellow;
+}
+.bribar trough highlight {
+	background-color: $yellow;
+}
+
+.mic-icon {
+    color: $blue;
+}
+.micbar trough highlight {
+	background-color: $blue;
+}

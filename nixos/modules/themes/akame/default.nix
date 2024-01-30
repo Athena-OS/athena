@@ -1,0 +1,63 @@
+{ pkgs, nixpkgs, home-manager, username, theme-components, ... }:
+let
+  theme-components = {
+    #gtk-theme = "Nightfox-Dusk-B";
+    gtk-theme = "Gruvbox-Dark-B";
+    #icon-theme = "Material-Black-Cherry-Suru";
+    icon-theme = "candy-icons";
+    cursor-theme = "Bibata-Modern-DarkRed";
+    background = "akame.jpg";
+  };
+  gtkTheme = "${theme-components.gtk-theme}";
+  gtkIconTheme = "${theme-components.icon-theme}";
+  gtkCursorTheme = "${theme-components.cursor-theme}";
+  backgroundTheme = "${theme-components.background}";
+in
+{
+  imports =
+    [
+      {
+        _module.args.theme-components = theme-components;
+      }
+    ];
+  environment.systemPackages = with pkgs; [
+    (callPackage ../../../pkgs/themes/athena-akame-theme/package.nix { })
+  ];
+  home-manager.users.${username} = { pkgs, ...}: {
+    # Needed to apply the theme on GTK4 windows (like Nautilus)
+    home.sessionVariables.GTK_THEME = gtkTheme;
+    
+    gtk = {
+      enable = true;
+      gtk3.extraConfig.gtk-decoration-layout = "menu:";
+      theme = {
+        name = gtkTheme;
+        #package = pkgs.nightfox-gtk-theme;
+        package = pkgs.gruvbox-gtk-theme;
+      };
+      iconTheme = {
+        name = gtkIconTheme;
+        package = pkgs.candy-icons;
+        #iconTheme.package = pkgs.material-black-colors.override {
+        #  colorVariants = [ "Material-Black-Cherry-Suru" ];
+        #};
+      };
+      cursorTheme = {
+        name = gtkCursorTheme;
+        package = pkgs.bibata-cursors;
+      };
+    };
+    programs.kitty = {
+      theme = "Crayon Pony Fish";
+    };
+    programs.vscode = {
+      extensions = with pkgs.vscode-extensions; [
+        dracula-theme.theme-dracula
+      ];
+      # In case extensions are not loaded, refer to https://github.com/nix-community/home-manager/issues/3507
+      userSettings = {
+        "workbench.colorTheme" = "Dracula";
+      };
+    };
+  };
+}

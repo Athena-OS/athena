@@ -1,0 +1,49 @@
+(defwidget system []
+	(box :class "genwin system"
+
+		(box :orientation "v"
+   			 :halign "center"
+   			 :valign "center"
+   			 :spacing 12
+
+			(box :orientation "h"
+				 :space-evenly "false"
+				(label  :class "volume-icon"
+						:text " ")
+                (scale  :min 0
+                        :max 101
+                        :value volume
+                        :orientation "h"
+                        :onchange "amixer -D pulse sset Master {}%"
+                        :class "volbar"
+                )
+			)
+
+			(box :orientation "h"
+				 :space-evenly "false"
+				(label  :class "brightness-icon"
+						:text " ")
+				(scale  :min 0
+						:max 101
+						:value brightness
+						:orientation "h"
+						:onchange "brightnessctl set {}%"
+						:class "bribar"
+				)
+			)
+
+			(box :orientation "h"
+				 :space-evenly "false"
+				(label  :class "mic-icon"
+						:text " ")
+				(scale  :min 0
+						:max 101
+						:value micro
+						:orientation "h"
+						:onchange "amixer -D pulse sset Capture {}%"
+						:class "micbar"
+				)
+			)
+		)
+	)
+)

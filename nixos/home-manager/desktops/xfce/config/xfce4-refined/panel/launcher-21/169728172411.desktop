@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=FuzzDB
+Comment=FuzzDB
+Icon=kali-ike-scan
+Exec=exo-open --launch TerminalEmulator /usr/bin/bash -c "if test -d /usr/share/payloads/fuzzdb;then cd /usr/share/payloads/fuzzdb;$SHELL;else echo \\"FuzzDB not found. I'm retrieving it for you...\\";sudo pacman -S --noconfirm athena-fuzzdb;cd /usr/share/payloads/fuzzdb;$SHELL;fi;"
+Terminal=false
+Categories=Tags;Describing;Application
+X-XFCE-Source=file:///usr/share/applications/fuzzdb.desktop

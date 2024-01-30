@@ -1,0 +1,34 @@
+(defwidget disk []
+	(box :class "genwin"
+		 :orientation "h"
+		 :space-evenly false
+
+		(box :orientation "v"
+         	 :halign "center"
+         	 :valign "center"
+         	 :space-evenly false
+         	 :class "disk-usage-box"
+         	 :spacing 5
+      		(label  :text ""
+      				:class "disk-usage-icon")
+      		(label  :text "${DISK_USAGE} "
+            		:class "disk-usage-value")
+        )
+
+		(box :orientation "v"
+		 	 :halign "center"
+		 	 :valign "center"
+		 	 :class "dirs"
+
+		 	(button :onclick "scripts/opendir --path ~/" 
+      				(label  :text " →   ~/Home"
+             				:halign "start"))
+            (button :onclick "scripts/opendir --path ~/Downloads" 
+      				(label  :text " →   ~/Downloads"
+             				:halign "start"))
+    		(button :onclick "scripts/opendir --path ~/.config" 
+      				(label  :text " →   ~/.config"
+             				:halign "start"))
+		)
+	)
+)

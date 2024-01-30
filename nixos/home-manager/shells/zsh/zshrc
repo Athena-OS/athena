@@ -1,0 +1,19 @@
+# Lines configured by zsh-newuser-install
+ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd completion)
+
+# z-shell-colors: https://coderwall.com/p/pb1uzq/z-shell-colors
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
+# End of lines configured by zsh-newuser-install
+
+if [[ $(tty) == */dev/tty* ]]; then
+    export PROMPT="%F{46}[HQ:%F{201}$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev) | %n%F{46}]"$'\n'"[>]%F{44}%~ $%f "
+else
+    export PROMPT="%F{46}┌──[HQ🚀🌐%F{201}$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev)🔥%n%F{46}]"$'\n'"└──╼[👾]%F{44}%~ $%f "
+fi
+
+if [[ $1 != no-repeat-flag && -z $NO_REPETITION ]]; then
+  source ~/.bash_aliases
+  source /run/current-system/sw/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /run/current-system/sw/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  #neofetch
+fi

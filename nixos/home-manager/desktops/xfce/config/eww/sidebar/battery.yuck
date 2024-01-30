@@ -1,0 +1,27 @@
+(defwidget battery [] 
+	(box :class "genwin"
+		 :space-evenly "true"
+		 :orientation "v"
+
+		(box :orientation "v"
+			 :space-evenly "false"
+			 :valign "center"
+			 :halign "center"
+			 :spacing 15
+
+			(label  :text "${BAT_PERCENTAGE}%, ${BAT_STATUS}"
+					:class "title")
+
+			(box :class "res-circle"
+			 	 :valign "center"
+			 	 :halign "center"
+				(circular-progress  :class "res-bat"
+									:value BAT_PERCENTAGE
+									:thickness 4
+					(label  :class "res-circle-small"
+							:text "${BAT_ICON}")
+				)
+			)
+		)
+	)
+)

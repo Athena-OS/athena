@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+###################################
+# https://github.com/larz258/Zshopt
+###################################
+
+args='';
+for item in $@
+  do
+    args="$args $item";
+  done
+shopt $args;

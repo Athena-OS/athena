@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=powersploit
+Encoding=UTF-8
+Exec=exo-open --launch TerminalEmulator /usr/bin/bash -c "if test -d /usr/share/windows/powersploit;then cd /usr/share/windows/powersploit;$SHELL;else echo \\"Powersploit is not installed. I'm retrieving it for you...\\";sudo pacman -S --noconfirm powersploit;cd /usr/share/windows/powersploit;$SHELL;fi;"
+Icon=kali-powersploit
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-01-os-backdoors;10-maintaining-access;
+X-BlackArch-Package=powersploit
+X-XFCE-Source=file:///usr/share/applications/kali-powersploit.desktop

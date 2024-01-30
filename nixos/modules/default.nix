@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./dev
+    ./hardware
+    ./misc
+  ];
+}

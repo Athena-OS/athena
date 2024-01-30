@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN" "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Layout>
+    <Menuname>Usual Applications</Menuname>
+    <Menuname>Identify</Menuname>
+    <Menuname>Protect</Menuname>
+    <Menuname>Detect</Menuname>
+    <Menuname>Respond</Menuname>
+    <Menuname>Recover</Menuname>
+    <Merge type="all"/>
+  </Layout>
+
+  <Menu>
+    <Name>Usual Applications</Name>
+    <Directory>usual-apps.directory</Directory>
+    <!-- This is the target of <Move> at the end ... -->
+  </Menu>
+
+
+  <Menu>
+    <Name>Identify</Name>
+    <Directory>001-identify.directory</Directory>
+    <Include>
+      <And>
+        <Category>001-identify</Category>
+      </And>
+    </Include>
+  </Menu>
+
+  <Menu>
+    <Name>Protect</Name>
+    <Directory>002-protect.directory</Directory>
+    <Include>
+      <And>
+        <Category>002-protect</Category>
+      </And>
+    </Include>
+  </Menu>
+
+  <Menu>
+    <Name>Detect</Name>
+    <Directory>003-detect.directory</Directory>
+    <Include>
+      <And>
+        <Category>003-detect</Category>
+      </And>
+    </Include>
+  </Menu>
+
+  <Menu>
+    <Name>Respond</Name>
+    <Directory>004-respond.directory</Directory>
+    <Include>
+      <And>
+        <Category>004-respond</Category>
+      </And>
+    </Include>
+  </Menu>
+
+  <Menu>
+    <Name>Recover</Name>
+    <Directory>005-recover.directory</Directory>
+    <Include>
+      <And>
+        <Category>005-recover</Category>
+      </And>
+    </Include>
+  </Menu>
+
+  <!-- Move default top-level menus one level deeper -->
+  <Move>
+    <Old>Accessories</Old>
+    <New>Usual Applications/Accessories</New>
+  </Move>
+  <Move>
+    <Old>Universal Access</Old>
+    <New>Usual Applications/Universal Access</New>
+  </Move>
+  <Move>
+    <Old>Electronics</Old>
+    <New>Usual Applications/Electronics</New>
+  </Move>
+  <Move>
+    <Old>Development</Old>
+    <New>Usual Applications/Development</New>
+  </Move>
+  <Move>
+    <Old>Education</Old>
+    <New>Usual Applications/Education</New>
+  </Move>
+  <Move>
+    <Old>Science</Old>
+    <New>Usual Applications/Science</New>
+  </Move>
+  <Move>
+    <Old>Games</Old>
+    <New>Usual Applications/Games</New>
+  </Move>
+  <Move>
+    <Old>Graphics</Old>
+    <New>Usual Applications/Graphics</New>
+  </Move>
+  <Move>
+    <Old>Internet</Old>
+    <New>Usual Applications/Internet</New>
+  </Move>
+  <Move>
+    <Old>Web Applications</Old>
+    <New>Usual Applications/Web Applications</New>
+  </Move>
+  <Move>
+    <Old>Multimedia</Old>
+    <New>Usual Applications/Multimedia</New>
+  </Move>
+  <Move>
+    <Old>Office</Old>
+    <New>Usual Applications/Office</New>
+  </Move>
+  <Move>
+    <Old>Sundry</Old>
+    <New>Usual Applications/Sundry</New>
+  </Move>
+  <Move>
+    <Old>System</Old>
+    <New>Usual Applications/System</New>
+  </Move>
+  <Move>
+    <Old>System Settings</Old>
+    <New>Usual Applications/System Settings</New>
+  </Move>
+  <Move>
+    <Old>Utilities</Old>
+    <New>Usual Applications/Utilities</New>
+  </Move>
+  <Move>
+    <Old>Other</Old>
+    <New>Usual Applications/Other</New>
+  </Move>
+  <Move>
+    <Old>Hamradio</Old>
+    <New>Usual Applications/Hamradio</New>
+  </Move>
+</Menu>

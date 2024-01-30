@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=mimikatz
+Encoding=UTF-8
+Exec=exo-open --launch TerminalEmulator /usr/bin/bash -c "if test -d /usr/share/windows/mimikatz;then cd /usr/share/windows/mimikatz;$SHELL;else echo \\"Mimikatz is not installed. I'm retrieving it for you...\\";sudo pacman -S --noconfirm mimikatz;cd /usr/share/windows/mimikatz;$SHELL;fi;"
+Icon=kali-mimikatz
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-maintaining-access;05-04-pass-hash;
+X-BlackArch-Package=mimikatz
+X-XFCE-Source=file:///usr/share/applications/kali-mimikatz.desktop
