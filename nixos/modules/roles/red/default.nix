@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     #_3proxy
-    ad-miner
+    #ad-miner # To be backported to 23.11
     adenum
     aesfix
     aeskeyfind
@@ -80,7 +80,7 @@
     dorkscout
     driftnet
     dsniff
-    dublin-traceroute
+    #dublin-traceroute #To be backported to 23.11
     dump1090
     edb
     enum4linux
@@ -111,7 +111,7 @@
     ghdorker
     ghidra
     girsh
-    git-hound
+    #git-hound # Marked as broken
     gitleaks
     go-cve-search
     gobuster
@@ -268,7 +268,7 @@
     retdec
     retdec-full
     rinetd
-    rita
+    #rita #To be backported to 23.11
     rizin
     rizinPlugins.rz-ghidra
     ropgadget

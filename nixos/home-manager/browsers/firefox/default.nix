@@ -41,6 +41,7 @@
             };
           };
           settings = {
+            "browser.startup.homepage" = "https://start.duckduckgo.com";
             "browser.places.importBookmarksHTML" = true;
             "general.smoothScroll" = true;
             # Re-bind ctrl to super (would interfere with tridactyl otherwise)
@@ -187,10 +188,10 @@
             installation_mode = "force_installed";
           };
           # NightTab
-          "{47bf427e-c83d-457d-9b3d-3db4118574bd}" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/nighttab/latest.xpi";
-            installation_mode = "force_installed";
-          };
+          #"{47bf427e-c83d-457d-9b3d-3db4118574bd}" = {
+          #  install_url = "https://addons.mozilla.org/firefox/downloads/latest/nighttab/latest.xpi";
+          #  installation_mode = "force_installed";
+          #};
           # OWASP Penetration Testing Kit
           "{1ab3d165-d664-4bf2-adb7-fed77f46116f}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/penetration-testing-kit/latest.xpi";

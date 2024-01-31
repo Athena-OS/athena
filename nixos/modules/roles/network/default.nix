@@ -28,7 +28,7 @@
     dnschef
     driftnet
     dsniff
-    dublin-traceroute
+    #dublin-traceroute # To be backported to 23.11
     dump1090
     etherape
     ettercap

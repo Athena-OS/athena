@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    ad-miner
+    #ad-miner # To be backported to 23.11
     aiodnsbrute
     amass
     asn
@@ -56,7 +56,7 @@
     python311Packages.scrapy-fake-useragent
     python311Packages.scrapy-splash
     python311Packages.spyse-python
-    rita
+    #rita # To be backported to 23.11
     sherlock
     sleuthkit
     smbmap

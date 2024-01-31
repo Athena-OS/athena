@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     aflplusplus
-    archivebox
+    #archivebox # python-django dep is marked as insecure
     apachetomcatscanner
     arjun
     boofuzz
