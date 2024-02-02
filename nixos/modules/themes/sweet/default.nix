@@ -3,7 +3,7 @@ let
   theme-components = {
     gtk-theme = "Sweet-Dark-v40";
     icon-theme = "Sweet-Purple";
-    cursor-theme = "Bibata-Modern-Ice";
+    cursor-theme = "oreo_spark_purple_cursors";
     background = "nix-neon-circle.jpg";
   };
   gtkTheme = "${theme-components.gtk-theme}";
@@ -35,12 +35,11 @@ in
       };
       iconTheme = {
         name = gtkIconTheme;
-        #package = pkgs.candy-icons;
         package = pkgs.sweet-folders;
       };
       cursorTheme = {
         name = gtkCursorTheme;
-        package = pkgs.bibata-cursors;
+        package = pkgs.oreo-cursors-plus;
       };
     };
     programs.kitty = {

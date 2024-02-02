@@ -162,7 +162,7 @@
     kerbrute
     kismet
     kiterunner
-    klee
+    # klee # https://github.com/NixOS/nixpkgs/issues/285896
     knockpy
     kube-hunter
     ldapdomaindump

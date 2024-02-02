@@ -2,7 +2,6 @@
 let
   theme-components = {
     gtk-theme = "Tokyonight-Dark-B";
-    #icon-theme = "Material-Black-Cherry-Suru";
     icon-theme = "Tokyonight-Dark";
     cursor-theme = "oreo_blue_cursors";
     background = "samurai-girl.jpg";
@@ -40,8 +39,7 @@ in
       };
       cursorTheme = {
         name = gtkCursorTheme;
-        #package = pkgs.oreo-cursors;
-        package = pkgs.bibata-cursors;
+        package = pkgs.oreo-cursors-plus;
       };
     };
     programs.kitty = {

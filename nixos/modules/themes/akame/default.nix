@@ -1,8 +1,7 @@
 { pkgs, nixpkgs, home-manager, username, theme-components, ... }:
 let
   theme-components = {
-    #gtk-theme = "Nightfox-Dusk-B";
-    gtk-theme = "Gruvbox-Dark-B";
+    gtk-theme = "Nightfox-Dusk-B";
     #icon-theme = "Material-Black-Cherry-Suru";
     icon-theme = "candy-icons";
     cursor-theme = "Bibata-Modern-DarkRed";
@@ -32,8 +31,7 @@ in
       gtk3.extraConfig.gtk-decoration-layout = "menu:";
       theme = {
         name = gtkTheme;
-        #package = pkgs.nightfox-gtk-theme;
-        package = pkgs.gruvbox-gtk-theme;
+        package = pkgs.nightfox-gtk-theme;
       };
       iconTheme = {
         name = gtkIconTheme;

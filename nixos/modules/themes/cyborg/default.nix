@@ -4,8 +4,7 @@ let
     gtk-theme = "Gruvbox-Dark-B";
     #icon-theme = "Material-Black-Mango-Suru";
     icon-theme = "candy-icons";
-    #cursor-theme = "Fuchsia-Pop";
-    cursor-theme = "Bibata-Modern-Ice";
+    cursor-theme = "Fuchsia-Pop";
     background = "cyborg-gruv.png";
   };
   gtkTheme = "${theme-components.gtk-theme}";
@@ -43,11 +42,10 @@ in
       };
       cursorTheme = {
         name = gtkCursorTheme;
-        package = pkgs.bibata-cursors;
-        #package = pkgs.fuchsia-cursor.override {
-        #  themeVariants = [ "Fuchsia-Pop" ];
-        #  platformVariants = [ "x11" ];
-        #};
+        package = pkgs.fuchsia-cursor.override {
+          themeVariants = [ "Fuchsia-Pop" ];
+          platformVariants = [ "x11" ];
+        };
       };
     };
     programs.kitty = {
