@@ -41,9 +41,17 @@ let
   #  killall
   #  python3
   ];
+
+  exploits = with pkgs; [
+    #powersploit
+  ];
+
+  wordlists = with pkgs; [
+    #seclists
+  ];
 in
 {
-  environment.systemPackages = devel ++ utilities;
+  environment.systemPackages = devel ++ utilities ++ exploits ++ wordlists;
   imports = [
     ./armcord
   ];
