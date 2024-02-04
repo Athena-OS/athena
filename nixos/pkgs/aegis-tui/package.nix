@@ -25,7 +25,7 @@ stdenvNoCC.mkDerivation {
       --replace gum ${lib.getExe gum} \
       --replace openssl ${lib.getExe openssl} \
       --replace /usr/share/aegis-tui $out/share/aegis-tui \
-      --replace /usr/share/aegis-tui/keymaps $out/share/aegis-tui/keymaps
+      --replace /usr/share/aegis-tui/keymaps $out/share/aegis-tui/keymaps \
       --replace /usr/share/aegis-tui/locales $out/share/aegis-tui/locales
   '';
 
