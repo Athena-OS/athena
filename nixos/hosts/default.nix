@@ -74,6 +74,7 @@ in
     SHELL = "/run/current-system/sw/bin/${shell}";
     TERMINAL = "${terminal}";
     TERM = "xterm-256color";
+    NIXPKGS_ALLOW_UNFREE = "1"; # To allow nix-shell to use unfree packages
   };
 
   system.nixos = {
