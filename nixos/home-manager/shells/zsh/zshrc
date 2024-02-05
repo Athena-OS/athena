@@ -5,6 +5,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history match_prev_cmd completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 # End of lines configured by zsh-newuser-install
 
+# To allow nix-shell to use unfree packages
+NIXPKGS_ALLOW_UNFREE=1
+
 if [[ $(tty) == */dev/tty* ]]; then
     export PROMPT="%F{46}[HQ:%F{201}$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev) | %n%F{46}]"$'\n'"[>]%F{44}%~ $%f "
 else

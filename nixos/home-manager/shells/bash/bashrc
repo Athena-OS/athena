@@ -20,6 +20,8 @@ HISTSIZE=100000
 HISTFILESIZE=2000000
 shopt -s histappend
 export PAGER='most'
+# To allow nix-shell to use unfree packages
+export NIXPKGS_ALLOW_UNFREE=1
 
 #Ibus settings if you need them
 #type ibus-setup in terminal to change settings and start the daemon
