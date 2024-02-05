@@ -47,9 +47,6 @@
           source ~/.bash_aliases
 
           zoxide init fish | source
-          
-          # To allow nix-shell to use unfree packages
-          set -x NIXPKGS_ALLOW_UNFREE 1
 
           #set -x BFETCH_INFO "pfetch"
           #set -x BFETCH_ART "$HOME/.local/textart/fetch/unix.textart"
