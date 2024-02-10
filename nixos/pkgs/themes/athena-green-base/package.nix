@@ -4,12 +4,12 @@
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
-  pname = "athena-hackthebox-theme";
-  version = "unstable-2024-01-29";
+  pname = "athena-green-base";
+  version = "0-unstable-2024-02-10";
 
   src = fetchFromGitHub {
     owner = "Athena-OS";
-    repo = "athena-hackthebox-theme";
+    repo = "athena-green-base";
     rev = "2477397b2e6727139e00c103c2015ecf991d6a9b";
     hash = "sha256-/iRSIcefhrYIk+mTMO8ibpsOvIY2P1hBSLKM+g3O9js=";
   };
@@ -27,8 +27,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   meta = with lib; {
-    description = "Hack The Box theme resources";
-    homepage = "https://github.com/Athena-OS/athena-hackthebox-theme";
+    description = "Green colorbase resources";
+    homepage = "https://github.com/Athena-OS/athena-green-base";
     maintainers = with maintainers; [ d3vil0p3r ];
     platforms = platforms.unix;
     license = licenses.gpl3Plus;

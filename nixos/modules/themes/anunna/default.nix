@@ -1,10 +1,11 @@
 { pkgs, nixpkgs, home-manager, username, theme-components, ... }:
 let
   theme-components = {
-    gtk-theme = "Tokyonight-Dark-B";
-    icon-theme = "Tokyonight-Dark";
-    cursor-theme = "oreo_blue_cursors";
-    background = "samurai-girl.jpg";
+    gtk-theme = "Nightfox-Dusk-B";
+    #icon-theme = "Material-Black-Cherry-Suru";
+    icon-theme = "candy-icons";
+    cursor-theme = "Bibata-Modern-DarkRed";
+    background = "redmoon.png";
   };
   gtkTheme = "${theme-components.gtk-theme}";
   gtkIconTheme = "${theme-components.icon-theme}";
@@ -19,39 +20,41 @@ in
       }
     ];
   environment.systemPackages = with pkgs; [
-    (callPackage ../../../pkgs/themes/athena-cyan-base/package.nix { })
+    (callPackage ../../../pkgs/themes/athena-red-base/package.nix { })
   ];
-
   home-manager.users.${username} = { pkgs, ...}: {
     # Needed to apply the theme on GTK4 windows (like Nautilus)
     home.sessionVariables.GTK_THEME = gtkTheme;
-
+    
     gtk = {
       enable = true;
       gtk3.extraConfig.gtk-decoration-layout = "menu:";
       theme = {
         name = gtkTheme;
-        package = pkgs.tokyo-night-gtk;
+        package = pkgs.nightfox-gtk-theme;
       };
       iconTheme = {
         name = gtkIconTheme;
-        #icon theme in this case is already installed by Tokyo Night GTK package
+        package = pkgs.candy-icons;
+        #iconTheme.package = pkgs.material-black-colors.override {
+        #  colorVariants = [ "Material-Black-Cherry-Suru" ];
+        #};
       };
       cursorTheme = {
         name = gtkCursorTheme;
-        package = pkgs.oreo-cursors-plus;
+        package = pkgs.bibata-cursors;
       };
     };
     programs.kitty = {
-      theme = "Tokyo Night Storm";
+      theme = "Crayon Pony Fish";
     };
     programs.vscode = {
       extensions = with pkgs.vscode-extensions; [
-        enkia.tokyo-night
+        dracula-theme.theme-dracula
       ];
       # In case extensions are not loaded, refer to https://github.com/nix-community/home-manager/issues/3507
       userSettings = {
-        "workbench.colorTheme" = "Tokyo Night Storm";
+        "workbench.colorTheme" = "Dracula";
       };
     };
   };
