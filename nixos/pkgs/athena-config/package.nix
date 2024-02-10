@@ -12,8 +12,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "Athena-OS";
     repo = "athena-config";
-    rev = "fc7936ac8eb1ce1a63de4fefdefb23187b0b7865";
-    hash = "sha256-6VBc4kSh04ZDk5zUpq8ZV8C2sBVvbdkIA9TEhFQznEk=";
+    rev = "b24ace7cc86fe184964c570dabec205011b88099";
+    hash = "sha256-ceOhqTDcH+uk6QvRFYgO5bUcaI7iq+8drQCZzrhKxec=";
   };
 
   buildInputs = [ pciutils ];

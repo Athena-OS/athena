@@ -260,7 +260,6 @@
     radare2
     rarcrack
     rathole
-    reaverwps
     reaverwps-t6x
     redfang
     redsocks
