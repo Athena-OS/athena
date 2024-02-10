@@ -19,7 +19,7 @@ in
       }
     ];
   environment.systemPackages = with pkgs; [
-    (callPackage ../../../pkgs/themes/athena-sweet-theme/package.nix { })
+    (callPackage ../../../pkgs/themes/athena-purple-base/package.nix { })
     candy-icons
   ];
   home-manager.users.${username} = { pkgs, ...}: {

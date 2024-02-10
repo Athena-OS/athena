@@ -20,7 +20,7 @@ in
       }
     ];
   environment.systemPackages = with pkgs; [
-    (callPackage ../../../pkgs/themes/athena-akame-theme/package.nix { })
+    (callPackage ../../../pkgs/themes/athena-red-base/package.nix { })
   ];
   home-manager.users.${username} = { pkgs, ...}: {
     # Needed to apply the theme on GTK4 windows (like Nautilus)

@@ -2,6 +2,7 @@
 let
   tmuxcolor = {
     akame = "redwine";
+    anunna = "redwine";
     cyborg = "gold";
     graphite = "snow";
     hackthebox = "forest";

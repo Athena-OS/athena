@@ -17,12 +17,12 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
 
-         package=athena-akame-theme
+         package=athena-red-base
          if pacman -Qq $package > /dev/null ; then
               theme-switcher AkameGaKill
          fi
 
-        package=athena-cyborg-theme
+        package=athena-gruvbox-base
         if pacman -Qq $package > /dev/null ; then
             theme-switcher Cyborg
         fi
@@ -32,7 +32,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               theme-switcher Everblush
          fi
 
-         package=athena-graphite-theme
+         package=athena-blue-base
          if pacman -Qq $package > /dev/null ; then
               theme-switcher Graphite
          fi
@@ -42,7 +42,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               theme-switcher HackTheBox
          fi
 
-         package=athena-samurai-theme
+         package=athena-cyan-base
          if pacman -Qq $package > /dev/null ; then
               theme-switcher SamuraiGirl
          fi
