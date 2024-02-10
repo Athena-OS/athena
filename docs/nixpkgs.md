@@ -197,6 +197,19 @@ When using **mkDerivation** in a `.nix` package file, and its variables need to 
 ```
 In this manner, all the declared variables like `pname` or `version` can be accessed by `finalAttrs.<variable-name>`.
 
+## Shell scripts
+
+In case you need to package a shell script which relies on ambient binaries/commands from the system environment, you could not be aware about all used commands, mostly for complex scripts. It can be problematic to understand what are the right dependencies to invoke.
+
+A solution is to use [resholve](https://github.com/abathur/resholve). It helps us to build the package in a self-contained environment in order to keep the correct dependencies tracked.
+
+An example of package using resholve is [unix-privesc-check](https://github.com/NixOS/nixpkgs/blob/f00e45dabfe1af2df6399d0f3b400b6b351467dd/pkgs/by-name/un/unix-privesc-check/package.nix).
+
+In particular, it is mandatory to have **solutions** variable. Inside it:
+* **inputs** must be filled with the dependencies of the script
+* **fake** should contain those commands that don't exist in Linux environment or that cause the error `"There is not yet a good way to resolve '<command>' in Nix builds."`
+* **execer** should contain all those commands that cause the error `'<command>' _might_ be able to execute its arguments, and I don't have any command-specific rules for figuring out if this specific invocation does or not.`. Note that, if the error persists despite you used `cannot`, use the package variable by `.bin` like `"cannot:${glibc.bin}/bin/ldd"`.
+
 ## Perl Modules
 
 In case you need to upload a Perl module in Nixpkgs repository, you must not create a `default.nix` in `pkgs/development/perl-modules` (unless the module is not straight forward and needs some core dependency). In most cases, you need only to add in `pkgs/top-level/perl-packages.nix` something like this structure:
