@@ -104,7 +104,6 @@
     python311Packages.torpy
     python311Packages.websockify
     rathole
-    reaverwps
     reaverwps-t6x
     redsocks
     responder

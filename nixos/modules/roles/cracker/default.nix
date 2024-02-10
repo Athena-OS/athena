@@ -48,7 +48,6 @@
     python311Packages.patator
     python311Packages.pypykatz
     rarcrack
-    reaverwps
     reaverwps-t6x
     sha1collisiondetection
     snow
