@@ -540,3 +540,32 @@ pkgs.mkShell {
 }
 ```
 and then, run `nix-shell`. By this method, the application is able to find the imported libraries and it runs in an isolated environment.
+
+## Review PR
+
+It is possible to review a PR and post an automated comment on the result to the PR ticket by using `nixpkgs-review` command. To use this, clone the Nixpkgs repository from a recent master/unstable checkout:
+```sh
+git clone https://github.com/NixOS/nixpkgs --depth=1
+cd nixpkgs
+```
+Then, run:
+```sh
+nixpkgs-review pr <PR-number>
+nixpkgs-review post-result --token <your-GitHub-token>
+```
+This command will publish a comment on your behalf containing the result of the tested compilation.
+Your GitHub personal token must be created by the scope `repo:public_repo`.
+
+If the output is similar to:
+
+Result of `nixpkgs-review pr 288039` run on x86_64-linux [1](https://github.com/Mic92/nixpkgs-review)
+<details>
+  <summary>1 package built:</summary>
+  <ul>
+    <li>scrounge-ntfs</li>
+  </ul>
+</details>
+
+and there is no error shown, the compilation has been successful.
+
+For additional information, refer to [nixpkgs-review docs](https://github.com/Mic92/nixpkgs-review#usage).
