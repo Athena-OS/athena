@@ -125,19 +125,21 @@ Another way to install dependencies is by [string context](https://shealevy.com/
 ```nix
   postPatch = ''
     substituteInPlace src/manage.rs \
-      --replace /usr/share/htb-toolkit/icons/ $out/share/htb-toolkit/icons/
+      --replace-fail /usr/share/htb-toolkit/icons/ $out/share/htb-toolkit/icons/
     substituteInPlace src/utils.rs \
-      --replace /usr/bin/bash ${bash} \
-      --replace "\"base64\"" "\"${coreutils}/bin/base64\"" \
-      --replace "\"gunzip\"" "\"${gzip}/bin/gunzip\""
+      --replace-fail /usr/bin/bash ${bash} \
+      --replace-fail "\"base64\"" "\"${coreutils}/bin/base64\"" \
+      --replace-fail "\"gunzip\"" "\"${gzip}/bin/gunzip\""
     substituteInPlace src/appkey.rs \
-      --replace secret-tool ${lib.getExe libsecret}
+      --replace-fail secret-tool ${lib.getExe libsecret}
     substituteInPlace src/vpn.rs \
-      --replace "arg(\"openvpn\")" "arg(\"${openvpn}/bin/openvpn\")" \
-      --replace "arg(\"killall\")" "arg(\"${killall}/bin/killall\")"
+      --replace-fail "arg(\"openvpn\")" "arg(\"${openvpn}/bin/openvpn\")" \
+      --replace-fail "arg(\"killall\")" "arg(\"${killall}/bin/killall\")"
   '';
 ```
 This code will automatically install the needed dependencies specified inside `${}` like `${coreutils}`, `${gzip}`, `${lib.getExe libsecret}`, `${openvpn}` and `${killall}` and you don't need to specify them inside `buildInputs`. Note that, also in this case, the binaries of the dependencies are not installed.
+
+The `replace` argument has different options shown [here](https://github.com/NixOS/nixpkgs/pull/260776).
 
 ## mkDerivation
 
@@ -197,6 +199,17 @@ When using **mkDerivation** in a `.nix` package file, and its variables need to 
 ```
 In this manner, all the declared variables like `pname` or `version` can be accessed by `finalAttrs.<variable-name>`.
 
+### Makefile
+
+If inside the `Makefile` we have something like:
+```
+BIN = /usr/bin
+```
+instead of using `substituteInPlace`, we can use:
+```nix
+makeFlags = [ "BIN=$(out)/bin" ];
+```
+
 ## Shell scripts
 
 In case you need to package a shell script which relies on ambient binaries/commands from the system environment, you could not be aware about all used commands, mostly for complex scripts. It can be problematic to understand what are the right dependencies to invoke.
@@ -209,6 +222,18 @@ In particular, it is mandatory to have **solutions** variable. Inside it:
 * **inputs** must be filled with the dependencies of the script
 * **fake** should contain those commands that don't exist in Linux environment or that cause the error `"There is not yet a good way to resolve '<command>' in Nix builds."`
 * **execer** should contain all those commands that cause the error `'<command>' _might_ be able to execute its arguments, and I don't have any command-specific rules for figuring out if this specific invocation does or not.`. Note that, if the error persists despite you used `cannot`, use the package variable by `.bin` like `"cannot:${glibc.bin}/bin/ldd"`.
+
+## Python standalone (no setup.py)
+
+To build Python tools with no `setup.py` file, it is important that the python script can be linked to the Python Path containing any dependency module that needs to be imported. Guessing that we have a Python script in `$out/share/weevely/weevely.py`, we need to use `python3Packages.buildPythonApplication rec {` as derivation function and create a wrapper and link `PYTHONPATH` to it, like:
+```nix
+    makeWrapper ${python3}/bin/python $out/bin/weevely \
+      --add-flags "$out/share/weevely/weevely.py" \
+      --prefix PYTHONPATH : ${python3Packages.makePythonPath propagatedBuildInputs}
+```
+Remember that dependency modules must be inside `propagatedBuildInputs`.
+
+To prevent the error related to `setup.py not found`, add `format = "other";` in `package.nix`.
 
 ## Perl Modules
 
@@ -330,8 +355,8 @@ A good strategy is to use `postPatch` and `substituteInPlace` to replace `plugin
 ```nix
   postPatch = ''
     substituteInPlace rip.pl rr.pl \
-      --replace \"plugins/\" \"$out/share/regripper/plugins/\" \
-      --replace \"plugins\" \"$out/share/regripper/plugins\"
+      --replace-fail \"plugins/\" \"$out/share/regripper/plugins/\" \
+      --replace-fail \"plugins\" \"$out/share/regripper/plugins\"
   '';
 ```
 
@@ -359,8 +384,8 @@ If it is needed to replace code strings inside source files, it is possible to u
 ```nix
   postPatch = ''
     substituteInPlace bin/maltego \
-      --replace /usr/bin/awk ${lib.getExe gawk} \
-      --replace "string" "anotherstring"
+      --replace-fail /usr/bin/awk ${lib.getExe gawk} \
+      --replace-fail "string" "anotherstring"
   '';
 ```
 To intend, the number of spaces is two.
@@ -377,7 +402,7 @@ const QString ThreadScanLibSearchDirs     = "/lib,/usr/lib,/usr/lib64,/usr/local
 where `ThreadScanLibSearchDirs` will be used as base to find libraries as `libudev` and/or `libparted` at **runtime**, it is needed to change those paths like:
 ```nix
 substituteInPlace threadscan.cpp \
-  --replace '/lib,/usr/lib,/usr/lib64,/usr/local/lib' '${builtins.replaceStrings [":"] [","] (lib.makeLibraryPath [ udev parted ])}'
+  --replace-fail '/lib,/usr/lib,/usr/lib64,/usr/local/lib' '${builtins.replaceStrings [":"] [","] (lib.makeLibraryPath [ udev parted ])}'
 ```
 It will result in something like:
 ```cpp
