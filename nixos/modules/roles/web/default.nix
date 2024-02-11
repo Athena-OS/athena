@@ -5,6 +5,7 @@
     #archivebox # python-django dep is marked as insecure
     apachetomcatscanner
     arjun
+    assetfinder
     boofuzz
     brakeman
     burpsuite

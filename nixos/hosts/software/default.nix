@@ -19,6 +19,7 @@ let
     lsd
     ncdu
     netcat-openbsd
+    nixpkgs-review
     nyancat
     orca
     pciutils

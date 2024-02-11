@@ -772,3 +772,28 @@ it probably is caused by an icon set you are installing where one or more of its
 **Xorg environment freezes in VMware VM**
 
 Disable 3D Acceleration from VM settings.
+
+**Make error 'first defined here'**
+
+During make compilation, if you get the error:
+```
+/nix/store/mgdjnsrkqgmxqjaqaxgqyqm7fwyi96fk-binutils-2.31.1/bin/ld: CMakeFiles/rtlib.dir/colourscheme.c.o: in function `colour_scheme_reset_cached_data':
+colourscheme.c:(.text+0x1f0): multiple definition of `colour_scheme_reset_cached_data'; CMakeFiles/rtlib.dir/colourscheme.c.o:colourscheme.c:(.text+0x1f0): first defined here
+/nix/store/mgdjnsrkqgmxqjaqaxgqyqm7fwyi96fk-binutils-2.31.1/bin/ld: CMakeFiles/rtlib.dir/colourscheme.c.o: in function `colour_scheme_lookup_and_ref':
+colourscheme.c:(.text+0x260): multiple definition of `colour_scheme_lookup_and_ref'; CMakeFiles/rtlib.dir/colourscheme.c.o:colourscheme.c:(.text+0x260): first defined here
+/nix/store/mgdjnsrkqgmxqjaqaxgqyqm7fwyi96fk-binutils-2.31.1/bin/ld: CMakeFiles/rtlib.dir/colourscheme.c.o: in function `colour_scheme_unref':
+colourscheme.c:(.text+0x2c0): multiple definition of `colour_scheme_unref'; CMakeFiles/rtlib.dir/colourscheme.c.o:colourscheme.c:(.text+0x2c0): first defined here
+/nix/store/mgdjnsrkqgmxqjaqaxgqyqm7fwyi96fk-binutils-2.31.1/bin/ld: CMakeFiles/rtlib.dir/colourscheme.c.o: in function `colour_scheme_get_palette':
+colourscheme.c:(.text+0x380): multiple definition of `colour_scheme_get_palette'; CMakeFiles/rtlib.dir/colourscheme.c.o:colourscheme.c:(.text+0x380): first defined here
+...
+collect2: error: ld returned 1 exit status
+make[2]: *** [src/CMakeFiles/roxterm.dir/build.make:284: src/roxterm] Error 1
+make[1]: *** [CMakeFiles/Makefile2:164: src/CMakeFiles/roxterm.dir/all] Error 2
+make: *** [Makefile:130: all] Error 2
+builder for '/nix/store/zc1rlqyflyzbm9ra7fxfg8m0nkw48j6y-roxterm-3.7.5.drv' failed with exit code 2
+error: build of '/nix/store/zc1rlqyflyzbm9ra7fxfg8m0nkw48j6y-roxterm-3.7.5.drv' failed
+```
+add the following code in your `package.nix` file:
+```nix
+env.NIX_CFLAGS_COMPILE = toString [ "-fcommon" ];
+```

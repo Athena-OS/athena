@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     amass
     arjun
+    assetfinder
     burpsuite
     cewl
     chaos
