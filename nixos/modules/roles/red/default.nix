@@ -21,6 +21,7 @@
     arpoison
     asleap
     asnmap
+    assetfinder
     atftp
     bettercap
     bind
@@ -178,6 +179,7 @@
     macchanger
     maigret
     mailsend
+    maltego
     mapcidr
     masscan
     mdk4
@@ -221,6 +223,7 @@
     phrasendrescher
     pixiewps
     plecost
+    powersploit
     pmacct
     procyon
     proxmark3

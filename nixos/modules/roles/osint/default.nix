@@ -5,6 +5,7 @@
     aiodnsbrute
     amass
     asn
+    assetfinder
     bind
     bloodhound
     bloodhound-py
@@ -41,6 +42,7 @@
     ldeep
     linux-exploit-suggester
     maigret
+    maltego
     metabigor
     metasploit
     netdiscover
