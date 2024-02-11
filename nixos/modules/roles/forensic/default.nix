@@ -5,10 +5,12 @@
     aeskeyfind
     afflib
     bmap-tools
+    bulk_extractor
     chainsaw
     chipsec
     chkrootkit
     chntpw
+    dc3dd
     dcfldd
     ddrescue
     dmg2img
@@ -25,6 +27,7 @@
     pev
     pngcheck
     recoverjpeg
+    regripper
     safecopy
     sleuthkit
     snort
