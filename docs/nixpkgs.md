@@ -479,6 +479,14 @@ and
 
 If you need to perform massive change on the code of upstream files, you can create **patch files** that will replace the diff content with respect to the original files. This is useful if a tool works on usual Linux systems but not in NixOS and some changes should be applied to make it working on NixOS.
 
+#### Get patch files
+
+When we submit existing tools, some of them could need to be patched for several motivations (i.e., security reasons). How can we know if a tool has patch files available?
+
+One effective method is to access to [Debian Security Tools Packaging Team repository](https://salsa.debian.org/pkg-security-team) and search for the tool you are submitting in Nix repository and look inside `debian/patches` directory where you can find a list of patch files.
+
+#### Create patch files
+
 To create a patch file, you need to create a folder containing the same directory path of the upstream project. For example, if you need to patch `utils.rs` and it is stored in the `src/` folder, you should create:
 ```sh
 mkdir -p a/src
@@ -488,7 +496,11 @@ in `a/src/` you will store the upstream original `utils.rs` while in `b/src/` yo
 ```sh
 diff -Naur a/src/utils.rs b/src/utils.rs > utils.patch
 ```
-`utils.patch` is the patch file we will use inside our Nix derivative. So, inside the `package.nix` we insert:
+`utils.patch` is the patch file we will use inside our Nix derivative.
+
+#### Deploy patch files
+
+Inside the `package.nix` we insert:
 ```nix
   # Patches only relevant for Nixpkgs
   patches = [
@@ -540,6 +552,12 @@ pkgs.mkShell {
 }
 ```
 and then, run `nix-shell`. By this method, the application is able to find the imported libraries and it runs in an isolated environment.
+
+## OfBorg check
+
+OfBorg helps us to understand if a tool we submitted on a PR builds correctly in specific architectures (i.e., darwin). Just go to the list of all checks on the bottom page of the opened PR and scroll down the list until you find something like `ext3grep, ext3grep.passthru.tests on x86_64-darwin`.
+
+If it does not succeed, it means there is an error. As example, in case of darwin check failing, if there is no code fix or patch file solving it, just change `platforms = platforms.unix;` to `platforms = platforms.linux;`.
 
 ## Review PR
 
