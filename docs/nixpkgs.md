@@ -506,15 +506,16 @@ As example, in `package.nix`:
 ```nix
   patches = [
     (fetchpatch {
-      url = "https://salsa.debian.org/pkg-security-team/ext3grep/-/raw/debian/master/debian/patches/001_fix-ftbfs-e2fsprogs_1.42-WIP-702.diff";
+      url = "https://salsa.debian.org/pkg-security-team/ext3grep/-/raw/<latest-commit>/debian/patches/001_fix-ftbfs-e2fsprogs_1.42-WIP-702.diff";
       hash = "sha256-27M+o3vw4eGCFpdqVLXX6b73a8v29yuKphMo8K0xJ3U=";
     })
     (fetchpatch {
-      url = "https://salsa.debian.org/pkg-security-team/ext3grep/-/raw/debian/master/debian/patches/002_remove_i_dir_acl.diff";
+      url = "https://salsa.debian.org/pkg-security-team/ext3grep/-/raw/<latest-commit>/debian/patches/002_remove_i_dir_acl.diff";
       hash = "sha256-2bdlJ+zlsd7zX3ztV7NOTwSmEZf0N1BM8qJ/5avKX+M=";
     })
   ];
 ```
+Note that we must replace `debian/master` by the last commit ID of the single patch file. it is needed because, if we use `debian/master`, the file could change over time and it can generate issues.
 
 If you are using local patch file, use:
 ```nix
