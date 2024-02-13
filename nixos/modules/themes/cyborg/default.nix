@@ -2,8 +2,7 @@
 let
   theme-components = {
     gtk-theme = "Gruvbox-Dark-B";
-    #icon-theme = "Material-Black-Mango-Suru";
-    icon-theme = "candy-icons";
+    icon-theme = "Material-Black-Mango-Suru";
     cursor-theme = "Fuchsia-Pop";
     background = "cyborg-gruv.png";
   };
@@ -35,10 +34,9 @@ in
       };
       iconTheme = {
         name = gtkIconTheme;
-        package = pkgs.candy-icons;
-        #iconTheme.package = pkgs.material-black-colors.override {
-        #  colorVariants = [ "Material-Black-Mango-Suru" ];
-        #};
+        package = pkgs.material-black-colors.override {
+          colorVariants = [ "Material-Black-Mango-Suru" ];
+        };
       };
       cursorTheme = {
         name = gtkCursorTheme;
