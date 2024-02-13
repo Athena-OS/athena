@@ -3,7 +3,7 @@ let
   theme-components = {
     gtk-theme = "HackTheBox-B";
     icon-theme = "HackTheBox";
-    #cursor-theme = "Fuchsia-Pop";
+    #cursor-theme = "Afterglow-Recolored-Dracula-Green";
     cursor-theme = "Bibata-Modern-Ice";
     background = "nix-hackthebox.png";
   };
