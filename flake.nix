@@ -64,7 +64,7 @@
           ./nixos/. # It refers to the default.nix at nixos/ directory that imports in chain all the subfolder contents containing default.nix
           ./nixos/hosts/software
           ./nixos/modules/boot/${bootloader}
-          ./nixos/modules/desktops/${desktop}
+          ./nixos/home-manager/desktops/${desktop}
           ./nixos/modules/dms/${dmanager}
           ./nixos/modules/themes/${theme}
           ./nixos/home-manager/terminals/${terminal}
