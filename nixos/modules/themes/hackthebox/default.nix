@@ -3,8 +3,7 @@ let
   theme-components = {
     gtk-theme = "HackTheBox-B";
     icon-theme = "HackTheBox";
-    #cursor-theme = "Afterglow-Recolored-Dracula-Green";
-    cursor-theme = "Bibata-Modern-Ice";
+    cursor-theme = "Afterglow-Recolored-Dracula-Green";
     background = "nix-hackthebox.png";
   };
   gtkTheme = "${theme-components.gtk-theme}";
@@ -37,11 +36,10 @@ in
       };
       cursorTheme = {
         name = gtkCursorTheme;
-        package = pkgs.bibata-cursors;
-        #package = pkgs.afterglow-cursors-recolored.override {
-        #  themeVariants = [ "Dracula" ];
-        #  draculaColorVariants = [ "Green" ];
-        #};
+        package = pkgs.afterglow-cursors-recolored.override {
+          themeVariants = [ "Dracula" ];
+          draculaColorVariants = [ "Green" ];
+        };
       };
     };
     programs.kitty = {
