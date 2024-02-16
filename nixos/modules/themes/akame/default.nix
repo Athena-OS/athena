@@ -3,8 +3,7 @@ let
   theme-components = {
     gtk-theme = "Nightfox-Dusk-B";
     icon-theme = "Material-Black-Cherry-Suru";
-    cursor-theme = "Bibata-Modern-DarkRed";
-    #cursor-theme = "Afterglow-Recolored-Dracula-Green";
+    cursor-theme = "Afterglow-Recolored-Dracula-Red";
     background = "akame.jpg";
   };
   gtkTheme = "${theme-components.gtk-theme}";
@@ -41,11 +40,10 @@ in
       };
       cursorTheme = {
         name = gtkCursorTheme;
-        package = pkgs.bibata-cursors;
-        #package = pkgs.afterglow-cursors-recolored.override {
-        #  themeVariants = [ "Dracula" ];
-        #  draculaColorVariants = [ "Red" ];
-        #};
+        package = pkgs.afterglow-cursors-recolored.override {
+          themeVariants = [ "Dracula" ];
+          draculaColorVariants = [ "Red" ];
+        };
       };
     };
     programs.kitty = {
