@@ -12,6 +12,8 @@ There are several ways to build local packages. What I'm currently using are `ni
 
 Once you created your `package.nix`, you can use `nix-build` command to build your `package.nix` package file. The arguments of `niix-build` command can change according to the type of package we are trying to build.
 
+Note that, if you using VSCode/VSCodium, `package.nix` must end by a new line. GitHub online editor, instead, adds it automatically. Indeed, [.editorconfig](https://github.com/NixOS/nixpkgs/blob/master/.editorconfig) says that the last line of the file must end with a new line. VScode/VSCodium editor could be [configured](https://stackoverflow.com/questions/44704968/visual-studio-code-insert-newline-at-the-end-of-files) to add it automatically.
+
 In general, to build packages based on usual functions (like `mkDerivation`) require the usage of:
 ```sh
 nix-build -E 'with import <nixpkgs> {}; callPackage ./package.nix {}'
@@ -258,15 +260,17 @@ In case you need to upload a Perl module in Nixpkgs repository, you must not cre
 **meta** allows to specify several information about the package. The needed fields to set are mainly:
 ```nix
   meta = with lib; {
-    homepage = "https://www.packagetool.com";
     description = "Description of the tool";
+    homepage = "https://www.packagetool.com";
+    license = licenses.<license-type>;
     mainProgram = "<tool-name>";
     maintainers = with maintainers; [ <maintainer list separated by space> ];
     platforms = with platforms; <platform list separated by ++>;
     sourceProvenance = with sourceTypes; [ <sourceTypes-value> ];
-    license = licenses.<license-type>;
   };
 ```
+As good practice, sort them alphabetically.
+
 You can also use a direct form like `platforms = platforms.unix;`
 
 Note, if you use the pattern with `with` like `sourceProvenance = with sourceTypes;`, the assigned values should be in a list, so between `[ ]`.
@@ -483,7 +487,7 @@ If you need to perform massive change on the code of upstream files, you can cre
 
 When we submit existing tools, some of them could need to be patched for several motivations (i.e., security reasons). How can we know if a tool has patch files available?
 
-One effective method is to access to [Debian Security Tools Packaging Team repository](https://salsa.debian.org/pkg-security-team) and search for the tool you are submitting in Nix repository and look inside `debian/patches` directory where you can find a list of patch files.
+One effective method is to access to [Debian Security Tools Packaging Team repository](https://salsa.debian.org/pkg-security-team) and search for the tool you are submitting in Nix repository and look inside `debian/patches` directory where you can find a list of patch files. Don't consider those patch files with a warning icon near the commit ID.
 
 #### Create patch files
 
@@ -505,13 +509,22 @@ Usually, if patches are available online, it is a good practice to use `fetchpat
 As example, in `package.nix`:
 ```nix
   patches = [
+    # Ensure RStudio compiles against R 4.0.0.
+    # Should be removed next 1.2.X RStudio update or possibly 1.3.X.
     (fetchpatch {
-      url = "https://salsa.debian.org/pkg-security-team/ext3grep/-/raw/<latest-commit>/debian/patches/001_fix-ftbfs-e2fsprogs_1.42-WIP-702.diff";
-      hash = "sha256-27M+o3vw4eGCFpdqVLXX6b73a8v29yuKphMo8K0xJ3U=";
+      url = "https://github.com/rstudio/rstudio/commit/3fb2397c2f208bb8ace0bbaf269481ccb96b5b20.patch";
+      sha256 = "0qpgjy6aash0fc0xbns42cwpj3nsw49nkbzwyq8az01xwg81g0f3";
     })
+  ];
+```
+or
+```nix
+  patches = [
+    # Allow building with bison 3.7
+    # PR at https://github.com/GoldenCheetah/GoldenCheetah/pull/3590
     (fetchpatch {
-      url = "https://salsa.debian.org/pkg-security-team/ext3grep/-/raw/<latest-commit>/debian/patches/002_remove_i_dir_acl.diff";
-      hash = "sha256-2bdlJ+zlsd7zX3ztV7NOTwSmEZf0N1BM8qJ/5avKX+M=";
+      url = "https://github.com/GoldenCheetah/GoldenCheetah/commit/e1f42f8b3340eb4695ad73be764332e75b7bce90.patch";
+      sha256 = "1h0y9vfji5jngqcpzxna5nnawxs77i1lrj44w8a72j0ah0sznivb";
     })
   ];
 ```
@@ -574,7 +587,51 @@ and then, run `nix-shell`. By this method, the application is able to find the i
 
 OfBorg helps us to understand if a tool we submitted on a PR builds correctly in specific architectures (i.e., darwin). Just go to the list of all checks on the bottom page of the opened PR and scroll down the list until you find something like `ext3grep, ext3grep.passthru.tests on x86_64-darwin`.
 
-If it does not succeed, it means there is an error. As example, in case of darwin check failing, if there is no code fix or patch file solving it, just change `platforms = platforms.unix;` to `platforms = platforms.linux;`.
+### ARM architecture
+
+Usually, when configure and make are used for building, there is no need to specify `configureFlags = lib.optionals (stdenv.hostPlatform.isAarch32 || stdenv.hostPlatform.isAarch64) [ "--build=arm" ];`. In the case of cross-compiling, stdenv will call configure with something like `--build=x86_64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu`.
+
+### Darwin
+
+For better Darwin compatibility, in case you need to create a wrapper, use `makeBinaryWrapper` instead of `makeWrapper`.
+
+#### Errors
+
+If darwin checks do not succeed, it means there is an error. As example, if the check returns the error:
+```
+gcc: command not found
+```
+you can see that darwin does not use `gcc` command for C compilation, it uses `cc`. There is no gcc on default darwin stdenv but you can just set `CC=cc` and that will find the C compiler for darwin and linux.
+
+So, it can be fixed in two ways.
+
+If `Makefile` uses `gcc` and contains a `CC=gcc` line or `CC=<anyvalue>`, just add the following in `package.nix`:
+```nix
+  makeFlags = [
+    "CC=cc"
+  ];
+```
+If `CC` is not defined, just use `substituteInPlace` to replace `gcc` by `cc`, for example:
+```nix
+  postPatch = ''
+    substituteInPlace src/Makefile \
+      --replace gcc cc
+  '';
+```
+
+Finally, if there is no code fix or patch file solving it, just change `platforms = platforms.unix;` to `platforms = platforms.linux;`.
+
+#### Skip check
+
+If the check is skipped, and the output of check returns:
+```
+Cannot nix-instantiate `<pkgname>.passthru.tests' because:
+error: attribute 'tests' in selection path '<pkgname>.passthru.tests' not found
+```
+it means that in`package.nix` the platform is set as `meta.platforms =  platforms.linux;`, so the package has been created only for Linux. If you want to do it also for Darwin, just edit it as:
+```
+meta.platforms =  platforms.unix;
+```
 
 ## Review PR
 
