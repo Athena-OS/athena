@@ -64,8 +64,8 @@
           set -x BFETCH_ART "cowsay '<3 Athena OS'"
           set -x BFETCH_COLOR "$HOME/.local/textart/color/icon/panes.textart"
 
-          set -x PAYLOADS "/run/current-system/sw/share/payloads"
-          set -x SECLISTS "$PAYLOADS/SecLists"
+          set -x PAYLOADS "/run/current-system/sw/share/wordlists"
+          set -x SECLISTS "$PAYLOADS/seclists"
           set -x PAYLOADSALLTHETHINGS "$PAYLOADS/PayloadsAllTheThings"
           set -x FUZZDB "$PAYLOADS/FuzzDB"
           set -x AUTOWORDLISTS "$PAYLOADS/Auto_Wordlists"
