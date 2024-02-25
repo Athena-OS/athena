@@ -69,9 +69,9 @@ jobs:
       - name: Build and sign packages
         run: |
           export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
-          chmod +x ./scripts/build_and_sign_packages.sh
+          chmod +x ./scripts/build-and-sign-packages.sh
           chown -R builder ~/.gnupg/
-          sudo -E -u builder ./scripts/build_and_sign_packages.sh
+          sudo -E -u builder ./scripts/build-and-sign-packages.sh
 
       - name: Push packages to another repository
         run: |
