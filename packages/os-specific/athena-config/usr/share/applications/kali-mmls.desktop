@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=mmls
+Encoding=UTF-8
+Exec=shell-rocket "if command -v mmls &> /dev/null;then mmls;$SHELL;else echo \\"mmls is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mmls;$SHELL;fi;"
+Icon=kali-mmls
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

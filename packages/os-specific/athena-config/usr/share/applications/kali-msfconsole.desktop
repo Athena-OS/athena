@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=metasploit framework
+Encoding=UTF-8
+Exec=shell-rocket "if command -v msfconsole &> /dev/null;then msfconsole -h;$SHELL;else echo \\"Metasploit is not installed. I'm retrieving it for you...\\";sudo pacman -S metasploit;msfconsole -h;$SHELL;fi;"
+Icon=kali-metasploit-framework
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=08-exploitation-tools;
+X-Athena-Package=metasploit-framework

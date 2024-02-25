@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=zap
+StartupWMClass=ZAP
+Encoding=UTF-8
+Exec=shell-rocket "if command -v zaproxy &> /dev/null;then nohup zaproxy;$SHELL;else echo \\"zaproxy is not installed. I'm retrieving it for you...\\";sudo pacman -S zaproxy;nohup zaproxy;$SHELL;fi;"
+Icon=kali-zaproxy
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-webapp-analysis;03-06-web-application-proxies;001-identify;
+X-Athena-Package=zaproxy
+StartupWMClass=OWASP ZAP

@@ -1,0 +1,251 @@
+{
+    "modules": [
+        {
+            "id": "sql_injection",
+            "type": "active",
+            "description": "A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to affect the execution of predefined SQL commands.",
+            "metadata": {
+                "links": {
+                    "OWASP": "",
+                    "CWE": ""
+                }
+            },
+            "methods": ["GET","POST","HEAD","PUT","DELETE","OPTIONS","PATCH"],
+            "location": ["Path","Query", "Post","Cookie" ],
+            "regex": "(\\]\\[(DB2|ODBC|OleDb|Oracle|SqlServer|MySQL)|mysqli?_fetch_|not a valid MySQL|not a legal PLSQL identifer|mysqli?_connect\\(\\)|(SELECT\\s+[^:>]+\\sFROM\\s+[^:>]+\\sWHERE\\s+)|(at\\s[[:alnum:]\\\/\\._]+\\sline\\s\\d+)|ociparse\\(\\):|must be a syntactically valid variable|CFSQLTYPE|Unknown column ['`]|Microsoft OLE DB Provider for SQL|SQL QUERY FAILURE:|Syntax error.{1,50}in query|ORA-01722:|PostgreSQL query failed:|nested\\s+exception\\s+is\\s+com.microsoft.sqlserver.jdbc.SQLServerException|Could\\s+not\\s+find\\s+stored\\s+procedure|uncategorized\\s+SQLException\\s+for\\s+SQL|You\\s+have\\s+an\\s+error\\s+in\\s+your\\s+SQL\\s+syntax|Unclosed\\s+quotation\\s+mark|(quoted|terminated)[ \\r\\n]+.{1,100}(quoted|terminated)|sql syntax error|Syntax\\s+error\\s+in\\s+string\\s+in\\s+query\\s+expression\\s+column|Syntax error.{1,50}column|java\\.sql\\.SQLSyntaxErrorException|dao\\.EmptyResultDataAccessException|System\\.Data\\.OleDb\\.OleDbException|insert\\s+into\\s+['`][^\\s]+|database\\s+error|dberror|SqlClient.SqlException).{0,70}|call[ ]+to[ ]+a[ ]+member[ ]+function[ ]+fetch_assoc\\(\\)[ ]+.{0,100}|All[ ]+queries[ ]+combined[ ]+using[ ]+a[ ]+UNION,[ ]+INTERSECT[ ]+or[ ]+EXCEPT.{0,70}|(SQLITE_|sqlite3\\.Operational)ERROR.{0,70}",
+            "severity": "High",
+            "unique": true,
+            "attacks": [
+                {
+                    "id": "sqlinjection_1",
+                    "description": "SQL Injection - Single Quote (before)",
+                    "options": {
+                        "attackValue": "'",
+                        "position": "before"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, {"var": "module.regex"} ]}
+                },
+                {
+                    "id": "sqlinjection_2",
+                    "description": "SQL Injection - Single Quote (after)",
+                    "options": {
+                        "attackValue": "'",
+                        "position": "after"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, {"var": "module.regex"} ]}
+                },
+                {
+                    "id": "sqlinjection_3",
+                    "description": "SQL Injection - Double Quote (before)",
+                    "options": {
+                        "attackValue": "\"",
+                        "position": "before"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, {"var": "module.regex"} ]}
+                },
+                {
+                    "id": "sqlinjection_4",
+                    "description": "SQL Injection - Double Quote (after)",
+                    "options": {
+                        "attackValue": "\"",
+                        "position": "after"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, {"var": "module.regex"} ]}
+                }
+            ]
+        },
+
+        {
+            "id": "os_command_injection",
+            "type": "active",
+            "description": "",
+            "metadata": {
+                "links": {
+                    "OWASP": "",
+                    "CWE": ""
+                }
+            },
+            "methods": ["GET","POST","HEAD","PUT","DELETE","OPTIONS","PATCH"],
+            "location": ["Path","Query", "Post","Cookie" ],
+            "severity": "High",
+            "unique": true,
+            "attacks": [
+                {
+                    "id": "oscommand_1",
+                    "description": "OS Command Injection - Unix File (cat passwd)",
+                    "options": {
+                        "attackValue": "|/bin/cat /etc/passwd",
+                        "position": "after"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, "\\broot:.{0,20}:\\d+:\\d+:.{0,60}:|Exception: Could not find a part of the path|Exception: Could not find file" ]}
+                }
+            ]
+        },
+
+        {
+            "id": "xss",
+            "type": "active",
+            "description": "",
+            "metadata": {
+                "links": {
+                    "OWASP": "",
+                    "CWE": ""
+                }
+            },
+            "methods": ["GET","POST","HEAD","PUT","DELETE","OPTIONS","PATCH"],
+            "location": ["Path","Query", "Post","Cookie" ],
+            "severity": "High",
+            "unique": true,
+            "attacks": [
+                {
+                    "id": "xss_1",
+                    "description": "XSS - Unfiltered <script> tag",
+                    "options": {
+                        "attackValue": "<script>alert(ptk_xss_1)</script>",
+                        "position": "after"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, "<script>alert\\(ptk_xss_1\\)\\s*<\\/script>" ]}
+                },
+                {
+                    "id": "xss_2",
+                    "description": "XSS - Script tag after noscript tag",
+                    "options": {
+                        "attackValue": "</noscript><script>alert(ptk_xss_2)</script>",
+                        "position": "after"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, "<\\/noscript><script>alert\\(ptk_xss_2\\)\\s*<\\/script>" ]}
+                },
+                {
+                    "id": "xss_3",
+                    "description": "XSS - Svg tag with animation event",
+                    "options": {
+                        "attackValue": "<svg><animate onbegin=alert(ptk_xss_3) attributeName=x dur=1s>",
+                        "position": "after"
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, "<svg><animate onbegin=alert\\(ptk_xss_3\\) attributeName=x dur=1s>" ]}
+                },
+                {
+                    "id": "xss_4",
+                    "description": "XSS - Img onerror",
+                    "options": {
+                        "position": "before",
+                        "attackValue": "<img src=x onerror=window.postMessage({\"ptk\":\"AttackId\"})>",
+                        "random": "AttackId",
+                        "attackParamValue": null
+                    },
+                    "validation": {"regex" : [ { "var" : "attack.response.body" }, "<img src=x onerror=window.postMessage\\({\"ptk\":\"AttackId\"}\\)>" ]}
+                }
+        
+            ]
+        },
+
+        {
+            "id": "jwt_injection",
+            "type": "active",
+            "description": "This attack occurs when an attacker alters the token and changes the hashing algorithm to indicate, through the none keyword, that the integrity of the token has already been verified",
+            "metadata": {
+                "links": {
+                    "OWASP": "",
+                    "CWE": ""
+                }
+            },
+            "methods": ["GET","POST","HEAD","PUT","DELETE","OPTIONS","PATCH"],
+            "location": [ "Headers" ],
+            "severity": "High",
+            "unique": true,
+            "regex": "(eyJ[A-Za-z0-9_-]{2,})\\.([A-Za-z0-9_-]{2,})\\.([A-Za-z0-9_-]{2,})",
+            "attacks": [
+                {
+                    "id": "jwt_1",
+                    "description": "JWT None Algorithm",
+                    "conditions": { 
+                        "and" : 
+                            [
+                                {"==" : [ { "var" : "original.response.statusCode" }, 200 ]},
+                                {"or": [
+                                    {"regex" :  [ { "var" : "original.request.cookies" }, {"var": "module.regex"} ]}, 
+                                    {"regex" :  [ { "var" : "original.request.headers" }, {"var": "module.regex"} ]}   
+                                ]}
+                                
+                            ] 
+                    }
+                    ,
+                    "options": {
+                        "attackValue": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.$2.",
+                        "regex": "(eyJ[A-Za-z0-9_-]{2,})\\.([A-Za-z0-9_-]{2,})\\.([A-Za-z0-9_-]{2,})"
+                    },
+                    "validation":{ 
+                        "and" : 
+                            [
+                                {"==" : [ { "var" : "attack.response.statusCode" }, 200 ]},
+                                {"==" : [ { "var" : "attack.response.body" }, { "var" : "original.response.body" } ]}
+                            ] 
+                    }
+                 
+                }
+            ]
+        },
+        {
+            "id": "headers",
+            "type": "passive",
+            "description": "The OWASP Secure Headers Project describes HTTP response headers that your application can use to increase the security of your application. Once set, these HTTP response headers can restrict modern browsers from running into easily preventable vulnerabilities. ",
+            "metadata": {
+                "links": {
+                    "OWASP": "",
+                    "CWE": ""
+                }
+            },
+            "methods": ["GET","POST","HEAD","PUT","DELETE","OPTIONS","PATCH"],
+            "location": [ "Headers"],
+            "severity": "Low",
+            "unique": false,
+            "attacks": [
+                {
+                    "id": "header_1",
+                    "description": "Missing Content-Security-Policy header",
+                    "validation": {"none" : [ {"var":"original.response.headers"}, {"in":[{"var":"name"},  ["Content-Security-Policy", "content-security-policy"]  ]} ]}
+                },
+                {
+                    "id": "header_2",
+                    "description": "Missing Strict-Transport-Security header",
+                    "validation": {"none" : [ {"var":"original.response.headers"}, {"in":[{"var":"name"},  ["Strict-Transport-Security", "strict-transport-security"]  ]} ]}
+                },
+                {
+                    "id": "header_3",
+                    "description": "X-Powered-By header or equivalent",
+                    "validation": {"some" : [ {"var":"original.response.headers"}, {"in":[{"var":"name"},  
+                        [
+                            "X-Server-Powered-By", "x-server-powered-by",
+                            "X-Powered-By",  "x-powered-by",
+                            "X-Powered-By-Plesk", "x-powered-by-plesk",
+                            "Powered-By", "powered-by",
+                            "X-Server-Powered-By","x-server-powered-by",
+                            "X-Powered-CMS", "x-powered-cms",
+                            "X-CF-Powered-By", "x-cf-powered-by"
+                        ]  
+                        ]} ]
+                    }
+                },
+                {
+                    "id": "header_4",
+                    "description": "X-Frame-Options header is an obsolete directive",
+                    "validation": {"some" : [ {"var":"original.response.headers"}, {"in":[{"var":"name"},  
+                        [
+                            "X-Frame-Options", "x-frame-options"
+                        ]  ]} ]
+                    }
+                },
+                {
+                    "id": "header_5",
+                    "description": "X-XSS-Protection header is an obsolete directive",
+                    "validation": {"some" : [ {"var":"original.response.headers"}, {"in":[{"var":"name"},  
+                        [
+                            "X-XSS-Protection", "x-xss-protection"
+                        ]  ]} ]
+                    }
+                }
+
+            ]
+        }
+    ]
+}

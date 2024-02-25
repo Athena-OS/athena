@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ewfacquire
+Encoding=UTF-8
+Exec=shell-rocket "if command -v ewfacquire &> /dev/null;then ewfacquire -h;$SHELL;else echo \\"ewfacquire is not installed. I'm retrieving it for you...\\";sudo pacman -S libewf;ewfacquire -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-07-forensic-imaging-tools;004-respond;
+X-Athena-Package=libewf

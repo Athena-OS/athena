@@ -1,0 +1,207 @@
+#!/bin/sh
+
+# go here to get api  and documentation https://openweathermap.org/api
+
+
+# Documentation for weather quote below
+# https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+# Documentation of Icons to use for weather
+# https://erikflowers.github.io/weather-icons/api-list.html
+
+updateweather() {
+[ -d /tmp/weather ] || mkdir /tmp/weather
+# Grab your own key from openweathermap
+KEY="60d7b980f7da638967fed7f0aaf80f84"
+ID="4517009"
+UNIT="metric"
+weat=$(curl -sf "https://api.openweathermap.org/data/2.5/weather?id="$ID"&appid="$KEY"&units="$UNIT"")
+
+ID=$(echo "$weat" | jq -r ".weather[].id")
+LOCATION=$(echo "$weat" | jq -r ".name")
+
+desc=""
+icon=""
+
+if [ "$ID" = 200 ]; then
+  desc="Thunderstorm With Light Rain"
+  icon=""
+elif [ "$ID" = 201 ]; then
+  desc="Thunderstorm With Rain"
+  icon=""
+elif [ "$ID" = 202 ]; then
+  desc="Thunderstorm With Heavy Rain"
+  icon=""
+elif [ "$ID" = 210 ]; then
+  desc="Light Thunderstorm"
+  icon=""
+elif [ "$ID" = 211 ]; then
+  desc="Thunderstorm"
+  icon=""
+elif [ "$ID" = 212 ]; then
+  desc="Heavy Thunderstorm"
+  icon=""
+elif [ "$ID" = 221 ]; then
+  desc="Ragged Thunderstorm"
+  icon=""
+elif [ "$ID" = 230 ]; then
+  desc="Thunderstorm With Light Drizzle"
+  icon=""
+elif [ "$ID" = 231 ]; then
+  desc="Thunderstorm With Drizzle"
+  icon=""
+elif [ "$ID" = 232 ]; then
+  desc="Thunderstorm With Heavy Drizzle"
+  icon=""
+elif [ "$ID" = 300 ]; then
+  desc="Light Intensity Drizzle"
+  icon=""
+elif [ "$ID" = 301 ]; then
+  desc="Drizzle"
+  icon=""
+elif [ "$ID" = 302 ]; then
+  desc="Heavy Intensity Drizzle"
+  icon=""
+elif [ "$ID" = 310 ]; then
+  desc="Light Intensity Drizzle Rain"
+  icon=""
+elif [ "$ID" = 311 ]; then
+  desc="Drizzle Rain"
+  icon=""
+elif [ "$ID" = 312 ]; then
+  desc="Heavy Intensity Drizzle Rain"
+  icon=""
+elif [ "$ID" = 313 ]; then
+  desc="Shower Rain And Drizzle"
+  icon=""
+elif [ "$ID" = 314 ]; then
+  desc="Heavy Shower Rain And Drizzle"
+  icon=""
+elif [ "$ID" = 321 ]; then
+  desc="Shower Drizzle"
+  icon=""
+elif [ "$ID" = 500 ]; then
+  desc="Light Rain"
+  icon=""
+elif [ "$ID" = 501 ]; then
+  desc="Moderate Rain"
+  icon=""
+elif [ "$ID" = 502 ]; then
+  desc="Heavy Intensity Rain"
+  icon=""
+elif [ "$ID" = 503 ]; then
+  desc="Very Heavy Rain"
+  icon=""
+elif [ "$ID" = 504 ]; then
+  desc="Extreme Rain"
+  icon=""
+elif [ "$ID" = 511 ]; then
+  desc="Freezing Rain"
+  icon=""
+elif [ "$ID" = 520 ]; then
+  desc="Light Intensity Shower Rain"
+  icon=""
+elif [ "$ID" = 521 ]; then
+  desc="Shower Rain"
+  icon=""
+elif [ "$ID" = 522 ]; then
+  desc="Heavy Intensity Shower Rain"
+  icon=""
+elif [ "$ID" = 531 ]; then
+  desc="Ragged Shower Rain"
+  icon=""
+elif [ "$ID" = 600 ]; then
+  desc="Light Snow"
+  icon=""
+elif [ "$ID" = 601 ]; then
+  desc="Snow"
+  icon=""
+elif [ "$ID" = 602 ]; then
+  desc="Heavy Snow"
+  icon=""
+elif [ "$ID" = 611 ]; then
+  desc="Sleet"
+  icon=""
+elif [ "$ID" = 612 ]; then
+  desc="Light Shower Sleet"
+  icon=""
+elif [ "$ID" = 613 ]; then
+  desc="Shower Sleet"
+  icon=""
+elif [ "$ID" = 615 ]; then
+  desc="Light Rain And Snow"
+  icon=""
+elif [ "$ID" = 616 ]; then
+  desc="Rain And Snow"
+  icon=""
+elif [ "$ID" = 620 ]; then
+  desc="Light Shower Snow"
+  icon=""
+elif [ "$ID" = 621 ]; then
+  desc="Shower Snow"
+  icon=""
+elif [ "$ID" = 622 ]; then
+  desc="Heavy Shower Snow"
+  icon=""
+elif [ "$ID" = 701 ]; then
+  desc="Mist"
+  icon=""
+elif [ "$ID" = 711 ]; then
+  desc="Smoke"
+  icon=""
+elif [ "$ID" = 721 ]; then
+  desc="Haze"
+  icon=""
+elif [ "$ID" = 731 ]; then
+  desc="Sand/ Dust Whirls"
+  icon=""
+elif [ "$ID" = 741 ]; then
+  desc="Fog"
+  icon=""
+elif [ "$ID" = 751 ]; then
+  desc="Sand"
+  icon=""
+elif [ "$ID" = 761 ]; then
+  desc="Dust"
+  icon=""
+elif [ "$ID" = 762 ]; then
+  desc="Volcanic Ash"
+  icon=""
+elif [ "$ID" = 771 ]; then
+  desc="Squalls"
+  icon=""
+elif [ "$ID" = 781 ]; then
+  desc="Tornado"
+  icon=""
+elif [ "$ID" = 800 ]; then
+  desc="Clear Sky"
+  icon=""
+elif [ "$ID" = 801 ]; then
+  desc="Few Clouds"
+  icon=""
+elif [ "$ID" = 802 ]; then
+  desc="Scattered Clouds"
+  icon=""
+elif [ "$ID" = 803 ]; then
+  desc="Broken Clouds"
+  icon=""
+elif [ "$ID" = 804 ]; then
+  desc="Overcast Clouds"
+  icon=""
+fi
+if [ "$desc" = "" ]; then
+  desc="N/A"
+  icon=""
+fi
+echo "$weat" | jq ".main.temp" | cut -d "." -f 1 > /tmp/weather/temp
+echo "$LOCATION" > /tmp/weather/location
+echo "$desc" > /tmp/weather/description
+echo "$icon" > /tmp/weather/icon
+}
+
+case $1 in
+  --icon) cat /tmp/weather/icon ;;
+  --desc) cat /tmp/weather/description ;;
+  --temp) cat /tmp/weather/temp ;;
+  --location) cat /tmp/weather/location ;;
+  *) updateweather ;;
+esac

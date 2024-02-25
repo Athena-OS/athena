@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=legion (root)
+Encoding=UTF-8
+Exec=shell-rocket "if command -v legion &> /dev/null;then pkexec legion;$SHELL;else echo \\"legion is not installed. I'm retrieving it for you...\\";sudo pacman -S legion;pkexec legion;$SHELL;fi;"
+Icon=kali-legion
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;02-vulnerability-analysis;
+X-Athena-Package=legion
+StartupWMClass=legion.py

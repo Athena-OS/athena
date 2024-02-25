@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=assetfinder
+Encoding=UTF-8
+Exec=shell-rocket "if command -v assetfinder &> /dev/null;then assetfinder -h;$SHELL;else echo \\"assetfinder is not installed. I'm retrieving it for you...\\";sudo pacman -S assetfinder;assetfinder -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=001-identify;
+X-Athena-Package=assetfinder

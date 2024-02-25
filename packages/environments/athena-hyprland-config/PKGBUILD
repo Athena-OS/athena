@@ -1,0 +1,56 @@
+pkgname=athena-hyprland-config
+_pkgname=dots-hyprland
+pkgver=461.c1fd2adb
+pkgrel=1
+pkgdesc="Hyprland configuration for Athena."
+arch=('any')
+url='https://github.com/end-4/dots-hyprland'
+license=("GPL3")
+depends=('aylurs-gtk-shell-git' 'bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'brightnessctl' 'cava' 'cliphist' 'coreutils' 'curl' 'fcitx5' 'findutils' 'foot' 'fuzzel' 'fzf' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-git' 'hyprpicker' 'ibus' 'imagemagick' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'nwg-look' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pillow' 'python-poetry' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'swww' 'ttf-material-symbols-variable-git' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git' 'xdg-user-dirs' 'xorg-xrandr' 'yad' 'ydotool')
+makedepends=('git' 'rsync')
+source=("git+https://github.com/end-4/$_pkgname#branch=illogical-impulse"
+        "hyprland-init"
+        "dconf-desktop.ini")
+sha512sums=('SKIP'
+            '6139cdeeb6224d873fb7fcad488d3a7b9b3d700889e45ccb90edf63fd514bba11410d96bc893de2df7761234401216a282b3e504312ad2d11f98fb0baa9e0a81'
+            'a7a8b2f5e34d83d7f413b33941869dd29d4b3277821f63fe6972d8dbed6937743229bde2bbc49bd1ef91eda733ec720c9a501e395815197dc83d7e7718c90b31')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  install -dm 755 "$pkgdir/etc/skel/.config"
+  install -dm 755 "$pkgdir/etc/skel/.local/share"
+  install -dm 755 "$pkgdir/usr/bin"
+  #install -dm 755 "$pkgdir/usr/share/gnome-text-editor/styles"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  
+  cd $_pkgname
+
+  rsync -av --progress ./.config/ags "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/foot "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/fuzzel "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/gtk-3.0 "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/gtk-4.0 "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/gtklock "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/hypr "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/mpv "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/wlogout "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/code-flags.conf "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/starship.toml "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.local/bin "$pkgdir/etc/skel/.local/"
+  rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
+  #rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
+
+  install -Dm 755 $srcdir/hyprland-init "$pkgdir/usr/bin/"
+  #install -Dm 644 $srcdir/hyprland.conf "$pkgdir/etc/skel/.config/hypr/"
+  #install -Dm 644 $srcdir/keybinds.conf "$pkgdir/etc/skel/.config/hypr/"
+  install -Dm 644 $srcdir/dconf-desktop.ini "$pkgdir/usr/share/$pkgname/"
+
+  echo -ne "\n #Hyprland init script\nexec-once = hyprland-init" >> "$pkgdir/etc/skel/.config/hypr/execs.conf"
+  echo -ne "\n #Set wallpaper\nexec = swww img \$HOME/.config/hypr/wallpaper" >> "$pkgdir/etc/skel/.config/hypr/execs.conf"
+  touch "${pkgdir}/etc/skel/.flag-hyprland-once"
+}

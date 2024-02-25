@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=apktool
+Comment=Tool for reverse engineering Android apk files
+Encoding=UTF-8
+Exec=shell-rocket "if command -v apktool &> /dev/null;then apktool;$SHELL;else echo \\"apktool is not installed. I'm retrieving it for you...\\";sudo pacman -S android-apktool;apktool;$SHELL;fi;"
+Icon=kali-apktool
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=07-reverseengineer;11-01-android-tools;
+X-Athena-Package=android-apktool

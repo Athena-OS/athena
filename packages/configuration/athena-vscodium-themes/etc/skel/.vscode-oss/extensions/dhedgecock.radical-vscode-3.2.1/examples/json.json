@@ -1,0 +1,16 @@
+{
+  // Task runner automatically calls the build script
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "BuildTheme",
+      "type": "npm",
+      "script": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=maltego
+Encoding=UTF-8
+Exec=shell-rocket "if command -v maltego &> /dev/null;then maltego;$SHELL;else echo \\"maltego is not installed. I'm retrieving it for you...\\";sudo pacman -S maltego;maltego;$SHELL;fi;"
+Icon=kali-maltego
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;01-07-osint-analysis;12-reporting;13-social-engineering-tools;001-identify;
+Comment=Visualise, Map and Mine Data
+X-Athena-Package=maltego

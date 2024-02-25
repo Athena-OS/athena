@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=pdf-parser
+Encoding=UTF-8
+Exec=shell-rocket "if command -v pdf-parser &> /dev/null;then pdf-parser -h;$SHELL;else echo \\"pdf-parser is not installed. I'm retrieving it for you...\\";sudo pacman -S pdf-parser;pdf-parser -h;$SHELL;fi;"
+Icon=kali-pdf-parser
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-11-pdf-forensics-tools;
+X-Athena-Package=pdf-parser

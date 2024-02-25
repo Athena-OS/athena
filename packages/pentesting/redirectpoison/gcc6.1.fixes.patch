@@ -1,0 +1,15 @@
+diff -aur hack_library.orig/hack_library.c hack_library/hack_library.c
+--- hack_library.orig/hack_library.c	2016-05-16 22:08:29.571644314 -0400
++++ hack_library/hack_library.c	2016-05-16 22:09:33.397392221 -0400
+@@ -27,6 +27,11 @@
+ //-------------------------------------------------------------------------------
+ 
+ #include "hack_library.h"
++#include <ctype.h>
++#include <string.h>
++#include <sys/time.h>
++#include <fcntl.h> // for open
++#include <unistd.h> // for close
+ 
+ //-------------------------------------------------------------------------------
+ //

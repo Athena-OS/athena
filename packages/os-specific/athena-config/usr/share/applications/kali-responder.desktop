@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=responder
+Encoding=UTF-8
+Exec=shell-rocket "if command -v responder &> /dev/null;then responder -h;$SHELL;else echo \\"responder is not installed. I'm retrieving it for you...\\";sudo pacman -S responder;responder -h;$SHELL;fi;"
+Icon=kali-responder
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=09-sniffing-spoofing;
+X-Athena-Package=responder

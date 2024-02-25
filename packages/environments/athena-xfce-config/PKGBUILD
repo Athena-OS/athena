@@ -1,0 +1,15 @@
+pkgname=athena-xfce-config
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="XFCE configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('athena-xfce-base' 'nautilus')
+source=("$pkgname.tar.gz")
+sha512sums=('7240e159b9625a8a0f129e1497082dd7d004776d13f0b4f30411dffbd6c86ca7f602d3f6d91990872e1c6e4aad8a74ff249ac2c05d5d87748dd80da0b78670c7')
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel/.config"
+
+  cp -rf "${srcdir}/xfce4" "${pkgdir}/etc/skel/.config/"
+}

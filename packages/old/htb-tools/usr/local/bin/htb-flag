@@ -1,0 +1,79 @@
+#!/bin/sh
+
+detect_virt=$(systemd-detect-virt)
+if ([ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]) && [ -z $DISPLAY ]; then
+    appkey=$(cat /run/secrets/htb-api)
+else
+    appkey=$(secret-tool lookup htb-api user-htb-api)
+fi
+
+machine_json_file="$HOME/.machine.json"
+
+printf '%b\n' "$(base64 -d <<<"H4sIAAAAAAAAA+1buw6DMAzc+xVZWlUoSlCZqn5K+wv8/9oHUgkQIEBCDtueqlOHi+/imICVihunsL+9yqp6lo/7rb42P+t1iB1CcVjqWAzxkW3ZCtJEkH0QvU5GtGWkQ8wnyG5tu0h5g0Y/XhqME2jsEno7RHmyxVkbT9Bdbl9sV2g0rnsiymeDf9At/cZjBTSSCXfDbHx9wSghXSsQOQTnVW6jQCO/RUdaMkbLTYgP0EiLnagjU7Yk239wtbXl1FQMEd00Vp1GC41jXiT3CZRva2g5gJ2bKNbbomhysOtlTHbjE3oKWYcwb3ecM5Gf8dmXfnyk17gx9aih/JJgiBSeh1K+ygNUqZHbAtFENBFNRBPRRDQRTUSTuJoc8jLKl0VhFN8bZzR66RAs8Tp2UnQvz6zuGu4XZJ/BC0R/oSUpHeJ+ET/4GJbR9bxCEL4hccjuY7v7vA48bDe2DjG5t5yhO9hlLx5rjc/8kD1wBVncoox5ZHpMUhyUsYxNRMAILtp6otXA0RG4BcnZ4O3J+cuWwxtaDodVdT0AAA==" | gunzip)" #User printf for colored output
+echo
+
+echo -e "\e[32mDid you get a flag? Please, submit it and continue your hacking path. Good Luck!\e[0m"
+
+echo -n -e "\e[31mSubmit the flag:\e[0m"
+read flag
+echo -n -e "\e[32mSpecify the machine name:\e[0m"
+read machine_name
+echo -e "\e[36mHow much is the difficulty of this machine?\e[0m"
+echo
+echo -e "\e[32m[10 --> Piece of Cake!]\e[0m"
+echo -e "\e[32m[20 --> Very Easy!]\e[0m"
+echo -e "\e[32m[30 --> Easy!]\e[0m"
+echo -e "\e[33m[40 --> Not Too Easy!]\e[0m"
+echo -e "\e[33m[50 --> Medium!]\e[0m"
+echo -e "\e[33m[60 --> A Bit Hard!]\e[0m"
+echo -e "\e[33m[70 --> Hard!]\e[0m"
+echo -e "\e[31m[80 --> Too Hard!]\e[0m"
+echo -e "\e[31m[90 --> Extremely Hard!]\e[0m"
+echo -e "\e[31m[100 --> Brainfuck!]\e[0m"
+echo
+echo -n -e "\e[33mDifficulty Rating:\e[0m"
+read machine_rating
+echo
+
+{ # try # Test if the API key is valid
+    machine_id=$(curl -s --location --request GET "https://www.hackthebox.com/api/v4/machine/profile/$machine_name" -H "Authorization: Bearer $appkey" | jq .info.id)
+    curl -s --location --request POST "https://www.hackthebox.com/api/v4/machine/own" --data "{\"flag\":\"$flag\",\"id\":$machine_id,\"difficulty\":$machine_rating}" -H "Content-Type: application/json" -H "Authorization: Bearer $appkey" | jq '.message'
+    curl -s --location --request GET "https://www.hackthebox.com/api/v4/machine/profile/$machine_name" -H "Authorization: Bearer $appkey" | jq > $machine_json_file
+} || { # catch
+    echo "Error. Maybe your API key is incorrect or expired. Renew your API key by running htb-update."
+    exit 1
+}
+
+machine_userflag=$(cat $machine_json_file | jq '.info.authUserInUserOwns')
+machine_rootflag=$(cat $machine_json_file | jq '.info.authUserInRootOwns')
+machine_review=$(cat $machine_json_file | jq '.info.authUserHasReviewed')
+rm -rf $machine_json_file
+
+if [ $machine_userflag != "null" ] && [ $machine_rootflag != "null" ] && [ $machine_review == "true" ]; then
+  echo -e "\e[33mWonderful! You PWNED $machine_name! Would you like to submit a feedback?\e[0m"
+  select yn in "Yes" "No"; do
+      case $yn in
+          Yes ) echo -e "\e[32mPlease, write a headline for your feedback (max 50 chars):\e[0m";
+                echo -n -e "\e[32mHeadline: \e[0m";
+                read review_headline;
+                echo;
+                echo -e "\e[32mPlease, submit your feedback (max 2000 chars):\e[0m";
+                echo -n -e "\e[32mMachine Review: \e[0m";
+                read review_machine;
+                echo;
+                echo -e "\e[32mHow many starts would you give to this machine?\e[0m";
+                echo -n -e "\e[32mStars (1 to 5): \e[0m";
+                read review_stars;
+                { # try # Test if the API key is valid
+                    curl -s --location --request POST "https://www.hackthebox.com/api/v4/machine/review" --data "{\"id\":$machine_id,\"stars\":$review_stars,\"headline\":\"$review_headline\",\"review\":\"$review_machine\"}" -H "Content-Type: application/json" -H "Authorization: Bearer $appkey" | jq '.message';
+                } || { # catch
+                    echo "Error. Maybe your API key is incorrect or expired. Renew your API key by running htb-update."
+                    exit 1
+                }
+                
+                break;;
+          No ) break;;
+      esac
+  done
+  
+fi

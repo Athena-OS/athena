@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=sslscan
+Comment=Fast SSL/TLS scanner
+Encoding=UTF-8
+Exec=shell-rocket "if command -v sslscan &> /dev/null;then sslscan;$SHELL;else echo \\"sslscan is not installed. I'm retrieving it for you...\\";sudo pacman -S sslscan;sslscan;$SHELL;fi;"
+Icon=kali-sslscan
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-13-ssl-analysis;
+X-Athena-Package=sslscan

@@ -1,0 +1,65 @@
+#!/bin/sh
+# Thanks to: i3lock-solarized (https://github.com/parsiad/i3lock-solarized)
+
+# Colors
+alpha='dd'
+base03='#181f21'
+base02='#22292b'
+base01='#b3b9b8'
+base00='#dadada'
+base0='#b3b9b8'
+base1='#dadada'
+base2='#dfdfdf'
+base3='#e3e3e3'
+yellow='#e5c76b'
+red='#e06e6e'
+magenta='#c47fd5'
+blue='#67b0e8'
+cyan='#6cd0ca'
+green='#8ccf7e'
+
+
+font='Roboto'
+
+
+# Main command
+i3lock \
+  --insidever-color=$base02$alpha \
+  --insidewrong-color=$base02$alpha \
+  --inside-color=$base03$alpha \
+  --ringver-color=$green$alpha \
+  --ringwrong-color=$red$alpha \
+  --ringver-color=$green$alpha \
+  --ringwrong-color=$red$alpha \
+  --ring-color=$base02$alpha \
+  --line-uses-ring \
+  --keyhl-color=$blue$alpha \
+  --bshl-color=$yellow$alpha \
+  --separator-color=$base01$alpha \
+  --verif-color=$green \
+  --wrong-color=$red \
+  --layout-color=$blue \
+  --date-color=$base1 \
+  --time-color=$base1 \
+  --screen 1 \
+  --blur 1 \
+  --clock \
+  --indicator \
+  --keylayout 1 \
+  --time-str="%I:%M %p" \
+  --date-str="%a, %b %e %Y" \
+  --verif-text="Verifying..." \
+  --wrong-text="Auth Failed" \
+  --noinput="No Input" \
+  --lock-text="Locking..." \
+  --lockfailed="Lock Failed" \
+  --time-font=$font \
+  --date-font=$font \
+  --layout-font=$font \
+  --verif-font=$font \
+  --wrong-font=$font \
+  --radius=110 \
+  --ring-width=9 \
+  --pass-media-keys \
+  --pass-screen-keys \
+  --pass-volume-keys \

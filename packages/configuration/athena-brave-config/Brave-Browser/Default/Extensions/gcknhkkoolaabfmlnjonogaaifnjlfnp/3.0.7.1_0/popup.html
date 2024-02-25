@@ -1,0 +1,56 @@
+<html><head>
+        <link type="text/css" href="styles/main.css" rel="stylesheet">
+
+        <style type="text/css" title="currentStyle">
+            body{
+                margin:0px;
+                padding:0px;
+                background: -webkit-linear-gradient(bottom, rgba(234, 238, 243, 0), #ffffff), -webkit-linear-gradient(left, #eaeef3, #eaeef3 50%, #d3d7db);
+
+            }
+            #navbar {
+                padding: 4px 4px 4px 30px;
+                margin:0px;
+            }
+            #navbar li {
+                font-family: 'Helvetica Nue',Helvetica,Arial,clean,sans-serif;
+                font-size: 12px;
+                list-style-type: none;
+                list-style-position: outside;
+                white-space: nowrap;
+                height: 18px;
+                padding: 5px 15px 3px 5px ;
+            }
+            #navbar li:hover {
+                border: 1px solid #aecff7;
+                -webkit-border-radius: 3px;
+                padding: 4px 14px 2px 4px ;
+                background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6), rgba(230, 237, 246, 0.6));
+            }
+            #navbar li a{
+                text-decoration: none;
+                color: black;
+                vertical-align: top;
+                text-shadow: #eaeaea 1px 1px;
+            }
+            li.navbar-checked{
+                list-style-position: inside;
+                list-style-image: url(styles/images/bullet_tick.png)
+            }
+        </style>
+        
+        <script src="scripts/jquery-1.7.2.min.js"></script>
+
+        <script src="scripts/popup.js"></script>
+</head>
+<body padding="0" margin="0">
+    <ul id="navbar">
+        <li class="" id="state-auto"><a href="#">Use proxies based on their pre-defined patterns and priorities</a></li>
+        <li id="state-disabled"><a href="#">Disable FoxyProxy</a></li>
+        <hr>
+        <li id="quickAdd"><a href="#">Quick Add</a></li>
+        <li id="tabProxies"><a href="#">Options</a></li>
+        <!--li onclick="options('tabProxies')"><a href="#">Proxy List</a></li-->
+    </ul>
+</body>
+</html>

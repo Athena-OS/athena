@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=recoverjpeg
+Comment=Recover jpeg pictures from a filesystem image
+Encoding=UTF-8
+Exec=shell-rocket "if command -v recoverjpeg &> /dev/null;then recoverjpeg -h;$SHELL;else echo \\"recoverjpeg is not installed. I'm retrieving it for you...\\";sudo pacman -S recoverjpeg;recoverjpeg -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-05-forensic-carving-tools;005-recover;
+X-Athena-Package=recoverjpeg

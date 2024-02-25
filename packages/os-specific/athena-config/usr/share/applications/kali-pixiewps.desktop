@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=pixiewps
+Comment=Offline Wi-Fi Protected Setup bruteforce tool
+Encoding=UTF-8
+Exec=shell-rocket "if command -v pixiewps &> /dev/null;then pixiewps -h;$SHELL;else echo \\"pixiewps is not installed. I'm retrieving it for you...\\";sudo pacman -S pixiewps;pixiewps -h;$SHELL;fi;"
+Icon=kali-pixiewps
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=06-wireless-attacks;
+X-Athena-Package=pixiewps

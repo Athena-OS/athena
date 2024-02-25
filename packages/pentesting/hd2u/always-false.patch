@@ -1,0 +1,21 @@
+diff a/dos2unix.c b/dos2unix.c
+--- a/dos2unix.c
++++ b/dos2unix.c
+@@ -213,13 +213,15 @@ int convert(char *fn, int convType) {
+ 
+     /* if we're not working with stdin, close source (in) */
+     if (fn != NULL) {
+-        if (fclose(in) != 0, in = NULL)
++        if (fclose(in) != 0)
+             BAIL (-2, argv0);
++        in = NULL;
+     }
+ 
+     /* close temp file (out) */
+-    if (fclose(out) != 0, out = NULL)
++    if (fclose(out) != 0)
+         BAIL (-2, argv0);
++    out = NULL;
+ 
+ 
+     /* figure out conversion type */

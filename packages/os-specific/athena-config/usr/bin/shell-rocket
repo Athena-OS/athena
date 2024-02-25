@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TERMINAL_EXEC="alacritty -e"
+
+# Set fallback terminal if needed
+if [[ "$TERMINAL_EXEC" =~ "terminator" ]] || [[ "$TERMINAL_EXEC" =~ "terminology" ]] || [[ "$TERMINAL_EXEC" =~ "xfce4-terminal" ]]; then
+  TERMINAL_EXEC="alacritty -e"
+fi
+
+if [[ -n "$NO_REPETITION" ]]; then
+  "$@"
+else
+  NO_REPETITION=1 $TERMINAL_EXEC /usr/bin/bash -c "$@"
+fi

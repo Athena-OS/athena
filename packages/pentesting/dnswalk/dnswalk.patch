@@ -1,0 +1,110 @@
+From 8de083b573125cb333083f789cc5773f34c8ef8d Mon Sep 17 00:00:00 2001
+From: Ruud van Melick <ruud@vanmelick.com>
+Date: Tue, 30 Jun 2015 15:24:39 +0000
+Subject: [PATCH 1/2] Fix warnings about invalid SOA contact name and
+ deprecated use of 'defined()'.
+
+When the SOA contact name is set to user.example.com., the current version
+of Net:DNS:RR:SOA, $rr->rname returns 'user@example.com' instead of
+'user.example.com.' which causes a warning 'WARN: SOA contact name
+(user@example.com) is invalid', even though it was set correctly.
+
+See: https://rt.cpan.org/Public/Bug/Display.html?id=95290
+
+Also, this fixes the following Perl messages:
+defined(@array) is deprecated at /usr/bin/dnswalk line 59.
+    (Maybe you should just omit the defined()?)
+defined(@array) is deprecated at /usr/bin/dnswalk line 61.
+    (Maybe you should just omit the defined()?)
+defined(@array) is deprecated at /usr/bin/dnswalk line 87.
+    (Maybe you should just omit the defined()?)
+defined(@array) is deprecated at /usr/bin/dnswalk line 107.
+    (Maybe you should just omit the defined()?)
+---
+ dnswalk | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/dnswalk b/dnswalk
+index 356867f..e43f0ef 100755
+--- a/dnswalk
++++ b/dnswalk
+@@ -1,4 +1,4 @@
+-#!/usr/contrib/bin/perl
++#!/usr/bin/perl
+ #
+ # dnswalk    Walk through a DNS tree, pulling out zone data and
+ # dumping it in a directory tree
+@@ -56,9 +56,9 @@ sub dowalk {
+     return unless $domain;
+     print "Checking $domain\n";
+     @subdoms=&doaxfr($domain);
+-    &check_zone($domain) if (defined(@zone) && @zone);
++    &check_zone($domain) if (@zone);
+     undef @zone;
+-    return if (!(defined(@subdoms) && @subdoms));
++    return if (!@subdoms);
+     @sortdoms = sort byhostname @subdoms;
+     local ($subdom);
+     if ($opt_r) {
+@@ -84,7 +84,7 @@ sub doaxfr {
+ 	my $res = new Net::DNS::Resolver;
+ 	$res->nameservers($server);
+ 	@zone=$res->axfr($domain);
+-	unless (defined(@zone) && @zone) {
++	unless (@zone) {
+ 	    print STDERR "failed\n";
+ 		&printerr("FAIL",
+ 			"Zone transfer of $domain from $server failed: ".
+@@ -104,7 +104,7 @@ sub doaxfr {
+         print STDERR "done.\n";
+         last SERVER;
+     } # foreach #
+-    unless (defined(@zone) && @zone) {
++    unless (@zone) {
+ 	    &printerr("BAD","All zone transfer attempts of $domain failed!\n");
+ 	    return undef;
+     }
+@@ -180,9 +180,11 @@ sub check_zone {
+         }
+         if ($rr->type eq "SOA") {
+ 	    print STDERR 's' if $opt_d;
+-	    print "SOA=". $rr->mname ."	contact=". $rr->rname ."\n";
++	    my @soa = split(/\s+/,$rr->rdstring);
++	    my $rname = $soa[1];
++	    print "SOA=". $rr->mname ."	contact=". $rname ."\n";
+ 	    # basic address check.  No "@", and user.dom.ain (two or more dots)
+-	    if (($rr->rname =~ /@/)||!($rr->rname =~ /\..*\./)) {
++	    if (($rname =~ /@/)||!($rname =~ /[^.]+(\.[^.]+){2,}/)) {
+ 		&printerr("WARN", "SOA contact name (". 
+ 		    $rr->rname .") is invalid\n");
+ 	    }
+
+From 445d43dcf5f1253057d5d185f0981edd2a8bfce0 Mon Sep 17 00:00:00 2001
+From: Ruud van Melick <ruud@vanmelick.com>
+Date: Tue, 30 Jun 2015 15:40:24 +0000
+Subject: [PATCH 2/2] Restore original shebang and additional replacement of
+ $rr->rname
+
+---
+ dnswalk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dnswalk b/dnswalk
+index e43f0ef..8094b90 100755
+--- a/dnswalk
++++ b/dnswalk
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/contrib/bin/perl
+ #
+ # dnswalk    Walk through a DNS tree, pulling out zone data and
+ # dumping it in a directory tree
+@@ -186,7 +186,7 @@ sub check_zone {
+ 	    # basic address check.  No "@", and user.dom.ain (two or more dots)
+ 	    if (($rname =~ /@/)||!($rname =~ /[^.]+(\.[^.]+){2,}/)) {
+ 		&printerr("WARN", "SOA contact name (". 
+-		    $rr->rname .") is invalid\n");
++		    $rname .") is invalid\n");
+ 	    }
+         } elsif ($rr->type eq "PTR") {
+             print STDERR 'p' if $opt_d;

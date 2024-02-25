@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=affcat
+Encoding=UTF-8
+Exec=shell-rocket "if command -v affcat &> /dev/null;then affcat -h;$SHELL;else echo \\"affcat is not installed. I'm retrieving it for you...\\";sudo pacman -S afflib;affcat -h;$SHELL;fi;"
+Icon=kali-affcat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-07-forensic-imaging-tools;
+X-Athena-Package=afflib

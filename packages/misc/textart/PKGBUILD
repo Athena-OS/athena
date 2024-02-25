@@ -1,0 +1,19 @@
+pkgname=textart
+pkgver=1.0.0
+pkgrel=2
+pkgdesc="Text Art collection."
+arch=('any')
+license=("custom")
+source=("$pkgname.tar.gz")
+sha512sums=('54837c7298000436422d25e939988a56a054e8a42614b938f5515d42185129c811b4b5e12501bb058aab8a5fdee6ecea281a315a941d1b0adcdb7fa2a8f23418')
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel/.local"
+
+  cp -rf "${srcdir}/textart" "${pkgdir}/etc/skel/.local/"
+
+  install -Dm755 "${srcdir}"/textart/fetch/*.textart "${pkgdir}/etc/skel/.local/textart/fetch/"
+  install -Dm755 "${srcdir}"/textart/color/*.textart "${pkgdir}/etc/skel/.local/textart/color/"
+  install -Dm755 "${srcdir}"/textart/color/icon/*.textart "${pkgdir}/etc/skel/.local/textart/color/icon/"
+  install -Dm755 "${srcdir}"/textart/color/stark/*.textart "${pkgdir}/etc/skel/.local/textart/color/stark/"
+}

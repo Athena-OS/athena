@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./dev
-    ./hardware
-    ./misc
-  ];
-}

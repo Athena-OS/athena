@@ -1,0 +1,353 @@
+/*Common css attributes for all files*/
+
+html {
+    /* for Safari 14 */
+    color-scheme: light dark;
+}
+
+@font-face {
+    font-family: "Bebas Neue";
+    src: url("../fonts/BebasNeue.otf");
+}
+
+@font-face {
+    font-family: "Gill Sans Light";
+    src: url("../fonts/GillSans-Light.ttf");
+}
+
+p {
+    font-size: 18px;
+}
+
+label {
+    font-weight: 400;
+}
+
+hr {
+    margin: 5px 0;
+    border: none;
+    border-top: 1px solid #aaa;
+    height: 1px;
+}
+
+h1, h2, h3 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 34px;
+    font-weight: bold;
+}
+h3 {
+    font-family: "Bebas Neue";
+    font-size: 30px;
+}
+h4 {
+    font-family: "Oswald", sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.body-container {
+    padding: 1em;
+}
+
+.ia-logo {
+    height: 64px;
+}
+
+.unselectable, .unselectable > * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* buttons */
+
+button {
+    display: block;
+}
+
+.btn {
+    font-weight: 400;
+    border-radius: 5px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.btn:active,
+.btn:focus-visible {
+    outline: none !important;
+}
+
+/* button sizes */
+
+.btn-mini {
+    padding: 2px 5px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    border-radius: 4px;
+    border-style: none;
+    background-color: #ddd;
+}
+.btn-mini:hover, .btn-mini:focus {
+    background-color: #eee;
+    color: #444;
+}
+
+button.btn-mini {
+    padding: 2px 10px;
+}
+
+.btn-wide {
+    width: 100%;
+    height: 30px;
+}
+
+.btn-auto {
+    min-width: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btn-equal {
+    height: 30px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.btn-flex {
+    height: 30px;
+    flex-grow: 1;
+}
+
+.btn-flex-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+}
+
+/* add gap for Safari support */
+
+.btn-flex-block > * {
+    margin-right: 5px !important;
+}
+.btn-flex-block > *:last-child {
+    margin-right: 0px !important;
+}
+
+.btn-block {
+    margin-top: 5px;
+}
+
+/* button colors */
+
+.btn-red,
+button.selected {
+    background-color: #9A3B38 !important;
+    border: 1px solid #BF4946 !important;
+    color: #eee !important;
+}
+.btn-red:hover,
+.btn-red:focus-visible,
+button.selected:hover,
+button.selected:focus-visible {
+    background-color: #AA4B48 !important;
+    color: #eee !important;
+}
+
+.btn-orange {
+    background-color: #9A4316 !important;
+    border: 1px solid #CC6029 !important;
+    color: #eee !important;
+}
+.btn-orange:hover,
+.btn-orange:focus-visible {
+    background-color: #AE460F !important;
+    color: #eee !important;
+}
+
+.btn-yellow {
+    background-color: #AA8800 !important;
+    border: 1px solid #EECC00 !important;
+    color: #eee !important;
+}
+.btn-yellow:hover,
+.btn-yellow:focus-visible {
+    background-color: #BB9900 !important;
+    color: #eee !important;
+}
+
+.btn-blue {
+    background-color: #405971 !important;
+    border: 1px solid #668db3 !important;
+    color: #eee !important;
+}
+.btn-blue:hover,
+.btn-blue:focus-visible {
+    background-color: #51708E !important;
+}
+
+.btn-purple {
+    background-color: #694071 !important;
+    border: 1px solid #A766B3 !important;
+    color: #eee !important;
+}
+.btn-purple:hover,
+.btn-purple:focus-visible {
+    background-color: #85518E !important;
+}
+
+.btn-light-gray {
+    background-color: #737373;
+    color: #eee !important;
+    border: 1px solid #A9A9A9;
+}
+.btn-light-gray:hover,
+.btn-light-gray:focus-visible {
+    background-color: #838383;
+}
+
+.btn-dark-gray {
+    background-color: #4D4D4D;
+    color: #eee !important;
+    border: 1px solid #737373;
+}
+.btn-dark-gray:hover,
+.btn-dark-gray:focus-visible {
+    background-color: #5D5D5D;
+}
+
+.btn-unselected {
+    background-color: transparent;
+    color: #333 !important;
+    border: 1px solid transparent;
+}
+.btn-unselected:hover,
+.btn-unselected:focus-visible {
+    background-color: #88888822 !important;
+    color: #000 !important;
+}
+
+/* segmented control */
+
+.segmented-container {
+    border-radius: 5px;
+    background-color: #ddd;
+}
+
+.segmented-container .btn {
+    border-radius: 0;
+}
+.segmented-container li:first-child .btn {
+    border-radius: 5px 0 0 5px !important;
+}
+.segmented-container li:last-child .btn {
+    border-radius: 0 5px 5px 0 !important;
+}
+
+/* saving progress button */
+
+.progress-container {
+    padding: 0px;
+}
+
+.progress {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    background-color: #9A3B38;
+}
+
+.progress-bar.active {
+    -webkit-animation: progress-bar-stripes 0.5s linear infinite;
+    -o-animation: progress-bar-stripes 0.5s linear infinite;
+    animation: progress-bar-stripes 0.5s linear infinite;
+}
+
+/* Dark Mode */
+
+@media (prefers-color-scheme: dark) {
+
+    hr {
+        border-top: 1px solid #555;
+    }
+
+    h1 {
+        color: #ddd;
+    }
+
+    h2, h3, h4 {
+        color: #bbb;
+    }
+
+    /* buttons */
+
+    .btn {
+        font-weight: 500;
+    }
+
+    .btn-mini {
+        background-color: #3c3c3c;
+    }
+    .btn-mini:hover, .btn-mini:focus {
+        background-color: #555;
+        color: #fff;
+    }
+
+    .btn-yellow {
+        background-color: #886600 !important;
+        border: 1px solid #CCAA00 !important;
+    }
+    .btn-yellow:hover {
+        background-color: #997700 !important;
+    }
+
+    .btn-unselected {
+        color: #aaa !important;
+        border: 1px solid transparent;
+    }
+    .btn-unselected:hover,
+    .btn-unselected:focus-visible {
+        color: #eee !important;
+    }
+
+    .segmented-container {
+        background-color: #3C3C3C;
+    }
+
+}
+
+/* Misc */
+
+.loader {
+    border: 16px solid #bbb; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media screen and (min-width: 700px) {
+    .test {
+        text-align: center;
+    }
+}

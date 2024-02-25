@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=iodine
+Comment=Tunnel IPv4 over DNS
+Encoding=UTF-8
+Exec=shell-rocket "if command -v iodine &> /dev/null;then iodine -h;$SHELL;else echo \\"iodine is not installed. I'm retrieving it for you...\\";sudo pacman -S iodine;iodine -h;$SHELL;fi;"
+Icon=kali-iodine
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-02-tunneling;
+X-Athena-Package=iodine

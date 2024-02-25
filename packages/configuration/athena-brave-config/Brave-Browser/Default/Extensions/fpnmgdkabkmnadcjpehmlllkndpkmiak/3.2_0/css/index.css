@@ -1,0 +1,548 @@
+/* default light mode */
+
+body {
+    width: 220px;
+    background-color: #eee;
+    color: #222;
+}
+
+.page {
+    margin: 10px;
+}
+
+.tab-bar {
+    padding-top: 2px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tab-item {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22%;
+    cursor: pointer;
+    outline: none;
+}
+
+.tab-item:hover,
+.tab-item:focus-visible {
+    opacity: 0.7;
+}
+
+.tab-icon {
+    color: #444;
+    /* Calculate filter colors using this tool: https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(20%) sepia(5%) saturate(21%) hue-rotate(355deg) brightness(108%) contrast(84%);
+}
+
+.auth-icon-active {
+    background: url("../images/fa/sign-in-alt-solid.svg") no-repeat;
+    filter: invert(40%) sepia(5%) saturate(21%) hue-rotate(355deg) brightness(200%) contrast(50%);
+}
+
+.auth-icon-active input {
+    visibility: hidden;
+    float: none !important;
+}
+
+.settings-icon-svg,
+.about-icon-svg,
+.logout-icon-svg,
+.login-icon-svg {
+    width: 25px;
+    height: 25px;
+}
+
+.feedback-icon-svg {
+    width: 27px;
+    height: 27px;
+}
+
+.donate-icon-svg {
+    width: 30px;
+    height: 25px;
+}
+
+.toolbar-icon {
+    width: 8px;
+    height: 8px;
+    vertical-align: unset;
+    margin: 0 2px;
+}
+
+#search-input,
+.login-input {
+    background-color: #fff;
+    border-color: #777;
+    color: #222;
+}
+
+#wayback-count-msg,
+#url-not-supported-msg,
+#using-search-msg,
+#last-saved-msg {
+    font-size: 9pt;
+    color: #222;
+}
+
+#view-archived-container {
+    margin-top: 5px;
+}
+
+#view-archived-msg {
+    padding: 4px 0 2px 0;
+    margin: 5px 2px 10px 2px;
+    border-radius: 5px;
+    font-size: 9pt;
+
+    /* light mode */
+    color: #800;
+    background-color: #edd;
+    border: #666 solid 1px;
+}
+
+
+.link-copied-block {
+    position: relative;
+    text-align: center;
+}
+
+#link-copied-msg {
+    display: none;
+    color: #eee;
+    background-color: #222222dd;
+    font-size: 9pt;
+    padding: 5px 10px;
+    position: absolute;
+    border-radius: 5px;
+    top: 14px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+/* general */
+
+.resize-fit-center {
+    margin: 0 0 0 0;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.logo-wayback-machine {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.logo-wayback-machine:hover {
+    opacity: 0.8;
+}
+
+.ia-logo {
+    width: 64px;
+    height: 64px;
+}
+
+#using-search-msg,
+#save-progress-bar {
+    display: none;
+}
+
+/* search and login boxes */
+
+#search-input,
+.login-input {
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+/* suggestions box */
+
+#suggestion-box {
+    display: none;
+    max-height: 350px;
+    width: 100%;
+    border-radius: 5px;
+    word-break: break-all;
+}
+
+#suggestion-box div {
+    padding: 3px 10px;
+}
+
+#suggestion-box div:hover,
+.focused {
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+.dropdown-menu {
+    padding: 1px;
+}
+
+#search-container {
+    margin: 5px 2px 10px 2px;
+}
+
+#search-container div.bootstrap-typeahead {
+    position: relative;
+}
+
+.search-submit {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+}
+
+/* checkboxes */
+
+.chk-options {
+    padding: 0 5px;
+    margin-bottom: 1px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.chk-options:hover {
+    background-color: rgba(127, 127, 127, 0.2);
+    border-radius: 5px;
+}
+
+.chk-options * {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.chk-options input {
+    margin: 5px 5px 0 0;
+}
+
+.chk-frame {
+    display: flex;
+    gap: 2px;
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    top: -17px;
+    padding-top: 18px;
+    margin-bottom: -15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #ddd;
+}
+
+.spn-flip {
+    /* to cover over the chk-frame */
+    z-index: 5;
+}
+
+
+#readbook-container,
+#tvnews-container,
+#wiki-container,
+#view-archived-container,
+#fact-check-container {
+    display: none;
+}
+
+.progress-container {
+    position: relative;
+}
+
+.progress,
+#spn-front-label {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-bar {
+    width: 100%;
+}
+
+#spn-front-label {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+#spn-front-label:focus-visible {
+    background-color: #a95a57;
+}
+
+/* social buttons */
+
+.btn-social {
+    border-radius: 50%;
+    color: #ffffff;
+    display: inline-block;
+    position: relative;
+    width: 54px;
+    height: 54px;
+    line-height: 54px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    transition: background-color .3s;
+    -webkit-transition: background-color .3s;
+    cursor: pointer;
+}
+
+.btn-social .fa,
+.btn-social i,
+.btn-social img {
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    transition: all .25s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: scale(1);
+    -webkit-transition: all .25s;
+}
+
+.tweets-svg {
+    height: 13px;
+}
+
+.btn-social img {
+    vertical-align: middle;
+}
+
+.btn-social:hover,
+.btn-social:focus {
+    color: #fff;
+    outline: none;
+    text-decoration: none;
+}
+
+.btn-social:hover .fa,
+.btn-social:focus .fa,
+.btn-social:hover i,
+.btn-social:focus i,
+.btn-social:hover img,
+.btn-social:focus img {
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+}
+
+.btn-social.btn-sm {
+    font-size: 13px;
+    height: 36px;
+    line-height: 25px;
+    margin: 0;
+    width: 36px;
+}
+
+.btn-social.btn-sm img {
+    height: 13px;
+    margin-bottom: 2px;
+}
+
+.btn-social.btn-lg {
+    font-size: 22px;
+    height: 72px;
+    line-height: 4px;
+    margin: 10px 6px;
+    width: 72px;
+}
+
+.btn-social.btn-lg img {
+    height: 24px;
+    margin-bottom: 4px;
+}
+
+.btn-facebook {
+    background-color: #3b5998;
+}
+.btn-facebook:hover,
+.btn-facebook:focus-visible {
+    background-color: #4c70ba;
+}
+
+.btn-twitter {
+    background-color: #55acee;
+}
+.btn-twitter:hover,
+.btn-twitter:focus-visible {
+    background-color: #83c3f3;
+}
+
+.btn-linkedin {
+    background-color: #1E88E5;
+}
+.btn-linkedin:hover,
+.btn-linkedin:focus-visible {
+    background-color: #4a8aff;
+}
+
+.btn-copy {
+    background-color: #688099;
+}
+.btn-copy:hover,
+.btn-copy:focus-visible {
+    background-color: #809ebd;
+}
+
+.share-block {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* other */
+
+#feedback-tab-btn {
+    font-size: 190%;
+}
+
+#login-tab-btn {
+    display: none;
+    margin-top: -2px;
+}
+
+#logout-tab-btn {
+    display: none;
+    margin-top: -2px;
+}
+
+#login-label {
+    font-size: 14px;
+}
+
+#login-message {
+    display: none;
+    color: #d4312c;
+    font-size: 14px;
+}
+
+.login-success {
+    color: green !important;
+}
+
+.login-form {
+    margin: 5px 2px 10px 2px;
+}
+
+.login-form * {
+    margin-top: 8px;
+}
+
+/* flipping effect */
+
+.flip {
+    position: relative;
+    perspective: 1000px;
+    height: 30px;
+}
+
+.flip-margin {
+    margin-bottom: 10px;
+}
+
+.flip-inside {
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: left 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.flip:hover .flip-inside {
+    transform: rotateX(180deg);
+}
+
+.flip-front,
+.flip-back {
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    width: 100%;
+}
+
+.flip-front {
+    transform: rotateX(0deg);
+    z-index: 2;
+}
+
+.flip-back {
+    transform: rotateX(180deg);
+}
+
+
+/* dark mode */
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #2C2C2C;
+        color: #eee;
+    }
+
+    .chk-options:hover {
+        background-color: #503838;
+    }
+
+    .chk-frame {
+        border: 1px solid #744;
+        border-top: none;
+        background-color: #3c2c2c;
+    }
+
+    .tab-icon {
+        color: #bbb;
+        /* check above on how to calculate this */
+        filter: invert(92%) sepia(0%) saturate(751%) hue-rotate(174deg) brightness(83%) contrast(89%);
+    }
+
+    .auth-icon-active {
+        color: #bbb;
+        filter: invert(92%) sepia(0%) saturate(751%) hue-rotate(174deg) brightness(60%) contrast(50%);
+    }
+
+    #search-input,
+    .login-input {
+        background-color: #222;
+        border-color: #666;
+        color: #ddd;
+    }
+
+    #wayback-count-msg,
+    #url-not-supported-msg,
+    #using-search-msg,
+    #last-saved-msg {
+        color: #eee;
+    }
+
+    #view-archived-msg {
+        color: #e66;
+        background-color: #222;
+        border: #666 solid 1px;
+    }
+
+    #suggestion-box {
+        background-color: #2C2C2C;
+        color: #eee;
+        border: 1px solid #666;
+    }
+
+    #suggestion-box div:hover,
+    .focused {
+        background-color: #666;
+    }
+
+}

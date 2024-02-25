@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sbd
+Encoding=UTF-8
+Exec=shell-rocket "if command -v sbd &> /dev/null;then sbd -h;$SHELL;else echo \\"sbd is not installed. I'm retrieving it for you...\\";sudo pacman -S sbd;sbd -h;$SHELL;fi;"
+Icon=kali-sbd
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-01-os-backdoors;
+X-Athena-Package=sbd

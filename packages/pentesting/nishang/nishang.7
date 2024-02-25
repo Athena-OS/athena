@@ -1,0 +1,189 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "README" "" "June 2014" "" "nishang"
+Nishang is a framework and collection of scripts and payloads which enables usage of PowerShell for offensive security usage and during Penetraion Tests\. Nishang is useful during various phases of a penetration test and is most powerful for post exploitation usage\.
+.
+.SH "Scripts"
+Nishang currently contains following scripts and payloads in: \fB/usr/share/nishang\fR
+.
+.SS "Antak \- the Webshell"
+\fBAntak\fR: Execute powershell scripts in\-memory, commands, download and upload files using this webshell\.
+.
+.SS "Backdoors"
+\fBHTTP\-Backdoor\fR: A backdoor which is capable to recieve instructions from third party websites and could execute powershell scripts in memory\.
+.
+.P
+\fBDNS_TXT_Pwnage\fR: A Backdoor which could recieve commands and powershell scripts from DNS TXT queries and execute those on target and could be controlled remotely using the queries\.
+.
+.P
+\fBExecute\-OnTime\fR: A Backdoor which could execute powershell scripts on a given time on a target\.
+.
+.SS "Escalation"
+\fBEnable\-DuplicateToken\fR: When SYSTEM privileges are required\.
+.
+.P
+\fBRemove\-Update\fR: Introduce vulnerabilites by removing patches\.
+.
+.SS "Execution"
+\fBDownload\-Execute\-PS\fR: Download and execute a powershell script in memory\.
+.
+.P
+\fBDownload_Execute\fR: Download an executable in text format, convert to executable and execute\.
+.
+.P
+\fBExecute\-Command\-MSSQL\fR: Run powershell commands, native commands or SQL commands on a MSSQL Server with sufficient privileges\.
+.
+.P
+\fBExecute\-DNSTXT\-Code\fR: Execute shellcode in memeory using DNS TXT queries\.
+.
+.SS "Gather"
+\fBCheck\-VM\fR: Check for Virtual Machine
+.
+.P
+\fBCopy\-VSS\fR: Copy the SAM file using Volume Shadow Service\.
+.
+.P
+\fBCredentials\fR: Fool a user to give credentials in plain text\.
+.
+.P
+\fBFireBuster\fR \fBFireListener\fR: A pair of scripts for Egress Testing
+.
+.P
+\fBGet\-Information\fR: Get juicy information from a target\.
+.
+.P
+\fBGet\-LSASecret\fR: Get LSA Secret from a target\.
+.
+.P
+\fBGet\-PassHashes\fR: Get password hashes from a target\.
+.
+.P
+\fBGet\-WLAN\-Keys\fR: Get WLAN keys in plain from a target\.
+.
+.P
+\fBKeylogger\fR: Log keys from a target\.
+.
+.SS "Pivot"
+\fBCreate\-MultipleSessions\fR: Check credentials on multiple computers and create PSSessions\.
+.
+.P
+\fBRun\-EXEonRemote\fR: Copy and execute an executable on multiple machines\.
+.
+.SS "Prasadhak"
+\fBPrasadhak\fR: Check running hashes of running process against Virus Total database\.
+.
+.SS "Scan"
+\fBBrute\-Force\fR: Brute force FTP, Active Directory, MS SQL Server and Sharepoint\.
+.
+.P
+\fBPort\-Scan\fR: A handy port scanner\.
+.
+.SS "Powerpreter"
+\fBPowerpreter\fR: All the functionality of nishang in a single script module\.
+.
+.SS "Utility"
+\fBAdd\-Exfiltration\fR: Add data exfiltration capability to gmail,pastebin, webserver and DNS to any script\.
+.
+.P
+\fBAdd\-Persistence\fR: Add Reboot persistence capability to a script\.
+.
+.P
+\fBRemove\-Persistence\fR: Remoce persistence added by the Add\-Persistence script\.
+.
+.P
+\fBDo\-Exfiltration\fR: Pipe (|) this to any script to exfiltrate the output\.
+.
+.P
+\fBDownload\fR: Download a file to the target\.
+.
+.P
+\fBParse_Keys\fR: Parse keys logged by the Keylogger\.
+.
+.P
+\fBInvoke\-Encode\fR: Encode and Compress a script or string\.
+.
+.P
+\fBInvoke\-Decode\fR: Decode and Decompress a script or string from Invoke\-Encode
+.
+.P
+[Base64ToString][StringToBase64][ExetoText][TexttoExe]
+.
+.SH "Usage"
+Use the individual scripts with dot sourcing
+.
+.IP "" 4
+.
+.nf
+
+PS > \. \.\eGet\-Information
+
+PS > Get\-Information
+.
+.fi
+.
+.IP "" 0
+.
+.P
+To get help about any script or payload, use
+.
+.IP "" 4
+.
+.nf
+
+PS > Get\-Help [scriptname\.ps1] \-full
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Import all the scripts in current powershell session
+.
+.IP "" 4
+.
+.nf
+
+PS > Import\-Module \.\enishang\.psm1
+.
+.fi
+.
+.IP "" 0
+.
+.SH "Updates"
+Updates about Nishang could be found at my blog \fIhttp://labofapenetrationtester\.com\fR and my twitter feed @nikhil_mitt
+.
+.SH "Bugs, Feedback and Feature Requests"
+Please raise an issue if you encounter a bug or have a feature request or mail me at nikhil\.uitrgpv@gmail\.com
+.
+.SS "Mailing List"
+For feedback, discussions and feature requests join http://groups\.google\.com/group/nishang\-users
+.
+.SS "Contributing"
+I am always looking for contributors to Nishang\. Please submit requests or drop me email\.
+.
+.SS "Blog Posts"
+Some blog posts to check out for beginners:
+.
+.IP "\(bu" 4
+http://www\.labofapenetrationtester\.com/2014/06/nishang\-0\-3\-4\.html
+.
+.IP "\(bu" 4
+http://labofapenetrationtester\.com/2012/08/introducing\-nishang\-powereshell\-for\.html
+.
+.IP "\(bu" 4
+http://labofapenetrationtester\.com/2013/08/powerpreter\-and\-nishang\-Part\-1\.html
+.
+.IP "\(bu" 4
+http://www\.labofapenetrationtester\.com/2013/09/powerpreter\-and\-nishang\-Part\-2\.html
+.
+.IP "" 0
+.
+.P
+All posts about Nishang:
+.
+.IP "\(bu" 4
+http://www\.labofapenetrationtester\.com/search/label/Nishang
+.
+.IP "" 0
+

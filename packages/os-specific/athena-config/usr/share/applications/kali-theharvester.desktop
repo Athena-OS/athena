@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=theharvester
+Encoding=UTF-8
+Exec=shell-rocket "if command -v theharvester &> /dev/null;then theharvester -h;$SHELL;else echo \\"theharvester is not installed. I'm retrieving it for you...\\";sudo pacman -S theharvester;theharvester -h;$SHELL;fi;"
+Icon=kali-theharvester
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-07-osint-analysis;
+X-Athena-Package=theharvester

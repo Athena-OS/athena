@@ -1,0 +1,83 @@
+name: Build ArchISO Stable
+on:
+  # push:
+  workflow_dispatch:
+  schedule:
+     - cron:  '0 0 */7 * *'
+  
+jobs:
+  build:
+    env:
+      ATHENA_VERSION: 'rolling'
+      ISO_VERSION: 'rolling' # It must be the same on profiledef.sh and installation_script
+      ISO_ARCHITECTURE: 'x86_64'
+    runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged 
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+
+      - name: Remove problematic mirrors
+        run: |
+          sed -i "/arch.mirror.constant.com/d" /etc/pacman.d/mirrorlist
+          sed -i "/us.leaseweb.net/d" /etc/pacman.d/mirrorlist
+          sed -i "/america.mirror.pkgbuild.com/d" /etc/pacman.d/mirrorlist
+          sed -i "/geo.mirror.pkgbuild.com/d" /etc/pacman.d/mirrorlist
+          sed -i "/london.mirror.pkgbuild.com/d" /etc/pacman.d/mirrorlist
+          sed -i "/geo-mirror.chaotic.cx/d" /etc/pacman.d/chaotic-mirrorlist
+          sed -i "/iad-us-mirror.silky.network/d" /etc/pacman.d/mirrorlist
+          sed -i "/archlinux.uk.mirror.allworldit.com/d" /etc/pacman.d/mirrorlist
+          sed -i "/mirror.lty.me/d" /etc/pacman.d/mirrorlist
+          sed -i "/archlinux.mailtunnel.eu/d" /etc/pacman.d/mirrorlist
+          sed -i "/pkg.fef.moe/d" /etc/pacman.d/mirrorlist
+          sed -i "/mirror.cyberbits.eu/d" /etc/pacman.d/mirrorlist
+          sed -i "/mirror.fra10.de.leaseweb.net/d" /etc/pacman.d/mirrorlist
+          sed -i "/mirror.ubrco.de/d" /etc/pacman.d/mirrorlist
+          sed -i "/europe.mirror.pkgbuild.com/d" /etc/pacman.d/mirrorlist
+          sed -i "/mirror.sunred.org/d" /etc/pacman.d/mirrorlist
+          sed -i "/mirror.netcologne.de/d" /etc/pacman.d/mirrorlist
+          sed -i "/mirrors.eze.sysarmy.com/d" /etc/pacman.d/mirrorlist
+
+      - name: Init Keys
+        run: | 
+          rm -rf /etc/pacman.d/gnupg
+          pacman-key --init
+          pacman-key --populate
+          pacman -Syy
+
+      - name: Install rate-mirrors
+        run: pacman -Syyu --noconfirm rate-mirrors
+
+      - name: Set fastest mirrors
+        run: |
+          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
+
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm archiso git github-cli openssh rsync sshpass wget
+        
+      - name: Build ArchISO
+        run: |
+          cd installation-scripts
+          ./build-the-iso-the-first-time.sh
+          
+      - name: Upload to SourceForge
+        run: |
+          sshpass -p "${{ secrets.SOURCEFORGE_TOKEN }}" rsync -avP -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}}/
+
+      - name: Upload to Athena OS Mirror
+        run: |
+          sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena-images/rolling/
+
+      - name: Upload to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd $GITHUB_WORKSPACE
+          git clone https://github.com/Athena-OS/athena-iso
+          cd athena-iso
+          for f in $(find $HOME/Athena-Out -name '*.iso*'); do
+            gh release upload v23.06.23 $f --clobber
+          done

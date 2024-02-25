@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dns2tcpd
+Encoding=UTF-8
+Exec=shell-rocket "if command -v dns2tcpd &> /dev/null;then dns2tcpd;$SHELL;else echo \\"dns2tcpd is not installed. I'm retrieving it for you...\\";sudo pacman -S dns2tcp;dns2tcpd;$SHELL;fi;"
+Icon=kali-dns2tcp
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-02-tunneling;
+X-Athena-Package=dns2tcp

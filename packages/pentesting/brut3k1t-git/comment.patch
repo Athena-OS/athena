@@ -1,0 +1,19 @@
+diff --git a/src/mainLib.py b/src/mainLib.py
+index a2a6c7d..691e376 100644
+--- a/src/mainLib.py
++++ b/src/mainLib.py
+@@ -190,11 +190,11 @@ def xmppBruteforce(address, port, username, wordlist, delay):
+ ################################################################
+ #
+ ################################################################
+-
++"""
+ def skypeBruteforce(username, wordlist, delay):
+     wordlist = open(wordlist, 'r')
+     # Processing wordlist...
+     for i in wordlist.readlines():
+         password = i.strip("\n")
+         try:
+-            
+\ No newline at end of file
++"""

@@ -1,0 +1,30 @@
+{
+   "action": {
+      "default_popup": "data/popup/index.html"
+   },
+   "background": {
+      "service_worker": "worker.js"
+   },
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "homepage_url": "https://add0n.com/cookie-editor.html",
+   "host_permissions": [ "*://*/*" ],
+   "icons": {
+      "128": "data/icons/128.png",
+      "16": "data/icons/16.png",
+      "256": "data/icons/256.png",
+      "32": "data/icons/32.png",
+      "48": "data/icons/48.png",
+      "512": "data/icons/512.png",
+      "64": "data/icons/64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoN9QGJOEokqxLh35YxwnIUFn6+I86bMcJ2mzS4QSJvTCHyWc3h11ozwwqbhcOmk7crtRFJ898/C3n4H1VbICDjJ4MHWOyPIfvbw6gbYUwJUXiumTdfcTU65v06EPr91qefDFo4FSJyfhJtn9u5T7MqSbsNs23lUC5xUfwF5LPU7wgcQcNvFS58fEvLG5N6GvK8RfFSh9AHEN+ICeoGykdk6qsKDk/6OzC1w6m1ukBX9YwBhNFI7OzWg7nXiSRrNAsdAGb6Mx2RvlbJL6zP8+lKcrtjHGEiHwfZT9DjzdprCivhFQ4osQPELc89FHhUjj4dlxZMqGX65NdeyCh8szVwIDAQAB",
+   "manifest_version": 3,
+   "name": "CookieManager - Cookie Editor",
+   "options_ui": {
+      "page": "data/options/index.html"
+   },
+   "permissions": [ "cookies", "storage", "scripting", "contextMenus" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.2.0"
+}

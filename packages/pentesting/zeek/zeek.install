@@ -1,0 +1,9 @@
+post_install() {
+        if [[ ! -d /usr/share/zeek/logs ]]; then 
+ 	      install -dm755 /usr/share/zeek/logs
+        fi
+}
+
+post_upgrade() {
+	post_install
+}       

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=mitmproxy
+Encoding=UTF-8
+Exec=shell-rocket "if command -v mitmproxy &> /dev/null;then mitmproxy -h;$SHELL;else echo \\"mitmproxy is not installed. I'm retrieving it for you...\\";sudo pacman -S mitmproxy;mitmproxy -h;$SHELL;fi;"
+Icon=kali-mitmproxy
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=09-sniffing-spoofing;
+X-Athena-Package=mitmproxy

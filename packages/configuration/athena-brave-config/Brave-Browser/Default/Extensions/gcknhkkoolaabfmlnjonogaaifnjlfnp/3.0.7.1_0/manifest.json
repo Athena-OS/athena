@@ -1,0 +1,38 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "vendor/scripts/google-analytics-bundle.js", "scripts/usage.js", "scripts/background.js", "scripts/util.js", "vendor/scripts/punycode.js", "scripts/proxyconfig.js", "scripts/proxy.js", "scripts/proxyManager.js", "scripts/extension.js", "scripts/settings.js", "scripts/context-menus.js", "scripts/svg-icons.js", "scripts/stored-credentials-bundle.js" ]
+   },
+   "browser_action": {
+      "default_icon": "images/16x16.png",
+      "default_popup": "popup.html",
+      "default_title": "FoxyProxy"
+   },
+   "commands": {
+      "quick-add": {
+         "description": "Quick Add a URL pattern to FoxyProxy",
+         "suggested_key": {
+            "default": "Ctrl+Shift+A"
+         }
+      }
+   },
+   "default_locale": "en",
+   "description": "FoxyProxy simplifies configuring browsers to access proxy-servers, offering more features than other proxy-plugins",
+   "homepage_url": "http://getfoxyproxy.org/",
+   "icons": {
+      "128": "images/logo-128.png",
+      "16": "images/16x16.png",
+      "48": "images/logo-48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtm3ZHHlxexcA/qyQrdInfTvzbTOG1IQYyoels62bOQZes5N+G+tFkUmLzgzV5SgFImvma72PXNgXZnUWgckiYkqgilBTHblFO3heiPAuIXA/69iqsutd1iqT+/6g1cnuF08j2fbZUNaDXZKQPc/cj8KGZ+X50kMEYsDdbgodOWwIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "21",
+   "name": "FoxyProxy Standard",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "contextMenus", "management", "proxy", "storage", "webNavigation", "webRequest", "webRequestBlocking", "system.cpu", "\u003Call_urls>" ],
+   "sandbox": {
+      "pages": [ "pac-sandbox.html" ]
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.0.7.1"
+}

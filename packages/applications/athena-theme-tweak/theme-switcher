@@ -1,0 +1,227 @@
+#!/bin/bash
+
+# Check if the number of command-line arguments is correct
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <chosen_theme> AkameGaKill|Cyborg|Everblush|Graphite|HackTheBox|SamuraiGirl|SweetDark|XXE"
+    exit 1
+fi
+
+chosen_theme="$1"
+detect_virt=$(systemd-detect-virt)
+
+# Remove directories
+rm -rf "$HOME/.config/assets"
+rm -rf "$HOME/.config/gtk-4.0"
+
+# Create the gtk-4.0 directory
+mkdir -p "$HOME/.config/gtk-4.0"
+
+if [ "$chosen_theme" == "AkameGaKill" ]; then
+    theme_name="Nightfox-Dusk-B"
+    gnome_shell="Nightfox-Dusk-B"
+    color_scheme="prefer-dark"
+    icon_theme="Material-Black-Cherry-Suru"
+    cursor_theme="Bibata-Modern-DarkRed"
+    background_theme="/usr/share/backgrounds/default/akame.jpg"
+    picture_options="stretched"
+    vscode_theme="red-blood"
+    kitty_theme="CrayonPonyFish.conf"
+    tmux_theme="redwine"
+    topbarcolorscheme="finale"
+    topbarmaterialscheme="finale"
+    topbariconscheme="dark"
+    musicbarscheme="#F98D89"
+elif [ "$chosen_theme" == "Cyborg" ]; then
+    theme_name="Gruvbox-Dark-B"
+    gnome_shell="Gruvbox-Dark-B"
+    color_scheme="prefer-dark"
+    icon_theme="Material-Black-Mango-Suru"
+    cursor_theme="Fuchsia-Pop"
+    background_theme="/usr/share/backgrounds/default/cyborg-gruv.png"
+    picture_options="stretched"
+    vscode_theme="Gruvbox Material Dark"
+    kitty_theme="gruvbox_dark.conf"
+    tmux_theme="gold"
+    topbarcolorscheme="valhalla"
+    topbarmaterialscheme="virtuality_yellow"
+    topbariconscheme="gruv"
+    musicbarscheme="#EFD69C"
+elif [ "$chosen_theme" == "Everblush" ]; then
+    theme_name="Everblush"
+    gnome_shell="Everblush"
+    color_scheme="prefer-dark"
+    icon_theme="Nordzy-cyan-dark"
+    cursor_theme="Radioactive-nord"
+    background_theme="/usr/share/backgrounds/default/mechanic-keyboard.png"
+    picture_options="stretched"
+    vscode_theme="Tokyo Night Storm"
+    kitty_theme="Atom.conf"
+    tmux_theme="sky"
+    topbarcolorscheme="ripples"
+    topbarmaterialscheme="default"
+    topbariconscheme="dark"
+    musicbarscheme="#6FE7FB"
+elif [ "$chosen_theme" == "Graphite" ]; then
+    theme_name="Graphite-Rimless-Dark"
+    gnome_shell="Graphite-Rimless-Dark"
+    color_scheme="prefer-dark"
+    icon_theme="Tela-circle-black-dark"
+    cursor_theme="Bibata-Modern-Ice"
+    background_theme="/usr/share/backgrounds/default/arch-ascii.png"
+    picture_options="stretched"
+    vscode_theme="Just Black"
+    kitty_theme="Atom.conf"
+    tmux_theme="snow"
+    topbarcolorscheme="nowthatitstrue"
+    topbarmaterialscheme="default"
+    topbariconscheme="dark"
+    musicbarscheme="#197FAF"
+elif [ "$chosen_theme" == "HackTheBox" ]; then
+    theme_name="HackTheBox-BBL"
+    gnome_shell="HackTheBox-BBL"
+    color_scheme="prefer-dark"
+    icon_theme="HackTheBox"
+    cursor_theme="Afterglow-Dracula-Green"
+    background_theme="/usr/share/backgrounds/default/hackthebox.png"
+    picture_options="stretched"
+    vscode_theme="Hack The Box"
+    kitty_theme="Box.conf"
+    tmux_theme="forest"
+    topbarcolorscheme="finale"
+    topbarmaterialscheme="finale"
+    topbariconscheme="dark"
+    musicbarscheme="#9fef00"
+elif [ "$chosen_theme" == "SamuraiGirl" ]; then
+    theme_name="Tokyonight-Dark-B"
+    gnome_shell="Tokyonight-Dark-B"
+    color_scheme="prefer-dark"
+    icon_theme="Tokyonight-Dark"
+    cursor_theme="oreo_blue_cursors"
+    background_theme="/usr/share/backgrounds/default/samurai-girl.jpg"
+    picture_options="stretched"
+    vscode_theme="Tokyo Night Storm"
+    kitty_theme="Tokyo_Night_Storm.conf"
+    tmux_theme="sky"
+    topbarcolorscheme="ripples"
+    topbarmaterialscheme="default"
+    topbariconscheme="dark"
+    musicbarscheme="#6FE7FB"
+elif [ "$chosen_theme" == "SweetDark" ]; then
+    theme_name="Sweet-Dark-v40"
+    gnome_shell="Sweet-Dark-v40"
+    color_scheme="prefer-dark"
+    icon_theme="Sweet-Purple"
+    cursor_theme="oreo_spark_purple_cursors"
+    background_theme="/usr/share/backgrounds/default/neon-circle.jpg"
+    picture_options="stretched"
+    vscode_theme="Radical"
+    kitty_theme="AdventureTime.conf"
+    tmux_theme="violet"
+    topbarcolorscheme="something"
+    topbarmaterialscheme="amaryllis"
+    topbariconscheme="dark"
+    musicbarscheme="#FE3DAF"
+elif [ "$chosen_theme" == "XXE" ]; then
+    theme_name="Gruvbox-Dark-B"
+    gnome_shell="Gruvbox-Dark-B"
+    color_scheme="prefer-dark"
+    icon_theme="Material-Black-Mango-Suru"
+    cursor_theme="Fuchsia-Pop"
+    background_theme="/usr/share/backgrounds/default/xxe.png"
+    picture_options="stretched"
+    vscode_theme="Gruvbox Material Dark"
+    kitty_theme="gruvbox_dark.conf"
+    tmux_theme="gold"
+    topbarcolorscheme="valhalla"
+    topbarmaterialscheme="virtuality_yellow"
+    topbariconscheme="gruv"
+    musicbarscheme="#FEFF00"
+else
+    echo "Please choose between the following themes: AkameGaKill, Cyborg, Everblush, Graphite, HackTheBox, SamuraiGirl, SweetDark, XXE"
+    exit 1
+fi
+
+# I add check on tty because on Live Environment, when I run startx (that is run in tty), $XDG_CURRENT_DESKTOP is empty
+if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
+    xfconf-query -c xsettings -p /Net/ThemeName -s "$theme_name"
+    xfconf-query -c xsettings -p /Net/IconThemeName -s "$icon_theme"
+    xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$cursor_theme"
+    xfconf-query -c xfwm4 -p /general/theme -s "Everblush-xfwm"
+
+    # Copy is needed for the first start because xfconf-query command seems to not work there
+    # Using # as delimiter of sed instead of / since $background_theme contains / that could trigger sed error
+    sed -i "s#/usr/share/backgrounds/default/mechanic-keyboard.png#$background_theme#g" "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
+    # Iterate through the monitors and set the wallpaper
+    for x in $(xfconf-query -c xfce4-desktop -lv | grep last-image | awk '{print $1}'); do xfconf-query -c xfce4-desktop -p $x -s $background_theme; done
+fi
+
+if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]]; then
+    plasma-apply-lookandfeel -a org.kde.breezedark.desktop # It applies Plasma Global Theme and Color Scheme too
+    dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:$theme_name"
+    /usr/lib/plasma-changeicons "$icon_theme"
+    plasma-apply-cursortheme "$cursor_theme"
+    qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops(); for(i=0; i<allDesktops.length; i++) { myDesktop=allDesktops[i]; print(myDesktop); myDesktop.currentConfigGroup = Array(\"Wallpaper\",\"org.kde.image\",\"General\");var wallpaper = \"$background_theme\"; myDesktop.writeConfig(\"Image\", wallpaper);print(myDesktop.readConfig(\"Image\"));}"
+    kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$background_theme"
+fi
+
+if [[ "$XDG_CURRENT_DESKTOP" =~ "MATE" ]]; then
+    dconf write /org/mate/desktop/interface/gtk-theme "'$theme_name'"
+    dconf write /org/mate/marco/general/theme "'$theme_name'"
+    dconf write /org/mate/desktop/interface/icon-theme "'$icon_theme'"
+    dconf write /org/mate/desktop/peripherals/mouse/cursor-theme "'$cursor_theme'"
+    dconf write /org/mate/desktop/background/picture-filename "'$background_theme'"
+fi
+
+if [[ "$XDG_CURRENT_DESKTOP" =~ "Cinnamon" ]]; then
+    gsettings set org.cinnamon.desktop.interface gtk-theme ""
+    gsettings set org.cinnamon.desktop.wm.preferences theme ""
+    sleep 1
+    gsettings set org.cinnamon.desktop.interface gtk-theme "$theme_name"
+    gsettings set org.cinnamon.desktop.wm.preferences theme "$theme_name"
+
+    gsettings set org.cinnamon.desktop.interface gtk-color-scheme "$color_scheme"
+    gsettings set org.cinnamon.desktop.interface icon-theme "$icon_theme"
+    gsettings set org.cinnamon.desktop.interface cursor-theme "$cursor_theme"
+    gsettings set org.cinnamon.desktop.background picture-uri ""
+    gsettings set org.cinnamon.desktop.background picture-uri "file://$background_theme"
+    gsettings set org.cinnamon.desktop.background picture-options "$picture_options"
+fi
+
+if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]] || [[ "$XDG_CURRENT_DESKTOP" =~ "Hyprland" ]]; then
+    cp -rf "$background_theme" "$HOME/.config/hypr/wallpaper" 2>/dev/null
+    #pkill swaybg 2>/dev/null
+    #swaybg -i "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null & #Note that swaybg needs to be runned in background
+    swww img "$background_theme"
+    gsettings set org.gnome.desktop.interface gtk-theme "$theme_name"
+    gsettings set org.gnome.desktop.interface icon-theme "$icon_theme"
+    gsettings set org.gnome.desktop.interface color-scheme "$color_scheme"
+    hyprctl setcursor "$cursor_theme" 24 2>/dev/null
+fi
+
+if [[ "$XDG_CURRENT_DESKTOP" =~ "GNOME" ]]; then
+    gsettings set org.gnome.desktop.interface gtk-theme ""
+    gsettings set org.gnome.desktop.wm.preferences theme ""
+    gsettings set org.gnome.shell.extensions.user-theme name ""
+    sleep 1
+    gsettings set org.gnome.desktop.interface gtk-theme "$theme_name"
+    gsettings set org.gnome.desktop.wm.preferences theme "$theme_name"
+    gsettings set org.gnome.shell.extensions.user-theme name "$gnome_shell" 2>/dev/null
+
+    gsettings set org.gnome.desktop.interface color-scheme "$color_scheme"
+    gsettings set org.gnome.desktop.interface icon-theme "$icon_theme"
+    gsettings set org.gnome.desktop.interface cursor-theme "$cursor_theme"
+    gsettings set org.gnome.desktop.background picture-uri-dark ""
+    gsettings set org.gnome.desktop.background picture-uri-dark "file://$background_theme"
+    gsettings set org.gnome.desktop.background picture-uri ""
+    gsettings set org.gnome.desktop.background picture-uri "file://$background_theme"
+    gsettings set org.gnome.desktop.background picture-options "$picture_options"
+fi
+
+sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"$vscode_theme\",/g" "$HOME/.config/VSCodium/User/settings.json"
+cp -rf "$HOME/.config/kitty/kitty-themes/themes/$kitty_theme" "$HOME/.config/kitty/current-theme.conf" 2>/dev/null
+sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme '$tmux_theme'/g" "$HOME/.tmux.conf"
+
+ln -sf "/usr/share/themes/$theme_name/gtk-4.0/assets" "$HOME/.config/gtk-4.0/assets"
+ln -sf "/usr/share/themes/$theme_name/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
+ln -sf "/usr/share/themes/$theme_name/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
+ln -sf "/usr/share/themes/$theme_name/assets" "$HOME/.config/assets"

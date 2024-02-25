@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=chkrootkit
+Encoding=UTF-8
+Exec=shell-rocket "if command -v chkrootkit &> /dev/null;then chkrootkit -h;$SHELL;else echo \\"chkrootkit is not installed. I'm retrieving it for you...\\";sudo pacman -S chkrootkit;chkrootkit -h;$SHELL;fi;"
+Icon=kali-chkrootkit
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-forensics;
+X-Athena-Package=chkrootkit

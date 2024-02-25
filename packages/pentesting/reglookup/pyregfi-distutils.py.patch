@@ -1,0 +1,10 @@
+--- pyregfi-distutils.py.orig	2014-04-01 23:12:58.785066637 -0400
++++ pyregfi-distutils.py	2014-04-01 23:13:46.038401196 -0400
+@@ -1,4 +1,6 @@
+ # Called from scons with appropriate python version
+ 
+ from distutils.core import setup
+-setup(name='pyregfi', version='1.0', package_dir={'':'python'}, packages=['pyregfi'])
++import os, sys
++sys.prefix = os.environ['PREFIX']
++setup(name='pyregfi', version='1.0', package_dir={'':'python2'}, packages=['pyregfi'])

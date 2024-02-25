@@ -1,0 +1,32 @@
+pkgname=athena-kde-base
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="KDE base configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('bluez-qt5' 'discover' 'dolphin' 'elisa' 'gwenview' 'kcalc' 'kde-gtk-config' 'kdeconnect' 'kdeplasma-addons' 'kfind' 'kinfocenter' 'kmenuedit' 'kpipewire' 'kscreen' 'kwin-effects-kinetic' 'kwin-scripts-forceblur' 'kwrite' 'plasma-browser-integration' 'plasma-desktop' 'plasma-nm' 'plasma-systemmonitor' 'plasma-thunderbolt' 'plasma-vault' 'plasma-welcome' 'plasma-workspace' 'plasma-pa' 'polkit-kde-agent' 'spectacle' 'systemsettings' 'xdg-desktop-portal-kde')
+source=("applications-kmenuedit.menu"
+        "kwinrc"
+        "kwinrulesrc"
+        "kde-init.desktop"
+        "kde-init")
+sha512sums=('95b77baa43bc02b79761b18fae7c1b58dfdae029ba327d9fb7be6a1eb9c88d728bc52c3f95dd3b21a7b99920798baf7d7190c922ae2df8f53aff62a63c32f37f'
+            '718ea3b26877086cc9ee5b82873a7e19469a5661819bf1846634de163cdadb965a63659ff1cd6d72945c3505c75196599c469b999c6b780a4b91ba29df702e94'
+            'a5d2d3b60bd951c10d4495465129800163d63a2ec676dda81607ef885f6378690e0363f46a7c3fd0e8481cd25e9b2920731c041563aaade18bee1d0db07525e1'
+            '4693dcdc626a96c1404b153cd535828569eae6a9af46873a4e459cdfc40e8017bed054dea0616b2dfeb95c2a4ede7eea079d0141a3b605f58715beb9cb3999b9'
+            '834ce88a4df7097d54ace3251f3d5d2c3d94df543273f25c58c8d3525f89cd5b4a67f6f79044f648f513ea9de2b2f0dfe2ef26f52efb8ae9e55a90d2dafbcdc6')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.config"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/usr/bin"
+
+  install -Dm644 "${srcdir}/kwinrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "${srcdir}/kwinrulesrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "${srcdir}/kde-init.desktop" "${pkgdir}/etc/xdg/autostart/"
+  install -Dm644 "${srcdir}/applications-kmenuedit.menu" "${pkgdir}/etc/xdg/menus/"
+  install -Dm755 "${srcdir}/kde-init" "${pkgdir}/usr/bin/"
+  touch "${pkgdir}/etc/skel/.flag-kde-once"
+  kbuildsycoca5
+}

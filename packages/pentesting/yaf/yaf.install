@@ -1,0 +1,8 @@
+post_install() {
+  libtool --finish /usr/lib >> /dev/null
+   libtool --finish /usr/lib/yaf >> /dev/null
+}
+
+post_upgrade() {
+   post_install
+}

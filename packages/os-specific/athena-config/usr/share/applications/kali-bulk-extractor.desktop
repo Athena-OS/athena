@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=bulk_extractor
+Encoding=UTF-8
+Exec=shell-rocket "if command -v bulk_extractor &> /dev/null;then bulk_extractor -h;$SHELL;else echo \\"Bulk Extractor is not installed. I'm retrieving it for you...\\";sudo pacman -S bulk-extractor;bulk_extractor -h;$SHELL;fi;"
+Icon=kali-bulk-extractor
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-forensics;
+X-Athena-Package=bulk-extractor

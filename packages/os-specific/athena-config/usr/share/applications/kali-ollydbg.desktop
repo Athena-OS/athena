@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ollydbg
+Encoding=UTF-8
+Exec=shell-rocket "if command -v ollydbg &> /dev/null;then ollydbg;$SHELL;else echo \\"ollydbg is not installed. I'm retrieving it for you...\\";sudo pacman -S ollydbg;ollydbg;$SHELL;fi;"
+Icon=kali-ollydbg
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=07-reverseengineer;004-respond;
+X-Athena-Package=ollydbg

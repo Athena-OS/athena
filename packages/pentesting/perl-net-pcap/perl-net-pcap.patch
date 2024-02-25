@@ -1,0 +1,42 @@
+--- Makefile.PL	2016-05-09 17:23:13.000000000 -0400
++++ Makefile.PL.fix	2020-10-27 06:32:40.000000000 -0400
+@@ -106,7 +106,7 @@
+ # We also store the list of available functions in a file for skipping the 
+ # corresponding tests. 
+ my @funcs = have_functions(find_functions());
+-$options{DEFINE} .= cpp_defines(@funcs);
++$options{DEFINE} .= cpp_defines(@funcs). "-DHAVE_PCAP_SETSAMPLING";
+ open(FUNCS, '>funcs.txt') or warn "warning: can't write 'funcs.txt': $!\n";
+ print FUNCS join("\n", @funcs), "\n";
+ close(FUNCS);
+--- stubs.inc	2006-10-15 18:00:58.000000000 -0400
++++ stubs.inc.fix	2020-10-27 06:34:56.000000000 -0400
+@@ -354,11 +354,6 @@
+ #ifdef _MSC_VER
+ #pragma message( "Warning: the function pcap_open() is not available" )
+ #endif
+-struct pcap_rmtauth {
+-    int type;
+-    char *username;
+-    char *password;
+-};
+ 
+ pcap_t * pcap_open(const char *source, int snaplen, int flags, int read_timeout, struct pcap_rmtauth *auth, char *err);
+ pcap_t * pcap_open(const char *source, int snaplen, int flags, int read_timeout, struct pcap_rmtauth *auth, char *err) {
+@@ -516,6 +511,7 @@
+ #ifdef _MSC_VER
+ #pragma message( "Warning: the function pcap_setsampling() is not available" )
+ #endif
++#if 0
+ struct pcap_samp {
+     int method;
+     int value;
+@@ -527,7 +523,7 @@
+     return NULL;
+ }
+ #endif
+-
++#endif
+ 
+ /*
+ 

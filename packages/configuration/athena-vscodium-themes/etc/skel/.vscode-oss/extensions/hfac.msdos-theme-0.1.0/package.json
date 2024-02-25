@@ -1,0 +1,39 @@
+{
+	"name": "msdos-theme",
+	"displayName": " MS-DOS Theme",
+	"description": "A theme for the ones of us that are still missing good old MS-DOS",
+	"version": "0.1.0",
+	"publisher": "hfac",
+	"preview": true,
+	"engines": {
+		"vscode": "^1.22.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"DOS",
+		"Blue",
+		"Night",
+		"color-theme",
+		"Theme"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "msdos",
+				"uiTheme": "vs-dark",
+				"path": "./themes/dos-color-theme.json"
+			}
+		]
+	},
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#008080",
+		"theme": "dark"
+	},
+	"__metadata": {
+		"isApplicationScoped": false,
+		"installedTimestamp": 1671054904665
+	}
+}

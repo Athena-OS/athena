@@ -1,0 +1,34 @@
+pkgname=gnome-shell-extension-logo-menu-git
+pkgver=18.0_110423.r1.g515b443
+pkgrel=1
+pkgdesc="Quick access menu for the GNOME panel with options that help ease the workflow for newcomers and power users alike."
+arch=('any')
+url="https://github.com/Aryan20/Logomenu"
+license=('custom')
+depends=('gnome-shell-performance' 'gnome-software' 'xorg-xkill')
+makedepends=('git' 'zip')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(${pkgname%-git}::git+$url.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  
+  #Generate the .zip file of the extension
+  gnome-extensions pack --extra-source=Resources/ --extra-source=PrefsLib/ --extra-source=constants.js  --force
+}
+
+package() {
+  cd "${pkgname%-git}"
+  
+  _uuid='logomenu@aryan_k'
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  bsdtar -xvf $_uuid.shell-extension.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+}

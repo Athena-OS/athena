@@ -1,0 +1,93 @@
+#RecommendationTray {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin: 0 auto 0 auto;
+    padding: 0 15px 0 15px;
+}
+#RecommendationTray > div {
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #888;
+    margin: 0.5em auto 0.5em auto;
+    padding: 5px;
+    justify-content: space-between;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    width: 300px;
+}
+
+#RecommendationTray p {
+    margin: 0;
+}
+
+.topElements {
+    display: block;
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+    width: 250px;
+}
+
+.bottomElements {
+    justify-content: flex-end;
+    margin: 10px auto;
+    width: 250px;
+}
+
+img {
+    align-self: center;
+    display: block;
+    margin: 4px auto 0 auto;
+    max-width: 250px;
+    height: auto;
+}
+
+body {
+    max-height: 100%;
+}
+
+.container {
+    padding: 15px;
+}
+
+p {
+    font-family: "Gill Sans Light";
+    font-size: 20px;
+}
+
+strong {
+    font-family: "Bebas Neue";
+}
+
+h2 strong {
+    font-family: 'Oswald', sans-serif;
+}
+
+.preview-clips {
+    border-radius: 5px;
+    border: 1px solid #888;
+    margin-bottom: 10px;
+    padding: 1px;
+}
+.preview-clips:hover {
+    border: 2px solid #668db3;
+    padding: 0;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: #2C2C2C;
+      color: #eee;
+    }
+
+    #RecommendationTray > div {
+      background-color: #333;
+    }
+
+    .preview-clips {
+      border: 1px solid #444;
+    }
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=yara
+Comment=Find files matching patterns and rules written in a special-purpose language.
+Encoding=UTF-8
+Exec=shell-rocket "if command -v yara &> /dev/null;then yara;$SHELL;else echo \\"yara is not installed. I'm retrieving it for you...\\";sudo pacman -S yara;yara;$SHELL;fi;"
+Icon=kali-yara
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-forensics;004-respond;
+X-Athena-Package=yara

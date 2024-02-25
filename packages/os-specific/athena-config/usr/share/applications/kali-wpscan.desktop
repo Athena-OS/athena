@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=wpscan
+Comment=WordPress Security Scanner
+Encoding=UTF-8
+Exec=shell-rocket "if command -v wpscan &> /dev/null;then wpscan --help;$SHELL;else echo \\"wpscan is not installed. I'm retrieving it for you...\\";sudo pacman -S wpscan;wpscan --help;$SHELL;fi;"
+Icon=kali-wpscan
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-webapp-analysis;03-01-cms-identification;03-05-web-vulnerability-scanners;
+X-Athena-Package=wpscan

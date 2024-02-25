@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=wapiti
+Comment=A web application vulnerability scanner in Python
+Encoding=UTF-8
+Exec=shell-rocket "if command -v wapiti &> /dev/null;then wapiti -h;$SHELL;else echo \\"wapiti is not installed. I'm retrieving it for you...\\";sudo pacman -S wapiti;wapiti -h;$SHELL;fi;"
+Icon=kali-wapiti
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-05-web-vulnerability-scanners;001-identify;
+X-Athena-Package=wapiti

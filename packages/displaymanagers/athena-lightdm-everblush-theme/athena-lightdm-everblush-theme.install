@@ -1,0 +1,13 @@
+post_install() {
+  echo "Setting GTK Everblush as your default login theme."
+
+  sed -i 's/^\(#\?greeter\)-session\s*=\s*\(.*\)/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
+  sed -i 's/^#theme-name=\s*\(.*\)/theme-name=Everblush-lightdm/g' /etc/lightdm/lightdm-gtk-greeter.conf
+  sed -i 's/^#icon-theme-name=\s*\(.*\)/icon-theme-name=Nordzy-cyan-dark-lightdm/g' /etc/lightdm/lightdm-gtk-greeter.conf
+  sed -i 's/^#background=\s*\(.*\)/background=\/usr\/share\/backgrounds\/default\/mechanic-keyboard-lightdm.png/g' /etc/lightdm/lightdm-gtk-greeter.conf
+  sed -i 's/^#font-name=\s*\(.*\)/font-name=JetBrainsMonoNL Nerd Font Mono 10/g' /etc/lightdm/lightdm-gtk-greeter.conf
+}
+
+post_upgrade() {
+    post_install $1
+}

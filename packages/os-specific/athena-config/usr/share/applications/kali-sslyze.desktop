@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sslyze
+Encoding=UTF-8
+Exec=shell-rocket "if command -v sslyze &> /dev/null;then sslyze -h;$SHELL;else echo \\"sslyze is not installed. I'm retrieving it for you...\\";sudo pacman -S sslyze;sslyze -h;$SHELL;fi;"
+Icon=kali-sslyze
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-13-ssl-analysis;
+X-Athena-Package=sslyze

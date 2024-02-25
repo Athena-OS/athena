@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=mmcat
+Encoding=UTF-8
+Exec=shell-rocket "if command -v mmcat &> /dev/null;then mmcat;$SHELL;else echo \\"mmcat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mmcat;$SHELL;fi;"
+Icon=kali-mmcat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

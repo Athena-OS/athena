@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/context.css">
+  <link rel="icon" type="image/png" href="images/toolbar/toolbar-icon-archive32.png">
+  <title>Word Cloud</title>
+</head>
+<body class="body-container">
+  <div class="tabcontent" id="Tagcloud">
+    <div class="text-center">
+      <h2 id="main-title">Word Cloud</h2>
+      <p id="main-info"></p>
+      <p id="error-msg"></p>
+      <h4><a class="url" target="_blank"></a></h4>
+    </div>
+    <div class="loader" id="loader_tagcloud"></div>
+    <div class="text-center">
+      <div class="wordcloud">
+        <div id="container-wordcloud"></div>
+      </div>
+    </div>
+    <div class="text-center">
+      <div class="pre" id="tagcloud-not-found">
+        <div class="pre-container">
+          <div id="message_tagcloud" style="margin:10px 0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="libs/jquery.js"></script>
+  <script src="libs/jquery.awesomeCloud-0.2.js"></script>
+  <script src="libs/bootstrap.js"></script>
+  <script src="libs/levenshtein.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/wordcloud.js"></script>
+</body>
+</html>

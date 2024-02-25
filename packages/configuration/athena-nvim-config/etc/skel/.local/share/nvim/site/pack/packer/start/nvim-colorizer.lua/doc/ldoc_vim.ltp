@@ -1,0 +1,231 @@
+# -- Yes this file is a huge mess but working with what we got
+# local header = '=============================================================================='
+#  -- Most stuff copied from ldoc html tempelate
+# local no_spaces = ldoc.no_spaces
+# local use_li = ldoc.use_li
+# local display_name = ldoc.display_name
+# local iter = ldoc.modules.iter
+# local function M(txt,item) return ldoc.markup(txt,item,ldoc.plain) end
+# local nowrap = ""
+# local width = #header
+# local indentstr = ""
+# for i = 1, 4  do indentstr = indentstr .. " " end
+# local function new_header(start, e, noh, sep)
+# local s = " "
+# s = s:rep(width-(#e+ #start)) 
+# local w = #s + #start +  #e
+# if w > width then
+# local s = " "
+# return (noh and "" or header) .. "\n\n".. s:rep(width - #e) .. sep  .. e .. sep .. "\n" .. start 
+# else
+# return (noh and "" or header) .. "\n" .. start .. s .. sep .. e .. sep
+# end
+# end
+# 
+#local function magiclines( str )
+#    local pos = 1;
+#    return function()
+#        if not pos then return nil end
+#        local  p1, p2 = str:find( "\r?\n", pos )
+#        local line
+#        if p1 then
+#            line = str:sub( pos, p1 - 1 )
+#            pos = p2 + 1
+#        else
+#            line = str:sub( pos )
+#            pos = nil
+#        end
+#        return line
+#    end
+#end
+# local function indent(s, n)
+# n = n or 1
+# local a = ""
+# local ss = indentstr:rep(n)
+# s = s:gsub("^", ss):gsub("\r?\n", "\n" .. ss)
+# -- to handle vim style comments
+# s = s:gsub(ss .. "<" , "<")
+# s = s:gsub(ss .. ">" , ">")
+# return s
+# end
+# if module then -- module documentation
+# local intro = module.name:gsub(".*%.", ""):upper()
+# if module.name == ldoc.project then
+*$(module.name)*$(indentstr)$(module.summary)
+
+$(module.description)
+
+# else
+$(new_header(intro, module.name .. "-introduction", false, "*"))
+
+$(module.summary)
+$(module.description)
+# end
+#   if module.info then
+#     for tag, value in module.info:iter() do
+$(tag): $(value)
+#     end
+#   end -- if module.info
+
+# if module.usage then
+$(new_header("USAGE", module.name .. "-usage", false, "*"))
+
+#   for usage in iter(module.usage) do
+$(usage)
+#   end -- for
+# end -- if usage
+# if module.tags.include then
+    $(M(ldoc.include_file(module.tags.include)))
+# end
+# if module.see then
+$(indent("See:"))~
+#   for see in iter(module.see) do
+$(indent("|" .. see.label, 2))|
+#   end -- for
+
+# end -- if see
+# if not ldoc.no_summary then
+# local function_present = true
+# -- bang out the tables of item types for this module (e.g Functions, Tables, etc)
+# for kind,items in module.kinds() do
+# if function_present then
+$(new_header("LUA API", module.name .. "-lua-api", false, "*"))
+
+# end
+# function_present = false
+$(kind): ~
+#  for item in items() do
+$(indentstr)|$(item.name)| - $(M(item.summary,item))
+
+#  end -- for items
+#end -- for kinds
+#end -- if not no_summary
+# --- currently works for both Functions and Tables. The params field either contains
+# --- function parameters or table fields.
+# local show_return = not ldoc.no_return_or_parms
+# local show_parms = show_return
+# for kind, items in module.kinds() do
+#  for item in items() do
+# local plist = ""
+#   for parm in iter(item.params) do
+#     local param,sublist = item:subparam(parm)
+#     for p in iter(param) do
+#        local name,tp,def = item:display_name_of(p), ldoc.typename(item:type_of_param(p)), item:default_of_param(p)
+# if plist == "" then
+# plist = "{" .. name .. "}"
+# else
+# plist = plist .. ", " .. "{" .. name .. "}"
+# end
+#   end -- for
+# end
+# if item.type == "function" then
+$(new_header(item.name .. "(" .. plist .. ")",  module.name .. "." .. item.name, true, "*"))
+# else
+$(new_header(item.name,module.name .. "." .. item.name , true, "*"))
+#end
+$(indent(item.summary))
+# if item.description ~= "" then
+$(indent(item.description))
+
+# end
+#   if ldoc.custom_tags then
+#    for custom in iter(ldoc.custom_tags) do
+#     local tag = item.tags[custom[1]]
+#     if tag and not custom.hidden then
+#      local li,il = use_li(tag)
+$(indentstr)$(indentstr)$(custom.title or custom[1]):
+#      for value in iter(tag) do
+$(indentstr)$(indentstr)$(indentstr)$(custom.format and custom.format(value) or M(value))
+#      end -- for
+#     end -- if tag
+#    end -- iter tags
+#   end
+#  if show_parms and item.params and #item.params > 0 then
+#    local subnames = module.kinds:type_of(item).subnames
+#    if subnames then
+
+$(indentstr)$(subnames): ~
+#    end
+#   for parm in iter(item.params) do
+#     local param,sublist = item:subparam(parm)
+#     if sublist then
+        $(sublist) - $(M(item.params.map[sublist],item))
+#     end
+#     for p in iter(param) do
+#        local name,tp,def = item:display_name_of(p), ldoc.typename(item:type_of_param(p)), item:default_of_param(p)
+#       if tp ~= '' then
+            $(tp)
+#       end
+$(indent("", 2)){$(name)} - $(M(item.params.map[p],item))
+#       if def == true then
+         (optional)
+#      elseif def then
+         (default $(def))
+#       end
+#       if item:readonly(p) then
+          readonly
+#       end
+#     end
+#     if sublist then
+#     end
+#   end -- for
+#   end -- if params
+#  if show_return and item.retgroups then local groups = item.retgroups
+
+$(indentstr)returns:~
+#   for i,group in ldoc.ipairs(groups) do local li,il = use_li(group)
+#   for r in group:iter() do 
+#   local type, ctypes = item:return_type(r); local rt = ldoc.typename(type)
+#     if rt ~= '' then
+           $(rt)
+#     end
+$(indent("", 2))$(r.text:gsub("|", " or "))
+#    if ctypes then
+#    for c in ctypes:iter() do
+            $(c.name)
+            $(ldoc.typename(c.type))
+            $(M(c.comment,item))
+#     end
+#    end -- if ctypes
+#  end -- for r
+#   if i < #groups then
+Or
+#   end
+#   end -- for group
+#   end -- if returns
+#   if show_return and item.raise then
+ Raises:
+    $(M(item.raise,item))
+#   end
+#   if item.see then
+# local see_present = false
+#     for see in iter(item.see) do
+# if not see_present then
+
+$(indentstr)See also:~
+# end
+# see_present = true
+$(indentstr)$(indentstr)|$(see.label)|
+#    end -- for
+#   end -- if see
+
+#   if item.usage then
+$(indentstr)Usage:~
+#     for usage in iter(item.usage) do
+$(indentstr)$(indentstr)$(usage)
+#     end -- for
+#   end -- if usage
+
+# end -- for items
+# end -- for kinds
+
+# else -- if module; project-level contents
+# for kind, mods in ldoc.kinds() do
+$(kind)
+# kind = kind:lower()
+# for m in mods() do
+$(nowrap) - "$(no_spaces(kind))/$(m.name).html" - $(m.name)
+		$(M(ldoc.strip_header(m.summary),m))
+#  end -- for modules
+# end -- for kinds
+# end -- if module

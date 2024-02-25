@@ -1,0 +1,28 @@
+#!/bin/bash
+echo "#################################"
+echo "Start athena-before"
+echo "#################################"
+echo
+echo "#################################"
+echo "Set crontab"
+echo "#################################"
+echo
+systemctl enable cronie.service
+echo
+#echo "#################################"
+#echo "Copy grub Vimix theme (archiso deletes /boot when making the ISO)"
+#echo "#################################"
+#echo
+#mkdir -p /boot/grub/themes
+#cp -Rf /usr/share/grub/themes/Vimix /boot/grub/themes/
+#echo
+echo "#################################"
+echo "Changing into our own linux.preset"
+echo "#################################"
+echo
+mv /etc/mkinitcpio.d/athena /etc/mkinitcpio.d/linux.preset
+echo
+echo "#################################"
+echo "End athena-before"
+echo "#################################"
+echo

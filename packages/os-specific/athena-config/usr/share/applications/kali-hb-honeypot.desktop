@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=heartbleed-honeypot
+Encoding=UTF-8
+Exec=shell-rocket "if command -v heartbleed-honeypot &> /dev/null;then sudo heartbleed-honeypot;$SHELL;else echo \\"heartbleed-honeypot is not installed. I'm retrieving it for you...\\";sudo pacman -S heartbleed-honeypot;sudo heartbleed-honeypot;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=001-identify;
+X-Athena-Package=heartbleed-honeypot

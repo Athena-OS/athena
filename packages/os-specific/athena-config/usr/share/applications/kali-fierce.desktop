@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=fierce
+Comment=DNS scanner that helps locate non-contiguous IP space and hostnames against specified domains.
+Encoding=UTF-8
+Exec=shell-rocket "if command -v fierce &> /dev/null;then fierce -h;$SHELL;else echo \\"fierce is not installed. I'm retrieving it for you...\\";sudo pacman -S fierce;fierce -h;$SHELL;fi;"
+Icon=kali-fierce
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-01-dns-analysis;
+X-Athena-Package=fierce

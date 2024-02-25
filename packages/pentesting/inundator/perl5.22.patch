@@ -1,0 +1,21 @@
+diff -aur inundator-0.5.orig/inundator.pl inundator-0.5/inundator.pl
+--- inundator-0.5.orig/inundator.pl	2016-05-18 15:52:22.055615455 -0400
++++ inundator-0.5/inundator.pl	2016-05-18 15:54:15.510656412 -0400
+@@ -174,7 +174,7 @@
+ 
+ 	## grab all attacks for the selected port
+         my @targeted = ();
+-        @targeted = @{$attacks[$rand_port]} if defined(@{$attacks[$rand_port]});
++        @targeted = @{$attacks[$rand_port]} if (@{$attacks[$rand_port]});
+ 
+ 	## grab all the attacks for any port
+ 	my @any_port = @{$attacks[0]};
+@@ -371,7 +371,7 @@
+     opendir(DIR, $rules) || die "[!] error: could not read directory '$rules'.\n";
+ 
+     ## start looping through the rules files
+-    while(defined(my $file = readdir(DIR))) {
++    while(my $file = readdir(DIR)) {
+ 
+         open RULES, '<', "$rules/$file", or die "[!] error: $!\n";
+ 

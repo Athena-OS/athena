@@ -1,0 +1,12 @@
+post_install() {
+  echo "Setting Sweet Dark theme"
+
+  mv /etc/skel/.config/kitty/AdventureTime.conf /etc/skel/.config/kitty/current-theme.conf
+  mv /usr/share/athena-sweetdark-theme/apps/* /usr/share/icons/hicolor/scalable/apps/
+  mv /usr/share/athena-sweetdark-theme/categories/* /usr/share/icons/hicolor/scalable/categories/
+  rm -rf /usr/share/athena-sweetdark-theme
+}
+
+post_upgrade() {
+    post_install $1
+}

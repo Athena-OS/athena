@@ -1,0 +1,75 @@
+pkgname=athena-tmux-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Tmux configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('python-libtmux' 'python-pip' 'sassc' 'tmux')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+
+  cp -rf "${srcdir}/etc/skel/.tmux" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.tmux.conf" "${pkgdir}/etc/skel/"
+  
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/tpm" "$pkgdir/etc/skel/.tmux/plugins/tpm/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/bin/clean_plugins" "$pkgdir/etc/skel/.tmux/plugins/tpm/bin/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/bin/install_plugins" "$pkgdir/etc/skel/.tmux/plugins/tpm/bin/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/bin/update_plugins" "$pkgdir/etc/skel/.tmux/plugins/tpm/bin/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/bindings/clean_plugins" "$pkgdir/etc/skel/.tmux/plugins/tpm/bindings/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/bindings/install_plugins" "$pkgdir/etc/skel/.tmux/plugins/tpm/bindings/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/bindings/update_plugins" "$pkgdir/etc/skel/.tmux/plugins/tpm/bindings/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/check_tmux_version.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/clean_plugins.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/install_plugins.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/source_plugins.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/update_plugin.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/update_plugin_prompt_handler.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/variables.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/plugin_functions.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/shell_echo_functions.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/tmux_echo_functions.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/tmux_utils.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/utility.sh" "$pkgdir/etc/skel/.tmux/plugins/tpm/scripts/helpers/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/mouse-swipe.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/shellchecker.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/tmux-mouse-swipe.code-workspace" "$pkgdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/scripts/benchmark.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/scripts/handle_mouse_swipe.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/scripts/utils.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-mouse-swipe/scripts/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-net-speed/net-speed.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-net-speed/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-net-speed/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-net-speed/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-net-speed/scripts/net-speed.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-net-speed/scripts/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-notify/tnotify.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-notify/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-notify/scripts/cancel.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-notify/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-notify/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-notify/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-notify/scripts/notify.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-notify/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-notify/scripts/variables.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-notify/scripts/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-power/tmux-power.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-power/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-prefix-highlight/prefix_highlight.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-prefix-highlight/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-sensible/sensible.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-sensible/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-window-name/tmux_window_name.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-window-name/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-window-name/scripts/path_utils.py" "$pkgdir/etc/skel/.tmux/plugins/tmux-window-name/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-window-name/scripts/rename_session_windows.py" "$pkgdir/etc/skel/.tmux/plugins/tmux-window-name/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-window-name/tests/create_test_dirs.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-window-name/tests/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-window-name/tests/test_exclusive_paths.py" "$pkgdir/etc/skel/.tmux/plugins/tmux-window-name/tests/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-window-name/tests/test_get_uncommon_path.py" "$pkgdir/etc/skel/.tmux/plugins/tmux-window-name/tests/"
+
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/citest" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/vagrant_provisioning.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/Vagrantfile" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/yank.tmux" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/copy_line.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/copy_pane_pwd.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
+  install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
+
+}
+sha512sums=('edbfdfee4643b05e5c5790549580364b3b2cd5269bc4c3ebb2ca60459e49cb186ccfd350c7ed535b46e5118f997cf9f13d9215555b5386f7dbe53d2f34cb4ae8')

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=pev
+Encoding=UTF-8
+Exec=shell-rocket "if command -v readpe &> /dev/null;then readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;else echo \\"pev is not installed. I'm retrieving it for you...\\";sudo pacman -S pev;readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-05-forensic-carving-tools;
+X-Athena-Package=pev

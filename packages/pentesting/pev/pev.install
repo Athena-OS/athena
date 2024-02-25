@@ -1,0 +1,20 @@
+post_install() {
+  echo """
+  pev installs the following executables:
+
+  /usr/bin/ofs2rva
+  /usr/bin/pedis
+  /usr/bin/pehash
+  /usr/bin/pepack
+  /usr/bin/peres
+  /usr/bin/pescan
+  /usr/bin/pesec
+  /usr/bin/pestr
+  /usr/bin/readpe
+  /usr/bin/rva2ofs
+  """
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,24 @@
+diff --git a/src/core/config.baseline b/src/core/config.baseline
+index 0ec9fde00..c3adc0b5e 100644
+--- a/src/core/config.baseline
++++ b/src/core/config.baseline
+@@ -30,7 +30,7 @@
+ ##################################################################################################
+ #
+ ### Define the path to Metasploit. For example: /opt/metasploit/apps/pro/msf3
+-METASPLOIT_PATH=/opt/metasploit/apps/pro/msf3
++METASPLOIT_PATH=/usr/share/metasploit
+ #
+ ### This will tell what database to use when using Metasploit. The default is PostgreSQL.
+ METASPLOIT_DATABASE=postgresql
+@@ -176,8 +176,8 @@ UNC_EMBED=OFF
+ ### This feature will attempt to create a rogue access point and redirect victims back to the
+ ### SET web server when associated.
+ ACCESS_POINT_SSID=linksys
+-AIRBASE_NG_PATH=/usr/local/sbin/airbase-ng
+-DNSSPOOF_PATH=/usr/local/sbin/dnsspoof
++AIRBASE_NG_PATH=/usr/bin/airbase-ng
++DNSSPOOF_PATH=/usr/bin/dnsspoof
+ #
+ ### This will configure the default channel that the wireless access point broadcasts through
+ ### Wi-Fi communications.

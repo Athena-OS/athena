@@ -1,0 +1,42 @@
+pkgname=aegis
+_pkgname=athena-aegis
+pkgver=163.6f65812
+pkgrel=1
+pkgdesc="Scriptable backend & TUI Installer for Athena OS."
+arch=('x86_64' 'aarch64')
+url="https://github.com/Athena-OS/${pkgname}"
+license=('GPL3')
+depends=('parted' 'arch-install-scripts' 'rate-mirrors')
+makedepends=('cargo')
+#source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("git+https://github.com/Athena-OS/$pkgname.git"
+        "strap.sh")
+sha512sums=('SKIP'
+            'c9e4b93344eebecbbe4748a14567ad3223ce53daa2e32ee63cd67c1a62f463f07e5d9b291b489d3fc31b9505660002af434655b207c5928b5e54019fcfbcb55d')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+    cd $pkgname
+
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
+
+build() {
+    cd $pkgname
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+
+package() {
+    cd $pkgname
+    
+    install -Dm 755 "target/release/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
+    install -Dm 755 ../strap.sh "${pkgdir}/usr/share/$pkgname/strap.sh"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ddrescue
+Encoding=UTF-8
+Exec=shell-rocket "if command -v ddrescue &> /dev/null;then ddrescue -h;$SHELL;else echo \\"ddrescue is not installed. I'm retrieving it for you...\\";sudo pacman -S ddrescue;ddrescue -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-07-forensic-imaging-tools;005-recover;
+X-Athena-Package=ddrescue

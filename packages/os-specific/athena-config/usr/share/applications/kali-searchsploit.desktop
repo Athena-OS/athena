@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=searchsploit
+Encoding=UTF-8
+Exec=shell-rocket "if command -v searchsploit &> /dev/null;then searchsploit;$SHELL;else echo \\"searchsploit is not installed. I'm retrieving it for you...\\";sudo pacman -S exploitdb;searchsploit;$SHELL;fi;"
+Icon=kali-searchsploit
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=08-exploitation-tools;001-identify;
+X-Athena-Package=exploitdb

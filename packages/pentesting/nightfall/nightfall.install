@@ -1,0 +1,18 @@
+post_install() {
+    # Create nightfall user/group if it doesn't already exist
+    [[ $(getent passwd nightfall) ]] \
+        || useradd -d / -s /usr/bin/nologin nightfall
+    return 0
+}
+
+post_upgrade() {
+    # Run the install function on upgrade
+    post_install
+}
+
+pre_remove() {
+    # Remove the nightfall user/group if it exists
+    [[ $(getent passwd nightfall) ]] \
+        && userdel nightfall
+    return 0
+}

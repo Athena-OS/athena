@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NASM
+Encoding=UTF-8
+Exec=shell-rocket "if command -v nasm &> /dev/null;then nasm;$SHELL;else echo \\"nasm is not installed. I'm retrieving it for you...\\";sudo pacman -S metasploit;nasm;$SHELL;fi;"
+Icon=kali-metasploit-framework
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=07-reverseengineer;
+X-Athena-Package=metasploit

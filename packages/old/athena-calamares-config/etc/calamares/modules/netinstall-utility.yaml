@@ -1,0 +1,38 @@
+- name: "GPU utilities"
+  description: "Select your favourite GPU utilities. To consider only for baremetal installation or GPU passthrough-enabled virtual machines."
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: true
+  packages:
+    - cuda
+- name: "Music apps"
+  description: "Select your favourite music applications."
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: true
+  packages:
+    - spotify
+- name: "Note-taking apps"
+  description: "Select your favourite note-taking applications."
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: true
+  packages:
+    - cherrytree
+    - notion-app-enhanced
+    - obsidian
+- name: "Screenshot apps"
+  description: "Select your favourite screenshot applications."
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: true
+  packages:
+    - flameshot

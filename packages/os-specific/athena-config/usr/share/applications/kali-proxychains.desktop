@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=proxychains4
+Comment=Redirect connections through proxy servers
+Encoding=UTF-8
+Exec=shell-rocket "if command -v proxychains4 &> /dev/null;then proxychains4;$SHELL;else echo \\"proxychains4 is not installed. I'm retrieving it for you...\\";sudo pacman -S proxychains-ng;proxychains4;$SHELL;fi;"
+Icon=kali-proxychains
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-02-tunneling;10-maintaining-access;
+X-Athena-Package=proxychains-ng

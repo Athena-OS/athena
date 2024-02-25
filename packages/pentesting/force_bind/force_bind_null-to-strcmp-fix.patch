@@ -1,0 +1,14 @@
+diff --git a/force_bind.c b/force_bind.c
+index 644e3a7..5656a05 100644
+--- a/force_bind.c
++++ b/force_bind.c
+@@ -916,6 +916,9 @@ int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
+ 		case AF_INET6: force_address = force_address_v6; break;
+ 		}
+ 
++		if (force_address == NULL)
++			break;
++
+ 		/* Test if we should deny the bind */
+ 		if (strcmp(force_address, "deny") == 0) {
+ 			xlog(1, "\tDeny binding to %s\n", tmp);

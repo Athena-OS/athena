@@ -1,0 +1,27 @@
+pkgname=athena-theme-tweak
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="Athena Theme Tweak Tool."
+arch=('any')
+license=("custom")
+source=("theme-switcher"
+        "$pkgname.py")
+sha512sums=('6918bcf508dca2c3d2efe83a43bdd2d972de5e8926e3dc97b351be5a9bf75f722a3c671003015e59a322271ac624f23b291dc5b9eeda634a0b989d7f30510711'
+            '4db9fd61432db9b2d4e3a80911fdbfad9e6807a649317c1f8d650b5d5e84a92742e71064bddd8392fa056781f2fc22fc0ffb66d8a879ac2d0aa91ddc7119a987')
+
+package() {
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 theme-switcher "$pkgdir/usr/bin/"
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}

@@ -1,0 +1,241 @@
+pkgname=athena-cyber-hub
+pkgver=20.741f6ec
+pkgrel=1
+pkgdesc="Running vulnerable labs and Cyber Security platforms."
+arch=('any')
+license=("GPL")
+depends=('desktop-file-utils' 'docker' 'docker-compose' 'gettext' 'gnome-console' 'libadwaita' 'marktext' 'python-lxml' 'python-toml' 'vte4')
+makedepends=('appstream-glib' 'base-devel' 'go' 'meson')
+source=("git+https://github.com/Athena-OS/athena-cyber-hub")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+    cd $pkgname
+
+    arch-meson . build
+    meson compile -C build
+}
+
+package() {
+    cd $pkgname
+
+    install -dm 755 $pkgdir/usr/share/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/cyberlab
+    install -Dm 644 cyberlab.toml $pkgdir/usr/share/$pkgname/cyberlab/
+
+    meson install -C build --destdir "$pkgdir"
+
+    #git clone https://github.com/dennisMeeQ/juice-shop $srcdir/juice-shop
+    #cd $srcdir/juice-shop
+    #install -dm 755 $pkgdir/usr/share/$pkgname/vulhub/juice-shop
+    #sed -i "s/8084/3000/g" docker-compose.yml
+    #install -Dm 644 docker-compose.yml $pkgdir/usr/share/$pkgname/vulhub/juice-shop/docker-compose.yml
+    #rm -rf $srcdir/juice-shop
+
+    cd $srcdir/$pkgname
+    git clone https://github.com/vulhub/vulhub $srcdir/vulhub
+    cd $srcdir/vulhub
+    install -dm 755 $pkgdir/usr/share/$pkgname/vulhub
+    cp -a * "$pkgdir/usr/share/$pkgname/vulhub/"
+    rm -rf $srcdir/vulhub#
+
+    lab_name=juice-shop
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/juice-shop/juice-shop $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    lab_name=wrongsecrets
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/OWASP/wrongsecrets $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    #lab_name=DVWA
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/digininja/DVWA $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    lab_name=bwapp
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/raesene/bWAPP $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    lab_name=xvwa
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/tuxotron/xvwa_lamp_container $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    #lab_name=lazyweb
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/RamadhanAmizudin/lazyweb $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=mutillidae
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/webpwnized/mutillidae-dockerhub $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=VulnLab
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/Yavuzlar/VulnLab $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    lab_name=webgoat
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/WebGoat/WebGoat $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    #lab_name=VAmPI
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/erev0s/VAmPI $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=clicker-service
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://gitlab.com/r00k/clicker-service $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=xssable
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/kiwicom/xssable $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=ssrfvulnlab
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/incredibleindishell/SSRF_Vulnerable_Lab $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=xxelab
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/jbarone/xxelab $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=varnish
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/detectify/Varnish-H2-Request-Smuggling $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    #lab_name=DVWP
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/vavkamil/dvwp $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    lab_name=dvna
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/appsecco/dvna $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    #lab_name=DVWS
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/snoopysecurity/dvws-node $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    lab_name=dvga
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/dolevf/Damn-Vulnerable-GraphQL-Application $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    #lab_name=cicd-goat
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/cider-security-research/cicd-goat $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    lab_name=dvjs
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    git clone https://github.com/lunasec-io/damn-vulnerable-js-sca $srcdir/$lab_name
+    cd $srcdir/$lab_name
+    cp -a README.md $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    rm -rf $srcdir/$lab_name
+
+    #lab_name=securecodingdojo
+    #cd $srcdir/$pkgname
+    #install -dm 755 $pkgdir/usr/share/$pkgname/owasp/$lab_name
+    #git clone https://github.com/OWASP/SecureCodingDojo $srcdir/$lab_name
+    #cd $srcdir/$lab_name
+    #cp -a * $pkgdir/usr/share/$pkgname/owasp/$lab_name/
+    #rm -rf $srcdir/$lab_name
+
+    cd $srcdir/$pkgname
+    install -dm 755 $pkgdir/usr/share/$pkgname/platforms/greenbone
+    curl -f -L https://greenbone.github.io/docs/latest/_static/docker-compose-22.4.yml -o $pkgdir/usr/share/$pkgname/platforms/greenbone/docker-compose.yml
+
+    cd $srcdir/$pkgname
+    git clone https://github.com/DefectDojo/django-DefectDojo $srcdir/defectdojo
+    cd $srcdir/defectdojo
+    install -dm 755 $pkgdir/usr/share/$pkgname/platforms/defectdojo
+    cp -a docker* dc* $pkgdir/usr/share/$pkgname/platforms/defectdojo/
+    rm -rf $srcdir/defectdojo
+
+    cd $srcdir/$pkgname
+    git clone https://github.com/wazuh/wazuh-docker.git -b v4.5.2 $srcdir/wazuh-docker
+    cd $srcdir/wazuh-docker
+    install -dm 755 $pkgdir/usr/share/$pkgname/platforms/wazuh-docker
+    cp -a * $pkgdir/usr/share/$pkgname/platforms/wazuh-docker/
+    rm -rf $srcdir/wazuh-docker
+}

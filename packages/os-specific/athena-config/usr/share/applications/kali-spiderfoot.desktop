@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=spiderfoot
+Encoding=UTF-8
+Exec=shell-rocket "if command -v spiderfoot &> /dev/null;then spiderfoot --help;$SHELL;else echo \\"spiderfoot is not installed. I'm retrieving it for you...\\";sudo pacman -S spiderfoot;spiderfoot --help;$SHELL;fi;"
+Icon=kali-spiderfoot
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;01-07-osint-analysis;001-identify;
+X-Athena-Package=spiderfoot

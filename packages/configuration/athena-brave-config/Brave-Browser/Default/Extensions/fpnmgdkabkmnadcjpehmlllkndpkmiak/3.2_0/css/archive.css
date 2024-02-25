@@ -1,0 +1,87 @@
+body {
+    font-family: serif;
+    font-size: 12pt;
+}
+
+#popup-container {
+    position: fixed;
+    z-index: 2147483647;
+    width: 350px;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    outline: 1rem black;
+    font-family: 'Arial', sans-serif;
+    font-size: 12pt;
+    animation: fadein 0.8s ease-out;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,.3);
+}
+
+#popup-container p {
+    margin: 0.5em 1em;
+    text-align: center;
+    font-size: 11pt;
+    color: #444;
+}
+
+#title-txt {
+    position: relative;
+    height: 2em;
+    width: 100%;
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 12pt;
+    text-align: center;
+    line-height: 2em;
+    color: white;
+    background-color: #9A3B38;
+    border-radius: 5px 5px 0px 0px;
+}
+
+
+#close-btn {
+    display: inline-block;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 0.5em;
+    right: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#close-btn:hover {
+    opacity: 0.6;
+}
+
+.wm-logo {
+    display: block;
+    position: relative;
+    width: 95%;
+    margin: 0.5em auto;
+}
+
+#archive-btn {
+    display: block;
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    font-size: 12pt;
+    height: 2em;
+    background-color: #9A3B38;
+    color: #eee;
+    line-height: 2em;
+    text-align: center;
+    text-decoration: none;
+    opacity: 1;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+#archive-btn:hover {
+    opacity: 0.6;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

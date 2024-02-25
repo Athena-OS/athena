@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=dmitry
+Comment=Deepmagic Information Gathering Tool
+Encoding=UTF-8
+Exec=shell-rocket "if command -v dmitry &> /dev/null;then dmitry;$SHELL;else echo \\"dmitry is not installed. I'm retrieving it for you...\\";sudo pacman -S dmitry;dmitry;$SHELL;fi;"
+Icon=kali-dmitry
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;
+X-Athena-Package=dmitry

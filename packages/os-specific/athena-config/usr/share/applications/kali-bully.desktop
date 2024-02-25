@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=bully
+Encoding=UTF-8
+Exec=shell-rocket "if command -v bully &> /dev/null;then bully;$SHELL;else echo \\"Bully is not installed. I'm retrieving it for you...\\";sudo pacman -S bully;bully;$SHELL;fi;"
+Icon=kali-bully
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=06-01-wireless-tools;
+X-Athena-Package=bully

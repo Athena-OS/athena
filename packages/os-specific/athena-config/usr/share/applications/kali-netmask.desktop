@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=netmask
+Comment=A netmask generation and conversion program
+Encoding=UTF-8
+Exec=shell-rocket "if command -v netmask &> /dev/null;then netmask -h;$SHELL;else echo \\"netmask is not installed. I'm retrieving it for you...\\";sudo pacman -S netmask;netmask -h;$SHELL;fi;"
+Icon=kali-netmask
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-08-route-analysis;
+X-Athena-Package=netmask

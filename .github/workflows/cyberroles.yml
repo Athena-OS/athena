@@ -1,0 +1,72 @@
+name: Build and Push Cyber Roles
+
+on:
+  #schedule:
+  #  - cron: '22 5 * * 0'
+  workflow_dispatch:
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install mirrorlists and keyrings
+      run: pacman -Syy --noconfirm archlinux-keyring pacman-mirrorlist chaotic-keyring chaotic-mirrorlist
+
+    - name: Install dependencies
+      run: pacman -Syyu --noconfirm git gtk-update-icon-cache pacman-contrib rate-mirrors
+      
+    - name: Setting builder user
+      run: |
+        useradd -m -d /src -G wheel -g users builder -s /bin/bash
+        echo "builder ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+        echo "root ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+        chmod -R a+rw .
+        chown -R builder .
+        chown -R builder /github/home
+        
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        
+    - name: Set fastest mirrors
+      run: |
+        rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+        rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
+        
+    - name: Build and sign packages
+      run: |
+        export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        chmod +x ./scripts/build_and_sign_cyberroles.sh
+        chown -R builder ~/.gnupg/
+        sudo -E -u builder ./scripts/build_and_sign_cyberroles.sh
+
+    - name: Push packages to another repository
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git clone https://github.com/Athena-OS/athena-repository.git
+        for newpkg in *.pkg.tar.zst
+        do
+          basefilename=$(basename "$newpkg" | sed 's/-[0-9].*//')
+          rm -rf ./athena-repository/x86_64/"$basefilename"*.zst
+          cp -rf "$newpkg" ./athena-repository/x86_64/
+        done
+        for newpkg in *.pkg.tar.zst.sig
+        do
+          basefilename=$(basename "$newpkg" | sed 's/-[0-9].*//')
+          rm -rf ./athena-repository/x86_64/"$basefilename"*.zst.sig
+          cp -rf "$newpkg" ./athena-repository/x86_64/
+        done
+        cd athena-repository
+        ./update-database.sh
+        git add --all
+        git commit -m "Add built packages"
+        git push https://D3vil0p3r:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/Athena-OS/athena-repository.git main

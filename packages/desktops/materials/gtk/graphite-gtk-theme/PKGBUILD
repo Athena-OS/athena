@@ -1,0 +1,27 @@
+pkgname=graphite-gtk-theme
+_pkgname=Graphite-gtk-theme
+pkgver=2023.05.17.r9.g71ec8e8
+pkgrel=1
+pkgdesc="Graphite Dark theme."
+arch=('any')
+license=("GPL3")
+makedepends=('git' 'gnome-shell' 'sassc')
+source=("git+https://github.com/vinceliuice/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/share/themes"
+
+  ./install.sh -n Graphite -c dark -d $pkgdir/usr/share/themes
+  ./install.sh -n Graphite-Rimless -c dark --tweaks rimless -d $pkgdir/usr/share/themes
+
+  rm -rf $pkgdir/usr/share/themes/Graphite-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Dark-xhdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-xhdpi
+}

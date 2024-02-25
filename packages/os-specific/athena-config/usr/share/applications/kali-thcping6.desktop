@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=thcping6
+Encoding=UTF-8
+Exec=shell-rocket "if command -v thcping6 &> /dev/null;then thcping6;$SHELL;else echo \\"thcping6 is not installed. I'm retrieving it for you...\\";sudo pacman -S thc-ipv6;thcping6;$SHELL;fi;"
+Icon=kali-thcping6
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-02-identify-live-hosts;
+X-Athena-Package=thc-ipv6

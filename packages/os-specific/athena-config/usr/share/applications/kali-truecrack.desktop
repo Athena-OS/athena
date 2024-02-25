@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=truecrack
+Comment=Brute-force password cracker for TrueCrypt (Copyright) volumes.
+Encoding=UTF-8
+Exec=shell-rocket "if command -v truecrack &> /dev/null;then truecrack -h;$SHELL;else echo \\"truecrack is not installed. I'm retrieving it for you...\\";sudo pacman -S truecrack;truecrack -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=05-02-offline-attacks;
+X-Athena-Package=truecrack

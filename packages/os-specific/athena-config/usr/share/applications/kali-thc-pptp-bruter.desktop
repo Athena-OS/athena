@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=thc-pptp-bruter
+Encoding=UTF-8
+Exec=shell-rocket "if command -v thc-pptp-bruter &> /dev/null;then thc-pptp-bruter;$SHELL;else echo \\"thc-pptp-bruter is not installed. I'm retrieving it for you...\\";sudo pacman -S thc-pptp-bruter;thc-pptp-bruter;$SHELL;fi;"
+Icon=kali-thc-pptp-bruter
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=05-01-online-attacks;
+X-Athena-Package=thc-pptp-bruter

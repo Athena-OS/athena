@@ -1,0 +1,128 @@
+/* for embedding into Wikipedia pages */
+
+.wm1996-archive-btn {
+  padding: 5px;
+}
+
+.wm1996-archive-btn img {
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.wm1996-tooltip-header {
+  color: white;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.4em;
+}
+
+.wm1996-tooltip-header p {
+  margin: 0 0 0.5em 0 !important;
+}
+
+.wm1996-book-outer {
+  display: block;
+  width: 122px;
+  height: 170px;
+  align-self: center;
+  margin: 10px auto;
+}
+
+.wm1996-book-img {
+  border: 1px solid black;
+  border-radius: 3px;
+  max-width: 120px;
+  max-height: 168px;
+}
+
+.wm1996-tooltip-title {
+  color: #eee;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.wm1996-tooltip-author {
+  color: #bbb;
+}
+
+.wm1996-address {
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.2em;
+}
+
+.wm1996-tooltip-details {
+  box-sizing: border-box;
+  background-color: #eee;
+  width: 100%;
+  padding: 1px 5px 1px 5px;
+  border-radius: 3px;
+  color: #555;
+  line-height: 1.4em;
+  text-align: center;
+}
+
+/* CSS Tooltip */
+
+.wm1996-tooltip {
+  position: relative;
+  text-indent: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.wm1996-tooltip a, .wm1996-tooltip-body a, .wm1996-tooltip a:hover, .wm1996-tooltip-body a:hover {
+  text-decoration: none;
+}
+
+.wm1996-tooltip-body {
+  position: absolute;
+  z-index: 999;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  transform: translateY(-50%) translateX(-50%);
+  width: 18em;
+  padding: 10px;
+  border-radius: 10px;
+  background: #333;
+  color: #fff;
+  animation:  wm1996-fadeInFrames ease 0.3s;
+}
+
+@keyframes wm1996-fadeInFrames {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Buttons */
+
+.wm1996-btn {
+  text-align: center;
+  margin: 0 auto 10px auto;
+  font-weight: 500;
+  border-radius: 5px;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.wm1996-btn-auto {
+  min-width: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.wm1996-btn-blue {
+  background-color: #405971 !important;
+  border: 1px solid #668db3 !important;
+  color: #eee !important;
+}
+
+.wm1996-btn-blue:hover {
+  background-color: #51708E !important;
+}

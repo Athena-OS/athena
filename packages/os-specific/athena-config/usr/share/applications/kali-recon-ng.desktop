@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=recon-ng
+Comment=Web Reconnaissance framework
+Encoding=UTF-8
+Exec=shell-rocket "if command -v recon-ng &> /dev/null;then recon-ng;$SHELL;else echo \\"recon-ng is not installed. I'm retrieving it for you...\\";sudo pacman -S recon-ng;recon-ng;$SHELL;fi;"
+Icon=kali-recon-ng
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;
+X-Athena-Package=recon-ng

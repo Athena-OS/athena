@@ -1,0 +1,158 @@
+
+body {
+    background-color: #eee;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.loader {
+    flex: none;
+}
+
+.outer-list-container {
+    display: contents;
+}
+
+#resource-list-container {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    color: #000;
+    display: block;
+    padding: 0.5em;
+    margin: 1em 0;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
+
+#current-url {
+    font-weight: normal;
+    margin: 0 1em;
+    word-break: break-all;
+}
+
+.spn-head {
+    display: inline-block;
+}
+
+p {
+    font-family: Gill Sans Light;
+    font-size: 20px;
+}
+
+#resource-list-container p {
+    padding: 0 5px;
+    white-space: normal;
+    word-break: break-all;
+    margin: 0;
+}
+#resource-list-container p:nth-child(even) {
+    color: #666;
+}
+
+.logo {
+    margin: 1em auto;
+    text-align: center;
+}
+
+.wb-logo {
+    height: 90px;
+    padding-top: 1em;
+}
+
+.container-scrollbar::-webkit-scrollbar {
+    background-color: #aaa;
+    width: 16px;
+    border-radius: 5px;
+}
+.container-scrollbar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+#counter-container {
+    display: none;
+    text-align: right;
+    margin-bottom: 1em;
+}
+
+.live-status {
+    text-align: center;
+}
+
+.error {
+    padding-bottom: 1em;
+    text-align: center;
+    display: none;
+}
+
+.error-color {
+    color: #733;
+    font-weight: 700;
+}
+
+.highlight-color {
+    color: #733;
+}
+
+.snapshot-color {
+    font-weight: normal;
+    /* color: #faa; */
+}
+
+#message {
+    display: none;
+    margin-top: 1em;
+}
+
+#snapshot-url {
+    display: none;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #2C2C2C;
+        color: #eee;
+    }
+
+    #resource-list-container {
+        color: #ddd;
+        background-color: #333;
+        border: 1px solid #555;
+    }
+
+    #resource-list-container p:nth-child(even) {
+        color: #aaa;
+    }
+
+    .error-color {
+        color: #f66;
+    }
+
+    .highlight-color {
+        color: #d88;
+    }
+
+    .snapshot-color {
+        color: #7ac;
+    }
+    .snapshot-color:hover {
+        color: #9cf;
+    }
+
+    .container-scrollbar::-webkit-scrollbar {
+        background-color: #555;
+    }
+    .container-scrollbar::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+}

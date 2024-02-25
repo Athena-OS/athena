@@ -1,0 +1,98 @@
+
+body {
+    background-color: #eee;
+}
+
+p {
+    font-family: "Gill Sans Light";
+    font-size: 20px;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header-container {
+    text-align: center;
+}
+
+.outer-container {
+    display: contents;
+}
+
+#legend-info {
+    flex: 2;
+}
+
+#save-btn, #cancel-btn {
+    width: 10em;
+    height: 32px;
+    margin: 0.5em 0 0 0.5em;
+}
+
+.btn {
+    white-space: inherit;
+}
+
+#exclude-list-container {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 14px;
+}
+
+#exclude-list-area {
+    flex: 2;
+    width: 100%;
+    min-height: 4em;
+    border-radius: 5px;
+    padding: 0.5em;
+    border: 1px solid #737373;
+    color: #333;
+    resize: none;
+}
+
+.container-scrollbar::-webkit-scrollbar {
+    background-color: #aaa;
+    width: 16px;
+    border-radius: 5px;
+}
+.container-scrollbar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+/* Dark Mode */
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #2C2C2C;
+        color: #eee;
+    }
+
+    a {
+        color: #d66;
+    }
+    a:hover {
+        color: #f88;
+    }
+
+    #exclude-list-area {
+        color: #ddd;
+        background-color: #333;
+        border: 1px solid #555;
+    }
+
+    .container-scrollbar::-webkit-scrollbar {
+        background-color: #555;
+    }
+    .container-scrollbar::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+}

@@ -1,0 +1,136 @@
+#!/bin/bash
+#motd with relevant information.
+
+# Collect information
+HOSTNAME=`uname -n`
+KERNEL=`uname -r`
+CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
+ARCH=`uname -m`
+PACMAN=`checkupdates | wc -l`
+#DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
+#DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
+MEMORY1=`free -t -m | grep "Mem" | awk '{print $6" MB";}'`
+MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
+MEMPERCENT=`free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'`
+
+#Time of day
+HOUR=$(date +"%H")
+if [ $HOUR -lt 12  -a $HOUR -ge 0 ]
+then   TIME="Morning"
+elif [ $HOUR -lt 17 -a $HOUR -ge 12 ]
+then   TIME="Afternoon"
+else   TIME="Evening"
+fi
+
+#System uptime
+uptime=`cat /proc/uptime | cut -f1 -d.`
+upDays=$((uptime/60/60/24))
+upHours=$((uptime/60/60%24))
+upMins=$((uptime/60%60))
+upSecs=$((uptime%60))
+
+
+#System load
+LOAD1=`cat /proc/loadavg | awk {'print $1'}`
+LOAD5=`cat /proc/loadavg | awk {'print $2'}`
+LOAD15=`cat /proc/loadavg | awk {'print $3'}`
+
+#Color variables
+#W="\033[00;37m"
+W="\033[0m"
+B="\033[01;36m"
+R="\033[01;31m"
+G="\033[01;32m"
+Y="\033[01;33m"
+N="\033[0m"
+
+detect_virt=$(systemd-detect-virt)
+
+echo -e "
+        $Y. $W
+       $Y/#\ $W         _   _   _                      $Y  ___  ____
+      $Y/###\ $W       / \ | |_| |__   ___ _ __   __ _ $Y / _ \/ ___|
+     $Y/#####\ $W     / _ \| __| '_ \ / _ \ '_ \ / _  |$Y| | | \\___ \\
+    $Y/##.-.##\ $W   / ___ \ |_| | | |  __/ | | | (_| |$Y| |_| |___) |
+   $Y/##(   )##\ $W /_/   \_\__|_| |_|\___|_| |_|\__,_|$Y \___/|____/
+  $Y/#.--   --.#\ $W
+ $Y/'           '\\
+    "
+echo -e "$G---------------------------------------------------------------"
+echo -e "$W   Good $TIME$A You're Logged Into $Y$A$HOSTNAME$W container! "
+echo -e "$G---------------------------------------------------------------"
+echo -e "$Y    KERNEL $G:$W $KERNEL $ARCH                                 "
+echo -e "$G       CPU $G:$W $CPU                                          "
+echo -e "$B    MEMORY $G:$W $MEMORY1 / $MEMORY2 - $MEMPERCENT             "
+#echo -e "$B  USE DISK $G:$W $DISC (Used)                                 "
+echo -e "$G---------------------------------------------------------------"
+echo -e "$Y  LOAD AVG $G:$W $LOAD1, $LOAD5, $LOAD15                       "
+echo -e "$G    UPTIME $G:$W $upDays days $upHours hours $upMins minutes $upSecs seconds "
+#echo -e "$B PROCESSES $G:$W You are running $PSU of $PSA processes        "
+echo -e "$B    PACMAN $G:$W $PACMAN packages can be updated               "
+echo -e "$R     USERS $G:$W `users | xargs -n1 | sort -u | xargs | wc -w` user(s) logged in               "
+echo -e "$G---------------------------------------------------------------"
+echo -e "  $W Please do not share your login and use$G sudo$W for$R root$W access "
+echo -e "$G---------------------------------------------------------------$W"
+echo -e
+echo -e "
+                         $G&&$W
+                     $G&B5?!!?5B&$W
+                 $G&BP?!~~^~~^~~!?PB&$W
+              $G&PJ7~~^~~7YGGY7~~^~~7JP&$W
+          $G&GY7!~^~~!JP&$W.....$G&PJ!~~^~!7YG&$W
+      $G&B5?!~~~~!?5B&$W............$G&B5?!~~~~!?5B&$W
+   $G&PJ7~~~~~7YG&$W....................$G&GY7~~~~~7JP&$W
+  $G&~~~~~~~?&$W............................$G&?~~~~~~~&$W
+  $G&~~~~~~~!?5B&$W......................$G&B5?!~~~~~~~&$W
+  $G&~~~~~~~~~~~!JP&$W................$G&PJ!~~~~~~~~~~~&$W
+  $G&~~~~B&PJ!~~~~~~7YG&$W........$G&GY7~~~~~~!JP&B~~~~&$W
+  $G&~~~!&$W...$G&B5?!~~~~~!?5B&&B5?!~~~~~!?5B&$W...$G&!~~~&$W
+  $G&~~~!&$W.......$G&GY7~~~~~~!!~~~~~~7YG&$W.......$G&!~~~&$W
+  $G&~~~!&$W...........$G&PJ!~~~~~~!JP&$W...........$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~~G$W...............$G&~~~~&$W...............$G&~~~~&$W
+  $G&~~~~~7JP&$W...........$G&~~~~&$W...........$G&PJ7~~~~~&$W
+   $G&P?!~~^~!7YB&$W.......$G&~~~~&$W.......$G&BY7!~^~~!?P&$W
+      $G&G5?!~~~~!?5B&$W...$G&~~~~&$W...$G&B5?!~~~~!?5G&$W
+          $G&GY7~~^~~7JP&J~~~~J&PJ7~~^~~7YG&$W
+              $G&PJ!~~^~~~~~~~~~~^~~!JP&$W
+                 $G&B5?!~~~~~~~~!?5B&$W
+                     $G&GY7!!7YG&$W
+                         $G&&$W
+    "
+echo -e
+echo -e "🔥Choose your ${G}Hacking Role$W🔥"
+echo -e
+echo -e "💙 ${B}Blue Teamer:          ${W}sudo cyber-toolkit blue$W"
+echo -e "🐞 ${G}Bug Bounty Hunter:    ${W}sudo cyber-toolkit bugbounty$W"
+echo -e "🍘 ${Y}Cracker Specialist:   ${W}sudo cyber-toolkit cracker$W"
+echo -e "💀 ${R}DoS Tester:           ${W}sudo cyber-toolkit dos$W"
+echo -e "🎓 ${B}Enthusiast Student:   ${W}sudo cyber-toolkit student$W"
+echo -e "🔍 ${G}Forensic Analyst:     ${W}sudo cyber-toolkit forensic$W"
+echo -e "🦠 ${Y}Malware Analyst:      ${W}sudo cyber-toolkit malware$W"
+echo -e "📱 ${B}Mobile Analyst:       ${W}sudo cyber-toolkit mobile$W"
+echo -e "🌐 ${G}Network Analyst:      ${W}sudo cyber-toolkit network$W"
+echo -e "🕵️ ${Y}OSINT Specialist:     ${W}sudo cyber-toolkit osint$W"
+echo -e "❤️ ${R}Red Teamer:           ${W}sudo cyber-toolkit red$W"
+echo -e "🕸️ ${G}Web Pentester:        ${W}sudo cyber-toolkit web$W"
+echo -e
+echo -e
+echo -e "Are you ready to ${B}Learn${W}, ${G}Play${W} and ${R}Hack${W}?"
+echo -e
+echo -e "${G}Hack The Box${W} commands:"
+echo -e
+echo -e "${B}htb-toolkit -h${W}:          discover and play Hack The Box!"
+echo -e "${G}htb-toolkit -k reset${W}:    reset your Hack The Box App Token."
+echo -e "${R}sudo kill openvpn${W}:       terminate OpenVPN."
+echo -e
+echo -e "$G---------------------------------------------------------------"
+echo -e "$W            Run ${B}athena-motd$W for showing this message     "
+echo -e
+echo -e "$W                     Remember to ${G}Have Fun$W!               "
+echo -e
+echo -e "$W                        Enjoy ${Y}Athena OS$W                  "
+echo -e "$G---------------------------------------------------------------$W"

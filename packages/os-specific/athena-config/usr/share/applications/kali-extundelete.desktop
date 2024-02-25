@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=extundelete
+Encoding=UTF-8
+Exec=shell-rocket "if command -v extundelete &> /dev/null;then extundelete --help;$SHELL;else echo \\"extundelete is not installed. I'm retrieving it for you...\\";sudo pacman -S extundelete;extundelete --help;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-05-forensic-carving-tools;005-recover;
+X-Athena-Package=extundelete

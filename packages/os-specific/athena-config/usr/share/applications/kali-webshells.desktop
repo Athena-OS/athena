@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=webshells
+Encoding=UTF-8
+Exec=shell-rocket "if test -d /usr/share/webshells;then cd /usr/share/webshells;$SHELL;else echo \\"webshells is not installed. I'm retrieving it for you...\\";sudo pacman -S webshells;cd /usr/share/webshells;$SHELL;fi;"
+Icon=kali-webshells
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-webapp-analysis;
+X-Athena-Package=webshells

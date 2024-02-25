@@ -1,0 +1,16 @@
+pkgname=athena-mirrorlist
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Athena OS mirrorlist."
+arch=('any')
+license=("custom")
+backup=('etc/pacman.d/athena-mirrorlist')
+source=("athena-mirrorlist")
+
+package() {
+  mkdir -p "$pkgdir/etc/pacman.d"
+  
+  install -Dm 644 -t "$pkgdir/etc/pacman.d/" $pkgname
+}
+
+sha512sums=('e394273af13914aff384e659419349e2bc82218403d66391d0f5b4b0f73ad057039588b7fe2432e4b6b733edf6501a19dca3596c06c3e1d662be0efac1c5afa5')

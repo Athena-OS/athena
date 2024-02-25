@@ -1,0 +1,85 @@
+#resultsTray {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#resultsTray > div {
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #888;
+    margin: 10px auto;
+    padding: 5px;
+    justify-content: space-between;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    width: 300px;
+}
+#resultsTray > p {
+    display: block;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+    width: 250px;
+}
+
+.text-elements {
+    display: block;
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+    padding: 0 1em;
+}
+
+.bottom-details {
+    justify-content: flex-end;
+    width: 180px;
+    margin: 0 auto 10px;
+}
+
+.btn {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.cover-img {
+    align-self: center;
+    display: block;
+    height: 250px;
+    margin-bottom: 10px;
+    width: 180px;
+}
+
+body {
+    max-height: 100%;
+}
+
+.container {
+    padding: 15px;
+}
+
+p {
+    font-family: "Gill Sans Light";
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+      background-color: #2C2C2C;
+      color: #eee;
+  }
+
+  #resultsTray > div {
+      background-color: #333;
+      color: #ddd;
+  }
+}
