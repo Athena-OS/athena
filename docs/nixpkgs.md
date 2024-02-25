@@ -231,11 +231,11 @@ To build Python tools with no `setup.py` file, it is important that the python s
 ```nix
     makeWrapper ${python3}/bin/python $out/bin/weevely \
       --add-flags "$out/share/weevely/weevely.py" \
-      --prefix PYTHONPATH : ${python3Packages.makePythonPath propagatedBuildInputs}
+      --prefix PYTHONPATH : "$PYTHONPATH"
 ```
 Remember that dependency modules must be inside `propagatedBuildInputs`.
 
-To prevent the error related to `setup.py not found`, add `format = "other";` in `package.nix`.
+To prevent the error related to `setup.py not found`, add `pyproject = false;` in `package.nix`.
 
 ## Perl Modules
 
