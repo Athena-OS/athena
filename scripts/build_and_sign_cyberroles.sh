@@ -59,7 +59,7 @@ build_and_sign_packages() {
 }
 
 # src_dir is package_source dir
-src_dir="$(pwd)/.." 
+src_dir="$(pwd)" 
 
 # Set the root path from which to start the search
 root_path="$src_dir/packages/metapackages/"
