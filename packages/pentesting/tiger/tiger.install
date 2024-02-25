@@ -1,0 +1,12 @@
+post_upgrade() {
+    update-desktop-database -q
+    systemd-tmpfiles --create tiger.conf
+}
+
+post_install() {
+    post_upgrade
+}
+
+post_remove() {
+    systemd-tmpfiles --remove tiger.conf
+}

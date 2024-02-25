@@ -1,0 +1,91 @@
+#container-whole-doi {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#container-whole-doi > div {
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #888;
+    margin: 10px auto;
+    padding: 5px;
+    justify-content: space-between;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    width: 300px;
+}
+#container-whole-doi > div > p {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+}
+#container-whole-doi > div > div > button {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-elements {
+    display: block;
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+    padding: 0 1em;
+}
+
+.bottom-details {
+    justify-content: flex-end;
+    text-align: center;
+    /* margin: 10px auto; */
+    margin: 0 auto 10px;
+}
+
+.unavailable-label {
+    color: #800;
+    display: block;
+    margin: 20px auto;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+}
+
+body {
+    max-height: 100%;
+}
+
+.container {
+    padding: 15px;
+}
+
+p {
+    font-family: Gill Sans Light;
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: #2C2C2C;
+      color: #eee;
+    }
+
+    #container-whole-doi > div {
+        background-color: #333;
+    }
+
+    .unavailable-label {
+        color: #f88;
+    }
+}

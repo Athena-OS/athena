@@ -1,0 +1,405 @@
+body {
+    background-color: #eee;
+}
+
+h1 {
+    margin: 1em 0 0.5em 0;
+}
+
+h4 {
+    font-size: 23px;
+}
+
+#main-info {
+    font-family: "Gill Sans Light";
+    font-size: 20px;
+}
+
+.hyp-branding {
+    font-size: 15px;
+}
+.hyp-branding img {
+    margin-left: 1em;
+    width: 170px;
+    height: 35px;
+}
+
+.color_code {
+    color: #22c399;
+}
+
+.globe-icon {
+    color: #23527c;
+    filter: invert(26%) sepia(8%) saturate(5207%) hue-rotate(169deg) brightness(96%) contrast(84%); /* blue #23527c */
+    width: 18px;
+    height: 18px;
+}
+
+#side-nav-bar {
+    background-color: #ddd;
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 23%;
+    border-right: 3px solid #9A3B38;
+    overflow: auto;
+}
+
+.tab-content-container {
+    width: 77%;
+    position: absolute;
+    right: 0;
+}
+
+.logo, .sidebar-tabs {
+    margin: 3vh 2vw;
+    text-align: center;
+}
+
+.sidebar-tabs {
+    background-color: #ccc;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #333;
+}
+
+.wb-logo {
+    width: 100%;
+    padding-top: 1em;
+}
+
+.wb-logo-error {
+    height: 100px;
+    padding-top: 1em;
+}
+
+.error-header {
+    margin: 0;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.url {
+    font-size: 21px;
+    font-weight: 300;
+    word-break: break-all;
+}
+
+@media screen and (min-width: 700px) {
+    .test {
+        text-align: center;
+    }
+}
+
+.target-selector-exact {
+    padding: 5px 10px;
+    /* font-family: 'Courier New', Courier, monospace; */
+    word-wrap: break-word;
+    border-left: 2px #855 solid;
+}
+
+#link-incontext, #link-html {
+    margin: 10px 0 10px 10%;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+    background-color: #a94442;
+}
+a.button:hover {
+    color: #eee;
+    background-color: #AA4B48;
+}
+
+#date {
+    position: absolute;
+    right: 20px;
+}
+
+.source {
+    padding: 5px 0px;
+}
+
+#text-contain {
+    padding: 5px 0px;;
+}
+
+#links {
+    padding: 10px;
+}
+
+.row_main {
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+    #link-incontext {
+      margin-left: 5px;
+    }
+    #link-html{
+        margin-left: 10px;
+    }
+}
+
+.wordcloud {
+    background-color: black;
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin: 1em auto;
+    padding: 0;
+    page-break-after: always;
+    page-break-inside: avoid;
+    display: none;
+}
+
+#container-wordcloud {
+    padding: 5px;
+    width: 680px;
+    height: 680px;
+    display: none;
+}
+
+#public_on {
+    font-weight: 150%;
+    color: #818181;
+}
+
+ul {
+    margin: 0 7vw;
+    color: #9A3B38;
+}
+
+.color-dark {
+    color: #000;
+}
+
+
+.pre {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    word-wrap: break-word;
+}
+.annotations-container, .pre-container {
+    font-size: 18px;
+    line-height: 1.5;
+    display: block;
+    min-height: 1em;
+    margin: 1em auto 1.8em auto;
+    color: #333;
+    background-color: #ffffff75;
+    border-radius: 5px;	
+    border: 1px solid #888;
+}
+
+.pre-inner {
+    margin: 0.7em;
+}
+
+.col-sm-6 {
+    margin: auto;
+    width: 70vw;
+    float: none;
+}
+
+.col-sm-12 {
+    float: none;
+}
+
+/* https://www.w3schools.com/howto/howto_js_tabs.asp */
+/* Style the tab */
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the buttons that are used to open the tab content */
+.col-tablinks button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    min-height: 80px;
+    width: 100%;
+    font-size: 22px;
+}
+
+/* Change background color of buttons on hover */
+.col-tablinks button:hover {
+    background-color: #b0b0b0;
+    color: #000;
+}
+
+/* Create an active/current tablink class */
+.col-tablinks button.active {
+    background-color: #9A3B38;
+    color: #fff;
+    border: 1px solid #BF4946 !important;
+}
+.col-tablinks button.active:hover {
+    background-color: #AA4B48;
+}
+
+/* Style the tab content */
+/* .tabcontent {
+    margin: auto;
+    display: none;
+} */
+
+#message_tagcloud {
+    text-align: center;
+    margin: auto;
+}
+
+#row_contain-url, #row_contain-domain, #url_details, #show_thumbnail, #tagcloud-not-found, #total_captures, #error-message, #Alexa_tab, #Domaintools_tab, #Wbmsummary_tab, #Annotations_tab, #Tagcloud_tab {
+    display: none;
+}
+
+#container-whole-url, #container-whole-domain {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.container-scrollbar::-webkit-scrollbar {
+    background-color: #aaa;
+    width: 16px;
+    border-radius: 5px;
+}
+.container-scrollbar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+.row-box {
+    margin : 10px 0;
+}
+
+.title, #show_thumbnail {
+    text-align: center;
+}
+
+.rl-list {
+    margin-left: 10px;
+}
+
+.thumbnail-box {
+    border-radius: 5px;	
+    border: 1px solid #888;
+}
+
+@media screen and (max-width: 1000px) {
+    .sidebar-tabs {
+        margin-top: 5vh;
+    }
+
+    .col-tablinks button {
+        padding: 0 7px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .col-tablinks button {
+        padding: 0 2px;
+        font-size: 17px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .col-tablinks button {
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #2C2C2C;
+        color: #eee;
+    }
+
+    h2, h3, h4 {
+        color: #bbb;
+    }
+
+    ul {
+        color: #d66;
+    }
+
+    .color-dark {
+        color: #eee;
+    }
+
+    .globe-icon {
+        color: #d66;
+        filter: invert(70%) sepia(12%) saturate(4632%) hue-rotate(313deg) brightness(90%) contrast(90%); /* red #d66 */
+    }
+
+    #side-nav-bar, .annotations-container, .pre-container {
+        background-color: #333;
+        color: #ddd;
+    }
+
+    .sidebar-tabs {
+        background-color: #3c3c3c;
+        color: #aaa;
+    }
+
+    .annotations-container, .thumbnail-box, .pre-container {
+        border: 1px solid #666;
+    }
+
+    a, .error b {
+        color: #d66;
+    }
+    a:hover {
+        color: #f88;
+    }
+
+    .container-fluid {
+        background-color: #2C2C2C;
+        color: #aaa;
+    }
+
+    .col-tablinks button {
+        background-color: #3c3c3c;
+        transition: 0.5s;
+    }
+    /* Create an hover/current tablink class */
+    .col-tablinks button:hover {
+        background-color: #4D4D4D;
+        color: #eee;
+    }
+    /* Create an active/current tablink class */
+    .col-tablinks button.active {
+        color: #eee;
+    }
+
+    .col-tablinks button.active:hover {
+        background-color: #AA4B48;
+    }
+
+    .container-scrollbar::-webkit-scrollbar {
+        background-color: #555;
+    }
+    .container-scrollbar::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+}

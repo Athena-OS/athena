@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=proxytunnel
+Comment=Program to tunnel a connection through a standard HTTPS proxy
+Encoding=UTF-8
+Exec=shell-rocket "if command -v proxytunnel &> /dev/null;then proxytunnel -h;$SHELL;else echo \\"proxytunnel is not installed. I'm retrieving it for you...\\";sudo pacman -S proxytunnel;proxytunnel -h;$SHELL;fi;"
+Icon=kali-proxytunnel
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-02-tunneling;
+X-Athena-Package=proxytunnel

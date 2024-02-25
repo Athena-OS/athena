@@ -1,0 +1,303 @@
+*alpha.txt*
+*alpha*
+==============================================================================
+CONTENTS                                                        *alpha-contents*
+
+    INTRO .......................................... |alpha-intro|
+    COMMANDS ....................................... |alpha-commands|
+    CONFIGURATION .................................. |alpha-configuration|
+    AUTOCMD ........................................ |alpha-autocmd|
+    COLORS ......................................... |alpha-colors|
+    EXAMPLE ........................................ |alpha-example|
+
+==============================================================================
+INTRO                                                              *alpha-intro*
+
+alpha is a plugin that shows a programmable greeter screen when neovim is
+launched.
+
+==============================================================================
+COMMANDS                                                        *alpha-commands*
+
+>
+    :Alpha
+<
+Open the alpha buffer.
+
+==============================================================================
+CONFIGURATION                                              *alpha-configuration*
+
+the following is documentation for the types alpha uses for configuration
+
+config:
+>
+ config = {
+    -- required
+
+    -- table of elements from top to bottom
+    -- key is arbitrary, so you can use lua's array syntax
+    layout = {},
+
+    -- optional
+    opts = {
+        -- number: how much space to pad on the sides of the screen
+        margin = 0
+
+        -- theme-specific setup,
+        -- ran once before the first draw
+        setup = function
+
+        -- when true,
+        -- use 'noautocmd' when setting 'alpha' buffer local options.
+        -- this can help performance, but it will prevent the
+        -- FileType autocmd from firing, which may break integration
+        -- with other plguins.
+        -- default: false (disabled)
+        noautocmd = bool
+    }
+ }
+<
+button:
+>
+ {
+    -- required
+
+    -- element type
+    type = "button",
+    -- the text to display
+    val = "string",
+    -- what to do when the button is pressed
+    -- useful functions:
+    -- local key = vim.api.nvim_replace_termcodes(shortcut, true, false, true)
+    -- vim.api.nvim_feedkeys(key, "normal", false)
+    on_press = function() end,
+
+    -- optional
+    opts = {
+        position = "left" | "center" | "right",
+        hl = "hl_group" | {{"hl_group", 0, -1}}
+
+        shortcut = "string",
+        align_shortcut = "left" | "right",
+        hl_shortcut = "hl_group",
+
+        -- starting at the first character,
+        -- from 0 to #shortcut + #val,
+        -- place the cursor on this row
+        cursor = 0,
+        -- how wide to pad the button.
+        -- useful if position = "center"
+        width = 50,
+    }
+ }
+<
+
+text:
+>
+
+ {
+    -- required
+
+    -- element type
+    type = "text",
+    -- the text to display
+    -- when it's an array, each element is placed
+    -- on a different line
+    val = "string" | { "array" } | function,
+
+    -- optional
+    opts = {
+        position = "left" | "center" | "right",
+        hl = "hl_group" | {{"hl_group", 0, -1}}
+    }
+ }
+<
+padding:
+>
+ {
+    type = "padding",
+    val = 0 -- number
+ }
+<
+
+group:
+>
+ {
+    -- required
+    type = "group"
+    val = {} | function -- table of elements
+
+    -- optional
+    opts = {
+        -- number of newlines inbetween each element
+        spacing = 1
+    }
+ }
+<
+terminal:
+>
+ -- note: require'alpha.term' must be called
+ -- after require'alpha'
+ {
+    -- required
+    type = "terminal"
+    command = "string" -- the shell command to run
+    -- command size can be fixed, or calculated by mutating these
+    width = 0 -- number
+    height = 0 -- number
+
+    -- optional
+    opts = {
+        -- turns 'false' after the command is run
+        -- when redraw = true alpha will rerun the command
+        -- on the next redraw
+        redraw = true
+        -- see :h nvim_open_win {config} parameter
+        window_config = {}
+    }
+ }
+<
+
+A theme may supply predefined widgets like buttons, headers, etc that
+you can use to customize the theme by updating its opts table
+
+==============================================================================
+COLORS                                                            *alpha-colors*
+
+Highlighting is handled internally by the neovim api.
+
+Most elements accept `opts.hl = "hl_group"` or an array of
+`{'hl_group', start_col, end_col}`
+
+for multiline elements, you supply a 2 dimensional array of
+`{'hl_group', start_col, end_col}`
+
+You can highlight a button shortcut by supplying a highlight group to the
+option `x.opt.hl_shortcut`
+
+the builtin themes currently highlight with builtin highlight groups
+like `Number` and `Keyword`
+
+==============================================================================
+AUTOCMDS                                                        *alpha-autocmds*
+
+alpha supports the following autocmds
+- `autocmd User AlphaReady`
+
+there is an option to use *:noautocmd* when setting alpha's buffer local options
+see |alpha-configuration|
+
+==============================================================================
+EXAMPLE                                                          *alpha-example*
+
+For the default configuration, see the Quick Start guide in the README.md
+>
+>
+ use {
+     "goolord/alpha-nvim",
+     config = function ()
+         local alpha = require'alpha'
+         local dashboard = require'alpha.themes.dashboard'
+         dashboard.section.header.val = {
+             [[                               __                ]],
+             [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+             [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+             [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+             [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+             [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+         }
+         dashboard.section.buttons.val = {
+             dashboard.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
+             dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
+         }
+         local handle = io.popen('fortune')
+         local fortune = handle:read("*a")
+         handle:close()
+         dashboard.section.footer.val = fortune
+
+         dashboard.config.opts.noautocmd = true
+
+         vim.cmd[[autocmd User AlphaReady echo 'ready']]
+
+         alpha.setup(dashboard.config)
+     end
+ }
+<
+
+Example with the startify theme:
+>
+    use {
+        "goolord/alpha-nvim",
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function ()
+            local alpha = require'alpha'
+            local startify = require'alpha.themes.startify'
+            startify.section.header.val = {
+                [[                                   __                ]],
+                [[      ___     ___    ___   __  __ /\_\    ___ ___    ]],
+                [[     / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+                [[    /\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+                [[    \ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+                [[     \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+            }
+            startify.section.top_buttons.val = {
+                startify.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
+            }
+            -- disable MRU
+            startify.section.mru.val = { { type = "padding", val = 0 } }
+            -- disable MRU cwd
+            startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
+            -- disable nvim_web_devicons
+            startify.nvim_web_devicons.enabled = false
+            -- startify.nvim_web_devicons.highlight = false
+            -- startify.nvim_web_devicons.highlight = 'Keyword'
+            --
+            startify.section.bottom_buttons.val = {
+                startify.button( "q", "  Quit NVIM" , ":qa<CR>"),
+            }
+            startify.section.footer = {
+                { type = "text", val = "footer" },
+            }
+            -- ignore filetypes in MRU
+
+            startify.mru_opts.ignore = function(path, ext)
+                return
+                        (string.find(path, "COMMIT_EDITMSG"))
+                    or  (vim.tbl_contains(default_mru_ignore, ext))
+            end
+            alpha.setup(startify.config)
+        end
+    }
+<
+
+==============================================================================
+FAQ                                                                  *alpha-faq*
+
+
+How to work with indentLine plugin?~
+
+    Disable the plugin while in alpha:
+>
+    let g:indentLine_fileTypeExclude = ['alpha']
+
+How to disable the tabline in alpha buffer?~
+  >
+    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
+
+How do I make a theme with no buttons?~
+
+    alpha needs to know where to place the cursor, falling back to {1,0}
+    negatively impacted performance, so if you want to use a theme with no
+    buttons, either create an empty button
+>
+    { type = "button", val = "" }
+<
+    or arbitrarily pick an element of some other type change to
+>
+    el.type = "button"
+<
+    as the sole possible cursor position for your theme
+
+==============================================================================
+
+vim:tw=78:sw=4:ts=8:ft=help:norl:

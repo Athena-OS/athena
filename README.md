@@ -5,12 +5,12 @@ Athena OS
 
 <p align="center">
   <img src="https://img.shields.io/badge/Maintained%3F-Yes-CD8335">
-  <img src="https://badgen.net/github/release/Athena-OS/athena-nix">
+  <img src="https://badgen.net/github/release/Athena-OS/athena-iso">
   <a href="https://sourceforge.net/projects/athena-iso/files/latest/download"><img alt="Download Athena OS" src="https://img.shields.io/sourceforge/dt/athena-iso.svg" ></a>
-  <img src="https://badgen.net/github/stars/Athena-OS/athena-nix">
-  <img src="https://img.shields.io/github/issues-raw/Athena-OS/athena-nix">
-  <img src="https://img.shields.io/github/issues-closed-raw/Athena-OS/athena-nix">
-  <img src="https://img.shields.io/github/license/Athena-OS/athena-nix">
+  <img src="https://badgen.net/github/stars/Athena-OS/athena-iso">
+  <img src="https://img.shields.io/github/issues-raw/Athena-OS/athena-iso">
+  <img src="https://img.shields.io/github/issues-closed-raw/Athena-OS/athena-iso">
+  <img src="https://img.shields.io/github/license/Athena-OS/athena-iso">
 </p>
 
 <p align="center">
@@ -44,44 +44,22 @@ Athena OS
 
 <h3 align="center">
   💞
-  <a href="https://hub.athenaos.org/athena-images/23.11/">
-  Download Athena OS Now
+  <a href="https://github.com/Athena-OS/athena-nix">
+  Athena OS is migrating to "Nix". Get It Now!
     </a>
   💞
 </h3>
-
-## Athena Nix
-
-Athena Nix currently provides several configurations (still in test):
-* **runtime**
-
-A configuration can be deployed in several ways:
-
-#### Remote
-```
-sudo nixos-rebuild switch --flake 'github:Athena-OS/athena-nix#runtime' --impure
-```
-
-#### Local
-Running command inside `athena-nix` directory:
-```
-git clone https://github.com/Athena-OS/athena-nix
-cd athena-nix
-sudo nixos-rebuild switch --flake '.#runtime' --impure
-```
-Running command outside `athena-nix` directory:
-```
-sudo nixos-rebuild switch --flake '<local-path-to-dir-containing-flake.nix>/.#runtime' --impure
-```
-`--impure` is used because the deployment can be applied according to your `hardware-configuration.nix`.
-
-The default user and password in the configuration is `athena:athena`. Be sure to change user and password inside `athena-nix/flake.nix` file by editing `username` and `hashed` (or `hashedRoot` for your root account) attributes according to your needs when you deploy this configuration.
-
-Passwords must be set as hash (i.e., SHA-512) instead of cleartext. To create it in a secure way run:
-```
-nix-shell -p openssl
-openssl passwd -6 yourpassword
-```
-Finally, paste the generated hash in `hashed` or `hashedRoot` inside `flake.nix`.
-
-The usage of **nix-shell** is important to create the password in an ephimeral environment, in order to not keep the command history stored in the system.
+<br>
+<p align="center">
+  <a href="https://hub.docker.com/u/athenaos"><img src="https://user-images.githubusercontent.com/83867734/224526828-b4f2a470-d539-494d-9ac0-34568a75af3a.png" width="150" height="128" /></a>
+</p>
+<h5 align="center">
+Click Docker icon above to explore Athena OS Docker containers!
+</h5>
+<br>
+<p align="center">
+  <a href="https://apps.microsoft.com/store/detail/athena-os/9N1M7Q4F1KQF?hl=en-us&gl=us"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Get_it_from_Microsoft_Badge.svg" width="250" height="90" /></a>
+</p>
+<h5 align="center">
+Click the icon above to explore Athena OS WSL in Microsoft Store App!
+</h5>

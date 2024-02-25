@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=amass
+Encoding=UTF-8
+Exec=shell-rocket "if command -v amass &> /dev/null;then amass -h;$SHELL;else echo \\"Amass is not installed. I'm retrieving it for you...\\";sudo pacman -S amass;amass -h;$SHELL;fi;"
+Icon=kali-amass
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;001-identify;
+X-Athena-Package=amass

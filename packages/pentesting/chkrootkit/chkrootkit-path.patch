@@ -1,0 +1,10 @@
+--- a/chkrootkit
++++ b/chkrootkit
+@@ -2636,6 +2636,7 @@
+ 
+ # main
+ #
++cd /usr/bin/
+ 
+ 
+ ### using regexps, as the `-w' option to grep/egrep is not portable.

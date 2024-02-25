@@ -1,0 +1,13 @@
+Index: src/garmin.h
+===================================================================
+--- src/garmin.h	(revision 27)
++++ src/garmin.h	(working copy)
+@@ -1509,7 +1509,7 @@
+     uint8            reserved4;
+     uint8            reserved5;
+     uint8            size[4];      /*  bytes 8-11  */
+-    uint8            data[1];      /*  bytes 12+   */
++    uint8            data[1012];   /*  bytes 12+   */
+   }                  packet;
+   char               data[1024];
+ } garmin_packet;

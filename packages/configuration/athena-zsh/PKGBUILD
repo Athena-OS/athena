@@ -1,0 +1,17 @@
+pkgname=athena-zsh
+pkgver=1.0.1
+pkgrel=4
+pkgdesc="Zsh for Athena."
+arch=('any')
+license=("custom")
+depends=('zsh' 'zsh-autosuggestions' 'zsh-history-substring-search' 'zsh-syntax-highlighting' 'powerline-fonts')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+  mkdir -p "${pkgdir}/usr/bin"
+
+  cp -rf "${srcdir}/etc/skel/.zshrc" "${pkgdir}/etc/skel/"
+  install -Dm 755 "${srcdir}/usr/bin/shopt" "${pkgdir}/usr/bin/"
+}
+sha512sums=('912517e409efa2d323aa4832dafbbb0497ac5f5d8a5d09fa8a03f9e9f4aecaa98b1c8fd6e817f035e85911ac4975e096300cb5d491606ce08c79cabaee05d2ec')

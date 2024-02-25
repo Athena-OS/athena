@@ -1,0 +1,13 @@
+diff --git a/duilder b/duilder
+index c93b35d..c17a5d9 100755
+--- a/duilder
++++ b/duilder
+@@ -381,7 +381,7 @@ USR_INCLUDE="/usr/include"
+ if [ "`uname -m`" = "i686" ]; then
+ 	USR_LIB="/usr/lib"
+ else
+-	USR_LIB="/usr/lib64"
++	USR_LIB="/usr/lib"
+ fi
+ USR_SHARE="/usr/share"
+ USR_SHARE_DOC="/usr/share/doc/${PRJ}-${VER}"

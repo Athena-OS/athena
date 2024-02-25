@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=commix
+Encoding=UTF-8
+Exec=shell-rocket "if command -v commix &> /dev/null;then commix --wizard;$SHELL;else echo \\"commix is not installed. I'm retrieving it for you...\\";sudo pacman -S commix;commix --wizard;$SHELL;fi;"
+Icon=kali-commix
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-webapp-analysis;
+X-Athena-Package=commix

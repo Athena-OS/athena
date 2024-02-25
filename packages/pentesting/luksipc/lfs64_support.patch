@@ -1,0 +1,31 @@
+Description: ensure that off_t is 64bit
+Forwarded-Upstream: yes
+
+diff --git a/Makefile b/Makefile
+index 69493812dbfe..c5a44dabe03b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ 
+ EXECUTABLE := luksipc
+ CC := gcc
+-CFLAGS := -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -std=c11 -O2 -D_LARGEFILE64_SOURCE -D_XOPEN_SOURCE=500
++CFLAGS := -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -std=c11 -O2 -D_FILE_OFFSET_BITS=64 -D_XOPEN_SOURCE=500
+ #CFLAGS += -DDEVELOPMENT -g
+ 
+ LDFLAGS :=
+diff --git a/chunk.c b/chunk.c
+index a17efd382089..aaf9fff01464 100644
+--- a/chunk.c
++++ b/chunk.c
+@@ -48,8 +48,8 @@ void freeChunk(struct chunk *aChunk) {
+ 	memset(aChunk, 0, sizeof(struct chunk));
+ }
+ 
+-static bool checkedSeek(int aFd, off64_t aOffset, const char *aCaller) {
+-	off64_t curOffset = lseek64(aFd, aOffset, SEEK_SET);
++static bool checkedSeek(int aFd, off_t aOffset, const char *aCaller) {
++	off_t curOffset = lseek(aFd, aOffset, SEEK_SET);
+ 	if (curOffset != aOffset) {
+ 		logmsg(LLVL_WARN, "%s: tried seek to 0x%lx, went to 0x%lx (%s)\n", aCaller, aOffset, curOffset, strerror(errno));
+ 		return false;

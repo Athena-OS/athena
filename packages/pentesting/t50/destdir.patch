@@ -1,0 +1,29 @@
+diff --git a/Makefile b/Makefile
+index 8f8d664..b26bedf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,6 +24,7 @@ INCLUDEDIR=src/include
+ CFLAGS=-std=gnu11 -I $(INCLUDEDIR)
+ LDFLAGS=
+ LDLIBS=
++DESTDIR=
+ 
+ # Just define DEBUG environment var to compile for debugging:
+ #
+@@ -151,11 +152,11 @@ install:
+ 		echo "Try 'make' first."; \
+ 		exit 1; \
+ 	fi;
+-	cp bin/t50 /sbin/; cp doc/t50.8 /usr/share/man/man8/; \
+-	chown root: /sbin/t50 /usr/share/man/man8; \
+-	chmod 4750 /sbin/t50; \
+-	gzip -9 /usr/share/man/man8/t50.8; \
+-	chmod 0644 /usr/share/man/man8/t50.8.gz
++	cp bin/t50 $(DESTDIR)/usr/bin/; cp doc/t50.8 $(DESTDIR)/usr/share/man/man8/; \
++	chown root: $(DESTDIR)/usr/bin/t50 $(DESTDIR)/usr/share/man/man8; \
++	chmod 4750 $(DESTDIR)/usr/bin/t50; \
++	gzip -9 $(DESTDIR)/usr/share/man/man8/t50.8; \
++	chmod 0644 $(DESTDIR)/usr/share/man/man8/t50.8.gz
+ 
+ uninstall:
+ 	@$(call checkifroot)

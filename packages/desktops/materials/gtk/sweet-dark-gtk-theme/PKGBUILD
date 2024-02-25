@@ -1,0 +1,14 @@
+pkgname=sweet-dark-gtk-theme
+pkgver=3.0
+pkgrel=2
+pkgdesc="Sweet Dark theme."
+arch=('any')
+license=("GPL3")
+source=("$pkgname.tar.gz")
+sha512sums=('eff38e359aa135595283a4d83f8be1036cc7d5e73ed1c5319112400f61d8f6c2f2e7cd201342fd7e7e0f36a9d86c055a3e200a6e863967071e47c9b519537f1b')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/themes"
+
+  cp -rf "$srcdir/Sweet-Dark-v40" "$pkgdir/usr/share/themes/"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=grokevt-dumpmsgs
+Encoding=UTF-8
+Exec=shell-rocket "if command -v grokevt-dumpmsgs &> /dev/null;then grokevt-dumpmsgs -h;$SHELL;else echo \\"grokevt-dumpmsgs is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-dumpmsgs -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;003-detect;
+X-Athena-Package=grokevt

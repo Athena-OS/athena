@@ -1,0 +1,1 @@
+jQuery.copy=function(a){"undefined"==typeof a&&(a=""),d=document,window.clipboardData?window.clipboardData.setData("Text",a):chrome&&chrome.extension&&chrome.extension.getBackgroundPage()&&chrome.extension.getBackgroundPage().copyToClipboard&&chrome.extension.getBackgroundPage().copyToClipboard(a)};

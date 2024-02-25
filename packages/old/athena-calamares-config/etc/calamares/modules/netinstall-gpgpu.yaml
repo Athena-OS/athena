@@ -1,0 +1,29 @@
+- name: "OpenCL AMD/ATI"
+  description: "Install OpenCL for AMD/ATI in order to enhance GPU performance on cracking tools (i.e., Hashcat)"
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - opencl-mesa
+    - opencl-amd
+    - rocm-opencl-runtime
+- name: "OpenCL NVIDIA"
+  description: "Install OpenCL for NVIDIA in order to enhance GPU performance on cracking tools (i.e., Hashcat)"
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - opencl-nvidia
+- name: "OpenCL Intel"
+  description: "Install OpenCL for Intel GPU in order to enhance GPU performance on cracking tools (i.e., Hashcat)"
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - intel-compute-runtime

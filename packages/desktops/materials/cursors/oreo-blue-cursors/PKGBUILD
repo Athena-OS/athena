@@ -1,0 +1,15 @@
+pkgname=oreo-blue-cursors
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Oreo Blue cursor."
+arch=('any')
+license=("GPL2")
+source=("$pkgname.tar.gz")
+sha512sums=('428ecd45f46873e0bfac05315089688cbef241efb2ee894b3404358edf7e666818f5ead77ee9f04ca42e6c4f5f8a9f415d1351625b4ce443373941398821317f')
+
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  cp -a "$srcdir/oreo_blue_cursors" "$pkgdir/usr/share/icons/"
+}

@@ -1,0 +1,22 @@
+--- do.orig	2014-07-09 12:55:04.110491420 -0400
++++ do	2014-07-09 12:56:35.955679810 -0400
+@@ -6,7 +6,7 @@
+ 
+ version=`cat version`
+ project=nacl
+-shorthostname=`hostname | sed 's/\..*//' | tr -cd '[a-z][A-Z][0-9]'`
++shorthostname=`uname -n`
+ 
+ top="`pwd`/build/$shorthostname"
+ bin="$top/bin"
+@@ -45,8 +45,8 @@
+ 
+ echo "=== `date` === starting"
+ 
+-echo "=== `date` === hostname"
+-hostname || :
++echo "=== `date` === uname -n"
++uname -n || :
+ echo "=== `date` === uname -a"
+ uname -a || :
+ echo "=== `date` === uname -M"

@@ -1,0 +1,8 @@
+post_install(){
+  echo "Before this will work, you need to copy /usr/share/lisa.py-git/lldbinit to ~/.lldbinit"
+  echo "You can then run lldb as usual."
+}
+
+post_upgrade(){
+  post_install
+}

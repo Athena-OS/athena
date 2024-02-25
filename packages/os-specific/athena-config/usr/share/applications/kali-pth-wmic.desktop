@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=pth-wmic
+Encoding=UTF-8
+Exec=shell-rocket "if command -v pth-wmic &> /dev/null;then pth-wmic -h;$SHELL;else echo \\"pth-wmic is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-wmic -h;$SHELL;fi;"
+Icon=kali-pth
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=05-04-pass-hash;
+X-Athena-Package=pth-toolkit

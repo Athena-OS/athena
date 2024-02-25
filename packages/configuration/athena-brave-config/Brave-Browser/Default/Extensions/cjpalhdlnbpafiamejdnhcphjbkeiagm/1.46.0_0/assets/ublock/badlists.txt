@@ -1,0 +1,54 @@
+# The lists below are known to create issues in uBO.
+
+# Reek's Anti-Adblock Killer
+https://raw.github.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt
+https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt
+
+# ABP anti-circumvention filter lists
+https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt
+https://easylist-msie.adblockplus.org/abp-filters-anti-cv.txt
+https://raw.githubusercontent.com/abp-filters/abp-filters-anti-cv/master/english.txt
+https://easylist-msie.adblockplus.org/antiadblockfilters.txt
+
+# https://github.com/uBlockOrigin/uBlock-issues/issues/971
+https://hosts-file.net/.%5Cad_servers.txt remove
+http://hosts-file.net/.%5Cad_servers.txt remove
+
+# https://github.com/uBlockOrigin/uAssets/issues/8738
+https://raw.githubusercontent.com/k2jp/abp-japanese-filters/master/abpjf.txt
+
+# https://github.com/uBlockOrigin/uAssets/issues/13566
+# https://twitter.com/gorhill/status/1352651716265713665
+https://www.joinhoney.com/whitelist/honey-smart-shopping.txt
+
+# whitelisting lists
+https://slickdeals.net/attachment/extension/allowlist.txt
+https://easylist-downloads.adblockplus.org/exceptionrules.txt
+https://letyshops.com/adblock.txt
+https://work.ink/adblock-whitelist.txt
+https://www.ebates.com/whitelist/ebates-cash-back-shopping.txt
+https://www.rakuten.com/whitelist/ebates-cash-back-shopping.txt
+
+# obsolete lists
+https://gitcdn.xyz/repo/NanoAdblocker/NanoFilters/master/NanoFilters/NanoBase.txt
+https://cdn.rawgit.com/NanoAdblocker/NanoFilters/master/NanoFilters/NanoAnnoyance.txt
+https://cdn.rawgit.com/NanoAdblocker/NanoFilters/master/NanoFilters/NanoBase.txt
+https://cdn.rawgit.com/NanoAdblocker/NanoFilters/master/NanoFilters/NanoWhitelist.txt
+https://raw.githubusercontent.com/jspenguin2017/uBlockProtector/master/uBlockProtectorList.txt
+
+# outdated prebake list
+https://raw.githubusercontent.com/liamja/Prebake/master/obtrusive.txt
+
+# The following entries can be removed once a majority of users are
+# upgraded to uBO 1.30.0.
+
+# AdBlock Warning Removal List
+https://easylist-downloads.adblockplus.org/antiadblockfilters.txt remove
+
+# https://github.com/gorhill/uBlock/commit/a13ac920892d25ba0bf431ea1410fd3c8612b2d6
+https://gitcdn.xyz/repo/NanoMeow/MDLMirror/master/hosts.txt remove
+https://mirror.cedia.org.ec/malwaredomains/justdomains remove
+
+# https://github.com/uBlockOrigin/uBlock-issues/discussions/2022#discussioncomment-2293515
+# https://github.com/gorhill/uBlock/commit/34cca8349b78ca34ca9b385e26defeea2c829a58
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt

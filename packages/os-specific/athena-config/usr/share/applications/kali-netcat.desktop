@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=netcat
+Comment=TCP/IP swiss army knife
+Encoding=UTF-8
+Exec=shell-rocket "if command -v nc &> /dev/null;then nc -h;$SHELL;else echo \\"Netcat is not installed. I'm retrieving it for you...\\";sudo pacman -S openbsd-netcat;nc -h;$SHELL;fi;"
+Icon=kali-netcat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-02-identify-live-hosts;10-maintaining-access;
+X-Athena-Package=openbsd-netcat

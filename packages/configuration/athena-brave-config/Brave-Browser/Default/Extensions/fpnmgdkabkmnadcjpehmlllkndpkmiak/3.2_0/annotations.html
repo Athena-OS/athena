@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/context.css">
+  <link rel="icon" type="image/png" href="images/toolbar/toolbar-icon-archive32.png">
+  <title>Annotations</title>
+</head>
+<body class="body-container">
+  <div class="tabcontent" id="Annotations">
+    <div class="text-center">
+      <h2 id="main-title">Annotations</h2>
+      <p class="hyp-branding"><i>powered by<a href="https://web.hypothes.is" target="_blank"><img src="images/hypothesis-logo.png" alt="Hypothes.is"></a></i></p>
+      <h4>URL: <a class="url" target="_blank"></a></h4>
+      <div id="annotations_status" style="display:none;">No Annotations Found.</div>
+    </div>
+    <div class="loader" id="loader_annotations"></div>
+    <div id="annotations_url">
+      <div class="annotations-container container-scrollbar" id="container-whole-url"></div>
+    </div>
+    <div id="annotations_domain">
+      <h4 class="title" id="title-domain">Domain</h4>
+      <div class="annotations-container container-scrollbar" id="container-whole-domain"></div>
+    </div>
+  </div>
+
+  <!-- HTML Templates for annotation url -->
+  <div class="row-box" id="row_contain-url" style="padding:0.25em 1em">
+    <div>
+      <strong class="userinfo"></strong>
+      <span class="date"></span>
+    </div>
+    <div class="source" id="source-">
+      <img src="images/fa/globe-americas-solid.svg" class="globe-icon">
+      <span class="public_on">Public on</span>
+      <span id="source-contain"> </span>
+    </div>
+    <div class="target-selector-exact"></div>
+    <div class="text" id="text-contain"></div>
+    <div class="links"></div>
+  </div>
+  <!-- HTML Templates for annotation domain -->
+  <div class="row-box" id="row_contain-domain" style="padding:0.25em 1em">
+    <div>
+      <strong class="userinfo"></strong>
+      <span class="date"></span>
+    </div>
+    <div class="source" id="source-">
+      <img src="images/fa/globe-americas-solid.svg" class="globe-icon">
+      <span class="public_on">Public on</span>
+      <span id="source-contain"> </span>
+    </div>
+    <div class="target-selector-exact"></div>
+    <div class="text" id="text-contain"></div>
+    <div class="links"></div>
+  </div>
+
+  <script src="libs/jquery.js"></script>
+  <script src="libs/bootstrap.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/annotations.js"></script>
+</body>
+</html>

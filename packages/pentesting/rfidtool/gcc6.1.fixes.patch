@@ -1,0 +1,26 @@
+diff -aur rfidtool-v0.01.orig/main.c rfidtool-v0.01/main.c
+--- rfidtool-v0.01.orig/main.c	2016-05-15 21:20:22.097199228 -0400
++++ rfidtool-v0.01/main.c	2016-05-15 21:21:01.429965768 -0400
+@@ -20,7 +20,8 @@
+ 
+ 
+ #include <stdio.h>
+-
++#include <stdlib.h>
++#include <string.h>
+ #include "rfid.h"
+ 
+ int main (int argc, char *argv[]) {
+diff -aur rfidtool-v0.01.orig/rfid.c rfidtool-v0.01/rfid.c
+--- rfidtool-v0.01.orig/rfid.c	2016-05-15 21:20:22.097199228 -0400
++++ rfidtool-v0.01/rfid.c	2016-05-15 21:21:26.589603208 -0400
+@@ -18,7 +18,8 @@
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+ */
+ 
+-
++#include <stdlib.h>
++#include <string.h>
+ #include "rfid.h"
+ 
+ int rfid_raw_error(char *pStr) {

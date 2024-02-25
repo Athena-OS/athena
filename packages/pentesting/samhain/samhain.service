@@ -1,0 +1,10 @@
+[Unit]
+Description=File integrity and intrusion detection system
+
+[Service]
+Type=forking
+PIDFile=/var/run/samhain.pid
+ExecStart=/usr/bin/samhain -t check -D
+
+[Install]
+WantedBy=multi-user.target

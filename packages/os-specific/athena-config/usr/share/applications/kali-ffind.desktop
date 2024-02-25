@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ffind
+Encoding=UTF-8
+Exec=shell-rocket "if command -v ffind &> /dev/null;then ffind;$SHELL;else echo \\"ffind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;ffind;$SHELL;fi;"
+Icon=kali-ffind
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

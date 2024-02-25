@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=tcpreplay
+Comment=Replay network traffic stored in pcap files
+Encoding=UTF-8
+Exec=shell-rocket "if command -v tcpreplay &> /dev/null;then tcpreplay -h;$SHELL;else echo \\"tcpreplay is not installed. I'm retrieving it for you...\\";sudo pacman -S tcpreplay;tcpreplay -h;$SHELL;fi;"
+Icon=kali-tcpreplay
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=09-02-network-spoofing;
+X-Athena-Package=tcpreplay

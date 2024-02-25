@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=binwalk
+Comment=Tool for searching binary images for embedded files and executable code
+Encoding=UTF-8
+Exec=shell-rocket "if command -v binwalk &> /dev/null;then binwalk -h;$SHELL;else echo \\"Binwalk is not installed. I'm retrieving it for you...\\";sudo pacman -S binwalk;binwalk -h;$SHELL;fi;"
+Icon=kali-binwalk
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-forensics;
+X-Athena-Package=binwalk

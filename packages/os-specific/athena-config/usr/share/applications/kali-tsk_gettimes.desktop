@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=tsk_gettimes
+Encoding=UTF-8
+Exec=shell-rocket "if command -v tsk_gettimes &> /dev/null;then tsk_gettimes -h;$SHELL;else echo \\"tsk_gettimes is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;tsk_gettimes -h;$SHELL;fi;"
+Icon=kali-tsk_gettimes
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

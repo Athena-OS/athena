@@ -1,0 +1,9 @@
+Con Manifest v3 ho dei problemi.
+
+Il codice attuale funziona (spostando le funzioni di clipboard al di fuori del service worker (background.js). Il problema è che ho notato che usando sia navigator.clipboard e sia le funzioni di copyToClipboard custom che esse funzionano, ma se io vado su google.com o altro sito, refresho il sito (andando sulla barra degli indirizzi e premendo ENTER) e poi faccio Copy as FFUF, poi refresho e faccio di nuovo Copy as FFUF, etc... per le prime volte lui mi copia tutto, ma poi, ad un certo punto, mi copia solo il nome del tool e l'URL ma non gli header e i body parameters.
+Se non erro, anche se non refresho e clicco mille volte su Copy as FFUF, all'inizio mi da gli headers e i params, e poi ad un certo punto non me li da più.
+Per risolvere basta cliccare col mouse sul tasto Refresh del browser.
+
+Questo significa che non è tanto un problema del clipboard, che comunque funziona, ma forse di SendHeaders e BeforeRequest che in alcuni casi forse non funzionano.
+
+Per il Manifest v2 invece non ho problemi.

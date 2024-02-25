@@ -1,0 +1,27 @@
+pkgname=tokyonight-gtk-theme
+_pkgname=Tokyo-Night-GTK-Theme
+pkgver=57.e9790345
+pkgrel=1
+pkgdesc="A GTK theme based on the Tokyo Night colour palette."
+arch=('any')
+license=("GPL3")
+makedepends=('git')
+source=("git+https://github.com/Fausto-Korpsvart/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  cp -a themes/Tokyonight-Dark-B "$pkgdir/usr/share/themes/"
+  cp -a themes/Tokyonight-Dark-BL "$pkgdir/usr/share/themes/"
+  cp -a icons/Tokyonight-Dark "$pkgdir/usr/share/icons/"
+}

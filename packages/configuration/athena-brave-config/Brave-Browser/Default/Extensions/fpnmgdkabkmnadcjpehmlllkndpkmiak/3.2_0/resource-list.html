@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/resource-list.css">
+  <link rel="icon" type="image/png" href="images/toolbar/toolbar-icon-archive32.png">
+  <title>Resource List and Save Status</title>
+</head>
+<body>
+  <div class="container">
+    <div class="live-status">
+      <div class="logo">
+        <img src="images/app-icon/app-icon128.png" alt="Internet Archive icon" class="ia-logo">
+      </div>
+      <h2 id="status-title">Saving Snapshot...</h2>
+      <h4><span class="highlight-color" id="current-url"></span></h4>
+      <h4><a href="#" target="_blank" id="snapshot-url" class="snapshot-color"></a></h4>
+      <p id="current-status"></p>
+      <p id="message" class="error-color"></p>
+    </div>
+    <div class="loader"></div>
+    <div class="outer-list-container">
+      <div class="container-scrollbar" id="resource-list-container">
+      </div>
+      <div id="counter-container">
+        <p>Downloaded elements: <b class="highlight-color" id="spn-elements-counter"></b></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="libs/jquery.js"></script>
+  <script src="libs/bootstrap.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/resource-list.js"></script>
+</body>
+</html>

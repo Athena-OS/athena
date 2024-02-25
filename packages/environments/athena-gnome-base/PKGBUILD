@@ -1,0 +1,26 @@
+pkgname=athena-gnome-base
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="GNOME base configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('eog' 'gnome-characters' 'gnome-control-center' 'gnome-keyring' 'gnome-menus' 'gnome-session' 'gnome-shell-extensions' 'gnome-shell-performance' 'gnome-system-monitor' 'gnome-themes-extra' 'gnome-tweaks' 'nautilus' 'noto-fonts-emoji' 'polkit-gnome' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'xdg-user-dirs')
+source=("gnome-applications.menu"
+        "gnome-init.desktop"
+        "gnome-init")
+install='gnome-base.install'
+sha512sums=('aa55e8094b5ce8113c8df2182fe3d1842c53431f5b2e2f9f5d92348a1844cfb47acc4a07ce55a3c93fcec67122e48624613e60aa957c9aced10059be3b1f5de7'
+            '5d10503e9aa98aed969899d3b0383225f5f2a86ac49a6983f44dd4aca1ce5487f824c19295da32640a70146e8c6690c1aeffafb9571d08b4a752ed430f319813'
+            'eaa8ae79325ab1ac1c93e9e64c63a23edb6f55ccc427a84d5721eb0f921a98ecf7e0fc4f490a4a052bf5ea5fe287d5754cea2ca708ab9a206195ce3f0be428d8')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/usr/bin"
+  install -dm 755 "${pkgdir}/usr/share/gnome-shell"
+
+  install -Dm644 "${srcdir}/gnome-init.desktop" "${pkgdir}/etc/xdg/autostart/"
+  install -Dm755 "${srcdir}/gnome-init" "${pkgdir}/usr/bin/"
+  install -Dm644 "${srcdir}/gnome-applications.menu" "${pkgdir}/usr/share/gnome-shell/gnome-applications.menu"
+  touch "${pkgdir}/etc/skel/.flag-gnome-once"
+}

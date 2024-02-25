@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./dunst
-    ./nist-feed
-  ];
-}

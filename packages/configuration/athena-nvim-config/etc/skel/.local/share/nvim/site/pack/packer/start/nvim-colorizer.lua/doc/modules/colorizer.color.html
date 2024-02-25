@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>colorizer Docs</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>colorizer</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/colorizer.html">colorizer</a></li>
+  <li><a href="../modules/colorizer.buffer.html">buffer</a></li>
+  <li><strong>color</strong></li>
+  <li><a href="../modules/colorizer.matcher.html">matcher</a></li>
+  <li><a href="../modules/colorizer.sass.html">sass</a></li>
+  <li><a href="../modules/colorizer.tailwind.html">tailwind</a></li>
+  <li><a href="../modules/colorizer.trie.html">trie</a></li>
+  <li><a href="../modules/colorizer.utils.html">utils</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>colorizer.color</code></h1>
+<p>Helper functions to parse different colour formats</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#argb_hex_parser">argb_hex_parser (line, i)</a></td>
+	<td class="summary">parse for 0xaarrggbb and return rgb hex.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hsl_to_rgb">hsl_to_rgb (h, s, l)</a></td>
+	<td class="summary">Converts an HSL color value to RGB.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hsl_function_parser">hsl_function_parser (line, i)</a></td>
+	<td class="summary">Parse for hsl() css function and return rgb hex.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hsla_function_parser">hsla_function_parser (line, i)</a></td>
+	<td class="summary">Parse for hsl() css function and return rgb hex.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hue_to_rgb">hue_to_rgb (p, q, t)</a></td>
+	<td class="summary">Convert hsl colour values to rgb.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is_bright">is_bright (r, g, b)</a></td>
+	<td class="summary">Determine whether to use black or white text.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#name_parser">name_parser (line, i, opts)</a></td>
+	<td class="summary">Grab all the colour values from <code>vim.api.nvim_get_color_map</code> and create a lookup table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rgb_function_parser">rgb_function_parser (line, i)</a></td>
+	<td class="summary">Parse for rgb() css function and return rgb hex.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rgba_function_parser">rgba_function_parser (line, i)</a></td>
+	<td class="summary">Parse for rgba() css function and return rgb hex.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rgba_hex_parser">rgba_hex_parser (line, i, opts)</a></td>
+	<td class="summary">parse for #rrggbbaa and return rgb hex.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "argb_hex_parser"></a>
+    <strong>argb_hex_parser (line, i)</strong>
+    </dt>
+    <dd>
+    parse for 0xaarrggbb and return rgb hex.
+ a format used in android apps
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">line</span>
+         string: line to parse
+        </li>
+        <li><span class="parameter">i</span>
+         number: index of line from where to start parsing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number|nil: index of line where the hex value ended</li>
+        <li>
+        string|nil: rgb hex value</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hsl_to_rgb"></a>
+    <strong>hsl_to_rgb (h, s, l)</strong>
+    </dt>
+    <dd>
+    Converts an HSL color value to RGB.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">h</span>
+         number: Hue
+        </li>
+        <li><span class="parameter">s</span>
+         number: Saturation
+        </li>
+        <li><span class="parameter">l</span>
+         number: Lightness
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number|nil,number|nil,number|nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hsl_function_parser"></a>
+    <strong>hsl_function_parser (line, i)</strong>
+    </dt>
+    <dd>
+    Parse for hsl() css function and return rgb hex.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">line</span>
+         string: Line to parse
+        </li>
+        <li><span class="parameter">i</span>
+         number: Index of line from where to start parsing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number|nil: Index of line where the hsl function ended</li>
+        <li>
+        string|nil: rgb hex value</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hsla_function_parser"></a>
+    <strong>hsla_function_parser (line, i)</strong>
+    </dt>
+    <dd>
+    Parse for hsl() css function and return rgb hex.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">line</span>
+         string: Line to parse
+        </li>
+        <li><span class="parameter">i</span>
+         number: Index of line from where to start parsing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number|nil: Index of line where the hsla function ended</li>
+        <li>
+        string|nil: rgb hex value</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hue_to_rgb"></a>
+    <strong>hue_to_rgb (p, q, t)</strong>
+    </dt>
+    <dd>
+    Convert hsl colour values to rgb.
+ Source: https://gist.github.com/mjackson/5311256
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         number
+        </li>
+        <li><span class="parameter">q</span>
+         number
+        </li>
+        <li><span class="parameter">t</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is_bright"></a>
+    <strong>is_bright (r, g, b)</strong>
+    </dt>
+    <dd>
+    Determine whether to use black or white text. </p>
+
+<p> ref: https://stackoverflow.com/a/1855903/837964
+ https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+         number: Red
+        </li>
+        <li><span class="parameter">g</span>
+         number: Green
+        </li>
+        <li><span class="parameter">b</span>
+         number: Blue
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "name_parser"></a>
+    <strong>name_parser (line, i, opts)</strong>
+    </dt>
+    <dd>
+    Grab all the colour values from <code>vim.api.nvim_get_color_map</code> and create a lookup table.
+ COLOR_MAP is used to store the colour values
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">line</span>
+         string: Line to parse
+        </li>
+        <li><span class="parameter">i</span>
+         number: Index of line from where to start parsing
+        </li>
+        <li><span class="parameter">opts</span>
+         table: Currently contains whether tailwind is enabled or not
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rgb_function_parser"></a>
+    <strong>rgb_function_parser (line, i)</strong>
+    </dt>
+    <dd>
+    Parse for rgb() css function and return rgb hex.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">line</span>
+         string: Line to parse
+        </li>
+        <li><span class="parameter">i</span>
+         number: Index of line from where to start parsing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number|nil: Index of line where the rgb function ended</li>
+        <li>
+        string|nil: rgb hex value</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rgba_function_parser"></a>
+    <strong>rgba_function_parser (line, i)</strong>
+    </dt>
+    <dd>
+    Parse for rgba() css function and return rgb hex.
+ Todo consider removing the regexes here
+ Todo this might not be the best approach to alpha channel.
+ Things like pumblend might be useful here.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">line</span>
+         string: Line to parse
+        </li>
+        <li><span class="parameter">i</span>
+         number: Index of line from where to start parsing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number|nil: Index of line where the rgba function ended</li>
+        <li>
+        string|nil: rgb hex value</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rgba_hex_parser"></a>
+    <strong>rgba_hex_parser (line, i, opts)</strong>
+    </dt>
+    <dd>
+    parse for #rrggbbaa and return rgb hex.
+ a format used in android apps
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">line</span>
+         string: line to parse
+        </li>
+        <li><span class="parameter">i</span>
+         number: index of line from where to start parsing
+        </li>
+        <li><span class="parameter">opts</span>
+         table: Containing minlen, maxlen, valid_lengths
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number|nil: index of line where the hex value ended</li>
+        <li>
+        string|nil: rgb hex value</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated - September </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

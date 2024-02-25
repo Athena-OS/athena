@@ -1,0 +1,1619 @@
+{
+    "categories": {
+        "100": {
+            "name": "WAF",
+            "priority": 1
+        }
+    },
+    "technologies": {
+        "aeSecure (aeSecure)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "aeSecure-code": " .+?'"
+            },
+            "html": [
+                "aesecure_denied\\.png"
+            ]
+        },
+        "AireeCDN (Airee)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Airee'",
+                "X-Cache": "(\\w+\\.)?airee\\.cloud"
+            },
+            "html": [
+                "airee\\.cloud"
+            ]
+        },
+        "Airlock (Phion/Ergon)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "server detected a syntax error in your request"
+            ],
+            "cookies": {
+                "^al[_-]?(sess|lb)=": ""
+            }
+        },
+        "Alert Logic (Alert Logic)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<(title|h\\d{1})>requested url cannot be found",
+                "we are sorry.{0,10}?but the page you are looking for cannot be found",
+                "back to previous page",
+                "proceed to homepage",
+                "reference id"
+            ]
+        },
+        "AliYunDun (Alibaba Cloud Computing)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "error(s)?\\.aliyun(dun)?\\.(com|net)?",
+                "cdn\\.aliyun(cs)?\\.com"
+            ],
+            "cookies": {
+                "^aliyungf_tc=": ""
+            }
+        },
+        "Anquanbao (Anquanbao)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Powered-By-Anquanbao": " .+?'"
+            },
+            "html": [
+                "aqb_cc/error/"
+            ]
+        },
+        "AnYu (AnYu Technologies)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "anyu.{0,10}?the green channel",
+                "your access has been intercepted by anyu"
+            ]
+        },
+        "Approach (Approach)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "approach.{0,10}?web application (firewall|filtering)",
+                "approach.{0,10}?infrastructure team"
+            ]
+        },
+        "Armor Defense (Armor)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "blocked by website protection from armor",
+                "please create an armor support ticket"
+            ]
+        },
+        "ArvanCloud (ArvanCloud)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " ArvanCloud'"
+            }
+        },
+        "ASPA Firewall (ASPA Engineering Co.)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "ASPA[\\-_]?WAF",
+                "ASPA-Cache-Status": ".+?"
+            }
+        },
+        "ASP.NET Generic (Microsoft)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "iis (\\d+.)+?detailed error",
+                "potentially dangerous request querystring",
+                "application error from being viewed remotely (for security reasons)?",
+                "An application error occurred on the server"
+            ]
+        },
+        "Astra (Czar Securities)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "astrawebsecurity\\.freshdesk\\.com",
+                "www\\.getastra\\.com/assets/images"
+            ],
+            "cookies": {
+                "^cz_astra_csrf_cookie": ""
+            }
+        },
+        "AWS Elastic Load Balancer (Amazon)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-AMZ-ID": " .+?'",
+                "X-AMZ-Request-ID": " .+?'"
+            },
+            "cookies": {
+                "^aws.?alb=": ""
+            }
+        },
+        "AzionCDN (AzionCDN)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "Azion([-_]CDN)?"
+            }
+        },
+        "Yunjiasu (Baidu Cloud Computing)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "Yunjiasu(.+)?"
+            }
+        },
+        "Barikode (Ethic Ninja)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<strong>barikode<.strong>"
+            ]
+        },
+        "Barracuda (Barracuda Networks)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Barracuda.Networks"
+            ],
+            "cookies": {
+                "^barra_counter_session=": "",
+                "^BNI__BARRACUDA_LB_COOKIE=": "",
+                "^BNI_persistence=": "",
+                "^BN[IE]S_.*?=": ""
+            }
+        },
+        "Bekchy (Faydata Technologies Inc.)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Bekchy.{0,10}?Access Denied",
+                "bekchy\\.com/report"
+            ]
+        },
+        "Beluga CDN (Beluga)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "Beluga"
+            },
+            "cookies": {
+                "^beluga_request_trail=": ""
+            }
+        },
+        "BinarySec (BinarySec)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " BinarySec'",
+                "x-binarysec-via": " .+'",
+                "x-binarysec-nocache": " .+'"
+            }
+        },
+        "BitNinja (BitNinja)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Security check by BitNinja",
+                "Visitor anti-robot validation"
+            ]
+        },
+        "BlockDoS (BlockDoS)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "blockdos\\.net"
+            }
+        },
+        "Bluedon (Bluedon IST)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "BDWAF"
+            },
+            "html": [
+                "bluedon web application firewall"
+            ]
+        },
+        "BulletProof Security Pro (AITpro Security)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "\\+?bpsMessage",
+                "403 Forbidden Error Page",
+                "If you arrived here due to a search"
+            ]
+        },
+        "CacheFly CDN (CacheFly)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "BestCDN": "Cachefly"
+            },
+            "cookies": {
+                "^cfly_req.*=": ""
+            }
+        },
+        "CacheWall (Varnish)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Varnish'",
+                "X-Varnish": " .+'",
+                "X-Cachewall-Action": " .+?'",
+                "X-Cachewall-Reason": " .+?'"
+            },
+            "html": [
+                "security by cachewall",
+                "403 naughty.{0,10}?not nice!",
+                "varnish cache server"
+            ]
+        },
+        "CdnNS Application Gateway (CdnNs/WdidcNet)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "cdnnswaf application gateway"
+            ]
+        },
+        "WP Cerber Security (Cerber Tech)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "your request looks suspicious or similar to automated",
+                "our server stopped processing your request",
+                "We.re sorry.{0,10}?you are not allowed to proceed",
+                "requests from spam posting software",
+                "<title>403 Access Forbidden"
+            ]
+        },
+        "ChinaCache Load Balancer (ChinaCache)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Powered-By-ChinaCache": " .+'"
+            }
+        },
+        "Chuang Yu Shield (Yunaq)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "www\\.365cyd\\.com",
+                "help\\.365cyd\\.com/cyd\\-error\\-help.html\\?code=403"
+            ]
+        },
+        "ACE XML Gateway (Cisco)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " ACE XML Gateway'"
+            }
+        },
+        "Cloudbric (Penta Security)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<title>Cloudbric.{0,5}?ERROR!",
+                "Your request was blocked by Cloudbric",
+                "please contact Cloudbric Support",
+                "cloudbric\\.zendesk\\.com",
+                "Cloudbric Help Center",
+                "malformed request syntax.{0,4}?invalid request message framing.{0,4}?or deceptive request routing"
+            ]
+        },
+        "Cloudflare (Cloudflare Inc.)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "server": "cloudflare[-_]nginx",
+                "cf-ray": ".+?"
+            },
+            "cookies": {
+                "__cfduid": ""
+            }
+        },
+        "Cloudfloor (Cloudfloor DNS)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "CloudfloorDNS(.WAF)?"
+            },
+            "html": [
+                "<(title|h\\d{1})>CloudfloorDNS.{0,6}?Web Application Firewall Error",
+                "www\\.cloudfloordns\\.com/contact"
+            ]
+        },
+        "Cloudfront (Amazon)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Cloudfront'",
+                "Via": "([0-9\\.]+?)? \\w+?\\.cloudfront\\.net \\(Cloudfront\\)"
+            },
+            "html": [
+                "Generated by cloudfront \\(CloudFront\\)"
+            ]
+        },
+        "Cloud Protector (Rohde & Schwarz CyberSecurity)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Cloud Protector.*?by Rohde.{3,8}?Schwarz Cybersecurity"
+            ]
+        },
+        "Comodo cWatch (Comodo CyberSecurity)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "Protected by COMODO WAF(.+)?"
+            }
+        },
+        "CrawlProtect (Jean-Denis Brun)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<title>crawlprotect",
+                "this site is protected by crawlprotect"
+            ],
+            "cookies": {
+                "^crawlprotecttag=": ""
+            }
+        },
+        "DDoS-GUARD (DDOS-GUARD CORP.)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " ddos-guard'"
+            },
+            "cookies": {
+                "^__ddg1.*?=": "",
+                "^__ddg2.*?=": "",
+                "^__ddgid.*?=": "",
+                "^__ddgmark.*?=": ""
+            }
+        },
+        "DenyALL (Rohde & Schwarz CyberSecurity)": {
+            "cats": [
+                100
+            ]
+        },
+        "Distil (Distil Networks)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "cdn\\.distilnetworks\\.com/images/anomaly\\.detected\\.png",
+                "distilCaptchaForm",
+                "distilCallbackGuard"
+            ]
+        },
+        "DOSarrest (DOSarrest Internet Security)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-DIS-Request-ID": " .+'",
+                "Server": "DOSarrest(.*)?"
+            }
+        },
+        "DotDefender (Applicure Technologies)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "dotdefender blocked your request",
+                "Applicure is the leading provider of web application security"
+            ]
+        },
+        "DynamicWeb Injection Check (DynamicWeb)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "by dynamic check(.{0,10}?module)?"
+            ]
+        },
+        "Edgecast (Verizon Digital Media)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "^ECS(.*)?"
+            }
+        },
+        "Eisoo Cloud Firewall (Eisoo)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "EisooWAF(\\-AZURE)?/?"
+            },
+            "html": [
+                "<link.{0,10}?href=\\\"/eisoo\\-firewall\\-block\\.css",
+                "www\\.eisoo\\.com",
+                "&copy; \\d{4} Eisoo Inc"
+            ]
+        },
+        "Expression Engine (EllisLab)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "invalid get data"
+            ],
+            "cookies": {
+                "^exp_track.+?=": ""
+            }
+        },
+        "BIG-IP AP Manager (F5 Networks)": {
+            "cats": [
+                100
+            ],
+            "cookies": {
+                "^LastMRH_Session": "",
+                "^MRHSession": "",
+                "^F5_fullWT": "",
+                "^F5_HT_shrinked": ""
+            }
+        },
+        "BIG-IP AppSec Manager (F5 Networks)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "the requested url was rejected",
+                "please consult with your administrator"
+            ],
+            "cookies": {
+                "^TS.+?": ""
+            }
+        },
+        "BIG-IP Local Traffic Manager (F5 Networks)": {
+            "cats": [
+                100
+            ],
+            "cookies": {
+                "^bigipserver": ""
+            }
+        },
+        "FirePass (F5 Networks)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Location": "\\/my\\.logon\\.php3"
+            },
+            "cookies": {
+                "^VHOST": "",
+                "^F5_fire.+?": "",
+                "^F5_passid_shrinked": ""
+            }
+        },
+        "Trafficshield (F5 Networks)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " F5-TrafficShield'"
+            },
+            "cookies": {
+                "^ASINFO=": ""
+            }
+        },
+        "Fastly (Fastly CDN)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Fastly-Request-ID": "\\w+"
+            }
+        },
+        "FortiWeb (Fortinet)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                ".fgd_icon",
+                "fgd_icon",
+                "web.page.blocked",
+                "url",
+                "attack.id",
+                "message.id",
+                "client.ip"
+            ],
+            "cookies": {
+                "^FORTIWAFSID=": ""
+            }
+        },
+        "Azure Front Door (Microsoft)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Azure-Ref": " .+?'"
+            }
+        },
+        "GoDaddy Website Protection (GoDaddy)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "GoDaddy (security|website firewall)"
+            ]
+        },
+        "Greywizard (Grey Wizard)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " greywizard'"
+            },
+            "html": [
+                "<(title|h\\d{1})>Grey Wizard",
+                "contact the website owner or Grey Wizard",
+                "We.ve detected attempted attack or non standard traffic from your ip address"
+            ]
+        },
+        "Huawei Cloud Firewall (Huawei)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "HuaweiCloudWAF"
+            },
+            "html": [
+                "hwclouds\\.com",
+                "hws_security@"
+            ],
+            "cookies": {
+                "^HWWAFSESID=": ""
+            }
+        },
+        "HyperGuard (Art of Defense)": {
+            "cats": [
+                100
+            ],
+            "cookies": {
+                "^WODSESSION=": ""
+            }
+        },
+        "DataPower (IBM)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Backside-Transport": "(OK|FAIL)"
+            }
+        },
+        "Imunify360 (CloudLinux)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server, rimunify360.{0": "10}?"
+            },
+            "html": [
+                "protected.by.{0,10}?imunify360",
+                "powered.by.{0,10}?imunify360",
+                "imunify360.preloader"
+            ]
+        },
+        "Incapsula (Imperva Inc.)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "incapsula incident id",
+                "powered by incapsula",
+                "/_Incapsula_Resource"
+            ],
+            "cookies": {
+                "^incap_ses.*?=": "",
+                "^visid_incap.*?=": ""
+            }
+        },
+        "IndusGuard (Indusface)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "IF_WAF"
+            },
+            "html": [
+                "This website is secured against online attacks. Your request was blocked"
+            ]
+        },
+        "Instart DX (Instart Logic)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Instart-Request-ID": " .+'",
+                "X-Instart-Cache": " .+'",
+                "X-Instart-WL": " .+'"
+            },
+            "html": [
+                "the requested url was rejected",
+                "please consult with your administrator",
+                "your support id is"
+            ]
+        },
+        "ISA Server (Microsoft)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "The.{0,10}?(isa.)?server.{0,10}?denied the specified uniform resource locator \\(url\\)"
+            ]
+        },
+        "Janusec Application Gateway (Janusec)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "janusec application gateway"
+            ]
+        },
+        "Jiasule (Jiasule)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "jiasule\\-waf"
+            },
+            "html": [
+                "notice\\-jiasule",
+                "static\\.jiasule\\.com"
+            ],
+            "cookies": {
+                "^jsl_tracking(.+)?=": "",
+                "__jsluid=": ""
+            }
+        },
+        "KeyCDN (KeyCDN)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " KeyCDN'"
+            }
+        },
+        "KS-WAF (KnownSec)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "/ks[-_]waf[-_]error\\.png"
+            ]
+        },
+        "Kona SiteDefender (Akamai)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " AkamaiGHost'"
+            }
+        },
+        "LimeLight CDN (LimeLight)": {
+            "cats": [
+                100
+            ],
+            "cookies": {
+                "^limelight": "",
+                "^l[mg]_sessid=": ""
+            }
+        },
+        "LiteSpeed (LiteSpeed Technologies)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " LiteSpeed'"
+            },
+            "html": [
+                "Proudly powered by litespeed web server",
+                "www\\.litespeedtech\\.com/error\\-page"
+            ]
+        },
+        "Malcare (Inactiv)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "firewall.{0,15}?powered.by.{0,15}?malcare.{0,15}?pro",
+                "blocked because of malicious activities"
+            ]
+        },
+        "MaxCDN (MaxCDN)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-CDN": "maxcdn"
+            }
+        },
+        "Mission Control Shield (Mission Control)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Mission Control Application Shield'"
+            }
+        },
+        "ModSecurity (SpiderLabs)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "(mod_security|Mod_Security|NOYB)"
+            },
+            "html": [
+                "This error was generated by Mod.?Security",
+                "rules of the mod.security.module",
+                "mod.security.rules triggered",
+                "Protected by Mod.?Security",
+                "/modsecurity[\\-_]errorpage/",
+                "modsecurity iis"
+            ]
+        },
+        "NAXSI (NBS Systems)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Data-Origin": "^naxsi(.+)?",
+                "Server": "naxsi(.+)?"
+            },
+            "html": [
+                "blocked by naxsi",
+                "naxsi blocked information"
+            ]
+        },
+        "Nemesida (PentestIt)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "@?nemesida(\\-security)?\\.com",
+                "Suspicious activity detected.{0,10}?Access to the site is blocked",
+                "nwaf@"
+            ]
+        },
+        "NetContinuum (Barracuda Networks)": {
+            "cats": [
+                100
+            ],
+            "cookies": {
+                "^NCI__SessionId=": ""
+            }
+        },
+        "NetScaler AppFirewall (Citrix Systems)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Via": "NS\\-CACHE"
+            },
+            "html": [
+                "(NS Transaction|AppFW Session) id",
+                "Violation Category.{0,5}?APPFW_",
+                "Citrix\\|NetScaler"
+            ],
+            "cookies": {
+                "^(ns_af=|citrix_ns_id|NSC_)": ""
+            }
+        },
+        "NevisProxy (AdNovum)": {
+            "cats": [
+                100
+            ],
+            "cookies": {
+                "^Navajo": "",
+                "^NP_ID": ""
+            }
+        },
+        "Newdefend (NewDefend)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Newdefend'"
+            },
+            "html": [
+                "www\\.newdefend\\.com/feedback",
+                "/nd\\-block/"
+            ]
+        },
+        "NexusGuard Firewall (NexusGuard)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Powered by Nexusguard",
+                "nexusguard\\.com/wafpage/.+#\\d{3};"
+            ]
+        },
+        "NinjaFirewall (NinTechNet)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<title>NinjaFirewall.{0,10}?\\d{3}.forbidden",
+                "For security reasons?.{0,10}?it was blocked and logged"
+            ]
+        },
+        "NSFocus (NSFocus Global Inc.)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " NSFocus'"
+            }
+        },
+        "NullDDoS Protection (NullDDoS)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "NullDDoS(.System)?"
+            }
+        },
+        "OnMessage Shield (BlackBaud)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Engine": " onMessage Shield'"
+            },
+            "html": [
+                "Blackbaud K\\-12 conducts routine maintenance",
+                "onMessage SHEILD",
+                "maintenance\\.blackbaud\\.com",
+                "status\\.blackbaud\\.com"
+            ]
+        },
+        "Open-Resty Lua Nginx (FLOSS)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "^openresty/[0-9\\.]+?"
+            },
+            "html": [
+                "openresty/[0-9\\.]+?"
+            ]
+        },
+        "Oracle Cloud (Oracle)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<title>fw_error_www",
+                "src=\\\"/oralogo_small\\.gif\\\"",
+                "www\\.oracleimg\\.com/us/assets/metrics/ora_ocom\\.js"
+            ]
+        },
+        "Palo Alto Next Gen Firewall (Palo Alto Networks)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Download of virus.spyware blocked",
+                "Palo Alto Next Generation Security Platform"
+            ]
+        },
+        "PentaWAF (Global Network Services)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "PentaWaf(/[0-9\\.]+)?"
+            },
+            "html": [
+                "Penta.?Waf/[0-9\\.]+?.server"
+            ]
+        },
+        "PerimeterX (PerimeterX)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "www\\.perimeterx\\.(com|net)/whywasiblocked",
+                "client\\.perimeterx\\.(net|com)",
+                "denied because we believe you are using automation tools"
+            ]
+        },
+        "pkSecurity IDS (pkSec)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "pk.?Security.?Module",
+                "Security.Alert",
+                "As this could be a potential hack attack",
+                "A safety critical (call|request) was (detected|discovered) and blocked",
+                "maximum number of reloads per minute and prevented access"
+            ]
+        },
+        "PowerCDN (PowerCDN)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Via": "(.*)?powercdn.com(.*)?",
+                "X-Cache": "(.*)?powercdn.com(.*)?",
+                "X-CDN": "PowerCDN"
+            }
+        },
+        "Profense (ArmorLogic)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Profense'"
+            },
+            "cookies": {
+                "^PLBSID=": ""
+            }
+        },
+        "PT Application Firewall (Positive Technologies)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<h1.{0,10}?Forbidden",
+                "<pre>Request.ID:.{0,10}?\\d{4}\\-(\\d{2})+.{0,35}?pre>"
+            ]
+        },
+        "Puhui (Puhui)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "Puhui[\\-_]?WAF"
+            }
+        },
+        "Qcloud (Tencent Cloud)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "腾讯云Web应用防火墙"
+            ]
+        },
+        "Qiniu (Qiniu CDN)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Qiniu-CDN": "\\d+?"
+            }
+        },
+        "Qrator (Qrator)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "QRATOR"
+            }
+        },
+        "AppWall (Radware)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-SL-CompState": " .+'"
+            },
+            "html": [
+                "CloudWebSec\\.radware\\.com",
+                "because we have detected unauthorized activity",
+                "<title>Unauthorized Request Blocked",
+                "if you believe that there has been some mistake",
+                "\\?Subject=Security Page.{0,10}?Case Number"
+            ]
+        },
+        "Reblaze (Reblaze)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Reblaze Secure Web Gateway'"
+            },
+            "html": [
+                "current session has been terminated",
+                "do not hesitate to contact us",
+                "access denied \\(\\d{3}\\)"
+            ],
+            "cookies": {
+                "^rbzid": ""
+            }
+        },
+        "RSFirewall (RSJoomla!)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "com_rsfirewall_(\\d{3}_forbidden|event)?"
+            ]
+        },
+        "RequestValidationMode (Microsoft)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Request Validation has detected a potentially dangerous client input",
+                "ASP\\.NET has detected data in the request",
+                "HttpRequestValidationException"
+            ]
+        },
+        "Sabre Firewall (Sabre)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "dxsupport\\.sabre\\.com",
+                "<title>Application Firewall Error",
+                "add some important details to the email for us to investigate"
+            ]
+        },
+        "Safe3 Web Firewall (Safe3)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Safe3 Web Firewall'",
+                "X-Powered-By": "Safe3WAF/[\\.0-9]+?"
+            },
+            "html": [
+                "Safe3waf/[0-9\\.]+?"
+            ]
+        },
+        "Safedog (SafeDog)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Safedog'"
+            },
+            "html": [
+                "safedogsite/broswer_logo\\.jpg",
+                "404\\.safedog\\.cn/sitedog_stat.html",
+                "404\\.safedog\\.cn/images/safedogsite/head\\.png"
+            ],
+            "cookies": {
+                "^safedog\\-flow\\-item=": ""
+            }
+        },
+        "Safeline (Chaitin Tech.)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "safeline|<!\\-\\-\\sevent id:"
+            ]
+        },
+        "SecKing (SecKing)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "secking(.?waf)?"
+            }
+        },
+        "SecuPress WP Security (SecuPress)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<(title|h\\d{1})>SecuPress"
+            ]
+        },
+        "Secure Entry (United Security Providers)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Secure Entry Server'"
+            }
+        },
+        "eEye SecureIIS (BeyondTrust)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "SecureIIS is an internet security application",
+                "Download SecureIIS Personal Edition",
+                "https?://www\\.eeye\\.com/Secure\\-?IIS"
+            ]
+        },
+        "SecureSphere (Imperva Inc.)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "<(title|h2)>Error",
+                "The incident ID is",
+                "Contact support for additional information"
+            ]
+        },
+        "SEnginx (Neusoft)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "SENGINX\\-ROBOT\\-MITIGATION"
+            ]
+        },
+        "ServerDefender VP (Port80 Software)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Pint": "p(ort\\-)?80"
+            }
+        },
+        "Shadow Daemon (Zecure)": {
+            "cats": [
+                100
+            ]
+        },
+        "Shieldon Firewall (Shieldon.io)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "r[Xx]-[Pp]rotected-[Bb]y": " shieldon.io'"
+            },
+            "html": [
+                "Please solve CAPTCHA",
+                "shieldon_captcha",
+                "Unusual behavior detected",
+                "status-user-info",
+                "Access denied",
+                "The IP address you are using has been blocked.",
+                "status-user-info",
+                "Please line up",
+                "This page is limiting the number of people online. Please wait a moment."
+            ]
+        },
+        "Shield Security (One Dollar Plugin)": {
+            "cats": [
+                100
+            ]
+        },
+        "SiteGround (SiteGround)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "access is restricted due to a security rule"
+            ]
+        },
+        "SiteGuard (Sakura Inc.)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "The server refuse to browse the page"
+            ]
+        },
+        "Sitelock (TrueShield)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "SiteLock incident ID"
+            ]
+        },
+        "SonicWall (Dell)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " SonicWALL'"
+            },
+            "html": [
+                "\\+?nsa_banner"
+            ]
+        },
+        "UTM Web Protection (Sophos)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "www\\.sophos\\.com",
+                "Powered by.?(Sophos)? UTM Web Protection",
+                "<title>Access to the requested URL was blocked",
+                "Access to the requested URL was blocked",
+                "incident was logged with the following log identifier",
+                "Inbound Anomaly Score exceeded",
+                "Your cache administrator is"
+            ]
+        },
+        "Squarespace (Squarespace)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " Squarespace'"
+            },
+            "html": [
+                "status\\.squarespace\\.com",
+                "BRICK\\-\\d{2}"
+            ],
+            "cookies": {
+                "^SS_ANALYTICS_ID=": "",
+                "^SS_MATTR=": "",
+                "^SS_MID=": "",
+                "SS_CVT=": ""
+            }
+        },
+        "SquidProxy IDS (SquidProxy)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "squid(/[0-9\\.]+)?"
+            },
+            "html": [
+                "Access control configuration prevents your request"
+            ]
+        },
+        "StackPath (StackPath)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "You performed an action that triggered the service and blocked your request"
+            ]
+        },
+        "Sucuri CloudProxy (Sucuri Inc.)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Sucuri-ID": ".+?",
+                "X-Sucuri-Cache": ".+?",
+                "Server": "Sucuri(\\-Cloudproxy)?"
+            },
+            "html": [
+                "cloudproxy@sucuri\\.net"
+            ]
+        },
+        "Tencent Cloud Firewall (Tencent Technologies)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "waf\\.tencent\\-?cloud\\.com/"
+            ]
+        },
+        "Teros (Citrix Systems)": {
+            "cats": [
+                100
+            ],
+            "cookies": {
+                "^st8id=": ""
+            }
+        },
+        "TransIP Web Firewall (TransIP)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-TransIP-Backend": " .+'",
+                "X-TransIP-Balancer": " .+'"
+            }
+        },
+        "UEWaf (UCloud)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "uewaf(/[0-9\\.]+)?"
+            },
+            "html": [
+                "/uewaf_deny_pages/default/img/",
+                "ucloud\\.cn"
+            ]
+        },
+        "URLMaster SecurityCheck (iFinity/DotNetNuke)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-UrlMaster-Debug": " .+'",
+                "X-UrlMaster-Ex": " .+'"
+            },
+            "html": [
+                "SecurityCheck"
+            ]
+        },
+        "URLScan (Microsoft)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "A custom filter or module.{0,4}?such as URLScan"
+            ]
+        },
+        "Varnish (OWASP)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "Request rejected by xVarnish\\-WAF"
+            ]
+        },
+        "Viettel (Cloudrity)": {
+            "cats": [
+                100
+            ]
+        },
+        "VirusDie (VirusDie LLC)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "copy.{0,10}?Virusdie\\.ru"
+            ]
+        },
+        "Wallarm (Wallarm Inc.)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "nginx[\\-_]wallarm"
+            }
+        },
+        "WatchGuard (WatchGuard Technologies)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " WatchGuard'"
+            },
+            "html": [
+                "WatchGuard Technologies Inc\\."
+            ]
+        },
+        "WebARX (WebARX Security Solutions)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "/wp\\-content/plugins/webarx/includes/"
+            ]
+        },
+        "WebKnight (AQTRONIX)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "WebKnight Application Firewall Alert",
+                "What is webknight\\?",
+                "AQTRONIX WebKnight is an application firewall",
+                "WebKnight will take over and protect",
+                "aqtronix\\.com/WebKnight",
+                "AQTRONIX.{0,10}?WebKnight"
+            ]
+        },
+        "WebLand (WebLand)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "protected by webland"
+            }
+        },
+        "RayWAF (WebRay Solutions)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "WebRay\\-WAF",
+                "DrivedBy": "RaySrv.RayEng/[0-9\\.]+?"
+            }
+        },
+        "WebSEAL (IBM)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " WebSEAL'"
+            }
+        },
+        "WebTotem (WebTotem)": {
+            "cats": [
+                100
+            ]
+        },
+        "West263 CDN (West263CDN)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-Cache": "WS?T263CDN"
+            }
+        },
+        "Wordfence (Defiant)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "wf[_\\-]?WAF"
+            },
+            "html": [
+                "broke one of (the )?Wordfence (advanced )?blocking rules"
+            ]
+        },
+        "wpmudev WAF (Incsub)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "href=\"http(s)?.\\/\\/wpmudev.com\\/.{0,15}?",
+                "Click on the Logs tab, then the WAF Log.",
+                "Choose your site from the list",
+                "<h1>Whoops, this request has been blocked!",
+                "This request has been deemed suspicious",
+                "possible attack on our servers."
+            ]
+        },
+        "WTS-WAF (WTS)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "wts/[0-9\\.]+?"
+            }
+        },
+        "360WangZhanBao (360 Technologies)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "qianxin\\-waf",
+                "WZWS-Ray": ".+?",
+                "X-Powered-By-360WZB": ".+?"
+            },
+            "html": [
+                "wzws\\-waf\\-cgi/",
+                "wangshan\\.360\\.cn"
+            ]
+        },
+        "XLabs Security WAF (XLabs)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "X-CDN": "XLabs Security",
+                "Secured": "^By XLabs Security"
+            }
+        },
+        "Xuanwudun (Xuanwudun)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "class=.(db[\\-_]?)?waf(.)?([\\-_]?row)?>"
+            ]
+        },
+        "Yundun (Yundun)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " YUNDUN'",
+                "X-Cache": " YUNDUN'"
+            },
+            "html": [
+                "Blocked by YUNDUN Cloud WAF",
+                "yundun\\.com/yd[-_]http[_-]error/",
+                "www\\.yundun\\.com/(static/js/fingerprint\\d{1}?\\.js)?"
+            ],
+            "cookies": {
+                "^yd_cookie=": ""
+            }
+        },
+        "Yunsuo (Yunsuo)": {
+            "cats": [
+                100
+            ],
+            "html": [
+                "class=\\\"yunsuologo\\\""
+            ],
+            "cookies": {
+                "^yunsuo_session=": ""
+            }
+        },
+        "YXLink (YxLink Technologies)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "Yxlink([\\-_]?WAF)?"
+            },
+            "cookies": {
+                "^yx_ci_session=": "",
+                "^yx_language=": ""
+            }
+        },
+        "Zenedge (Zenedge)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": " ZENEDGE'",
+                "X-Zen-Fury": ".+?"
+            },
+            "html": [
+                "/__zenedge/"
+            ]
+        },
+        "ZScaler (Accenture)": {
+            "cats": [
+                100
+            ],
+            "headers": {
+                "Server": "ZScaler"
+            },
+            "html": [
+                "policies\\.accenture\\.com",
+                "login\\.zscloud\\.net/img_logo_new1\\.png",
+                "Zscaler to protect you from internet threats"
+            ]
+        }
+    }
+}

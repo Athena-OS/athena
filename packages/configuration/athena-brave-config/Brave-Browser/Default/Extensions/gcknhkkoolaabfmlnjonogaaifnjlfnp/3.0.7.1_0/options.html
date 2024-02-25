@@ -1,0 +1,771 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>FoxyProxy options</title>
+        <link type="text/css" href="styles/main.css" rel="stylesheet">
+        
+        <link rel="stylesheet" href="styles/custom-theme/jquery-ui-1.8.10.custom.css">
+        
+        <link rel="stylesheet" href="styles/options.css">
+        
+        <script src="scripts/jquery-1.7.2.min.js"></script>
+        
+        <script src="scripts/jquery-ui-1.8.10.custom.min.js"></script>
+        
+        <script src="scripts/jquery.combobox.js"></script>
+        <script src="scripts/jquery.dataTables.min.js"></script>
+        <script src="scripts/jquery.dataTables.utils.js"></script>
+        <script src="scripts/jquery.colorpicker.js"></script>
+        <script src="scripts/jquery.numeric.js"></script>
+        <script src="scripts/jquery.copy.js"></script>
+        
+        <script src="scripts/parseUri.js"></script>
+        
+        <script src="scripts/options.proxy.js"></script>
+        
+        <script src="scripts/options.proxylist.js"></script>
+
+        <!--script type="text/javascript" src="scripts/options/options.log.js"></script --> 
+
+        <!-- <script type="text/javascript" src="js/options/options.ippatternedit.js"></script> -->
+        <!-- script type="text/javascript" src="scripts/options/options.logpattern.js"></script -->
+        
+        <script src="scripts/options.ui.js"></script>
+        
+        <script src="scripts/options.importexport.js"></script>
+    </head>
+    <body>
+
+    
+    
+    
+    <div id="navbar-container">
+        <center>
+            <img src="images/logo-192.png">
+        </center>       
+            <ul id="navbar">
+              <li id="tabProxies" class="navbar-item navbar-item-selected" pagename="pageProxies" tabindex="0"><span>Proxies</span></li>
+              <li id="tabGlobal" class="navbar-item" pagename="pageGlobal" tabindex="1"><span>Global Settings</span></li>
+              <li id="tabImport" class="navbar-item" pagename="pageImport" tabindex="2"><span>Import/Export</span></li>
+              <li id="tabQuick" style="display:none" class="navbar-item" pagename="pageQuick" tabindex="2">QuickAdd</li>
+              <!--li id="tabAuto" class="navbar-item" pagename="pageAuto"  tabindex="3">AutoAdd</li-->
+              <!--<li id="tabLog" class="navbar-item" disabled="true" pagename="pageLog" tabindex="4">Logging</li>-->
+                          
+              <li id="tabAbout" class="navbar-item" disabled="true" pagename="pageAbout" tabindex="5">About</li>
+            </ul>
+    </div>
+    
+    <div id="mainview-content">
+        <div style="padding: 5px">
+            <span>Proxy mode</span>:
+            <select id="proxyModeGlobal"></select>
+        </div>
+
+        <!-- Proxies list page --------------------------------------------------------------------------------------------------------->
+        <div id="pageProxies" class="tabPage">
+                <h1 id="headerLabel">Proxies</h1>
+                <p>
+
+                <table style="border:2px solid #ddd;background-color: #fff">
+                    <tr>
+                        <td valign="top">
+                                <table id="proxyList" class="proxyList"></table>
+                        </td>
+
+                        <td valign="top" class="listManupualtionButtons" style="padding:10px">
+                            <button id="proxylistMoveUp">Move Up</button><br>
+                            <button id="proxylistMoveDown">Move Down</button><br><br>
+                            <button id="addNewProxy">Add New Proxy</button><br>
+                            <button id="proxylistEdit">Edit Selection</button><br>
+                            <button id="proxylistCopy">Copy Selection</button><br>
+                            <button id="proxylistDelete">Delete Selection</button><br>
+                        </td>
+                    </tr>
+                </table>
+                                <h3 class="tip"><a href="" id="import-link" pagename="pageImport">Import your proxies from FoxyProxy on Mozilla Firefox or from another computer.</a></h3>
+        </div>
+
+
+        <!-- End of Proxies list page ---------------------------------------------------------------------------------------------------->
+
+
+        <!-- Global settings page -->
+        <div id="pageGlobal" class="tabPage">
+                <h1 id="headerLabel">Global Settings</h1>
+                <table cellpadding="5">
+                    <tr>
+                        <td>
+                            <input name="showContextMenuCheck" type="checkbox">
+                            <label for="showContextMenuCheck"><span></label>
+                        </td>
+                        <td>    
+                            <input name="advancedMenuCheck" type="checkbox">
+                            <label for="advancedMenuCheck"><span></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input name="useChromeSyncCheck" type="checkbox">
+                            <label for="useChromeSyncCheck">Sync settings with Google</label>
+                        </td>
+                        <td>
+                            <input name="usageOptOutCheck" type="checkbox">
+                            <label for="usageOptOutCheck">Send anonymous usage information to FoxyProxy</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input name="animateIconCheck" type="checkbox">
+                            <label for="animateIconCheck">Animate FoxyProxy Icon</label>
+                        </td>
+                        <td>
+                            <input name="showUpdatesCheck" type="checkbox">
+                            <label for="showUpdatesCheck">Open "Release Notes" tab when FoxyProxy is updated.</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="resetButton" name="resetButton">Reload Settings</button>
+                        </td>
+                        <td>
+                            <button id="resetDefaultsButton" name="resetDefaultsButton">Reset all settings to Default</button>
+                        </td>
+                    </tr>
+                </table>
+        </div>
+        
+        
+        <!-- Import/Export settings page -->
+        <div id="pageImport" class="tabPage" style="display:none">
+          <h1>Import / Export</h1>
+          <h2>Import FoxyProxy settings from a file</h2>
+          <input type="file" id="settings-import">
+          <p id="import-result"></p>
+          <h3 class="tip">This tool allows you to import your proxies from FoxyProxy on Mozilla Firefox or from another computer.</h3>
+          <hr>
+          <h2>Export FoxyProxy settings to a file</h2>
+          <button id="export-to-file">Export</button>
+          <h3 class="tip">A file named FoxyProxy-export.fpx will be saved in your default Chrome Downloads directory. You can use it to import your settings into another instance of Google Chrome or FoxyProxy on Firefox.</h3>
+        </div>
+        <!-- End of Import/Export settings page -->
+                
+        <!-- Logging page --------------------------------------------------------------------------------------------------------->
+        <div id="pageLog" class="tabPage" style="display:none">
+                <h1 id="headerLabel">Logging</h1>
+                <p>
+                    <table width="100%"><tr>
+                        <td>
+                            <input type="checkbox"><span>Enabled</span>
+                            <button id="logClear"><span>Clear</span></button>
+                            <button id="logRefresh"><span>Refresh</span></button>
+                        </td>
+                        <td align="right">
+                            <span>Maximum size before log wraps</span>
+                            <input type="text" size="4" id="logSize">
+                            <button id="logSizeSet"><span>Set</span></button>
+                        </td>
+                    </tr></table>
+                    
+        
+                    <table style="border:2px solid #ddd;background-color: #fff;width:100%">
+                        <tr>
+                            <td valign="top">
+                                <button id="logOpen"><span>Open URL in New Tab</span></button>
+                                <button id="logCopy"><span>Copy URL to Clipboard</span></button>
+                                <button id="logDelete"><span>Delete Selection</span></button>
+                                <button id="logSaveToFile"><span>Save</span></button>                               
+                                <button id="logPatternsForSelected"><span>Create Patterns for Selected</span></button>
+                                <button id="logPatternsForAll"><span>Create Patterns for All</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <table id="log" class="proxyList" style="width:100%"></table>
+                            </td>
+                        </tr>
+                    </table>
+                </p>
+        </div>      
+        <!-- Logging page ---------------------------------------------------------------------------------------------------->
+        <div id="pageQuick" class="tabPage" style="display:none">
+                <h1 id="headerLabel">QuickAdd</h1>
+                <h3 class="tip">
+                    QuickAdd adds a dynamic URL pattern to a proxy when you press a keyboard shortcut.
+                    <br>
+                    <p>
+                        Keyboard shortcuts are now configured via the Chrome extensions keyboard shortcut dialog.
+                        <br>
+                        <a id="configureKeyboardLink" href="#">Configure Keyboard Shortcuts</a>
+                    </p>
+                    <p>
+                        You can also add a pattern by clicking "Quick Add" from the FoxyProxy extension icon, or through the context menu (by right-clicking in a page.)
+                    </p>
+                </h3>
+                <p><input type="checkbox" id="enabledQA"><span>Enabled</span></p>
+                <div id="QASettingsContainer">
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <input type="checkbox" id="patternTemporaryQA"><span>Temporary</span>
+                                <a id="hint_pattern_temp" class="help">&nbsp;</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="80"><span>Pattern proxy</span></td>
+                            <td><select id="patternProxyQA" class="textField"></select></td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="80"><span>Pattern Name</span></td>
+                            <td><input type="text" id="patternNameQA" class="textField"></td>
+                        </tr>   
+                        <tr>
+                            <td align="right" width="80"><span>URL pattern template</span></td>
+                            <td><input type="text" id="patternTemplateQA" class="textField"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="80"><span>Example for</span></td>
+                            <td>
+                                <input type="text" id="patternUrlQA" class="textField">
+                                <a id="hint_pattern_url_template" class="help">&nbsp;</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="80"></td>
+                            <td>
+                                <input type="text" id="patternResultQA" class="textField" style="font-weight: bold">
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="panel">
+                        <table class="panel">
+                            <tr valign="bottom">
+                                <td>
+                                    <input name="patternWhitelistQA" type="radio" value="Inclusive"><span>Whitelist</span>
+                                </td>
+                                <td>
+                                    <span>URLs matching this pattern are loaded through this proxy</span>
+                                    <a id="hint_pattern_blackwhite" class="help">&nbsp;</a>
+                                </td>       
+                            </tr>
+                            <tr valign="bottom">
+                                <td>
+                                    <input name="patternWhitelistQA" type="radio" value="Exclusive"><span>Blacklist</span>
+                                </td>
+                                <td>
+                                    <span>URLs matching this pattern are NOT loaded through this proxy<span>
+                                </span></span></td>       
+                            </tr>   
+                        </table>
+                    </p>
+                    <p class="panel modeAdd">
+                        <table class="">
+                            <tr valign="bottom">
+                                <td>
+                                    <input name="patternTypeQA" type="radio" value="wildcard"><span>Wildcards</span>
+                                </td>
+                                <td>
+                                    Example: *mail.yahoo.com/*
+                                </td>       
+                            </tr>
+                            <tr valign="bottom">
+                                <td>
+                                    <input name="patternTypeQA" type="radio" value="regexp"><span>Regular expression</span>
+                                </td>
+                                <td>
+                                    Example: ^https?://.*\mail\.yahoo\.com/.*$
+                                </td>       
+                            </tr>   
+                        </table>
+                    </p>
+                </div>
+                
+        </div>                          
+        <!-- About page ---------------------------------------------------------------------------------------------------->
+        <div id="pageAbout" class="tabPage" style="display:none">
+            <h1 id="headerLabel"><span id="appString"></span></h1>
+            <table>
+                <tr>
+                    <td><span>Created By</span></td>
+                    <td><a href="mailto:eric.jung@yahoo.com">Eric H. Jung</a></td>
+                </tr>
+                <tr>
+                    <td><span>Contributions By</span></td>
+                    <td>Loic Duros</td>
+                    
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Jesper Staun Hansen</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Georg Koppen</td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Michael G. Collins</td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>Copyright</span> 2006-2014 FoxyProxy, Inc.<br>
+                        <span>All Rights Reserved.</span><br>
+                        <span>Released under the GPL license.</span><br><br>
+                        <br><br>
+                        <a href="http://getfoxyproxy.org/"><span>Home</span></a>
+                        <a href="https://support.leahscape.com/"><span>Support</span></a>
+                        <a href="http://forums.getfoxyproxy.org/"><span>Forums</span></a>
+                        <a href="http://getfoxyproxy.org/credits.html"><span>Credits</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>      
+        
+        <center>
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7145571"><button>Please Donate</button></a>
+            <a href="https://getfoxyproxy.org/proxyservice/"><button>Buy Proxy Service</button></a>
+        </center>
+    </div>
+    
+
+    
+    
+<!-------------------------------------------------------------------------------------------------------------------->
+<!-- DIALOGS --------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------->
+
+    <div id="dialog"></div>
+    
+    <div id="authWarningDlg" title="Warning" style="display:none;min-height:500px">
+        <div>
+            <ul>
+                <li><span id="hint_auth_1"></span></li>
+                <li><span id="hint_auth_2"></span></li>
+                <li><span id="hint_auth_3"></span></li>
+            </ul>
+        </div>
+        <div>
+            <input name="noAuthWarn" type="checkbox" value="false">
+            <label>Do not show this warning again.</label>
+        </div>
+    </div>
+    
+        <div id="import-dialog" title="Import FoxyProxy Settings" style="display:none"><p>This file may overwrite your existing proxies. You can add these proxies to the existing list or replace your existing list.</p></div>
+<!-- proxy edit dialog ---------------------------------------------------------------------------------------------------->    
+    <div id="proxyEditDlg" style="display:none;min-height: 460px">
+        <div id="tabs">
+            <ul>
+                <li><a href="#proxyGeneral"><span>General</span></a></li>
+                <li><a href="#proxyDetails"><span>Proxy Details</span></a></li>
+                <li id="proxyPatternsLink"><a href="#proxyPatterns"><span>URL Patterns</span></a></li>
+                <!--<li id="proxyIpPatternsLink"><a href="#proxyIpPatterns"><span>Local IP Address Patterns</span></a></li>-->
+            </ul>
+            <div id="proxyGeneral">
+                <table>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" id="proxyEnabled"><span>Enabled</span> </td>
+                    </tr>
+                    <tr>
+                        <td align="right" width="80"><span>Proxy Name</span></td>
+                        <td><input type="text" id="proxyName" class="textField"></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span>Proxy Notes</span></td>
+                        <td><textarea class="textField" id="proxyNotes"></textarea></td>
+                    </tr>
+                    <!--tr>
+                        <td></td>
+                        <td ><input type="checkbox" id="enabled"></input> Animate icons when this proxy is in use</td>
+                    </tr-->
+                    <tr>
+                        <td align="right"><span>Color</span></td>
+                        <td><div id="proxyColor"><div></div></div></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="proxyDetails">
+                <p class="panel">
+                    <table class="panel direct">
+                        <tr>
+                            <td>
+                                <input id="proxyTypeDirect" name="proxyType" value="direct" type="radio" checked="checked"><span>Direct internet connection (no proxy)</span>
+                            </td>
+                        </tr>
+                    </table>
+                </p>
+                <p class="panel">
+                    <table class="panel manual">
+                        <tr>
+                            <td>
+                                <input id="proxyTypeManual" type="radio" name="proxyType" value="manual" selected="true"><span>Manual Proxy Configuration</span>
+                            </td>
+                        </tr>
+                        <tr class="proxyTypeManualGroup">
+                            <td class="marged"><a href="http://getfoxyproxy.org/settings-gui.html" target="_blank">Help! Where are settings for HTTP, SSL, FTP, Gopher, and SOCKS?</a></td>
+                        </tr>
+                        <tr class="proxyTypeManualGroup">
+                            <td class="marged">
+
+                                <span>Host or IP Address</span>
+                                <input type="text" id="proxyHost" size="60">
+                                <span>Port</span>
+                                <input type="text" id="proxyPort" size="5">
+                            </td>
+                            
+
+                        </tr>
+                        <tr class="proxyTypeManualGroup">
+                            <td class="marged">
+                                <input type="checkbox" id="proxyIsSocks"><span>SOCKS proxy?</span>
+                                <input type="radio" name="proxySocks" value="4" id="socks4"><span>SOCKS v4/4a</span>
+                                <input type="radio" name="proxySocks" value="5" id="socks5" checked="checked"><span>SOCKS v5</span>                           
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr class="proxyTypeManualGroup">
+                            <td class="marged">
+                                <input id="authCheck" type="checkbox">
+                                <label>Save Login Credentials</label>
+                                <a id="hint_auth_tooltip" class="help">&nbsp;</a>
+                                <div id="authBox" style="opacity:0.3;border:1px solid #666;background-color: #eee; border-radius:5px;margin:10px;padding:0px 10px 10px">
+                                    <p><b>Authentication</b></p>
+                                    <label>Username</label><input name="username" type-="text">
+                                    <label>Password</label><input name="password" type="password">
+                                    <label>Password - again</label><input name="passwordConfirm" type="password">
+                                    
+                                </div>
+                            </td>
+                            <td valign="bottom" style="padding-bottom:16px">
+                                <!-- button style="opacity:0.3;" id="testAuth">Test</button -->
+                            </td>
+                        </tr>
+                    </table>                
+                </p>
+                <p class="panel">
+                    <table class="panel automatic">
+                        <tr>
+                            <td>
+          <!-- used to test remote PAC files -->
+          <iframe id="testPacFrame" style="display:none" src="pac-sandbox.html"></iframe>
+
+
+                                <input id="proxyTypeAuto" type="radio" name="proxyType" value="auto"><span>Automatic proxy configuration URL</span>
+                            </td>
+                        </tr>
+                        <tr class="proxyTypeAutoGroup">
+                            <td id="configUrlPanel" class="marged">
+                                <input type="text" id="proxyConfigUrl" size="45">
+                                <button id="pacViewButton">View</button>
+                                <button id="testPac">Test</button>
+                                <a id="hint_pac" class="help">&nbsp;</a>
+                            </td>
+                        </tr>
+                        <tr class="proxyTypeAutoGroup">
+                            <td class="marged">
+                                <div style="display:none"><input type="checkbox" id="proxyPACReload"><span>Reload PAC every</span> <input type="text" size="3" id="proxyPACInterval"> <span>minutes</span></div>
+                                <!--<input type="checkbox" id="bypassFPForPAC"><span>Bypass FoxyProxy when loading PAC</span>-->
+                            </td>
+                        </tr>
+                        <tr class="proxyTypeAutoGroup"><td>
+                            <p class="panel" style="margin-left:25px;margin-bottom:5px">                   
+                            <table>
+                                <tr>
+                                    <td class="marged">
+                                        <input type="checkbox" checked="checked" id="proxyNotifLoad"><span>Notify me about proxy auto-configuration file loads</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="marged">
+                                        <input type="checkbox" checked="checked" id="proxyNotifError"><span>Notify me about proxy auto-configuration file errors</span>
+                                    </td>
+                                </tr>           
+                            </table>            
+                            </p>
+                        </td></tr>
+                    </table>
+                </p>
+            </div>
+            <div id="proxyPatterns">
+                <div style="text-align: left"><span>Here you can specify when this proxy is and is not used.</span>
+                    <p>
+                        <button id="addNewPattern">Add new pattern</button>
+                        <button id="editPattern">Edit selection</button>
+                        <button id="copySelectedPattern">Copy selection</button>
+                        <button id="deleteSelectedPattern">Delete selection</button>
+                        <!--button>Help contents</button-->
+                    </p>
+                    <table id="patternList" class="proxyList">
+                    </table>
+                </div>              
+            </div>
+            <!--<div id="proxyIpPatterns">
+                <div style="text-align: left;"><span>Here you can specify when this proxy is and is not used.</span>
+                    <p>
+                        <button onclick="addNewIpPattern();">Add new pattern</button>
+                        <button onclick="editIpPattern();">Edit selection</button>
+                        <button onclick="copySelectedIpPattern();">Copy selection</button>
+                        <button onclick="deleteSelectedIpPattern();">Delete selection</button>
+                        <!--button>Help contents</button>
+                    </p>
+                    <table id="ipPatternList" class="proxyList">
+                    </table>
+                </div>              
+            </div>-->
+        </div>
+    </div>
+    
+    
+<!-- pattern edit dialog ---------------------------------------------------------------------------------------------------->      
+    
+    
+    <div id="patternEditDlg" style="display:none; height: 300px">
+        <table>
+            <tr class="modeAdd">
+                <td colspan="2">
+                    <input type="checkbox" id="patternEnabled"><span>Enabled</span>
+                    <input type="checkbox" id="patternTemporary"><span>Temporary</span>
+                    <a id="hint_pattern_temp" class="help">&nbsp;</a>
+                </td>
+            </tr>
+                        <tr class="proxyList">
+                          <td alighn="right" width="80"><span></span></td>
+                          <td><select id="dialogPatternProxyQA" class="textField"></td>
+                        </tr>
+            <tr class="modeAdd">
+                <td align="right" width="80"><span>Pattern Name</span></td>
+                <td><input type="text" id="patternName" class="textField"></td>
+            </tr>   
+            <tr class="modeQuickAdd">
+                <td align="right" width="80"><span>Current URL</span></td>
+                <td><input type="text" id="patternPageUrl" class="textField"></td>
+            </tr>
+            <tr>
+                <td align="right" width="80"><span>URL pattern</span></td>
+                <td><input type="text" id="patternUrl" class="textField"></td>
+            </tr>
+        </table>
+        <p class="panel modeAdd">
+            <table class="panel modeAdd">
+                <tr>
+                    <td>
+                        <input name="patternWhitelist" type="radio" value="Inclusive"><span>Whitelist</span>
+                    </td>
+                    <td>
+                        <span>URLs matching this pattern are loaded through this proxy</span>
+                        <a id="hint_pattern_blackwhite" class="help">&nbsp;</a>
+                    </td>       
+                </tr>
+                <tr>
+                    <td>
+                        <input name="patternWhitelist" type="radio" value="Exclusive"><span>Blacklist</span>
+                    </td>
+                    <td>
+                        <span>URLs matching this pattern are NOT loaded through this proxy<span>
+                    </span></span></td>       
+                </tr>   
+            </table>
+        </p>
+        <p class="panel modeAdd">
+            <table class="modeAdd">
+                <tr>
+                    <td>
+                        <input name="patternType" type="radio" value="wildcard"><span>Wildcards</span>
+                    </td>
+                    <td>
+                        Example: *mail.yahoo.com/*
+                    </td>       
+                </tr>
+                <tr>
+                    <td>
+                        <input name="patternType" type="radio" value="regexp"><span>Regular expression</span>
+                    </td>
+                    <td>
+                        Example: https?://.*\mail\.yahoo\.com/.*
+                    </td>       
+                </tr>   
+            </table>
+        </p>
+    </div>
+<!-- end of patter edit dialog ---------------------------------------------------------------------------------------------------->    
+
+
+<!-- ip pattern edit dialog ---------------------------------------------------------------------------------------------------     
+    <div id="ipPatternEditDlg" style="display:none; height: 300px;">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" id="ipPatternEnabled"><span>Enabled</span></input>
+                    <input type="checkbox" id="ipPatternTemporary"><span>Temporary</span></input>
+                    <a id="hint_pattern_temp" class="help">&nbsp;</a>
+                </td>
+            </tr>
+            <tr>
+                <td align=right width="80"><span>Pattern Name</span></td>
+                <td><input type="text" id="ipPatternName" class="textField"></input></td>
+            </tr>
+            <tr>
+                <td align=right width="80"><span>IP pattern</span></td>
+                <td><input type="text" id="ipPatternUrl" class="textField"></input></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td><span>Current local IPs</span></td>
+                <td>
+                    <select id="ipPatternCurrentIPs"></select>
+                    <button onclick="copyIp();"><span>Copy to pattern</span></button>
+                    <button onclick="updateIpsList();">Refresh</button>
+                </td>
+            </tr>           
+        </table>
+        <p>
+            <table class="panel">
+                <tr>
+                    <td>
+                        <input name="ipPatternWhitelist" type="radio" value="Inclusive" ><span>Whitelist</span></input>
+                    </td>
+                    <td>
+                        <span>URLs matching this pattern are loaded through this proxy</span>
+                        <a id="hint_pattern_blackwhite" class="help">&nbsp;</a>
+                    </td>       
+                </tr>
+                <tr>
+                    <td>
+                        <input name="ipPatternWhitelist" type="radio" value="Exclusive" ><span>Blacklist</span></input>
+                    </td>
+                    <td>
+                        <span>URLs matching this pattern are NOT loaded through this proxy<span>
+                    </td>
+                </tr>
+            </table>
+        </p>
+        <p>
+            <table>
+                <tr>
+                    <td>
+                        <input name="ipPatternType" type="radio" value="wildcard"><span>Wildcards</span></input>
+                    </td>
+                    <td>
+                        Example: *mail.yahoo.com/*
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input name="ipPatternType" type="radio" value="regexp"><span>Regular expression</span></input>
+                    </td>
+                    <td>
+                        Example: https?://.*\mail\.yahoo\.com/.*
+                    </td>
+                </tr>   
+            </table>
+        </p>
+    </div>-->
+    <!-- end of ip patter edit dialog ---------------------------------------------------------------------------------------------------->
+
+
+    <!-- view pac file dialog --------------------------------------------------------------------------------------------------------->    
+    <div id="pacViewDlg" style="display:none">
+        <textarea id="pacViewDlgText" style="width: 100%; height: 400px"></textarea>
+    </div>
+    <!-- end of view pac file dialog ---------------------------------------------------------------------------------------------------->  
+
+<!-- proxy selection dialog dialog ---------------------------------------------------------------------------------------------------->    
+    <div id="proxySelectionDlg" style="display:none">
+        <div style="padding:10px;font-weight:bold"><span>Set</span> <span id="proxySelectionUrl"></span> <span>as the new host:port of which proxy configuration?</span></div>
+        <table id="proxySelectionTable" cellspacing="0" cellpadding="4">
+            <thead>
+            <th>Enabled</th>
+            <th>Color</th>
+            <th>Proxy Name</th>
+            <th>Proxy Notes</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Training dialog -->
+    <div id="trainingPatternsDlg" style="display:none">
+        <div>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" id="patternTemporaryTraining"><span>Temporary</span>
+                        <a id="hint_pattern_temp" class="help">&nbsp;</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="80"><span>Pattern proxy</span></td>
+                    <td><select id="patternProxyTraining" class="textField"></select></td>
+                </tr>
+                <tr>
+                    <td align="right" width="80"><span>Pattern Name</span></td>
+                    <td><input type="text" id="patternNameTraining" class="textField"></td>
+                </tr>   
+                <tr>
+                    <td align="right" width="80"><span>URL pattern template</span></td>
+                    <td><input type="text" id="patternTemplateTraining" class="textField"></td>
+                </tr>
+            </table>
+            <p class="panel">
+                <table class="panel">
+                    <tr valign="bottom">
+                        <td>
+                            <input name="patternWhitelistTraining" type="radio" value="Inclusive"><span>Whitelist</span>
+                        </td>
+                        <td>
+                            <span>URLs matching this pattern are loaded through this proxy</span>
+                            <a id="hint_pattern_blackwhite" class="help">&nbsp;</a>
+                        </td>       
+                    </tr>
+                    <tr valign="bottom">
+                        <td>
+                            <input name="patternWhitelistTraining" type="radio" value="Exclusive"><span>Blacklist</span>
+                        </td>
+                        <td>
+                            <span>URLs matching this pattern are NOT loaded through this proxy<span>
+                        </span></span></td>       
+                    </tr>   
+                </table>
+            </p>
+            <p class="panel modeAdd">
+                <table class="">
+                    <tr valign="bottom">
+                        <td>
+                            <input name="patternTypeTraining" type="radio" value="wildcard"><span>Wildcards</span>
+                        </td>
+                        <td>
+                            Example: *mail.yahoo.com/*
+                        </td>       
+                    </tr>
+                    <tr valign="bottom">
+                        <td>
+                            <input name="patternTypeTraining" type="radio" value="regexp"><span>Regular expression</span>
+                        </td>
+                        <td>
+                            Example: https?://.*\mail\.yahoo\.com/.*
+                        </td>       
+                    </tr>   
+                </table>
+            </p>
+        </div>
+    </div>                          
+
+</body>
+</html>

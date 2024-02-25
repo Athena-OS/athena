@@ -1,0 +1,67 @@
+#!/bin/sh
+
+# /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+# File:                  emwave.textart
+# Description:           {{des}}
+# Author:                Ilya144
+#                        └─ https://github.com/ilya144
+# Converted to textart:  NNB
+#                        └─ https://github.com/NNBnh
+# URL:                   https://github.com/NNBnh/nnbs-text-art/blob/main/color/emwave.textart
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+# Values
+TEXT="${1:-/\\}"
+
+while [ "${#TEXTS}" -le '75' ]; do
+	TEXTS="$TEXTS$TEXT"
+done
+
+TEXTS=$(printf '%s' "$TEXTS" | sed -e 's/^\(.\{75\}\).*/\1/')
+
+
+# Start
+i='0'
+
+while [ -n "$TEXTS" ]; do
+	charater=$(echo "$TEXTS" | sed -e 's/^\(.\{1\}\).*/\1/')
+	TEXTS="${TEXTS#?}"
+
+	case "$charater" in
+		'\') charater='\\' ;;
+		'%') charater='%%' ;;
+	esac
+
+	r=$(( 255 - ( i * ( 255 / 76 ) ) ))
+	g=$((         i * ( 512 / 76 )   ))
+	b=$((         i * ( 255 / 76 )   ))
+
+	[ "$g" -gt 255 ] && g=$(( 510 - g ))
+
+	rr=$(( 255 - r ))
+	gg=$(( 255 - g ))
+	bb=$(( 255 - b ))
+
+	print="$print\033[48;2;${r};${g};${b}m\033[38;2;${rr};${gg};${bb}m$charater\033[0m"
+
+	i=$(( i + 1 ))
+done
+
+printf "$print"
+
+
+exit 0

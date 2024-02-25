@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=galleta
+Comment=Tool to extract information from MSIE cookie files
+Encoding=UTF-8
+Exec=shell-rocket "if command -v galleta &> /dev/null;then galleta;$SHELL;else echo \\"galleta is not installed. I'm retrieving it for you...\\";sudo pacman -S galleta;galleta;$SHELL;fi;"
+Icon=kali-galleta
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-forensics;004-respond;
+X-Athena-Package=galleta

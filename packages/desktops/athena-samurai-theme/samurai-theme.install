@@ -1,0 +1,12 @@
+post_install() {
+  echo "Setting Samurai Girl theme"
+
+  mv /etc/skel/.config/kitty/tokyo_night_storm.conf /etc/skel/.config/kitty/current-theme.conf
+  mv /usr/share/athena-samurai-theme/apps/* /usr/share/icons/hicolor/scalable/apps/
+  mv /usr/share/athena-samurai-theme/categories/* /usr/share/icons/hicolor/scalable/categories/
+  rm -rf /usr/share/athena-samurai-theme
+}
+
+post_upgrade() {
+    post_install $1
+}

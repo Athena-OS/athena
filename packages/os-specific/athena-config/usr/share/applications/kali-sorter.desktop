@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sorter
+Encoding=UTF-8
+Exec=shell-rocket "if command -v sorter &> /dev/null;then sorter;$SHELL;else echo \\"sorter is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;sorter;$SHELL;fi;"
+Icon=kali-sorter
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

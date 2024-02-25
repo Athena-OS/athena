@@ -1,0 +1,27 @@
+- name: "NVIDIA OPEN DKMS"
+  description: "Install NVIDIA OPEN DKMS"
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - nvidia-open-dkms
+    - nvidia-exec
+    - nvidia-settings
+    - nvidia-utils
+    - optimus-manager-qt
+- name: "NVIDIA Related"
+  description: "Install NVIDIA related applications"
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - cuda
+    - disper
+    - envycontrol
+    - gwe
+    - nvflash
+    - nvtop

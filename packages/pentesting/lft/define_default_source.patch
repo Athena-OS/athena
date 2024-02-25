@@ -1,0 +1,15 @@
+diff -aur lft-3.74.orig/config/acconfig.h.in lft-3.74/config/acconfig.h.in
+--- lft-3.74.orig/config/acconfig.h.in	2016-05-02 19:58:08.375285757 -0400
++++ lft-3.74/config/acconfig.h.in	2016-05-02 19:59:17.961423823 -0400
+@@ -110,6 +110,11 @@
+ #define _BSD_SOURCE
+ #endif
+ 
++/* Linux requires this if _BSD_SOURCE is defined. */
++#ifndef _DEFAULT_SOURCE
++#define _DEFAULT_SOURCE
++#endif
++
+ /* Define if you have the gettimeofday function.  */
+ #undef HAVE_GETTIMEOFDAY
+ 

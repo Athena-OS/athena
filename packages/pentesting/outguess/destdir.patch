@@ -1,0 +1,16 @@
+diff -aur outguess.orig/Makefile.in outguess/Makefile.in
+--- outguess.orig/Makefile.in	2016-07-20 17:32:43.737782658 -0400
++++ outguess/Makefile.in	2016-07-20 17:33:42.483602425 -0400
+@@ -48,8 +48,10 @@
+ 	cd $(JPEGDIR); $(MAKE) libjpeg.a
+ 
+ install: all
+-	$(INSTALL_PROG) -m 755 outguess $(install_prefix)$(bindir)
+-	$(INSTALL_DATA) outguess.1 $(install_prefix)$(mandir)
++	$(INSTALL) -d 755 $(DESTDIR)$(install_prefix)$(bindir)
++	$(INSTALL_PROG) -m 755 outguess $(DESTDIR)$(install_prefix)$(bindir)
++	$(INSTALL) -d 755 $(DESTDIR)$(install_prefix)$(mandir)
++	$(INSTALL_DATA) outguess.1 $(DESTDIR)$(install_prefix)$(mandir)
+ 
+ clean:
+ 	rm -f outguess extract histogram histogram.o *~ $(OBJ) $(MISSING)

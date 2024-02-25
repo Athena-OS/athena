@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=cewl
+Comment=Custom word list generator
+Encoding=UTF-8
+Exec=shell-rocket "if command -v cewl &> /dev/null;then cewl --help;$SHELL;else echo \\"CeWL is not installed. I'm retrieving it for you...\\";sudo pacman -S cewl;cewl --help;$SHELL;fi;"
+Icon=kali-cewl
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=05-05-profile;05-password-attacks;
+X-Athena-Package=cewl

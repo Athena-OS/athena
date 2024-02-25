@@ -1,0 +1,44 @@
+diff --git a/src/recv.c b/src/recv.c
+index 1631242..8fca23c 100644
+--- a/src/recv.c
++++ b/src/recv.c
+@@ -9,7 +9,7 @@
+ 
+ int main(int argc, char* argv[])
+ {
+-    int datafd, controlfd, control_listener, data_listener, listening;
++    int datafd, controlfd, control_listener, data_listener = 0, listening;
+     ssize_t rval, rval_send;
+     uint8_t statusbyte, cont = CONT;
+     uint8_t *buf;
+diff --git a/src/send.c b/src/send.c
+index d6d9268..3240832 100644
+--- a/src/send.c
++++ b/src/send.c
+@@ -9,7 +9,7 @@
+ 
+ int main(int argc, char* argv[])
+ {
+-    int data_listener, controlfd, control_listener, listening, datafd = -1;
++    int data_listener = 0, controlfd, control_listener, listening, datafd = -1;
+     ssize_t rval, numbytes, rval_send;
+     uint8_t *buf;
+     size_t bufsize;
+@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
+ 
+         if (rval != 0) {
+             perror("close");
+-            fprintf(stderr,"close returned %d\n", rval);
++            fprintf(stderr,"close returned %d\n", (int) rval);
+             exit(1);
+         }
+ 
+@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
+             rval = read(controlfd, &statusbyte, 1);
+             if (rval != 1) {
+                 perror("read on controlfd");
+-                fprintf(stderr, "%d\n", rval);
++                fprintf(stderr, "%d\n", (int) rval);
+                 exit(1);
+             }
+             assert(statusbyte == CONT);

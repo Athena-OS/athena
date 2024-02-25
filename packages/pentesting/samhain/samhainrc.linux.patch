@@ -1,0 +1,109 @@
+diff --git a/samhainrc.linux b/samhainrc.linux
+index 9bc5ca4..979d50f 100644
+--- a/samhainrc.linux
++++ b/samhainrc.linux
+@@ -97,15 +97,9 @@ file = /etc/adjtime
+ file = /etc/motd
+ file = /etc/lvm/.cache
+ 
+-# On Ubuntu, these are in /var/lib rather than /etc
+-file = /etc/cups/certs
+-file = /etc/cups/certs/0
+-
+-# managed by fstab-sync on Fedora Core
++file = /etc/cups/ssl
+ file = /etc/fstab
+-
+-# modified when booting 
+-file = /etc/sysconfig/hwconf
++file = /etc/sysctl.d/*.conf
+ 
+ # There are files in /etc that might change, thus changing the directory
+ # timestamps. Put it here as 'file', and in the ReadOnly section as 'dir'.
+@@ -178,41 +172,27 @@ dir = -1/var/tmp
+ dir = -1/var/lib/texmf
+ dir = -1/var/lib/scrollkeeper
+ 
+-
+ [Attributes]
+ 
+ dir = /var/lib/nfs
+ dir = /var/lib/pcmcia
+ 
+-# /var/lib/rpm changes if packets are installed;
+-# /var/lib/rpm/__db.00[123] even more frequently
+-file = /var/lib/rpm/__db.00?
+-
+-file = /var/lib/acpi-support/vbestate
++file = /var/lib/pacman/sync
++file = /var/lib/pacman/sync/*.db*
+ file = /var/lib/alsa/asound.state
+-file = /var/lib/apt/lists/lock
+-file = /var/lib/apt/lists/partial
+-file = /var/lib/cups/certs
+-file = /var/lib/cups/certs/0
+-file = /var/lib/dpkg/lock
+ file = /var/lib/gdm
+ file = /var/lib/gdm/.cookie
+ file = /var/lib/gdm/.gdmfifo
+ file = /var/lib/gdm/:0.Xauth
+ file = /var/lib/gdm/:0.Xservers
+-file = /var/lib/logrotate/status
++file = /var/lib/logrotate.status
+ file = /var/lib/mysql
+ file = /var/lib/mysql/ib_logfile0
+ file = /var/lib/mysql/ibdata1
+-file = /var/lib/slocate
+-file = /var/lib/slocate/slocate.db
+-file = /var/lib/slocate/slocate.db.tmp
+-file = /var/lib/urandom
+-file = /var/lib/urandom/random-seed
+-file = /var/lib/random-seed
++file = /var/lib/mlocate
++file = /var/lib/mlocate/mlocate.db
+ file = /var/lib/xkb
+ 
+-
+ [GrowingLogFiles]
+ ##
+ ## For these files, changes in signature, timestamps, and increase in size
+@@ -247,8 +227,8 @@ IgnoreAdded = /var/log/[[:alnum:]]+/.*\.[0-9]+$
+ IgnoreAdded = /var/log/[[:alnum:]]+/.*\.[0-9]+\.gz$
+ IgnoreAdded = /var/log/[[:alnum:]]+/.*\.[0-9]+\.log$
+ #
+-IgnoreAdded = /var/lib/slocate/slocate.db.tmp
+-IgnoreMissing = /var/lib/slocate/slocate.db.tmp
++IgnoreAdded = /var/lib/mlocate/mlocate.db.tmp
++IgnoreMissing = /var/lib/mlocate/mlocate.db.tmp
+ 
+ #
+ # --------- other policies -----------
+@@ -570,8 +550,8 @@ SetLoopTime = 600
+ 
+ ## Interval between file checks 
+ #
+-# SetFileCheckTime = 600
+-SetFileCheckTime = 7200
++# Time between full scans (inotify is used in the mean time)
++SetFileCheckTime = 86400
+ 
+ ## Alternative: crontab-like schedule
+ #
+@@ -738,6 +718,17 @@ SyslogFacility=LOG_LOCAL2
+ #
+ # PreludeMapToHigh = crit alert
+ 
++[Inotify]
++#
++# Activate (default is off)
++#
++InotifyActive = yes
++
++# Optionally set the maximum number of watches allowed per user.
++# (default is leave as is). To see the default, use:
++# cat /proc/sys/fs/inotify/max_user_watches
++#
++InotifyWatches = 1048576
+ 
+ ## everything below is ignored
+ [EOF]

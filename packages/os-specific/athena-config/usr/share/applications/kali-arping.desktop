@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=arping
+Comment=Sends arp and/or ip pings to a given host
+Encoding=UTF-8
+Exec=shell-rocket "if command -v arping &> /dev/null;then arping --help;$SHELL;else echo \\"Arping is not installed. I'm retrieving it for you...\\";sudo pacman -S iputils;arping --help;$SHELL;fi;"
+Icon=kali-arping
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-02-identify-live-hosts;
+X-Athena-Package=arping

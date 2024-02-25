@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ssdeep
+Comment=Computes context triggered piecewise hashes (fuzzy hashes)
+Encoding=UTF-8
+Exec=shell-rocket "if command -v ssdeep &> /dev/null;then ssdeep -h;$SHELL;else echo \\"ssdeep is not installed. I'm retrieving it for you...\\";sudo pacman -S ssdeep;ssdeep -h;$SHELL;fi;"
+Icon=kali-ssdeep
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-forensics;
+X-Athena-Package=ssdeep

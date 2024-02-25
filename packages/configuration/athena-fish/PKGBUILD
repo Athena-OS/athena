@@ -1,0 +1,17 @@
+pkgname=athena-fish
+pkgver=1.0.0
+pkgrel=3
+pkgdesc="Fish for Athena."
+arch=('any')
+license=("custom")
+depends=('fish' 'zoxide')
+conflicts=('athena-parrotctfs-theme')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel/.config"
+
+  cp -rf "${srcdir}/etc/skel/.config/fish" "${pkgdir}/etc/skel/.config/"  
+}
+
+sha256sums=('9ae3d7139e89af897a782e2ad781ec131d47d6e7f332594c3097df94ddb91937')

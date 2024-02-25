@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=srch_strings
+Encoding=UTF-8
+Exec=shell-rocket "if command -v srch_strings &> /dev/null;then srch_strings -h;$SHELL;else echo \\"srch_strings is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;srch_strings -h;$SHELL;fi;"
+Icon=kali-srch-string
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

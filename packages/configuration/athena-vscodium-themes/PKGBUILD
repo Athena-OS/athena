@@ -1,0 +1,18 @@
+pkgname=athena-vscodium-themes
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="VSCodium themes for Athena."
+arch=('any')
+license=("custom")
+depends=('vscodium')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel/.vscode-oss"
+  mkdir -p "${pkgdir}/etc/skel/.config/VSCodium/User"
+  
+  cp -rf "${srcdir}/etc/skel/.config/VSCodium/User/settings.json" "${pkgdir}/etc/skel/.config/VSCodium/User/"
+
+  cp -rf "${srcdir}/etc/skel/.vscode-oss/extensions" "${pkgdir}/etc/skel/.vscode-oss/"
+}
+sha512sums=('d979902520e468cf47e07e8f2abbd4d5da3bd74b0a795c8261e3cc9e287982700f6b74ffa0eb7635ca7c6aea735b9e2457a56e6b77309c2f8be4e5c3e140785c')

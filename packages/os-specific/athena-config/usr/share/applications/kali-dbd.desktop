@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dbd
+Encoding=UTF-8
+Exec=shell-rocket "if command -v dbd &> /dev/null;then dbd -h;$SHELL;else echo \\"dbd is not installed. I'm retrieving it for you...\\";sudo pacman -S dbd;dbd -h;$SHELL;fi;"
+Icon=kali-dbd
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-02-tunneling;10-01-os-backdoors;
+X-Athena-Package=dbd

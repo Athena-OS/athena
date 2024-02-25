@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ike-scan
+Comment=Discover and fingerprint IKE hosts (IPsec VPN servers)
+Encoding=UTF-8
+Exec=shell-rocket "if command -v ike-scan &> /dev/null;then ike-scan -h;$SHELL;else echo \\"ike-scan is not installed. I'm retrieving it for you...\\";sudo pacman -S ike-scan;ike-scan -h;$SHELL;fi;"
+Icon=kali-ike-scan
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;
+X-Athena-Package=ike-scan

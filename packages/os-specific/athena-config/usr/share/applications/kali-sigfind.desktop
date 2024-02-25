@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sigfind
+Encoding=UTF-8
+Exec=shell-rocket "if command -v sigfind &> /dev/null;then sigfind;$SHELL;else echo \\"sigfind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;sigfind;$SHELL;fi;"
+Icon=kali-sigfind
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

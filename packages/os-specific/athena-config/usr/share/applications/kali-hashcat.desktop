@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=hashcat
+Encoding=UTF-8
+Exec=shell-rocket "if command -v hashcat &> /dev/null;then hashcat --help;$SHELL;else echo \\"hashcat is not installed. I'm retrieving it for you...\\";sudo pacman -S hashcat;hashcat --help;$SHELL;fi;"
+Icon=kali-hashcat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=05-02-offline-attacks;05-password-attacks;
+X-Athena-Package=hashcat

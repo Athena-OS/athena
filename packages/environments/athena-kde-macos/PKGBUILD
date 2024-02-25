@@ -1,0 +1,35 @@
+pkgname=athena-kde-macos
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="KDE MacOS configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('albert' 'apple-fonts' 'athena-kde-base' 'kvantum' 'latte-dock' 'lightly-qt' 'macsonoma-kde-theme-git' 'plasma5-applets-bigsur-inlinebattery' 'plasma5-applets-control-centre' 'plasma5-applets-corner-menu' 'plasma5-applets-latte-separator' 'plasma5-applets-plasma-drawer' 'plasma5-applets-window-appmenu' 'plasma5-applets-window-buttons' 'plasma5-applets-window-title' 'ttf-material-design-icons-extended' 'whitesur-cursor-theme-git' 'whitesur-gtk-theme-git' 'whitesur-icon-theme-git')
+source=("dolphinrc"
+        "ksplashrc"
+        "lattedockrc"
+        "MacOS_Dock.layout.latte"
+        "org.kde.latte-dock.desktop"
+        "plasma-org.kde.plasma.desktop-appletsrc"
+        "$pkgname.tar.gz")
+sha512sums=('cfbea0b71a64d36436b1d78aa152994438e8544ce2fe35f4a46548814dc3696040b0e4c8c8bb35b5753ffd0f5c9a0800f18b242c6a430fd300d89eccbd277d5c'
+            '301699d1a007599b0b4586f315f91b7cda452f4f5221351a8a0a391e44074e6bf1094971ade9fcf61c66b40f97c5df4400acf07c76e759255c1e5f29b3db4004'
+            'f15b608b85bcb78058c998c79b0b9eee3ad05ed8fb0b50c84e7714995ddfb83629b25bdd96a9aaf78aa1843c4dfdfd8ab46f797721ed35c0bcaade78a9b0c5aa'
+            '3924b7ba583fd647598757b00e3d54761dc48c768c31aed55f86835492e5a69d61a4e5d5ce77070868cb075d858fb531af79e2e7b23944a22536e44abe139c98'
+            '22ff4b0effcf1f012573aa9f4044b042b55e600a0f03d18dfed8d5521a7e5046c2fad67abbc79b29851ae825d5c8a37d8cec0769a4df93da760c3e79cc75cb0a'
+            '01efb420512c4a32bf126490d11169b9e4cf2ea00842fa0b44425cce612e1fd5343b6c58ac5c83438261b595cb509458f23450ee6d226357dfd3b245779b4d5f')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.config/latte"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/usr/share/albert/widgetsboxmodel/themes"
+
+  install -Dm644 "dolphinrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "ksplashrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "lattedockrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "plasma-org.kde.plasma.desktop-appletsrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "MacOS_Dock.layout.latte" "${pkgdir}/etc/skel/.config/latte/"
+  install -Dm644 "org.kde.latte-dock.desktop" "${pkgdir}/etc/xdg/autostart/"
+  install -Dm644 "albert_theme_macos/Albert_Sonoma_Dark.qss" "${pkgdir}/usr/share/albert/widgetsboxmodel/themes/"
+  install -Dm644 "albert_theme_macos/Albert_Sonoma_Light.qss" "${pkgdir}/usr/share/albert/widgetsboxmodel/themes/"
+}

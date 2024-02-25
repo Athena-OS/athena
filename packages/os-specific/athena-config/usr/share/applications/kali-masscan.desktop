@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=masscan
+Encoding=UTF-8
+Exec=shell-rocket "if command -v masscan &> /dev/null;then masscan --help;$SHELL;else echo \\"masscan is not installed. I'm retrieving it for you...\\";sudo pacman -S masscan;masscan --help;$SHELL;fi;"
+Icon=kali-masscan
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-02-identify-live-hosts;01-04-network-scanners;
+X-Athena-Package=masscan

@@ -1,0 +1,16 @@
+pkgbase = python-maryam-git
+	pkgdesc = OWASP Maryam is a modular/optional open source framework based on OSINT and data gathering.
+	pkgver = 20210630.r732
+	pkgrel = 1
+	url = https://github.com/saeeddhqan/Maryam
+	arch = any
+	groups = 
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = maryam::git+https://github.com/saeeddhqan/Maryam.git
+	sha256sums = SKIP
+
+pkgname = python-maryam-git
+

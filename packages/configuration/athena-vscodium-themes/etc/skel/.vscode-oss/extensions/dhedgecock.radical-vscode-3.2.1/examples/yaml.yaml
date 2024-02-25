@@ -1,0 +1,46 @@
+name: CI/CD
+on: [push]
+
+jobs:
+  test:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Code Climate - Setup
+        # Install the Code Climate reporter in workspace
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
+      - name: Test
+        # Application tests workflow manages:
+        #  1. Setting Cypress+Percy git branch env vars (Github actions aren't supported yet)
+        #  2. Building the application Docker image (executes linting and unit tests)
+        #  3. Copy code coverage output from Docker image to workspace for uploading later
+        #  4. Running Cypress tests using Docker Compose and NGINX
+        run: |
+          export COMMIT_INFO_BRANCH="${COMMIT_INFO_BRANCH:-${GITHUB_REF:11}}"
+          export PERCY_BRANCH="${PERCY_BRANCH:-${GITHUB_REF:11}}"
+
+          docker build -t crystal-ball/react-application-prototype .
+          docker run --rm -v $(pwd)/coverage:/tmp crystal-ball/react-application-prototype cp -a /usr/src/app/coverage/. /tmp/
+          docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --exit-code-from cypress --abort-on-container-exit
+        env:
+          COMMIT_INFO_BRANCH: ${{ github.head_ref }}
+          PERCY_BRANCH: ${{ github.head_ref }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      - name: Code Climate - Report
+        if: success()
+        # Upload test code coverage report to Code Climate (branch must be explicitly set)
+        run: |
+          export GIT_BRANCH="${GIT_BRANCH:-${GITHUB_REF:11}}"
+          ./cc-test-reporter after-build --prefix /usr/src/app
+        env:
+          GIT_BRANCH: ${{ github.head_ref }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

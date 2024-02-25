@@ -1,0 +1,22 @@
+pkgname=athena-system-installation
+pkgver=1.0.2
+pkgrel=4
+pkgdesc="Installation files for Athena."
+arch=('any')
+license=("custom")
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/xdg/autostart"
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  mkdir -p "${pkgdir}/usr/local/bin"
+  mkdir -p "${pkgdir}/etc/profile.d"
+
+  cp -rf "${srcdir}/etc/profile.d/01-expand_cowspace.sh" "${pkgdir}/etc/profile.d/"
+  cp -rf "${srcdir}/etc/xdg/autostart/athena-welcome.desktop" "${pkgdir}/etc/xdg/autostart/"
+  cp -rf "${srcdir}/usr/lib/systemd/system/athena-graphical-target.service" "${pkgdir}/usr/lib/systemd/system/"
+  cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
+  
+  install -Dm755 "$srcdir/usr/local/bin/athena-snapper" "$pkgdir/usr/local/bin/"
+}
+sha512sums=('126e1fb86b2751bdec30c001ca927e18daf0e0f3ee90734dddc16dfc36260e2b55e2f5c870906371ddd16f326283fa635df6103144aaeea6435a686a494f2428')

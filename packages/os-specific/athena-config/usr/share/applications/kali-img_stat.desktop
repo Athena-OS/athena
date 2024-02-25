@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=img_stat
+Encoding=UTF-8
+Exec=shell-rocket "if command -v img_stat &> /dev/null;then img_stat;$SHELL;else echo \\"img_stat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;img_stat;$SHELL;fi;"
+Icon=kali-img_stat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

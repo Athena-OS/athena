@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=wfuzz
+Comment=A web application bruteforcer
+Encoding=UTF-8
+Exec=shell-rocket "if command -v wfuzz &> /dev/null;then wfuzz;$SHELL;else echo \\"wfuzz is not installed. I'm retrieving it for you...\\";sudo pacman -S wfuzz;wfuzz;$SHELL;fi;"
+Icon=kali-wfuzz
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-04-web-crawlers;
+X-Athena-Package=wfuzz

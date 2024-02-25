@@ -1,0 +1,30 @@
+@import "scss/colors1";
+
+// simple variables
+$test2: hotpink;
+$test5: rgb(123, 255, 123);
+$test7: rgba(255, 123, 123, 0.9);
+
+// reference
+$dd: $test7;
+
+// present in colors2.sass which is imported by colors1.sass
+$test0: $color1;
+// present in colors1.sass
+$test1: $color2;
+
+// recursive definitions
+$d: $test1;
+$dark: $d;
+$e: $dark;
+$f: $e;
+$g: $f;
+
+$test3: $color3;
+$test4: $color4;
+$test6: $color6; // this should be absent and this comment shoudl be ignored $color6: black
+$test8: $color8;
+$test9: $color9;
+$test10: $color10;
+$test11: $color11;
+$aki: red;

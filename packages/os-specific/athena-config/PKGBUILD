@@ -1,0 +1,44 @@
+pkgname=athena-config
+pkgver=1.0.5
+pkgrel=1
+pkgdesc="System configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('athena-theme-tweak' 'terminus-font')
+source=("$pkgname.tar.gz")
+
+package() {
+  install -dm 755 "${pkgdir}/usr/bin"
+  install -dm 755 "${pkgdir}/etc/modprobe.d"
+  install -dm 755 "${pkgdir}/etc/pacman.d/hooks"
+  install -dm 755 "${pkgdir}/etc/skel"
+  install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/usr/lib"
+  install -dm 755 "${pkgdir}/usr/local/bin"
+  install -dm 755 "${pkgdir}/usr/local/share"
+  install -dm 755 "${pkgdir}/usr/share/applications"
+  install -dm 755 "${pkgdir}/usr/share/desktop-directories"
+  install -dm 755 "${pkgdir}/usr/share/icons/hicolor"
+  install -dm 755 "${pkgdir}/usr/share/icons/htb-toolkit"
+  install -dm 755 "${pkgdir}/usr/share/pixmaps/faces"
+
+  cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
+  cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
+  cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
+  install -Dm644 "${srcdir}/etc/xdg/menus/blue-applications.menu" "${pkgdir}/etc/xdg/menus/"
+  install -Dm644 "${srcdir}/etc/xdg/menus/red-applications.menu" "${pkgdir}/etc/xdg/menus/"
+
+  cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
+  cp -rf "${srcdir}/usr/bin/shell-rocket" "${pkgdir}/usr/bin/"
+  cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
+  cp -rf "${srcdir}/usr/local/share/athena" "${pkgdir}/usr/local/share/"
+  cp -rf "${srcdir}"/usr/share/applications/* "${pkgdir}/usr/share/applications/"
+  cp -rf "${srcdir}"/usr/share/desktop-directories/* "${pkgdir}/usr/share/desktop-directories/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
+  cp -rf "${srcdir}"/usr/share/icons/htb-toolkit/* "${pkgdir}/usr/share/icons/htb-toolkit/"
+  cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
+}
+
+sha512sums=('a7997e82eaa0866c0b8fdbaa08902a9ea7dda8f88968d0a85164b0a26c4deecbceff42401e494224c45f883bbde07f2c31dacfa8b0dbc8dcc925221229007d9c')

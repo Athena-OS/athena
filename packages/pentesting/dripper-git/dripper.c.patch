@@ -1,0 +1,15 @@
+diff --git a/dripper.c b/dripper.c
+index d5a6d9b..7ec6065 100644
+--- a/dripper.c
++++ b/dripper.c
+@@ -30,8 +30,8 @@
+  
+ in_addr_t *dns_servers;
+ int   NUM_DNS    = 0;
+-char *RESOLVCONF = "resolv.conf";
+-char *SUBDOMAINS = "subs.txt";
++char *RESOLVCONF = "/usr/share/dripper/resolv.conf";
++char *SUBDOMAINS = "/usr/share/dripper/subs.txt";
+  
+ // structs for the DNS protocol
+ struct dnsflags {

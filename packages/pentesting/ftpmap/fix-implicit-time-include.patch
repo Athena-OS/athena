@@ -1,0 +1,10 @@
+--- ftpmap.c.orig	2016-08-24 12:03:27.102994165 -0400
++++ ftpmap.c	2016-08-24 12:04:00.009197197 -0400
+@@ -4,6 +4,7 @@
+ #include "ftpmap.h"
+ #include "testcmds.h"
+ #include "fingerprints.h"
++#include <time.h>
+ 
+ const char *ftp_server;
+ const char *ftp_port = FTP_DEFAULT_PORT; 

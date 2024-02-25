@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=samdump2
+Encoding=UTF-8
+Exec=shell-rocket "if command -v samdump2 &> /dev/null;then samdump2 -h;$SHELL;else echo \\"samdump2 is not installed. I'm retrieving it for you...\\";sudo pacman -S samdump2;samdump2 -h;$SHELL;fi;"
+Icon=kali-samdump2
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=05-02-offline-attacks;
+X-Athena-Package=samdump2

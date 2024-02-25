@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=cisco-auditing-tool
+Encoding=UTF-8
+Exec=shell-rocket "if command -v CAT &> /dev/null;then CAT;$SHELL;else echo \\"Cisco Auditing Tool is not installed. I'm retrieving it for you...\\";sudo pacman -S cisco-auditing-tool;CAT;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=06-01-cisco-attacks;02-01-cisco-tools;05-01-online-attacks;001-identify;
+X-Athena-Package=cisco-auditing-tool

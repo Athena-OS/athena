@@ -1,0 +1,187 @@
+.TH FORCE_BIND "1"
+.SH NAME
+FORCE_BIND
+.SH AUTHOR
+Catalin(ux) M. BOIE \- catab at embedromix dot ro
+.SH DESCRIPTION
+Force an application to bind on a specific IP and/or port. Plus forcing setsockopt calls on the socket. Works with both IPv4 and IPv6.
+.TP
+It is useful if you have a binary application without sources and without the possibility to configure address or port to bind to.
+.SH LICENSE
+GPLv3
+.SH HOW IT WORKS
+force_bind is a shared object that is loaded with LD_PRELOAD and hooks 'bind' function. Forcing an IP/port to bind to is done with environments variables.
+.SH EXAMPLES
+0. Output debug stuff in a log file (for debugging):
+.TP
+\fB	export FORCE_NET_VERBOSE=999
+.TP
+\fB	export FORCE_NET_LOG="xxx.log"
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+1. Force bind to 127.0.0.1, port 33, verbose operations:
+.TP
+\fB	export FORCE_NET_VERBOSE=1
+.TP
+\fB	export FORCE_BIND_ADDRESS_V4=127.0.0.1
+.TP
+\fB	export FORCE_BIND_PORT_V4=33
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+2. Force binding to 127.0.0.2, port unchanged
+.TP
+\fB	export FORCE_BIND_ADDRESS_V4=127.0.0.2
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+3. Force binding to ::1 (IPv6), port unchanged
+.TP
+\fB	export FORCE_BIND_ADDRESS_V6=::1
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+4. Changing TOS on all sockets to 30
+.TP
+\fB	export FORCE_NET_TOS=30
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+5. Force Keep alive to 60 seconds:
+.TP
+\fB	export FORCE_NET_KA=60
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+6. Force MSS to 1400
+.TP
+\fB	export FORCE_NET_MSS=1400
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+7. Force bandwidth to 1000 bytes/s for _all_ connections, cumulated
+.TP
+\fB	export FORCE_NET_BW=1000
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+8. Force bandwidth to 20000 bytes/s per socket
+.TP
+\fB	export FORCE_NET_BW_PER_SOCKET=20000
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+9. Force REUSEADDR
+.TP
+\fB	export FORCE_NET_REUSEADDR=1
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+10. Force NODELAY
+.TP
+\fB	export FORCE_NET_NODELAY=1
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+11. Force client connections (for example 'telnet', 'ssh', 'firefox') to connect from a specified address, not the auto selected one:
+.TP
+\fB	export FORCE_NET_VERBOSE=1
+.TP
+\fB	export FORCE_BIND_ADDRESS_V4=127.0.0.2
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+12. Set a FLOWINFO (flow label + class) for a client connection:
+.TP
+\fB	export FORCE_NET_VERBOSE=1
+.TP
+\fB	export FORCE_NET_FLOWINFO=0x7812345 # class 0x78, label 0x12345
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+13. Force FWMARK on a connection (only root can do it):
+.TP
+\fB	export FORCE_NET_VERBOSE=1
+.TP
+\fB	export FORCE_NET_FWMARK=0x1234
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+14. Force priority (between 0 and 6 for non-root users). You can use 'tc' command from iproute to set-up 'prio' qdisc and to assign prio to queues:
+.TP
+\fB	# 0. setup
+.TP
+\fB	export FORCE_NET_VERBOSE=1
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	# 1. Make sure you have a 'prio' qdisc attached to eth0, for example:
+.TP
+\fB	tc qdisc add ev eth0 root handle 1: prio
+.TP
+\fB	# 2. Assign applications to classed (bands):
+.TP
+\fB	export FORCE_NET_PRIO=6 # interactive, band 0
+.TP
+\fB	your_voip_program_here
+.TP
+\fB	export FORCE_NET_PRIO=0 # best effort, band 1
+.TP
+\fB	your_mail_program_here
+.TP
+\fB	export FORCE_NET_PRIO=2 # bulk, band 2
+.TP
+\fB	your_remote_backup_program_here
+.TP
+\fB	# 3. Run tc statistics so you can see the classification:
+.TP
+\fB	tc -s class show dev eth0
+.TP
+15. Deny binding to any IPv4 sockets. The bind syscall will return -1 and errno will be set to EACCES.
+.TP
+\fB	export FORCE_NET_VERBOSE=1
+.TP
+\fB	export FORCE_BIND_ADDRESS_V4=deny
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here
+.TP
+16. Silent fake binding to any IPv6 sockets. The bind will return success, but will never accept any connection.
+.TP
+\fB	export FORCE_NET_VERBOSE=1
+.TP
+\fB	export FORCE_BIND_ADDRESS_V6=fake
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
+.TP
+\fB	your_program_here

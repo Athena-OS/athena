@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=scrounge-ntfs
+Comment=Helps retrieve data from corrupted NTFS partitions
+Encoding=UTF-8
+Exec=shell-rocket "if command -v scrounge-ntfs &> /dev/null;then scrounge-ntfs -h;$SHELL;else echo \\"scrounge-ntfs is not installed. I'm retrieving it for you...\\";sudo pacman -S scrounge-ntfs;scrounge-ntfs -h;$SHELL;fi;"
+Icon=kali-scrounge-ntfs
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-05-forensic-carving-tools;005-recover;
+X-Athena-Package=scrounge-ntfs

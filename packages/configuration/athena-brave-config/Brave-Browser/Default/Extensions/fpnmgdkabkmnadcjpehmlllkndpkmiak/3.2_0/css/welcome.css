@@ -1,0 +1,81 @@
+
+body {
+    background-color: #eee;
+    font-size: 24px;
+    text-align: left;
+}
+
+h1, h2, h3, h4 {
+    color: inherit;
+}
+h1 {
+    font-size: 22pt;
+}
+h4 {
+    margin-top: 1em;
+    font-size: 14pt;
+}
+
+p {
+    text-align: justify;
+}
+
+.body-container {
+    height: 100vh;
+    margin-top: 1em;
+    padding: 0;
+}
+
+.header-container {
+    text-align: center;
+}
+
+.content-container {
+    margin: 2em 15vw 10vh 15vw;
+    padding-bottom: 5em;
+}
+
+.bottom-container {
+    position: fixed;
+    margin: 0;
+    padding: 0.5em 15vw 0.5em 15vw;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #ddd;
+    border-top: 1px solid #888;
+}
+
+.welcome-logo {
+    background: url('../images/wayback-light.png') center/cover no-repeat;
+    width: 375px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #222;
+        color: #ccc;
+    }
+
+    h1 {
+        color: #ddd;
+    }
+
+    h2, h3, h4 {
+        color: #dcc;
+    }
+
+    .bottom-container {
+        background-color: #333;
+    }
+
+    .welcome-logo {
+        background-image: url('../images/wayback-dark.png')
+    }
+
+}

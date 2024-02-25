@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=cryptsetup
+Encoding=UTF-8
+Exec=shell-rocket "if command -v cryptsetup &> /dev/null;then cryptsetup --help;$SHELL;else echo \\"cryptsetup is not installed. I'm retrieving it for you...\\";sudo pacman -S cryptsetup;cryptsetup --help;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=002-protect;
+X-Athena-Package=cryptsetup

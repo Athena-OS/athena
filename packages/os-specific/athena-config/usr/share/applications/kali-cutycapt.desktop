@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=cutycapt
+Comment=Utility to capture WebKit's rendering of a web page
+Encoding=UTF-8
+Exec=shell-rocket "if command -v cutycapt &> /dev/null;then cutycapt --help;$SHELL;else echo \\"cutycapt is not installed. I'm retrieving it for you...\\";sudo pacman -S cutycapt;cutycapt --help;$SHELL;fi;"
+Icon=kali-cutycapt
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-04-web-crawlers;12-reporting;
+X-Athena-Package=cutycapt

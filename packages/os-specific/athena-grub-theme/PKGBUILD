@@ -1,0 +1,27 @@
+pkgname=athena-grub-theme
+pkgver=27.efe1abb
+pkgrel=1
+pkgdesc="Grub theme of Athena OS."
+arch=('any')
+license=("GPL")
+install=athena-grub-theme.install
+depends=('python')
+source=("git+https://gitlab.com/VandalByte/darkmatter-grub-theme")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd darkmatter-grub-theme
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd darkmatter-grub-theme
+
+  mkdir -p "$pkgdir/usr/share/grub/themes/athena/icons"
+
+  cp -rf "assets/backgrounds/athena-1080p.png" "$pkgdir/usr/share/grub/themes/athena/background.png"
+  cp -rf "assets/icons-1080p/color/athena.png" "$pkgdir/usr/share/grub/themes/athena/icons/"
+  cp -rf assets/fonts/1080p/* "$pkgdir/usr/share/grub/themes/athena/"
+  cp -rf base/1080p/* "$pkgdir/usr/share/grub/themes/athena/"
+}

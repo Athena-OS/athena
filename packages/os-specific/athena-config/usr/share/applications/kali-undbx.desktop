@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=undbx
+Encoding=UTF-8
+Exec=shell-rocket "if command -v undbx &> /dev/null;then undbx -h;$SHELL;else echo \\"undbx is not installed. I'm retrieving it for you...\\";sudo pacman -S undbx;undbx -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-03-digital-forensics;005-recover;
+X-Athena-Package=undbx

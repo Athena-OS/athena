@@ -1,0 +1,99 @@
+
+/* About Page */
+
+h1.underlined {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5em;
+}
+
+.about-header {
+    /* float: left; */
+    margin-bottom: 3em;
+    text-align: center;
+}
+.about-header * {
+    /* float: left; */
+}
+.about-header img {
+    margin: 1em 1em 0 0;
+}
+
+.about-body {
+    float: left;
+    font-size: 14pt;
+    margin-bottom: 2em;
+}
+.about-body div {
+    padding-right: 3em;
+}
+
+.about-footer {
+    font-size: 11pt;
+    line-height: 1.1;
+    margin: 2em 0;
+}
+
+.about-app-icon {
+    width: 32px;
+    height: 32px;
+    margin: 2px 2px 2px 0;
+}
+.about-badge {
+    height: 50px;
+    margin-bottom: 1em;
+}
+
+#about-news-list {
+    font-size: 11pt;
+    line-height: 1.1;
+}
+
+ul.features {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+ul.features li {
+    padding-bottom: 0.5em;
+}
+ul.features li:nth-child(odd) h4 {
+    color: #733;
+}
+ul.features li:nth-child(even) h4 {
+    color: #522;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #222;
+        color: #ccc;
+    }
+
+    h1.underlined {
+        border-bottom: 1px solid #444;
+    }
+
+    h1 {
+        color: #ddd;
+    }
+
+    h2, h3, h4 {
+        color: #dcc;
+    }
+
+    a {
+        color: #d66;
+    }
+    a:hover {
+        color: #f88;
+    }
+
+    ul.features li:nth-child(odd) h4 {
+        color: #faa;
+    }
+    ul.features li:nth-child(even) h4 {
+        color: #d88;
+    }
+
+}

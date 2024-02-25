@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=hashrat
+Encoding=UTF-8
+Exec=shell-rocket "if command -v hashrat &> /dev/null;then hashrat --help;$SHELL;else echo \\"hashrat is not installed. I'm retrieving it for you...\\";sudo pacman -S hashrat;hashrat --help;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=004-respond;
+X-Athena-Package=hashrat

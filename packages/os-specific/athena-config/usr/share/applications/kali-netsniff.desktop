@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=netsniff-ng
+Comment=The packet sniffing beast
+Encoding=UTF-8
+Exec=shell-rocket "if command -v netsniff-ng &> /dev/null;then netsniff-ng -h;$SHELL;else echo \\"netsniff-ng is not installed. I'm retrieving it for you...\\";sudo pacman -S netsniff-ng;netsniff-ng -h;$SHELL;fi;"
+Icon=kali-netsniff-ng
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=09-01-network-sniffers;09-sniffing-spoofing;004-respond;
+X-Athena-Package=netsniff-ng

@@ -1,0 +1,149 @@
+/* default light mode */
+
+#setting-page {
+    overflow: hidden;
+}
+
+#setting-page label {
+    font-weight: 500;
+    font-size: 12px;
+}
+
+#view-setting-text {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.setting-text-box {
+    display: inline-block;
+    width: calc(100% - 50px);
+}
+
+.setting-text-box div {
+    margin-top: 0.5em;
+}
+
+.setting-switch {
+    width: 100%;
+    min-height: 36px;
+    border-radius: 5px;
+    border: 1px solid #888;
+    margin: 5px auto 5px auto;
+    padding: 8px 5px 8px 5px;
+    text-align: left;
+    cursor: pointer;
+}
+.setting-switch:hover {
+    background-color: #ccc;
+    outline: none;
+}
+
+.btn-docs {
+    background-color: #888;
+    color: #fff;
+}
+
+/* navgation bar */
+
+ul.setting-nav {
+    list-style-type: none;
+    margin: 0 0 5px 0;
+    overflow: hidden;
+}
+
+ul.setting-nav li {
+    float: left;
+    width: 50%;
+}
+
+/* options */
+
+#view-setting {
+    text-align: center !important;
+}
+
+#view-setting label {
+    margin: 0;
+}
+
+.setting-switch * {
+    cursor: pointer;
+}
+
+.setting-switch input[type=checkbox] {
+    margin: 3px 7px 0 3px;
+    float: left;
+}
+
+.radiobtn {
+    margin-right: 8px;
+}
+
+label[for=tagcloud] {
+    margin-bottom: 5px;
+}
+
+#back-btn {
+    margin-top: 10px;
+}
+
+.embed-popup-group {
+    line-height: 1em;
+}
+
+.embed-popup-group input {
+    margin: 0 7px 0 0 !important;
+}
+
+.embed-popup-group label {
+    margin: 0;
+    font-size: 10px !important;
+}
+
+
+/* tooltips */
+
+.btn-docs {
+    float: right;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #888;
+    border-radius: 50%;
+    font-size: 10px;
+    padding: 0;
+}
+
+.tooltip-inner p {
+    margin: 5px;
+    font-size: 12px;
+}
+
+.setting-tip {
+    width: 100px;
+}
+
+/* dark mode */
+
+@media (prefers-color-scheme: dark) {
+
+    #setting-page label {
+        font-weight: 500;
+    }
+
+    #view-setting-text {
+        font-weight: 500;
+    }
+
+    .setting-switch {
+        border: 1px solid #666;
+    }
+    .setting-switch:hover {
+        background-color: #444;
+    }
+
+    .btn-docs {
+        background-color: #888;
+        color: #000;
+    }
+
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=social engineering toolkit (root)
+Encoding=UTF-8
+Exec=shell-rocket "if command -v setoolkit &> /dev/null;then sudo setoolkit;$SHELL;else echo \\"SET is not installed. I'm retrieving it for you...\\";sudo pacman -S set;sudo setoolkit;$SHELL;fi;"
+Icon=kali-set
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=08-exploitation-tools;13-social-engineering-tools;
+X-Athena-Package=set

@@ -1,0 +1,12 @@
+post_install() {
+  echo "Setting Akame theme"
+
+  mv /etc/skel/.config/kitty/CrayonPonyFish.conf /etc/skel/.config/kitty/current-theme.conf
+  mv /usr/share/athena-akame-theme/apps/* /usr/share/icons/hicolor/scalable/apps/
+  mv /usr/share/athena-akame-theme/categories/* /usr/share/icons/hicolor/scalable/categories/
+  rm -rf /usr/share/athena-akame-theme
+}
+
+post_upgrade() {
+    post_install $1
+}

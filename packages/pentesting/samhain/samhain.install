@@ -1,0 +1,14 @@
+post_upgrade() {
+    systemd-tmpfiles --create samhain.conf
+}
+
+post_install() {
+    post_upgrade
+
+    echo "Samhain is now installed, and needs to be configured:"
+    echo "  1. Review and configure /etc/samhainrc"
+    echo "  2. Run 'samhain -t init' to initialize the database"
+    echo "  3. Start the service: 'systemctl start samhain'"
+
+    return 0
+}

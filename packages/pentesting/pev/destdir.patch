@@ -1,0 +1,124 @@
+diff -aur pev.orig/src/config.c pev/src/config.c
+--- pev.orig/src/config.c	2017-02-19 20:11:43.207918293 -0500
++++ pev/src/config.c	2017-02-19 20:17:59.262737639 -0500
+@@ -55,7 +55,7 @@
+ #define DEFAULT_PLUGINS_PATH "plugins"
+ #else
+ #define DEFAULT_CONFIG_PATH ".config/pev" DEFAULT_CONFIG_FILENAME
+-#define DEFAULT_PLUGINS_PATH "/usr/local/lib/pev/plugins"
++#define DEFAULT_PLUGINS_PATH PLUGINSDIR // PLUGINSDIR is defined via CPPFLAGS in the Makefile
+ #endif
+ 
+ static bool _load_config_cb(pev_config_t * const config, const char *name, const char *value) {
+diff -aur pev.orig/src/Makefile pev/src/Makefile
+--- pev.orig/src/Makefile	2017-02-19 20:11:43.207918293 -0500
++++ pev/src/Makefile	2017-02-19 20:20:22.647428990 -0500
+@@ -29,7 +29,7 @@
+ man1dir = $(mandir)/man1
+ man1ext = .1
+ 
+-export pluginsdir = $(DESTDIR)$(libdir)/pev/plugins
++export pluginsdir = $(libdir)/pev/plugins
+ 
+ ####### Makefile Conventions - Utilities
+ 
+@@ -54,7 +54,14 @@
+ 
+ override LDFLAGS += -L$(LIBPE) -lpe -ldl
+ override CFLAGS += -I$(LIBPE) -I"../include" -W -Wall -Wextra -std=c99 -pedantic
+-override CPPFLAGS += -D_GNU_SOURCE -DSHAREDIR="\"$(SHAREDIR)"\"
++# Some gcc/clang builds (depends on the distro) already define _FORTIFY_SOURCE internally, so we
++# undefine it first to avoid redefinition warnings.
++override CPPFLAGS += \
++	-D_GNU_SOURCE \
++	-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 \
++	-DSHAREDIR="\"$(SHAREDIR)"\" \
++	-DPLUGINSDIR="\"$(pluginsdir)"\"
++
+ 
+ ifeq ($(PLATFORM_OS), Darwin)
+ 	# We disable warnings for deprecated declarations since Apple deprecated OpenSSL in Mac OS X 10.7
+diff -aur pev.orig/src/pehash.c pev/src/pehash.c
+--- pev.orig/src/pehash.c	2017-02-19 20:11:43.207918293 -0500
++++ pev/src/pehash.c	2017-02-19 20:13:40.146307311 -0500
+@@ -215,13 +215,25 @@
+ 	unsigned char md_value[EVP_MAX_MD_SIZE];
+ 	unsigned int md_len;
+ 
+-	EVP_MD_CTX md_ctx;
++// See https://wiki.openssl.org/index.php/1.1_API_Changes
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++	EVP_MD_CTX md_ctx_auto;
++	EVP_MD_CTX *md_ctx = &md_ctx_auto;
++#else
++	EVP_MD_CTX *md_ctx = EVP_MD_CTX_new();
++#endif
++
+ 	// FIXME: Handle errors - Check return values.
+-	EVP_MD_CTX_init(&md_ctx);
+-	EVP_DigestInit_ex(&md_ctx, md, NULL);
+-	EVP_DigestUpdate(&md_ctx, data, size);
+-	EVP_DigestFinal_ex(&md_ctx, md_value, &md_len);
+-	EVP_MD_CTX_cleanup(&md_ctx);
++	EVP_MD_CTX_init(md_ctx);
++	EVP_DigestInit_ex(md_ctx, md, NULL);
++	EVP_DigestUpdate(md_ctx, data, size);
++	EVP_DigestFinal_ex(md_ctx, md_value, &md_len);
++
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++	EVP_MD_CTX_cleanup(md_ctx);
++#else
++	EVP_MD_CTX_free(md_ctx);
++#endif
+ 
+ 	for (unsigned int i=0; i < md_len; i++)
+ 		sprintf(&output[i * 2], "%02x", md_value[i]);
+diff -aur pev.orig/src/pepack.c pev/src/pepack.c
+--- pev.orig/src/pepack.c	2017-02-19 20:11:43.207918293 -0500
++++ pev/src/pepack.c	2017-02-19 20:18:37.795540132 -0500
+@@ -155,6 +155,7 @@
+ 	*fp = fopen(dbfile, "r");
+ 	// FIXME(jweyrich): Granted read permission to the informed dbfile, this will succeed even if it's a directory!
+ 	if (!*fp) {
++		// SHAREDIR is defined via CPPFLAGS in the Makefile
+ 		*fp = fopen(SHAREDIR "/userdb.txt", "r");
+ 	}
+ 
+diff -aur pev.orig/src/pesec.c pev/src/pesec.c
+--- pev.orig/src/pesec.c	2017-02-19 20:11:43.211251581 -0500
++++ pev/src/pesec.c	2017-02-19 20:14:00.986020216 -0500
+@@ -225,7 +225,9 @@
+ 	PKCS7 *p7 = NULL;
+ 	BIO *in = NULL;
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	CRYPTO_malloc_init();
++#endif
+ 	ERR_load_crypto_strings();
+ 	OpenSSL_add_all_algorithms();
+ 
+diff -aur pev.orig/src/plugins/Makefile pev/src/plugins/Makefile
+--- pev.orig/src/plugins/Makefile	2017-02-19 20:11:43.211251581 -0500
++++ pev/src/plugins/Makefile	2017-02-19 20:20:03.557691978 -0500
+@@ -77,14 +77,14 @@
+ ###
+ 
+ install: installdirs
+-	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(csv_LIBNAME).* $(pluginsdir)
+-	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(html_LIBNAME).* $(pluginsdir)
+-	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(text_LIBNAME).* $(pluginsdir)
+-	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(xml_LIBNAME).* $(pluginsdir)
+-	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(json_LIBNAME).* $(pluginsdir)
++	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(csv_LIBNAME).* $(DESTDIR)$(pluginsdir)
++	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(html_LIBNAME).* $(DESTDIR)$(pluginsdir)
++	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(text_LIBNAME).* $(DESTDIR)$(pluginsdir)
++	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(xml_LIBNAME).* $(DESTDIR)$(pluginsdir)
++	$(INSTALL_PROGRAM) -m 755 $(plugins_BUILDDIR)/$(json_LIBNAME).* $(DESTDIR)$(pluginsdir)
+ 
+ installdirs:
+-	@$(CHK_DIR_EXISTS) $(pluginsdir) || $(MKDIR) $(pluginsdir)
++	@$(CHK_DIR_EXISTS) $(DESTDIR)$(pluginsdir) || $(MKDIR) $(DESTDIR)$(pluginsdir)
+ 
+ uninstall:
+-	$(RM_DIR) $(pluginsdir)
++	$(RM_DIR) $(DESTDIR)$(pluginsdir)

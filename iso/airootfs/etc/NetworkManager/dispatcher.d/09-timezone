@@ -1,0 +1,9 @@
+#!/bin/sh
+# Update timezone every time NetworkManager connects to a network
+# Using connectivity-change instead of up can prevent timezone changes when connecting to VPNs with clients such as OpenConnect
+# Having the right time zone could fix some issues related to invalid signature errors: https://wiki.archlinux.org/title/Pacman/Package_signing#Invalid_signature_errors
+case "$2" in
+    connectivity-change)
+        timedatectl set-timezone "$(curl --fail https://ipapi.co/timezone)"
+    ;;
+esac

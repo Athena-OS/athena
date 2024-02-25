@@ -1,0 +1,151 @@
+                         CHANGELOG           
+
+
+Version 1.9.5:
+(11.20.2014)
+..............
+
+- Adjusted Slowloris socket routine
+- More optimizations
+- [BUG] Slowloris shoot doesn't handling a correct socket policy
+
+
+
+Version 1.9.4:
+(10.18.2014)
+..............
+
+- Realeased Network Security tool: Nsoq version
+- New tool name
+- [BUG] Variable size in structures for Darwin OS
+- [BUG] No warnings for cast int-to-bool on compilation
+
+
+
+Version 1.9.2:
+(07.16.2012)
+..............
+
+- Support for MAC OSX (Console package for version > 10.6)
+- Adjust to more realtime packet identification on senders
+- UDP checksum correctly seted
+- Support for FIN packet received on IRC transaction
+- [BUG] Overflow when an IRC server closing connection before the second connection (FIXED)
+- [BUG] IRC mode on Freebsd do NOT handle servers with slow connection (FIXED)
+
+
+
+Version 1.9.0:
+(12.25.2012)
+..............
+
+- Added support to threads on all modes (HOT)
+- More hard compiler optimizations (HOT)
+- More hard loops engines over GCC optimizations (HOT)
+- More hard webstress test routines (HOT)
+- Real support to all Linux boxes (POSIX)
+- Real support to all FreeBSD systems
+- Full suport for Darwin MACOS on: IOS-3.*, IOS-4.*, IOS-5.* and IOS-6.*
+- Beta port for OpenBSD system
+- Beta port for NetBSD system
+- Inside all supported systems, have now full support for RSOI mode (HiveMind)
+- Full support for VMs (on supported systems).
+- Definition of RSOI mode (Remote System over IRC)
+- Added support for Display Packet Content (tcpdump style)
+- Added support for sender counter
+- Packet Buffer size have now support for listen modes
+- Added support for ICMP Information Request packet
+- Added support for ICMP Time Request packet 
+- Added support for listen TCP packets (raw packets)
+- Changed TCP listen connections. Best routine to I/O bound connections
+- Compatible com Netcat I/O buffer on TCP connections
+- Changed core calls (for all POSIX support)
+- Too many check sanities added on startup
+- All updated documentation
+- Simple more examples and more documentation and discussions added
+- Assigned to GPL version 3
+- [BUG] Hive Mind option doesn't finalize correctly the connection (FIXED)
+- [BUG] PING/PONG routine on irc mode don't grab the buffer correctly (FIXED)
+- [BUG] TCP connect don't handle the buffer correctly (FIXED)
+- [BUG] ICMP connection hangs on short server timeout (FIXED)
+- [BUG] UDP don't show the post information connection (FIXED)
+- [BUG] Missing handle on IRC mode (PING/PONG routine) when running under VMs (FIXED)
+- [BUG] Missing compilation on FreeBSD and BSD* (FIXED)
+
+
+
+Version 1.8.0:
+(06.15.2011)
+..............
+
+- Port to BSD* system.
+- Port to FreeBSD system.
+- Port to Darwin MACOS (IOS-3.* and IOS-4.*)
+- Added suport for Arp Cannon mode
+- Added suport for Exclude IP address from Arp Cannon attack
+- Defining Hive Min Option only for __linux__ boxes
+- Strict use of ICMP, TCP and UDP headers (no posix)
+- More verbose information on ICMP shoots
+- More verbose information on TCP flags
+- [BUG] Fixed size of ICMP buffer on recvbuff hangs (FIXED)
+- [BUG] Mask reply not show the complete info (FIXED)
+- [BUG] Leak on Arp/Rarp routine packet (FIXED)
+
+
+
+
+Version 1.7.0:
+(03.31.2011)
+..............
+
+- Added support to Webstress module
+- Added support to threads (libpthread) only on Webstress modes
+- added support to Hive Mind option
+- [BUG] Mac Flood doesn't generate a real random values (FIXED)
+- [BUG] Arping mode loop fail (FIXED)
+
+
+
+Version 1.6.0:
+(10.28.2009)
+..............
+
+- Port to portuguese frontend
+- Two languages supported (english and portugues)
+- Added Arping mode
+- Added Mac Flooding mode
+- Added support for RARP packets
+- UDP mode no more handle pakcet size alone
+- [BUG] Buffer UDP mode send otpion with size incomplete
+
+
+
+Version 1.5.0:
+(02.19.2007)
+..............
+
+- Init argv check consistency
+- Init screen description added
+- Add limitations to Flood delay on send option
+- UDP mode restrict
+- [BUG] Raw buffer on ICMP MASK REPLY mode doesn't filled correctly (FIXED)
+- [BUG] Bad returned buffer on recvfrom() UDP routine (FIXED)
+- [BUG] Version software truncate (FIXED)
+
+
+
+Version 0.0.2:
+(01.16.2005)
+..............
+
+- [BUG] On TCP read/write buffer (FIXED)
+- [BUG] ICMP mode flood (FIXED)
+
+
+
+Version 0.0.1:
+(11.23.2003)
+..............
+
+- Created orginal version
+

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo -e "\e[32mFixing known issues...\e[0m"
+sudo sed -i "/mirror.osbeck.com/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/geo.mirror.pkgbuild.com/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/mirror.rackspace.com/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/mirror.leaseweb.net/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/mirror.theo546.fr/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/archlinux.thaller.ws/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/cdn-mirror.chaotic.cx/d" /etc/pacman.d/chaotic-mirrorlist
+
+sudo pacman -Syy athena-keyring chaotic-keyring
+sudo pacman -Syyu
+echo -e "\e[32mDone.\e[0m"

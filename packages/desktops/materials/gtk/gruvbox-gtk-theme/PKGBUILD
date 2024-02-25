@@ -1,0 +1,27 @@
+pkgname=gruvbox-gtk-theme
+_pkgname=Gruvbox-GTK-Theme
+pkgver=57.c0b7fb50
+pkgrel=1
+pkgdesc="A GTK theme based on the Gruvbox colour palette."
+arch=('any')
+license=("GPL3")
+makedepends=('git')
+source=("git+https://github.com/Fausto-Korpsvart/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $_pkgname
+  
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  cp -a themes/Gruvbox-Dark-B "$pkgdir/usr/share/themes/"
+  cp -a themes/Gruvbox-Dark-BL "$pkgdir/usr/share/themes/"
+  cp -a icons/Gruvbox-Dark "$pkgdir/usr/share/icons/"
+}

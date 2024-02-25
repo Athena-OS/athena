@@ -1,0 +1,24 @@
+post_install() {
+  if hash systemd-sysusers &> /dev/null; then
+    systemd-sysusers interlock.conf
+  fi
+
+  if hash systemd-tmpfiles &> /dev/null; then
+    systemd-tmpfiles --create interlock.conf
+  fi
+
+  echo ":: You need to setup the encrypted LVM partition as well as the"
+  echo "   sudo privileges for the new interlock user and create a new"
+  echo "   set of key pairs for the TLS stack. A guide is available on"
+  echo "   https://github.com/inversepath/interlock/blob/master/README.md"
+}
+
+post_upgrade() {
+  if hash systemd-sysusers &> /dev/null; then
+    systemd-sysusers interlock.conf
+  fi
+
+  if hash systemd-tmpfiles &> /dev/null; then
+    systemd-tmpfiles --create interlock.conf
+  fi
+}

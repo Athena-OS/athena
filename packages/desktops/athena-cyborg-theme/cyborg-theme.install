@@ -1,0 +1,12 @@
+post_install() {
+  echo "Setting Cyborg gruvbox theme"
+
+  mv /etc/skel/.config/kitty/gruvbox-dark.conf /etc/skel/.config/kitty/current-theme.conf
+  mv /usr/share/athena-cyborg-theme/apps/* /usr/share/icons/hicolor/scalable/apps/
+  mv /usr/share/athena-cyborg-theme/categories/* /usr/share/icons/hicolor/scalable/categories/
+  rm -rf /usr/share/athena-cyborg-theme
+}
+
+post_upgrade() {
+    post_install $1
+}

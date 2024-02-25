@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>colorizer Docs</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>colorizer</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/colorizer.html">colorizer</a></li>
+  <li><a href="../modules/colorizer.buffer.html">buffer</a></li>
+  <li><a href="../modules/colorizer.color.html">color</a></li>
+  <li><a href="../modules/colorizer.matcher.html">matcher</a></li>
+  <li><a href="../modules/colorizer.sass.html">sass</a></li>
+  <li><a href="../modules/colorizer.tailwind.html">tailwind</a></li>
+  <li><a href="../modules/colorizer.trie.html">trie</a></li>
+  <li><strong>utils</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>utils</code></h1>
+<p>Helper utils</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#byte_is_alphanumeric">byte_is_alphanumeric (byte)</a></td>
+	<td class="summary">Obvious.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#byte_is_hex">byte_is_hex (byte)</a></td>
+	<td class="summary">Obvious.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#byte_is_valid_colorchar">byte_is_valid_colorchar (byte)</a></td>
+	<td class="summary">Obvious.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_last_modified">get_last_modified (path)</a></td>
+	<td class="summary">Get last modified time of a file</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#merge">merge (...)</a></td>
+	<td class="summary">Merge two tables.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#parse_hex">parse_hex (byte)</a></td>
+	<td class="summary">Obvious.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#percent_or_hex">percent_or_hex (v)</a></td>
+	<td class="summary">Obvious.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#watch_file">watch_file (path, callback, ...)</a></td>
+	<td class="summary">Watch a file for changes and execute callback</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "byte_is_alphanumeric"></a>
+    <strong>byte_is_alphanumeric (byte)</strong>
+    </dt>
+    <dd>
+    Obvious.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">byte</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "byte_is_hex"></a>
+    <strong>byte_is_hex (byte)</strong>
+    </dt>
+    <dd>
+    Obvious.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">byte</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "byte_is_valid_colorchar"></a>
+    <strong>byte_is_valid_colorchar (byte)</strong>
+    </dt>
+    <dd>
+    Obvious.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">byte</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_last_modified"></a>
+    <strong>get_last_modified (path)</strong>
+    </dt>
+    <dd>
+    Get last modified time of a file
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string: file path
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number|nil: modified time
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "merge"></a>
+    <strong>merge (...)</strong>
+    </dt>
+    <dd>
+    Merge two tables. </p>
+
+<p> todo: Remove this and use <code>vim.tbl_deep_extend</code>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "parse_hex"></a>
+    <strong>parse_hex (byte)</strong>
+    </dt>
+    <dd>
+    Obvious.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">byte</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "percent_or_hex"></a>
+    <strong>percent_or_hex (v)</strong>
+    </dt>
+    <dd>
+    Obvious.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         string
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number|nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "watch_file"></a>
+    <strong>watch_file (path, callback, ...)</strong>
+    </dt>
+    <dd>
+    Watch a file for changes and execute callback
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string: File path
+        </li>
+        <li><span class="parameter">callback</span>
+         function: Callback to execute
+        </li>
+        <li><span class="parameter">...</span>
+         array: params for callback
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        function|nil
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated - September </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

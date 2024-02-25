@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=nmap
+Comment=Network exploration tool and security / port scanner
+Encoding=UTF-8
+Exec=shell-rocket "if command -v nmap &> /dev/null;then nmap;$SHELL;else echo \\"nmap is not installed. I'm retrieving it for you...\\";sudo pacman -S nmap;nmap;$SHELL;fi"
+Icon=kali-nmap
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;01-04-network-scanners;02-vulnerability-analysis;
+X-Athena-Package=nmap

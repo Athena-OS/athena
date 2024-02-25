@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=spike-fuzzer-generic-chunked
+Encoding=UTF-8
+Exec=shell-rocket "if command -v spike-fuzzer-generic-chunked &> /dev/null;then spike-fuzzer-generic-chunked;$SHELL;else echo \\"Spike Fuzzer is not installed. I'm retrieving it for you...\\";sudo pacman -S spike-fuzzer;spike-fuzzer-generic-chunked;$SHELL;fi;"
+Icon=kali-spike
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=02-02-fuzzers;
+X-Athena-Package=spike-fuzzer

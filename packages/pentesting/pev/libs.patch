@@ -1,0 +1,39 @@
+diff --git a/lib/libpe/Makefile b/lib/libpe/Makefile
+index 4a84323..aa21538 100644
+--- a/lib/libpe/Makefile
++++ b/lib/libpe/Makefile
+@@ -6,7 +6,7 @@ PLATFORM_OS := $(shell uname | cut -d_ -f1)
+ ####### Makefile Conventions - Directory variables
+ 
+ srcdir = .
+-prefix = /usr/local
++prefix = /usr
+ 
+ exec_prefix = $(prefix)
+ sysconfdir = $(prefix)/etc
+diff --git a/src/Makefile b/src/Makefile
+index e6039ca..dd8f2de 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,7 +6,7 @@ export PLATFORM_OS := $(shell uname | cut -d_ -f1)
+ ####### Makefile Conventions - Directory variables
+ 
+ srcdir = .
+-prefix = /usr/local
++prefix = /usr
+ 
+ exec_prefix = $(prefix)
+ sysconfdir = $(prefix)/etc
+diff --git a/src/config.c b/src/config.c
+index 6021151..4c13ec3 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -55,7 +55,7 @@
+ #define DEFAULT_PLUGINS_PATH "plugins"
+ #else
+ #define DEFAULT_CONFIG_PATH ".config/pev" DEFAULT_CONFIG_FILENAME
+-#define DEFAULT_PLUGINS_PATH "/usr/local/lib/pev/plugins"
++#define DEFAULT_PLUGINS_PATH "/usr/lib/pev/plugins"
+ #endif
+ 
+ static bool _load_config_cb(pev_config_t * const config, const char *name, const char *value) {

@@ -1,0 +1,50 @@
+#!/bin/sh
+
+detect_virt=$(systemd-detect-virt)
+if ([ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]) && [ -z $DISPLAY ]; then
+    appkey=$(cat /run/secrets/htb-api)
+else
+    appkey=$(secret-tool lookup htb-api user-htb-api)
+fi
+
+active_id=$(curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/active -H "Authorization: Bearer $appkey" | jq '.info.id')
+
+if [ -z "$active_id" ] || [ "$active_id" == "null" ];then
+    echo "No active machine detected."
+    exit 1
+fi
+
+if curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/active -H "Authorization: Bearer $appkey" | jq '.info.type' | grep -q "Starting Point"; then
+    #Get the IP address of the Starting Point machine, we need for replacing it on the shell prompt
+    sp_machine_ip=$(curl -s --location --request GET https://www.hackthebox.com/api/v4/sp/profile/$active_id -H "Authorization: Bearer $appkey" | jq '.info.ip' | tr -d '"')
+fi
+
+{ # 'try' block
+    curl -s --location --request POST "https://www.hackthebox.com/api/v4/vm/reset" --data "{\"machine_id\":$active_id}" -H "Content-Type: application/json" -H "Authorization: Bearer $appkey" | jq '.message'
+} || { # 'catch' block
+    echo -e "\e[31mMaybe no machine is active or your API key is incorrect or expired! Cannot reset.\e[0m"
+    exit 1
+}
+
+#Only for Starting Point machines we need to reassign the target IP address to the shell prompt after a Reset Machine
+if curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/active -H "Authorization: Bearer $appkey" | jq '.info.type' | grep -q "Starting Point"; then
+    echo "Waiting for IP address to be reassigned to the target machine. It will take around 1 minute..."
+    machine_ip=""
+    sleep 5
+    while [ -z "$machine_ip" ] || [ "$machine_ip" == "null" ]; do            
+        sleep 30 #Too many API requests could be blocked, so we sleep for 30 seconds.
+        machine_ip=$(curl -s --location --request GET https://www.hackthebox.com/api/v4/sp/profile/$active_id -H "Authorization: Bearer $appkey" | jq '.info.ip' | tr -d '"')
+    done
+
+    result=$(basename -- "$SHELL")
+
+    if [ $result = "bash" ]; then
+      sed -i "s/$sp_machine_ip/$machine_ip/g" $HOME/.bashrc
+      source $HOME/.bashrc
+    elif [ $result = "fish" ]; then
+      sed -i "s/$sp_machine_ip/$machine_ip/g" $HOME/.config/fish/functions/fish_prompt.fish
+    elif [ $result = "zsh" ]; then
+        sed -i "s/$sp_machine_ip/$machine_ip/g" $HOME/.zshrc
+        exec /usr/bin/zsh
+    fi
+fi

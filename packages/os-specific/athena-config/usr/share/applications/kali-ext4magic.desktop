@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ext4magic
+Encoding=UTF-8
+Exec=shell-rocket "if command -v ext4magic &> /dev/null;then ext4magic -h;$SHELL;else echo \\"ext4magic is not installed. I'm retrieving it for you...\\";sudo pacman -S ext4magic;ext4magic -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-05-forensic-carving-tools;005-recover;
+X-Athena-Package=ext4magic

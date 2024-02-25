@@ -1,0 +1,33 @@
+pkgname=athena-cinnamon-base
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="Cinnamon base configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('cinnamon' 'ffmpeg' 'gnome-screenshot' 'xdg-user-dirs' 'xdotool' 'xorg-xdpyinfo' 'xorg-xwininfo')
+source=("2.json"
+        "dconf-applets.ini"
+        "cinnamon-applications.menu"
+        "cinnamon-init.desktop"
+        "cinnamon-init")
+install='cinnamon-base.install'
+sha512sums=('1f28c09ad3e7d89e87c23759eaffc8bf1a342ab39e34abc0585770ca08f484d3268b211e2d8ff8ac0c504879e405b03cb64da40d2bb93d037b1a18411968c6bf'
+            '35baee57164b41da2dcf4f6565a59874e71d1031016a839f3a12c628adf413570eba015d8c76c55eb79b8582269d42142d9f9411724d9f524808e7bcf1ab24a8'
+            '4ca36297c680ce28e34f6f03d4c8958e90a48aea9a03f7c7edf88bbce9bcb126bf8b2f9f9695a62d03bc2a49407059076d800f9a78720191b5e2f276d36cb000'
+            '4a8545498758c510cd919170ddffdb87cb10cdcc720df024ebb8be6ea3e4421834b93f9a1c968180c9b0c95a977c296e79a81383daaead8270ef455ebf10353c'
+            '193e7f3b7b52bc94ad87aef211f243da51eb122ce83a11b08d0b4a5618c116f67023d380ce889a464a11b8ad1f2fa40704d904318b8c3c41025d84de1279f61a')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.config/cinnamon/spices/grouped-window-list@cinnamon.org"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/usr/bin"
+  install -dm 755 "${pkgdir}/usr/share/cinnamon"
+
+  install -Dm644 "${srcdir}/2.json" "${pkgdir}/etc/skel/.config/cinnamon/spices/grouped-window-list@cinnamon.org/"
+  install -Dm644 "${srcdir}/cinnamon-init.desktop" "${pkgdir}/etc/xdg/autostart/"
+  install -Dm755 "${srcdir}/cinnamon-init" "${pkgdir}/usr/bin/"
+  install -Dm644 "${srcdir}/cinnamon-applications.menu" "${pkgdir}/usr/share/cinnamon/"
+  install -Dm644 "${srcdir}/dconf-applets.ini" "${pkgdir}/usr/share/cinnamon/"
+  touch "${pkgdir}/etc/skel/.flag-cinnamon-once"
+}

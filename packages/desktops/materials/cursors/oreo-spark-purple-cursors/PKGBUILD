@@ -1,0 +1,15 @@
+pkgname=oreo-spark-purple-cursors
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Oreo Spark Purple cursor."
+arch=('any')
+license=("GPL2")
+source=("$pkgname.tar.gz")
+sha512sums=('d98935c23cd4fbdcfa03bcf2bbc1840a89ebdc67db9cff8fb78a0747169d749ab607bfb0262653344cbed7fb3ee008288508b216f6ce9aaf5114009da7d3764b')
+
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  cp -a "$srcdir/oreo_spark_purple_cursors" "$pkgdir/usr/share/icons/"
+}

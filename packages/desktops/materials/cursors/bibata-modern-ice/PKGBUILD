@@ -1,0 +1,14 @@
+pkgname=bibata-modern-ice
+pkgver=2.0.3
+pkgrel=1
+pkgdesc="Open source, compact, and material designed ice cursor."
+arch=('any')
+license=("GPL3")
+source=("https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.xz")
+sha512sums=('bb11cc73a15b26ad98818a70e22547fb1be0984e0f92250e1c5a8f42a537552a1193d53136d91290ca6fb2e52b6cee217c9c66551b7308195d2da8ee37dfe554')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  cp -a Bibata-Modern-Ice "$pkgdir/usr/share/icons/"
+}

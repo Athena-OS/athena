@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=myrescue
+Encoding=UTF-8
+Exec=shell-rocket "if command -v myrescue &> /dev/null;then myrescue -h;$SHELL;else echo \\"myrescue is not installed. I'm retrieving it for you...\\";sudo pacman -S myrescue;myrescue -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-05-forensic-carving-tools;005-recover;
+X-Athena-Package=myrescue

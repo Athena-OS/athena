@@ -1,0 +1,1 @@
+-1!=navigator.userAgent.indexOf("Firefox")&&browser.devtools.panels.create("HackTools","get_started16.png","index.html"),-1!=navigator.userAgent.indexOf("Chrome")&&chrome.devtools.panels.create("HackTools",null,"index.html",null);

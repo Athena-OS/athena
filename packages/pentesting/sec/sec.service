@@ -1,0 +1,10 @@
+[Unit]
+Description=sec daemon
+After=basic.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/sec -config=/etc/sec.d/ -input=/var/log/messages -detatch
+
+[Install]
+WantedBy=multi-user.target

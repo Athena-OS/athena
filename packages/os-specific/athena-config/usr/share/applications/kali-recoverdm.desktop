@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=recoverdm
+Encoding=UTF-8
+Exec=shell-rocket "if command -v recoverdm &> /dev/null;then recoverdm -h;$SHELL;else echo \\"recoverdm is not installed. I'm retrieving it for you...\\";sudo pacman -S recoverdm;recoverdm -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-05-forensic-carving-tools;005-recover;
+X-Athena-Package=recoverdm

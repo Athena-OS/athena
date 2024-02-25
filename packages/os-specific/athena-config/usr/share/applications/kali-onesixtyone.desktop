@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=onesixtyone
+Comment=Fast and simple SNMP scanner
+Encoding=UTF-8
+Exec=shell-rocket "if command -v onesixtyone &> /dev/null;then onesixtyone;$SHELL;else echo \\"onesixtyone is not installed. I'm retrieving it for you...\\";sudo pacman -S onesixtyone;onesixtyone;$SHELL;fi;"
+Icon=kali-onesixtyone
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-12-snmp-analysis;05-01-online-attacks;
+X-Athena-Package=onesixtyone

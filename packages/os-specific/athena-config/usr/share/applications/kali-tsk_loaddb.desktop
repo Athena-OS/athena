@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=tsk_loaddb
+Encoding=UTF-8
+Exec=shell-rocket "if command -v tsk_loaddb &> /dev/null;then tsk_loaddb;$SHELL;else echo \\"tsk_loaddb is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;tsk_loaddb;$SHELL;fi;"
+Icon=kali-tsk_loaddb
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;
+X-Athena-Package=sleuthkit

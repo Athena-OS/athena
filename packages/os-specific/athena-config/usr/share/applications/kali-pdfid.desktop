@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=pdfid
+Encoding=UTF-8
+Exec=shell-rocket "if command -v pdfid &> /dev/null;then pdfid -h;$SHELL;else echo \\"pdfid is not installed. I'm retrieving it for you...\\";sudo pacman -S pdfid;pdfid -h;$SHELL;fi;"
+Icon=kali-pdfid
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-11-pdf-forensics-tools;
+X-Athena-Package=pdfid

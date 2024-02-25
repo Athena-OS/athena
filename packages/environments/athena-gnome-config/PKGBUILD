@@ -1,0 +1,18 @@
+pkgname=athena-gnome-config
+pkgver=1.0.1
+pkgrel=3
+pkgdesc="GNOME configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('athena-gnome-base' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-arc-menu-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
+conflicts=('athena-gnome-material-shell-config')
+source=("$pkgname.tar.gz")
+sha512sums=('17db2caf337e22cfc82a4c3f752208d9d0d31d72e49e1f9cfd2586ff2bc18d73ff2e9e64f3df1b4de2921a9634a93b6b97c712b6aa6787cfbdbaaec62f174e9a')
+
+package() {
+  mkdir -p "${pkgdir}/etc"
+  mkdir -m 750 -p "${pkgdir}/etc/sudoers.d"
+  mkdir -p "${pkgdir}/usr/share/athena-gnome-config"
+
+  cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
+}

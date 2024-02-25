@@ -1,0 +1,80 @@
+#!/bin/bash
+#set -e
+###############################################################################
+# Author	:	Antonio Voza
+###############################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+###############################################################################
+echo
+echo
+echo "#################################"
+echo "Start athena-terminal-check"
+echo "#################################"
+echo
+
+while [ -e "/var/lib/pacman/db.lck" ];
+do
+    echo 'Pacman is not ready yet. Will try again in 5 seconds.'
+    seconds=$(($seconds + 5))
+    sleep 5
+    if [[ "$seconds" == "30" ]]; then
+        echo 'Warning: removing pacman db.lck!'
+        rm /var/lib/pacman/db.lck
+    fi
+done
+
+terminal_bin=("gnome-terminal" "alacritty" "cool-retro-term" "foot" "kitty" "konsole" "urxvt" "xterm")
+terminal_pkg=("gnome-terminal" "alacritty" "cool-retro-term" "foot" "kitty" "konsole" "rxvt-unicode" "xterm")
+terminal_command=("--" "-e" "-e" "-e" "-e" "-e" "-e" "-e")
+non_std_terminal_bin=("terminator" "terminology" "xfce4-terminal")
+
+length=${#terminal_bin[@]}
+non_std_length=${#non_std_terminal_bin[@]}
+
+for (( i=0; i<${length}; i++ ));
+do
+  bin="${terminal_bin[$i]}"
+  pkg="${terminal_pkg[$i]}"
+  arg_cmd="${terminal_command[$i]}"
+  
+  if pacman -Qq $pkg > /dev/null ; then
+
+    # In the following commands I don't use the terminals like terminator, terminology and so on because they have different syntax
+
+    find /etc/skel/.local/share/applications -type f -name '*.desktop' -exec sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/foot -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" {} +
+
+    if pacman -Qq athena-gnome-config > /dev/null ; then
+    
+        sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/foot -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" /usr/share/athena-gnome-config/dconf-shell.ini
+
+        sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/foot\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini
+    fi
+
+    sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/foot/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" /etc/skel/.local/share/applications/shell.desktop
+
+    sed -i -e "s/\"alacritty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"cool-retro-term\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"foot\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"gnome-terminal\", \"--\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"kitty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"konsole\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"urxvt\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"xterm\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" /usr/share/athena-welcome/athena-welcome.py
+    
+  fi
+done
+
+for (( i=0; i<${non_std_length}; i++ ));
+do
+  bin="${non_std_terminal_bin[$i]}"
+  
+  if pacman -Qq $bin > /dev/null ; then
+
+    sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/foot/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" -e "s/terminator/$bin/g" -e "s/terminology/$bin/g" -e "s/xfce4-terminal/$bin/g" /etc/skel/.local/share/applications/shell.desktop
+    
+    if pacman -Qq athena-gnome-config > /dev/null ; then
+        sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/foot\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini #It changes only the Terminal button of Red Team menu
+    fi
+  fi
+done
+
+echo
+echo "#################################"
+echo "End athena-terminal-check"
+echo "#################################"
+echo

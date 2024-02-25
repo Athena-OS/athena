@@ -1,0 +1,733 @@
+{
+   "acknowledgement_action": {
+      "description": "Acknowledgement button text",
+      "message": "متوجه هستم"
+   },
+   "add_domain_button": {
+      "description": "Button found under the Disabled Sites tab on the options page",
+      "message": "افزودن دامنه"
+   },
+   "allow_on_site": {
+      "description": "Button in the placeholder shown in place of certain third-party (video, audio, commenting) widgets. Clicking this button will always allow the widget to load on this particular site.",
+      "message": "همیشه روی این وبگاه مجاز کن"
+   },
+   "allow_once": {
+      "description": "Button in the placeholder shown in place of certain third-party (video, audio, commenting) widgets. Clicking it will allow the third-party widget to load this one time only.",
+      "message": "یک‌بار مجاز کن"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "Placeholder for a text input under the Disabled Sites tab on the options page",
+      "message": "مثلاً www.example.com، *.example.net،‌ example.org"
+   },
+   "badger_status_allow": {
+      "description": "Tooltip shown over a tracking but still allowed (green slider) domain name in the domain slider list.",
+      "message": "$DOMAIN$ مجاز است",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "Tooltip shown over a domain name with a red slider in the domain slider list. This is a status (\"example.com was blocked\"), not an action (\"click here to block example.com\").",
+      "message": "$DOMAIN$ مسدود شد",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "Tooltip shown over a domain name with a yellow slider in the domain slider list.",
+      "message": "کوکی‌های متعلق به$DOMAIN$ مسدود شد",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "Tooltip shown over a non-tracking domain name with a green slider in the domain slider list.",
+      "message": "هیچ ردیابی برای $DOMAIN$ وجود ندارد",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "Tooltip for a warning icon that appears when move a domain slider to 'red' (block) for a domain that was automatically set to 'yellow' (block cookies).",
+      "message": "می‌دانیم که مسدود کردن این دامنه وبگاه‌ها را خراب می‌کند"
+   },
+   "copy_button_copied": {
+      "description": "On-click text of the copy button on the share overlay.",
+      "message": "رونوشت شد"
+   },
+   "copy_button_initial": {
+      "description": "Initial text of the copy button on the share overlay.",
+      "message": "رونوشت به تخته‌گیره"
+   },
+   "data_settings": {
+      "description": "This is an options page tab heading.",
+      "message": "مدیریت داده"
+   },
+   "deprecated_setting": {
+      "description": "Followed by the label of the deprecated setting (for example: 'Prevent WebRTC...')",
+      "message": "تنظیم زیر منسوخ شده‌اند و در به‌روزرسانی آتی پرایوسی بجر حذف خواهد شد:"
+   },
+   "description": {
+      "description": "Extension description sometimes used by extension stores. See also 'intro_welcome', 'share_base_message' and 'intro_learns' messages.",
+      "message": "پرایوسی بجر به صورت خودکار یاد می‌گیرد تا ردیاب‌های مخفی را مسدود کند."
+   },
+   "disabled_for_these_domains": {
+      "description": "Shown on the options page under the Disabled Sites tab. 'Add domain' should match the 'add_domain_button' message.",
+      "message": "\u003Cp>پرایوسی بجر بر روی وبگاه‌های زیر غیرفعال شده است. این به این معناست که پرایوسی بجر، هنگامی که وبگاه‌هایی که این‌جا فهرست شده‌اند را بازدید می‌کنید، هیچ‌چیزی را مسدود نخواهد کرد، و سیگنال‌های ردیابی نکن یا مهار حریم خصوصی جهانی را هم نخواهد فرستاد.\u003C/p>\u003Cp>اگر فکر می‌کنید پرایوسی بجر این صفحه را خراب می‌کند، یا می‌خواهید وبگاهی خاص را مجاز به اشتراک‌گذاری و فروش داده‌هایتان کنید، می‌توانید دامنهٔ آن صفحه را در جعبهٔ زیر بنویسید و روی دکمهٔ «افزودن دامنه» کلیک کنید.\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "Options page tab heading",
+      "message": "وبگاه‌های غیرفعال شده"
+   },
+   "dnt_tooltip": {
+      "description": "Tooltip shown over an EFF's DNT policy-compliant domain name in the list of domains in the popup or under the Tracking Domains tab on the options page.",
+      "message": "این دامنه اطمینان می‌دهد که شما را ردیابی نخواهد کرد"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "Tooltip shown over the rightmost part of a domain slider.",
+      "message": "مجاز کردن"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "Tooltip shown over the leftmost part of a domain slider. This is an action (\"click here to ...\"), not a status.",
+      "message": "مسدودیت کامل"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "Tooltip shown over the center part of a domain slider.",
+      "message": "مسدودیت کوکی‌ها"
+   },
+   "donate_to_eff": {
+      "description": "A button on the intro page, and a link in the popup footer.",
+      "message": "کمک مالی به EFF"
+   },
+   "download": {
+      "description": "Button text shown under both 'export_user_data' and 'download_cloud' headings.",
+      "message": "بارگیری"
+   },
+   "download_cloud": {
+      "description": "Button title for downloading data from the cloud on Manage Data options page tab.",
+      "message": "درون‌ریزی وبگاه‌های غیرفعال شده از فضای ابری"
+   },
+   "download_cloud_failure": {
+      "description": "Message displayed to the user after failing to download cloud data.",
+      "message": "دادهٔ ابری بارگیری نشد."
+   },
+   "download_cloud_no_data": {
+      "description": "'Error' message when there is on cloud data to download.",
+      "message": "هیچ دادهٔ ابری برای بارگیری وجود ندارد."
+   },
+   "download_cloud_success": {
+      "description": "Message displayed to the user after successfully merging cloud data.",
+      "message": "دادهٔ ابری با موفقیت درون‌ریزی شد."
+   },
+   "error_input": {
+      "description": "Placeholder text in the text input in the 'Report broken site' overlay.",
+      "message": "مشکل چیست؟"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "برون‌بری دادهٔ کاربری"
+   },
+   "extension_error_text": {
+      "description": "Shown in the popup when there is an extension error we want to encourage the user to tell us about.",
+      "message": "لطفاً دربارهٔ خطای زیر \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>به ما بگویید\u003C/a>:"
+   },
+   "feed_the_badger_title": {
+      "description": "Tooltip shown over an undo arrow that appears when you move a domain slider away from its automatic setting.",
+      "message": "برای بازگرداندن مهار این دامنه به پرایوسی بجر، کلیک کنید"
+   },
+   "firstRun_title": {
+      "description": "Title and header of the intro page.",
+      "message": "بابت نصب پرایوسی بجر از شما ممنونیم!"
+   },
+   "first_run_text": {
+      "description": "Part of a reminder to visit the intro page. Shown in popup until the user clicks on the reminder link or browses through the intro page.",
+      "message": "درباره این‌که پرایوسی بجر چگونه از حریم خصوصی شما محافظت می‌کند مطالعه کنید"
+   },
+   "google_signin_tooltip": {
+      "description": "Tooltip for a notification icon that appears next to the slider for accounts.google.com when it is blocked by default.",
+      "message": "To enable logging into websites with your Google account, move this slider right, and reload the page"
+   },
+   "import": {
+      "description": "",
+      "message": "درون‌ریزی"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "لطفا یک پرونده را برای درون‌ریزی انتخاب کنید."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "لیست ردیاب و تنظیمات با موفقیت آپدیت شد!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "درون‌ریزی دادهٔ کاربری"
+   },
+   "intro_beyond_ads": {
+      "description": "Intro page paragraph heading.",
+      "message": "ردیاب‌های موذی را می‌گیرد"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "Intro page paragraph.",
+      "message": "ردیابی نامرئی تمام حالات ممکن را شامل می‌شود؛ تبلیغات فقط قلهٔ قابل مشاهدهٔ این کوه یخی هستند. پرایوسی بجر \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>اخطار مهار حریم خصوصی جهانی\u003C/a> را برای کنار گذاشتن شما از اشتراک و فروش داده، و \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>اخطار ردیابی نکن\u003C/a> را برای گفتن این‌که شرکت‌ها شما را ردیابی نکنند. اگر آن‌ها خواسته‌های شما را رد کنند، پرایوسی بجر یاد می‌گیرد که آن‌ها را مسدود کند—چه آن‌ها تبلیغ‌کننده باشند و چه هر نوعی از ردیاب‌ها."
+   },
+   "intro_by_eff": {
+      "description": "Message in the header of the intro page.",
+      "message": "پروژه‌ای از بنیاد مرزهای الکترونیکی"
+   },
+   "intro_disable_button": {
+      "description": "Intro page paragraph. The quoted string ('Disable') should match the verb used for the 'popup_disable_for_site' message.",
+      "message": "اگر فکر می‌کنید پرایوسی بجر باعث از کار افتادن وبگاهی شده است (مثلاً، یک ویدیو پخش نمی‌شود)، می‌توانید روی دکمهٔ «غیرفعال‌سازی» کلیک کنید تا پرایوسی بجر برای آن وبگاه غیرفعال شود."
+   },
+   "intro_donate1": {
+      "description": "Part of the 'donate' section on the intro page.",
+      "message": "هنگام استفاده از پرایوسی بجر شما به \u003Ca href='https://www.eff.org/' target='_blank'>بنیاد مرزهای الکترونیکی\u003C/a> و میلیون‌ها کاربر دیگر در مبارزه برای حریم خصوصی می‌پیوندید. ما یک بنیاد غیرانتفاعی هستیم که برای حقوق برخط شما می‌جنگیم. ممنون از این‌که به ما پیوستید!"
+   },
+   "intro_donate_heading": {
+      "description": "Part of the 'donate' section on the intro page.",
+      "message": "حریم خصوصی یک ورزش گروهی است!"
+   },
+   "intro_donate_subheading": {
+      "description": "Shown below the Donate button on the intro page.",
+      "message": "با کمک مالی و حمایت از ابزار هایمان می‌توانید به ما کمک کنید"
+   },
+   "intro_learns": {
+      "description": "Intro page paragraph heading.",
+      "message": "به‌طور خودکار می‌آموزد"
+   },
+   "intro_learns_paragraph": {
+      "description": "Intro page paragraph.",
+      "message": "پرایوسی بجر به‌جای نگه داشتن فهرستی از چیزهایی که باید مسدود کند، به‌طور خودکار ردیاب‌ها را بر پایهٔ رفتارشان کشف می‌کند."
+   },
+   "intro_link_policy": {
+      "description": "Shown at the bottom of the intro page.",
+      "message": "خط مشی حریم خصوصی"
+   },
+   "intro_next_button": {
+      "description": "Intro page welcome button.",
+      "message": "انجام سفر"
+   },
+   "intro_not_an_adblocker": {
+      "description": "Intro page paragraph heading.",
+      "message": "تبلیغ‌مسدودکن نیستم، من فرق دارم"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "Intro page paragraph. Also a tooltip for the 'not_yet_blocked_header' message.",
+      "message": "زمانی که یک ردیاب را در سه سایت مختلف ببیند، پرایوسی بجر شروع به بلاک کردن آن می کند."
+   },
+   "intro_privacy_note": {
+      "description": "Intro page paragraph.",
+      "message": "پرایوسی بجر هرگز داده‌ای دربارهٔ وبگردی شما به اشتراک نمی‌گذارد، مگر این‌که بخواهید آن را به اشتراک بگذارید."
+   },
+   "intro_report_button": {
+      "description": "Intro page paragraph. The quoted message ('Report broken site') should match the translation for the 'report_broken_site' message.",
+      "message": "فراموش نکنید تا روی «گزارش وبگاه خراب شده» کلیک کنید. ما به حریم خصوصی شما احترام می‌گذاریم برای همین به‌صورت خودکار گزارش نمی‌فرستیم."
+   },
+   "intro_text1": {
+      "description": "First part of a reminder to visit the intro page. Shown in popup until the user clicks on the reminder link or browses through the intro page.",
+      "message": "شما هم‌اکنون توسط پرایوسی بجر محافظت می شوید."
+   },
+   "intro_text2": {
+      "description": "Second part of a reminder to visit the intro page",
+      "message": "برای یادگیری بیش‌تر دربارهٔ عملکرد پرایوسی بجر، روی قسمت پایین کلیک کنید."
+   },
+   "intro_welcome": {
+      "description": "Intro page welcome paragraph.",
+      "message": "پرایوسی بجر به صورت خودکار یاد می‌گیرد تا ردیاب‌های مخفی را مسدود کند. برای این‌که بفهمید چگونه این کار را انجام می‌دهد، یک دقیقه وقت بگذارید."
+   },
+   "invalid_domain": {
+      "description": "Error shown when attempting to add an invalid domain to the list of disabled sites",
+      "message": "لطفا یک دامنه یا URL معتبر اضافه کنید"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "پروندهٔ JSON نامعتبر."
+   },
+   "learn_more_link": {
+      "description": "Reusable 'learn more link' message",
+      "message": "برای اطلاعات بیشتر به $LINK$ بروید.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "Button text, part of a prompt to visit the blog.",
+      "message": "بیاموزید پرایوسی بجر چگونه تغییر می‌کند"
+   },
+   "learning_prompt_text1": {
+      "description": "First part of a prompt to visit the blog.",
+      "message": "پرایوسی بجر دیگر به‌صورت پیش‌فرض از وبگردی شما یاد نمی‌گیرد."
+   },
+   "learning_prompt_text2": {
+      "description": "Second part of a prompt to visit the blog.",
+      "message": "این زیر کلیک کنید تا بیش‌تر بیاموزید."
+   },
+   "local_learning_warning": {
+      "description": "Tooltip on the general settings page",
+      "message": "فعال‌سازی یادگیری ممکن است شما را برای وبگاه‌ها قابل تشخیص‌تر کند"
+   },
+   "manage_data_intro": {
+      "description": "A brief explanation of what happens when you import Badger user data. Shown above the import/export user data buttons under the Manage Data options page tab.",
+      "message": "درون‌ریزی دادهٔ کاربری:\u003Cul>\u003Cli>بازنویسی تنظیمات کلی\u003C/li>\u003Cli>ترکیب فهرست وبگاه‌های غیرفعال شده\u003C/li>\u003Cli>ترکیب اطلاعات دربارهٔ ردیاب‌هایی که پرایوسی بجر با آن‌ها برخورد داشته است\u003C/li>\u003Cli>بازنویسی شخصی‌سازی‌های لغزنده\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "The name of this extension.",
+      "message": "پرایوسی بجر"
+   },
+   "next_section": {
+      "description": "Image alt. text on a couple of \"scroll down\" arrow buttons on the intro page.",
+      "message": "بخش بعدی"
+   },
+   "non_tracker": {
+      "description": "Popup domain slider list header text. Separates domains with detected tracking from domains where no tracking has yet been detected.",
+      "message": "دامنه‌های زیر به‌نظر شما را ردیابی نمی‌کنند"
+   },
+   "non_tracker_tip": {
+      "description": "Tooltip for the 'non_tracker' message.",
+      "message": "هم اکنون پرایوسی بجر فقط بررسی می‌کند آیا اشخاص ثالث از کوکی‌ها، مخزن محلی HTML5، اثرانگشت کانواس برای ردیابی وبگردی شما استفاده می‌کنند یا نه. بعضی از این دامنه‌ها ممکن است از روش‌های ردیابی‌ای استفاده کنند که پرایوسی بجر قابلیت شناسایی آن‌ها را ندارد."
+   },
+   "not_yet_blocked_header": {
+      "description": "Popup domain slider list header text. Separates blocked domains from domains that haven't yet been seen perform tracking on enough sites.",
+      "message": "بجر شما تاکنون تصمیمی برای مسدود کردن این دامنه‌ها نگرفته است"
+   },
+   "options_advanced_settings": {
+      "description": "Subheading on the general settings options page.",
+      "message": "پیش‌رفته"
+   },
+   "options_disable_floc": {
+      "description": "(Chrome only) Checkbox label on the general settings page.",
+      "message": "غیرفعال‌سازی یادگیری فدرال شدهٔ گوگل (FLoC)"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "(Chrome only) Checkbox label found on the general settings page",
+      "message": "غیرفعال‌سازی ارسال نشانی‌های وبی که بازدید می‌کنید به گوگل. این پیشنهادهای صفحات مشابه را وقتی که صفحه یافت نشد،‌ غیرفعال می‌کند."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "Checkbox label found on the general settings page",
+      "message": "جلوگیری از ردیابی پیوندهایی که شما روی‌شان کلیک می‌کنید توسط وبگاه‌ها («hyperlink auditing»)"
+   },
+   "options_disable_network_prediction": {
+      "description": "Checkbox label found on the general settings page",
+      "message": "غیرفعال‌سازی پیش‌واکشی"
+   },
+   "options_dnt_policy_setting": {
+      "description": "Checkbox label on the general settings page",
+      "message": "بررسی کن آیا \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>دامنه‌های شخص ثالث\u003C/a> با \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>خط مشی ردیابی نکن EFF\u003C/a> تطابق دارند"
+   },
+   "options_domain_filter_all": {
+      "description": "Dropdown control setting on the Tracking Domains options page tab.",
+      "message": "همه"
+   },
+   "options_domain_filter_allow": {
+      "description": "Dropdown control setting on the Tracking Domains options page tab.",
+      "message": "مجاز"
+   },
+   "options_domain_filter_block": {
+      "description": "Dropdown control setting on the Tracking Domains options page tab.",
+      "message": "مسدود شده"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "Dropdown control setting on the Tracking Domains options page tab.",
+      "message": "تاحدودی مسدود شده"
+   },
+   "options_domain_filter_dnt": {
+      "description": "Dropdown control setting on the Tracking Domains options page tab.",
+      "message": "سازگار با خط مشی ردیابی نکن EFF"
+   },
+   "options_domain_filter_user": {
+      "description": "Dropdown control setting on the Tracking Domains options page tab.",
+      "message": "مهار شده توسط کاربر"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "Shown on the Tracking Domains tab on the options page if all tracking domains have been removed.",
+      "message": "پرایوسی بجر هنوز نتوانسته هیچ \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>دامنهٔ ردیابی\u003C/a> را پیدا کنید. به وبگردی خود ادامه دهید!"
+   },
+   "options_domain_list_tab": {
+      "description": "This is an options page tab heading.",
+      "message": "دامنه‌های ردیاب"
+   },
+   "options_domain_list_trackers": {
+      "description": "Shown on the Tracking Domains tab on the options page after Privacy Badger learned to block one or more domains",
+      "message": "پرایوسی بجر تاکنون تصمیم گرفته است $COUNT$ $TRACKER_LINK_START$دامنهٔ ردیاب$TRACKER_LINK_END$ بالقوه را مسدود کند",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "Label for a text input box on the Tracking Domains options page tab.",
+      "message": "جست‌وجوی دامنه‌ها:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "Tooltip for an \"information\" icon next to the domain search input on the Tracking Domains options page tab.",
+      "message": "برای استثنا کردن دامنه‌ها، به ابتدای شرط جست‌وجوی خود «-» اضافه کنید. مثلاً، «.co -.com» دامنه های co. و co.uk. را نمایش می‌دهد اما دامنه‌های com. را نمایش نمی‌دهد."
+   },
+   "options_domain_status_filter": {
+      "description": "Label for a dropdown control on the Tracking Domains options page tab.",
+      "message": "فیلتر بر اساس وضعیت:"
+   },
+   "options_domain_type_filter": {
+      "description": "Label for a dropdown control on the Tracking Domains options page tab.",
+      "message": "فیلتر بر اساس نوع:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "Checkbox label for enabling/disabling the Sec-GPC and DNT signals, found on the general settings page",
+      "message": "فرستادن اخطارهای «\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>مهار حریم خصوصی جهانی\u003C/a>» و «\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>ردیابی نکن\u003C/a>» به وبگاه‌ها"
+   },
+   "options_general_settings": {
+      "description": "This is an options page tab heading.",
+      "message": "تنظیمات کلی"
+   },
+   "options_hide_social_widgets": {
+      "description": "Label for a form on the Widget Replacement tab",
+      "message": "ویجت‌های زیر را جایگزین نکن:"
+   },
+   "options_incognito_setting": {
+      "description": "Checkbox label on the general settings page",
+      "message": "یادگیری در پنجره‌های خصوصی/ناشناس"
+   },
+   "options_incognito_warning": {
+      "description": "Tooltip on the general settings page",
+      "message": "فعال‌سازی یادگیری در پنجره‌های خصوصی/ناشناس ممکن است ردی از تاریخچهٔ وبگردی خصوصی شما روی رایانه‌تان به جا بگذارد. به‌صورت پیش‌فرض، پرایوسی بجر ردیاب‌هایی که در پنجره‌های خصوصی/ناشناس می‌شناسد را مسدود خواهد کرد، اما دربارهٔ ردیاب‌های جدید اطلاعی کسب نخواهد کرد. اگر بیش‌تر وقت خود را در پنجره‌های خصوصی/ناشناس می‌گذرانید شاید بهتر باشد که این گزینه را فعال کنید."
+   },
+   "options_learn_setting": {
+      "description": "Checkbox label on the general settings page",
+      "message": "یادگیری مسدود کردن ردیاب‌های جدید از وبگردی شما"
+   },
+   "options_privacy_settings": {
+      "description": "Subheading on the general settings options page.",
+      "message": "حریم خصوصی"
+   },
+   "options_remove_origin_confirm": {
+      "description": "Confirmation shown when you click to remove a domain from Privacy Badger's tracking domains list on the options page.",
+      "message": "آیا مطمئن هستید که می‌خواهید این دامنه را از پرایوسی بجر حذف کنید؟"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "Checkbox label on the general settings page. Should match wording used in the 'non_tracker' message.",
+      "message": "دامنه‌هایی که شما را ردیابی نمی‌کنند را نمایش بده"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "Label for a checkbox on the Tracking Domains options page tab. Should match wording used in the 'not_yet_blocked_header' message.",
+      "message": "نمایش دامنه‌هایی که بجر شما تاکنون تصمیمی برای مسدود کردن‌شان نگرفته است:"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "Checkbox label on the Widget Replacement tab",
+      "message": "فعال‌سازی جایگزینی ویجت"
+   },
+   "options_title": {
+      "description": "",
+      "message": "گزینه‌های پرایوسی بجر"
+   },
+   "options_widget_exceptions_header": {
+      "description": "Header text on the Widget Replacement tab",
+      "message": "استثنائات ویجت"
+   },
+   "options_widget_replacement_desc": {
+      "description": "Introduction to the Widget Replacement tab on the options page",
+      "message": "هنگامی که دکمه‌های اجتماعی و دیگر ویجت‌های بالقوه کاربردی (ویدیو،‌ صدا، نظرات) مسدود می‌شوند، پرایوسی بجر می‌تواند آن‌ها را با متغیرهای برای-فعال‌سازی-کلیک-کن جایگزین کند."
+   },
+   "options_widget_replacement_tab": {
+      "description": "Options page tab heading",
+      "message": "جایگزینی ویجت"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "Header text on the Widget Replacement tab",
+      "message": "استثنائات وبگاه"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "Label for a form on the Widget Replacement tab",
+      "message": "ویجت‌ها در این وبگاه را همیشه مجاز کن:"
+   },
+   "popup_blocked": {
+      "description": "Text shown in the popup when showing non-tracking domains is enabled, and there are no third-party domains on the page.",
+      "message": "هیچ منبع شخص ثالثی در این صفحه وجود ندارد. ایول برای حریم خصوصی!"
+   },
+   "popup_disable_for_site": {
+      "description": "Button in the popup.",
+      "message": "غیرفعال‌سازی برای این وبگاه"
+   },
+   "popup_disabled_site_header": {
+      "description": "Shown in the popup on disabled sites.",
+      "message": "پرایوسی بجر روی این وبگاه غیرفعال شده است"
+   },
+   "popup_enable_for_site": {
+      "description": "Button in the popup, visible if Privacy Badger is disabled on the current site.",
+      "message": "فعال‌سازی برای این وبگاه"
+   },
+   "popup_error_text_low_disk_space_issue": {
+      "description": "Special error message for the 'An unexpected error occurred' text that sometimes occurs on Firefox browsers with low disk space",
+      "message": "Failed to write to extension storage: $ERROR_TEXT$.\u003Cbr>\u003Cbr>Is your disk low on space?",
+      "placeholders": {
+         "error_text": {
+            "content": "$1",
+            "example": "An unexpected error occurred"
+         }
+      }
+   },
+   "popup_help_button": {
+      "description": "Tooltip shown over the question mark button in the upper right corner of the popup.",
+      "message": "راهنما"
+   },
+   "popup_info_firstparty_description": {
+      "description": "Text revealed by clicking on the link tracking protection header in the popup",
+      "message": "بعضی وبگاه‌ها $LINK_START$از ردیابی برای دنبال کردن شما$LINK_END$ در هر جایی که روی پیوندی برای خروج از یک وبگاه کلیک می‌کنید، استفاده می‌کنند. پرایوسی بجر بعضی از ردیابی‌ها از چنین پیوندهایی را روی این وبگاه حذف می‌کند.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "Clickable status header text in the popup. Shown when Privacy Badger's link tracking protection is active (for example, on facebook.com).",
+      "message": "حفاظت از ردیابی پیوند فعال است"
+   },
+   "popup_instructions": {
+      "description": "Popup message shown when at least one tracker was blocked.",
+      "message": "$COUNT$ $LINK_START$ردیاب$LINK_END$ بالقوه مسدود شده است",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "Text shown in the popup when there are no trackers on the page.",
+      "message": "هیچ $LINK_START$ردیابی$LINK_END$ مسدود نشده است",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "گزینه‌ها"
+   },
+   "popup_share_button": {
+      "description": "Tooltip shown over the share button in the upper right corner of the popup.",
+      "message": "به اشتراک بگذارید"
+   },
+   "popup_special_page_header": {
+      "description": "Heading for popup_special_page_paragraph",
+      "message": "در این صفحه کاری برای انجام وجود ندارد"
+   },
+   "popup_special_page_paragraph": {
+      "description": "Shown in the popup for special browser pages such as the New Tab page and 'about:' pages.",
+      "message": "پرایوسی بجر روی صفحات خاصی مثل این کار نمی‌کند. سعی کنید جای دیگری وبگردی کنید."
+   },
+   "remove_all": {
+      "description": "Options page button, under the Manage Data tab",
+      "message": "حذف همه"
+   },
+   "remove_all_data": {
+      "description": "Caption above remove_all button",
+      "message": "حذف همهٔ دامنه‌های ردیاب"
+   },
+   "remove_all_data_confirm": {
+      "description": "Pop-up triggered when the remove_all_data button is clicked",
+      "message": "حذف تمام دامنه‌های ردیاب باعث می‌شود:\n\n• حذف تمام چیزهایی که پرایوسی بجر دربارهٔ ردیاب‌ها می‌داند\n• باعث می‌شود پرایوسی بجر تا زمانی که شانس یادگیری دوباره از وبگردی شما را پیدا کند، هیچ‌چیزی را مسدود نکند"
+   },
+   "remove_button": {
+      "description": "Button found under the Disabled Sites tab on the options page",
+      "message": "حذف گزینه (های) انتخاب شده"
+   },
+   "report_broken_site": {
+      "description": "Button in the popup.",
+      "message": "گزارش وبگاه خراب شده"
+   },
+   "report_button": {
+      "description": "Button text.",
+      "message": "ثبت خطا"
+   },
+   "report_cancel": {
+      "description": "Button text.",
+      "message": "لغو"
+   },
+   "report_close": {
+      "description": "Link text.",
+      "message": "بستن"
+   },
+   "report_fail": {
+      "description": "Error status message.",
+      "message": "اوه. خطایی رخ داد."
+   },
+   "report_input_label": {
+      "description": "Label for the text input in the 'Report broken site' overlay.",
+      "message": "توضیحات"
+   },
+   "report_success": {
+      "description": "Success status message.",
+      "message": "ممنون! پیگیری خواهیم کرد."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "این به‌طور خودکار اطلاعات زیر را به EFF می‌فرستد: صفحه‌ای که هم‌اکنون از آن بازدید می‌کنید،‌ نگارش مرورگرتان، نگارش پرایوسی بجر، و وضعیت تمام لغزنده‌ها در این صفحه."
+   },
+   "report_text": {
+      "description": "The 'below' refers to a text input located below this text. This asks the user to describe what problem the user experienced.",
+      "message": "به‌طور مختصر خطای رخ داده را شرح دهید."
+   },
+   "report_title": {
+      "description": "Title of the 'Report broken site' popup overlay.",
+      "message": "گزارش خطا"
+   },
+   "reset": {
+      "description": "Options page button, under the Manage Data tab",
+      "message": "بازنشانی"
+   },
+   "reset_data": {
+      "description": "Caption above reset button",
+      "message": "بازنشانی دامنه‌های ردیاب"
+   },
+   "reset_data_confirm": {
+      "description": "Pop-up triggered when the reset_data button is clicked",
+      "message": "بازنشانی دامنه‌های ردیاب باعث می شود:\n\n• حذف تمام داده‌های مربوط به ردیاب‌هایی که پرایوسی بجر از وبگردی شما آموخته است\n• بازیابی فهرست دامنهٔ ردیاب به آخرین فهرست از پیش‌پرورش شده (برای اطلاعات بیش‌تر به www.eff.org/badger-pretraining بروید)"
+   },
+   "share_base_message": {
+      "description": "The base message that is always included in the share message.",
+      "message": "پرایوسی بجر (privacybadger.org) یک افزونهٔ مرورگر است که به صورت خودکار می‌آموزد تا ردیاب‌های مخفی را مسدود کند. پرایوسی بجر توسط بنیاد مرزهای الکترونیکی، یک بنیاد غیرانتفاعی که برای حقوق برخط شما می‌جنگد، ساخته شده است."
+   },
+   "share_button_title_facebook": {
+      "description": "Text shown when you hover over the social sharing buttons on the intro page.",
+      "message": "اشتراک‌گذاری بر روی فیسبوک"
+   },
+   "share_button_title_twitter": {
+      "description": "Text shown when you hover over the social sharing buttons on the intro page.",
+      "message": "اشتراک‌گذاری بر روی توییتر"
+   },
+   "share_title": {
+      "description": "Title of the Share popup overlay.",
+      "message": "به دوستان‌تان اطلاع دهید"
+   },
+   "share_tracker_header": {
+      "description": "Header above the list of tracking domains in the share message.",
+      "message": "پرایوسی بجر $COUNT$ ردیاب بالقوه را در $DOMAIN$ مسدود کرده است:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "Checkbox label on the general settings page",
+      "message": "نمایش تعداد ردیاب‌ها"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "Tooltip shown over a replaced social button. For example, \"Privacy Badger has replaced this Facebook Like button\". See also the widget_placeholder_pb_has_replaced message.",
+      "message": "است کرده جایگزین را $BUTTON$ دکمهٔ بجر پرایوسی",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "A brief explanation of how syncing works. Shown above the upload/download cloud data buttons under the Manage Data options page tab.",
+      "message": "همگام‌سازی ابری: \u003Cul>\u003Cli>به همگام‌سازی فایرفاکس/کروم نیاز دارد\u003C/li>\u003Cli>بارگذاری باعث دوباره‌نویسی دادهٔ پرایوسی بجر در فضای ابری می‌شود\u003C/li>\u003Cli>بارگیری، فهرست وبگاه‌هایی که پرایوسی بجر برای آن‌ها غیرفعال است را ترکیب می‌کند\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "Domain slider list header tooltip.",
+      "message": "برای مجاز کردن یک دامنه، لغزنده را به سمت راست حرکت دهید"
+   },
+   "tooltip_block": {
+      "description": "Domain slider list header tooltip.",
+      "message": "برای مسدود کردن یک دامنه، لغزنده را به سمت چپ حرکت دهید"
+   },
+   "tooltip_cookieblock": {
+      "description": "Domain slider list header tooltip.",
+      "message": "برای مسدود کردن کوکی‌ها لغزنده را در وسط قرار بدهید"
+   },
+   "upload": {
+      "description": "Button label for uploading data to the cloud on Manage Data options page tab.",
+      "message": "بارگذاری"
+   },
+   "upload_cloud": {
+      "description": "Button title for uploading data to the cloud on Manage Data options page tab.",
+      "message": "برون‌بری وبگاه‌های غیرفعال شده به فضای ابری"
+   },
+   "upload_cloud_failure": {
+      "description": "Message displayed to the user after failing to upload local data.",
+      "message": "بارگذاری داده روی فضای ابری موفقیت‌آمیز نبود"
+   },
+   "upload_cloud_success": {
+      "description": "Message displayed to the user after successfully uploading local data.",
+      "message": "داده با موفقیت روی فضای ابری بارگذاری شد"
+   },
+   "version": {
+      "description": "Version text in the popup footer. For example, \"version 2018.8.1\".",
+      "message": "نگارش $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "Tooltip shown over the 'tracking domains' link under the Tracking Domains tab on the options page.",
+      "message": "ردیاب چیست؟"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "Text shown inside a replaced widget's placeholder. For example, \"Privacy Badger has replaced this Google reCAPTCHA widget\". See also the social_tooltip_pb_has_replaced message.",
+      "message": "پرایوسی بجر $START_ANCHOR_TAG$ویجت $WIDGET$ $END_ANCHOR_TAG$ را جایگزین کرده است",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

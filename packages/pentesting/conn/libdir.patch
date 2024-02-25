@@ -1,0 +1,39 @@
+diff --git a/duilder b/duilder
+index a321672..096fb81 100755
+--- a/duilder
++++ b/duilder
+@@ -390,11 +390,7 @@ USR="/usr"
+ USR_BIN="/usr/bin"
+ USR_SBIN="/usr/sbin"
+ USR_INCLUDE="/usr/include"
+-if [ "`uname -m`" = "i686" ]; then
+-	USR_LIB="/usr/lib"
+-else
+-	USR_LIB="/usr/lib64"
+-fi
++USR_LIB="/usr/lib"
+ USR_SHARE="/usr/share"
+ USR_SHARE_DOC="/usr/share/doc/${PRJ}"
+ SBIN="/usr/sbin"
+diff --git a/examples/wpool2.ltrace b/examples/wpool2.ltrace
+index dc04b69..b8b0eb1 100644
+--- a/examples/wpool2.ltrace
++++ b/examples/wpool2.ltrace
+@@ -13,7 +13,7 @@
+ 691 21:48:06.412414 SYS_fstat(3, 0x7ffff19cd0c0)                                                                        = 0
+ 691 21:48:06.412551 SYS_mmap(0, 0xde60, 1, 2)                                                                           = 0x7f9619952000
+ 691 21:48:06.412837 SYS_close(3)                                                                                        = 0
+-691 21:48:06.413002 SYS_open("/lib64/libpthread.so.0", 524288, 03145431010)                                             = 3
++691 21:48:06.413002 SYS_open("/lib/libpthread.so.0", 524288, 03145431010)                                             = 3
+ 691 21:48:06.413336 SYS_read(3, "\177ELF\002\001\001", 832)                                                             = 832
+ 691 21:48:06.413552 SYS_fstat(3, 0x7ffff19cd110)                                                                        = 0
+ 691 21:48:06.413721 SYS_mmap(0, 0x21b420, 5, 2050)                                                                      = 0x7f9619525000
+@@ -42,7 +42,7 @@
+ 691 21:48:06.420176 SYS_open("tls/libc.so.6", 524288, 03145431010)                                                      = -2
+ 691 21:48:06.420416 SYS_open("x86_64/libc.so.6", 524288, 03145431010)                                                   = -2
+ 691 21:48:06.420678 SYS_open("libc.so.6", 524288, 03145431010)                                                          = -2
+-691 21:48:06.420912 SYS_open("/lib64/libc.so.6", 524288, 03145431010)                                                   = 3
++691 21:48:06.420912 SYS_open("/lib/libc.so.6", 524288, 03145431010)                                                   = 3
+ 691 21:48:06.421212 SYS_read(3, "\177ELF\002\001\001\003", 832)                                                         = 832
+ 691 21:48:06.421431 SYS_fstat(3, 0x7ffff19cd0b0)                                                                        = 0
+ 691 21:48:06.421571 SYS_mmap(0, 0x3c0260, 5, 2050)                                                                      = 0x7f9618f4a000

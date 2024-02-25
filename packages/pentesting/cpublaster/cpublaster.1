@@ -1,0 +1,37 @@
+.TH CPUBLASTER "1"
+.SH NAME
+CPUBLASTER
+.SH AUTHOR
+Catali(ux) M. BOIE \- catab at embedromix dot ro
+.SH DESCRIPTION
+Because of cpu aliasing problems, there are a lot of problems with stalled pipelines. A famous problem is at: http://stackoverflow.com/questions/8547778/why-is-one-loop-so-much-slower-than-two-loops
+.TP
+This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear.
+.TP
+Applications that process a lot of data in big memory allocations will benefit from this application without recompiling the sources (if available).
+.SH LICENSE
+GPLv3
+.SH HOW IT WORKS
+cpublaster is a shared object that hooks memory allocation functions and add an small offset to them.
+.TP
+Fine tuning can be done using environment variables described below.
+.SH EXAMPLES
+0. Output debug stuff in a log file (for debugging):
+.TP
+\fB	export CPUBLASTER_VERBOSE=999
+.TP
+\fB	export CPUBLASTER_LOG="xxx.log"
+.TP
+\fB	your_program_here
+.TP
+1. verbose operations:
+.TP
+\fB	export CPUBLASTER_VERBOSE=999
+.TP
+\fB	export CPUBLASTER_LOG="xxx.log"
+.TP
+\fB	export CPUBLASTER_MINIM_ALLOCATION=128
+.TP
+\fB	export CPUBLASTER_INCREMENT=128
+.TP
+\fB	your_program_here

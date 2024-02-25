@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=grokevt-builddb
+Encoding=UTF-8
+Exec=shell-rocket "if command -v grokevt-builddb &> /dev/null;then grokevt-builddb -h;$SHELL;else echo \\"grokevt-builddb is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-builddb -h;$SHELL;fi;"
+Icon=athenaos-blue-net
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-08-forensic-suites;003-detect;
+X-Athena-Package=grokevt

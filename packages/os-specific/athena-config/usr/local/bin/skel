@@ -1,0 +1,93 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author 	: Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website	: https://www.arcolinux.info
+# Website	: https://www.arcolinux.com
+# Website	: https://www.arcolinuxd.com
+# Website	: https://www.arcolinuxb.com
+# Website	: https://www.arcolinuxiso.com
+# Website	: https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+echo "##################################################################################"
+echo "Skel is now a bash script and no longer an alias"
+echo
+echo "It makes it easy to get the new configurations in"
+echo "New configurations often end up in the folder /etc/skel - where it will NOT be used"
+echo
+echo "If we want to use the new config we need to copy the configs from /etc/skel to our"
+echo "home directory ~"
+echo
+echo "You can do this by manually copy/pasting the content from /etc/skel to your ~"
+echo "or we can use 'skel' in a terminal"
+echo
+echo "Skel will make a backup of your '.config' folder to a folder with"
+echo "the name '.config' and a date and time"
+echo
+echo "It will overwrite your settings and that is its purpose"
+echo
+echo "When you have a crashing tiling window manager because you were learning"
+echo "to configure it, you can gain control again by typing 'skel' in a terminal or TTY"
+echo
+echo "More info on this url:"
+echo "https://arcolinux.com/updating-your-system-with-skel-and-still-keeping-your-own-settings/"
+echo "##################################################################################"
+
+echo "Can we copy/paste the content from /etc/skel to your home directory? (y/n)"
+read response
+
+if [[ "$response" == [yY] ]]; then
+
+	time=$(date +%Y.%m.%d-%H.%M.%S)
+	if [ ! -d ~/.config ]; then
+		mkdir ~/.config
+	fi
+	echo
+	echo "##################################################################################"
+	echo "Making a backup of your .config folder to ~/.config-backup-"$time
+	echo "The bigger the .config folder the longer the backup takes"
+	echo "Be patient"
+	echo "##################################################################################"
+	echo
+
+	cp -Rf ~/.config ~/.config-backup-$time
+
+	echo
+	echo "##################################################################################"
+	echo "Now we overwrite your .config folder with the files from /etc/skel"
+	echo "The bigger the /etc/skel folder the longer it takes"
+	echo "Be patient"
+	echo "##################################################################################"
+	echo
+
+	cp -r /etc/skel/. $HOME
+
+	echo
+  	echo "##################################################################################"
+	echo "###################                   DONE                    ####################"
+	echo "##################################################################################"
+
+else
+  	echo
+  	echo "##################################################################################"
+  	echo "NOTHING has been changed."
+  	echo "##################################################################################"
+  	echo
+fi

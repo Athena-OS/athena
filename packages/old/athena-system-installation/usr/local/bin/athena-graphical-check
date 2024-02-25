@@ -1,0 +1,118 @@
+#!/bin/bash
+#set -e
+###############################################################################
+# Author	:	Antonio Voza
+###############################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+###############################################################################
+echo
+echo
+echo "#################################"
+echo "Start athena-graphical-check"
+echo "#################################"
+echo
+
+while [ -e "/var/lib/pacman/db.lck" ];
+do
+    echo 'Pacman is not ready yet. Will try again in 5 seconds.'
+    seconds=$(($seconds + 5))
+    sleep 5
+    if [[ "$seconds" == "30" ]]; then
+        echo 'Warning: removing pacman db.lck!'
+        rm /var/lib/pacman/db.lck
+    fi
+done
+
+cpudetect=$(lscpu | grep -A 0 -E "Model name")
+
+if [[ $cpudetect =~ "Intel" ]]; then
+   echo "Intel CPU detected."
+   pacman -S --noconfirm intel-compute-runtime
+fi
+
+gpudetect=$(lspci -k | grep -A 0 -E "(VGA compatible|3D)")
+flag_gpu_found=0
+
+if [[ $gpudetect =~ "AMD" ]]; then
+   echo "AMD GPU detected."
+   pacman -S --noconfirm xf86-video-amdgpu opencl-amd
+fi
+
+if [[ $gpudetect =~ "ATI" ]] && [[ ! $gpudetect =~ "AMD" ]]; then
+   echo "ATI GPU detected."
+   pacman -S --noconfirm opencl-mesa
+fi
+
+if [[ $gpudetect =~ "NVIDIA" ]]; then
+   echo "NVIDIA GPU detected."
+
+   # https://wiki.archlinux.org/title/NVIDIA#Installation
+   # https://nouveau.freedesktop.org/CodeNames.html
+   
+   if [[ $gpudetect =~ "GM107" ]] || [[ $gpudetect =~ "GM108" ]]  || [[ $gpudetect =~ "GM200" ]]  || [[ $gpudetect =~ "GM204" ]]  || [[ $gpudetect =~ "GM206" ]]  || [[ $gpudetect =~ "GM20B" ]]; then # NV110 family (Maxwell)
+      echo "NV110 family (Maxwell)"
+      flag_gpu_found=1
+      if pacman -Qq linux > /dev/null ; then
+         pacman -S --noconfirm nvidia
+      elif pacman -Qq linux-lts > /dev/null ; then
+         pacman -S --noconfirm nvidia-lts
+      else
+         pacman -S --noconfirm nvidia-dkms
+      fi
+      pacman -S --noconfirm nvidia-settings
+   fi
+   if [[ $gpudetect =~ "TU102" ]] || [[ $gpudetect =~ "TU104" ]]  || [[ $gpudetect =~ "TU106" ]]  || [[ $gpudetect =~ "TU116" ]]  || [[ $gpudetect =~ "TU117" ]]; then # NV160 family (Turing)
+      echo "NV160 family (Turing)"
+      flag_gpu_found=1
+      if pacman -Qq linux > /dev/null ; then
+         pacman -S --noconfirm nvidia-open
+      else
+         pacman -S --noconfirm nvidia-open-dkms
+      fi
+      pacman -S --noconfirm nvidia-settings
+   fi
+   if [[ $gpudetect =~ "GK104" ]] || [[ $gpudetect =~ "GK107" ]]  || [[ $gpudetect =~ "GK106" ]]  || [[ $gpudetect =~ "GK110" ]]  || [[ $gpudetect =~ "GK110B" ]] || [[ $gpudetect =~ "GK208B" ]] || [[ $gpudetect =~ "GK208" ]] || [[ $gpudetect =~ "GK20A" ]] || [[ $gpudetect =~ "GK210" ]]; then # NVE0 family (Kepler)
+      echo "NVE0 family (Kepler)"
+      flag_gpu_found=1
+      pacman -S --noconfirm nvidia-470xx-dkms
+      pacman -S --noconfirm nvidia-470xx-settings
+   fi
+   if [[ $gpudetect =~ "GF100" ]] || [[ $gpudetect =~ "GF108" ]]  || [[ $gpudetect =~ "GF106" ]]  || [[ $gpudetect =~ "GF104" ]]  || [[ $gpudetect =~ "GF110" ]] || [[ $gpudetect =~ "GF114" ]] || [[ $gpudetect =~ "GF116" ]] || [[ $gpudetect =~ "GF117" ]] || [[ $gpudetect =~ "GF119" ]]; then # NVC0 family (Fermi)
+      echo "NVC0 family (Fermi)"
+      flag_gpu_found=1
+      pacman -S --noconfirm nvidia-390xx-dkms
+      pacman -S --noconfirm nvidia-390xx-settings
+   fi
+   if [[ $gpudetect =~ "G80" ]] || [[ $gpudetect =~ "G84" ]]  || [[ $gpudetect =~ "G86" ]]  || [[ $gpudetect =~ "G92" ]]  || [[ $gpudetect =~ "G94" ]] || [[ $gpudetect =~ "G96" ]] || [[ $gpudetect =~ "G98" ]] || [[ $gpudetect =~ "GT200" ]] || [[ $gpudetect =~ "GT215" ]] || [[ $gpudetect =~ "GT216" ]] || [[ $gpudetect =~ "GT218" ]] || [[ $gpudetect =~ "MCP77" ]] || [[ $gpudetect =~ "MCP78" ]] || [[ $gpudetect =~ "MCP79" ]] || [[ $gpudetect =~ "MCP7A" ]] || [[ $gpudetect =~ "MCP89" ]]; then # NV50 family (Tesla)
+      echo "NV50 family (Tesla)"
+      flag_gpu_found=1
+      pacman -S --noconfirm nvidia-340xx-dkms
+      pacman -S --noconfirm nvidia-340xx-settings
+   fi
+   if [[ $flag_gpu_found == 0 ]]; then # In case I didn't find any NVIDIA GPU family
+      pacman -S --noconfirm nvidia-open-dkms
+      pacman -S --noconfirm nvidia-settings
+   fi
+   
+   pacman -S --noconfirm opencl-nvidia gwe nvtop
+
+   sed -in '/^MODULES*/ s/"$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm"/g' /etc/mkinitcpio.conf
+   mkinitcpio -P
+   sed -in '/^GRUB_CMDLINE_LINUX_DEFAULT*/ s/"$/ nvidia-drm.modeset=1"/g' /etc/default/grub
+   grub-mkconfig -o /boot/grub/grub.cfg
+
+   if [[ $gpudetect =~ "Intel" ]] || [[ $gpudetect =~ "AMD" ]] || [[ $gpudetect =~ "ATI" ]]; then
+      pacman -S --noconfirm envycontrol
+      pacman -S --noconfirm nvidia-exec
+      #nvx on
+      #sed -i '$a__VK_LAYER_NV_optimus=NVIDIA_only\n__GLX_VENDOR_LIBRARY_NAME=nvidia' /etc/environment
+   fi
+fi
+
+echo
+echo "#################################"
+echo "End athena-graphical-check"
+echo "#################################"
+echo

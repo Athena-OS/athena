@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=netdiscover
+Comment=Active/passive ARP reconnaissance tool
+Encoding=UTF-8
+Exec=shell-rocket "if command -v netdiscover &> /dev/null;then netdiscover -h;$SHELL;else echo \\"netdiscover is not installed. I'm retrieving it for you...\\";sudo pacman -S netdiscover;netdiscover -h;$SHELL;fi;"
+Icon=kali-netdiscover
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-info-gathering;01-08-route-analysis;
+X-Athena-Package=netdiscover

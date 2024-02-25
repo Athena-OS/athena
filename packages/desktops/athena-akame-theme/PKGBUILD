@@ -1,0 +1,26 @@
+pkgname=athena-akame-theme
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="Akame GTK theme for Athena"
+arch=('any')
+license=("GPL3")
+depends=('bibata-modern-darkred' 'material-black-cherry-suru' 'nightfox-gtk-theme')
+install='akame-theme.install'
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/CrayonPonyFish.conf"
+        "akame.jpg"
+        "$pkgname.tar.gz")
+sha512sums=('797558a0b42356b3f7c6f209cae70c9fb2dff95a7f48dead322083079fd8cb5b256ca0a6856784457d1d68969d7c513c4ffbd613d3a706658bfaa47a86ea8529'
+            'd3f73d2fb366265f28023e7e30c5391e7591cbd0b66ec0024b202e33bd03a403683519e623075f39267d4ff9f6d523b89d9752b282d5d61bda8ac25967637f8a'
+            '4317a67efb33209e4b70b6b1d9da473cdb1d67711d0fcb4e911eb25afae78cb6d11f8cd65aa7956178d15cbe3e54093b48bb3434a108fb3c31559e36fdbbde9c')
+
+package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
+  install -dm 755 "$pkgdir/usr/share/athena-akame-theme"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
+
+  install -Dm 644 "akame.jpg" "$pkgdir/usr/share/backgrounds/default/"
+  install -Dm 644 "CrayonPonyFish.conf" "$pkgdir/etc/skel/.config/kitty/"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-akame-theme/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-akame-theme/"
+}

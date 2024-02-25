@@ -1,0 +1,69 @@
+- name: "Linux Kernel"
+  description: "Vanilla Linux kernel and modules, with a few patches applied."
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - linux
+    - linux-headers
+    - cfs-zen-tweaks
+- name: "Linux LTS Kernel"
+  description: "Long-term support (LTS) Linux kernel and modules."
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - linux-lts
+    - linux-lts-headers
+    - cfs-zen-tweaks
+- name: "Linux Hardened Kernel"
+  description: "A security-focused Linux kernel applying a set of hardening patches to mitigate kernel and userspace exploits."
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - linux-hardened
+    - linux-hardened-headers
+    - cfs-zen-tweaks
+- name: "Linux Realtime Kernel"
+  description: "All of the kernel is preempted, with the exception of a few very small regions of code ('raw_spinlock critical regions')."
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - linux-rt
+    - linux-rt-headers
+- name: "Linux Realtime LTS Kernel"
+  description: "Long-term support (LTS) Linux realtime kernel and modules."
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - linux-rt-lts
+    - linux-rt-lts-headers
+- name: "Linux Zen Kernel (default)"
+  description: "Result of a collaborative effort of kernel hackers to provide the best Linux kernel possible for everyday systems."
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - linux-zen
+    - linux-zen-headers
+- name: "Linux Liquorix Kernel"
+  description: "Kernel replacement built using Debian-targeted configuration and the Zen kernel sources. Designed for desktop, multimedia, and gaming workloads."
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - linux-lqx
+    - linux-lqx-headers
+- name: "Linux XanMod Kernel"
+  description: "Aiming to take full advantage in high-performance workstations, gaming desktops, media centers and others and built to provide a more rock-solid, responsive and smooth desktop experience."
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - linux-xanmod
+    - linux-xanmod-headers

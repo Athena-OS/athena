@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=PayloadsAllTheThings
+Comment=PayloadsAllTheThings
+Icon=kali-commix
+Exec=shell-rocket "if test -d /usr/share/payloads/PayloadsAllTheThings;then cd /usr/share/payloads/PayloadsAllTheThings;$SHELL;else echo \\"PayloadsAllTheThings not found. I'm retrieving it for you...\\";sudo pacman -S --noconfirm athena-payloadsallthethings;cd /usr/share/payloads/PayloadsAllTheThings;$SHELL;fi;"
+Terminal=false
+Categories=Tags;Describing;Application;Utility
