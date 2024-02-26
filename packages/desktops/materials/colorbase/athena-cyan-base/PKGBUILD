@@ -1,0 +1,18 @@
+pkgname=athena-cyan-base
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Cyan colorbase resources."
+arch=('any')
+license=("GPL3")
+source=("git+https://github.com/Athena-OS/athena-cyan-base")
+sha512sums=('SKIP')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/athena-cyan-base"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
+
+  install -Dm 644 "samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/athena/"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-cyan-base/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-cyan-base/"
+}

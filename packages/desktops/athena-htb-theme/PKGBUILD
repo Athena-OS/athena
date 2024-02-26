@@ -16,7 +16,6 @@ sha512sums=('2bced57ecad432cefd060d4f617802a20fb154c4db236b0d9ee070152589ca7c2d9
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/icons"
   install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/athena-htb-theme"
