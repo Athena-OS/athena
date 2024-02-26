@@ -77,6 +77,7 @@ jobs:
         run: |
           rm -rf /tmp/makepkg
           rm -rf "$AGENT_TOOLSDIRECTORY"
+          yes | pacman -Scc
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git clone https://github.com/Athena-OS/athena-repository.git
