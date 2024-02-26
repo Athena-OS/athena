@@ -1,0 +1,18 @@
+pkgname=athena-gruvbox-base
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Gruvbox colorbase resources."
+arch=('any')
+license=("GPL3")
+source=("git+https://github.com/Athena-OS/athena-gruvbox-base")
+sha512sums=('SKIP')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/athena-gruvbox-base"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
+
+  install -Dm 644 "cyborg-gruv.png" "$pkgdir/usr/share/backgrounds/athena/"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-gruvbox-base/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-gruvbox-base/"
+}

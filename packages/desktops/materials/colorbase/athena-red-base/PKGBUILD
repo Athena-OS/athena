@@ -1,0 +1,19 @@
+pkgname=athena-red-base
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Red colorbase resources."
+arch=('any')
+license=("GPL3")
+source=("git+https://github.com/Athena-OS/athena-red-base")
+sha512sums=('SKIP')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/athena-red-base"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
+
+  install -Dm 644 "akame.jpg" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "redmoon.png" "$pkgdir/usr/share/backgrounds/athena/"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-red-base/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-red-base/"
+}
