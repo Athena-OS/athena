@@ -73,6 +73,7 @@ jobs:
           chown -R builder ~/.gnupg/
           
           paths=("$(pwd)/packages/applications" "$(pwd)/packages/configuration" "$(pwd)/packages/desktops" "$(pwd)/packages/displaymanagers" "$(pwd)/packages/environments" "$(pwd)/packages/misc" "$(pwd)/packages/os-specific" "$(pwd)/packages/pentesting")
+          git clone https://github.com/Athena-OS/athena-repository.git
 
           # Loop through paths and run the command
           for path in "${paths[@]}"; do
@@ -84,7 +85,7 @@ jobs:
             git config --global user.email "actions@github.com"
             git config --global http.version HTTP/1.1
             git config --global http.postBuffer 524288000
-            git clone https://github.com/Athena-OS/athena-repository.git
+            
             for newpkg in *.pkg.tar.zst
             do
               basefilename=$(basename "$newpkg" | sed 's/-[0-9].*//')
