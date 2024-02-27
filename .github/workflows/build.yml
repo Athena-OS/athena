@@ -77,6 +77,7 @@ jobs:
 
           # Loop through paths and run the command
           for path in "${paths[@]}"; do
+            rm -rf *.zst*
             sudo -E -u builder $(pwd)/scripts/build-and-sign-packages.sh -p "$path"
             rm -rf /tmp/makepkg
             rm -rf "$AGENT_TOOLSDIRECTORY"
