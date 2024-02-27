@@ -76,7 +76,7 @@ jobs:
 
           # Loop through paths and run the command
           for path in "${paths[@]}"; do
-            sudo -E -u builder ./scripts/build-and-sign-packages.sh -p "$path"
+            sudo -E -u builder $(pwd)/scripts/build-and-sign-packages.sh -p "$path"
             rm -rf /tmp/makepkg
             rm -rf "$AGENT_TOOLSDIRECTORY"
             yes | pacman -Scc
@@ -103,4 +103,5 @@ jobs:
             git commit -m "Add built packages"
             git push https://D3vil0p3r:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/Athena-OS/athena-repository.git main
             sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" x86_64 ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena/
+            cd ..
           done
