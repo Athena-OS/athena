@@ -80,6 +80,7 @@ jobs:
           yes | pacman -Scc
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          git config --global http.version HTTP/1.1
           git config --global http.postBuffer 524288000
           git clone https://github.com/Athena-OS/athena-repository.git
           for newpkg in *.pkg.tar.zst
