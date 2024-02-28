@@ -5,7 +5,7 @@ pkgdesc="Open source, compact, and material designed ice cursor."
 arch=('any')
 license=("GPL3")
 source=("https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.xz")
-sha512sums=('bb11cc73a15b26ad98818a70e22547fb1be0984e0f92250e1c5a8f42a537552a1193d53136d91290ca6fb2e52b6cee217c9c66551b7308195d2da8ee37dfe554')
+sha512sums=('3644be71ee1a442875d39c17b5050dd66aa0cd70a8d443d8b0cd1c4d625a5bebbadc49a812462f01afd1ad93650d3d5771bbb2e3650f859a6ff9b1bfdfa0c312')
 
 package() {
   install -dm 755 "$pkgdir/usr/share/icons"

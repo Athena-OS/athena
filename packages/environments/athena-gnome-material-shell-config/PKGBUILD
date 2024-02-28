@@ -7,7 +7,7 @@ license=("custom")
 depends=('athena-gnome-base' 'malcontent' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-material-shell-git')
 conflicts=('athena-gnome-config')
 source=("$pkgname.tar.gz")
-sha512sums=('c1aa90bc3e8da289a18ea6dff58750f10771dcabfc2153513dff73d28b37b87b3301c325dac6963cc5fd545ab5530fd0991e351ba52094cc889255a7e8344b04')
+sha512sums=('f1da76c27904137bead3749d92c98e931e96019781ff77edce7279ed11ec86eb472ca86b6deec797830fa1609abf51129802120631d5a06788841e553eac06ca')
 
 package() {
   mkdir -p "${pkgdir}/etc"
