@@ -11,7 +11,7 @@ makedepends=('git' 'rsync')
 source=("git+https://github.com/Athena-OS/$_pkgname.git"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
-            '358bf1867b6f9ec64c5447107dc1e64b0b5555045c4bc90023fd45d865708070ca0bd7b64f1b14a276467abc046abf56abbd4cc95cefe6c89a2bfe0dee9d8128')
+            'e614190ef503ab5f038c3e9842274a85bef4661f8c15476a695fc671c64908d855f9dad24dc8a8fb0f2d208ccbdeea6a909d6347aa19418a51b61b9726101ccb')
 
 pkgver() {
   cd $_pkgname

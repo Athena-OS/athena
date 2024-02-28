@@ -1,5 +1,5 @@
 pkgname=athena-lightdm-everblush-theme
-pkgver=r515.ea1c68bf
+pkgver=r516.24d43155
 pkgrel=1
 pkgdesc='LightDM GTK theme for gtk-greeter with a Everblush look'
 arch=('any')
@@ -12,7 +12,7 @@ source=("git+https://github.com/alvatip/Nordzy-icon"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
             'f39efd5289beacf4e5bd0165c057aaa4904a034a7c3bbc8a563f244e5bcf534f2e902b1b1d24c461e6f569223df6905ac2ab95555e3fded4bc3d93bdff945599'
-            '96541114030cd33745975ae3bc39e0ea361a5787b3c75a39fa2b7d3ccc5064c999aee87e06acbb0735e696e3a1bf6aa70d1b2ac790fae88d2db6d42f1a869a7a')
+            '4a59c7e43bdbd8a48713977e6e92ac213951e4514b72dcd284db5535d60eace63bba14b2973f8c3dd8de4b5b5056df308161665619988b4090325a2372e87475')
 
 pkgver() {
     cd Nordzy-icon
