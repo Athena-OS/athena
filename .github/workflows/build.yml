@@ -72,7 +72,7 @@ jobs:
           chmod +x ./scripts/build-and-sign-packages.sh
           chown -R builder ~/.gnupg/
           
-          paths=("$(pwd)/packages/applications")
+          paths=("$(pwd)/packages/applications" "$(pwd)/packages/configuration" "$(pwd)/packages/desktops" "$(pwd)/packages/displaymanagers" "$(pwd)/packages/environments" "$(pwd)/packages/misc" "$(pwd)/packages/os-specific" "$(pwd)/packages/pentesting")
 
           # Loop through paths and run the command
           for path in "${paths[@]}"; do
