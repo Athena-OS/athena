@@ -5,7 +5,7 @@ pkgdesc="Alacritty configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('alacritty' 'ttf-jetbrains-mono-nerd')
-source=("alacritty.yml")
+source=("alacritty.toml")
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config/alacritty"

@@ -27,7 +27,6 @@ package() {
   cd $pkgname
 
   install -dm 755 "$pkgdir/usr/share/$pkgname"
-  cp -a icons "$pkgdir/usr/share/$pkgname/"
 
   install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
