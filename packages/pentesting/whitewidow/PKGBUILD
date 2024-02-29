@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=whitewidow
+pkgver=605.4f27bfe
+pkgrel=12
+pkgdesc='SQL Vulnerability Scanner.'
+groups=('athena' 'athena-scanner' 'athena-webapp')
+arch=('any')
+url='https://github.com/Ekultek/whitewidow'
+license=('GPL3' 'custom:unknown')
+depends=('ruby' 'ruby-bundler' 'ruby-pkg-config' 'libxslt')
+makedepends=('git')
+source=("git+https://github.com/Ekultek/$pkgname.git"
+        'Gemfile.patch')
+sha512sums=('SKIP'
+            '4383eb1f2204e4546f581dcf50c8ceb263ab5efbb0f44f163dda221b2aacf4424e905ae4a4330d38efd6095937c3d5af715e761877829bd754a49d1192263768')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < Gemfile.patch
+
+  sed -i 's|local/env|bin/env|' "$pkgname/$pkgname.rb"
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md \
+    docs/CHANGELOG.md docs/{misc/*,self_help/*}
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" docs/legal/*
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bundle exec ./$pkgname.rb "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

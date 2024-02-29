@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sdnpwn
+pkgver=76.764055a
+pkgrel=1
+pkgdesc='An SDN penetration testing toolkit.'
+groups=('athena' 'athena-scanner' 'athena-networking')
+arch=('any')
+url='https://github.com/smythtech/sdnpwn'
+license=('custom:unknown')
+depends=('python' 'python-netifaces' 'python-scipy' 'python-tabulate'
+         'python-python-openflow' 'python-scapy' 'bridge-utils')
+makedepends=('git')
+source=("git+https://github.com/smythtech/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

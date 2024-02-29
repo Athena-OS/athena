@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=konan
+pkgver=23.7b5ac80
+pkgrel=1
+groups=('athena' 'athena-webapp' 'athena-scanner')
+pkgdesc='Advanced Web Application Dir Scanner.'
+arch=('any')
+url='https://github.com/m4ll0k/Konan'
+license=('custom:unknown')
+depends=('python2' 'python2-colorama' 'python2-requests' 'python2-urllib3'
+         'python2-pathlib')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/m4ll0k/Konan.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

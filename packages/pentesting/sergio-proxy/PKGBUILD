@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sergio-proxy
+pkgver=20.8a91bb4
+pkgrel=1
+groups=('athena' 'athena-proxy' 'athena-spoof')
+pkgdesc='A multi-threaded transparent HTTP proxy for manipulating web traffic.'
+url='https://github.com/supernothing/sergio-proxy'
+license=('GPL3')
+arch=('any')
+depends=('python2' 'python2-twistedx' 'python2-pyopenssl' 'python2-constantly')
+makedepends=('git')
+source=("git+https://github.com/supernothing/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt
+
+  rm README.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

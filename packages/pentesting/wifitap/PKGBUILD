@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wifitap
+pkgver=2b16088
+pkgrel=9
+groups=('athena' 'athena-wireless')
+pkgdesc='WiFi injection tool through tun/tap device.'
+arch=('any')
+url='https://github.com/GDSSecurity/wifitap'
+license=('GPL2')
+depends=('python2' 'python2-scapy')
+optdepends=('pysco2: JIT optimization')
+makedepends=('git')
+source=("git+https://github.com/GDSSecurity/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --always | sed 's|-|.|g'
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|env python|env python2|' *.py
+  sed -i 's|import IP,ICMP|import *|' wifiping.py
+  sed -i 's|import ARP|import *|' wifiarp.py
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  for file in *.py ; do
+    install -m 755 "$file" "$pkgdir/usr/bin/${file%.*}"
+  done
+
+  install -Dm 644 -t "$pkgdir/usr/share/$pkgname/" README TODO BUGS
+}
+

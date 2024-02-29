@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=bfac
+pkgver=53.18fb0b5
+pkgrel=3
+pkgdesc="An automated tool that checks for backup artifacts that may disclose the web-application's source code."
+groups=('athena' 'athena-recon' 'athena-webapp')
+arch=('any')
+url='https://github.com/mazen160/bfac'
+license=('GPL3')
+depends=('python' 'python-colorama' 'python-requests' 'python-argparse')
+makedepends=('git')
+source=("git+https://github.com/mazen160/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.txt \
+    CONTRIBUTORS.txt
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md CHANGELOG.txt CONTRIBUTORS.txt LICENSE.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec python /usr/share/$pkgname/$pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

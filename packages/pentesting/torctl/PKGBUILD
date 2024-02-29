@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=torctl
+pkgver=0.5.7
+pkgrel=1
+epoch=1
+groups=('athena' 'athena-automation')
+pkgdesc='Script to redirect all traffic through tor network including dns queries for anonymizing entire system.'
+arch=('any')
+url='https://github.com/BlackArch/torctl'
+license=('GPL3')
+depends=('tor' 'systemd' 'curl' 'iptables' 'secure-delete' 'iproute2'
+         'macchanger')
+source=("https://github.com/BlackArch/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('408fd6ff01fd1cd1061ba91a61f5c9252c9d48952e915f574467ec4a6c272eee8476c9358e404e4e9015c1ef7f547da50430b5dc25e9fef7bf9fdc7a8b792459')
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 service/$pkgname-autostart.service \
+    "$pkgdir/etc/systemd/system/$pkgname-autostart.service"
+  install -Dm 644 service/$pkgname-autowipe.service \
+    "$pkgdir/etc/systemd/system/$pkgname-autowipe.service"
+  install -Dm 644 bash-completion/$pkgname \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+}
+

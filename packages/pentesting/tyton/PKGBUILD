@@ -1,0 +1,55 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tyton
+pkgver=81.f740076
+pkgrel=1
+epoch=1
+pkgdesc='Kernel-Mode Rootkit Hunter.'
+arch=('x86_64' 'aarch64')
+groups=('athena' 'athena-defensive')
+url='https://github.com/nbulischeck/tyton'
+license=('GPL3')
+depends=('dkms' 'linux-headers' 'libnotify' 'gtk3' 'libsystemd')
+makedepends=('git' 'gcc' 'make')
+source=("git+https://github.com/nbulischeck/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir"
+}
+
+package() {
+  cd $pkgname
+
+  mkdir -p "$pkgdir/usr/lib/modules/extramodules-ARCH"
+
+  # Install
+  make DESTDIR="$pkgdir/usr/lib/modules/extramodules-ARCH" install
+  make clean
+
+  # Set name and version
+  sed -e "s/@_PKGBASE@/$pkgname/" \
+    -e "s/@PKGVER@/$pkgver/" \
+    -i "packaging/aur/dkms.conf"
+
+  # Copy source files
+  INSTALLDIR="$pkgdir/usr/src/$pkgname-$pkgver"
+  find . -type f \
+    \( -path ./notify \) -prune -o \
+    \( -path ./images \) -prune -o \
+    \( -path ./.git \) -prune -o \
+    -exec install -Dm 644 "{}" "$INSTALLDIR/{}" \;
+
+  # Move dkms up
+  mv "$INSTALLDIR/packaging/aur/dkms.conf" "$INSTALLDIR/dkms.conf"
+}
+

@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tcpdstat
+pkgver=4.be5bd28
+pkgrel=1
+groups=('athena' 'athena-networking')
+pkgdesc='Get protocol statistics from tcpdump pcap files.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/netik/tcpdstat'
+license=('custom:unknown')
+depends=('libpcap')
+makedepends=('git' 'make')
+source=("git+https://github.com/netik/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  make install PREFIX="$pkgdir/usr"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README*
+}
+

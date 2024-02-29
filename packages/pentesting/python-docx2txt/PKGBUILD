@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-docx2txt
+pkgname=('python2-docx2txt' 'python-docx2txt')
+_pkgname=docx2txt
+pkgver=0.8
+pkgrel=5
+pkgdesc='A pure python-based utility to extract text from docx files.'
+arch=('any')
+url='https://pypi.org/project/docx2txt/'
+license=('custom:unknown')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/docx2txt-0.8.tar.gz")
+sha512sums=('9e2c67290a345bac9090898a778d8ee254e38cebf6edbcfc8e1232b0d4f2769d7e202a9504f80da200955d35e448c8b0fd111438a992bf880bff395f50b0b51a')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-docx2txt() {
+  depends=('python2')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+
+  mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}2"
+}
+
+package_python-docx2txt() {
+  depends=('python')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+

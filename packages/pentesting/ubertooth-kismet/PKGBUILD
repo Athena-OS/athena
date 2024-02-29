@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ubertooth-kismet
+pkgver=2020.12.R1
+_kismet_pkgver=2021-06-R1
+pkgrel=1
+groups=('athena' 'athena-bluetooth')
+pkgdesc='A kismet plugin for ubertooth.'
+url='http://sourceforge.net/projects/ubertooth/'
+arch=('x86_64' 'aarch64')
+license=('GPL')
+depends=('kismet' 'ubertooth')
+source=("https://github.com/greatscottgadgets/ubertooth/archive/${pkgver//./-}.tar.gz"
+        "http://www.kismetwireless.net/code/kismet-$_kismet_pkgver.tar.xz")
+sha512sums=('86dab6cc8db026663783c022670859bdcaadfb22373ce418508de24297c439ec49a4236c49bbf03e956c8cf5f463231003badd7f8146c13d1891ab739874a24f'
+            '88d92e2ef3f0513a3a00b573012edbd115f92e5f28f884aead5ab049fad97b328222c2f3cbb49d80c5fcfdab2212934532cf41c100c4d0a5e94c932e1c5e8352')
+
+build() {
+  cd "$srcdir/kismet-$_kismet_pkgver"
+
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
+
+  cd "$srcdir/ubertooth-${pkgver//./-}/host/kismet/plugin-ubertooth"
+
+  make KIS_SRC_DIR="$srcdir/kismet-$_kismet_pkgver"
+}
+
+package() {
+  cd "ubertooth-${pkgver//./-}/host/kismet/plugin-ubertooth"
+
+  install -dm 755 "$pkgdir/usr/lib"
+
+  make DESTDIR="$pkgdir" LIBDIR=/usr/lib install
+}
+

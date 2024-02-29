@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=abcd
+pkgver=4.2738809
+pkgrel=2
+pkgdesc='ActionScript ByteCode Disassembler.'
+groups=('athena' 'athena-disassembler')
+arch=('any')
+url='https://github.com/MITRECND/abcd'
+license=('BSD')
+depends=('python2' 'python2-setuptools' 'python2-pyswf')
+makedepends=('git')
+source=("git+https://github.com/MITRECND/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i '1 i\#!/usr/bin/python2' abcdump.py abcgraph.py
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr
+
+  install -Dm 755 abcdump.py "$pkgdir/usr/bin/abcdump"
+  install -Dm 755 abcgraph.py "$pkgdir/usr/bin/abcgraph"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

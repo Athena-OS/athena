@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vfeed
+pkgver=81.fad17ae
+pkgrel=1
+epoch=3
+groups=('athena' 'athena-misc')
+pkgdesc='Open Source Cross Linked and Aggregated Local Vulnerability Database main repository.'
+url='http://www.toolswatch.org/vfeed'
+arch=('any')
+license=('BSD')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/toolswatch/vFeed.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin/"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" CHANGELOG.md README.md \
+    CREDITS
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  rm -rf LICENSE.md CHANGELOG.md README.md CREDITS docs/
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 vfeedcli.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

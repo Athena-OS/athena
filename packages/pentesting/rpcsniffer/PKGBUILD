@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=rpcsniffer
+pkgver=7.9fab095
+pkgrel=5
+pkgdesc='Sniffs WINDOWS RPC messages in a given RPC server process.'
+groups=('athena' 'athena-windows' 'athena-sniffer')
+arch=('any')
+url='https://github.com/AdiKo/RPCSniffer'
+license=('custom:unknown')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/AdiKo/RPCSniffer.git")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+	cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname"
+}
+

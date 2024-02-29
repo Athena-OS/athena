@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pth-toolkit
+pkgver=7.3641cdc
+pkgrel=2
+pkgdesc='Modified version of the passing-the-hash tool collection made to work straight out of the box.'
+groups=('athena' 'athena-sniffer' 'athena-networking')
+arch=('x86_64')
+url='https://github.com/byt3bl33d3r/pth-toolkit'
+license=('BSD')
+makedepends=('git')
+source=("git+https://github.com/byt3bl33d3r/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  _tools="pth-net pth-rpcclient pth-smbclient pth-smbget pth-winexe"
+  _tools="$_tools pth-wmic pth-wmis"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  rm README.md LICENSE.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  for i in $_tools ; do
+    cat > "$pkgdir/usr/bin/$i" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ./$i "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/$i"
+  done
+}
+

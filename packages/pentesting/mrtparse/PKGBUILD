@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mrtparse
+pkgver=522.13cde30
+pkgrel=1
+pkgdesc='A module to read and analyze the MRT format data.'
+groups=('athena' 'athena-misc' 'athena-networking')
+arch=('any')
+url='https://github.com/YoshiyukiYamauchi/mrtparse'
+license=('APACHE')
+depends=('python2' 'python2-setuptools')
+makedepends=('git')
+source=("git+https://github.com/YoshiyukiYamauchi/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+	python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+

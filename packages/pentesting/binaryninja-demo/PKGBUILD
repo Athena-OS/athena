@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=binaryninja-demo
+pkgver=3.5.4526
+pkgrel=1
+pkgdesc='A new kind of reversing platform (demo version).'
+groups=('athena' 'athena-reversing' 'athena-binary')
+arch=('x86_64')
+url='http://binary.ninja/demo.html'
+license=('custom:commercial' 'evaluation')
+depends=('libglvnd' 'libxkbcommon-x11')
+source=('https://cdn.binary.ninja/installers/BinaryNinja-demo.zip'
+        'LICENSE')
+sha512sums=('0f8c988f9c4591913bb17cb75045d0f7cf05dc9ebc7a8693a4fd08673b50eefda1ccedcbb23c023ee44ba1440978b5774fa72e14c943724e711ac3852e193656'
+            '34c2406eb4cd7f80291008753ee72d06e746d95a2c0c63a336b72ccecc4e0eba2449f5e19490d1b44836db6356a90f175f953305962c345d223063ded5abf14a')
+install="$pkgname.install"
+
+package() {
+  cd binaryninja
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 $srcdir/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ./binaryninja "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

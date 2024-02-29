@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=github-dorks
+pkgver=82.d50a677
+pkgrel=1
+pkgdesc='Collection of github dorks and helper tool to automate the process of checking dorks.'
+groups=('athena' 'athena-recon' 'athena-social')
+arch=('any')
+url='https://github.com/techgaun/github-dorks'
+license=('Apache')
+depends=('python' 'python-feedparser' 'python-github3.py' 'python-deprecated'
+         'python-pyjwt')
+makedepends=('git')
+source=("git+https://github.com/techgaun/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python github-dork.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

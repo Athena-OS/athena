@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-elasticsearch
+_pkgname=elasticsearch
+pkgver=7.6.0
+pkgrel=2
+pkgdesc='Python client for Elasticsearch'
+url='https://pypi.org/project/elasticsearch/#files'
+arch=('any')
+license=('Apache')
+depends=('python2' 'python2-urllib3')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('981b77f415b3744b88baf02eca5ce37ddedad524c9992f1d1e50ea1604ee13e6c093a2fe723cefc71338452fdfc64d36ab6b94a9f6453e8820dc54eab917dce3')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

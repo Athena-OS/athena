@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=cpptest
+pkgver=2.0.0
+pkgrel=1
+groups=('athena' 'athena-code-audit')
+pkgdesc='A portable and powerful, yet simple, unit testing framework for handling automated tests in C++.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/cpptest/cpptest/releases'
+depends=('gcc-libs')
+license=('GPL')
+source=("https://github.com/cpptest/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
+sha512sums=('41b5f7989198a79dca29f7d579c4d3918e5c3bbc0f91f77317ae074af8daaa8e5ee8add7c29c8e345cb95b08524839cecc7659a8d95ee95712e205b8838c5029')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" NEWS INSTALL BUGS README
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  make install DESTDIR="$pkgdir"
+}
+

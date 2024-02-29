@@ -1,0 +1,20 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tsh
+pkgver=0.6
+pkgrel=5
+pkgdesc='An open-source UNIX backdoor that compiles on all variants, has full pty support, and uses strong crypto for communication.'
+url='http://packetstormsecurity.com/search/?q=tsh'
+groups=('athena' 'athena-backdoor')
+license=('custom')
+arch=('any')
+source=("http://dl.packetstormsecurity.net/UNIX/penetration/$pkgname-$pkgver.tgz")
+sha512sums=('29bddec965666c749566ace7a26d3fe873b9b0bf7cde48ef5719dc0c7146897ce1ba0b884c86cff297312b2f9e05212c1096c15b6c1c776e474bb98b223e9b49')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -r "$pkgname-$pkgver/"* "$pkgdir/usr/share/$pkgname/"
+}
+

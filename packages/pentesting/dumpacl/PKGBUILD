@@ -1,0 +1,23 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dumpacl
+pkgver=0.1
+pkgrel=1
+epoch=1
+pkgdesc='Dumps NTs ACLs and audit settings.'
+url='http://www.systemtools.com/cgi-bin/download.pl?DumpAcl'
+groups=('athena' 'athena-windows' 'athena-cracker')
+license=('custom')
+arch=('any')
+source=('http://www.systemtools.com/download/dumpacl.zip')
+sha512sums=('f45fcb56679c642d998f27eb369943b6137dbbdbe9a2e458665f2bf781d15a938bbe71fef52a1c4a67f955ea2baf2c7d0f8e2b2336cb69bb8526c6b2a07b8a3f')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  rm "$pkgname.zip"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname/"
+}
+

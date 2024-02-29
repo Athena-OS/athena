@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ibrute
+pkgver=12.3a6a11e
+pkgrel=2
+groups=('athena' 'athena-cracker' 'athena-mobile')
+pkgdesc='An AppleID password bruteforce tool. It uses Find My Iphone service API, where bruteforce protection was not implemented.'
+arch=('any')
+url='https://github.com/hackappcom/ibrute/'
+license=('custom:unknown')
+depends=('python2' 'python2-simplejson' 'python2-lxml')
+makedepends=('git')
+source=("git+https://github.com/hackappcom/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 id_brute.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

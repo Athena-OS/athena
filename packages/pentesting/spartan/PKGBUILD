@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=spartan
+pkgver=23.babdd7d
+pkgrel=1
+pkgdesc='Frontpage and Sharepoint fingerprinting and attack tool.'
+groups=('athena' 'athena-fingerprint' 'athena-fuzzer')
+arch=('any')
+url='https://github.com/sensepost/SPartan'
+license=('custom:unknown')
+depends=('python2' 'python2-beautifulsoup4' 'python2-six' 'python2-requests'
+         'python2-python-ntlm3' 'python2-requests-ntlm')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/sensepost/SPartan.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 SPartan.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

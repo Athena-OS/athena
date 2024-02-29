@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dracnmap
+pkgver=69.09d3945
+pkgrel=1
+pkgdesc='Tool to exploit the network and gathering information with nmap help.'
+groups=('athena' 'athena-automation')
+arch=('any')
+url='https://github.com/screetsec/Dracnmap'
+license=('MIT')
+depends=('nmap' 'firefox' 'nano' 'xterm')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/screetsec/Dracnmap.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 dracnmap-v2.2.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 dracnmap-v2.2-dracOs.sh  "$pkgdir/usr/bin/dracnmap-drac0s"
+  install -Dm 755 Output/log "$pkgdir/usr/share/$pkgname/Output/log"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

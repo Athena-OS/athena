@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=malmon
+pkgver=0.3
+pkgrel=3
+groups=('athena' 'athena-defensive' 'athena-malware')
+pkgdesc='Hosting exploit/backdoor detection daemon.'
+arch=('any')
+url='http://sourceforge.net/projects/malmon/'
+license=('custom:unknown')
+depends=('python2' 'python2-pyinotify')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('bbafe52da14cbb3481e3c65a1a8d1adbb1430fd55c3de0fafe4c17b44724874271b06903512266fb286d95c94824ef1e07c820cdbb92b04aeb75ea8bbf62e055')
+
+prepare() {
+  cd "v$pkgver"
+
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' src/malmon.py
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' src/malmon-scan.py
+}
+
+package() {
+  cd "v$pkgver"
+
+  install -dm 755 "$pkgdir/etc/$pkgname"
+  install -dm 755 "$pkgdir/var/cache/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README ChangeLog
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cd src
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 malmon-scan.py "$pkgdir/usr/bin/malmon-scan"
+
+  cp -a conf/* "$pkgdir/etc/$pkgname/"
+  cp -a var/* "$pkgdir/var/cache/$pkgname/"
+}
+

@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=kautilya
+pkgver=52.1c9d5b0
+pkgrel=10
+groups=('athena' 'athena-hardware')
+pkgdesc='Pwnage with Human Interface Devices using Teensy++2.0 and Teensy 3.0 devices.'
+arch=('any')
+url='https://github.com/samratashok/Kautilya/releases'
+license=('GPL3')
+makedepends=('git')
+depends=('ruby' 'ruby-bundler' 'libpcap')
+source=("$pkgname::git+https://github.com/samratashok/Kautilya.git")
+sha512sums=('SKIP')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname/output"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" CHANGELOG README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm CHANGELOG README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ruby /usr/share/$pkgname/$pkgname.rb "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

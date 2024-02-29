@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=xwaf
+pkgver=162.c6f6bb7
+pkgrel=3
+pkgdesc='Automatic WAF bypass tool.'
+groups=('athena' 'athena-webapp' 'athena-scanner')
+arch=('any')
+url='https://github.com/3xp10it/bypass_waf'
+license=('custom:unknown')
+depends=('python')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/3xp10it/bypass_waf.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.md *.pdf
+
+  rm readme.md *.pdf
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

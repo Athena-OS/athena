@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-sqlalchemy-mixins
+pkgname=('python2-sqlalchemy-mixins' 'python-sqlalchemy-mixins')
+_pkgname=sqlalchemy_mixins
+pkgver=2.0.5
+pkgrel=1
+pkgdesc='Active Record, Django-like queries, nested eager load and beauty __repr__ for SQLAlchemy.'
+arch=('any')
+url='https://pypi.org/project/sqlalchemy-mixins/#files'
+license=('MIT')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/sqlalchemy_mixins-$pkgver.tar.gz")
+sha512sums=('c1c15fb210d5f6fe7782b68c003dc888740697d4929a2ba78a35ebdd74ad51a9e2164a3f67b18df7b42c97e4b41aaf997934ab121d288e5be8f11efbda545883')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-sqlalchemy-mixins() {
+  depends=('python2')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+}
+
+package_python-sqlalchemy-mixins() {
+  depends=('python')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+}
+

@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=jeb-webasm
+pkgver=3.0.5.201811021648
+pkgrel=2
+pkgdesc='WebAssembly decompiler.'
+arch=('any')
+groups=('athena' 'athena-reversing')
+url='https://www.pnfsoftware.com/jeb/#wasm'
+depends=('java-environment' 'java-runtime-common')
+source=('https://www.pnfsoftware.com/dl?jebdemowasm')
+sha512sums=('SKIP')
+
+pkgver() {
+  cat bin/VERSION.TXT
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/opt/$pkgname"
+
+  rm -rf 'dl?jebdemowasm'
+
+  cp --no-preserve=ownership -r * "$pkgdir/opt/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /opt/$pkgname
+exec ./jeb_linux.sh "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

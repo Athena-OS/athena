@@ -1,0 +1,33 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-imagehash
+_pkgname=ImageHash
+pkgver=4.3.1
+pkgrel=3
+pkgdesc='Image Hashing library.'
+url='https://pypi.org/project/ImageHash/#files'
+arch=('any')
+license=('BSD')
+depends=('python' 'python-six' 'python-numpy' 'python-scipy' 'python-pillow'
+         'python-pywavelets')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('8135033780bf240a5afd86f1dc31326e8d7b06bcfb260c5d64c74c88d5c7fdf489d8b059aade717b779dd9167a3ebd056cf95539eede5952c5569a09d0241c77')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  mv "$pkgdir/usr/images" "$pkgdir/usr/share/$pkgname/"
+}
+

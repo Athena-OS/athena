@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=foresight
+pkgver=57.6f48984
+pkgrel=6
+pkgdesc='A tool for predicting the output of random number generators.'
+groups=('athena' 'athena-crypto')
+arch=('any')
+url='https://github.com/ALSchwalm/foresight'
+license=('MIT')
+depends=('python' 'python-argparse')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/ALSchwalm/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

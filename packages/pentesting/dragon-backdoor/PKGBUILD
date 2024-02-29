@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dragon-backdoor
+pkgver=7.c7416b7
+pkgrel=4
+groups=('athena' 'athena-backdoor' 'athena-sniffer'
+        'athena-windows')
+pkgdesc='A sniffing, non binding, reverse down/exec, portknocking service Based on cd00r.c.'
+arch=('any')
+url='https://github.com/Shellntel/backdoors'
+license=('custom:unknown')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/Shellntel/backdoors.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 644 -t "$pkgdir/usr/share/windows/dragon/" *
+}
+

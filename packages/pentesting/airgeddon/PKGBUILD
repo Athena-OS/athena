@@ -1,0 +1,60 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=airgeddon
+pkgver=v11.22.r0.gfe2c42b
+pkgrel=1
+epoch=1
+pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
+groups=('athena' 'athena-wireless' 'athena-automation')
+arch=('any')
+url='https://github.com/v1s1t0r1sh3r3/airgeddon'
+license=('GPL3')
+depends=('bash' 'xterm' 'iw' 'gawk' 'aircrack-ng' 'coreutils' 'sed' 'iproute2'
+         'tmux' 'pciutils' 'procps-ng')
+optdepends=('hashcat' 'crunch' 'mdk4' 'reaver' 'beef' 'hostapd' 'lighttpd'
+            'iptables' 'bettercap' 'ettercap' 'dnsmasq' 'bully'
+            'pixiewps' 'dhcp' 'curl' 'ethtool' 'rfkill' 'wget' 'usbutils'
+            'xorg-xdpyinfo' 'ccze' 'xorg-xset' 'asleap' 'john' 'hostapd-wpe'
+            'nftables' 'openssl' 'mdk3' 'hcxtools' 'hcxdumptool' 'wireshark-cli'
+            'systemd' 'tcpdump')
+makedepends=('git' 'coreutils')
+source=("git+https://github.com/v1s1t0r1sh3r3/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|AIRGEDDON_AUTO_UPDATE=true|AIRGEDDON_AUTO_UPDATE=false|' \
+    .airgeddonrc
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md \
+    CONTRIBUTING.md
+
+  rm -rf *.md .github binaries imgs Dockerfile pindb_checksum.txt .editorconfig\
+    .git*
+
+  cp -a --no-preserve=ownership . "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/airgeddon
+exec bash $pkgname.sh "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

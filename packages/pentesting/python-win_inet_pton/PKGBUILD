@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-win_inet_pton
+pkgname=('python2-win_inet_pton' 'python-win_inet_pton')
+_pkgname=win_inet_pton
+pkgver=1.1.0
+pkgrel=6
+pkgdesc='Native inet_pton and inet_ntop implementation for Python on Windows (with ctypes).'
+arch=('any')
+url='https://pypi.org/project/win_inet_pton/#files'
+license=('custom:unknown')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('7ee317d6861e6ea15db3269e0eb107dd32edc912c3011b38bd8c95f3ca7efdf96954ea7395cc20469352bf06445a662a7c90954df33cb61cc47af8a1fd40bae5')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-win_inet_pton() {
+  depends=('python2')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+
+package_python-win_inet_pton() {
+  depends=('python')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+

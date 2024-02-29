@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=crackle
+pkgver=111.d83b4b6
+pkgrel=1
+groups=('athena' 'athena-cracker' 'athena-bluetooth')
+pkgdesc='Crack and decrypt BLE encryption.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/mikeryan/crackle/'
+license=('GPL')
+depends=('libpcap')
+makedepends=('git')
+source=("git+https://github.com/mikeryan/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  make INSTALL_DIR="$pkgdir/usr/bin" install
+}
+

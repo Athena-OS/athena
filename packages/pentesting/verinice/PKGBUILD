@@ -1,0 +1,57 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=verinice
+pkgver=1.27.0.r0.gcfd8e0556
+pkgrel=1
+groups=('athena' 'athena-misc')
+pkgdesc='Tool for managing information security.'
+url='https://github.com/SerNet/verinice'
+arch=('any')
+license=('GPL3')
+depends=('java-environment')
+makedepends=('git' 'unzip' 'which' 'maven' 'jdk8-openjdk')
+source=("git+https://github.com/SerNet/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $pkgname
+
+  export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/'
+  ./mvnw -Dosgi.parentClassloader=ext -Dmaven.antrun.skip=true \
+    -Dtycho.disableP2Mirrors=true clean verify
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname/"{client,report_designer,server}
+
+  cp -a --no-preserve=ownership \
+    sernet.verinice.releng.client.product/target/products/sernet.verinice.releng.client/linux/gtk/* \
+    "$pkgdir/usr/share/$pkgname/client/"
+  cp -a --no-preserve=ownership \
+    sernet.verinice.report.designer.product/target/products/sernet.verinice.report.designer/linux/gtk/* \
+    "$pkgdir/usr/share/$pkgname/report_designer/"
+  cp -a --no-preserve=ownership \
+    sernet.verinice.releng.server.product/target/*.war \
+    "$pkgdir/usr/share/$pkgname/server/"
+
+  ln -sf "/usr/share/$pkgname/client/x86_64/verinice/verinice" \
+    "$pkgdir/usr/bin/verinice"
+  ln -sf "/usr/share/$pkgname/report_designer/x86_64/v.Designer/vDesigner" \
+    "$pkgdir/usr/bin/vDesigner"
+
+  # we don't support i686 anymore so we can remove these.
+  rm -rf "$pkgdir/usr/share/$pkgname/client/x86" \
+    "$pkgdir/usr/share/$pkgname/report_designer/x86" \
+    "$pkgdir/usr/share/$pkgname/server/x86"
+}
+

@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=spiga
+pkgver=644.6eea465
+pkgrel=1
+epoch=2
+groups=('athena' 'athena-webapp' 'athena-scanner')
+pkgdesc='Configurable web resource scanner.'
+arch=('any')
+url='https://github.com/getdual/scripts-n-tools/blob/master/spiga.py'
+license=('custom:unknown')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/WSTNPHX/scripts-n-tools.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' "$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 "$pkgname.conf" "$pkgdir/usr/share/$pkgname/$pkgname.conf"
+}
+

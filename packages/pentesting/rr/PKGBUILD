@@ -1,0 +1,51 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=rr
+pkgver=6691.a4b7c866
+pkgrel=1
+groups=('athena' 'athena-debugger' 'athena-misc')
+pkgdesc='A Record and Replay Framework.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/mozilla/rr'
+license=('custom')
+depends=('libpfm4' 'zlib' 'python-pexpect' 'man-pages' 'libpfm4' 'gcc-libs'
+         'gcc-libs' 'bash' 'lib32-zlib' 'python2' 'gcc' 'libpcap' 'libcap-ng'
+         'libcap' 'capnproto')
+makedepends=('git' 'cmake' 'gdb')
+source=("git+https://github.com/mozilla/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build(){
+  cd $pkgname
+
+  export CFLAGS="$CFLAGS -fPIC"
+
+  mkdir -p build
+
+  cd build
+
+  cmake -Ddisable32bit=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
+
+  make
+}
+
+
+package() {
+  cd $pkgname
+
+  cd build
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

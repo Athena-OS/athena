@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=htshells
+pkgver=89.3216523
+pkgrel=1
+epoch=2
+groups=('athena' 'athena-exploitation')
+pkgdesc='Self contained web shells and other attacks via .htaccess files.'
+url='https://github.com/wireghoul/htshells'
+arch=('any')
+license=('GPL3')
+makedepends=('git')
+source=("git+https://github.com/wireghoul/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+}
+

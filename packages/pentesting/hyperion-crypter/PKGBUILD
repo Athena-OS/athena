@@ -1,0 +1,22 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hyperion-crypter
+_pkgname=Hyperion
+pkgver=2.3.1
+pkgrel=1
+pkgdesc='A runtime encrypter for 32-bit and 64-bit portable executables.'
+url='http://nullsecurity.net/tools/binary.html'
+groups=('athena' 'athena-windows' 'athena-binary' 'athena-crypto')
+license=('custom:unknown')
+arch=('any')
+source=("https://github.com/nullsecuritynet/tools/raw/main/binary/hyperion/release/$_pkgname-$pkgver.zip")
+sha512sums=('c647016ac5ce1f987dd213e598cfd23b11320521767b2afa2991ee0822492b2a12816c452762ec24d128c9cf688852563203bf6186aaaae9e3f2541f8fb5556a')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  cp -a --no-preserve=ownership "$_pkgname-$pkgver/"* \
+    "$pkgdir/usr/share/windows/$pkgname"
+}
+

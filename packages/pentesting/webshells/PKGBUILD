@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=webshells
+pkgver=46.e8e1a37
+pkgrel=1
+groups=('athena' 'athena-webapp' 'athena-backdoor')
+pkgdesc='Web Backdoors.'
+url='https://github.com/BlackArch/webshells'
+arch=('any')
+license=('custom:unknown')
+makedepends=('git')
+source=("git+https://github.com/BlackArch/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  rm README.md
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+}
+

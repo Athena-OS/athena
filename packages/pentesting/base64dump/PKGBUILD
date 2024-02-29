@@ -1,0 +1,23 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=base64dump
+pkgver=0.0.14
+pkgrel=1
+groups=('athena' 'athena-misc')
+pkgdesc='Extract and decode base64 strings from files.'
+arch=('any')
+url='https://blog.didierstevens.com/my-software/#base64dump'
+license=('custom:unknown')
+depends=('python2')
+source=("http://didierstevens.com/files/software/base64dump_V${pkgver//./_}.zip")
+sha512sums=('78bf7b0d1efce8d756ccf83173a87c271b1f292f3f47f93957029db7e7a4f0f645691f94ca53010e949b61071e60861402ac1c4dd111dc01fa0ca7f44879cfba')
+
+prepare() {
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' "$pkgname.py"
+}
+
+package() {
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+}
+

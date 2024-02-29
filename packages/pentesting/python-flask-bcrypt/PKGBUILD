@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-flask-bcrypt
+pkgname=('python2-flask-bcrypt' 'python-flask-bcrypt')
+_pkgname='Flask-Bcrypt'
+pkgver=1.0.1
+pkgrel=2
+pkgdesc='Bcrypt hashing for Flask.'
+arch=('any')
+url='https://pypi.org/project/Flask-Bcrypt/'
+license=('BSD')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/Flask-Bcrypt-$pkgver.tar.gz")
+sha512sums=('e7df01d5e2e193e80e12c8cf07fe01a487ab1b3a2f9175533e653636c2a4aa7a4175cbfc456b3251b7c536ab72f9b88c6d407163741807c9965c2b6d842c8203')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-flask-bcrypt() {
+  depends=('python2' 'python2-flask' 'python2-bcrypt')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_python-flask-bcrypt() {
+  depends=('python' 'python-flask' 'python-bcrypt')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

@@ -1,0 +1,41 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=samplicator
+pkgver=175.ceeb1d2
+pkgrel=1
+pkgdesc='Send copies of (UDP) datagrams to multiple receivers, with optional sampling and spoofing.'
+groups=('athena' 'athena-networking' 'athena-spoof')
+arch=('x86_64' 'aarch64')
+url='https://github.com/sleinen/samplicator'
+license=('GPL2')
+makedepends=('git')
+source=("git+https://github.com/sleinen/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  ./autogen.sh
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md NEWS AUTHORS \
+    ChangeLog
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+

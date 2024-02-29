@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=zelos
+pkgver=272.506554d
+pkgrel=4
+pkgdesc='A comprehensive binary emulation and instrumentation platform.'
+groups=('athena' 'athena-binary')
+arch=('any')
+url='https://github.com/zeropointdynamics/zelos'
+license=('AGPL3')
+depends=('python' 'python-wheel' 'python-colorama' 'python-termcolor'
+         'python-capstone' 'python-sortedcontainers' 'python-verboselogs'
+         'python-dnslib' 'python-hexdump' 'python-dpkt' 'python-coloredlogs'
+         'python-configargparse' 'python-pypacker' 'lief' 'python-unicorn'
+         'python-zebracorn' 'python-lark-parser')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/zeropointdynamics/$pkgname.git"
+        'setup.py.patch')
+sha512sums=('SKIP'
+            '80632be810f4593952bb5c963a034334dc950c7981eab8cf690498f730a3d4b58f1c6f1487fd2bb132e3ed841a1274dc708e4f26f69fd55098e015b05aba584b')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  patch -p0 < ../setup.py.patch
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

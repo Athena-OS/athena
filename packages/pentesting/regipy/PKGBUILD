@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=regipy
+pkgver=2.2.2
+pkgrel=2
+pkgdesc='Library for parsing offline registry hives.'
+groups=('athena' 'athena-forensic')
+arch=('any')
+url='https://github.com/mkorman90/regipy'
+license=('MIT')
+depends=('python' 'python-construct' 'python-attrs' 'python-click' 'python-tqdm'
+         'python-inflection' 'python-jsonlines' 'python-pytz' 'python-logbook'
+         'python-tabulate')
+makedepends=('python-setuptools')
+source=("https://github.com/mkorman90/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('e55bd8d99b74413430652fe2a15eb4cca1b9a3b7c37332c98b67e78450eaef78c13f02b3519f87426c0dde84bfdb3f6427333a2fc696ec1512642562721b9872')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  #sed "s|==[0-9].*|\',|g" -i setup.py
+  #sed "31!s|jsonlines',|jsonlines'\],|" -i setup.py
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

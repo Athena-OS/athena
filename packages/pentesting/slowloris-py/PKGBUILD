@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=slowloris-py
+pkgver=30.eb7f632
+pkgrel=4
+pkgdesc='Low bandwidth DoS tool.'
+groups=('athena' 'athena-dos')
+arch=('any')
+url='https://github.com/gkbrk/slowloris'
+license=('BSD')
+depends=('python')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/gkbrk/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i '1i\#!/usr/bin/env python3' "$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

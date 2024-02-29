@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=naft
+pkgver=0.0.9
+pkgrel=2
+groups=('athena' 'athena-forensic')
+pkgdesc='Network Appliance Forensic Toolkit.'
+arch=('any')
+url='https://blog.didierstevens.com/my-software/#NAFT'
+license=('custom:unknown')
+depends=('python2' 'python2-yara')
+source=("http://didierstevens.com/files/software/NAFT_V${pkgver//./_}.zip")
+sha512sums=('fefefebb09a61fbbe7dca4febded14ac7fe4d85db999f7ee7b63cde2111bce09908a01f3990e1d25f0e6703923544db3daf88d7255c12d13516baf4b60b9ef79')
+
+prepare() {
+  find . -type f -name '*.py' -exec sed -i 's|/env python|/env python2|' {} \;
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 755 -t "$pkgdir/usr/share/$pkgname/" *.py
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.pdf
+
+  ln -s "/usr/share/$pkgname/$pkgname-gfe.py" "$pkgdir/usr/bin/$pkgname-gfe"
+  ln -s "/usr/share/$pkgname/$pkgname-icd.py" "$pkgdir/usr/bin/$pkgname-icd"
+  ln -s "/usr/share/$pkgname/$pkgname-ii.py" "$pkgdir/usr/bin/$pkgname-ii"
+}
+

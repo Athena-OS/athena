@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-bitarray
+pkgname=('python2-bitarray' 'python-bitarray')
+_pkgname=bitarray
+pkgver=2.8.2
+pkgrel=1
+pkgdesc='Efficient arrays of booleans for Python.'
+arch=('x86_64' 'aarch64')
+url='https://pypi.org/project/bitarray/#files'
+license=('PSF')
+makedepends=('python2-setuptools' 'python-setuptools')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('f375e81acf9e5ea618b7f62e2b43b860f4f666c96f5d166431dbc792fd5634b7d7f319ab4822ccbacded94c84dee6bb09daaca357814d0b0e4a7dbb1f4f8587a')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-bitarray() {
+  depends=('python2')
+
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+
+package_python-bitarray() {
+  depends=('python')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

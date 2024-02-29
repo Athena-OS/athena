@@ -1,0 +1,53 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ssma
+pkgver=215.2a2b6bd
+pkgrel=4
+groups=('athena' 'athena-malware')
+arch=('any')
+pkgdesc='Simple Static Malware Analyzer.'
+url='https://github.com/secrary/SSMA'
+license=('GPL3')
+depends=('python' 'python-pefile' 'python-magic' 'python-yara-rednaga' 'ssdeep'
+         'python-elasticsearch' 'python-gitpython' 'python-virustotal-api'
+         'python-pyelftools')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/secrary/SSMA.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  touch src/__init__.py
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  rm README.md
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+  chmod 755 "$pkgdir/usr/share/$pkgname/ssma.py"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

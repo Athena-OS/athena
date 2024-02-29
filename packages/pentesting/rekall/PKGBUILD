@@ -1,0 +1,53 @@
+# Credits BlackArch ( http://blackarch.org ).
+# See COPYING for license details.
+
+pkgname=rekall
+pkgver=1409.55d1925f
+pkgrel=4
+groups=('athena' 'athena-forensic')
+pkgdesc='Memory Forensic Framework.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/google/rekall'
+license=('GPL2')
+depends=('python' 'python-virtualenv')
+makedepends=('git' 'python-setuptools' 'python-pip')
+replaces=('python-rekall' 'python2-rekall')
+source=("git+https://github.com/google/$pkgname.git")
+sha512sums=('SKIP')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgbase
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i '1i\rekall-efilter' requirements.txt
+  sed -i '1i\future==0.16.0' requirements.txt
+}
+
+package() {
+  cd $pkgbase
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 644 requirements.txt "$pkgdir/usr/share/$pkgname/requirements.txt"
+  rm LICENSE.txt
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.txt *.md
+  rm *.txt *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  for fname in rekal rekall rekal.py; do
+    cat > "$pkgdir/usr/bin/$fname" << EOF
+#!/usr/bin/env bash
+source /usr/share/$pkgname/venv/bin/activate
+exec python /usr/share/$pkgname/venv/bin/$fname "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/$fname"
+  done
+}
+

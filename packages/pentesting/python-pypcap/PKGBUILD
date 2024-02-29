@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-pypcap
+pkgname=('python2-pypcap' 'python-pypcap')
+_pkgname=pypcap
+pkgver=1.3.0
+pkgrel=2
+epoch=1
+pkgdesc='Python extension module for libpcap.'
+arch=('x86_64' 'aarch64')
+url='https://pypi.org/project/pypcap/#files'
+license=('custom:unknown')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/pypcap-1.3.0.tar.gz")
+sha512sums=('21694b93d40440a1abc538c032698f665ed39068a8a6507284f9e62840a13b41f380c4ecfb4440c4f4a7efce37310779b60653c17dbe51f64c8dc94774aae20b')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-pypcap() {
+  depends=('python2' 'libpcap')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+
+package_python-pypcap() {
+  depends=('python' 'libpcap')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+

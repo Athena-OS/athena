@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=finalrecon
+pkgver=148.2226217
+pkgrel=1
+pkgdesc='OSINT Tool for All-In-One Web Reconnaissance.'
+arch=('any')
+groups=('athena' 'athena-recon')
+url='https://github.com/thewhiteh4t/FinalRecon'
+license=('MIT')
+depends=('python' 'python-requests' 'python-ipwhois' 'python-beautifulsoup4'
+         'python-lxml' 'python-argparse' 'python-icmplib' 'python-tldextract'
+         'python-dnslib' 'python-aiohttp' 'python-psycopg2' 'python-aiodns')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/thewhiteh4t/FinalRecon.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+
+  rm README.md LICENSE
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=windows-privesc-check
+pkgver=181.9f304fd
+pkgrel=5
+pkgdesc='Standalone Executable to Check for Simple Privilege Escalation Vectors on Windows Systems.'
+groups=('athena' 'athena-windows' 'athena-exploitation')
+arch=('any')
+url='https://github.com/pentestmonkey/windows-privesc-check'
+license=('custom:unknown')
+depends=('python2')
+makedepends=('git')
+source=("git+https://github.com/pentestmonkey/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+	cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname/"
+}
+

@@ -1,0 +1,57 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=morpheus
+pkgver=165.5d81c9e
+pkgrel=1
+pkgdesc='Automated Ettercap TCP/IP Hijacking Tool.'
+groups=('athena' 'athena-automation')
+arch=('any')
+url='https://github.com/r00t-3xp10it/morpheus'
+license=('custom:unknown')
+depends=('bash' 'xterm' 'zenity' 'ettercap' 'dsniff' 'apache' 'nmap' 'driftnet'
+         'sudo' 'metasploit')
+makedepends=('git')
+source=("git+https://github.com/r00t-3xp10it/$pkgname.git"
+        'settings.patch')
+sha512sums=('SKIP'
+            '8c9eb573da48f245e1710de9c338a1c097cc934f7db8b8f2f1d758a11a6ce62c7d2809a21cc83aef3af3fa10714206bd1795f22045908769b19a54148ac79e5f')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  patch -p0 < "$srcdir/settings.patch"
+
+  sed 's/echo/echo\ -e/g' -i "$pkgname.sh"
+  sed 's/which\ apache2/which\ httpd/g' -i "$pkgname.sh"
+  sed 's/\/etc\/init.d\/apache2\ start/systemctl\ start\ httpd/g' -i morpheus.sh
+  sed 's/\/etc\/init.d\/apache2\ stop/systemctl\ stop\ httpd/g' -i morpheus.sh
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin/"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bash ./$pkgname.sh "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

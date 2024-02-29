@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=evilgrade
+pkgver=2.0.9
+pkgrel=3
+groups=('athena' 'athena-misc')
+pkgdesc='Modular framework that takes advantage of poor upgrade implementations by injecting fake updates.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/infobyte/evilgrade'
+license=('GPL')
+depends=('perl' 'perl-data-dump' 'perl-io-socket-ssl' 'perl-digest-sha1'
+         'perl-rpc-xml')
+source=("https://github.com/infobyte/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('edccba7cf84443c327c072b71c8386f1b9cd73b66b0ceebef354627c95e0c60e72b8ead0d067be296ce54958cdd8cad3c9f735d2c317847c52cda4b36c9df3af')
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 docs/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  rm docs/LICENSE
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md docs/*
+  rm -rf docs
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec perl -I . $pkgname "\$@"
+EOF
+
+  chmod a+x "$pkgdir/usr/bin/$pkgname"
+}
+

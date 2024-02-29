@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=spfmap
+pkgver=8.a42d15a
+pkgrel=3
+groups=('athena' 'athena-recon')
+pkgdesc='A program to map out SPF and DKIM records for a large number of domains.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/BishopFox/spfmap'
+license=('custom:unknown')
+depends=('sqlite')
+makedepends=('git' 'go')
+source=("git+https://github.com/BishopFox/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  GOPATH="$srcdir" go mod init go.mod
+  GOPATH="$srcdir" go mod tidy
+  GOPATH="$srcdir" go mod download
+  GOPATH="$srcdir" go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-s -w" \
+    -o $pkgname .
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+}
+

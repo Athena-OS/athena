@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=whatsmyname
+pkgver=2280.01df288
+pkgrel=1
+pkgdesc='Tool to perform user and username enumeration on various websites.'
+groups=('athena' 'athena-social' 'athena-recon')
+arch=('any')
+url='https://github.com/WebBreacher/WhatsMyName'
+license=('MIT')
+depends=('python' 'python-requests' 'python-multidict' 'python-aiohttp'
+         'python-terminaltables')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/WebBreacher/WhatsMyName.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python whats_my_name.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

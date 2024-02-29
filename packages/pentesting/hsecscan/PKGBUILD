@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hsecscan
+pkgver=66.7b8fa71
+pkgrel=1
+pkgdesc='A security scanner for HTTP response headers.'
+groups=('athena' 'athena-scanner')
+arch=('any')
+url='https://github.com/riramar/hsecscan'
+license=('GPL2')
+depends=('python2' 'python2-simplejson' 'python2-pysqlite' 'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/riramar/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

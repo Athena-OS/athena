@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wirouter-keyrec
+pkgver=1.1.2
+pkgrel=3
+groups=('athena' 'athena-wireless' 'athena-cracker')
+pkgdesc='A platform independent software to recover the default WPA passphrases of the supported router models'
+arch=('x86_64' 'aarch64')
+url='http://www.salvatorefresta.net/tools/'
+license=('GPL3')
+source=("http://tools.salvatorefresta.net/WiRouter_KeyRec_$pkgver.zip")
+sha512sums=('a3c449497e3f3fed88dfbb35a90a2cfa5937efa02393e825ec51ab390b7094ce619d3238a916afd2b48e35e0e261b454f7d7005af46d6a45d77b2e1d4faaac51')
+
+build() {
+  cd "WiRouter_KeyRec_$pkgver"
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd "WiRouter_KeyRec_$pkgver"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" AUTHORS INSTALL \
+    ChangeLog THANKS VERSION
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  make DESTDIR="$pkgdir" install
+}
+

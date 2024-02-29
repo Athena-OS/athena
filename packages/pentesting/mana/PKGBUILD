@@ -1,0 +1,107 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mana
+pkgver=78.438d1fe
+pkgrel=2
+groups=('athena' 'athena-wireless')
+pkgdesc='A toolkit for rogue access point (evilAP) attacks first presented at Defcon 22.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/sensepost/mana'
+license=('BSD' 'GPL3')
+depends=('libnl1' 'apache' 'dsniff'  'macchanger' 'metasploit' 'procps'
+         'iptables' 'python2-dnspython' 'python2-pcapy' 'python2-scapy' 'sslsplit'
+         'stunnel' 'tinyproxy' 'asleap')
+makedepends=('git')
+options=('!emptydirs')
+source=("git+https://github.com/sensepost/$pkgname.git"
+        'apache-fix.patch'
+        'archfixes.patch')
+sha512sums=('SKIP'
+            'f04e7831d449ef5ecce280f6952daf592417ea4fa2953e51b701bef4f07ae7e40f066a6ba887e624643c0d60a704e7007a23fdcd22af87c09ef587dad5f1948d'
+            '21fec24c0c93f1576325136a4d4757959d95654e7331cc93c78540aad03bc737c2299749f6b210bedbe6211e2258633d8304771e181e598f37d159e9e940fbcd')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  grep -iRl 'python' "mana" |
+  xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+
+  cd $pkgname
+
+  patch -i "$srcdir/apache-fix.patch"
+
+  cd run-mana
+
+  patch < "$srcdir/archfixes.patch"
+
+  sed -i 's|python ssltrip.py|python2 sslstrip.py|' start-nat-full.sh
+  sed -i 's|python dnsproxy.py|python2 dnsproxy.py|' start-nat-full.sh
+}
+
+
+build() {
+  cd $pkgname
+
+  git submodule init
+  git submodule update
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/var/lib/mana-toolkit/"{lamb_braai,sslsplit}
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 hostapd-mana/COPYING \
+    "$pkgdir/usr/share/licenses/hostapd-manna/COPYING"
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  sed -i 's|python22.6|python2|' \
+    "$pkgdir/usr/share/mana-toolkit/sslstrip-hsts/dns2proxy/dns2proxy.py"
+
+  cat > "$pkgdir/usr/bin/mana-firelamb-view" << EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+exec sh firelamb-view.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-nat-full" << EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+exec sh start-nat-full.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-nat-simple" << EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+exec sh start-nat-simple.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-noupstream-eap" << EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+exec sh start-noupstream-eap.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-noupstream" << EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+exec sh start-noupstream.sh "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/mana-firelamb-view"
+  chmod +x "$pkgdir/usr/bin/mana-nat-full"
+  chmod +x "$pkgdir/usr/bin/mana-nat-simple"
+  chmod +x "$pkgdir/usr/bin/mana-noupstream-eap"
+  chmod +x "$pkgdir/usr/bin/mana-noupstream"
+}
+

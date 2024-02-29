@@ -1,0 +1,51 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=owasp-bywaf
+pkgver=26.e730d1b
+pkgrel=3
+groups=('athena' 'athena-webapp' 'athena-scanner')
+pkgdesc='A command-line tool for streamlining web application firewall.'
+arch=('any')
+url='https://github.com/depasonico/OWASP-ByWaf'
+license=('custom')
+depends=('python2' 'python2-sqlalchemy')
+makedepends=('python2-setuptools' 'git')
+source=("$pkgname::git+https://github.com/depasonico/OWASP-ByWaf.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|python$|python2|' "hostdb.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  for i in *.py ; do
+    install -Dm 755 $i "$pkgdir/usr/share/$pkgname/$i"
+  done
+
+  install -Dm 644 doc/* "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 copyright.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/
+exec python2 ./bywaf.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

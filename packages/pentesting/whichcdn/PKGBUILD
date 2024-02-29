@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=whichcdn
+pkgver=22.5fc6ddd
+pkgrel=7
+pkgdesc='Tool to detect if a given website is protected by a Content Delivery Network.'
+groups=('athena' 'athena-webapp' 'athena-recon')
+arch=('any')
+url='https://github.com/Nitr4x/whichCDN'
+license=('MIT')
+depends=('python' 'python-requests')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/Nitr4x/whichCDN.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+  install -Dm 644 LICENCE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm *.md LICENCE.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python ./whichCDN "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

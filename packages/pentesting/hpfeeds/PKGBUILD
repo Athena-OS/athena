@@ -1,0 +1,69 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=hpfeeds
+pkgname=('python2-hpfeeds' 'hpfeeds')
+pkgver=414.34bf4d4
+_pyver=3.11
+pkgrel=1
+pkgdesc='Honeynet Project generic authenticated datafeed protocol.'
+arch=('any')
+groups=('athena' 'athena-honeypot' 'athena-networking')
+url='https://github.com/rep/hpfeeds'
+license=('BSD')
+makedepends=('git' 'python2-setuptools' 'python-setuptools')
+replaces=('python2-hpfeeds3' 'python-hpfeeds3')
+provides=('python2-hpfeeds3' 'python-hpfeeds3' 'hpfeeds')
+source=("git+https://github.com/rep/$pkgbase.git"
+        'requirements.txt.patch')
+sha512sums=('SKIP'
+            'ea7f62a805273e9541c80f96f0c060237bcab2bd00d8328786fe55715ae5352c093c78d6fe21a005614006805eedcfb040b529fafbe00e06ae7461a8dddf4d03')
+
+pkgver() {
+  cd $pkgbase
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  # patch -p1 < requirements.txt.patch
+
+  cp -a "$pkgbase"{,-2}
+}
+
+build() {
+  cd "$pkgbase-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$pkgbase"
+
+  python setup.py build
+}
+
+package_python2-hpfeeds() {
+  depends=('python2' 'python2-idna' 'python-wrapt' 'python2-chardet'
+           'python2-attrs')
+
+  cd "$pkgbase-2"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  rm -rf "$pkgdir/usr/bin"
+
+  rm -rf "$pkgdir/usr/lib/python2.7/site-packages/tests"
+}
+
+package_hpfeeds() {
+  depends=('python' 'python-aiohttp' 'python-attrs' 'python-async-timeout'
+           'python-chardet' 'python-idna' 'python-multidict' 'python-yarl'
+           'python-prometheus_client' 'python-wrapt' 'python-aiorun'
+           'python-idna_ssl')
+
+  cd $pkgbase
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  rm -rf "$pkgdir/usr/lib/python$_pyver/site-packages/tests"
+}
+

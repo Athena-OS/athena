@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wol-e
+pkgver=2.0
+pkgrel=7
+groups=('athena' 'athena-misc' 'athena-networking')
+pkgdesc='A suite of tools for the Wake on LAN feature of network attached computers.'
+arch=('any')
+url='http://code.google.com/p/wol-e/'
+license=('GPL3')
+depends=('impacket' 'python2-scapy' 'python2-pcapy')
+source=("http://wol-e.googlecode.com/files/$pkgname-$pkgver.tar")
+sha512sums=('688dfc93813d54f71b44ee7c09cf6c7cd00a1e37')
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|bin/python$|bin/python2|' *.py
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=cisco7crack
+pkgver=2.f1c21dd
+pkgrel=2
+groups=('athena' 'athena-cracker' 'athena-crypto')
+pkgdesc='Crypt and decrypt the cisco enable 7 passwords.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/madrisan/cisco7crack'
+license=('GPL2')
+makedepends=('git')
+source=("git+https://github.com/madrisan/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  gcc "$pkgname.c" -o $pkgname
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

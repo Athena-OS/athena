@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-mako
+_pkgname=Mako
+pkgver=1.1.2
+pkgrel=2
+pkgdesc='A super-fast templating language that borrows the best ideas from the existing templating languages.'
+url='https://pypi.org/project/mako/#files'
+arch=('any')
+license=('MIT')
+depends=('python2' 'python2-markupsafe' 'python2-beaker')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('73b7a32ceb6e39dc2491734546c83a752bf0c8bc7546bb236801c02a5bccc5b59f2440333a328ff747eee936612dd12279f08d27d76f065fd589081d232692a8')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  mv "$pkgdir/usr/bin/mako-render" "$pkgdir/usr/bin/mako-render2"
+}
+

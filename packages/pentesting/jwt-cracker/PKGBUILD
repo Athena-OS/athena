@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=jwt-cracker
+pkgver=23.8130879
+pkgrel=2
+pkgdesc='JWT brute force cracker written in C.'
+groups=('athena' 'athena-cracker')
+arch=('x86_64' 'aarch64')
+url='https://github.com/brendan-rius/c-jwt-cracker'
+license=('MIT')
+depends=('openssl')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/brendan-rius/c-jwt-cracker.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 jwtcrack "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

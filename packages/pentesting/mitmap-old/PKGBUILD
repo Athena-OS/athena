@@ -1,0 +1,24 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mitmap-old
+pkgver=0.1
+pkgrel=3
+epoch=1
+groups=('athena' 'athena-automation' 'athena-exploitation' 'athena-sniffer')
+pkgdesc='Shell Script for launching a Fake AP with karma functionality and launches ettercap for packet capture and traffic manipulation.'
+url='http://www.darkoperator.com/tools-and-scripts/'
+license=('GPL')
+depends=('bash' 'aircrack-ng' 'ettercap' 'iptables' 'dhcp')
+arch=('any')
+source=("$pkgname.sh")
+sha512sums=('0f2fc099c72cc217c86f8a04fdc9df98885ac543d7de688cccb800a55a9dd4f95de0893662274a6d7a1b14233be79b86d86fbdccd8f28000fb431a8530b27e78')
+
+prepare() {
+  sed -i 's:dhcpd3:dhcpd:g' "$pkgname.sh"
+  sed -i 's:/var/lib/dhcp3:/var/lib/dhcpcd:g' "$pkgname.sh"
+}
+
+package() {
+  install -Dm 755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+}

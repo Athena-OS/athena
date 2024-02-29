@@ -1,0 +1,14 @@
+--- src/tachyon-scanner/setup.py	2022-09-03 08:10:39.619999888 +0200
++++ setup.py	2022-09-03 08:10:57.826666553 +0200
+@@ -16,8 +16,8 @@
+         ]
+     },
+     install_requires=[
+-        'hammertime-http[simhash-py]>=0.8,<0.9',
+-        'easyinject==0.3',
+-        'click==7.1.2'
++        'hammertime-http[simhash-py]',
++        'easyinject',
++        'click'
+     ],
+ )

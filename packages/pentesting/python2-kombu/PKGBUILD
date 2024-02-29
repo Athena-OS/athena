@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-kombu
+_pkgname=kombu
+pkgver=4.6.6
+pkgrel=1
+pkgdesc='A messaging library for python.'
+arch=('any')
+url='https://kombu.readthedocs.org/'
+license=('BSD')
+options=('!emptydirs')
+depends=('python2-amqp')
+optdepends=('python2-pymongo: for MongoDB support'
+            'python2-msgpack: for MessagePack support'
+            'python2-pyro: for Pyro support'
+            'python2-redis: for Redis support'
+            'python2-sqlalchemy: for SQLAlchemy support'
+            'python2-boto3: for Amazon SQS support'
+            'python2-pycurl: for Amazon SQS support'
+            'python2-yaml: for YAML support')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('7302e90cbc7d7350da96fae0b3da1137828cc5b0af75e1816fe9ec9312252806ecfb390872eb97c1c2d16c7442a49329aa81120782c0cc0d18f77a7950bb5bf1')
+
+prepare() {
+  sed -i 's/>=2.5.1/>=2.5/' "$_pkgname-$pkgver/requirements/default.txt"
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" -O1 --skip-build
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

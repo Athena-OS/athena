@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=perl-getopt-long
+_pkgname=Getopt-Long
+pkgver=2.51
+pkgrel=4
+pkgdesc='Extended processing of command line options.'
+arch=('any')
+url='https://metacpan.org/pod/Getopt::Long'
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=0')
+source=("http://search.cpan.org/CPAN/authors/id/J/JV/JV/$_pkgname-$pkgver.tar.gz")
+sha512sums=('e70b2c30f5f85d7bf387381782a22b55f76598e1b4e19102fbf463c4333e91090ad2da49965be6211821d4f7f109aa7e4153348a9142f38fdb1a39299c997c02')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  (
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" PERL_AUTOINSTALL=--skipdeps \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    /usr/bin/perl Makefile.PL
+
+    make
+  )
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+

@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=whispers
+pkgver=2.2.0.r10.gbc5076f
+pkgrel=1
+pkgdesc='Identify hardcoded secrets in static structured text.'
+arch=('any')
+groups=('athena' 'athena-code-audit')
+url='https://github.com/adeptex/whispers/'
+license=('GPL3')
+depends=('python' 'python-astroid' 'python-beautifulsoup4' 'python-jproperties'
+         'python-jellyfish' 'python-luhn' 'python-lxml' 'python-yaml'
+         'python-crossplane')
+makedepends=('git' 'python-setuptools' 'python-pip')
+source=("git+https://github.com/adeptex/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

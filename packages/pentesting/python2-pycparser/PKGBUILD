@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-pycparser
+_pkgname=pycparser
+pkgver=2.21
+pkgrel=1
+pkgdesc='C parser in Python.'
+url='https://pypi.org/project/pycparser/#files'
+arch=('any')
+license=('BSD')
+depends=('python2' 'python2-ply')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('e61fbdde484d1cf74d4b27bdde40cf2da4b7028ca8ecd37c83d77473dab707d457321aecaf97da3b114c1d58a4eb200290b76f9c958044b57e5fed949895b5f0')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

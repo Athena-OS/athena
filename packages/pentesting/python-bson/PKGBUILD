@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-bson
+pkgname=('python2-bson' 'python-bson')
+_pkgname=bson
+_pyver=3.11
+pkgver=0.5.10
+pkgrel=6
+pkgdesc='BSON codec for Python.'
+arch=('any')
+url='https://pypi.org/project/bson/#files'
+license=('BSD')
+makedepends=('python2-setuptools' 'python2-pip' 'python-setuptools'
+             'python-pip')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('649c34aecbcf0e57bd2363bf05d4a7ce58d8dd5b7c25608136fe0155297f800e867df1c4f4785fb4f7db88aa4d79f2d23c401eedbec66056a12dd9d451f2a96b')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-bson() {
+  depends=('python2' 'python2-six' 'python2-dateutil')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  rm -f "$pkgdir/usr/lib/python2.7/site-packages/bson/__init__."{py,pyc,pyo}
+}
+
+package_python-bson() {
+  depends=('python' 'python-six' 'python-dateutil')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  rm -f "$pkgdir/usr/lib/python$_pyver/site-packages/bson/__init__."{py,pyc,pyo}
+}
+

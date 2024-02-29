@@ -1,0 +1,41 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=snoopbrute
+pkgver=17.589fbe6
+pkgrel=4
+groups=('athena' 'athena-scanner' 'athena-recon')
+pkgdesc='Multithreaded DNS recursive host brute-force tool.'
+arch=('any')
+url='https://github.com/m57/snoopbrute'
+license=('GPL2')
+makedepends=('git')
+depends=('python2' 'python2-dnspython')
+source=("git+https://github.com/m57/$pkgname.git"
+        "$pkgname-noptrix.patch")
+sha512sums=('SKIP'
+            '2fe07e39b02ee7e46fa9af56532aece6af5590c18f8a23447d9d57dbbc5ad46e7d1c6389bba6042133be61fd723a530e0a23af5ecef39eb7db45344281251d1a')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|env python|env python2|' snoopboot.py
+
+  patch -p2 < ../snoopbrute-noptrix.patch
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 snoopboot.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 -t "$pkgdir/usr/share/$pkgname/" domain_wordlist.txt VERSION
+}
+

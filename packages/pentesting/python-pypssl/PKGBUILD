@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-pypssl
+_pkgname=pypssl
+pkgver=2.2
+pkgrel=3
+pkgdesc='Python API for PSSL.'
+arch=('any')
+url='https://pypi.org/project/pypssl/#files'
+license=('BSD')
+depends=('python' 'python-dateutil' 'python-requests')
+makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('ef54c476e9e95472a3f98ab449bb964658db4a1cb9ad24ca97a44ec44f185bc0b586935af94c61f16789400cb895f2ac389793c13ed111b9cc518296c7e22058')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

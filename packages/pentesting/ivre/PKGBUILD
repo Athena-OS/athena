@@ -1,0 +1,141 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=ivre
+pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre')
+pkgver=0.9.20.dev164
+pkgrel=1
+groups=('athena' 'athena-recon' 'athena-networking')
+pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
+arch=('any')
+url='https://ivre.rocks/'
+license=('GPL3')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/ivre/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgbase
+
+  python setup.py --version 2>/dev/null
+}
+
+build() {
+  cd $pkgbase
+
+  python setup.py build
+}
+
+package_ivre() {
+  depends=('python-ivre')
+  optdepends=('ivre-docs: Documentation'
+              'ivre-web: Web server'
+              'nmap: Network scan'
+              'masscan: Network scan'
+              'zmap: Network scan'
+              'zeek: Network traffic analysis'
+              'argus: Network traffic analysis'
+              'nfdump: Netflow analysis'
+              'imagemagick: Screenshots via Nmap scripts'
+              'phantomjs: HTTP screenshots via Nmap script'
+              'ffmpeg: RTSP Screenshots via Nmap script')
+
+  cd $pkgbase
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1
+
+  rm -r "$pkgdir/usr/lib" "$pkgdir/usr/share/doc" \
+    "$pkgdir/usr/share/ivre/dokuwiki" "$pkgdir/usr/share/ivre/web"
+
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
+}
+
+package_ivre-docs() {
+  pkgdesc+=' (documentation)'
+
+  cd $pkgbase
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/ivre/" README.md
+
+  mv "$pkgdir/usr/share/ivre/web/static/doc" "$pkgdir/usr/share/doc/ivre/html"
+
+  rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/share/ivre" \
+    "$pkgdir/etc/bash_completion.d"
+}
+
+package_ivre-web() {
+  depends=('ivre' 'python-bottle')
+  optdepends=('apache: Web server'
+              'mod_wsgi: Web server'
+              'dokuwiki: Web server (notebook)')
+  pkgdesc+=' (web application)'
+  backup=('etc/httpd/conf/extra/ivre.conf')
+
+  cd $pkgbase
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1
+
+  rm -rf "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/share/doc" \
+    "$pkgdir/usr/share/ivre/bro" "$pkgdir/usr/share/ivre/data" \
+    "$pkgdir/usr/share/ivre/docker" "$pkgdir/usr/share/ivre/geoip" \
+    "$pkgdir/usr/share/ivre/honeyd" "$pkgdir/usr/share/ivre/nmap_scripts" \
+    "$pkgdir/etc/bash_completion.d"
+
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
+  install -Dm 644 "pkg/apache/ivre.conf" \
+    "$pkgdir/etc/httpd/conf/extra/ivre.conf"
+
+  rm -rf "$pkgdir/usr/share/ivre/zeek/ivre/__load__.zeek" \
+    "$pkgdir/usr/share/ivre/zeek/ivre/passiverecon/__load__.zeek" \
+    "$pkgdir/usr/share/ivre/zeek/ivre/passiverecon/bare.zeek" \
+    "$pkgdir/usr/share/ivre/zeek/ivre/passiverecon/ja3.zeek" \
+    "$pkgdir/usr/share/ivre/zeek/passiverecon2db-ignore.example" \
+    "$pkgdir/usr/share/ivre/zeek/ivre/arp/__load__.zeek" \
+    "$pkgdir/usr/share/ivre/zeek/ivre/passiverecon/hassh.zeek" \
+    "$pkgdir/usr/share/ivre/zeek/ivre/passiverecon/ntlm.zeek" \
+    "$pkgdir/usr/share/ivre/patches/dokuwiki/backlinks.patch" \
+    "$pkgdir/usr/share/ivre/patches/dokuwiki/backlinks-20200729.patch" \
+    "$pkgdir/usr/share/ivre/patches/nmap/rtsp-url-brute.patch" \
+    "$pkgdir/usr/share/ivre/patches/nmap/scripts/http-screenshot.nse" \
+    "$pkgdir/usr/share/ivre/patches/nmap/scripts/mainframe-banner.nse" \
+    "$pkgdir/usr/share/ivre/patches/nmap/scripts/mainframe-screenshot.nse" \
+    "$pkgdir/usr/share/ivre/patches/nmap/scripts/rtsp-screenshot.nse" \
+    "$pkgdir/usr/share/ivre/patches/nmap/scripts/vnc-screenshot.nse" \
+    "$pkgdir/usr/share/ivre/patches/nmap/scripts/x11-screenshot.nse" \
+    "$pkgdir/usr/share/ivre/patches/p0f/p0f.fp.patch" \
+    "$pkgdir/usr/share/ivre/patches/nmap/pr-2142.patch" \
+    "$pkgdir/usr/share/ivre/patches/nmap/pr-2229.patch" \
+    "$pkgdir/usr/share/ivre/patches/nmap/scripts/rdp-screenshot.nse"
+}
+
+package_python-ivre() {
+  depends=('python' 'python-pymongo' 'python-future')
+  optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
+              'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
+              'python-psycopg2: experimental PostgreSQL backend'
+              'python-pillow: trim screenshots on insertion'
+              'tesseract: extract words from screenshots on insertion'
+              'python-pycryptodome: extract data from public keys ("ivre getmoduli")'
+              'python-scapy: parse PCAP files for ARP inspection (flow analysis)'
+              'python-matplotlib: create graphs from command line tools'
+              'python-dbus: 3D traceroute graphs'
+              'mongodb: database server'
+              'postgresql: database server (experimental backend)'
+              'neo4j-community: database server (experimental flow analysis)')
+  pkgdesc+=' (library)'
+
+  cd $pkgbase
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1
+  echo -en "-athena-$pkgrel" >> \
+    "$pkgdir/usr/lib/"python*"/site-packages/ivre/VERSION"
+  sed -ri 's#(VERSION = .*)(['\''"])$#\1-athena-'"$pkgrel"'\2#' \
+    "$pkgdir/usr/lib/"python*"/site-packages/ivre/__init__.py"
+
+  rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share" "$pkgdir/etc/bash_completion.d"
+
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
+}
+

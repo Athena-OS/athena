@@ -1,0 +1,51 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=expimp-lookup
+pkgver=4.79a96c7
+pkgrel=2
+groups=('athena' 'athena-binary' 'athena-recon')
+pkgdesc='Looks for all export and import names that contain a specified string in all Portable Executable in a directory tree.'
+arch=('any')
+url='https://github.com/tr3w/ExpImp-Lookup'
+license=('GPL2')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/tr3w/ExpImp-Lookup.git"
+        'git+https://github.com/tr3w/PEace.git')
+sha512sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  sed -i 's|/usr/bin/python|/usr/bin/python2|' ExpImp-Lookup/expimp_lookup.py
+  sed -i 's|/usr/bin/python|/usr/bin/python2|' PEace/PEace.py
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 755 ExpImp-Lookup/expimp_lookup.py \
+    "$pkgdir/usr/share/$pkgname/expimp_lookup.py"
+  install -Dm 644 ExpImp-Lookup/README \
+    "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm 644 ExpImp-Lookup/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm 644 PEace/PEace.py "$pkgdir/usr/share/$pkgname/PEace.py"
+  install -Dm 644 PEace/README "$pkgdir/usr/share/doc/peace/README"
+  install -Dm 644 PEace/LICENSE "$pkgdir/usr/share/licenses/peace/LICENSE"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec python2 /usr/share/$pkgname/expimp_lookup.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

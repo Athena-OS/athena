@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pgdbf
+pkgver=113.4e84775
+pkgrel=1
+groups=('athena' 'athena-database')
+pkgdesc='Convert XBase / FoxPro databases to PostgreSQL'
+url='https://github.com/kstrauser/pgdbf'
+arch=('x86_64' 'aarch64')
+license=('GPL3')
+makedepends=('git')
+source=("git+https://github.com/kstrauser/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  aclocal
+  autoconf
+  automake --add-missing
+
+  if [[ "$CARCH" == "i686" || "$CARCH" == "x86_64" ]];
+  then
+    ./configure --prefix=/usr
+  else
+    ./configure --build=arm --prefix=/usr
+  fi
+
+	make
+}
+
+package() {
+  cd "$pkgname/src"
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+}
+

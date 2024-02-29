@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ftpscout
+pkgver=12.cf1dff1
+pkgrel=7
+groups=('athena' 'athena-scanner')
+pkgdesc='Scans ftps for anonymous access.'
+arch=('any')
+url='https://github.com/RubenRocha/ftpscout'
+license=('GPL')
+depends=('python' 'python-colorama' 'python-pika' 'python-netaddr' 'rabbitmq')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/RubenRocha/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

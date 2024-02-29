@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ipv4bypass
+pkgver=24.f54072b
+pkgrel=1
+pkgdesc='Using IPv6 to Bypass Security.'
+groups=('athena' 'athena-networking')
+arch=('any')
+url='https://github.com/milo2012/ipv4Bypass'
+license=('custom:unknown')
+depends=('python2' 'python2-termcolor' 'python2-python-nmap' 'nmap' 'arp-scan')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/milo2012/ipv4Bypass.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|bin/env python|bin/env python2|' bypass.py
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 bypass.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

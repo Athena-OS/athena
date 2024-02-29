@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hashdb
+pkgver=1089.1da1b9f
+pkgrel=2
+pkgdesc='A block hash toolkit.'
+groups=('athena' 'athena-crypto' 'athena-forensic' 'athena-misc')
+arch=('x86_64' 'aarch64')
+url='https://github.com/NPS-DEEP/hashdb/'
+license=('GPL')
+depends=('tre' 'libxml2' 'python2' 'openssl' 'libewf' 'libtool')
+makedepends=('git')
+source=("git+https://github.com/NPS-DEEP/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  ./bootstrap.sh
+
+  sed -i s/SSL_library_init/OPENSSL_init_ssl/ configure.ac configure
+
+  ./configure --prefix=/usr --with-openssl
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md NEWS TESTS \
+    INSTALL
+}
+

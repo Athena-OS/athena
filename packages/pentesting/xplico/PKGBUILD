@@ -1,0 +1,62 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=xplico
+pkgver=1.2.2
+pkgrel=2
+epoch=1
+arch=('x86_64' 'aarch64')
+pkgdesc='Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT).'
+groups=('athena' 'athena-forensic' 'athena-networking')
+url='https://github.com/xplico/xplico/'
+license=('GPL')
+depends=('tcpdump' 'libpcap' 'sqlite3' 'sox' 'lame' 'apache' 'php' 'net-tools'
+         'php-sqlite' 'php-apache' 'php-pear' 'libnet' 'recode' 'json-c'
+         'python-httplib2' 'python-psycopg2' 'libmariadbclient' 'ndpi' 'geoip'
+         'libpqxx' 'perl' 'libmaxminddb')
+optdepends=('geoip-database-extra: City database for geoip IP location lookups'
+            'ghostpdl: reconstruct document printed with network printer'
+	          'videosnarf: decode VoIP based on RTP')
+makedepends=('git')
+source=("https://github.com/xplico/xplico/archive/v.$pkgver.tar.gz")
+sha512sums=('e189e39e1d76af691c4bc86ad7db3493f6341fec9aba951cf02558e06c4963b73806df06303b6ba9b6352e4a204aac5920690d61338d4d1f680257211d62a6d3')
+install="$pkgname.install"
+
+prepare() {
+  cd "$pkgname-v.$pkgver"
+
+  # dirty (tmp) fix....bleeeeeeeeeeehhh
+  find . -type f -iname '*.c' -exec \
+    sed -i 's|json_object_private.h|json_object.h|g' {} \;
+}
+
+build() {
+  cd "$pkgname-v.$pkgver"
+
+  make -j1
+}
+
+package() {
+  cd "$pkgname-v.$pkgver"
+
+  _tools="dema mfbc mfile mpaltalk msite mwebymsg mwmail trigcap wbm_aol.py"
+  _tools="$_tools wbm_aol_v2.py wbm_gmail.py wbm_libero.py wbm_live.py"
+  _tools="$_tools wbm_rediff.py wbm_rossoalice.py wbm_yahoo.py"
+  _tools="$_tools wbm_yahoo_android.py wbm_yahoo_v2.py xplico"
+
+  mkdir -p "$pkgdir/usr/bin"
+
+  make DESTDIR="$pkgdir" install
+
+  ln -sr /usr/share/GeoIP/GeoIPv6.dat "$pkgdir/opt/$pkgname/GeoLiteCity.dat"
+  ln -sr /usr/share/GeoIP/GeoIP "$pkgdir/opt/$pkgname/GeoLiteCityv6.dat"
+  #ln -sr /usr/share/GeoIP/GeoIPCity.dat "$pkgdir/opt/xplico/GeoLiteCity.dat"
+
+  chmod +x "$pkgdir/opt/"{xplico,xplico/cfg}
+
+  # help user a bit
+  for t in $_tools ; do
+    ln -sf "/opt/$pkgname/bin/$t" "$pkgdir/usr/bin/$t"
+  done
+}
+

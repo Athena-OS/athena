@@ -1,0 +1,20 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=promiscdetect
+pkgver=1.0
+pkgrel=4
+pkgdesc='Checks if your network adapter(s) is running in promiscuous mode, which may be a sign that you have a sniffer running on your computer.'
+url='http://ntsecurity.nu/toolbox/promisdetect/'
+groups=('athena' 'athena-windows' 'athena-networking'
+        'athena-defensive')
+license=('custom:unknown')
+arch=('any')
+source=("http://ntsecurity.nu/downloads/$pkgname.exe")
+sha512sums=('00a1d70da6ef869b5377c56dac8ff7d4c89f6d2e')
+
+package() {
+  install -Dm 644 "$pkgname.exe" \
+    "$pkgdir/usr/share/windows/$pkgname/$pkgname.exe"
+}
+

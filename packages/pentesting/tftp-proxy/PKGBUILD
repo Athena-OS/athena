@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tftp-proxy
+pkgver=0.1
+pkgrel=3
+groups=('athena' 'athena-proxy' 'athena-networking')
+pkgdesc="This tool accepts connection on tftp and reloads requested content from an upstream tftp server."
+arch=('any')
+url='http://www.c0decafe.de/'
+depends=('python2')
+license=('custom:unknown')
+source=("http://c0decafe.de/tools/$pkgname-$pkgver.tar.bz2")
+sha512sums=('d62808dcb5e26de8326dd8dc5cd015c383cacd420c3a4dd72392fdb9441b1c2c8fa9b824531a0af2eee9da06517bd6c2943d5f8ca930a7f4afb1fbd98f55e7ce')
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat >> "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

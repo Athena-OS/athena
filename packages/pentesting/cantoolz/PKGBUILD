@@ -1,0 +1,51 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=cantoolz
+pkgver=425.82d330b
+_pyver=3.11
+pkgrel=5
+epoch=1
+pkgdesc='Framework for black-box CAN network analysis.'
+groups=('athena' 'athena-automobile' 'athena-recon' 'athena-fuzzer'
+        'athena-scanner')
+arch=('any')
+url='https://github.com/CANToolz/CANToolz'
+license=('Apache')
+depends=('python' 'python-pyserial' 'python-numpy' 'python-mido' 'python-flask'
+         'python-bitstring')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/CANToolz/CANToolz.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  python setup.py install --root="$pkgdir" --optimize=1
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md NOTICE.md \
+    CONTRIBUTORS.md VERSION.md
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python /usr/share/$pkgname/bin/$pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+
+  rm -rf "$pkgdir/usr/lib/python$_pyver/site-packages/tests/"
+}
+

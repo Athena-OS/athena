@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=anontwi
+pkgver=1.1b
+pkgrel=3
+groups=('athena' 'athena-social')
+pkgdesc='A free software python client designed to navigate anonymously on social networks. It supports Identi.ca and Twitter.com.'
+arch=('any')
+url='http://anontwi.sourceforge.net/'
+license=('custom:unknown')
+depends=('python2' 'python2-pycryptodome' 'python2-httplib2' 'python2-pycurl'
+         'gtk2' 'pygtk')
+source=("https://anontwi.03c8.net/anontwi/${pkgname}_${pkgver}.tar.gz")
+sha512sums=('f60aa16be0706a37f143591fe87cba336c57b1484582726c11e25bf51745ce9afd3036c8b8614f01e4e5fa1b843d217ba6fd0de6ebb66593ad69bdd3e1e5919f')
+
+package() {
+  cd AnonTwi
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md docs/AUTHOR \
+    docs/INSTALL docs/THANKS
+  install -Dm 644 docs/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  rm -rf docs
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

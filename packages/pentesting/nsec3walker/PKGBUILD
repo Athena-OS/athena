@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=nsec3walker
+pkgver=20101223
+pkgrel=5
+groups=('athena' 'athena-recon')
+pkgdesc="Enumerates domain names using DNSSEC"
+url='http://dnscurve.org/nsec3walker.html'
+arch=('x86_64' 'aarch64')
+license=('custom')
+source=("http://dnscurve.org/$pkgname-$pkgver.tar.gz")
+sha512sums=('19378a2d37b9f796ee5834d2765e968e2bbf98e110495dda809aa6d7ea610d674332af340b084c947070d969a63ed53ece61825143ecd4571cb7c8f701b79d92')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i 's|env python|env python2|' *
+  sed -i 's|collect.todo|/tmp/collect.todo|' collect
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  for bin in collect dicthashes query randomhashes unhash ; do
+    install -m 755 $bin "$pkgdir/usr/share/$pkgname"
+    cat > "$pkgdir/usr/bin/$pkgname-$bin" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ./$bin "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/$pkgname-$bin"
+  done
+}
+

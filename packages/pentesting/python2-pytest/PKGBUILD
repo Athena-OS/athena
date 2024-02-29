@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-pytest
+_pkgname=pytest
+pkgver=4.6.11
+pkgrel=2
+pkgdesc='Simple powerful testing with Python.'
+url='https://pypi.org/project/pytest/#files'
+arch=('any')
+license=('MIT')
+depends=('python2' 'python2-importlib-metadata' 'python2-atomicwrites'
+         'python2-py' 'python2-attrs' 'python2-wcwidth'
+         'python2-more-itertools')
+makedepends=('python2-setuptools' 'python2-wheel' 'python2-pip')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('6fddf4944bd9fab83024aa2d338d54aaf3d164bd5c7f634357376f3b0d2dab6a43d784e7fb567236c2d2f029151c5d9e2cb36c22e9b551c2c8823c52a2246e9c')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  for i in "$pkgdir/usr/bin/"*; do
+    mv $i "${i}2"
+  done
+}
+

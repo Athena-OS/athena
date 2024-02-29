@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-m2crypto
+_pkgname=M2Crypto
+pkgver=0.39.0
+pkgrel=1
+pkgdesc='Wrapper for OpenSSL.'
+arch=('any')
+url='https://gitlab.com/m2crypto/m2crypto'
+license=('MIT')
+depends=('python' 'python-wheel')
+makedepends=('python-setuptools' 'swig')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('5d8210c6204fd71f06d238c5b1fe08dd38d6b8e92db7b1e433a9e4e2fe9af46d6d55df7550716a7d05328fb3c9eed427f015b7d5a1fe33a073f0af15a82ab050')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

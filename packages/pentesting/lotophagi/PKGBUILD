@@ -1,0 +1,24 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=lotophagi
+pkgver=0.1
+pkgrel=6
+groups=('athena' 'athena-scanner')
+pkgdesc='a relatively compact Perl script designed to scan remote hosts for default (or common) Lotus NSF and BOX databases.'
+arch=('any')
+url='http://packetstormsecurity.com/files/55250/lotophagi.rar.html'
+license=('custom:unknown')
+depends=('perl' 'perl-libwww')
+source=("http://dl.packetstormsecurity.net/UNIX/scanners/$pkgname.rar")
+sha512sums=('1a513899cdb6377fa74c5008ef5e74db07cfe2db502017d527563e8b27b088de5409acadee559f9a69067f4b1c47db41f11e3cfddffed4020aa728ffbe062f6e')
+
+prepare() {
+  sed -i '1i\#!/usr/bin/perl' "$pkgname.pl"
+}
+
+package() {
+  install -Dm 755 "$pkgname.pl" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.html
+}
+

@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=social-vuln-scanner
+pkgver=11.91794c6
+pkgrel=8
+pkgdesc='Gathers public information on companies to highlight social engineering risk.'
+groups=('athena' 'athena-social' 'athena-recon')
+arch=('any')
+url='https://github.com/Betawolf/social-vuln-scanner'
+license=('custom:unknown')
+depends=('python' 'python-beautifulsoup4' 'python-editdistance'
+         'python-html2text' 'python-httplib2' 'python-psutil' 'python-oauth2'
+         'python-packaging' 'python-pillow' 'python-pyparsing' 'python-six'
+         'iotop')
+makedepends=('git')
+source=("git+https://github.com/Betawolf/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CREDENTIALS
+  install -Dm 644 LICENSE "$pkgdir/usr/share/doc/$pkgname/LICENSE"
+
+  rm *.md LICENSE CREDENTIALS
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 vuln_scorer.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

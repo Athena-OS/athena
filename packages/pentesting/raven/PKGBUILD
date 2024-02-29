@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=raven
+pkgver=33.8646a58
+pkgrel=1
+epoch=1
+pkgdesc='A Linkedin information gathering tool that can be used by pentesters to gather information about an organization employees using Linkedin.'
+groups=('athena' 'athena-social' 'athena-recon')
+arch=('x86_64')
+url='https://github.com/0x09AL/raven'
+license=('GPL3')
+makedepends=('git' 'go')
+source=("git+https://github.com/0x09AL/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+  # Horrible hack to fix: main.go:5:2: package raven/{model,scrapper,terminal}
+  # is not in GOROOT. It only affects the build directory, so not a big deal
+  cp -r /usr/lib/go "$srcdir/go"
+  cd .. && cp -r $pkgname "$srcdir/go/src"
+}
+
+build() {
+  cd $pkgname
+
+  GOROOT="$srcdir/go" GOPATH="$srcdir" go mod init go.mod
+  GOROOT="$srcdir/go" GOPATH="$srcdir" go mod tidy
+  GOROOT="$srcdir/go" GOPATH="$srcdir" go mod download
+  GOROOT="$srcdir/go" GOPATH="$srcdir" go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-s -w" \
+    -o $pkgname .
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/$pkgname" config.conf db_file.db
+}
+

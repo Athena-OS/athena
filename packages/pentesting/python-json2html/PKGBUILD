@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-json2html
+pkgname=('python2-json2html' 'python-json2html')
+_pkgname=json2html
+pkgver=1.3.0
+pkgrel=5
+pkgdesc='JSON to HTML Table Representation.'
+arch=('any')
+url='https://pypi.org/project/json2html/#files'
+license=('MIT')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/json2html-1.3.0.tar.gz")
+sha512sums=('3f040c8725e9fd5d74c76835fc7dc4a3da2bd6bf764b2e5b5835f10fd433722537b6c3ec7e90f84bacc104d49fceb257d98a14b0054990306b36a7dfbbb56d93')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-json2html() {
+  depends=('python2' 'python2-simplejson' 'python2-ordereddict')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+
+package_python-json2html() {
+  depends=('python' 'python-simplejson' 'python-ordereddict')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+

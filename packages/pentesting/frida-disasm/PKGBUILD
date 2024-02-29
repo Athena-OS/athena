@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=frida-disasm
+pkgver=284.79d63f5
+pkgrel=4
+pkgdesc='An interactive disassembler based on LLVM and Qt.'
+groups=('athena' 'athena-disassembler')
+arch=('x86_64' 'aarch64')
+url='https://www.frida.xyz/'
+license=('GPL3')
+depends=('gmock' 'log4cxx' 'llvm35' 'guile' 'swig' 'boost' 'libedit' 'quazip')
+makedepends=('git' 'cmake' 'pkg-config')
+source=("$pkgname::git+https://git.siccegge.de/frida/frida.git"
+        'frida.patch')
+sha512sums=('SKIP'
+            '9784851d4f8089471a1372014b199444da9252d0f0e9dc1a7ff5c4389db122c8729b0be61aec234df1b1be53b2f1cae8186a0e77ea1e8a158f2633875372a30c')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  patch -p1 -i "$srcdir/frida.patch"
+}
+
+build() {
+  cd $pkgname
+
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DQUAZIP_INCLUDE_DIR=/usr/include -DQUAZIP_LIBRARIES=/usr/lib/libquazip5.so
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  if [[ $CARCH == "x86_64" ]];
+  then
+    mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+  fi
+}
+

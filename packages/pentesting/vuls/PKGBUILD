@@ -1,0 +1,53 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vuls
+pkgver=1431.6f63566b
+pkgrel=1
+groups=('athena' 'athena-scanner')
+pkgdesc='Vulnerability scanner for Linux/FreeBSD, agentless, written in Go.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/future-architect/vuls'
+license=('GPL3')
+depends=('sqlite')
+makedepends=('git' 'go')
+source=("git+https://github.com/future-architect/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  VERSION=$(git describe --tags --abbrev=0)
+  REVISION=$(git rev-parse --short HEAD)
+  BUILDTIME=$(date "+%Y%m%d_%H%M%S")
+
+  GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
+  LDFLAGS="-X 'github.com/future-architect/vuls/config.Version=${VERSION}'"
+  LDFLAGS="$LDFLAGS -X 'github.com/future-architect/vuls/config.Revision=build-${BUILDTIME}_${REVISION}'"
+  LDFLAGS="$LDFLAGS -s -w"
+
+  GOPATH="$srcdir" go mod download
+  GOPATH="$srcdir" go build \
+    $GOFLAGS \
+    -ldflags $LDFLAGS \
+    -o $pkgname ./cmd/$pkgname
+
+  GOPATH="$srcdir" go build \
+    $GOFLAGS \
+    -ldflags $LDFLAGS \
+    -o $pkgname-scanner ./cmd/scanner
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname $pkgname-scanner -t "$pkgdir/usr/bin"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+}
+

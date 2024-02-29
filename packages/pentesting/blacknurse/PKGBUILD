@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=blacknurse
+pkgver=9.d2a2b23
+pkgrel=1
+pkgdesc='A low bandwidth ICMP attack that is capable of doing denial of service to well known firewalls.'
+groups=('athena' 'athena-dos')
+arch=('x86_64' 'aarch64')
+url='https://github.com/jedisct1/blacknurse'
+license=('BSD2')
+makedepends=('git')
+source=("git+https://github.com/jedisct1/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

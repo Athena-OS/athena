@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=suricata-verify
+pkgver=1149.4054f614
+pkgrel=1
+pkgdesc='Suricata Verification Tests - Testing Suricata Output.'
+groups=('athena' 'athena-misc' 'athena-ids')
+arch=('any')
+url='https://github.com/OISF/suricata-verify'
+license=('custom:unknown')
+depends=('python' 'python-yaml' 'python-future' 'jq')
+makedepends=('git')
+source=('git+https://github.com/OISF/suricata-verify.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python run.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,41 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=btscanner
+pkgver=2.1
+pkgrel=9
+groups=('athena' 'athena-bluetooth' 'athena-scanner')
+pkgdesc='Bluetooth device scanner.'
+url='http://www.pentest.co.uk'
+depends=('bluez-libs' 'libxml2' 'ncurses5-compat-libs')
+arch=('x86_64' 'aarch64')
+license=('GPL')
+changelog="$pkgname.changelog"
+source=("https://dev.pentoo.ch/~blshkv/distfiles/$pkgname-$pkgver.tar.bz2"
+        "$pkgname.patch")
+sha512sums=('b46f1b009d3a13e3937cc22b358691acb458bc4811ebbbab37ee84ef8bb8afdba539d3f50ce0d6157c676262ebc3834ba00295ae0aacd346b3979637e92160b6'
+            'faa5c576f010ab4c2aa78a93cbe8ff93a309ba61fea16ab95ad442b483132091f8c2861a6c9e2fc2125f10086467a8f4a156561fc4c9e4fccb23e33c1f3ede5e')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch -p1 < ../btscanner.patch
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr --sysconf=/etc/btscanner \
+    --datadir=/usr/share/btscanner
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README USAGE
+}
+

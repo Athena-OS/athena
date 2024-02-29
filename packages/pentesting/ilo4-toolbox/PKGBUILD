@@ -1,0 +1,54 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ilo4-toolbox
+pkgver=47.672a5d6
+pkgrel=1
+pkgdesc='Toolbox for HPE iLO4 analysis.'
+groups=('athena' 'athena-scanner' 'athena-automation'
+        'athena-backdoor')
+arch=('x86_64' 'aarch64')
+url='https://github.com/airbus-seclab/ilo4_toolbox'
+license=('GPL2')
+depends=('python2' 'python2-requests' 'python2-keystone' 'python2-capstone'
+         'ruby' 'go')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/airbus-seclab/ilo4_toolbox.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  GOPATH="$srcdir" go mod init go.mod
+  GOPATH="$srcdir" go mod tidy
+  GOPATH="$srcdir" go mod download
+  GOPATH="$srcdir" go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-s -w" \
+    -o iloscan ./scanner
+}
+
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 iloscan "$pkgdir/usr/bin/iloscan"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  rm -r README.rst COPYING scanner
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+}
+

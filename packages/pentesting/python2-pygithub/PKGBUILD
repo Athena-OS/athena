@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-pygithub
+_pkgname=PyGithub
+pkgver=1.44.1
+pkgrel=2
+pkgdesc='Use the full Github API v3.'
+arch=('any')
+license=('LGPL')
+url='https://github.com/PyGithub/PyGithub'
+depends=('python2-pyjwt' 'python2-requests' 'python2-deprecated')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('5efd9d1159171f74abdac40e475fcc44bf9e9d52928e87a0dba079f2e56cc663b2983958bcb49c20e2b747967964cfa0c336eb7d44e39e395484d2e4028c0c5a')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+

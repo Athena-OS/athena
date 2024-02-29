@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=penbox
+pkgver=81.3b77c69
+pkgrel=6
+groups=('athena' 'athena-automation')
+arch=('any')
+pkgdesc='A Penetration Testing Framework - The Tool With All The Tools.'
+url='https://github.com/x3omdax/PenBox'
+license=('MIT')
+depends=('python2' 'python2-requests' 'python2-lxml' 'git' 'python3' 'perl'
+         'ruby')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/x3omdax/PenBox.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec python2 /usr/share/$pkgname/$pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

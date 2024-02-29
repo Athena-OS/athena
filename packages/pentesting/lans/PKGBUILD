@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=lans
+pkgver=148.9f8ef2d
+pkgrel=4
+epoch=1
+groups=('athena' 'athena-spoof' 'athena-networking')
+pkgdesc='A Multithreaded asynchronous packet parsing/injecting arp spoofer.'
+url='https://github.com/DanMcInerney/LANs.py'
+arch=('any')
+license=('GPL')
+depends=('python2' 'python2-scapy' 'python2-nfqueue' 'aircrack-ng'
+         'python2-twistedx' 'python2-requests' 'nbtscan')
+makedepends=('git')
+optdepends=('beef')
+source=("$pkgname::git+https://github.com/DanMcInerney/LANs.py.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 LANs.py "$pkgdir/usr/bin/$pkgname"
+}
+

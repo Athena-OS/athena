@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tinfoleak2
+pkgver=41.c45c33e
+pkgrel=7
+groups=('athena' 'athena-recon' 'athena-social' 'athena-webapp')
+pkgdesc='The most complete open-source tool for Twitter intelligence analysis.'
+arch=('any')
+url='http://www.vicenteaguileradiaz.com/tools/'
+license=('custom:unknown')
+depends=('python' 'python-tweepy' 'python-jinja' 'python-pyopenssl'
+         'python-exifread' 'python-oauth2' 'python-pillow' 'python-exiv2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/vaguileradiaz/tinfoleak.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md INSTALL.txt
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm *.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python tinfoleak.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

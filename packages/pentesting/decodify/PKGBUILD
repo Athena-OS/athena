@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=decodify
+pkgver=50.76a0801
+pkgrel=4
+pkgdesc='Tool that can detect and decode encoded strings, recursively.'
+groups=('athena' 'athena-crypto' 'athena-misc')
+arch=('any')
+url='https://github.com/UltimateHackers/Decodify'
+license=('GPL3')
+depends=('python' 'python-future')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/UltimateHackers/Decodify.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 dcode "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

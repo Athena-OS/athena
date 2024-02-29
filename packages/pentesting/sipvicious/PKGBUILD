@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sipvicious
+pkgver=462.fd3e7c7
+pkgrel=2
+groups=('athena' 'athena-automation' 'athena-exploitation')
+pkgdesc='Tools for auditing SIP devices.'
+arch=('any')
+url='http://blog.sipvicious.org/'
+license=('GPL2')
+depends=('python')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/EnableSecurity/$pkgname.git")
+conflicts=('sipvicious-svn')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  for i in "$pkgdir/usr/bin/"*; do
+    mv $i "$(echo $i | tr -s '_' '-')"
+  done
+}
+

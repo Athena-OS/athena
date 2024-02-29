@@ -1,0 +1,30 @@
+# Credits BlackArch ( http://blackarch.org ).
+# See COPYING for license details.
+
+pkgname=bypass-firewall-dns-history
+_pkgname=bypass-firewalls-by-DNS-history
+pkgver=33.c55b7ce
+pkgrel=1
+pkgdesc='Firewall bypass script based on DNS history records.'
+arch=('any')
+groups=('athena' 'athena-networking')
+url='https://github.com/vincentcox/bypass-firewalls-by-DNS-history'
+license=('MIT')
+depends=('bash')
+makedepends=('git')
+source=("git+https://github.com/vincentcox/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $_pkgname
+
+  install -Dm 755 "$_pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

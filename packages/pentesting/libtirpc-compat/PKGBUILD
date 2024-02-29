@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=libtirpc-compat
+pkgver=0.1
+pkgrel=4
+pkgdesc='Transport Independent RPC library (SunRPC replacement, backwards compatible links).'
+arch=('x86_64' 'aarch64')
+url='http://libtirpc.sourceforge.net/'
+license=('BSD')
+depends=('libtirpc')
+makedepends=('libtirpc')
+
+package() {
+  install -dm 644 "$pkgdir/usr/include/rpc"
+
+  for i in $(cd /usr/include/tirpc/ && ls *.h); do
+    ln -s "/usr/include/tirpc/$i" "$pkgdir/usr/include/rpc/$i"
+  done
+
+  for i in $(cd /usr/include/tirpc/rpc/ && ls *.h); do
+    ln -s "/usr/include/tirpc/rpc/$i" "$pkgdir/usr/include/rpc/$i"
+  done
+
+  rm "$pkgdir/usr/include/rpc/netconfig.h"
+  ln -s /usr/include/tirpc/netconfig.h "$pkgdir/usr/include/netconfig.h"
+}
+

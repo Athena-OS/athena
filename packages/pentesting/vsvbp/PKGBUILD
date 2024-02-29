@@ -1,0 +1,56 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vsvbp
+pkgver=6.241a7ab
+pkgrel=5
+pkgdesc='Black box tool for Vulnerability detection in web applications.'
+groups=('athena' 'athena-webapp' 'athena-scanner')
+arch=('any')
+url='https://github.com/varunjammula/VSVBP'
+license=('custom:unknown')
+depends=('python2' 'python2-lxml' 'python2-tldextract' 'python2-mechanize'
+         'python2-beautifulsoup4' 'python2-html2text' 'python2-wtforms'
+         'python2-flask' 'python2-flask-login' 'python2-flask-openid'
+         'python2-flask-mail' 'python2-flask-sqlalchemy' 'python2-pysocks'
+         'python2-flask-whooshalchemy-redux' 'python2-flask-wtf'
+         'python2-flask-babel' 'python2-guess-language' 'python2-flipflop'
+         'python2-coverage' 'python2-beautifulsoup3')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/varunjammula/VSVBP.git")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|from flask.ext.wtf|from flask_wtf|g' app/forms.py
+}
+
+package() {
+	cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md "Help Files/"*
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 run.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

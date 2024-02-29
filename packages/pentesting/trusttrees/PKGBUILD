@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=trusttrees
+pkgver=102.a9b7399
+pkgrel=5
+pkgdesc='A Tool for DNS Delegation Trust Graphing.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/mandatoryprogrammer/TrustTrees'
+license=('custom:unknown')
+depends=('python' 'python-dnspython' 'python-pygraphviz' 'python-idna'
+         'python-requests' 'python-requests-file' 'python-six' 'python-boto3'
+         'python-tldextract' 'python-dnsimple')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/mandatoryprogrammer/TrustTrees.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's/==.*//' requirements.txt
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/$pkgname/LICENSE"
+}
+

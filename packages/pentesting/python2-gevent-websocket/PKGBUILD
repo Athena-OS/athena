@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-gevent-websocket
+_pkgname=gevent-websocket
+pkgver=0.10.1
+pkgrel=4
+pkgdesc='Websocket handler for the gevent pywsgi server, a Python network library.'
+url='https://pypi.org/project/gevent-websocket/#files'
+arch=('any')
+license=('APACHE')
+depends=('python2' 'python2-gevent')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('4f25ec1646c223b89ddbb7cf4decae72cc4baa6e872443dc05994987f509068a806c8b5e135c433d631e35b3902227f0e4c89d8071aa74e24c06b0e543e8df93')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

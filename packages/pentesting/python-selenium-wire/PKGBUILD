@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-selenium-wire
+_pkgname=selenium-wire
+pkgver=5.1.0
+pkgrel=2
+pkgdesc='Extends Selenium to give you the ability to inspect requests made by the browser.'
+url='https://pypi.org/project/selenium-wire/#files'
+arch=('any')
+license=('MIT')
+depends=('python' 'python-blinker' 'python-brotli' 'python-certifi' 'python-h2'
+         'python-hyperframe' 'python-kaitaistruct' 'python-pyasn1'
+         'python-pyopenssl' 'python-pyparsing' 'python-pysocks'
+         'python-selenium' 'python-wsproto' 'python-zstandard')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('21aa36d9fb7f8e6305da382fcd396821ce04ba190ba4e4da40cf178bb61cb9eef3dffd0b7aadb1020544a5e0a5434459d63d6d892c394b7d2d1e5b6d632d3df6')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

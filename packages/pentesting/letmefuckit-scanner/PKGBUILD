@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=letmefuckit-scanner
+pkgver=3.f3be22b
+pkgrel=2
+groups=('athena' 'athena-scanner' 'athena-webapp')
+pkgdesc='Scanner and Exploit Magento.'
+arch=('any')
+url='https://github.com/onthefrontline/LetMeFuckIt-Scanner'
+license=('custom:unknown')
+depends=('python2' 'python2-pygoogle-simple')
+makedepends=('git' 'python2-setuptools')
+source=("$pkgname::git+https://github.com/onthefrontline/LetMeFuckIt-Scanner.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i '1 i\#!/usr/bin/python2' letmefuckit.py
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 letmefuckit.py "$pkgdir/usr/bin/letmefuckit"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

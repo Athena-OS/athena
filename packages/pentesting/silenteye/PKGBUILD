@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=silenteye
+pkgver=21.a53a7ff
+pkgrel=2
+pkgdesc='A cross-platform application design for an easy use of steganography.'
+groups=('athena' 'athena-stego')
+arch=('x86_64' 'aarch64')
+url='https://github.com/achorein/silenteye/'
+license=('GPL3')
+depends=('qt4' 'qca')
+makedepends=('git' 'cmake')
+source=("git+https://github.com/achorein/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  touch README
+}
+
+build() {
+  cd $pkgname
+
+  ENABLE_PACK=1 cmake -DCMAKE_INSTALL_PREFIX=/usr .
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE COPYING
+}
+

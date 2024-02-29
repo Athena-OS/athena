@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sticky-keys-hunter
+pkgver=15.c816fc9
+pkgrel=1
+groups=('athena' 'athena-scanner')
+pkgdesc='Script to test an RDP host for sticky keys and utilman backdoor.'
+arch=('any')
+url='https://github.com/ztgrace/sticky_keys_hunter'
+license=('GPL3')
+depends=('bash' 'imagemagick' 'bc' 'rdesktop' 'xdotool')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/ztgrace/sticky_keys_hunter.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 stickyKeysHunter.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+

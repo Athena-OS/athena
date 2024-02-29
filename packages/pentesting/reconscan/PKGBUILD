@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=reconscan
+pkgver=61.afbcfc0
+pkgrel=2
+pkgdesc='Network reconnaissance and vulnerability assessment tools.'
+groups=('athena' 'athena-recon' 'athena-scanner')
+arch=('any')
+url='https://github.com/RoliSoft/ReconScan'
+license=('GPL3')
+depends=('python3' 'python-lxml' 'python-colorama' 'python-python-libnmap')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/RoliSoft/ReconScan.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname-recon" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 recon.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname-recon"
+
+  cat > "$pkgdir/usr/bin/$pkgname-vulnscan" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 vulnscan.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname-vulnscan"
+}
+

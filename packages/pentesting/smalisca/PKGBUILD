@@ -1,0 +1,57 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=smalisca
+pkgver=58.1aa7a16
+pkgrel=7
+pkgdesc='Static Code Analysis for Smali files.'
+groups=('athena' 'athena-mobile' 'athena-code-audit')
+arch=('any')
+url='https://github.com/dorneanu/smalisca'
+license=('MIT')
+depends=('python2' 'python2-cement' 'python2-pygraphviz' 'graphviz'
+         'python2-sqlalchemy' 'python2-flask' 'python2-prettytable'
+         'python2-pyfiglet' 'python2-flask-sqlalchemy' 'python2-flask-restless'
+         'python2-mimerender' 'python2-werkzeug' 'python2-configparser'
+         'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/dorneanu/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|from flask.ext.sqlalchemy import SQLAlchemy|from flask_sqlalchemy import sqlalchemy|g' smalisca/modules/web/__init__.py
+  sed -i 's|from flask.ext.restless|from flask_restless|g' \
+    smalisca/modules/web/module_web.py
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+
+  cp -a smalisca/data "$pkgdir/usr/lib/python2.7/site-packages/$pkgname/data"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst AUTHORS.rst \
+    INSTALL.rst CHANGELOG.rst TODO.rst
+  install -Dm 644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  mv "$pkgdir/usr/$pkgname/"* "$pkgdir/usr/share/$pkgname/"
+  rmdir "$pkgdir/usr/$pkgname"
+}
+

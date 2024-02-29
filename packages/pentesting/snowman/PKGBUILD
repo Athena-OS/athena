@@ -1,0 +1,24 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=snowman
+pkgver=0.1.3
+pkgrel=1
+pkgdesc='A native code to C/C++ decompiler, see the examples of generated code.'
+url='http://derevenets.com/'
+groups=('athena' 'athena-windows' 'athena-decompiler')
+license=('GPL2')
+arch=('any')
+source=("http://derevenets.com/files/$pkgname-v$pkgver-win-x64.7z"
+        "http://derevenets.com/files/$pkgname-v$pkgver-win-x86.7z")
+sha512sums=('c70dbf3af23e7b2270aa2ee0ab3440421c3f7ade883d367cee72ccd56105461a3e7b2cbeea8bf78865dcb3d0a5093e0598f0452456be6e0d9f59ea9e87a452f6'
+            'c4c491c70f7c6fb695039bad3525c773d611893c814a1d5919a0351c83fcbdc7018a41454038a911c867706956c87e667564d5f4e304f3437fd576731d815160')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  rm *.7z
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname"
+}
+

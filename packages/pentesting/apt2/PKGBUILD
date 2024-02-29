@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=apt2
+pkgver=183.8075cdc
+pkgrel=1
+pkgdesc='Automated penetration toolkit.'
+groups=('athena' 'athena-automation')
+arch=('any')
+url='https://github.com/MooseDojo/apt2'
+license=('custom:unknown')
+depends=('python2' 'python2-argparse' 'python2-yattag' 'python2-scapy'
+         'python2-unqlite' 'python2-msgpack' 'python2-setuptools')
+makedepends=('git')
+#source=("git+https://github.com/MooseDojo/$pkgname.git")
+source=("git+https://github.com/tatanus/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md TODO.txt
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md TODO.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

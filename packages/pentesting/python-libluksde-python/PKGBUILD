@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-libluksde-python
+_pkgname=libluksde-python
+pkgver=20221103
+pkgrel=2
+pkgdesc='Python bindings module for libluksde.'
+url='https://pypi.org/project/libluksde-python/'
+arch=('x86_64' 'aarch64')
+license=('LGPL3')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('be00afb9702d4cfa8b636c067da619c3f1a26e84f1a47989fce5f3d93a81b6a622ffd0eaef762718cbace688dbafd2b9ad8c91f91ce13639eb48b734b30e40b9')
+
+build() {
+  cd "libluksde-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "libluksde-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

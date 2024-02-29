@@ -1,0 +1,27 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=passcracking
+pkgver=20131214
+pkgrel=2
+pkgdesc='A little python script for sending hashes to passcracking.com and milw0rm.'
+arch=('any')
+url='http://github.com/jensp/passcracking'
+license=('custom:unkown')
+depends=('python2')
+makedepends=('git')
+groups=('athena' 'athena-cracker')
+source=("git+https://github.com/jensp/$pkgname.git")
+sha512sums=('SKIP')
+
+prepare() {
+  grep -iRl 'python' "$srcdir/passcracking" |
+  xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+}
+

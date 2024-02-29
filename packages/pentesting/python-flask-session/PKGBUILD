@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-flask-session
+_pkgname=Flask-Session
+pkgver=0.5.0
+pkgrel=1
+pkgdesc='Adds server-side session support to your Flask application.'
+arch=('any')
+url='https://pypi.org/project/Flask-Session/#files'
+license=('BSD')
+depends=('python' 'python-flask')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/Flask-Session-$pkgver.tar.gz")
+sha512sums=('fe77b5b14929c4a9db2daca0833e10a857db6137f00bc4e72258b938195896ad895f2f2c8f429110daf8921ad2ecb8c347c23896c64d815febafa940f0136f0d')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

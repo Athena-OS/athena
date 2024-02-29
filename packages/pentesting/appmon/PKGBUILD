@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=appmon
+pkgver=177.f753c4d
+pkgrel=2
+pkgdesc='A runtime security testing & profiling framework for native apps on macOS, iOS & android and it is built using Frida.'
+groups=('athena' 'athena-mobile' 'athena-scanner')
+arch=('any')
+url='https://github.com/dpnishant/appmon'
+license=('GPL3')
+depends=('python' 'python-flask' 'python-lxml' 'python-termcolor'
+         'python-frida' 'python-dataset' 'python-normality' 'python-yaml'
+         'python-htmlentities' 'python-werkzeug' 'python-sqlalchemy'
+         'python-six' 'python-mako' 'python-normality' 'python-jinja'
+         'python-markupsafe' 'python-click' 'python-chardet'
+         'python-dateutil' 'python-alembic' 'python-banal' 'python-editor'
+         'python-itsdangerous')
+makedepends=('git')
+source=("git+https://github.com/dpnishant/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

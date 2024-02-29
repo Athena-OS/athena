@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-hyperlink
+_pkgname=hyperlink
+pkgver=21.0.0
+pkgrel=4
+pkgdesc='A featureful, immutable, and correct URL for Python.'
+url='https://pypi.org/project/hyperlink/#files'
+arch=('any')
+license=('BSD')
+depends=('python2' 'python2-idna' 'python2-typing')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('9e0e9273dde1b0a41329a74fbb26c4f327b87f387ee64b9a2ab641ca5cc8b9ea0516884415e9adf1d4880ae9c053a5cba2c550fc508bb56fddb44a543d5da860')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

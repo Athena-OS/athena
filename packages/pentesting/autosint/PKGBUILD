@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=autosint
+pkgver=234.e1f4937
+pkgrel=4
+pkgdesc='Tool to automate common osint tasks.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/bharshbarger/AutOSINT'
+license=('GPL2')
+depends=('python2' 'python2-python-docx' 'python2-google' 'python2-shodan')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/bharshbarger/AutOSINT.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  find . -type f -iname '*.py' -exec \
+    sed -i 's|from google import|from googlesearch import|g' {} \;
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 AutOSINT.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

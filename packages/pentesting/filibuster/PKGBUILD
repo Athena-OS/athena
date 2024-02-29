@@ -1,0 +1,57 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=filibuster
+pkgver=167.c54ac80
+pkgrel=2
+groups=('athena' 'athena-networking')
+pkgdesc='A Egress filter mapping application with additional functionality.'
+arch=('any')
+url='https://github.com/subinacls/Filibuster'
+license=('GPL3')
+depends=('python2' 'python2-numpy' 'python2-configparser' 'python2-dnspython'
+         'python2-pyliblzma' 'python2-pycryptodome')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/subinacls/Filibuster.git"
+        'lulz.patch'
+        'filterbuster.py')
+sha512sums=('SKIP'
+            'b87d3b06db4937b1aaf20abd10898603764675f3976b9aae38a5bcb3ef11df928fe18e7eaa0b7c0bea9646360df578d3226f0eced6962093765f69d69eff5e79'
+            'f47f54590bacaee6ab3095c56e998391eedf157369611c0c4ef6debe799ef91b683d8012bc31b971a6fb1b0684d6a9784884eacffef650c4e6e3dd79f3933336')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  # some noobs think assassssaasssaassault, err aarrcchstr1k3 is
+  # origin...really? lulz!
+  patch -p1 < lulz.patch
+
+  cp filterbuster.py Filibuster
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README
+  install -Dm 644 GPLv3 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README GPLv3
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 filterbuster.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

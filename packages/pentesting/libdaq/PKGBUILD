@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=libdaq
+_pkgname=daq
+pkgver=2.0.7
+pkgrel=1
+pkgdesc='Data Acquisition library for packet I/O.'
+arch=('x86_64' 'aarch64')
+url='http://www.snort.org/'
+license=('GPL')
+depends=('libpcap')
+makedepends=('ca-certificates')
+source=("https://www.snort.org/downloads/snort/$_pkgname-$pkgver.tar.gz")
+sha512sums=('9bedddbc2d952526ab4e1d65f4507eb914507f8b3b5702ecf7137f8a210c690703469162a117a76cb8376a5639db46bd767fc48789ba7294a0bad26d4cd0ede2')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir" install
+}
+

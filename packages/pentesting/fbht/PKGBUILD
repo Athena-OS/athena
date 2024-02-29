@@ -1,0 +1,63 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+#
+# Original: https://aur.archlinux.org/packages/fb/fbht-git/PKGBUILD
+
+pkgname=fbht
+pkgver=70.d75ae93
+pkgrel=3
+epoch=1
+pkgdesc='A Facebook Hacking Tool'
+arch=('any')
+url='https://github.com/chinoogawa/fbht'
+groups=('athena' 'athena-webapp')
+license=('custom')
+depends=('python2' 'python2-mechanize' 'python2-networkx' 'python2-matplotlib'
+         'python2-numpy' 'python2-selenium' 'python2-setuptools'
+         'python2-simplejson')
+makedepends=('git')
+provides=('fbht')
+source=("git+https://github.com/chinoogawa/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  grep -iRl 'python' "$srcdir/fbht" |
+  xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;
+  s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 License "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -r dumps "$pkgdir/usr/share/$pkgname/dumps"
+  cp -r logs "$pkgdir/usr/share/$pkgname/logs"
+
+  chmod 666 "$pkgdir/usr/share/$pkgname/logs/error.log"
+
+  install -m 755 {MyParser,community,database,handlers,main,mainFunc,mainLib}.py \
+    "$pkgdir/usr/share/$pkgname/"
+  install -m 644 fb_db.db "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 main.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

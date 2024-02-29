@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=scap-workbench
+pkgver=1.2.1
+pkgrel=1
+pkgdesc='SCAP Scanner And Tailoring Graphical User Interface.'
+arch=('x86_64')
+groups=('athena' 'athena-automation' 'athena-defensive'
+        'athena-scanner')
+url='https://github.com/OpenSCAP/scap-workbench'
+license=('GPL2')
+depends=('libutil-linux' 'openscap' 'openssh-askpass' 'qt5-base'
+         'qt5-xmlpatterns')
+makedepends=('asciidoctor' 'cmake' 'git' 'asciidoc')
+optdepends=('polkit')
+source=("https://github.com/OpenSCAP/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('37dad3d3310a9ba200756480eee2c93913617a77e9983c18dafdc3320fc62774d23b327200fa21f63cec160ef8d6527ac43c11e7d0cdce49b3a364590311fbad')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i 's/-Werror//' ./CMakeLists.txt # Quick fix
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver/build"
+
+  make DESTDIR="$pkgdir" install
+}
+

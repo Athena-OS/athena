@@ -1,0 +1,27 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fusil
+pkgver=1.5
+pkgrel=4
+pkgdesc='A Python library used to write fuzzing programs.'
+groups=('athena' 'athena-fuzzer')
+url='http://bitbucket.org/haypo/fusil/wiki/Home'
+arch=('any')
+license=('GPL2')
+depends=('python2' 'python2-ptrace')
+source=("http://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('93678fd1aeae2a83823d1d8fcc4eed5c299c6f44')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package(){
+  cd "$pkgname-$pkgver"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+}
+

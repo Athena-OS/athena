@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-contextlib2
+_pkgname=contextlib2
+pkgver=0.6.0.post1
+pkgrel=6
+pkgdesc='Backports and enhancements for the contextlib module.'
+url='https://pypi.org/project/contextlib2/#files'
+arch=('any')
+license=('PSF')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('bd3b458b365bc1d556476f6368bc523fde07e85afdad74037aa98d7a498008103a789f6b481b606700da92606ee6477fc5a817f1596e93a6e3c548ed0d4a5bf8')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

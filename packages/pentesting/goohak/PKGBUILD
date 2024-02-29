@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=goohak
+pkgver=31.815a31e
+pkgrel=1
+pkgdesc='Automatically Launch Google Hacking Queries Against A Target Domain.'
+groups=('athena' 'athena-recon' 'athena-automation'
+         'athena-scanner')
+url='https://github.com/1N3/Goohak'
+license=('custom:unknown')
+arch=('any')
+depends=('bash')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/1N3/Goohak.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bash ./$pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

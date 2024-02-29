@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+_author=SYAMAL
+_perlmod=Uniq
+pkgname=perl-uniq
+pkgver=0.01
+pkgrel=11
+pkgdesc='Perl extension for managing list of values.'
+arch=('any')
+url='http://search.cpan.org/~syamal/Uniq-0.01/Uniq.pm'
+license=('GPL' 'PerlArtistic')
+depends=('perl')
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/S/SY/$_author/$_perlmod-$pkgver.tar.gz")
+sha512sums=('917827cab53f10d01182098d70291f14cd7bbbfe4bcdcc9118b62424561a22882882caa79d4c33f6f2fe68b052f7d6f838164db3f7bdddec35d40dd971e5e881')
+
+build() {
+  cd $_perlmod
+
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+
+  make
+}
+
+package() {
+  cd $_perlmod
+
+  make DESTDIR="$pkgdir" install
+}
+

@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wssip
+pkgver=75.56d0d2c
+pkgrel=4
+groups=('athena' 'athena-webapp' 'athena-proxy')
+pkgdesc='Application for capturing, modifying and sending custom WebSocket data from client to server and vice versa.'
+url='https://github.com/nccgroup/wssip'
+arch=('any')
+license=('GAGPL')
+depends=('nodejs' 'coffee-script')
+makedepends=('git' 'npm' 'python' 'python2' 'libxtst')
+#conflicts=('electron')
+source=("git+https://github.com/nccgroup/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  _npmdir="$pkgdir/usr/lib/node_modules/"
+
+  install -dm 755 $_npmdir
+
+  cd $_npmdir
+
+  npm install --user root -g --prefix "$pkgdir/usr" electron@1.7
+  npm install --user root -g --prefix "$pkgdir/usr" wssip@
+
+  mv "$pkgdir/usr/bin/electron" "$pkgdir/usr/bin/electron-1.7"
+
+  chmod 755 "$pkgdir/usr/bin" "$pkgdir/usr/lib/node_modules"
+}
+

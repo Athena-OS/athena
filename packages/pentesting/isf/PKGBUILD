@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=isf
+pkgver=68.5228865
+pkgrel=2
+pkgdesc='An exploitation framework based on Python.'
+groups=('athena' 'athena-exploitation')
+arch=('any')
+url='https://github.com/dark-lbp/isf'
+license=('BSD')
+depends=('python2' 'python2-pexpect' 'python2-paramiko' 'python2-argparse'
+         'python2-pysnmp' 'python2-python-nmap' 'python2-beautifulsoup4'
+         'python2-requests' 'python2-scapy' 'python2-setuptools')
+makedepends=('git')
+source=("git+https://github.com/dark-lbp/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md docs/*.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -rf README.md LICENSE docs
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

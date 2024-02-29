@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tabi
+pkgver=13.068a406
+pkgrel=2
+pkgdesc='BGP Hijack Detection.'
+groups=('athena' 'athena-defensive' 'athena-networking')
+arch=('any')
+url='https://github.com/ANSSI-FR/tabi'
+license=('MIT')
+depends=('python2' 'python2-py-radix' 'python2-dateutil' 'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/ANSSI-FR/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

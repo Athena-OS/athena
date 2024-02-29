@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-pmw
+_pkgname=Pmw
+pkgver=2.1.1
+pkgrel=2
+pkgdesc='A toolkit for high-level compound widgets in Python using the Tkinter module.'
+arch=('any')
+url='https://pypi.org/project/Pmw/#files'
+license=('MIT')
+depends=('python' 'tk')
+makedepends=('python-setuptools' 'python-wheel' 'python-pip')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/Pmw-$pkgver.tar.gz")
+sha512sums=('7f4c3181b0ae546f9f89cf666917fd9ea0161a2c4a4e6b5756e0aeb543fcd3ed4598c83e294b04312fea6a386b06b370668b4400f1497cc8b2fc2ab19a3fdd3d')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

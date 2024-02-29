@@ -1,0 +1,41 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fakenetbios
+pkgver=7.b83701e
+pkgrel=2
+groups=('athena' 'athena-spoof' 'athena-honeypot' 'athena-networking')
+pkgdesc='A family of tools designed to simulate Windows hosts (NetBIOS) on a LAN.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/mubix/FakeNetBIOS'
+license=('custom')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/mubix/FakeNetBIOS.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build(){
+  cd "$pkgname/Sources"
+
+  make -f Makefile.linux
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 Sources/FakeNetbiosDGM "$pkgdir/usr/bin/fakenetbiosdgm"
+  install -Dm 755 Sources/FakeNetbiosNS  "$pkgdir/usr/bin/fakenetbiosns"
+  install -Dm 644 License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm License.txt
+
+  for i in `ls *.txt` ; do
+    install -Dm 644 $i "$pkgdir/usr/share/doc/$pkgname/$i"
+  done
+}
+

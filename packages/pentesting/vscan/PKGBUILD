@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vscan
+pkgver=10.da4e47e
+pkgrel=5
+groups=('athena' 'athena-scanner')
+pkgdesc='HTTPS / Vulnerability scanner.'
+arch=('any')
+url='https://github.com/pasjtene/Vscan'
+license=('custom:unknown')
+depends=('java-environment')
+makedepends=('git' 'apache-ant')
+source=("$pkgname::git+https://github.com/pasjtene/Vscan.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|1.8|1.7|g' nbproject/project.properties
+}
+
+build() {
+  cd $pkgname
+
+  ant -q --noconfig --nouserlib
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 755 dist/Vscan.jar "$pkgdir/usr/share/$pkgname/Vscan.jar"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec java -jar /usr/share/$pkgname/Vscan.jar "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

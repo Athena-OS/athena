@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mikrotik-npk
+pkgver=11.d54e97c
+pkgrel=2
+groups=('athena' 'athena-reversing' 'athena-binary'
+        'athena-networking' 'athena-packer' 'athena-unpacker')
+pkgdesc='Python tools for manipulating Mikrotik NPK format.'
+arch=('any')
+url='https://github.com/kost/mikrotik-npk'
+license=('custom:unknown')
+depends=('python2')
+makedepends=('git')
+source=("git+https://github.com/kost/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' *.py
+}
+
+package() {
+  cd $pkgname
+
+  for i in *.py ; do
+    install -Dm 755 $i "$pkgdir/usr/bin/`echo $i | cut -d '.' -f 1`"
+  done
+
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/mikrotik-npk/LICENSE"
+}
+

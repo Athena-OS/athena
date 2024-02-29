@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sslcat
+pkgver=1.0
+pkgrel=2
+pkgdesc='A simple Unix utility that reads and writes data across an SSL enable network connection.'
+url='http://www.bindshell.net/tools/sslcat'
+license='GPL'
+groups=('athena' 'athena-misc')
+arch=('x86_64' 'aarch64')
+source=("http://www.bindshell.net/tools/sslcat/$pkgname.tgz")
+sha512sums=('ff5acb99399cdf8627059f0c957db15409198916')
+
+build() {
+  cd $pkgname
+
+  ./configure --prefix=/usr --mandir=/usr/share/man/
+
+  make -j1
+}
+
+package(){
+  cd $pkgname
+
+  make prefix="$pkgdir/usr" mandir="$pkgdir/usr/share/man" install
+}
+

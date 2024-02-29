@@ -1,0 +1,56 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=scannerl
+pkgver=15.e52c46b
+pkgrel=1
+pkgdesc='The modular distributed fingerprinting engine.'
+groups=('athena' 'athena-fingerprint')
+arch=('any')
+url='https://github.com/kudelskisecurity/scannerl'
+license=('GPL3')
+depends=('erlang-nox')
+makedepends=('git' 'rebar')
+source=("git+https://github.com/kudelskisecurity/$pkgname.git"
+        'build.sh.patch')
+sha512sums=('SKIP'
+            '312aaffd4754684c985489490658495a96981a6224e3f4f13b9e4263c6141ad0fdff90099ef8737e62233b97cf5291061970556ad4a8b33074f28b01466b5a1b')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < build.sh.patch
+}
+
+build() {
+  cd $pkgname
+
+  ./build.sh
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md AUTHORS \
+    DISCLAIMER.txt
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE AUTHORS DISCLAIMER.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec /usr/share/$pkgname/$pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

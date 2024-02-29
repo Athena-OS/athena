@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sb0x
+pkgver=19.04f40fe
+pkgrel=2
+pkgdesc='A simple and Lightweight framework for Penetration testing.'
+groups=('athena' 'athena-scanner' 'athena-fuzzer' 'athena-cracker'
+        'athena-backdoor' 'athena-recon')
+url='https://github.com/levi0x0/sb0x-project'
+arch=('any')
+license=('GPL3')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/levi0x0/sb0x-project.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 doc/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm doc/LICENSE
+
+  cp -a doc/* "$pkgdir/usr/share/doc/$pkgname/"
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

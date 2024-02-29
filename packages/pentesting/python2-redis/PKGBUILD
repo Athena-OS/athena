@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-redis
+_pkgname=redis
+pkgver=3.5.1
+pkgrel=1
+pkgdesc='Python client for Redis key-value store.'
+url='https://pypi.org/project/redis/#files'
+arch=('any')
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('713089fe9687558b651ac9aa0161f3ebfccb71ee12cd6aed784b07bf8f7b52cab1d1d436c4ea7c91b9d688e48da96251feed8e3add140ae714a6ff9e1d23bc85')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

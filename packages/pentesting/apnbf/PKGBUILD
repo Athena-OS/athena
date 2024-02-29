@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=apnbf
+pkgver=0.1
+pkgrel=2
+groups=('athena' 'athena-wireless' 'athena-scanner')
+pkgdesc='A small python script designed for enumerating valid APNs (Access Point Name) on a GTP-C speaking device.'
+arch=('any')
+url='http://www.c0decafe.de/'
+license=('custom:unknown')
+depends=('python2')
+source=("http://c0decafe.de/tools/$pkgname-$pkgver.tar.gz")
+sha512sums=('4216eb59a4bf86a9949e2252a1a7dd2f2c994b0c138eb1fbd8caf55944b4b083b5c8bfb281c1c45c41ba6f3acc19583971caec58c36feb99e18d9daf20867791')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|g' "$pkgname.py"
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 apnlist "$pkgdir/usr/share/$pkgname/apnlist"
+}
+

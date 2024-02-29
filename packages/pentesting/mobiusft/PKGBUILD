@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mobiusft
+pkgver=1.12
+pkgrel=1
+groups=('athena' 'athena-forensic')
+pkgdesc='An open-source forensic framework written in Python/GTK that manages cases and case items, providing an abstract interface for developing extensions.'
+arch=('any')
+depends=('python2' 'python2-lxml' 'pygtk' 'python2-cairo' 'sleuthkit')
+makedepends=('python2')
+url='http://savannah.nongnu.org/projects/mobiusft'
+license=('GPL2')
+source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz")
+sha512sums=('dc959d0c934b44739d88a976fa56ce54a70373fe745442176c104bbded44ffc1b7e836e47e4db519a4fd901e5361380a546268b6725b25b17d8ad521cca117d7')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  PYTHON=python2 ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  PREFIX="/usr" DESTDIR="$pkgdir" make install
+
+  sed -i 's|/env python|/env python2|g' "$pkgdir/usr/bin/mobius_bin.py"
+  chmod -x "$pkgdir/usr/bin/mobius_bin.py"
+
+  mv "$pkgdir/usr/bin/mobius_bin.sh" "$pkgdir/usr/bin/mobius"
+  sed -i 's|python|python2|g' "$pkgdir/usr/bin/mobius"
+
+}
+

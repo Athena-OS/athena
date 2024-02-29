@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=nfcutils
+pkgver=0.3.2
+pkgrel=1
+groups=('athena' 'athena-nfc')
+pkgdesc="Provides a simple 'lsnfc' command that list tags which are in your NFC device field."
+arch=('x86_64' 'aarch64')
+url="http://code.google.com/p/nfc-tools"
+license=('LGPL3')
+depends=('libnfc>=1.4.0')
+source=("http://nfc-tools.googlecode.com/files/$pkgname-$pkgver.tar.gz")
+sha512sums=('e560ba7683175257ef9e72838b9f02cf75ce99b8')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir" install
+}
+

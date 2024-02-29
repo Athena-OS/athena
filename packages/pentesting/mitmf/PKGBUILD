@@ -1,0 +1,68 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mitmf
+pkgver=467.0458300
+pkgrel=4
+groups=('athena' 'athena-exploitation' 'athena-proxy'
+        'athena-networking' 'athena-spoof')
+pkgdesc='A Framework for Man-In-The-Middle attacks written in Python.'
+arch=('any')
+url='https://github.com/byt3bl33d3r/MITMf'
+license=('GPL3')
+depends=('python2-configobj' 'python2-pillow6' 'python2-user-agents'
+         'python2-twistedx' 'python2-netfilterqueue' 'python2-msgpack'
+         'python2-requests'  'python2-scapy' 'capstone' 'python2-pefile'
+         'python2-dnspython' 'systemd' 'backdoor-factory' 'python2-pyinotify'
+         'python2-beautifulsoup4' 'python2-magic' 'python2-dnslib'
+         'python2-netaddr' 'python2-flask' 'python2-ipy' 'python2-pyopenssl'
+         'python2-setuptools')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/byt3bl33d3r/MITMf.git"
+        "$pkgname.tmpfiles.conf")
+sha512sums=('SKIP'
+            'a380c2f2e812efff0ed1f303f91046c4e639e4bb8a8b0f93e17d8e8ac1b7ec1c20c124d2a203d66fc72aaa62f4753de8935e8b365d39a7e2bd90c2c2dfa39376')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  grep -iRl 'python' . |
+  xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 "$srcdir/mitmf.tmpfiles.conf" \
+    "$pkgdir/usr/lib/tmpfiles.d/mitm.conf"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  find ./ -type d -exec chmod 755 {} \+
+  find ./ -type f -exec chmod 644 {} \+
+
+  # symlink current build of bdf to mitmf dir
+  cp -a /usr/share/backdoor-factory/* "$pkgdir/usr/share/$pkgname/libs/bdfactory"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

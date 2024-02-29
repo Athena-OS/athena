@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=omen
+pkgver=19.10aa99e
+pkgrel=1
+pkgdesc='Ordered Markov ENumerator - Password Guesser.'
+groups=('athena' 'athena-cracker' 'athena-crypto')
+arch=('x86_64' 'aarch64')
+url='https://github.com/RUB-SysSec/OMEN'
+license=('MIT')
+depends=()
+makedepends=('git')
+source=("$pkgname::git+https://github.com/RUB-SysSec/OMEN.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 alphabetCreator "$pkgdir/usr/bin/omen-alphabetcreator"
+  install -Dm 755 createNG "$pkgdir/usr/bin/omen-createng"
+  install -Dm 755 enumNG "$pkgdir/usr/bin/omen-enumng"
+  install -Dm 755 evalPW "$pkgdir/usr/bin/omen-evalpw"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md docs/*.md
+  install -Dm 644 docs/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md docs/*.md docs/LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+}
+

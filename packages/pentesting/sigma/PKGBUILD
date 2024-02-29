@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sigma
+pkgver=0.20
+pkgrel=2
+pkgdesc="Generic Signature Format for SIEM Systems"
+arch=('any')
+groups=('athena' 'athena-defensive')
+url='https://github.com/SigmaHQ/sigma/releases'
+license=('LGPL3')
+depends=('python-yaml' 'python-pymisp' 'python-progressbar' 'python-urllib3'
+         'python-requests' 'python-ruamel-yaml')
+makedepends=('python-setuptools')
+source=("https://github.com/SigmaHQ/sigma/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('97183ce19f10aeb1e1dcc1ee2de00b3ff135ef694d7265a3031ee2dfaea7768595eeda471a7b2e3180c3a85fef5f8ae926a2e63a9fd632cf7332a143c6f79899')
+
+build() {
+  cd "$pkgname-$pkgver/tools"
+
+  python setup.py build
+}
+
+package() {
+  cd "$pkgname-$pkgver/tools"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  mv "$pkgdir/usr/etc/" $pkgdir
+}
+

@@ -1,0 +1,56 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+#
+# from AUR - adapted to our style.
+#
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
+# Contributor: Guillaume ALAUX <guillaume@archlinux.org>
+
+pkgname=swt
+pkgver=4.22
+pkgrel=1
+_date=202111241800
+pkgdesc='An open source widget toolkit for Java.'
+arch=('x86_64')
+url='https://www.eclipse.org/swt/'
+license=('EPL')
+depends=('java-runtime>=8' 'libxtst')
+makedepends=('ant' 'glu' 'gtk3' 'gtk4' 'jdk8-openjdk' 'pkgconfig' 'unzip'
+             'webkit2gtk')
+optdepends=('glu' 'gtk3' 'gtk4')
+_archive="$pkgname-$pkgver-gtk-linux-$arch.zip"
+source=("https://download.eclipse.org/eclipse/downloads/drops4/R-$pkgver-$_date/$_archive"
+        'build-swt.xml')
+noextract=("$_archive")
+sha512sums=('cfe56e30d5ec3d9e56e9721a415522edd075456fd37140e35238b75b09e80209417ca9aa46fdc4f797b5e37c4646c6029a9efa8267ce038cc78242015ce9e9a5'
+            '18660eb15b09d70cf0a8b567ea55e4de1c20d9d463908e4d4bb1eba0139a0ba4c9af63e825cc36c286701eca604d4a1f239fa676de5a48ddad7ef9b2c368e543')
+
+prepare() {
+  unzip -oq "$_archive" -d "$pkgname-$pkgver"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  unzip -oq src.zip
+  cp $srcdir/build-swt.xml .
+
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+
+  ant -f build-swt.xml compile
+  ant -f build-swt.xml jar
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  # SWT jar
+  install -Dm644 swt.jar "$pkgdir/usr/share/java/swt-$pkgver.jar"
+  ln -s "swt-$pkgver.jar" "$pkgdir/usr/share/java/swt.jar"
+
+  # Shared objects
+  install -d "$pkgdir/usr/lib"
+  OUTPUT_DIR="$pkgdir/usr/lib" ./build.sh -gtk-all install
+}
+

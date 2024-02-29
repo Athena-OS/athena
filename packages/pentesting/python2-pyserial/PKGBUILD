@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-pyserial
+_pkgname=pyserial
+pkgver=3.5
+pkgrel=1
+pkgdesc='Python Serial Port Extension.'
+url='https://pypi.org/project/pyserial/#files'
+arch=('any')
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('c8df5e50d952d5a6dcf1d9253a6ba953e9763c545a867da66c22c90dfa015aba0194f2a8f29a229d0a5f4dc8bfeeaaab8bcfda4066ed78a18b151bc05e6ae327')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  for i in "$pkgdir/usr/bin/"*; do
+    mv $i "${i}2"
+  done
+}
+

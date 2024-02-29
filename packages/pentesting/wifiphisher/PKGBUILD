@@ -1,0 +1,53 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wifiphisher
+pkgver=798.bc4a077
+_pyver=3.11
+pkgrel=3
+epoch=1
+groups=('athena' 'athena-wireless' 'athena-social')
+pkgdesc='Fast automated phishing attacks against WPA networks.'
+arch=('any')
+url='https://github.com/wifiphisher/wifiphisher'
+license=('MIT')
+depends=('python' 'python-httplib2' 'python-scapy' 'aircrack-ng'
+         'python-pyopenssl' 'python-pyric' 'python-blessings' 'python-pbkdf2'
+         'python-tornado' 'hostapd' 'dnsmasq' 'python-dbus' 'roguehostapd')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/$pkgname/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|tornado==4.5.3|tornado|' setup.py
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # moron
+  sed -i '1 i\# -*- coding: utf-8 -*-' \
+    "$pkgdir/usr/lib/python$_pyver/site-packages/$pkgname/common/phishingpage.py"
+}
+

@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dr0p1t-framework
+pkgver=44.db9bc2d
+pkgrel=2
+pkgdesc='A framework that creates a dropper that bypass most AVs, some sandboxes and have some tricks.'
+groups=('athena' 'athena-backdoor')
+arch=('any')
+url='https://github.com/D4Vinci/Dr0p1t-Framework'
+license=('custom:unknown')
+depends=('python2' 'pyinstaller')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/D4Vinci/Dr0p1t-Framework.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/dr0p1t" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 Dr0p1t.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/dr0p1t"
+}
+

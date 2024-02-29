@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=backdoorme
+pkgver=308.f9755ca
+pkgrel=5
+pkgdesc='A powerful utility capable of backdooring Unix machines with a slew of backdoors.'
+groups=('athena' 'athena-backdoor' 'athena-automation')
+arch=('any')
+url='https://github.com/Kkevsterrr/backdoorme'
+license=('custom:unknown')
+depends=('python' 'python-colorama' 'python-paramiko' 'python-rpyc' 'tk'
+         'python-scp' 'python-pexpect' 'python-netifaces')
+makedepends=('git')
+options=(!strip)
+source=("git+https://github.com/Kkevsterrr/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python master.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

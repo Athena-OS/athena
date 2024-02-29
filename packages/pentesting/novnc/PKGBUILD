@@ -1,0 +1,53 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+#
+# AUR Maintainer: seiuneko <chfsefefgesfen foxmail>
+# AUR Contributor: Radek Podgorny <radek@podgorny.cz>
+
+pkgname=novnc
+_pkgname=noVNC
+pkgver=1.4.0
+pkgrel=3
+pkgdesc='HTML VNC Client Library and Application.'
+arch=('any')
+url='https://github.com/novnc/noVNC'
+license=('custom:unknown')
+depends=('bash' 'which' 'inetutils' 'websockify' 'python-numpy')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/noVNC/$_pkgname/archive/v$pkgver.tar.gz"
+        "$pkgname.service")
+sha512sums=('b42b0e8c3947dba9a9ba8518bbeb218e77c9d36302c1161f168351ef971c76f3a25e0d136d44e5aa0c6d934290e7d8f23961519e64ca9bdb1eeed8d416aecee3'
+            '5dce6fb71dcdeab9ebe3986ebad431d01bb01860cb9960b1e70af84b2beba2330738cd9aa37ab9e025ee8263cba7475d484d5c6d55d4b3750d27aff37c7aef41')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+
+  sed \
+    -e 's#\(share\)#\1/webapps#g' \
+    -e '2 i WEBSOCKIFY=/usr/bin/websockify' \
+    -i utils/novnc_proxy
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  install -dm 644 "$pkgdir/usr/share/doc/$pkgname"
+  install -dm 755 "$pkgdir/usr/share/webapps/$pkgname"
+
+  install -Dm 755 "utils/${pkgname}_proxy" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 "$srcdir/$pkgname.service" \
+    "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+
+  # license foo
+  install -Dm 644 vendor/pako/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  ( cd docs; find . -name 'LICENSE*' -type f -exec cp -a {} \
+    "$pkgdir/usr/share/licenses/$pkgname/{}" \; )
+  ( cd docs; find . ! -name 'LICENSE*' -type f -exec cp -a {} \
+    "$pkgdir/usr/share/doc/$pkgname/{}" \; )
+
+  cp -a app core po vendor vnc.html karma.conf.js package.json vnc_lite.html \
+    "$pkgdir/usr/share/webapps/$pkgname"
+}
+

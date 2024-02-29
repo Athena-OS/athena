@@ -1,0 +1,69 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=boopsuite
+pkgver=1.1c4e68d
+pkgrel=1
+pkgdesc='A Suite of Tools written in Python for wireless auditing and security testing.'
+groups=('athena' 'athena-wireless' 'athena-sniffer')
+arch=('any')
+url='https://github.com/M1ND-B3ND3R/BoopSuite'
+license=('MIT')
+depends=('python2' 'python2-argparse' 'python2-tabulate' 'python2-pyric'
+         'python2-netaddr' 'python2-scapy')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/M1ND-B3ND3R/BoopSuite.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/boop" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/Monitor
+exec python2 boop.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/boop"
+
+  cat > "$pkgdir/usr/bin/boopsniff" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/Packet-Sniffer
+exec python2 boopsniff.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/boopsniff"
+
+  cat > "$pkgdir/usr/bin/boopsniff-gui" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/Packet-Sniffer
+exec python2 boopsniff_gui.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/boopsniff-gui"
+
+  cat > "$pkgdir/usr/bin/boopstrike" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/Deauth
+exec python2 boopstrike.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/boopstrike"
+}
+

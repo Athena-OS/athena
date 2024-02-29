@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vpnpivot
+pkgver=22.37bbde0
+pkgrel=1
+pkgdesc='Explore the network using this tool.'
+groups=('athena' 'athena-recon' 'athena-networking')
+arch=('x86_64' 'aarch64')
+url='https://github.com/0x36/VPNPivot'
+license=('custom:unknown')
+depends=('linux-headers' 'openssl')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/0x36/VPNPivot.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  ./autogen.sh
+
+  ./configure --prefix=/usr --sbindir=/usr/bin
+
+  make -j1
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

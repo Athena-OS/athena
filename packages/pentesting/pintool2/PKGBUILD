@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pintool2
+pkgver=5.1c1af91
+pkgrel=2
+pkgdesc='Improved version of pintool.'
+groups=('athena' 'athena-reversing' 'athena-binary')
+arch=('any')
+url='https://github.com/sebastiendamaye/pintool2'
+license=('custom:unknown')
+depends=('pin' 'python2' 'python2-argparse')
+makedepends=('git')
+source=("git+https://github.com/sebastiendamaye/$pkgname.git"
+        "$pkgname.py.patch")
+sha512sums=('SKIP'
+            '1ea129598fd58439f589d3dbf5576d48b1466568d55d853ad95e5658c9b98cbf7e6af36e5c9ea4e7725007ea0edb03accce0fdcaabfce3edd6d33f3d371342dc')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < pintool2.py.patch
+
+  sed 's/PINBASEPATH\ =\ \"\/data\/pin-3.0-76991-gcc-linux\"/PINBASEPATH\ =\ \"\/usr\/share\/pin\"/g' -i "$pkgname/$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/$pkgname/" baleful reverse400 wyvern \
+    inscount.out 01f47d58806a8264cd4b2b97b9dabb4a
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

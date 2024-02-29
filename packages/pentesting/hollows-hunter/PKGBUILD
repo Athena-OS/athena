@@ -1,0 +1,26 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hollows-hunter
+pkgver=0.3.8.1
+pkgrel=1
+pkgdesc='Scans all running processes. Recognizes and dumps a variety of potentially malicious implants (replaced/injected PEs, shellcodes, hooks, in-memory patches).'
+url='https://github.com/hasherezade/hollows_hunter'
+groups=('athena' 'athena-windows' 'athena-malware'
+        'athena-binary')
+license=('BSD')
+arch=('any')
+makedepends=('unzip')
+source=("https://github.com/hasherezade/${pkgname//-/_}/releases/download/v$pkgver/${pkgname//-/_}64.zip"
+        "https://github.com/hasherezade/${pkgname//-/_}/releases/download/v$pkgver/${pkgname//-/_}32.zip")
+sha512sums=('541403258704e6c93ba70a11eedb76916555eb6b5565373d496533ea4ac2de3c33d71d3eec0eb5a0449ffd7bfbbccb1eef236e6506089a461a0b8a5ec291f489'
+            '0081fbb78c00b8f3c5b1289e95d377a4dd083964999ff5dbb71b4959346661d9cef2d3fa4cb5437fc65f4ae505265ce0c233ce2e2f77436136d7224f0fea77ad')
+noextract=("${pkgname//-/_}64.zip" "${pkgname//-/_}32.zip")
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname/"{64,32}
+
+  unzip -qq "${pkgname//-/_}64.zip" -d "$pkgdir/usr/share/windows/$pkgname/64/"
+  unzip -qq "${pkgname//-/_}32.zip" -d "$pkgdir/usr/share/windows/$pkgname/32/"
+}
+

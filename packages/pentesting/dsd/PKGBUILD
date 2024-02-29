@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dsd
+pkgver=101.59423fa
+pkgrel=1
+groups=('athena' 'athena-misc')
+pkgdesc='Digital Speech Decoder.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/szechyjs/dsd'
+license=('GPL2')
+depends=('libsndfile' 'mbelib' 'itpp' 'portaudio')
+makedepends=('git' 'cmake')
+source=("git+https://github.com/szechyjs/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  mkdir -p build
+
+  cd build
+
+  cmake ../ -DCMAKE_INSTALL_PREFIX="/usr"
+
+  make
+}
+
+package() {
+  cd "$pkgname/build"
+
+  make DESTDIR="$pkgdir" install
+
+  cd ..
+
+  install -Dm 644 -t  "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG
+  install -Dm 644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+}
+

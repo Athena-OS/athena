@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=powerstager
+pkgver=14.0149dc9
+pkgrel=4
+pkgdesc='A payload stager using PowerShell.'
+groups=('athena' 'athena-binary' 'athena-backdoor')
+arch=('any')
+url='https://github.com/z0noxz/powerstager'
+license=('custom:unknown')
+depends=('python' 'python-names' 'mingw-w64-gcc')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/z0noxz/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

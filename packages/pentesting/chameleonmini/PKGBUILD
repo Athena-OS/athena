@@ -1,0 +1,62 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=chameleonmini
+pkgver=613.ad0eece
+pkgrel=1
+pkgdesc='Official repository of ChameleonMini, a freely programmable, portable tool for NFC security analysis that can emulate and clone contactless cards, read RFID tags and sniff/log RF data.'
+groups=('athena' 'athena-social' 'athena-hardware' 'athena-nfc')
+arch=('x86_64' 'aarch64')
+url='https://github.com/emsec/ChameleonMini'
+license=('custom:unknown')
+depends=('python' 'python-argparse' 'python-colorama' 'python-pyserial')
+makedepends=('git' 'avr-gcc' 'avr-libc')
+source=("$pkgname::git+https://github.com/emsec/ChameleonMini.git")
+install="$pkgname.install"
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  # build firmware
+  cd Firmware/Chameleon-Mini
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/chamtool" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/Software
+exec python chamtool.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/chamtool"
+
+  cat > "$pkgdir/usr/bin/chamlog" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/Software
+exec python chamlog.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/chamlog"
+}
+

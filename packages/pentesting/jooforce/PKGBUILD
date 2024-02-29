@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=jooforce
+pkgver=11.43c21ad
+pkgrel=2
+groups=('athena' 'athena-webapp' 'athena-cracker')
+pkgdesc='A Joomla password brute force tester.'
+arch=('any')
+url='https://github.com/rastating/jooforce'
+license=('GPL3')
+depends=('python2')
+makedepends=('git')
+source=("git+https://github.com/rastating/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i '1i\#!/usr/bin/python2' "$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  rm README.md COPYING.txt
+}
+

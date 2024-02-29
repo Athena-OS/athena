@@ -1,0 +1,27 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-winacl
+_pkgname=winacl
+pkgver=0.1.7
+pkgrel=2
+pkgdesc='Python library for interfacing windows security descriptors.'
+arch=('any')
+url='https://pypi.org/project/winacl/#files'
+license=('MIT')
+depends=('python' 'python-asn1crypto')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('ee6be3d21974c038ea2a9891ef90dcd50ff91b695ae2d379d8653fd0cc1ce93110a628412e1f3dcd00a6ad6bfd839692c276ad048ecc3406674e3ca9fe3225c1')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}

@@ -1,0 +1,33 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=stardox
+pkgver=41.95b0a97
+pkgrel=5
+pkgdesc='Github stargazers information gathering tool.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/0xPrateek/Stardox'
+license=('GPL3')
+depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-lxml')
+makedepends=('python-setuptools' 'git')
+source=("$pkgname::git+https://github.com/0xPrateek/Stardox.git")
+sha512sums=('SKIP')
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a --no-preserve=ownership src/* "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

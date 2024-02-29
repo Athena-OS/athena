@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=camover
+pkgver=92.478c4f3
+pkgrel=1
+pkgdesc='A camera exploitation tool that allows to disclosure network camera admin password.'
+groups=('athena' 'athena-exploitation')
+arch=('any')
+url='https://github.com/EntySec/camover'
+license=('MIT')
+depends=('python' 'python-requests' 'python-shodan' 'python-badges')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/EntySec/camover.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

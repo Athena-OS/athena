@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=githubcloner
+pkgver=35.2bcb9c2
+pkgrel=3
+pkgdesc='A script that clones Github repositories of users and organizations automatically.'
+groups=('athena' 'athena-misc' 'athena-automation')
+arch=('any')
+url='https://github.com/mazen160/GithubCloner'
+license=('MIT')
+depends=('python' 'python-argparse' 'python-requests' 'python-gitpython')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/mazen160/GithubCloner.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

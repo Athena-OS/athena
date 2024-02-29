@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-flask-api
+_pkgname=Flask-API
+pkgver=3.1
+pkgrel=1
+pkgdesc='Browsable web APIs for Flask.'
+arch=('any')
+url='https://pypi.org/project/flask-api/#files'
+license=('BSD')
+depends=('python' 'python-flask')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/Flask-API-$pkgver.tar.gz")
+sha512sums=('b949f5baeaa2ad0399becfc2015629d468fbacd4f8a594e6d99440fb35d10e8b780a3721b4644e3cc01d381403d5d3d18ab40f9d35a6f5fedfe40e8e5e9dbc69')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

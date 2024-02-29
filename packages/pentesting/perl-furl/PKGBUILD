@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=perl-furl
+_pkgname=Furl
+pkgver=3.14
+pkgrel=3
+pkgdesc='Lightning-fast URL fetcher.'
+url='https://metacpan.org/pod/Furl'
+arch=('any')
+depends=('perl')
+makedepends=('perl-module-build' 'perl-module-build-tiny')
+license=('Perl')
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/$_pkgname-$pkgver.tar.gz")
+sha512sums=('bd98dcca0c9b55431ee82c4291911784720bcbbc5d653fb24e450b067cbcbabb5a3119c7fd3b5808a2e39a73e16e1231f07f19cf80476811f6d1126ac778a6d2')
+
+build() {
+  cd  "$_pkgname-$pkgver"
+
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+
+  /usr/bin/perl Build.PL INSTALLDIRS=vendor
+  ./Build
+}
+
+package() {
+  cd  "$_pkgname-$pkgver"
+
+  ./Build install
+
+  find "$pkgdir" -type f -name 'perllocal.pod' -delete;
+  find "$pkgdir" -type f -name '.packlist' -delete;
+}
+

@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dns-parallel-prober
+pkgver=68.422db61
+pkgrel=1
+pkgdesc='PoC for an adaptive parallelised DNS prober.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/lorenzog/dns-parallel-prober'
+license=('GPL3')
+depends=('python2' 'python2-argparse' 'python2-progressbar' 'python2-dnspython')
+makedepends=('git')
+source=("git+https://github.com/lorenzog/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|bin/env python|bin/env python2|' dns-queue.py
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 dns-queue.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

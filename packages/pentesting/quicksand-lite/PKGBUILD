@@ -1,0 +1,56 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=quicksand-lite
+pkgver=33.c3edf92
+pkgrel=1
+groups=('athena' 'athena-defensive' )
+pkgdesc='Command line tool for scanning streams within office documents plus xor db attack.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/tylabs/quicksand_lite'
+license=('MPL2')
+depends=('zlib' 'libzip' 'yara')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/tylabs/quicksand_lite.git"
+        'libqs.h.patch')
+sha512sums=('SKIP'
+            '8a250b79d982e194d870b03f7113fa1b2a78946b5aa9f42ecc57b8be10e25ca6a53c40ac90e80a03eef5df767acbe7053e39e3ee514bf8f74ec953e44c0dce10')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < libqs.h.patch
+}
+
+build() {
+  cd $pkgname
+
+  gcc -g -o quicksand quicksand.c -L/usr/lib -lyara -lzip -lz
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" INSTALL.txt
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm INSTALL.txt LICENSE
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/quicksand" << EOF
+#!/bin/sh
+export QS=/usr/share/$pkgname
+exec /usr/share/$pkgname/quicksand "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/quicksand"
+}
+

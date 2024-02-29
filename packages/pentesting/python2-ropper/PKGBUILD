@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-ropper
+_pkgname=Ropper
+pkgver=1.13.3
+pkgrel=1
+pkgdesc='Display information about files in different file formats and find gadgets to build rop chains for different architectures (x86/x86_64, ARM/ARM64, MIPS, PowerPC, SPARC64).'
+url='https://github.com/sashs/Ropper'
+arch=('any')
+license=('BSD')
+depends=('python2' 'python2-capstone' 'python2-filebytes')
+makedepends=('python2-setuptools' 'python2-capstone' 'python2-filebytes')
+source=("https://github.com/sashs/$_pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('7ef15825441aa112b37c48204180e91b997af50356e6bddaf9a029e5caee63cdaadf9d94443cdfb1a93d9a31589ffec81bb93afce7013f9d59967cbc832ffd18')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  mv "$pkgdir/usr/bin/ropper" "$pkgdir/usr/bin/ropper2"
+}
+

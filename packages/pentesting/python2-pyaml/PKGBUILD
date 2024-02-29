@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-pyaml
+_pkgname=pyaml
+pkgver=20.4.0
+pkgrel=2
+pkgdesc='PyYAML-based module to produce pretty and readable YAML-serialized data.'
+url='https://pypi.org/project/pyaml/#files'
+arch=('any')
+license=('BSD')
+depends=('python2' 'python2-yaml')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('432fd215e034beafc07270a6aa8b726d5a16ef8946a95c1db9a34b4f492bbe2089dffbb1ce856d3e8153ec18ac943973a23e3aa9283d53ee0b2e7ba5dcd3d317')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

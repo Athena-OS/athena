@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-py
+_pkgname=py
+pkgver=1.11.0
+pkgrel=1
+pkgdesc='Library with cross-python path, ini-parsing, io, code, log facilities'
+url='https://pypi.org/project/py/#files'
+arch=('any')
+license=('MIT')
+depends=('python2' 'python2-apipkg' 'python2-iniconfig')
+makedepends=('python2-setuptools' 'python2-pip' 'python2-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('ce8dd791f9f6dd7e60a6caad32ff5cb816389a0840436efdedf4e0d4b0bfa09f7aea9e7c31d89903c72fe6ef17170a85af480525ba92c458ed73501a0420f2c4')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

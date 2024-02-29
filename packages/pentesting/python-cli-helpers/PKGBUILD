@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-cli-helpers
+pkgname=('python2-cli-helpers' 'python-cli-helpers')
+_pkgname=cli_helpers
+pkgver=2.3.0
+pkgrel=2
+pkgdesc='Helpers for building command-line apps.'
+arch=('any')
+url='https://pypi.org/project/cli-helpers/#files'
+license=('BSD')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/cli_helpers-$pkgver.tar.gz")
+sha512sums=('1ed4c7b9b246ad2a3c6069767efb998d107ac6314ac1695bf36d0d4df72bf5d6551169b7df34f4b1e9ae9ac9691f0736813b21017c3cdb0f82a7d045b2f67de1')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-cli-helpers() {
+  depends=('python2' 'python2-tabulate' 'python2-terminaltables'
+           'python2-backports-csv')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+
+package_python-cli-helpers() {
+  depends=('python' 'python-tabulate' 'python-terminaltables'
+           'python-backports.csv')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

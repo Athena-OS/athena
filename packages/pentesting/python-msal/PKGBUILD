@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-msal
+_pkgname=msal
+pkgver=1.24.1
+pkgrel=1
+pkgdesc='Python library that enables your app to access the Microsoft Cloud.'
+arch=('any')
+url='https://pypi.org/project/msal/#files'
+license=('MIT')
+depends=('python' 'python-requests' 'python-cryptography' 'python-mock'
+         'python-pyjwt')
+makedepends=('python-setuptools' 'cmake')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('6522d402197ecd3d24631147c7ce71bb7c69ffcd4087659d1fa1d738e9bde14532928ea5e96251b6003d99fdbc22517085e744c0aad9585a858b3df7ff1045e3')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

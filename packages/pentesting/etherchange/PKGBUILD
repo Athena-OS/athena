@@ -1,0 +1,19 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=etherchange
+pkgver=1.1
+pkgrel=4
+pkgdesc='Can change the Ethernet address of the network adapters in Windows.'
+url='http://ntsecurity.nu/toolbox/etherchange/'
+groups=('athena' 'athena-windows' 'athena-misc')
+license=('custom:unknown')
+arch=('any')
+source=('http://ntsecurity.nu/downloads/etherchange.exe')
+sha512sums=('a83f5ad817bdb2e9b63e03640d6ab48fe5b86421')
+
+package() {
+  install -Dm 644 "$pkgname.exe" \
+    "$pkgdir/usr/share/windows/$pkgname/$pkgname.exe"
+}
+

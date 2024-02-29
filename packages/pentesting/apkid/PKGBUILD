@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=apkid
+_pkgname=APKiD
+pkgver=2.1.4
+pkgrel=2
+epoch=2
+pkgdesc='Android Application Identifier for Packers, Protectors, Obfuscators and Oddities.'
+groups=('athena' 'athena-mobile')
+arch=('any')
+url='https://github.com/rednaga/APKiD'
+license=('GPL3')
+depends=('python' 'python-yara-rednaga')
+makedepends=('python-setuptools' 'python-yara-rednaga')
+source=("https://github.com/rednaga/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('c69313579ca42d8ce4abdf81aef369518a2b7ca2b411a99614ef77034b2c56dcb9db4dbe5ba6f27230d9f08703957df6d16c41741131944721927eb23f6d74ab')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+
+  sed -i 's|yara-python==3.11.0|yara-python|' setup.py
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.*
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.GPL \
+    LICENSE.COMMERCIAL
+}
+

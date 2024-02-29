@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=jsonbee
+pkgver=30.c0c87fc
+pkgrel=1
+pkgdesc='A ready to use JSONP endpoints/payloads to help bypass content security policy (CSP).'
+arch=('any')
+groups=('athena' 'athena-webapp')
+url='https://github.com/zigoo0/JSONBee'
+license=('GPL3')
+depends=('php')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/zigoo0/JSONBee.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -a --no-preserve=ownership *.txt *.php "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec php -S 0.0.0.0:8080 csp_lab.php "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

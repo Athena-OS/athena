@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=shellter
+pkgver=7.2
+pkgrel=1
+pkgdesc='A dynamic shellcode injection tool, and the first truly dynamic PE infector ever created.'
+groups=('athena' 'athena-exploitation' 'athena-backdoor'
+        'athena-windows')
+arch=('any')
+url='https://www.shellterproject.com/download/'
+license=('custom:unknown')
+depends=('wine')
+#source=("https://www.shellterproject.com/Downloads/Shellter/Latest/$pkgname.zip")
+source=("$pkgname") # ... uses recaptcha for download lulz :s
+sha512sums=('9b20f1be70550e7d6dd98cc5496f25e7e696724ae01b9d3e37d600d814ff13c5b88af24aa23a49d0830dfb30be9d17ff6a093a0c31f3db4ca7fc020f99b881f6')
+
+package() {
+  cd "$pkgname"
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 644 -t "$pkgdir/usr/share/windows/$pkgname/" shellter.exe \
+    Executable_SHA-256.txt
+  cp -a shellcode_samples "$pkgdir/usr/share/windows/$pkgname/shellcode_samples"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" docs/*
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" licenses/*
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec wine /usr/share/windows/$pkgname/$pkgname.exe "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

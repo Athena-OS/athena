@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=owasp-zsc
+pkgver=316.f763dea
+pkgrel=1
+groups=('athena' 'athena-exploitation')
+arch=('any')
+pkgdesc='Shellcode/Obfuscate Code Generator.'
+url='https://github.com/zscproject/OWASP-ZSC'
+license=('GPL3')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/zscproject/OWASP-ZSC.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.md CHANGELOG.md
+  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.md"
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 zsc.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

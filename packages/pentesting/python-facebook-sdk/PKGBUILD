@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-facebook-sdk
+_pkgname=facebook-sdk
+pkgver=3.1.0
+pkgrel=6
+pkgdesc='Facebook Platform Python SDK.'
+arch=('any')
+url='https://pypi.org/project/facebook-sdk/#files'
+license=('Apache')
+depends=('python' 'python-requests' 'python-tornado' 'python-flask')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('a77a33499347b032a44be7751563bbe6d9974d2eb24bfe66612e776c1ac9ea150b3be62f7dc19c0160ae6c06a8d52557365af5ecb5294f66917b729fe57c1737')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

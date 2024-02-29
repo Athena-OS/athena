@@ -1,0 +1,19 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=h2spec
+pkgver=2.6.0
+pkgrel=1
+groups=('athena' 'athena-misc')
+pkgdesc='A conformance testing tool for HTTP/2 implementation.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/summerwind/h2spec'
+license=('MIT')
+depends=('glibc')
+source=("https://github.com/summerwind/$pkgname/releases/download/v$pkgver/${pkgname}_linux_amd64.tar.gz")
+sha512sums=('3a75c4616328a02f9f393a5fdb5c0562e83e252a75e63ab349c738689dafdd0e88e7aff3516c7330c9dd0a13c16579764342131ef27a6ffb1d9da1ed41338394')
+
+package() {
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+}
+

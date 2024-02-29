@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=giskismet
+pkgver=20110805
+pkgrel=9
+groups=('athena' 'athena-wireless')
+pkgdesc="A program to visually represent the Kismet data in a flexible manner."
+arch=('any')
+url='http://www.giskismet.org'
+license=('GPL2')
+depends=('perl-xml-libxml' 'perl-dbi' 'perl-dbd-sqlite')
+options=('!emptydirs')
+makedepends=('subversion')
+provides=('giskismet')
+
+_svntrunk=https://my-svn.assembla.com/svn/giskismet/trunk
+_svnname=giskismet
+
+build() {
+  msg "Starting SVN checkout..."
+
+  if [ -d $_svnname/.svn ] ; then
+    (cd $_svnname && svn up)
+  else
+    svn co $_svntrunk $_svnname
+  fi
+  msg "SVN checkout done or server timeout"
+
+  cd "$srcdir/$_svnname"
+  perl Makefile.PL
+  make
+}
+
+package() {
+  cd "$_svnname"
+
+  make DESTDIR="$pkgdir" MANDIR=/usr/share/man install
+
+  ln -s "site_perl/$_svnname" "$pkgdir/usr/bin/$_svnname"
+}
+

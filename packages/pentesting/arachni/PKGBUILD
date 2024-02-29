@@ -1,0 +1,56 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=arachni
+pkgver=1.6.1.3.1.g8e5c5d0a9
+pkgrel=1
+groups=('athena' 'athena-webapp')
+pkgdesc='A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.'
+arch=('any')
+license=('APACHE')
+makedepends=('git')
+depends=('ruby' 'ruby-bundler' 'curl' 'phantomjs' 'libxslt' 'libxml2')
+url='https://www.arachni-scanner.com'
+source=("git+https://github.com/Arachni/$pkgname.git")
+sha512sums=('SKIP')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgname
+
+  git describe --always | sed 's|-|.|g' | sed 's/^v//'
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i "s/\('puma',[ ]*\)'2.14.0'/\1'3.10.0'/g" arachni.gemspec
+  sed -i "s/\('msgpack',[ ]*\)'0.7.0'/\1'1.1.0'/g" arachni.gemspec
+}
+
+package() {
+  cd $pkgname
+
+  progs="arachni arachni_console arachni_multi arachni_reporter arachni_restore"
+  progs="$progs arachni_rest_server arachni_rpc arachni_rpcd"
+  progs="$progs arachni_rpcd_monitor arachni_script"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" *.md
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp --no-preserve=ownership -a * "$pkgdir/usr/share/$pkgname/"
+
+  for prog in $progs; do
+    cat > "$pkgdir/usr/bin/${prog//_/-}" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ruby /usr/share/$pkgname/bin/$prog "\$@"
+EOF
+  done
+
+  chmod +x "$pkgdir"/usr/bin/*
+}
+

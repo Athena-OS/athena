@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=latd
+pkgver=1.31
+pkgrel=1
+groups=('athena' 'athena-networking' 'athena-misc')
+pkgdesc='A LAT terminal daemon for Linux and BSD.'
+arch=('x86_64' 'aarch64')
+url='http://sourceforge.net/projects/linux-decnet/files/latd/1.31/'
+license=('GPL2')
+source=("http://downloads.sourceforge.net/project/linux-decnet/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('c62af510021bb24becc776665decaf47191a645443d9cde97a1e36875dcefe9719d9c89738417d7c0f4eb44c8912b5b17580a9f474de804db0a02ab4f8ebda48')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README INSTALL TODO NEWS \
+    WARRANTY
+
+  make DESTDIR="$pkgdir" install
+
+  cp "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin/"
+
+  rm -rf "$pkgdir/usr/sbin"
+}
+

@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=honeypy
+pkgver=599.feccab5
+pkgrel=2
+pkgdesc='A low interaction Honeypot.'
+arch=('any')
+url='https://github.com/foospidy/HoneyPy'
+license=('GPL')
+groups=('athena' 'athena-honeypot' 'athena-defensive')
+depends=('python2' 'python2-dnslib' 'python2-requests' 'python2-twistedx'
+         'python2-certifi' 'python2-urllib3')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/foospidy/HoneyPy.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md VERSION
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 Honey.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

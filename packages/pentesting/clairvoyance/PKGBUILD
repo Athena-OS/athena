@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=clairvoyance
+pkgver=2.5.2
+_pyver=3.11
+pkgrel=1
+pkgdesc='Obtain GraphQL API Schema even if the introspection is not enabled.'
+arch=('any')
+groups=('athena' 'athena-webapp' 'athena-recon' 'athena-scanner')
+url='https://github.com/nikitastupin/clairvoyance'
+license=('MIT')
+depends=('python' 'python-asyncio' 'python-aiohttp' 'python-rich')
+makedepends=('python-build' 'python-pip')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('5cc2199098a95f7776582cd2c4100bbc7675608cc46fafb1202d56d812812a73d01fba76583e1a038f986fa4aa3e60fd1d9478958cabdecf0b52dc2d3ea2abf0')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  python -m build --wheel --outdir="$startdir/dist"
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $pkgname
+}
+

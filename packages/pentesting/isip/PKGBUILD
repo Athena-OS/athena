@@ -1,0 +1,51 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=isip
+pkgver=2.fad1f10
+pkgrel=3
+groups=('athena' 'athena-voip' 'athena-networking' 'athena-fuzzer'
+        'athena-dos')
+pkgdesc='Interactive sip toolkit for packet manipulations, sniffing, man in the middle attacks, fuzzing, simulating of dos attacks.'
+arch=('any')
+url='https://github.com/halitalptekin/isip'
+license=('MIT')
+depends=('python2' 'python2-scapy' 'python2-termcolor' 'python2-dpkt' 'python2-wsgiref')
+makedepends=('git')
+source=("git+https://github.com/halitalptekin/$pkgname.git"
+        'options.patch')
+sha512sums=('SKIP'
+            'e89873744fc63234026753a6003d270204134ef61b40f77f16d3db95c8c202e2344c6d36342ea593729cbc68977647dcf6edee06e0b7486fb8959059d5c33569')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < options.patch
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md HISTORY
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE HISTORY
+
+  cp -a test isip/* "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+
