@@ -1,0 +1,19 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=winrelay
+pkgver=2.0
+pkgrel=4
+pkgdesc='A TCP/UDP forwarder/redirector that works with both IPv4 and IPv6.'
+url='http://ntsecurity.nu/toolbox/winrelay/'
+groups=('athena' 'athena-windows' 'athena-networking')
+license=('custom:unknown')
+arch=('any')
+source=("http://ntsecurity.nu/downloads/$pkgname.exe")
+sha512sums=('dad640bda20d0e176a651d887db2d6aa3d5188c0')
+
+package() {
+  install -Dm 644 "$pkgname.exe" \
+    "$pkgdir/usr/share/windows/$pkgname/$pkgname.exe"
+}
+

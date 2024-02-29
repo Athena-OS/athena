@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=networkminer
+_pkgname=NetworkMiner
+pkgver=2.8.1
+pkgrel=1
+pkgdesc='A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer.'
+arch=('any')
+groups=('athena' 'athena-forensic' 'athena-sniffer')
+url='http://www.netresec.com/'
+license=('GPL2')
+depends=('mono' 'xterm')
+_srcname="NetworkMiner_${pkgver//\./-}"
+source=("$pkgname-$pkgver.zip::https://www.netresec.com/?download=NetworkMiner"
+        "$pkgname.desktop")
+sha512sums=('b385e1e6a67e2c4759058c95677f79fc6ce32594c6db95192f0f13fda7434e38375b66a0c7e862ade8a2874874dea3ee6bf14ac1349753067eda86e9ab7455fd'
+            '335f559232174274259207c039f362c59c80ab0e1eef0c58b5d09692841afb7fe92563bc40cd41bd68f7a7c7c630decd0cc1f242bc2bfe0f1e18ff7264b38be1')
+
+package() {
+  cd "${_pkgname}_${pkgver//\./-}"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+TERM=xterm mono /usr/share/$pkgname/NetworkMiner.exe
+EOF
+
+  install -Dm 644 "$srcdir/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

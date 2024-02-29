@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wpsik
+pkgver=8.8d3856b
+pkgrel=3
+pkgdesc='WPS scan and pwn tool.'
+groups=('athena' 'athena-wireless' 'athena-scanner')
+arch=('any')
+url='https://github.com/0x90/wpsik'
+license=('custom:unknown')
+depends=('python2' 'python2-coloredlogs' 'python2-netaddr' 'python2-colorama'
+         'python2-impacket' 'python2-scapy' 'python2-pyric' 'python2-pcapy'
+         'python2-click' 'python2-prettytable' 'python2-ldap3'
+         'python2-ldapdomaindump' 'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/0x90/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|scapy<2.3.3|scapy|g' setup.py
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

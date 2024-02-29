@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fbcmd
+pkgver=2.0
+pkgrel=2
+pkgdesc='A Command Line Interface (CLI) for Facebook'
+arch=('any')
+url='http://fbcmd.dtompkins.com/'
+license=('GPL3')
+depends=('php')
+source=("http://fbcmd.dtompkins.com/downloads/fbcmd-${pkgver//./-}-beta1.zip"
+        'php.ini')
+sha512sums=('458341dfaa5392441d30453582d7338e78ec66b8'
+          '51d93cad4966b8d58be3458258c265fcd5e90aca')
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 755 -t "$pkgdir/usr/share/$pkgname" fbcmd.php ../php.ini
+  install -Dm 644 -t  "$pkgdir/usr/share/doc/$pkgname" filelist.txt readme.txt
+
+  rm filelist.txt readme.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat >> "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec php -c /usr/share/$pkgname/php.ini /usr/share/$pkgname/fbcmd.php "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

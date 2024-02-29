@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=jwscan
+pkgver=7.874b3a5
+pkgrel=2
+groups=('athena' 'athena-reversing' 'athena-binary')
+pkgdesc='Scanner for Jar to EXE wrapper like Launch4j, Exe4j, JSmooth, Jar2Exe.'
+arch=('any')
+url='https://github.com/katjahahn/JWScan'
+license=('Apache')
+depends=('java-environment')
+makedepends=('git' 'sbt')
+source=("$pkgname::git+https://github.com/katjahahn/JWScan.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 755 "$pkgname.jar" "$pkgdir/usr/share/$pkgname/$pkgname.jar"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec java -jar /usr/share/$pkgname/$pkgname.jar "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

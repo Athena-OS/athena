@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pyssltest
+pkgver=9.d7703f0
+pkgrel=3
+pkgdesc='A python multithreaded script to make use of Qualys ssllabs api to test SSL flaws.'
+groups=('athena' 'athena-scanner' 'athena-crypto')
+arch=('any')
+url='https://github.com/moheshmohan/pyssltest'
+license=('BSD')
+depends=('python2' 'python2-unirest' 'python2-linecache2')
+makedepends=('git')
+source=("git+https://github.com/moheshmohan/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|/env python|/env python2|' "$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 License "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

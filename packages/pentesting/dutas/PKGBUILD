@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dutas
+pkgver=10.37fa3ab
+pkgrel=4
+pkgdesc='Analysis PE file or Shellcode.'
+groups=('athena' 'athena-binary' 'athena-reversing')
+arch=('any')
+url='https://github.com/dungtv543/Dutas'
+license=('custom:unknown')
+depends=('python2' 'python2-capstone' 'capstone' 'unicorn' 'python2-unicorn'
+         'python2-pefile' 'python2-setuptools')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/dungtv543/Dutas.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 UniAna.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

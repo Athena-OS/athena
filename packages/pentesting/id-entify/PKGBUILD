@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=id-entify
+pkgver=34.dd064a5
+pkgrel=3
+pkgdesc='Search for information related to a domain: Emails - IP addresses - Domains - Information on WEB technology - Type of Firewall - NS and MX records.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/BillyV4/ID-entify'
+license=('custom:unknown')
+depends=('python2' 'python2-colorama' 'dnsrecon' 'dnsenum' 'bind-tools'
+         'whatweb' 'nmap' 'whois' 'bash' 'wafw00f' 'tmux' 'theharvester'
+         'fierce')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/BillyV4/ID-entify.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bash $pkgname.sh "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

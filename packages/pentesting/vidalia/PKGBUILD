@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vidalia
+pkgver=0.3.1
+pkgrel=1
+pkgdesc='Controller GUI for Tor.'
+url='https://www.torproject.org/vidalia'
+arch=('x86_64' 'aarch64')
+license=('GPL')
+depends=('geoip' 'qt4' 'tor')
+makedepends=('cmake')
+source=("https://dist.torproject.org/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('724fa169bf29c309cb96b16d47b66701ed2751f2'
+          'ebf25b9713f076407fd0f6d3c6cf0a1af701d5ba')
+install="$pkgname.install"
+
+build() {
+  mkdir -p build
+
+  cd build
+
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -DUSE_GEOIP=1 ../$pkgname-$pkgver
+
+  make
+}
+
+package() {
+  cd build
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 "../$pkgname-$pkgver/doc/$pkgname.1" \
+    "$pkgdir/usr/share/man/man1/$pkgname.1"
+}

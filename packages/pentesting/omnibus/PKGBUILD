@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=omnibus
+pkgver=129.88dbf5d
+pkgrel=3
+pkgdesc='OSINT tool for intelligence collection, research and artifact management.'
+groups=('athena' 'athena-recon' 'athena-social')
+arch=('any')
+url='https://github.com/InQuest/omnibus'
+license=('MIT')
+depends=('python2' 'python2-pymongo' 'python2-cmd2' 'python2-threatcrowd'
+         'python2-cymon' 'python2-redis' 'python2-requests' 'python2-censys'
+         'python2-beautifulsoup3' 'python2-fuzzyfinder' 'python2-dnspython'
+         'python2-ipwhois' 'redis' 'mongodb' 'python2-pygments'
+         'python2-backports.functools_lru_cache' 'python2-contextlib2')
+makedepends=('git')
+source=("git+https://github.com/InQuest/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md docs/*.rst
+  cp -a docs/. "$pkgdir/usr/share/doc/$pkgname/"
+  rm -rf *.md docs
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 omnibus-cli.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

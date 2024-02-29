@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=bowcaster
+pkgver=230.17d69c1
+pkgrel=1
+groups=('athena' 'athena-exploitation')
+pkgdesc='A framework intended to aid those developing exploits.'
+arch=('any')
+url='https://github.com/zcutlip/bowcaster'
+license=('GPL3')
+depends=('python2')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/zcutlip/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir"
+}
+

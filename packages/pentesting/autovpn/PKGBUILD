@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=autovpn
+pkgver=18.28b1a87
+pkgrel=4
+pkgdesc='Easily connect to a VPN in a country of your choice.'
+groups=('athena' 'athena-networking' 'athena-automation')
+arch=('x86_64' 'aarch64')
+url='https://github.com/adtac/autovpn'
+license=('GPL3')
+depends=('openvpn')
+makedepends=('git' 'go')
+# The original repo was deleted, so it was changed to one of the existing forks
+# that was up to date with the original one before the deletion
+source=("git+https://github.com/DevelopedLogic/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  GOPATH="$srcdir" go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-s -w" \
+    -o $pkgname "$pkgname.go"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

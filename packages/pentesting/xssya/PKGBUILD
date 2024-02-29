@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=xssya
+pkgver=13.cd62817
+pkgrel=1
+epoch=1
+groups=('athena' 'athena-webapp' 'athena-scanner')
+pkgdesc='A Cross Site Scripting Scanner & Vulnerability Confirmation.'
+arch=('any')
+url='https://github.com/yehia-mamdouh/XSSYA'
+license=('custom')
+depends=('python2' 'python2-colorama' 'python2-gdshortener')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/yehia-mamdouh/XSSYA-V-2.0.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/xssya"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md Author.txt
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md Author.txt LICENSE.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

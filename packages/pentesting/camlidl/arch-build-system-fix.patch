@@ -1,0 +1,20 @@
+diff --git a/lib/Makefile b/lib/Makefile
+index 7ce04da..c347d6f 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -29,8 +29,14 @@ $(NATIVELIB): $(NATIVEOBJS)
+  $(OCAMLOPT) -a -o $(NATIVELIB) $(NATIVEOBJS)
+
+ install:
+- cp $(INTERFACES) $(BYTELIB) $(NATIVELIB) $(NATIVELIB:.cmxa=.$(LIBEXT)) $(OCAMLLIB)
+- cd $(OCAMLLIB); $(RANLIB) $(NATIVELIB:.cmxa=.$(LIBEXT))
++ cp $(INTERFACES) $(BYTELIB) $(OCAMLLIB)
++ if [ -x /usr/bin/ocamlopt ]; then \
++  cp $(NATIVELIB) $(NATIVELIB:.cmxa=.$(LIBEXT)) $(OCAMLLIB); \
++  cd $(OCAMLLIB); \
++  $(RANLIB) $(NATIVELIB:.cmxa=.$(LIBEXT));  \
++ else \
++  true; \
++ fi
+
+ .SUFFIXES: .mli .ml .cmi .cmo .cmx

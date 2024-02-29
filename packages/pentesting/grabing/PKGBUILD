@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=grabing
+pkgver=11.9c1aa6c
+pkgrel=2
+pkgdesc='Counts all the hostnames for an IP address.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/black-brain/graBing'
+license=('GPL3')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/black-brain/graBing.git")
+sha512sums=('SKIP')
+
+prepare() {
+	cd $pkgname
+
+  # Eliminating carriage return and specifying python version
+	sed -i -e "s|\r$||" -e "s|usr/bin/env python|/usr/bin/env python2|" graBing.py
+}
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+	cd $pkgname
+
+  install -Dm 755 graBing.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

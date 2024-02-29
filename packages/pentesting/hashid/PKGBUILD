@@ -1,0 +1,33 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hashid
+pkgver=397.7e8473a
+pkgrel=3
+epoch=1
+groups=('athena' 'athena-crypto')
+pkgdesc='Software to identify the different types of hashes used to encrypt data.'
+url='https://github.com/psypanda/hashID'
+license=('GPL3')
+arch=('any')
+depends=('python')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/psypanda/hashID.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst \
+    doc/CHANGELOG doc/HASHINFO.xlsx
+  install -Dm 644 doc/man/hashid.7 "$pkgdir/usr/share/man/man7/hashid.7"
+  install -Dm 644 doc/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

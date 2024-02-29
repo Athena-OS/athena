@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=lisa.py
+pkgver=63.fb74a30
+pkgrel=1
+groups=('athena' 'athena-exploitation')
+pkgdesc='An Exploit Dev Swiss Army Knife.'
+arch=('any')
+url='https://github.com/ant4g0nist/lisa.py'
+license=('Apache2')
+depends=('python2' 'lldb')
+makedepends=('git')
+source=("git+https://github.com/ant4g0nist/$pkgname.git")
+sha512sums=('SKIP')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' lisa.py
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 644 $pkgname "$pkgdir/usr/share/$pkgname/$pkgname"
+  install -Dm 644 lldbinit "$pkgdir/usr/share/$pkgname/lldbinit"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cat > "$pkgdir/usr/share/$pkgname/lldbinit" << EOF
+settings set prompt "(lisa)"
+settings set target.x86-disassembly-flavor intel
+command script import /usr/share/lisa.py/lisa.py
+command script import lldb
+command script add -f lisa.alias lisa
+lisa
+EOF
+
+  chmod 644 "$pkgdir/usr/share/$pkgname/lldbinit"
+}
+

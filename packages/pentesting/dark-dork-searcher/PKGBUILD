@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dark-dork-searcher
+pkgver=1.0
+pkgrel=5
+pkgdesc='Dark-Dork Searcher.'
+url='http://rafale.org/~mattoufoutu/darkc0de.com/c0de/c/'
+groups=('athena' 'athena-windows' 'athena-scanner')
+license=('custom:unknown')
+arch=('any')
+source=("$pkgname.rar::http://rafale.org/~mattoufoutu/darkc0de.com/c0de/c/Dark-Dork_Searcher.rar")
+noextract=("$pkgname.rar")
+makedepends=('unrar')
+sha512sums=('6adef37de43bfd76a752a1ea1d9f2e1609c39a641442a1791c3a9074a263da7d892c4e6fa3e6fde40620791f05eeb13814462cf43011da6b7e8c2f4984358c0f')
+
+prepare() {
+  unrar x -y "$pkgname.rar"
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  rm "$pkgname.rar"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname/"
+}
+

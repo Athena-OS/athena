@@ -1,0 +1,53 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-ipparser
+pkgname=('python2-ipparser' 'python-ipparser')
+_pkgname=ipparser
+pkgver=1.0.0
+_pyver=3.11
+pkgrel=1
+pkgdesc='Parse IP address information and return a list for iteration.'
+arch=('any')
+url='https://pypi.org/project/ipparser/#files'
+license=('BSD')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('430b296de8b2464cc4b2264ec712c2ff3fbfaf32e605bae969a1a8f87c6c9994d31ae483df00268e0bc6924d3a9b48d76aa6c78705ad53ff444dd13cbfd79692')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-ipparser() {
+  depends=('python2' 'python2-dnspython')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+
+  chmod 644 \
+    "$pkgdir/usr/lib/python2.7/site-packages/$_pkgname-$pkgver-py2.7.egg-info/"*
+}
+
+package_python-ipparser() {
+  depends=('python' 'python-dnspython')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+
+  chmod 644 \
+    "$pkgdir/usr/lib/python$_pyver/site-packages/$_pkgname-$pkgver-py$_pyver.egg-info/"*
+}
+

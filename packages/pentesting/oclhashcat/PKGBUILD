@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=oclhashcat
+pkgver=2.01
+pkgrel=2
+epoch=1
+pkgdesc='Worlds fastest WPA cracker with dictionary mutation engine.'
+url='http://hashcat.net/oclhashcat/'
+arch=('x86_64')
+license=('custom')
+groups=('athena' 'athena-cracker')
+optdepends=('nvidia-utils>=319.37: For for gpu support via Nvidia CUDA'
+            'catalyst-utils>=13.4: For gpu support via ATI Stream'
+            'opencl-catalyst: For gpu support via ATI Stream')
+#source=("https://dl.packetstormsecurity.net/Crackers/oclHashcat-$pkgver.7z")
+source=("http://hashcat.net/files/oclHashcat-$pkgver.7z")
+sha512sums=('068f900aad1fbed9cbb767d1fdff5a41f98c60c3805c13121fe803e2aa461a8411f4904b5f1716a3dc82b9db4b08258a69a07d3f8aac087ad28b43cc2319e0e1')
+options=('!strip')
+
+package() {
+  cd "oclHashcat-$pkgver"
+
+  find . \( -name "*.cmd" -o -name "*.exe" \) -exec rm {} +
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" docs/*
+
+  rm -rf docs
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  if [ "$CARCH" = "x86_64" ]
+  then
+    cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/bash
+/usr/share/$pkgname/oclHashcat64.bin "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/oclhashcat"
+  else
+    cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/bash
+/usr/share/$pkgname/oclHashcat32.bin "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/$pkgname"
+  fi
+
+  find "$pkgdir/usr/share/$pkgname/" -type f -executable -exec chmod 755 {} \;
+}
+

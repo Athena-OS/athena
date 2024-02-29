@@ -1,0 +1,22 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=httprecon
+pkgver=7.3
+pkgrel=3
+pkgdesc='Tool for web server fingerprinting, also known as http fingerprinting.'
+url='http://www.computec.ch/projekte/httprecon/?s=download'
+groups=('athena' 'athena-windows' 'athena-fingerprint')
+license=('custom')
+arch=('any')
+source=("http://www.computec.ch/projekte/$pkgname/download/bin/$pkgname-$pkgver.zip")
+sha512sums=('37fbd7695843414ca627cc36f3c62077e19ed572ffa15e84de6376c6c8f24694399e5417670ace34b095271ec9e1b2098d8a7aaba78bafa2fa3cdf67a471d0c9')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  rm "$pkgname-$pkgver.zip"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname"
+}
+

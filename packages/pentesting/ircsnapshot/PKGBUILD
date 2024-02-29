@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ircsnapshot
+pkgver=94.cb02a85
+pkgrel=2
+groups=('athena' 'athena-recon' 'athena-scanner')
+pkgdesc='Tool to gather information from IRC servers.'
+arch=('any')
+url='https://github.com/bwall/ircsnapshot'
+license=('MIT')
+depends=('python2')
+makedepends=('git')
+source=("git+https://github.com/bwall/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|/usr/bin/env python|/usr/bin/env python2|g' \
+    "$pkgname/$pkgnae.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 744 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 744 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

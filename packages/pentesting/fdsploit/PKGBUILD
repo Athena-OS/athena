@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fdsploit
+pkgver=26.4522f53
+pkgrel=4
+pkgdesc='A File Inclusion & Directory Traversal fuzzing, enumeration & exploitation tool.'
+groups=('athena' 'athena-webapp' 'athena-fuzzer'
+        'athena-exploitation')
+arch=('any')
+url='https://github.com/chrispetrou/FDsploit'
+license=('GPL3')
+depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-colorama'
+         'python-html5lib' 'python-validators' 'python-fake-useragent')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/chrispetrou/FDsploit.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

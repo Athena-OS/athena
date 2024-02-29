@@ -1,0 +1,23 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ntp-ip-enum
+pkgver=0.1
+pkgrel=3
+groups=('athena' 'athena-recon')
+pkgdesc='Script to pull addresses from a NTP server using the monlist command. Can also output Maltego resultset.'
+arch=('any')
+url='http://www.securepla.net/'
+license=('custom:unknown')
+depends=('python2')
+source=('ntp_ip_enum.txt')
+sha512sums=('db7699eac09248de1007373308a573c526942997c8aa43b44c50395b4d27d699eb3682e9d0fd6a055183b07fb5329e2f9fb960bb42c5d2a95a57e75b86f56caf')
+
+prepare() {
+  sed -i 's|#python|#python2|' ntp_ip_enum.txt
+}
+
+package() {
+  install -Dm 755 ntp_ip_enum.txt "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,26 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sshprank
+pkgver=1.4.2
+pkgrel=2
+groups=('athena' 'athena-cracker' 'athena-scanner'
+        'athena-fingerprint')
+pkgdesc='A fast SSH mass-scanner, login cracker and banner grabber tool using the python-masscan and shodan module.'
+url='https://nullsecurity.net/tools/cracker.html'
+license=('custom:unknown')
+arch=('any')
+depends=('python' 'python-python-masscan' 'python-paramiko' 'python-shodan')
+source=("https://github.com/nullsecuritynet/tools/raw/main/cracker/$pkgname/release/$pkgname-$pkgver.tar.gz")
+sha512sums=('9fdf1e6f71fb85ae5a70b7e5660132bae08712399bc563775208227e8dbdb78b18a46021ab468ce2c99eb318a62389972c601cfe7396a663955d62d668a4017d')
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  cp -a lists "$pkgdir/usr/share/$pkgname/"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md docs/TODO
+}
+

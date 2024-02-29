@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-apsw
+_pkgname=apsw
+pkgver=3.33.0
+pkgrel=4
+pkgdesc='Another Python SQLite Wrapper.'
+url='https://pypi.org/project/apsw/#files'
+arch=('x86_64' 'aarch64')
+license=('MIT')
+depends=('python2' 'sqlite')
+makedepends=('python2-setuptools')
+source=("https://github.com/rogerbinns/$_pkgname/archive/$pkgver-r1.tar.gz")
+sha512sums=('ff0a93e314531d8fe21969d3efc7ccaf2c1a11b2e1a14a46ef9e6325ca3e6a911edee29152a77a2482e7d59fc9f6dab97955daa33ea82df140c3bb6259b6ee67')
+
+build() {
+  cd "$_pkgname-$pkgver-r1"
+
+  python2 setup.py build --enable=load_extension
+}
+
+package() {
+  cd "$_pkgname-$pkgver-r1"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

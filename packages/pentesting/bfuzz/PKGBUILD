@@ -1,0 +1,52 @@
+# Credits BlackArch ( http://blackarch.org ).
+# See COPYING for license details.
+
+pkgname=bfuzz
+_pkgname=BFuzz
+pkgver=60.fdaefc0
+pkgrel=1
+pkgdesc='Input based fuzzer tool for browsers.'
+arch=('any')
+groups=('athena' 'athena-fuzzer')
+url='https://github.com/RootUp/BFuzz'
+license=('custom:unknown')
+depends=('python2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/RootUp/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $_pkgname.py "\$@"
+EOF
+
+  cat > "$pkgdir/usr/bin/$pkgname-gen" << EOF
+#!/bin/sh
+if [ \$UID -eq 0 ]; then
+  cd /usr/share/$pkgname
+  exec sh generate.sh "\$@"
+else
+  echo "You need be root."
+fi
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/bin/$pkgname-gen"
+}
+

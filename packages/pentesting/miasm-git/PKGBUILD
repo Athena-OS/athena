@@ -1,0 +1,62 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=miasm-git
+pkgbasename=miasm
+pkgname=('python-miasm-git' 'python2-miasm-git')
+pkgver=0.1.5.dev26
+pkgrel=1
+pkgdesc='Machine code manipulation library.'
+arch=('x86_64' 'aarch64')
+url='https://miasm.re/'
+license=('GPL2')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
+source=('git+https://github.com/cea-sec/miasm.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgbasename
+
+  python setup.py --version 2>/dev/null | grep -v ^build
+}
+
+prepare() {
+  cp -a "${pkgbasename}"{,-py2}
+}
+
+build() {
+  cd "$pkgbasename"
+
+  python setup.py build
+
+  cd "$srcdir/$pkgbasename-py2"
+
+  python2 setup.py build
+}
+
+package_python-miasm-git() {
+  depends=('python' 'python-pyparsing' 'python-future')
+  optdepends=('python-llvmlite: jit with LLVM engine, bridge between Miasm and LLVM IRs'
+              'python-pycparser: additional features based on type manipulations'
+              'python-z3: additional features based on constraint solving')
+  provides=('python-miasm')
+  conflicts=('python-miasm')
+
+  cd $pkgbasename
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+
+package_python2-miasm-git() {
+  depends=('python2' 'python2-pyparsing' 'python2-future')
+  optdepends=('python2-llvmlite: jit with LLVM engine, bridge between Miasm and LLVM IRs'
+              'python2-pycparser: additional features based on type manipulations'
+              'python2-z3: additional features based on constraint solving')
+  provides=('python2-miasm')
+  conflicts=('python2-miasm')
+
+  cd "$pkgbasename-py2"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

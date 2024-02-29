@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=levye
+pkgver=84.5406303
+pkgrel=2
+epoch=1
+groups=('athena' 'athena-cracker')
+pkgdesc='A brute force tool which is support sshkey, vnckey, rdp, openvpn.'
+arch=('any')
+url='https://github.com/galkan/levye'
+license=('custum')
+depends=('python2' 'python2-paramiko' 'openvpn' 'openssh' 'freerdp')
+makedepends=('git')
+source=("git+https://github.com/heybe/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -rf README.md LICENSE.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname/" << EOF
+#!/bin/sh
+exec python2 /usr/share/$pkgname/$pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

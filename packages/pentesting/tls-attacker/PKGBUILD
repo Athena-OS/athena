@@ -1,0 +1,58 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tls-attacker
+pkgver=6731.9dfb02e7b
+pkgrel=2
+epoch=1
+pkgdesc='A Java-based framework for analyzing TLS libraries.'
+groups=('athena' 'athena-crypto')
+arch=('any')
+url='https://github.com/RUB-NDS/TLS-Attacker'
+license=('Apache')
+depends=('java-environment')
+makedepends=('git' 'maven')
+source=("$pkgname::git+https://github.com/RUB-NDS/TLS-Attacker.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  #sed '404s|^|        <maven.compiler.target>1.8</maven.compiler.target>\n|' -i pom.xml
+  #sed '405s|^|        <maven.compiler.source>1.8</maven.compiler.source>\n|' -i pom.xml
+
+  # to build with java 8
+}
+
+build() {
+  cd $pkgname
+
+  mvn package -DskipTests=true
+}
+
+package() {
+  cd $pkgname
+
+  _tools="Attacks TLS-Client TLS-Forensics TLS-Mitm TLS-Server TraceTool"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a --no-preserve=ownership apps/* "$pkgdir/usr/share/$pkgname/"
+
+  for t in $_tools ; do
+    cat > "$pkgdir/usr/bin/$pkgname-$t" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec java -jar $t.jar "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/$pkgname-$t"
+  done
+}
+

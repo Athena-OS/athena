@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=padbuster
+pkgver=11.50e4a3e
+pkgrel=3
+groups=('athena' 'athena-exploitation')
+pkgdesc='Automated script for performing Padding Oracle attacks.'
+url='http://www.gdssecurity.com/l/t.php'
+arch=('any')
+license=('custom:unknown')
+depends=('perl' 'perl-crypt-ssleay' 'perl-bytes-random-secure')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/GDSSecurity/PadBuster.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 padBuster.pl "$pkgdir/usr/bin/$pkgname"
+}
+

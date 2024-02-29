@@ -1,0 +1,23 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=disitool
+pkgver=0.4
+pkgrel=4
+groups=('athena' 'athena-forensic')
+pkgdesc='Tool to work with Windows executables digital signatures.'
+arch=('any')
+url='https://blog.didierstevens.com/my-software/#disitool'
+license=('custom:unknown')
+depends=('python' 'python-pefile')
+source=("http://didierstevens.com/files/software/disitool_v${pkgver//./_}.zip")
+sha512sums=('887f5d46ddb7f0a286dcb691c459e1c85ad4e60b03ef322d37673015d0454e4cca5201f5ab074a1d09813b85db28c3123a9229f7be6566d4251f3b439818498d')
+
+prepare() {
+  sed -i 's|/usr/bin/python|/usr/bin/python2|' disitool.py
+}
+
+package() {
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+}
+

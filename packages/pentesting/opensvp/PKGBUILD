@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=opensvp
+pkgver=65.df54ed8
+pkgrel=2
+groups=('athena' 'athena-exploitation' 'athena-networking')
+pkgdesc='A security tool implementing "attacks" to be able to the resistance of firewall to protocol level attack.'
+arch=('any')
+url='https://github.com/regit/opensvp'
+license=('GPL3')
+depends=('python2' 'python2-scapy' 'ftplib')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/regit/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" INSTALL README.rst
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --skip-build
+}
+

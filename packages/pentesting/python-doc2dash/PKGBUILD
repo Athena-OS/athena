@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-doc2dash
+_pkgname=doc2dash
+pkgver=3.0.0
+pkgrel=2
+pkgdesc='Convert docs to Dash.app.'
+arch=('any')
+url='https://pypi.org/project/doc2dash/#files'
+license=('MIT')
+depends=('python' 'python-sphinx' 'python-attrs' 'python-beautifulsoup4'
+         'python-click' 'python-colorama' 'python-lxml' 'python-six'
+         'python-zope-interface')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('ba3e20b89eb1363e1559c32bb65656a1182d3760abd139351cc65ef93561a7fc627a350f69124885870cf133a45de31ac8d48dfa090d192612527b327f13ac6c')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

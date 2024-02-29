@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=web2ldap
+pkgver=1.8.1
+_pyver=3.11
+pkgrel=2
+pkgdesc='Full-featured LDAP client running as web application.'
+groups=('athena' 'athena-misc')
+arch=('any')
+url='https://web2ldap.de/'
+license=('Apache')
+depends=('python' 'python-dnspython' 'python-paramiko' 'python-asn1crypto'
+         'python-xlwt' 'python-ldap0' 'python-iso3166')
+makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+source=("https://www.web2ldap.de/download/$pkgname-$pkgver.tar.gz")
+sha512sums=('c752266cc94aaea4d13c98ccf434821e53662348a265abd3a636b11956cbaad7dbc6dc9fb7bb36c4bc6168622a54b9d39920ea0b7c27f67340ca03fabe445c71')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i "s|python_requires='>=3.6.*'|python_requires='>=3.6'|g" setup.py
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  cp -a "$pkgdir/usr/etc" "$pkgdir/etc"
+  rm -rf "$pkgdir/usr/etc"
+
+  chmod 644 \
+    "$pkgdir/usr/lib/python$_pyver/site-packages/web2ldap-$pkgver-py$_pyver.egg-info/"*
+}
+

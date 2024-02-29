@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=goldeneye
+pkgver=28.792862f
+pkgrel=2
+groups=('athena' 'athena-dos')
+pkgdesc='A HTTP DoS test tool. Attack Vector exploited: HTTP Keep Alive + NoCache.'
+arch=('any')
+url='https://github.com/jseidl/GoldenEye'
+license=('GPL3')
+depends=('python')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/jseidl/GoldenEye.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

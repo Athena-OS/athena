@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-simplegeneric
+_pkgname=simplegeneric
+pkgver=0.8.1
+pkgrel=1
+pkgdesc="Simple generic functions (similar to Python's own len(), pickle.dump(), etc.."
+url='https://pypi.org/project/simplegeneric/#files'
+arch=('any')
+license=('ZPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
+sha512sums=('74c25d4e04fe197058cb43fabe3702cc5901989dc0b0bcf7511369f4f3d90fd98e4225174db0680c8f39389914f82824bdbdaf4c302b53998fbabbf0dba393e4')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

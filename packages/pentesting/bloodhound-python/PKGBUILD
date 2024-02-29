@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=bloodhound-python
+_pkgname=BloodHound.py
+pkgver=v1.0.1.r134.g5053e3f
+pkgrel=1
+pkgdesc='Bloodhound python data collector'
+arch=('any')
+groups=('athena' 'athena-recon' 'athena-windows')
+url='https://github.com/fox-it/BloodHound.py'
+license=('MIT')
+depends=('python' 'python-dnspython' 'impacket' 'python-ldap3' 'python-pyasn1'
+         'python-future' 'ldapdomaindump')
+makedepends=('python-setuptools' 'git')
+source=("git+https://github.com/fox-it/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$_pkgname"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

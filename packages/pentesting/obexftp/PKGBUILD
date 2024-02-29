@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=obexftp
+pkgver=0.24.2
+pkgrel=10
+pkgdesc='A tool for transfer files to/from any OBEX enabled device.'
+arch=('x86_64' 'aarch64')
+url='http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp'
+license=('GPL')
+depends=('openobex')
+makedepends=('cmake' 'asciidoc' 'xmlto' 'fuse2' 'swig' 'ruby' 'tk')
+optdepends=('ruby: ruby bindings'
+            'tk: TCL/Tk bindings')
+options=('!makeflags' '!docs')
+source=("http://downloads.sourceforge.net/openobex/$pkgname-$pkgver-Source.tar.gz")
+sha512sums=('91a5d7e52c00bbaf24837384ceadc987a89297e672b246df1370bbd669fae05459281bc46bb60ba562607bfbead321926cdf11422059cd918819d80321e190c2')
+
+build() {
+  mkdir -p build
+
+  cd build
+
+  cmake "../$pkgname-$pkgver-Source" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_RPATH=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_SBINDIR=bin \
+    -DENABLE_PERL=YES \
+    -DENABLE_PYTHON=YES \
+    -DENABLE_RUBY=YES \
+    -DENABLE_TCL=YES
+
+  make doc
+}
+
+package() {
+  cd build
+
+  make DESTDIR="$pkgdir" install
+}
+

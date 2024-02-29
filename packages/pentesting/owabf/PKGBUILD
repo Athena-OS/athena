@@ -1,0 +1,24 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=owabf
+pkgver=1.3
+pkgrel=5
+groups=('athena' 'athena-cracker')
+pkgdesc='Outlook Web Access bruteforcer tool.'
+arch=('any')
+url='http://netsec.rs/70/tools.html'
+license=('custom:unknown')
+depends=('python2')
+source=('http://netsec.rs/UserFiles/File/owabf.zip')
+sha512sums=('8c4612170b36eacf81c7098f686b3f0fb22ade45')
+
+prepare() {
+  sed -i 's/.$//' "$pkgname.py"
+  sed -i '1i\#!/usr/bin/env python2' "$pkgname.py"
+}
+
+package() {
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+}
+

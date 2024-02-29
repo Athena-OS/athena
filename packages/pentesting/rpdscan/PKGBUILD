@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=rpdscan
+pkgver=2.a71b0f3
+pkgrel=4
+groups=('athena' 'athena-cracker' 'athena-scanner')
+pkgdesc='Remmina Password Decoder and scanner.'
+arch=('any')
+url='https://github.com/freakyclown/RPDscan'
+license=('custom:unknown')
+depends=('python2' 'python2-pycryptodome')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/freakyclown/RPDscan.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i '1i\#!/usr/bin/env python2' RPDscan.py
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 RPDscan.py "$pkgdir/usr/bin/$pkgname"
+}
+

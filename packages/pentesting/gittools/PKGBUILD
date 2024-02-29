@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=gittools
+pkgver=70.7cac63a
+pkgrel=1
+pkgdesc="A repository with 3 tools for pwn'ing websites with .git repositories available'."
+groups=('athena' 'athena-webapp' 'athena-scanner')
+arch=('any')
+url='https://github.com/internetwache/GitTools'
+license=('custom:unknown')
+depends=('python2' 'curl' 'git')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/internetwache/GitTools.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname/"{dumper,extractor,finder}
+
+  install -Dm 755 Dumper/gitdumper.sh "$pkgdir/usr/bin/gittools-gitdumper"
+  install -Dm 755 Extractor/extractor.sh "$pkgdir/usr/bin/gittools-extractor"
+  install -Dm 755 Finder/gitfinder.py "$pkgdir/usr/bin/gittools-gitfinder"
+
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 Dumper/README.md \
+    "$pkgdir/usr/share/doc/$pkgname/dumper/README.md"
+  install -Dm 644 Extractor/README.md \
+    "$pkgdir/usr/share/doc/$pkgname/extractor/README.md"
+  install -Dm 644 Finder/README.md \
+    "$pkgdir/usr/share/doc/$pkgname/finder/README.md"
+}
+

@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=cmsfuzz
+pkgver=5.6be5a98
+pkgrel=6
+groups=('athena' 'athena-webapp' 'athena-scanner' 'athena-fuzzer')
+pkgdesc='Fuzzer for wordpress, cold fusion, drupal, joomla, and phpnuke.'
+arch=('any')
+url='https://github.com/nahamsec/CMSFuzz'
+license=('GPL3')
+depends=('ruby')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/nahamsec/CMSFuzz.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ruby dirbf.rb "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

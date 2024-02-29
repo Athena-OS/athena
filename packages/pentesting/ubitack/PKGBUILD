@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ubitack
+pkgver=0.3
+pkgrel=3
+groups=('athena' 'athena-wireless')
+pkgdesc='Tool, which automates some of the tasks you might need on a (wireless) penetration test or while you are on the go.'
+arch=('any')
+url='https://code.google.com/p/ubitack/'
+license=('GPL3')
+depends=('bash')
+optdepends=('wepbuster: script for automating aircrack-ng'
+            'openvpn: open source vpn solution'
+            'iodine: Tunnel IPv4 data through a DNS server')
+source=("https://ubitack.googlecode.com/files/$pkgname-$pkgver.tar.gz")
+sha512sums=('d2f695cf3395c7cdf301cb7f53a169906d7a685d')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  sed -i 's|/root/ubitack-0.3/logs|/usr/share/ubitack/logs|' ubitack
+  sed -i 's|/root/ubitack-0.3/conf|/usr/share/ubitack/conf|' ubitack
+  sed -i 's|/usr/local|/usr|g' ubitack
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  install -Dm 755 ubitack "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  cp -a conf logs "$pkgdir/usr/share/$pkgname/"
+  cp -a CHANGELOG README TODO "$pkgdir/usr/share/doc/$pkgname/"
+}
+

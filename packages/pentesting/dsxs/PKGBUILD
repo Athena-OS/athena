@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dsxs
+pkgver=130.3e628b6
+pkgrel=2
+groups=('athena' 'athena-webapp' 'athena-scanner')
+pkgdesc='A fully functional Cross-site scripting vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.'
+arch=('any')
+url='https://github.com/stamparm/DSXS'
+license=('custom:unknown')
+depends=('python')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/stamparm/DSXS.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

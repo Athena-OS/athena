@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dnmap
+pkgver=0.6
+pkgrel=7
+groups=('athena' 'athena-scanner')
+pkgdesc='The distributed nmap framework.'
+url="http://sourceforge.net/projects/dnmap/"
+license=('GPL3')
+arch=('any')
+depends=('python2-twistedx' 'python2-pyopenssl' 'python2')
+source=("http://downloads.sourceforge.net/project/$pkgname/${pkgname}_v${pkgver}.tgz")
+sha512sums=('f1d7569f9e1d04a7915f1229302c7e48108f1120fa4984d4f7dbd78a3b3e167840b8ae71aed2b0d906b6ad7e1ca6e1daeadb24cec78c502bac0323a3f84534b6')
+install="$pkgname.install"
+
+prepare() {
+  cd "${pkgname}_v${pkgver}"
+
+  sed -i 's/env python/env python2/' *.py
+}
+
+package() {
+  cd "${pkgname}_v${pkgver}"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -m 755 dnmap_client.py "$pkgdir/usr/bin/dnmap_client"
+  install -m 755 dnmap_server.py "$pkgdir/usr/bin/dnmap_server"
+  install -m 644 server.pem "$pkgdir/usr/share/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README
+}
+

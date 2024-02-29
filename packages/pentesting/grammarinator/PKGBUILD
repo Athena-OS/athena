@@ -1,0 +1,53 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=grammarinator
+pkgver=330.f3ffa71
+_pyver=3.11
+pkgrel=1
+pkgdesc='A random test generator / fuzzer that creates test cases according to an input ANTLR v4 grammar.'
+groups=('athena' 'athena-fuzzer' 'athena-misc')
+arch=('any')
+url='https://github.com/renatahodovan/grammarinator'
+license=('MIT')
+depends=('python' 'autopep8' 'python-antlerinator' 'python-jinja'
+         'python-antlr4')
+makedepends=('git' 'python-pip' 'python-wheel' 'python-build'
+             'java-environment')
+source=("git+https://github.com/renatahodovan/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python -m build --wheel --outdir="$startdir/dist"
+}
+
+package() {
+  cd $pkgname
+
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $pkgname
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst RELNOTES.rst
+  install -Dm 644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -rf "$pkgdir/usr/lib/python${_pyver}/site-packages/tests/"
+}
+

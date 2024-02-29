@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ecfs
+pkgver=305.1758063
+pkgrel=2
+groups=('athena' 'athena-binary')
+pkgdesc='Extended core file snapshot format.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/elfmaster/ecfs'
+license=('custom:unknown')
+depends=('libdwarf' 'glibc')
+makedepends=('git' 'clang')
+source=("git+https://github.com/elfmaster/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make V="prod" B="64"
+}
+
+package() {
+  cd $pkgname
+
+  cd bin/prod/64
+
+  install -Dm 755 -t "$pkgdir/usr/bin" ecfs ecfs_handler et_flip readecfs
+
+  mv "$pkgdir/usr/bin/ecfs_handler" "$pkgdir/usr/bin/ecfs-handler"
+  mv "$pkgdir/usr/bin/et_flip" "$pkgdir/usr/bin/et-flip"
+
+  cd "$srcdir/ecfs"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" Documentation/*
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md README INSTALL
+}
+

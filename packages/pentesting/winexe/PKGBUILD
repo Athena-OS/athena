@@ -1,0 +1,57 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=winexe
+pkgver=1.00
+pkgrel=5
+pkgdesc='Remotely execute commands on Windows NT/2000/XP/2003 systems.'
+arch=('x86_64' 'aarch64')
+url='http://sourceforge.net/projects/winexe/'
+license=('GPL3')
+depends=('gnutls' 'libsasl' 'popt' 'talloc' 'tdb')
+makedepends=('python2')
+groups=('athena' 'athena-misc' 'athena-windows')
+source=("http://downloads.sourceforge.net/project/winexe/winexe-$pkgver.tar.gz"
+        'getopts.patch'
+        'gnutls.patch'
+        'pidl.patch')
+sha512sums=('c640c547b7298e7b4835290b747b9086444c5c51bc25db80522f96021f1e3e86905f890ff79f13f3e1a9bf573c9df39f3c15436bc3a0fd123ed6cd615eae7696'
+            '0055f84c24048fea0dde42dd00df0a75ef524dde864117acd8a9752a8f821a8f531bee88f274ddf28370a1f6f3a796fb259b7f98e57978467cce5a2c2e688ecb'
+            '60dd8cc1bb83c1383cdc56644fe04b424772fa003687a374fdc9ca56f3b53266114d2920eb55fdeb720cdc0b0385022ccf0d4d960cd915910d51fd02337dc0a1'
+            '1cc5303fdadc5db1044811373455298cd43b783a6d4188c7a4b26af48b0c5851259ab77c4eaf489431422efd2ad1e6914679368e0cd47485fa08ed858ba87dc0')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch -Np1 -i "$srcdir/pidl.patch"
+
+  cd "source4"
+  patch -Np1 -i "$srcdir/getopts.patch"
+  patch -Np2 -i "$srcdir/gnutls.patch"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  cd source4
+
+  ./autogen.sh
+
+  if [[ "$CARCH" == "i686" || "$CARCH" == "x86_64" ]];
+  then
+    PYTHON_VER=2 ./configure --prefix=/usr --enable-fhs
+  else
+    PYTHON_VER=2 ./configure --build=arm --prefix=/usr --enable-fhs
+  fi
+
+  make basics
+
+  make "bin/$pkgname"
+}
+
+package() {
+  cd "$pkgname-$pkgver/source4"
+
+  install -Dm 755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+}
+

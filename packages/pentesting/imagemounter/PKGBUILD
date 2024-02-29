@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=imagemounter
+pkgver=413.383b30b
+pkgrel=2
+pkgdesc='Command line utility and Python package to ease the (un)mounting of forensic disk images.'
+groups=('athena' 'athena-forensic' 'athena-misc')
+arch=('any')
+url='https://github.com/ralphje/imagemounter'
+license=('MIT')
+depends=('python' 'python-termcolor' 'python-argparse')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/ralphje/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst docs/*
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

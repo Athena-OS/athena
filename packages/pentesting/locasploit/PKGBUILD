@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=locasploit
+pkgver=117.fa48151
+pkgrel=2
+pkgdesc='Local enumeration and exploitation framework.'
+groups=('athena' 'athena-scanner' 'athena-exploitation')
+arch=('any')
+url='https://github.com/lightfaith/locasploit'
+license=('GPL2')
+depends=('python3' 'binwalk' 'python2-scapy')
+makedepends=('git')
+source=("git+https://github.com/lightfaith/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  for db in 'analysis' 'checksum' 'dict' 'module' 'vuln' ; do
+    cp -a "$db.db.empty" "$db.db"
+  done
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md TODO
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE TODO
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ./$pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

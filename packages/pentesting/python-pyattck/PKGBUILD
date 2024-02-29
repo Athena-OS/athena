@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-pyattck
+_pkgname=pyattck
+pkgver=7.1.2
+pkgrel=1
+pkgdesc='A Python Module to interact with the Mitre ATT&CK Framework.'
+arch=('any')
+url='https://pypi.org/project/pyattck/#files'
+license=('MIT')
+depends=('python' 'python-requests' 'python-pendulum' 'python-pyfiglet'
+         'python-pyaml' 'python-pillow' 'python-fire')
+makedepends=('python-setuptools')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('89f04b121cc56e09a9569a1be3970c68cc4c207cdfe277ac2eff78376a8f7709cc2e25965fb87a60828d799a4ca91c033cd1b65442f0d6e00f86cf478bb14181')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  touch requirements.txt
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

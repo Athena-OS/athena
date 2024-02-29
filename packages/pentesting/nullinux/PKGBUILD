@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=nullinux
+pkgver=123.a647159
+pkgrel=2
+pkgdesc='Tool that can be used to enumerate OS information, domain information, shares, directories, and users through SMB null sessions.'
+groups=('athena' 'athena-recon' 'athena-scanner')
+arch=('any')
+url='https://github.com/m8r0wn/nullinux'
+license=('MIT')
+depends=('python' 'python-ipparser')
+makedepends=('git')
+source=("git+https://github.com/m8r0wn/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

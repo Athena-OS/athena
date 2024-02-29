@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dnsdiag
+pkgver=293.3317c1a
+pkgrel=1
+pkgdesc='DNS Diagnostics and Performance Measurement Tools.'
+groups=('athena' 'athena-networking')
+arch=('any')
+url='https://dnsdiag.org/'
+depends=('python' 'python-dnspython' 'python-cymruwhois')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/farrokhi/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  #PIP_CONFIG_FILE=/dev/null pip3 install --isolated --root="$pkgdir" --ignore-installed --no-deps ./
+}
+

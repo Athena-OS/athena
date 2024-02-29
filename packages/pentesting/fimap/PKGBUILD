@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fimap
+pkgver=1.00
+pkgrel=7
+epoch=2
+groups=('athena' 'athena-exploitation' 'athena-fuzzer')
+pkgdesc='A little tool for local and remote file inclusion auditing and exploitation.'
+arch=('any')
+url='http://code.google.com/p/fimap/'
+license=('GPL2')
+depends=('python2' 'python-urllib3' 'python2-httplib2')
+makedepends=('subversion')
+options=('!emptydirs')
+source=("$pkgname::svn+http://fimap.googlecode.com/svn/trunk/")
+sha512sums=('SKIP')
+
+prepare() {
+  grep -rl 'python$' $srcdir/trunk/src | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd "$pkgname/src"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp --no-preserve=ownership -a * "$pkgdir/usr/share/fimap/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec python2 /usr/share/$pkgname/$pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

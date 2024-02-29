@@ -1,0 +1,41 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=perl-test-tcp
+_pkgname=Test-TCP
+pkgver=2.22
+pkgrel=4
+pkgdesc='Testing TCP program.'
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-test-sharedfork>=0.29' 'perl>=5.8.1')
+makedepends=()
+url='https://metacpan.org/release/Test-TCP'
+source=("https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/$_pkgname-$pkgver.tar.gz")
+sha512sums=('2e0c8cf710f9702eee9b00422d7133efe87575805361d72becd2c3de671c765baf84827b601d26091e8a6b8595e6d9f168f90b7cfda402d668deb6fc277e37ad')
+_distdir="$_pkgname-$pkgver"
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd $_distdir
+
+    /usr/bin/perl Makefile.PL
+
+    make
+  )
+}
+
+package() {
+  cd $_distdir
+
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+

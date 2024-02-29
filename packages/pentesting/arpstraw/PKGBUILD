@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=arpstraw
+pkgver=27.ab40e13
+pkgrel=5
+pkgdesc='Arp spoof detection tool.'
+groups=('athena' 'athena-defensive' 'athena-sniffer')
+arch=('any')
+url='https://github.com/he2ss/arpstraw'
+license=('MIT')
+depends=('python2' 'python2-pyshark' 'python2-netifaces' 'python2-scapy'
+         'python2-argparse' 'python2-gobject' 'python2-configparser'
+         'python2-backports' 'python2-apipkg' 'python2-trollius')
+makedepends=('git')
+source=("git+https://github.com/he2ss/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 main.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

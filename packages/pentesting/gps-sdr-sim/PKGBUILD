@@ -1,0 +1,57 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=gps-sdr-sim
+pkgver=210.4fdf282
+pkgrel=1
+pkgdesc='Software-Defined GPS Signal Simulator.'
+groups=('athena' 'athena-radio')
+arch=('x86_64' 'aarch64')
+url='https://github.com/osqzss/gps-sdr-sim'
+license=('MIT')
+depends=('python2' 'gnuradio' 'hackrf' 'bladerf' 'gnuradio-osmosdr')
+makedepends=('git')
+source=("git+https://github.com/osqzss/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat >> "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec /usr/share/$pkgname/$pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+
+  cat >> "$pkgdir/usr/bin/gps-sdr-sim-uhd" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 gps-sdr-sim-uhd.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/gps-sdr-sim-uhd"
+}
+

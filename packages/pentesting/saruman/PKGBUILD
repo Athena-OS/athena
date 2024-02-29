@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=saruman
+pkgver=2.4be8db5
+pkgrel=1
+groups=('athena' 'athena-binary' 'athena-backdoor'
+        'athena-anti-forensic')
+pkgdesc='ELF anti-forensics exec, for injecting full dynamic executables into process image (With thread injection).'
+arch=('x86_64' 'aarch64')
+url='https://github.com/elfmaster/saruman'
+license=('custom:unknown')
+depends=('glibc')
+makedepends=('git')
+source=("git+https://github.com/elfmaster/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 launcher "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

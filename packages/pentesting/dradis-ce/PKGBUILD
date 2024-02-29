@@ -1,0 +1,59 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dradis-ce
+pkgver=6285.e1e04933
+pkgrel=1
+pkgdesc='An open source framework to enable effective information sharing.'
+groups=('athena' 'athena-recon' 'athena-misc')
+url='http://dradisframework.org/'
+license=('GPL')
+depends=('ruby' 'ruby-bundler' 'git' 'libxslt' 'mariadb-libs')
+makedepends=('git')
+arch=('any')
+source=("git+https://github.com/dradis/$pkgname.git"
+        "$pkgname.sysusers.conf")
+install="$pkgname.install"
+sha512sums=('SKIP'
+            '104c3f6d2dcdc5cd02092ad16783dcd1907ff8fba95c87db609fe5c7307ca4fd97730b5117d6db78d9fd9273c4fd5c963b7d404d08cb8615f3a9fe3864f16c95')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i "s|ruby '2.4.1'||g" Gemfile
+
+  #patch -p1 -i ../dradis-ce.patch
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/lib/sysusers.d/" \
+    "$pkgdir/usr/bin" \
+    "$pkgdir/usr/share"
+
+  install -m 644 "dradis-ce.sysusers.conf"\
+    "$pkgdir/usr/lib/sysusers.d/dradis-ce.conf"
+
+  cp -a $pkgname "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bundle exec rails server "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+
+  cp "$pkgdir/usr/share/$pkgname/config/database.yml.template" \
+    "$pkgdir/usr/share/$pkgname/config/database.yml"
+  cp "$pkgdir/usr/share/$pkgname/config/secrets.yml.template" \
+    "$pkgdir/usr/share/$pkgname/config/secrets.yml"
+
+  rm -f "$pkgdir/usr/share/dradis-ce/Gemfile.plugins"
+}
+

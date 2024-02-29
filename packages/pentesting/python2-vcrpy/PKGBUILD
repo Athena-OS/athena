@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-vcrpy
+_pkgname=vcrpy
+pkgver=2.1.1
+pkgrel=1
+pkgdesc='Automatically mock your HTTP interactions to simplify and speed up testing.'
+arch=('any')
+license=('MIT')
+url='https://pypi.org/project/vcrpy/#files'
+depends=('python2-yaml' 'python2-wrapt' 'python2-six')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('4c138192920ac70edeeb4cee8b11d181f2cbb49c93fddbd0b931f5c250543704901209f9ed531b93b8c9f4354a192af728593076d842076a297ecbf6b2f1e3a3')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --optimize=1
+
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

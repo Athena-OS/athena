@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=eaphammer
+pkgver=310.442ee78
+pkgrel=1
+pkgdesc='Targeted evil twin attacks against WPA2-Enterprise networks. Indirect wireless pivots using hostile portal attacks.'
+groups=('athena' 'athena-wireless')
+arch=('any')
+url='https://github.com/s0lst1c3/eaphammer'
+license=('GPL3')
+depends=('python' 'python-argparse' 'python-tqdm' 'dnsmasq' 'libnfnetlink'
+         'libnl' 'openssl' 'python-pem' 'python-pyopenssl' 'apache' 'libpcap'
+         'curl' 'scapy' 'responder' 'hcxtools' 'hcxdumptool' 'python-flask'
+         'python-flask-cors' 'python-flask-socketio' 'python-pywebcopy')
+makedepends=('git')
+source=("git+https://github.com/s0lst1c3/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd "$pkgname/local/hostapd-eaphammer/hostapd"
+
+  cp defconfig .config
+  make hostapd-eaphammer_lib
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md Changelog
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

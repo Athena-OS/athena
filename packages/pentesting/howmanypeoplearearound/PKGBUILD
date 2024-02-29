@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=howmanypeoplearearound
+pkgver=123.b05e06a
+pkgrel=4
+pkgdesc='Count the number of people around you by monitoring wifi signals.'
+groups=('athena' 'athena-recon' 'athena-wireless')
+arch=('any')
+url='https://github.com/schollz/howmanypeoplearearound'
+license=('MIT')
+depends=('python' 'python-pick' 'python-netifaces' 'python-click'
+         'wireshark-cli')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/schollz/$pkgname.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

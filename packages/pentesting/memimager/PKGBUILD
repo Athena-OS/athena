@@ -1,0 +1,19 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=memimager
+pkgver=1.0
+pkgrel=3
+pkgdesc='Performs a memory dump using NtSystemDebugControl.'
+url='http://ntsecurity.nu/toolbox/memimager/'
+groups=('athena' 'athena-windows' 'athena-forensic')
+license=('custom:unknown')
+arch=('any')
+source=('http://ntsecurity.nu/downloads/memimager.exe')
+sha512sums=('77705b4bc30524b4cb0fa1f051c2164e9c03f1ca')
+
+package() {
+  install -Dm 644 "$pkgname.exe" \
+    "$pkgdir/usr/share/windows/$pkgname/$pkgname.exe"
+}
+

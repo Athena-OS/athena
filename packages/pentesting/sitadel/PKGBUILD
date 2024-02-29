@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sitadel
+pkgver=123.e4d9ed4
+pkgrel=1
+pkgdesc='Web Application Security Scanner.'
+arch=('any')
+groups=('athena' 'athena-webapp' 'athena-scanner')
+url='https://github.com/shenril/Sitadel'
+license=('GPL3')
+depends=('python-requests' 'python-urllib3' 'python-yaml' 'python-colorama'
+         'scrapy')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/shenril/Sitadel.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin/"
+  install -dm 755 "$pkgdir/usr/share/$pkgname/"
+
+  install -Dm 755 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,51 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pymeta
+pkgver=13.fa74e64
+pkgrel=4
+pkgdesc='Auto Scanning to SSL Vulnerability.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/m8r0wn/pymeta'
+license=('GPL3')
+depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-argparse'
+         'python-urllib3')
+makedepends=('git')
+source=("git+https://github.com/m8r0wn/$pkgname.git"
+        "$pkgname.py.patch")
+sha512sums=('SKIP'
+            'a1077212195a20423cfcf5b57d3e6081d3e985d53729f0d9c04d1322e516d6e7d6145141ee5539ed3b12b104e3849ab75132d2880dbfe6820088c40bf0d09520')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < "$pkgname.py.patch"
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

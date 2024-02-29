@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-ipy
+_pkgname=IPy
+pkgver=1.00
+pkgrel=5
+pkgdesc='Class and tools for handling of IPv4 and IPv6 addresses and networks.'
+arch=('any')
+url='https://pypi.org/project/IPy/#files'
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('94a8f26cad0d966fdf8d4e57284eadf4cfde88515af6f5aafc8f9597eb0758324b876039d1a121021ba1ac26be2e2ffa89a3f5803dddefdee03fdb5d65b07a81')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

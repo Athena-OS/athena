@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=whatportis
+pkgver=54.59a1718
+_pyver=3.11
+pkgrel=3
+groups=('athena' 'athena-misc')
+pkgdesc='A command to search port names and numbers.'
+arch=('any')
+url='https://github.com/ncrocfer/whatportis'
+license=('MIT')
+depends=('python' 'python-click' 'python-simplejson' 'python-flask'
+         'python-tinydb' 'python-prettytable' 'python-requests')
+makedepends=('git' 'python-setuptools')
+source=('git+https://github.com/ncrocfer/whatportis.git'
+        'setup.py.patch')
+sha512sums=('SKIP'
+            '83968682301ff6b22183d84b378087c3ae70515805e356f88cf8dcaab3406e52135fa2f394018d39bf593bc7159740a5731204986c3cea64582a2983bd12565d')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < setup.py.patch
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  #chmod 666 "$pkgdir/usr/lib/python$_pyver/site-packages/$pkgname/ports.json"
+}
+

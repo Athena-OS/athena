@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-pylibemu
+pkgname=('python2-pylibemu' 'python-pylibemu')
+_pkgname=pylibemu
+pkgver=0.8
+pkgrel=2
+pkgdesc='A Libemu Cython wrapper.'
+arch=('x86_64' 'aarch64')
+url='https://pypi.org/project/pylibemu/#files'
+license=('GPL2')
+makedepends=('python2-setuptools' 'python-setuptools' 'cython2' 'cython'
+             'libemu' 'python2-pip' 'python-pip' 'python2-wheel' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('54c1e8dd09b904e0e4d9b63ae4463df0478f5013f27338b5fa2198694b052e6745a5f7361f41da77946665a4e3e3160a29f71e1e3299146ee8c770e303291e4b')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-pylibemu() {
+  depends=('python2' 'libemu')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+
+package_python-pylibemu() {
+  depends=('python' 'libemu')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

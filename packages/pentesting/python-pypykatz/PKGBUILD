@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-pypykatz
+_pkgname=pypykatz
+pkgver=0.6.8
+pkgrel=1
+pkgdesc='Python implementation of Mimikatz.'
+url='https://github.com/skelsec/pypykatz'
+arch=('any')
+license=('MIT')
+depends=('python' 'python-minidump' 'python-minikerberos' 'python-aiowinreg'
+         'python-msldap' 'python-winacl' 'python-unicrypto' 'python-aiosmb'
+         'python-aesedb' 'python-asyauth')
+makedepends=('python-setuptools')
+source=("https://github.com/skelsec/pypykatz/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('1353ecf288098ff07b5a4fa31b8293034fd108821a1cc571522ab37b2d33450ef6e69c32b501e01ff96dcb4c7956a33fff35d40efd1cb0e19959d05115d6cfa1')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

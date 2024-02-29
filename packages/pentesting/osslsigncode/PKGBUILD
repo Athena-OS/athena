@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=osslsigncode
+pkgver=333.b967175
+pkgrel=1
+pkgdesc='A small tool that implements part of the functionality of the Microsoft tool signtool.exe.'
+arch=('x86_64' 'aarch64')
+groups=('athena' 'athena-windows' 'athena-binary'
+        'athena-automation')
+url='https://github.com/mtrojnar/osslsigncode'
+license=('GPL3')
+depends=('gcc' 'make' 'automake' 'autoconf' 'libtool' 'openssl'
+         'lib32-libcurl-gnutls')
+makedepends=('git')
+source=("git+https://github.com/mtrojnar/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  ./bootstrap
+}
+
+build() {
+  cd $pkgname
+
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

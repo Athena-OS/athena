@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ptf
+pkgver=1491.f87dfa8
+pkgrel=2
+groups=('athena' 'athena-exploitation' 'athena-scanner'
+        'athena-recon' 'athena-automation')
+pkgdesc='The Penetration Testers Framework: Way for modular support for up-to-date tools.'
+arch=('any')
+url='https://github.com/trustedsec/ptf'
+license=('custom:unknown')
+depends=('python' 'python-pexpect')
+makedepends=('git')
+source=("git+https://github.com/trustedsec/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md readme/*
+
+  rm -rf readme README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

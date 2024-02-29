@@ -1,0 +1,24 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-ruamel-yaml
+pkgver=0.16.5
+pkgrel=1
+pkgdesc='YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order.'
+arch=('any')
+url='https://bitbucket.org/ruamel/yaml'
+license=('MIT')
+depends=('python2')
+makedepends=('python2-pip' 'python2-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/ruamel.yaml-$pkgver.tar.gz")
+sha512sums=('411eac7fd607acaa33f28e642591a1ba9e3e905a5c141383a7168cb36c703b98da2ab90ebfeed77165fd5f6271756d07780a2ed9829fecf417cbda926a0214b9')
+
+package() {
+  cd ruamel.yaml-$pkgver
+
+  LC_CTYPE=en_US.UTF-8 pip2 install . --root="$pkgdir"
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

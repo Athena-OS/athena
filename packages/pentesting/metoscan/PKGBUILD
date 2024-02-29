@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=metoscan
+pkgver=05
+pkgrel=4
+groups=('athena' 'athena-webapp')
+pkgdesc='Tool for scanning the HTTP methods supported by a webserver.'
+url='http://www.open-labs.org/'
+license=('custom')
+depends=('curl')
+makedepends=('gcc' 'make')
+arch=('x86_64' 'aarch64')
+source=("http://www.open-labs.org/${pkgname}${pkgver}.tar.gz")
+sha512sums=('ba4d823ded4597ea5f843284db91a30d182d3820458f9cd88255751fcdc0d067afa2369c09e21f1c2d101b86cd547c844a05f1121acc41502ccad0a5b7b1fc5d')
+
+prepare() {
+  cd "${pkgname}${pkgver}"
+
+  sed -i '/CURLOPT_MUTE/d' get_url.c
+  sed -i "s:gcc :gcc $CFLAGS :" Makefile
+}
+
+build() {
+  cd "${pkgname}${pkgver}"
+
+  make
+}
+
+package() {
+  cd "${pkgname}${pkgver}"
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt
+}
+

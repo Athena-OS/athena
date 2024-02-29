@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pureblood
+pkgver=37.2c5ce07
+pkgrel=4
+pkgdesc='A Penetration Testing Framework created for Hackers / Pentester / Bug Hunter.'
+groups=('athena' 'athena-automation' 'athena-webapp'
+        'athena-scanner' 'athena-fuzzer')
+arch=('any')
+url='https://github.com/cr4shcod3/pureblood'
+license=('MIT')
+depends=('python' 'python-colorama' 'python-requests' 'python-python-whois'
+         'python-dnspython' 'python-beautifulsoup4' 'python-shodan' 'wpscan')
+makedepends=('dos2unix' 'git')
+source=("git+https://github.com/cr4shcod3/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed 's|python|python3|g' -i "$pkgname.py"
+
+  dos2unix "$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

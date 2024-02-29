@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hotpatch
+pkgver=90.fd2baf1
+pkgrel=1
+groups=('athena' 'athena-backdoor')
+pkgdesc='Hot patches executables on Linux using .so file injection.'
+arch=('x86_64' 'aarch64')
+url='http://www.selectiveintellect.com/hotpatch.html'
+license=('BSD')
+makedepends=('cmake' 'git')
+source=("git+https://github.com/vikasnkumar/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|PREFIX?=/usr/local|PREFIX?=/usr|' Makefile
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+}
+

@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-aardwolf
+_pkgname=aardwolf
+pkgver=0.2.8.r6.g0d8b582
+_pyver=3.11
+pkgrel=1
+pkgdesc='Asynchronous RDP protocol implementation.'
+arch=('x86_64' 'aarch64')
+url='https://pypi.org/project/aardwolf/#files'
+license=('custom:unknown')
+depends=('python' 'python-minikerberos' 'python-winsspi' 'python-asysocks'
+         'python-tqdm' 'python-colorama' 'python-asn1crypto' 'python-asn1tools'
+         'python-pyperclip' 'python-arc4' 'python-pillow' 'python-unicrypto'
+         'python-python-rle' 'python-asyauth')
+makedepends=('git' 'python-setuptools' 'python-setuptools-rust')
+source=("git+https://github.com/skelsec/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $_pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $_pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  rm -rf "$pkgdir/usr/lib/python$_pyver/site-packages/rle.cpython-"*.so
+}
+

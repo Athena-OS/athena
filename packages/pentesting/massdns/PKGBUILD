@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=massdns
+pkgver=299.20594ba
+pkgrel=2
+groups=('athena' 'athena-networking')
+pkgdesc='A high-performance DNS stub resolver in C.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/blechschmidt/massdns'
+license=('GPL3')
+depends=('libpcap' 'ldns')
+makedepends=('git')
+source=("git+https://github.com/blechschmidt/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make PREFiX="$pkgdir/usr"
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  make DESTDIR="$pkgdir" PREFIX="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -a scripts lists "$pkgdir/usr/share/$pkgname/"
+
+  mv "$pkgdir/bin" "$pkgdir/usr/bin"
+  mv "$pkgdir/man" "$pkgdir/usr/share/man"
+}
+

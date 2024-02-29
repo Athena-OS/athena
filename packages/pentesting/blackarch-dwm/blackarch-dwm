@@ -1,0 +1,9 @@
+#!/bin/sh
+
+feh -z -Z --bg-scale /usr/share/blackarch/wallpaper.jpg
+while true
+do
+  xsetroot -name "BlackArch - $(date +"%a %b %d %r")"
+  sleep 1
+done &
+exec dwm

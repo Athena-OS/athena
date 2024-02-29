@@ -1,0 +1,92 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=complemento
+pkgver=0.7.7.3
+pkgrel=1
+pkgdesc='A collection of tools for pentester: LetDown is a powerful tcp flooder ReverseRaider is a domain scanner that use wordlist scanning or reverse resolution scanning Httsquash is an http server scanner, banner grabber and data retriever.'
+url='http://complemento.sourceforge.net/'
+license=('GPL')
+groups=('athena' 'athena-fingerprint' 'athena-scanner')
+arch=('x86_64' 'aarch64')
+depends=('c-ares' 'libnet' 'python2' 'libpcap')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('f26e0c11fd0521fb77a4e64db2e7db87435933443ce0b3b04eafdf2401862c0905b15e21c1a8d93c726f840caeb2867e9a3026ff341ce89d43f4a7f996ffa2a7')
+
+prepare() {
+  cd "$pkgname/letdown/"
+  sed -i 's/python2.5/python2/g' Makefile
+
+  cd "$srcdir/$pkgname/httsquash/"
+  sed -i 's/python2.5/python2/g' Makefile
+
+  cd "$srcdir/$pkgname/reverseraider/"
+  sed -i 's/python2.5/python2/g' Makefile
+}
+
+build() {
+  cd $pkgname
+
+  make clean
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname/reverseraider/wordlists"
+  install -dm 755 "$pkgdir/usr/share/$pkgname/letdown/payloads"
+  install -dm 755 "$pkgdir/usr/share/$pkgname/httsquash"
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  install -m 644 readme "$pkgdir/usr/share/doc/$pkgname"
+
+  # --- LETDOWN ---
+
+  cd "$pkgname/letdown"
+
+  install -m 755 letdown "$pkgdir/usr/share/$pkgname/letdown"
+
+  cat > "$pkgdir/usr/bin/letdown" <<EOF
+#!/bin/sh
+echo >&2
+echo >&2 'Payloads are at /usr/share/complemento/letdown/payloads'
+echo >&2 'Enjoy.'
+echo >&2
+
+/usr/share/complemento/letdown/letdown
+EOF
+  chmod +x "$pkgdir/usr/bin/letdown"
+
+  install -m 644 readme "$pkgdir/usr/share/doc/$pkgname/readme-letdown"
+  install -m 644 payloads/* "$pkgdir/usr/share/$pkgname/letdown/payloads"
+
+  # --- HTTSQUASH ---
+
+  cd "$pkgname/httsquash"
+
+  install -m 755 httsquash "$pkgdir/usr/share/$pkgname/httsquash"
+  ln -s /usr/share/complemento/httsquash/httsquash "$pkgdir/usr/bin/httsquash"
+  install -m 644 readme "$pkgdir/usr/share/doc/$pkgname/readme-httsquash"
+
+  # --- REVERSERAIDER ---
+
+  cd "$pkgname/reverseraider"
+
+  install -m 755 reverseraider "$pkgdir/usr/share/$pkgname/reverseraider"
+
+  cat > "$pkgdir/usr/bin/reverseraider" <<EOF
+#!/bin/sh
+echo >&2
+echo >&2 'Wordlists are at /usr/share/complemento/reverseraider/wordlists'
+echo >&2 'Enjoy.'
+echo >&2
+
+exec /usr/share/complemento/reverseraider/reverseraider
+EOF
+  chmod +x "$pkgdir/usr/bin/reverseraider"
+
+  install -m 644 wordlists/* "$pkgdir/usr/share/$pkgname/reverseraider/wordlists"
+}
+

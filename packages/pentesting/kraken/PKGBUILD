@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=kraken
+pkgver=32.368a837
+pkgrel=1
+groups=('athena' 'athena-crypto' 'athena-mobile' 'athena-hardware')
+pkgdesc='A project to encrypt A5/1 GSM signaling using a Time/Memory Tradeoff Attack.'
+arch=('x86_64' 'aarch64')
+url='http://opensource.srlabs.de/projects/a51-decrypt'
+license=('GPL3')
+depends=('gcc-libs')
+makedepends=('git')
+source=("git+git://git.srlabs.de/$pkgname.git"
+        'build.patch')
+sha512sums=('SKIP'
+            '51325e8a949fa61d4fef63e6772ddd2973da7aeca6810545e28aa33f99241d46860a2835e5144f07b5d06ebdacd83442e8af77b216d897d7dc5c6bb310ded5a2')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd "$pkgname/Kraken"
+
+  patch -p1 -i "$srcdir/build.patch"
+}
+
+build() {
+  cd "$pkgname/Kraken"
+
+  ./build.sh
+}
+
+package () {
+  cd "$pkgname/Kraken"
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+}
+

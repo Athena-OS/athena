@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=haiti
+_gemname=haiti-hash
+pkgver=v2.1.0.r4.gcdbda6f
+pkgrel=1
+groups=('athena' 'athena-crypto')
+pkgdesc='Hash type identifier (CLI & lib).'
+arch=('any')
+url='https://noraj.github.io/haiti/'
+license=('MIT')
+depends=('ruby' 'ruby-paint' 'ruby-docopt')
+makedepends=('git')
+options=(!emptydirs)
+source=("git+https://github.com/noraj/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $pkgname
+
+  gem build "$pkgname.gemspec"
+}
+
+package() {
+  cd $pkgname
+
+  _gemdir="$(ruby -e'puts Gem.default_dir')"
+  _release=$(gem build $pkgname.gemspec | grep Version | cut -d' ' -f4)
+
+  gem install --ignore-dependencies --no-user-install --no-document \
+    -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$_release.gem"
+
+  rm -rf "$pkgdir/$_gemdir/cache/$_gemname-$_release.gem"
+  find "$pkgdir/$_gemdir/extensions/" -name *.so -delete
+  rm -rf "$pkgdir/$_gemdir/gems/$_gemname-$_release/test"
+
+  install -Dm 644 "$pkgdir/$_gemdir/gems/$_gemname-$_release/LICENSE.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm 644 "$pkgdir/$_gemdir/gems/$_gemname-$_release/man/$pkgname.1" \
+    "$pkgdir/usr/share/man/man1/$pkgname.1"
+}
+

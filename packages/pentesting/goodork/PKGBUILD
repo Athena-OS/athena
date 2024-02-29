@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=goodork
+pkgver=2.2
+pkgrel=7
+groups=('athena' 'athena-recon')
+pkgdesc='A python script designed to allow you to leverage the power of google dorking straight from the comfort of your command line.'
+url='http://goo-dork.blogspot.com/'
+license=('custom')
+arch=('any')
+depends=('python2' 'git' 'python2-beautifulsoup4')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/k3170makan/GooDork.git")
+sha512sums=('SKIP')
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec python2 /usr/share/$pkgname/GooDork.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

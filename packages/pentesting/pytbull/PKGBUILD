@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pytbull
+_pkgname=pytbull-ng
+pkgver=19.3d82a54
+pkgrel=2
+groups=('athena' 'athena-scanner' 'athena-fuzzer')
+pkgdesc='Next generation of pytbull, IDS/IPS testing framework.'
+arch=('any')
+url='https://github.com/netrunn3r/pytbull-ng'
+license=('GPL3')
+depends=('python' 'python-feedparser' 'python-cherrypy' 'python-m2crypto'
+         'python-paramiko' 'python-requests' 'python-scapy')
+makedepends=('git')
+source=("git+https://github.com/netrunn3r/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+
+  rm -rf *.md requirements.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/source
+python pytbull "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

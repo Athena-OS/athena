@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=suid3num
+pkgver=60.2241c9c
+pkgrel=2
+pkgdesc="Python script which utilizes python's built-in modules to enumerate SUID binaries."
+arch=('any')
+groups=('athena' 'athena-exploitation')
+url='https://github.com/Anon-Exploiter/SUID3NUM'
+license=('MIT')
+depends=('python')
+makedepends=('git')
+source=("git+https://github.com/Anon-Exploiter/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

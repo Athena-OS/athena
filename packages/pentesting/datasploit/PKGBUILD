@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=datasploit
+pkgver=367.a270d50
+pkgrel=3
+epoch=1
+pkgdesc='Performs automated OSINT and more.'
+groups=('athena' 'athena-recon' 'athena-scanner')
+arch=('any')
+url='https://github.com/upgoingstar/datasploit'
+license=('GPL3')
+depends=('python2' 'python2-requests' 'python2-tweepy' 'python2-dnspython'
+         'python2-pymongo' 'python2-python-whois' 'python2-python-wappalyzer'
+         'python2-celery' 'python2-beautifulsoup4' 'python2-django'
+         'python2-shodan' 'python2-termcolor' 'python2-ipwhois'
+         'python2-clearbit' 'python2-json2html' 'python2-future'
+         'python2-configobj' 'python2-pytz' 'python2-html5lib' 'python2-praw'
+         'python2-billiard' 'python2-anyjson' 'python2-idna' 'python2-netaddr'
+         'python2-requests-file')
+makedepends=('git')
+source=("git+https://github.com/DataSploit/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md docs/*
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -rf docs README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 domainOsint.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

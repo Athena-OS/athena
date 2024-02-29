@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hate-crack
+pkgver=202.2c04108
+pkgrel=1
+pkgdesc='A tool for automating cracking methodologies through Hashcat.'
+groups=('athena' 'athena-automation' 'athena-cracker')
+arch=('any')
+url='https://github.com/trustedsec/hate_crack'
+license=('custom:unknown')
+depends=('python' 'pygtk' 'python-pyenchant' 'hashcat')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/trustedsec/hate_crack.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|/Passwords/hashcat|/usr/bin|' config.json.example
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.md
+
+  rm readme.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python hate_crack.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

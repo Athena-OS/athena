@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sherlock
+pkgver=2136.e3a09f8
+pkgrel=1
+pkgdesc='Find usernames across social networks.'
+groups=('athena' 'athena-social' 'athena-recon')
+arch=('any')
+url='https://github.com/sherlock-project/sherlock'
+license=('MIT')
+depends=('python' 'python-beautifulsoup4' 'python-certifi' 'python-chardet'
+         'python-colorama' 'python-idna' 'python-lxml' 'python-pysocks'
+         'python-requests' 'python-requests-futures' 'python-soupsieve'
+         'python-stem' 'python-torrequest' 'python-urllib3' 'python-pandas')
+makedepends=('git')
+source=("git+https://github.com/sherlock-project/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE CONTRIBUTING.md CODE_OF_CONDUCT.md requirements.txt
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

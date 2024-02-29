@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=nfex
+pkgver=2.5
+pkgrel=4
+groups=('athena' 'athena-forensic' 'athena-networking')
+pkgdesc='A tool for extracting files from the network in real-time or post-capture from an offline tcpdump pcap savefile.'
+arch=('x86_64' 'aarch64')
+url='https://code.google.com/p/nfex/'
+license=('GPL2')
+makedepends=('subversion' 'libpcap' 'libnet')
+source=("$pkgname::svn+http://nfex.googlecode.com/svn/trunk/")
+sha512sums=('SKIP')
+
+build() {
+  cd $pkgname
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "src/$pkgname" "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dirbuster-ng
+pkgver=9.0c34920
+pkgrel=1
+groups=('athena' 'athena-webapp' 'athena-scanner')
+pkgdesc='C CLI implementation of the Java dirbuster tool.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/digination/dirbuster-ng'
+license=('custom:unknown')
+depends=('curl')
+makedepends=('git' 'cmake')
+source=("git+https://github.com/digination/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  mkdir -p build
+
+  cd build
+
+  cmake ..
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/README"
+  cp -a wordlists "$pkgdir/usr/share/$pkgname/wordlists"
+
+  find "$pkgdir/usr/share/$pkgname/" -type d -exec chmod 755 {} +
+  find "$pkgdir/usr/share/$pkgname/" -type f -exec chmod 644 {} +
+}
+

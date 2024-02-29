@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-wayback
+_pkgname=wayback
+pkgver=0.4.3
+pkgrel=1
+pkgdesc='Python API to Internet Archive Wayback Machine'
+url='https://pypi.org/project/wayback/#files'
+arch=('any')
+license=('BSD')
+depends=('python' 'python-requests' 'python-urllib3')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('d70cbf64d040baedca0cfb8e63fb37328826bd6fd060f9ed653b95f630f1ea2828cc5a81ac913378135a2c520659895c5be15244c8a7d81e46ae13129f117f6d')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

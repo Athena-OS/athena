@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=massbleed
+pkgver=20.44b7e85
+pkgrel=2
+pkgdesc='SSL Vulnerability Scanner.'
+groups=('athena' 'athena-recon' 'athena-automation'
+         'athena-scanner')
+url='https://github.com/1N3/Sn1per'
+license=('custom:unknown')
+arch=('any')
+depends=('unicornscan' 'nmap' 'python' 'sslscan' 'bash' 'testssl.sh')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/1N3/MassBleed.git")
+sha512sums=('SKIP')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bash ./$pkgname.sh "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

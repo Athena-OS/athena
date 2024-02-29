@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=jwtcat
+pkgver=77.f80f3d9
+pkgrel=2
+pkgdesc='Script performs offline brute-force attacks against JSON Web Token (JWT)'
+arch=('any')
+groups=('athena' 'athena-cracker')
+url='https://github.com/aress31/jwtcat'
+license=('Apache')
+depends=('python' 'python-coloredlogs' 'python-pyjwt' 'python-tqdm')
+makedepends=('git')
+source=("git+https://github.com/aress31/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

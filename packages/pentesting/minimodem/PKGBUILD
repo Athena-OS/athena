@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=minimodem
+pkgver=353.bb2f34c
+pkgrel=2
+groups=('athena' 'athena-misc')
+pkgdesc='A command-line program which decodes (or generates) audio modem tones at any specified baud rate, using various framing protocols.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/kamalmostafa/minimodem'
+license=('GPL3')
+depends=('alsa-lib' 'libpulse' 'fftw' 'sndio')
+makedepends=('git')
+source=("git+https://github.com/kamalmostafa/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  aclocal
+  autoheader
+  automake --add-missing
+  autoconf
+
+  ./configure --prefix=/usr --sbindir=/usr/bin
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS ChangeLog NEWS \
+    INSTALL README THANKS
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+

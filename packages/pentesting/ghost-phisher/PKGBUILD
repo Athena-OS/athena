@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ghost-phisher
+pkgver=1.64
+pkgrel=3
+groups=('athena' 'athena-scanner')
+pkgdesc='GUI suite for phishing and penetration attacks.'
+url='http://code.google.com/p/ghost-phisher'
+arch=('any')
+license=('GPL3')
+depends=('aircrack-ng' 'python2-pyqt4' 'python2-scapy' 'xterm' 'python2')
+optdepends=('metasploit')
+source=("$pkgname::svn+http://ghost-phisher.googlecode.com/svn/Ghost-Phisher/")
+sha512sums=('SKIP')
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's/python/python2/' *.py
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  chmod +x "$pkgdir/usr/share/$pkgname/ghost.py"
+
+cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec /usr/share/$pkgname/ghost.py
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

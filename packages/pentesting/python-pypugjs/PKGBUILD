@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-pypugjs
+_pkgname=pypugjs
+pkgver=5.9.4
+pkgrel=4
+pkgdesc='PugJS syntax template adapter for Django, Jinja2, Mako and Tornado templates - copy of PyJade with the name changed.'
+url='https://github.com/kakulukia/pypugjs'
+arch=('any')
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://github.com/kakulukia/pypugjs/archive/v$pkgver.tar.gz")
+sha512sums=('24ebf306a76afab570cb13806d27e12766163bb114a8e4fe20ee5f19eb7311203e8b647eeb2f150efb2f9dfa1db9e56f4218cc3deb15d81f22b12d1b11f83c32')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

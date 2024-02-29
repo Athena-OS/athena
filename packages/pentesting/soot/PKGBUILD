@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=soot
+pkgver=3.4.0
+pkgrel=1
+pkgdesc='A Java Bytecode Analysis and Transformation Framework.'
+groups=('athena' 'athena-binary')
+arch=('any')
+url='http://www.sable.mcgill.ca/soot'
+license=('LGPL')
+depends=('java-runtime')
+noextract=("$pkgname-$pkgver.jar")
+source=("$pkgname.jar::https://soot-build.cs.uni-paderborn.de/public/origin/develop/$pkgname/$pkgname-develop/build/sootclasses-trunk-jar-with-dependencies.jar")
+sha512sums=('521ff2498fb1bb46b837b616499e59362892d07f6861cff88d5f388576cbf3797f0eab97732bd18d48e96eb38a089579b77b532b39e717d2e9fe4c829395e3ec')
+
+prepare() {
+  cat > "$srcdir/$pkgname.sh" << EOF
+#!/bin/sh
+cd '/usr/share/java/soot'
+"\$JAVA_HOME/bin/java" -jar '/usr/share/java/soot/soot.jar' "\$@"
+EOF
+}
+
+package() {
+  install -Dm 644 "$srcdir/$pkgname.jar" \
+    "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+
+  install -Dm 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+}
+

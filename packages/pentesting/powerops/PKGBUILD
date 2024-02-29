@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=powerops
+pkgver=32.13fe55b
+pkgrel=1
+pkgdesc='PowerShell Runspace Portable Post Exploitation Tool aimed at making Penetration Testing with PowerShell "easier".'
+groups=('athena' 'athena-windows' 'athena-automation')
+arch=('any')
+url='https://github.com/fdiskyou/PowerOPS'
+license=('custom:unknown')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/fdiskyou/PowerOPS.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname/"
+}
+

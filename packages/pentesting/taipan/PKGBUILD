@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=taipan
+pkgver=2.9.498.18
+pkgrel=1
+epoch=1
+pkgdesc='Web application security scanner.'
+arch=('x86_64')
+groups=('athena' 'athena-scanner' 'athena-webapp')
+url='https://github.com/enkomio/Taipan'
+license=('MIT')
+depends=('mono')
+makedepends=('unzip')
+options=('!strip')
+source=("$pkgname.zip::https://github.com/enkomio/Taipan/releases/download/2.7/TaipanScannerCommunity.v2.7.480.30.zip")
+sha512sums=('48ffde6bcc74ddba2d57e880f7035dce1f45d1d5f2ac06bf252bf0c9b9099120c90c601357c03b2647d2f163c3c444751b3e53aa95f77a4354860c22c910f6a1')
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/opt/$pkgname"
+
+  rm "$pkgname.zip"
+
+  cp -a --no-preserve=owner * "$pkgdir/opt/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /opt/$pkgname
+exec mono Taipan.exe "\$@"
+EOF
+
+   chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

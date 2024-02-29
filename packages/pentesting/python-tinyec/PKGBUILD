@@ -1,0 +1,59 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-tinyec
+pkgname=('python2-tinyec' 'python-tinyec')
+_pkgname=tinyec
+pkgver=15.d187fdb
+_pyver=3.11
+pkgrel=6
+pkgdesc='A tiny ellliptic curve library.'
+url='https://github.com/alxchk/tinyec'
+arch=('any')
+license=('GPL3')
+makedepends=('git' 'python2-setuptools' 'python-setuptools')
+source=('git+https://github.com/alxchk/tinyec.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cp -a $_pkgname "$_pkgname-2"
+}
+
+build() {
+  cd "$_pkgname-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname"
+
+  python setup.py build
+}
+
+package_python2-tinyec() {
+  depends=('python2')
+
+  cd "$_pkgname-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+
+  chmod 644 \
+  "$pkgdir"/usr/lib/python2.7/site-packages/tinyec-*-py2.7.egg-info/*
+}
+
+package_python-tinyec() {
+  depends=('python')
+
+  cd $_pkgname
+
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+
+  chmod 644 \
+    "$pkgdir"/usr/lib/python$_pyver/site-packages/tinyec-*-py$_pyver.egg-info/*
+}
+

@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vbscan
+pkgver=39.2b1ce48
+pkgrel=3
+epoch=1
+groups=('athena' 'athena-webapp' 'athena-fuzzer' 'athena-scanner')
+pkgdesc='A black box vBulletin vulnerability scanner written in perl.'
+arch=('any')
+url='https://github.com/rezasp/vbscan'
+license=('GPL3')
+depends=('perl')
+makedepends=('git')
+source=("git+https://github.com/rezasp/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
+  install -Dm 644 LICENCE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec perl $pkgname.pl "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wordlistctl
+pkgver=0.9.4
+pkgrel=1
+groups=('athena' 'athena-misc')
+pkgdesc='Fetch, install and search wordlist archives from websites.'
+arch=('any')
+url='https://github.com/BlackArch/wordlistctl'
+license=('GPL3')
+depends=('python' 'python-requests' 'python-termcolor')
+source=("https://github.com/BlackArch/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('0febf62fe943abcaabffcf4351de5b7df4c0ba31088602fcda09928225141b96948e8815c617e5d44981aee342f997a790939b1d8362368b88a7286f916711c2')
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 "bash-completion/$pkgname" \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm 644 "man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+
+  rm -r README.md LICENSE bash-completion
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec /usr/share/$pkgname/$pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

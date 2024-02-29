@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=kalibrate-rtl
+pkgver=69.340003e
+pkgrel=1
+pkgdesc='Fork of http://thre.at/kalibrate/ for use with rtl-sdr devices.'
+arch=('x86_64' 'aarch64')
+groups=('athena' 'athena-mobile' 'athena-scanner')
+license=('custom')
+url='https://github.com/steve-m/kalibrate-rtl'
+provides=('kalibrate-rtl')
+depends=('rtl-sdr' 'fftw')
+makedepends=('git')
+source=("git+https://github.com/steve-m/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  ./bootstrap
+
+  ./configure --prefix=/usr
+
+  make
+
+}
+
+package() {
+  cd $pkgname
+
+	make DESTDIR="$pkgdir" install
+
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+

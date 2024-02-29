@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-asn1tools
+_pkgname=asn1tools
+pkgver=0.166.0
+pkgrel=2
+pkgdesc='ASN.1 parsing, encoding and decoding.'
+arch=('any')
+url='https://pypi.org/project/asn1tools/#files'
+license=('MIT')
+depends=('python' 'licenses' 'python-prompt_toolkit' 'python-diskcache'
+         'python-bitstruct')
+makedepends=('python-pip' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('b980d4c49be2ffe46b7f5e32a2af790beb88e6f54f9e63c02c6b04197889c395a903354eb34744f1ff7a34b740b5685e20fcea31ee028d8a18871b7fe1ed5fdc')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

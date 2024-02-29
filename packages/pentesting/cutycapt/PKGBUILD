@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=cutycapt
+pkgver=10
+pkgrel=6
+epoch=3
+groups=('athena' 'athena-recon')
+pkgdesc="A Qt and WebKit based command-line utility that captures WebKit's rendering of a web page."
+arch=('x86_64' 'aarch64')
+url='http://cutycapt.sourceforge.net/'
+license=('GPL')
+depends=('qt5-base' 'qt5-webkit' 'qt5-svg')
+makedepends=('subversion' 'dos2unix')
+provides=('cutycapt-svn')
+conflicts=('cutycapt-svn')
+source=("$pkgname::svn+svn://svn.code.sf.net/p/cutycapt/code"
+        'cutycapt.patch')
+sha512sums=('SKIP'
+            '56f5fcb0fa560f65b6c0b626d386f41c3396d64e267a9cceeda1b41156e78fd643a33379ef51d4af3c0ad3fc3135af20792bcae2f792aad6d826ba32354579b0')
+
+pkgver() {
+  cd $pkgname
+
+  svnversion | tr -d [A-z]
+}
+
+prepare() {
+  cd "$pkgname/CutyCapt"
+
+  dos2unix *
+}
+
+build() {
+  cd "$pkgname/CutyCapt"
+
+  qmake-qt5
+  make
+}
+
+package() {
+  cd "$pkgname/CutyCapt"
+
+  install -Dm 755 CutyCapt "$pkgdir/usr/bin/$pkgname"
+}
+

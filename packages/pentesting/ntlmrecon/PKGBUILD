@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ntlmrecon
+pkgver=76.41ee1db
+pkgrel=1
+groups=('athena' 'athena-scanner' 'athena-recon')
+pkgdesc='A tool to enumerate information from NTLM authentication enabled web endpoints.'
+arch=('any')
+url='https://github.com/sachinkamath/ntlmrecon'
+license=('MIT')
+depends=('python' 'python-ordered-set' 'python-iptools' 'python-termcolor'
+         'python-requests' 'python-colorama')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/sachinkamath/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

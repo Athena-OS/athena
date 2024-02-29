@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=chw00t
+pkgver=39.1fd1016
+pkgrel=1
+groups=('athena' 'athena-exploitation')
+pkgdesc='Unices chroot breaking tool.'
+arch=('any')
+url='https://github.com/earthquake/chw00t'
+license=('custom:unknown')
+makedepends=('git')
+source=("git+https://github.com/earthquake/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+}
+

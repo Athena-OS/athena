@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sigploit
+pkgver=786.0e52072
+pkgrel=2
+pkgdesc='Telecom Signaling Exploitation Framework - SS7, GTP, Diameter & SIP.'
+groups=('athena' 'athena-exploitation' 'athena-mobile')
+arch=('any')
+url='https://github.com/SigPloiter/SigPloit'
+license=('GPL2')
+depends=('python2' 'python2-configobj' 'python2-ipy' 'python2-termcolor'
+         'python2-colorama' 'python2-pysctp' 'python2-pyfiglet'
+         'java-environment' 'python2-setuptools')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/SigPloiter/SigPloit.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

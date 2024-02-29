@@ -1,0 +1,53 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=honeyd
+pkgver=337.a0f3d64
+pkgrel=2
+groups=('athena' 'athena-honeypot')
+pkgdesc='A small daemon that creates virtual hosts on a network.'
+url='https://github.com/DataSoft/Honeyd/'
+arch=('x86_64' 'aarch64')
+license=('GPL')
+depends=('libdnet' 'libevent' 'libedit' 'libpcap' 'pcre' 'zlib' 'tcl' 'python2')
+makedepends=('git')
+options=('!makeflags')
+source=("$pkgname::git+https://github.com/DataSoft/Honeyd.git"
+        'python.patch')
+sha512sums=('SKIP'
+            '7fbb69ff6d68a87f0a1a574375bc685c5a62221d059df32fbe2129ca81bac03080e8539811f099c34c572bbe2eecf98acb32c58ce9e1cf6ba92a2f206137ed98')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  ./autogen.sh
+
+  ./configure --prefix=/usr
+
+  #patch -p1 -i ../python.patch
+
+  make
+
+  sed -i 's/python/python2/' Makefile
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  make prefix="$pkgdir/usr" install
+
+  for dir in webserver webserver/htdocs webserver/htdocs/graphs \
+    webserver/htdocs/images webserver/htdocs/styles \
+    webserver/htdocs/templates webserver/htdocs/templates/inc ; do
+    chmod 755 "$pkgdir/usr/share/$pkgname/$dir"
+  done
+}
+

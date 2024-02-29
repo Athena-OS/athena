@@ -1,0 +1,33 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=batman-adv
+pkgver=2023.3
+pkgrel=1
+groups=('athena' 'athena-wireless')
+pkgdesc='Batman kernel module, (included upstream since .38)'
+arch=('x86_64' 'aarch64')
+url='http://www.open-mesh.net/'
+license=('GPL')
+depends=('libnl')
+makedepends=('linux-headers')
+source=("https://downloads.open-mesh.org/batman/releases/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('47393a29189c2a71661ba05b885a76511e1baa8d1cd1bf780618915f3d1877cd4c024958bdff2e1096d1c69de8fb0ced72fb6be9bb77d8aa912a0ca1cb4a990a')
+install="$pkgname.install"
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  export CFLAGS="${CFLAGS} -fplt"
+  make KERNELPATH="/usr/lib/modules/$(uname -r)/build"
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm 644 "net/$pkgname/batman-adv.ko" \
+    "$pkgdir/usr/lib/modules/$(uname -r)/updates/net/$pkgname/batman_adv.ko"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.rst MAINTAINERS \
+    Documentation/networking/*.rst
+}
+

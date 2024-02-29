@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+#
+# This PKGBUILD file was initially retrieved from AUR and all credits goes to:
+# Maintainer: Tilman Blumenbach <tilman [AT] ax86 [DOT] net>
+
+pkgname=terminus-font-ttf
+_pkgname=terminus-ttf
+pkgver=4.49.1
+pkgrel=1
+pkgdesc='Monospaced bitmap font designed for long work with computers (TTF version, mainly for Java applications).'
+arch=('any')
+url='https://files.ax86.net/terminus-ttf'
+license=('custom:OFL')
+depends=('fontconfig' 'xorg-mkfontdir')
+source=("https://files.ax86.net/$_pkgname/files/$pkgver/$_pkgname-$pkgver.zip")
+sha512sums=('41988665b7952e22d40fc8e4971acc4c1041fea274fd9e5ab197d8b9fce84ce539afbaf41b7e9fac9f8fd0af53bc009d7d62cd79adc4257efe5752d7f29e7336')
+install="$pkgname.install"
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/share/fonts/TTF"
+
+  for i in *.ttf; do
+    destname="$(echo "$i" | sed -E 's|-[[:digit:].]+\.ttf$|.ttf|')"
+    install -Dm 644 "$i" "$pkgdir/usr/share/fonts/TTF/$destname"
+  done
+
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+

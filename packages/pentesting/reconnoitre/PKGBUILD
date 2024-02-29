@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=reconnoitre
+pkgver=441.f62afba
+pkgrel=4
+pkgdesc='A security tool for multithreaded information gathering and service enumeration.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/codingo/Reconnoitre'
+license=('GPL3')
+depends=('python' 'python-argparse' 'python-requests' 'nbtscan' 'nmap'
+         'net-snmp')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/codingo/Reconnoitre.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

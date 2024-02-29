@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-augmentor
+_pkgname=Augmentor
+pkgver=0.2.12
+pkgrel=1
+pkgdesc='Image augmentation library for Machine Learning.'
+arch=('any')
+url='https://pypi.org/project/Augmentor/#files'
+license=('MIT')
+depends=('python' 'python-pillow' 'python-future' 'python-tqdm' 'python-numpy')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/Augmentor-$pkgver.tar.gz")
+sha512sums=('cdb61e447edfd427c80c73f6d9f65195abaa167f9bf5d966021a53281f2e3bdf9a14ad08556d762433d1d531eb0062a081649a92d71b186bd033c6d9495390e7')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

@@ -1,0 +1,65 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=bloodhound
+pkgver=1665.0d36459
+pkgrel=1
+pkgdesc='Six Degrees of Domain Admin'
+groups=('athena' 'athena-recon' 'athena-windows')
+arch=('x86_64' 'aarch64')
+url='https://github.com/BloodHoundAD/BloodHound'
+license=('GPL3')
+depends=('nodejs' 'neo4j-community' 'alsa-lib' 'gtk3' 'libxss' 'nss'
+         'gconf' 'libxtst' 'jre11-openjdk-headless')
+makedepends=('git' 'nodejs-electron-packager' 'npm' 'unzip')
+optdepends=('python: for some scripts' 'powershell: for PowerShell ingestion')
+source=("$pkgname::git+https://github.com/BloodHoundAD/BloodHound.git")
+options=(!strip)
+sha512sums=('SKIP')
+install="$pkgname.install"
+
+if [ "$CARCH" = "x86_64" ]; then
+  _path='BloodHound-linux-x64'
+else
+  _path='BloodHound-linux-armv7l'
+fi
+
+pkgver() {
+  cd "$pkgname"
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd "$pkgname"
+
+  npm install
+  NODE_OPTIONS=--openssl-legacy-provider npm run build
+}
+
+package() {
+  cd "$pkgname"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  cp -a --no-preserve=ownership docs/ "$pkgdir/usr/share/doc/$pkgname/"
+
+  rm -r *.md docs/
+
+  cp -a --no-preserve=ownership $_path Collectors/ \
+    dist/ src/ *.js *.json *.html "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/$_path
+echo "To start neo4j: systemctl start neo4j"
+exec ./BloodHound --no-sandbox "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+  chmod +x "$pkgdir/usr/share/$pkgname/$_path/BloodHound"
+}
+

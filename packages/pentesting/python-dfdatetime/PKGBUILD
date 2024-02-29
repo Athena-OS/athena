@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-dfdatetime
+_pkgname=dfdatetime
+pkgver=20230506
+pkgrel=1
+pkgdesc='Digital Forensics Date and Time.'
+arch=('any')
+url='https://pypi.org/project/dfdatetime/'
+license=('Apache')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('8bf3257f6fe1cba33cf7b95c43c5003f0595cd78e20d5a261a9a40650e94d2e682f55faad3f2a804e6a84c632fe445b34bbeb3a647bc30f3ecb054234fee271e')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-claripy
+_pkgname=claripy
+pkgver=9.2.71
+pkgrel=1
+pkgdesc='An abstraction layer for constraint solvers.'
+arch=('any')
+url='https://pypi.org/project/claripy/#files'
+license=('custom:unknown')
+depends=('python' 'z3' 'python-future' 'python-cachetools' 'python-decorator'
+         'python-pysmt')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('697df2afe900f42f587085194702b78cce690412c761da0c3fc572ddff687e8bc16fe7bb13dca8e8caefa28eb5cc4190a905014e1a3cfde37743ed1680978223')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

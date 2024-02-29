@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ruby-mechanize
+_gemname=mechanize
+pkgver=2.9.1
+pkgrel=1
+pkgdesc='Automates interaction with websites, handling cookies, redirects and forms.'
+arch=('any')
+url='https://rubygems.org/gems/mechanize'
+license=('GPL2')
+depends=('ruby' 'ruby-net-http-digest_auth' 'ruby-net-http-persistent'
+         'ruby-mime-types' 'ruby-http-cookie' 'ruby-nokogiri' 'ruby-ntlm-http'
+         'ruby-webrobots' 'ruby-domain_name')
+makedepends=('ruby' 'ruby-rdoc')
+source=("https://rubygems.org/gems/$_pkgname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+sha512sums=('6525cf8ea31c36fb20f5d83bebdb647942f24ddee979a832343ea964de11e31421e4f68943c1b15c9bb519b9b11cda9ab2a1c10ceca412e1854b5b20dda7ac78')
+
+package() {
+  _gemdir="$(ruby -e 'puts Gem.default_dir')"
+
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri \
+      -i "$pkgdir$_gemdir" "$_gemname-$pkgver.gem"
+  else
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
+      -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  fi
+}
+

@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=facebrok
+pkgver=33.0f6fe8d
+pkgrel=2
+pkgdesc='Social Engineering Tool Oriented to facebook.'
+groups=('athena' 'athena-social')
+arch=('any')
+url='https://github.com/PowerScript/facebrok'
+license=('custom:unknown')
+depends=('php' 'mariadb')
+makedepends=('git')
+source=("git+https://github.com/PowerScript/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+}
+

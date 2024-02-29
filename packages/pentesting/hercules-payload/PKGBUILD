@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hercules-payload
+pkgver=222.2607a3a
+pkgrel=1
+groups=('athena' 'athena-binary' 'athena-windows' 'athena-backdoor')
+pkgdesc='A special payload generator that can bypass all antivirus software.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/EgeBalci/HERCULES'
+license=('MIT')
+makedepends=('git' 'go')
+source=("$pkgname::git+https://github.com/EgeBalci/HERCULES.git"
+        'hercules.patch')
+sha512sums=('SKIP'
+            'f44544865d813b1d778d8863bd4a995ca9866e52c7e88e7462f6b8829b8a6dc2b2b08c444298bf336812e379466731021a6ea57296387e244385259563fc1dde')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < hercules.patch
+}
+
+build() {
+  cd $pkgname
+
+  GOPATH="$srcdir" go mod init go.mod
+  GOPATH="$srcdir" go mod tidy
+  GOPATH="$srcdir" go mod download
+  GOPATH="$srcdir" go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-s -w" \
+    -o $pkgname ./SOURCE
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

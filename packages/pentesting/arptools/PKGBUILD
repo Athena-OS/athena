@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=arptools
+pkgver=13.41cdb23
+pkgrel=2
+pkgdesc='A simple tool about ARP broadcast, ARP attack, and data transmission.'
+groups=('athena' 'athena-networking')
+arch=('x86_64' 'aarch64')
+url='https://github.com/Lab-Zjt/ARPTools'
+license=('custom:unknown')
+depends=()
+makedepends=('git' 'cmake')
+optdepends=('linux-headers' 'linux-lts-headers' 'linux-hardened-headers'
+            'linux-rt-headers' 'linux-rt-lts-headers' 'linux-zen-headers')
+source=("$pkgname::git+https://github.com/Lab-Zjt/ARPTools.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  cmake .
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 ARPtools "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

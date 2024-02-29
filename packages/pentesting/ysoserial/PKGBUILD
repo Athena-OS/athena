@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ysoserial
+pkgver=0.0.6
+pkgrel=1
+groups=('athena' 'athena-webapp' 'athena-exploitation')
+pkgdesc='A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.'
+arch=('any')
+url='https://github.com/frohoff/ysoserial'
+license=('MIT')
+depends=('java-environment')
+makedepends=('git')
+source=("https://github.com/frohoff/ysoserial/releases/download/v$pkgver/ysoserial-all.jar")
+#source=("https://jitpack.io/com/github/frohoff/ysoserial/v$pkgver/$pkgname-v$pkgver.jar")
+noextract=("$pkgname-v$pkgver.jar")
+sha512sums=('f2508b7c0445352fec089dd5aa4ab721649e138fd4c9445dad69ac10deaaf2a62188387a5ad5477dd2349f2e57408d6994185cda0469b1bde767d08807a03a6a')
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin/"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 "$pkgname-all.jar" "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec java -jar /usr/share/$pkgname/$pkgname-all.jar "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

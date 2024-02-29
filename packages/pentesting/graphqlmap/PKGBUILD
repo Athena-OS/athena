@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=graphqlmap
+pkgver=63.59305d7
+pkgrel=2
+pkgdesc='Scripting engine to interact with a graphql endpoint for pentesting purposes.'
+arch=('any')
+groups=('athena' 'athena-webapp' 'athena-exploitation'
+        'athena-fuzzer')
+url='https://github.com/swisskyrepo/GraphQLmap'
+license=('MIT')
+depends=('python' 'python-requests' 'python-urllib3')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/swisskyrepo/GraphQLmap.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

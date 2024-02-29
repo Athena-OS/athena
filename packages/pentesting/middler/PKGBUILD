@@ -1,0 +1,41 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=middler
+pkgver=1.0
+pkgrel=6
+pkgdesc='A Man in the Middle tool to demonstrate protocol middling attacks.'
+arch=('any')
+url='http://code.google.com/p/middler/'
+license=('GPL')
+depends=('libpcap' 'python2' 'python2-scapy' 'libdnet')
+makedepends=('python2')
+groups=('athena' 'athena-networking')
+source=("http://middler.googlecode.com/files/$pkgname-$pkgver.tgz")
+sha512sums=('8940d56a9fa229b7986717b9a63ae63b1d0e21d8')
+
+prepare() {
+  cd TheMiddler
+
+  sed -i 's:middlerlib:libmiddler:' setup.py
+  sed -i 's:middlerlib.plugins:libmiddler.plugins:' setup.py
+  sed -i "s:'middler.plugins.support'::" setup.py
+}
+
+package() {
+  cd "$srcdir/TheMiddler"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -r * "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/
+exec python2 $pkgname.py \$@
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

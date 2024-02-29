@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=scanless
+pkgver=90.3da40e9
+pkgrel=1
+pkgdesc='Utility for using websites that can perform port scans on your behalf.'
+groups=('athena' 'athena-scanner')
+arch=('any')
+url='https://github.com/vesche/scanless'
+license=('custom:unknown')
+depends=('python' 'python-beautifulsoup4' 'python-crayons' 'python-requests'
+         'python-bs4')
+makedepends=('git' 'python-setuptools' 'python-pip' 'python-wheel')
+source=("git+https://github.com/vesche/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 UNLICENSE "$pkgdir/usr/share/licenses/$pkgname/UNLICENSE"
+}
+

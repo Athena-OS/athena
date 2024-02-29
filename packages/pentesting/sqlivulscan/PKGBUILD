@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sqlivulscan
+pkgver=249.cc8e657
+pkgrel=3
+pkgdesc='This will give you the SQLi Vulnerable Website Just by Adding the Dork.'
+groups=('athena' 'athena-scanner' 'athena-webapp')
+arch=('any')
+url='https://github.com/Hadesy2k/sqlivulscan'
+license=('GPL2')
+depends=('python2' 'python2-simplejson' 'python2-nyawc'
+         'python2-beautifulsoup4' 'python2-terminaltables' 'python2-termcolor'
+         'python2-setuptools')
+makedepends=('git')
+source=("git+https://github.com/Hadesy2k/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 sqliv.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

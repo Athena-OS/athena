@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=androwarn
+pkgver=135.626c02d
+pkgrel=5
+pkgdesc='Yet another static code analyzer for malicious Android applications.'
+groups=('athena' 'athena-mobile' 'athena-code-audit')
+arch=('any')
+url='https://github.com/maaaaz/androwarn'
+license=('GPL3')
+depends=('python' 'python-lxml' 'python-future' 'python-argparse' 'python-jinja'
+         'python-play-scraper' 'androguard')
+makedepends=('git')
+source=("git+https://github.com/maaaaz/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING \
+    COPYING.LESSER
+
+  rm README.md COPYING COPYING.LESSER
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

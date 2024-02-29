@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=extracthosts
+pkgver=17.8fdff9e
+pkgrel=1
+groups=('athena' 'athena-misc')
+pkgdesc='Extracts hosts (IP/Hostnames) from files.'
+arch=('any')
+url='https://github.com/bwall/ExtractHosts'
+license=('MIT')
+depends=('python2')
+makedepends=('git' 'python2-setuptools')
+source=("$pkgname::git+https://github.com/bwall/ExtractHosts.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}
+

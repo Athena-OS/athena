@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-imgcat
+_pkgname=imgcat
+pkgver=0.5.0
+pkgrel=4
+pkgdesc='imgcat as Python API and CLI.'
+arch=('any')
+url='https://pypi.org/project/imgcat/#files'
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('660b2ffcbce5908c7f811e7bfabcfa0816c8b82c0720da29694db56acb8d19bd65fdfa68f5b5f1df32a6682a23583dc912248e014c28c10bc3fcaab8ce74d3f2')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

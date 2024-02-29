@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hackredis
+pkgver=3.fbae1bc
+pkgrel=2
+groups=('athena' 'athena-exploitation' 'athena-scanner')
+pkgdesc='A simple tool to scan and exploit redis servers.'
+arch=('any')
+url='https://github.com/Ridter/hackredis'
+license=('custom:unknown')
+depends=('python2' 'python2-redis' 'python2-pexpect' 'python2-paramiko')
+makedepends=('git')
+source=("git+https://github.com/Ridter/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|bin/python|bin/python2|' "$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.MD
+}
+

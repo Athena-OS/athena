@@ -1,0 +1,22 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dnsbf
+pkgver=0.3
+pkgrel=2
+groups=('athena' 'athena-scanner')
+pkgdesc='Search for available domain names in an IP range.'
+arch=('any')
+url='http://code.google.com/p/dnsbf'
+license=('BSD')
+makedepends=('subversion')
+depends=('python2')
+source=("$pkgname::svn+http://dnsbf.googlecode.com/svn/trunk/")
+sha512sums=('SKIP')
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+}
+

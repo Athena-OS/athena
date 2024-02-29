@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sploitego
+pkgver=153.d9568dc
+pkgrel=4
+groups=('athena' 'athena-fuzzer' 'athena-scanner')
+pkgdesc='Maltego Penetration Testing Transforms.'
+url='https://github.com/allfro/sploitego'
+arch=('any')
+license=('GPL2')
+depends=('python2' 'nmap' 'p0f' 'amap' 'metasploit')
+makedepends=('git' 'python2-setuptools')
+optdepends=('nessus')
+source=("git+https://github.com/allfro/$pkgname.git")
+sha512sums=('SKIP'
+            '2b4af561021336eb25dafebdc12c729b48e1460f248699752755cbdd71486f89cc6cd33cb3bc5f9f81a916f13e04e1f0dddca8be635a874ab906495566b7d11d')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build(){
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --skip-build
+}
+

@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=bactl
+pkgver=15.6062356
+pkgrel=1
+groups=('athena-config')
+pkgdesc='Script to control BlackArch Linux related environments and setups.'
+arch=('any')
+url='https://github.com/BlackArch/bactl'
+license=('custom:unknown')
+depends=('bash')
+makedepends=('git')
+source=("git+https://github.com/BlackArch/$pkgname.git")
+sha512sums=('SKIP')
+install="$pkgname.install"
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 "$pkgname.service" \
+    "$pkgdir/etc/systemd/system/$pkgname.service"
+}
+

@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=photon
+pkgver=326.d4af460
+pkgrel=2
+pkgdesc='Incredibly fast crawler which extracts urls, emails, files, website accounts and much more.'
+groups=('athena' 'athena-webapp' 'athena-recon')
+arch=('any')
+url='https://github.com/s0md3v/Photon'
+license=('GPL3')
+depends=('python' 'python-requests' 'python-argparse' 'python-tld')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/s0md3v/Photon.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+
+  rm *.md
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

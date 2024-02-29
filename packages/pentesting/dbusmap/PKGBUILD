@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=dbusmap
+pkgver=16.6bb2831
+pkgrel=2
+pkgdesc='Simple utility for enumerating D-Bus endpoints, an nmap for D-Bus.'
+groups=('athena' 'athena-scanner')
+arch=('x86_64' 'aarch64')
+url='https://github.com/taviso/dbusmap'
+license=('GPL2')
+depends=('libxml2' 'procps-ng' 'glib2')
+makedepends=('git')
+source=("git+https://github.com/taviso/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 dbus-map "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

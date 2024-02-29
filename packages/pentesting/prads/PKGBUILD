@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=prads
+pkgver=1132.e631f4f
+pkgrel=4
+pkgdesc='A "Passive Real-time Asset Detection System".'
+groups=('athena' 'athena-scanner' 'athena-networking')
+arch=('x86_64' 'aarch64')
+url='http://gamelinux.github.io/prads/'
+license=('PerlArtistic')
+depends=('python-docutils' 'libpcap')
+makedepends=('git')
+source=("git+https://github.com/gamelinux/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|/usr/local|/usr|g' Makefile
+  sed -i 's|${PREFIX}/etc/prads|/etc/prads|' Makefile
+}
+
+build() {
+  cd $pkgname
+
+  make PREFIX=/
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  for i in doc/*.txt ; do
+    install -m 644 $i "$pkgdir/usr/share/doc/$pkgname"
+  done
+
+  install -Dm 644 doc/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  make DESTDIR="$pkgdir" install
+}
+

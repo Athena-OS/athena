@@ -1,0 +1,20 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=radiography
+pkgver=2
+pkgrel=5
+groups=('athena' 'athena-windows')
+pkgdesc='A forensic tool which grabs as much information as possible from a Windows system.'
+arch=('any')
+url='http://www.security-projects.com/?RadioGraPhy'
+license=('GPL')
+source=("http://sbdtools.googlecode.com/files/RadioGraPhyV$pkgver.zip")
+sha512sums=('27b2c76742e32a949ddaf35073ced00fa5fd2930')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname/"
+}
+

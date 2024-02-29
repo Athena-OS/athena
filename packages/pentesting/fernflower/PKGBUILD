@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fernflower
+pkgver=657.e9fbef8
+pkgrel=1
+pkgdesc='An analytical decompiler for Java.'
+groups=('athena' 'athena-decompiler')
+arch=('any')
+url='https://github.com/fesh0r/fernflower'
+license=('Apache')
+depends=('jdk8-openjdk')
+makedepends=('git' 'jdk8-openjdk')
+source=("git+https://github.com/fesh0r/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  ./gradlew
+  ./gradlew build
+  ./gradlew jar
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 644 build/libs/fernflower.jar \
+    "$pkgdir/usr/share/$pkgname/fernflower.jar"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec java -jar /usr/share/$pkgname/$pkgname.jar "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

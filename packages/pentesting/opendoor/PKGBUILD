@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=opendoor
+pkgver=483.5f8a253
+pkgrel=1
+pkgdesc='OWASP WEB Directory Scanner.'
+groups=('athena' 'athena-webapp' 'athena-scanner')
+arch=('any')
+url='https://github.com/stanislav-web/OpenDoor'
+license=('GPL3')
+depends=('python' 'python-urllib3' 'python-json2html' 'python-tabulate'
+         'python-argparse' 'python-ddt' 'python-mock')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/stanislav-web/OpenDoor.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md README.rst \
+    CHANGELOG.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm README.* CHANGELOG.md LICENSE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

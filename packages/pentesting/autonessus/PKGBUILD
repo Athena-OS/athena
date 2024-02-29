@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=autonessus
+pkgver=24.7933022
+pkgrel=2
+pkgdesc='This script communicates with the Nessus API in an attempt to help with automating scans.'
+groups=('athena' 'athena-automation')
+arch=('any')
+url='https://github.com/redteamsecurity/AutoNessus'
+license=('GPL3')
+depends=('python2' 'python2-requests')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/redteamsecurity/AutoNessus.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|bin/python|bin/python2|' autoNessus.py
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 autoNessus.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

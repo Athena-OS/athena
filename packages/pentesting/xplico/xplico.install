@@ -1,0 +1,39 @@
+post_install() {
+XPLICO_BASE=/opt/xplico
+DB=$XPLICO_BASE/xplico.db
+DB_OLD=$XPLICO_BASE/xplico_old.db
+DB_NEW=$XPLICO_BASE/xplico_new.db
+XI=$XPLICO_BASE/xi/app/
+XPLICO_SQLITE_BASE=$XPLICO_BASE/script/db/sqlite
+PHPINI=/etc/php/php.ini
+HTTPDCONF=/etc/httpd/conf/httpd.conf
+
+echo "Don't forget to enable sqlite extension in $PHPINI"
+echo "Don't forget to enable mod_rewrite module in $HTTPDCONF"
+echo "Default Xplico daemon port is 9876"
+
+mkdir -p $XI/tmp/cache/{persistent,models}
+chmod 777 -R $XI/tmp/cache/
+
+cd $XPLICO_SQLITE_BASE
+if [ -e "$DB" ]; then
+	echo "Preserving previous Xplico database"
+	mv $DB $DB_OLD
+	sh create_xplico_db.sh
+	mv $DB $DB_NEW
+	mv $DB_OLD $DB
+	sh create_xplico_db.sh
+	python3 upgrade_db.py
+	rm -f $DB_NEW
+	rm -rf /opt/xplico/xi/app/tmp/cache/models/*
+	rm -rf /opt/xplico/xi/app/tmp/cache/views/*
+else
+	echo "Creating new Xplico database"
+	sh create_xplico_db.sh
+fi
+
+}
+
+post_remove(){
+  echo "Don't forget to remove $XPLICO_BASE directory"
+}

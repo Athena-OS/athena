@@ -1,0 +1,72 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=theharvester
+pkgver=3554.7f3d7d56
+pkgrel=1
+groups=('athena' 'athena-recon')
+pkgdesc='Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers).'
+url='http://www.edge-security.com/theHarvester.php'
+arch=('any')
+license=('GPL2')
+depends=('python' 'python-requests' 'python-shodan' 'python-texttable'
+         'python-beautifulsoup4' 'python-plotly' 'python-pytest' 'python-yaml'
+         'python-censys' 'python-grequests' 'flake8' 'python-dnspython'
+         'python-mypy_extensions' 'python-netaddr' 'python-aiodns'
+         'python-retrying' 'python-aiohttp' 'python-aiosqlite' 'python-uvloop'
+         'python-gevent' 'python-lxml' 'python-aiomultiprocess' 'python-orjson'
+         'python-typing_extensions' 'python-zope-event' 'python-starlette'
+         'python-slowapi' 'python-certifi' 'python-pyppeteer' 'python-fastapi'
+         'python-aiofiles' 'python-ujson' 'uvicorn')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/laramies/theHarvester.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i "s|'api-keys.yaml',|'/usr/share/theharvester/api-keys.yaml',|g" \
+    theHarvester/lib/core.py
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 api-keys.yaml "$pkgdir/usr/share/$pkgname/api-keys.yaml"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md README/*.md
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" README/COPYING \
+    README/LICENSES
+
+  mv "$pkgdir/usr/bin/theHarvester" "$pkgdir/usr/bin/$pkgname"
+
+  #rm -rf README*
+
+  #cp -a * "$pkgdir/usr/share/$pkgname/"
+  #mv "$pkgdir/usr/bin/theHarvester" "$pkgdir/usr/bin/$pkgname"
+
+#  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+#cd /usr/share/$pkgname
+#exec python theHarvester.py "\$@"
+#EOF
+
+#  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

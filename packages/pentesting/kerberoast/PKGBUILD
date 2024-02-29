@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=kerberoast
+pkgver=0.2.0.r9.g82f5bb2
+pkgrel=1
+epoch=1
+pkgdesc='Kerberoast attack -pure python-.'
+arch=('any')
+groups=('athena' 'athena-exploitation' 'athena-cracker'
+        'athena-windows')
+url='https://github.com/skelsec/kerberoast'
+license=('MIT')
+depends=('python' 'python-msldap' 'python-minikerberos' 'python-unicrypto'
+         'python-asyauth')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/skelsec/$pkgname.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

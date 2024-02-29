@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-arabic-reshaper
+_pkgname=arabic_reshaper
+pkgver=3.0.0
+pkgrel=2
+pkgdesc="Reconstruct Arabic sentences to be used in applications that don't support Arabic."
+url='https://pypi.org/project/arabic-reshaper/#files'
+arch=('any')
+license=('MIT')
+depends=('python' 'python-future' 'python-setuptools')
+makedepends=('python-setuptools' 'python-future')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('b7b6d6e6e0b96935885c3c578e2b0c8119bf3e10a8650029c51ba2c68d0122c3e3c95c0634cb4e158bc9a4a88e1f82b580a93c042d95eef3f999ff9bd3280ff5')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

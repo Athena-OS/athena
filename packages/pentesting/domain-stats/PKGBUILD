@@ -1,0 +1,41 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=domain-stats
+pkgver=169.759c52c
+pkgrel=1
+pkgdesc='A web API to deliver domain information from whois and alexa.'
+groups=('athena' 'athena-recon')
+arch=('any')
+url='https://github.com/MarkBaggett/domain_stats'
+license=('custom:unknown')
+depends=('python' 'python-requests' 'python-yaml' 'python-rdap' 'python-munge'
+         'python-dateutil' 'python-publicsuffixlist')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/MarkBaggett/domain_stats.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  #mv "$pkgdir/usr/bin/domain_stats" "$pkgdir/usr/bin/$pkgname"
+  #mv "$pkgdir/usr/bin/domain_stats_db_admin" \
+  #  "$pkgdir/usr/bin/$pkgname-db-admin"
+}
+

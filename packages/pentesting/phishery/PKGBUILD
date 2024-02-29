@@ -1,0 +1,55 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=phishery
+pkgver=14.5743953
+pkgrel=2
+groups=('athena' 'athena-backdoor' 'athena-social')
+pkgdesc='An SSL Enabled Basic Auth Credential Harvester with a Word Document Template URL Injector.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/ryhanson/phishery'
+license=('custom:unknown')
+depends=('glibc')
+makedepends=('git' 'go-pie')
+source=("git+https://github.com/ryhanson/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  # package unmaintained that can't be migrated to new build process
+  # latest commit in 2016
+  mkdir -p "src/$url" && rm -rf "src/$url" && mv $pkgname "src/$url" &&
+    cd "src/$url"
+
+  GOPATH="$srcdir" go get -d -t $url
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+
+  GOPATH="$srcdir" go build -v $url
+
+  install -Dm 755 "$srcdir/phishery" "$pkgdir/usr/share/$pkgname/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" \
+    "src/$url/README.md"
+  install -Dm 644 "src/$url/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm "src/$url/README.md" "src/$url/LICENSE"
+
+  cp -a "src/$url/"* "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ./$pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

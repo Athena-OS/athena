@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-esprima
+_pkgname=esprima
+pkgver=4.0.1
+pkgrel=5
+pkgdesc='ECMAScript parsing infrastructure for multipurpose analysis in Python.'
+arch=('any')
+url='https://pypi.org/project/esprima/#files'
+license=('BSD')
+depends=('python')
+makedepends=('python-pip' 'python-build' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/esprima-$pkgver.tar.gz")
+sha512sums=('c7e21739ef75c5e8e75ecbe8b8f63ca26e9fbf58fc5753c86913c4ee65a8be9b07b2192c1db035bc3ed375c6f7a6b3fd9ae13a53ec38dcf542e65b40b2ec5b2c')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python -m build --wheel --outdir="$startdir/dist"
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $_pkgname
+}
+

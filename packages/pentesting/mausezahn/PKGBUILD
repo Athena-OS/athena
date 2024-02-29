@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mausezahn
+pkgver=0.40
+pkgrel=4
+pkgdesc='A free fast traffic generator written in C which allows you to send nearly every possible and impossible packet.'
+arch=('x86_64' 'aarch64')
+groups=('athena' 'athena-dos' 'athena-networking')
+url='http://www.perihel.at/sec/mz/'
+license=('GPL')
+depends=('cmake' 'libnet' 'libpcap' 'libcli')
+#source=("http://www.perihel.at/sec/mz/mz-$pkgver.tar.gz")
+source=("git+https://github.com/uweber/$pkgname.git")
+sha512sums=('SKIP')
+
+build() {
+  cd $pkgname
+
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+
+  make
+}
+
+package() {
+  cd "$pkgname/src"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/mz"
+
+  cp -aR mz "$pkgdir/usr/share/mz/"
+
+  ln -s /usr/share/mz/mz "$pkgdir/usr/bin/"
+}
+

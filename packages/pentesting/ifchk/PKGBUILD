@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ifchk
+pkgver=1.1.2
+pkgrel=1
+groups=('athena' 'athena-defensive' 'athena-networking')
+pkgdesc='A network interface promiscuous mode detection tool.'
+arch=('x86_64' 'aarch64')
+url='http://www.noorg.org/ifchk/'
+license=('GPL2')
+depends=('sysfsutils')
+source=("http://www.noorg.org/ifchk/dist/$pkgname-$pkgver.tar.gz")
+sha512sums=('655ead8744fd0dc5b166d892651e2b65a5b5f50f4d0bd6bf2b4251fa12d3dfc409ded1f7e99f56103a4f7564ca4c8fc7937c11c1e401cb3d8f4d231167e62d45')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 "$pkgname.conf" "$pkgdir/usr/share/$pkgname/ifchk.conf"
+  install -Dm 644 "docs/$pkgname.1" "$pkgdir/usr/share/man/man1/ifchk.1"
+  install -Dm 644 "docs/$pkgname.conf.5" \
+    "$pkgdir/usr/share/man/man5/ifchk.conf.5"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" CHANGES MANIFEST \
+    README_FIRST papers/*
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+

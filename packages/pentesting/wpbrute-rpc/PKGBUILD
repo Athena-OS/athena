@@ -1,0 +1,55 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wpbrute-rpc
+pkgver=3.e7d8145
+pkgrel=15
+groups=('athena' 'athena-cracker' 'athena-webapp')
+pkgdesc='Tool for amplified bruteforce attacks on wordpress based website via xmlrcp API.'
+arch=('any')
+url='https://github.com/zendoctor/wpbrute-rpc'
+license=('custom:unknown')
+depends=('ruby' 'ruby-bundler' 'libxslt')
+makedepends=('git')
+source=("git+https://github.com/zendoctor/$pkgname.git")
+install="$pkgname.install"
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  if [ -f GemFile ]
+  then
+    mv GemFile Gemfile
+  fi
+
+  sed -i '1i\#!/usr/bin/env ruby' "$pkgname.rb"
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  cp --no-preserve=ownership -a * "$pkgdir/usr/share/$pkgname/"
+
+  rm README.md
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bundle exec $pkgname.rb "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

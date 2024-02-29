@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-cliff
+_pkgname=cliff
+pkgver=2.18.0
+pkgrel=2
+pkgdesc='Command Line Interface Formulation Framework.'
+url='https://pypi.org/project/cliff/#files'
+arch=('any')
+license=('Apache')
+depends=('python2' 'python2-pbr' 'python2-cmd2' 'python2-yaml' 'python2-six'
+         'python2-unicodecsv' 'python2-stevedore' 'python2-pyparsing')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('0748f8f392b11ceaa63f516860f6a339a9bc1233134562b13384bcbaff0b9e84e82a1544658ea3bf9c0fde973c563bfa1e92cc418a2fef0bfdced3f88d93058f')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

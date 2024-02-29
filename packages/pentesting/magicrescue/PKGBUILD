@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=magicrescue
+pkgver=1.1.9
+pkgrel=4
+groups=('athena' 'athena-forensic')
+pkgdesc='Find and recover deleted files on block devices.'
+arch=('x86_64' 'aarch64')
+url='http://freshmeat.net/projects/magicrescue/'
+license=('GPL')
+source=("http://www.itu.dk/people/jobr/$pkgname/release/$pkgname-$pkgver.tar.gz")
+sha512sums=('d428f7cce8bc00ea4ae3212da5d074fb5bcc1dfe')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i 's|$(PREFIX)/man/man1|$(PREFIX)/share/man/man1|' Makefile.in
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+
+  make PREFIX="$pkgdir/usr"
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr"
+
+  make PREFIX="$pkgdir/usr" install
+}
+

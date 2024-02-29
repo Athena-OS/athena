@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-libscca-python
+pkgname=('python2-libscca-python' 'python-libscca-python')
+_pkgname=libscca-python
+pkgver=20230716
+pkgrel=1
+pkgdesc='Library and tools to access the Windows Prefetch File (SCCA) format.'
+arch=('x86_64' 'aarch64')
+url='https://pypi.org/project/libscca-python/#files'
+license=('LGPLv3+')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('7b2d16ddd6cd2d264023c7e4be3a239d0eae0969fff08fff605e6ec3732c8299baa2525f2a26fc0f5732e40484b6bab61b283eac0cdba1a9581f9e71d676bda7')
+
+package_python2-libscca-python() {
+  depends=('python2' 'python2-pyaml')
+
+  cd "libscca-$pkgver"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}
+
+package_python-libscca-python() {
+  depends=('python' 'python-pyaml')
+
+  cd "libscca-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}
+

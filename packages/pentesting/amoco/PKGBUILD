@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=amoco
+pkgver=v2.4.1.r307.ged579ea
+pkgrel=2
+epoch=1
+pkgdesc='Yet another tool for analysing binaries.'
+groups=('athena' 'athena-binary' 'athena-reversing')
+arch=('any')
+url='https://github.com/bdcht/amoco'
+license=('GPL2')
+depends=('python' 'python-pyqt5' 'python-grandalf' 'pygoocanvas' 'python-click'
+         'python-crysp' 'pygtk' 'python-pytest' 'python-traitlets' 'pyside2'
+         'python-pyparsing' 'pyside2' 'python-blessed' 'python-tqdm'
+         'python-z3-solver')
+makedepends=('git' 'python-setuptools' 'python-pip')
+source=("git+https://github.com/bdcht/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|crysp>=1.2|crysp|g' setup.py
+  sed -i 's|grandalf>=0.7|grandalf|g' setup.py
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst
+  cp -a doc/* "$pkgdir/usr/share/doc/$pkgname/"
+}
+

@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wifijammer
+pkgver=100.be05dab
+pkgrel=1
+groups=('athena' 'athena-wireless')
+pkgdesc='A python script to continuously jam all wifi clients within range.'
+arch=('any')
+url='https://github.com/DanMcInerney/wifijammer'
+license=('GPL2')
+depends=('python2' 'python2-scapy')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/DanMcInerney/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  #install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

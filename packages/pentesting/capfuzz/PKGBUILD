@@ -1,0 +1,34 @@
+# Credits BlackArch ( http://blackarch.org ).
+# See COPYING for license details.
+
+pkgname=capfuzz
+pkgver=34.97ac312
+pkgrel=6
+groups=('athena' 'athena-sniffer' 'athena-fuzzer')
+pkgdesc='Capture, fuzz and intercept web traffic.'
+arch=('any')
+url='https://github.com/MobSF/CapFuzz'
+license=('GPL3')
+depends=('python' 'python-tornado' 'python-requests' 'mitmproxy')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/MobSF/CapFuzz.git")
+sha512sums=('SKIP')
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's/mitmproxy==3.0.2/mitmproxy/g' setup.py
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

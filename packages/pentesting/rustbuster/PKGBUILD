@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=rustbuster
+pkgver=302.4a243d4
+pkgrel=2
+pkgdesc='DirBuster for Rust.'
+arch=('x86_64')
+groups=('athena' 'athena-webapp' 'athena-scanner')
+url='https://github.com/phra/rustbuster'
+license=('GPL3')
+makedepends=('git' 'cargo')
+source=("git+https://github.com/phra/$pkgname.git")
+options=(!strip)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  cargo build --release
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cp -a examples benches "$pkgdir/usr/share/$pkgname/"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

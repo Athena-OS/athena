@@ -1,9 +1,0 @@
-post_install() {
-    echo """
-    Please run 'empire-setup' AS ROOT before you run empire for the first time.
-    """
-}
-
-post_upgrade() {
-   post_install
-}

@@ -1,0 +1,26 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ssdp-scanner
+pkgver=1.0
+pkgrel=7
+groups=('athena' 'athena-scanner' 'athena-networking')
+pkgdesc='SSDP amplification scanner written in Python. Makes use of Scapy.'
+arch=('any')
+url='http://packetstormsecurity.com/files/127994/SSDP-Amplification-Scanner.html'
+license=('custom:unknown')
+depends=('python2' 'python2-scapy')
+#source=('https://dl.packetstormsecurity.net/1408-exploits/ssdp-amplifier.txt'
+source=('ssdp-amplifier.txt'
+        'ssdp-amplifier-noptrix.patch')
+sha512sums=('1335ffbb4ca6855c4908bbe181d34fa253086d0529da994a27bd5554d31dec5129d10ce57d8d434116751549c2626e9f64879b032ade6a7192d6c89032b50271'
+            '4d843b9a4a09cfb78525feaa0315edf9a147d518ec96a4544fa1639bbae9f5775e9266e66b968dce0be9368678edc96453776dc91b10041e9fefc1e0c381cf6a')
+
+#prepare() {
+#  patch -p0 < ssdp-amplifier-noptrix.patch
+#}
+
+package() {
+  install -Dm 755 ssdp-amplifier.txt "$pkgdir/usr/bin/$pkgname"
+}
+

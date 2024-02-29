@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-google-resumable-media
+_pkgname=google-resumable-media
+pkgver=2.6.0
+pkgrel=1
+pkgdesc='Utilities for Google Media Downloads and Resumable Uploads.'
+arch=('any')
+url='https://pypi.org/project/google-resumable-media/#files'
+license=('Apache')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('aa104523401ea3f33b1623c16adef2789a65619db0ad271da182f37c743bf64d2fe99d1a90731e7b40a5634e8006c3dee67915553d9eb1b79cb83636fe84c920')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+}
+

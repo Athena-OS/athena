@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ciphertest
+pkgver=22.e33eb4a
+pkgrel=1
+groups=('athena' 'athena-crypto')
+pkgdesc='A better SSL cipher checker using gnutls.'
+arch=('any')
+url='https://github.com/OpenSecurityResearch/ciphertest'
+license=('custom:unknown')
+makedepends=('git')
+source=("git+https://github.com/OpenSecurityResearch/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list HEAD --count).$(git describe --always | sed 's|-|.|g')
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin/"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  cp -P --no-preserve=ownership cipherTest.sh "$pkgdir/usr/share/$pkgname"
+  cp -P --no-preserve=ownership README "$pkgdir/usr/share/doc/$pkgname"
+
+  ln -s "/usr/share/$pkgname/cipherTest.sh" "$pkgdir/usr/bin/$pkgname"
+}
+

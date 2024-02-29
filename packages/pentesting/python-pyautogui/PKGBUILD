@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-pyautogui
+_pkgname=PyAutoGUI
+pkgver=0.9.54
+pkgrel=1
+pkgdesc='Cross-platform module for GUI automation for human beings.'
+arch=('any')
+url='https://pypi.org/project/PyAutoGUI/#files'
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/PyAutoGUI-$pkgver.tar.gz")
+sha512sums=('9bdd297469ca52a7464d563f88773b4aeda86fdda0032a5894556e73ce6adc48fd58e1fc1337e23b8ea460735a91297f48123bdc30807bc167405608d72521e7')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+

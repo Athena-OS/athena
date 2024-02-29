@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=bytecode-viewer
+pkgver=2.11.2
+pkgrel=1
+epoch=1
+groups=('athena' 'athena-binary' 'athena-reversing')
+pkgdesc='A Java 8/Android APK Reverse Engineering Suite.'
+arch=('any')
+url='https://github.com/Konloch/bytecode-viewer'
+license=('custom:unknown')
+depends=('java-environment')
+makedepends=('git')
+source=("https://github.com/Konloch/bytecode-viewer/releases/download/v$pkgver/Bytecode-Viewer-$pkgver.jar")
+noextract=("Bytecode-Viewer-$pkgver.jar")
+sha512sums=('147467bd24996a0c6089cac74b817b6a0879a410c26d97b575275a7980cbaaac980432a1dc636721951d316d48b36440b7cde112e996c527c7996aea5889d44a')
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 644 "Bytecode-Viewer-$pkgver.jar" \
+    "$pkgdir/usr/share/$pkgname/Bytecode-Viewer-$pkgver.jar"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec java -jar "/usr/share/$pkgname/Bytecode-Viewer-$pkgver.jar" "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

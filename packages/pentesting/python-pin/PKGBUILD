@@ -1,0 +1,54 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-pin
+pkgver=15.a5128a0
+pkgrel=5
+groups=('athena' 'athena-exploitation' 'athena-binary'
+        'athena-code-audit' 'athena-debugger' 'athena-disassembler'
+        'athena-malware')
+pkgdesc='Python bindings for pin.'
+url='https://github.com/blankwall/Python_Pin'
+license=('custom:unknown')
+arch=('x86_64' 'aarch64')
+depends=('python' 'gcc')
+makedepends=('git')
+source=('http://software.intel.com/sites/landingpage/pintool/downloads/pin-2.14-67254-gcc.4.4.7-linux.tar.gz'
+        'git+https://github.com/blankwall/Python_Pin')
+sha512sums=('2fa0fb7e5384edf3935c01c6635668c46a49d633ce1922f20d106e746d2ddc28f2ab76e9d7e63fb01fb088580d1dc4c75fdc710becca57f0ab93a7413fc66cb6'
+            'SKIP')
+
+pkgver() {
+  cd Python_Pin
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  mv Python_Pin pin-2.14-67254-gcc.4.4.7-linux/source/tools/
+}
+
+build() {
+  cd pin-2.14-67254-gcc.4.4.7-linux/source/tools
+
+  make
+
+  cd Python_Pin
+
+  make
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share"
+
+  mv pin-2.14-67254-gcc.4.4.7-linux "$pkgdir/usr/share/python_pin"
+
+  chmod 755 "$pkgdir/usr/share/python_pin/ia32" \
+    "$pkgdir/usr/share/python_pin/ia32/bin/pinbin" \
+    "$pkgdir/usr/share/python_pin/intel64" \
+    "$pkgdir/usr/share/python_pin/intel64/bin/pinbin"
+
+  ln -s /usr/share/python_pin/pin "$pkgdir/usr/bin/"
+}
+

@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=albatar
+pkgver=34.4e63f22
+pkgrel=1
+pkgdesc='A SQLi exploitation framework in Python.'
+groups=('athena' 'athena-webapp' 'athena-exploitation')
+arch=('any')
+url='https://github.com/lanjelot/albatar'
+license=('custom:unknown')
+depends=('python2' 'python2-pycurl')
+makedepends=('git')
+source=("git+https://github.com/lanjelot/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+	cd $pkgname
+
+  install -Dm 644 -t "$pkgdir/usr/share/$pkgname/" *.py
+}
+

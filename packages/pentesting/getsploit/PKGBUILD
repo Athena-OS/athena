@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=getsploit
+pkgver=37.bcab2ee
+pkgrel=1
+pkgdesc='Command line utility for searching and downloading exploits.'
+groups=('athena' 'athena-exploitation' 'athena-misc')
+arch=('any')
+url='https://github.com/vulnersCom/getsploit'
+license=('LGPL3')
+depends=('python' 'python-six' 'python-texttable' 'python-clint'
+         'python-vulners' 'python-appdirs')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/vulnersCom/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

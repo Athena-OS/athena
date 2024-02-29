@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pompem
+pkgver=141.3ebe768
+pkgrel=4
+groups=('athena' 'athena-exploitation')
+pkgdesc='A python exploit tool finder.'
+arch=('any')
+url='https://github.com/rfunix/Pompem'
+license=('custom')
+depends=('python' 'python-requests')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/rfunix/Pompem.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 README.markdown \
+    "$pkgdir/usr/share/licenses/$pkgname/README.md"
+
+  rm README.markdown
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

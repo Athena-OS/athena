@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=syringe
+pkgver=12.79a703e
+pkgrel=1
+groups=('athena' 'athena-backdoor' 'athena-binary' 'athena-windows')
+pkgdesc='A General Purpose DLL & Code Injection Utility.'
+arch=('any')
+url='https://github.com/securestate/syringe'
+license=('GPL3')
+depends=('')
+makedepends=('git')
+source=("git+https://github.com/securestate/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+  cp -a * "$pkgdir/usr/share/windows/$pkgname/"
+}
+

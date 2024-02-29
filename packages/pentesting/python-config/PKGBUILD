@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-config
+pkgname=('python2-config' 'python-config')
+_pkgname=config
+pkgver=0.5.1
+pkgrel=3
+pkgdesc='A hierarchical, easy-to-use, powerful configuration module for Python.'
+arch=('any')
+license=('MIT')
+url='https://pypi.python.org/pypi/config/'
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
+sha512sums=('996e56023a7ab15a234a70215cdcd6bf04c910de0533dba649df933b2f780398d9113404f2f1a9882f3adb828be6d09fd6927e2ce60463ceff8072534e42bb5e')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-config() {
+  depends=('python2')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+
+package_python-config() {
+  depends=('python')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+

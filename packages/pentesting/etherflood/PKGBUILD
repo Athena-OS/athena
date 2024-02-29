@@ -1,0 +1,20 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=etherflood
+pkgver=1.1
+pkgrel=4
+pkgdesc='Floods a switched network with Ethernet frames with random hardware addresses.'
+url='http://ntsecurity.nu/toolbox/etherflood/'
+groups=('athena' 'athena-windows' 'athena-dos' 'athena-networking')
+license=('custom:unknown')
+arch=('any')
+source=("$pkgname.zip")
+sha512sums=('392485891a8d9fa7a514dcb71b712bf863e33f2e')
+
+package() {
+  cd $pkgname
+
+  install -Dm 644 -t "$pkgdir/usr/share/windows/$pkgname" *
+}
+

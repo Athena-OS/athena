@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ridenum
+pkgver=75.9e3b89b
+pkgrel=4
+groups=('athena' 'athena-cracker')
+pkgdesc='A null session RID cycle attack for brute forcing domain controllers.'
+url='https://github.com/trustedsec/ridenum'
+arch=('any')
+license=('custom')
+depends=('python' 'python-pexpect')
+makedepends=('git')
+source=("git+https://github.com/trustedsec/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.txt
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

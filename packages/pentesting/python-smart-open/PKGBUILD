@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-smart-open
+pkgname=('python2-smart-open' 'python-smart-open')
+_pkgname=smart_open
+pkgver=6.4.0
+pkgrel=1
+pkgdesc='Utils for streaming large files (S3, HDFS, gzip, bz2...).'
+arch=('any')
+url='https://pypi.org/project/smart-open/#files'
+license=('MIT')
+makedepends=('python2-setuptools' 'python-setuptools')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/smart_open-$pkgver.tar.gz")
+sha512sums=('c7e92bd998c717cc4c2f52fb651733e06ed7ea6a67f95114503d46b11eac362fc4fce1f6373f7bbef5c9090480a1db8795a8dcfefee9ceb42fecdae5b64b557d')
+
+prepare() {
+  cp -a "$_pkgname-$pkgver"{,-2}
+}
+
+build() {
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package_python2-smart-open() {
+  depends=('python2' 'python2-boto' 'python2-requests' 'python2-boto3')
+
+  cd "$_pkgname-$pkgver-2"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+
+package_python-smart-open() {
+  depends=('python' 'python-boto' 'python-requests' 'python-boto3')
+
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

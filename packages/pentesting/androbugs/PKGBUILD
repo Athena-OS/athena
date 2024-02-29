@@ -1,0 +1,45 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=androbugs
+pkgver=1.7fd3a2c
+pkgrel=2
+pkgdesc='An efficient Android vulnerability scanner that helps developers or hackers find potential security vulnerabilities in Android applications.'
+groups=('athena' 'athena-mobile')
+arch=('any')
+url='https://github.com/AndroBugs/AndroBugs_Framework'
+license=('GPL3')
+depends=('python2' 'python2-pyside' 'python2-elfesteem' 'python2-networkx'
+         'python2-pymongo' 'radare2' 'python2-magic')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/AndroBugs/AndroBugs_Framework.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md NOTICE
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  rm README.md LICENSE.md NOTICE
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

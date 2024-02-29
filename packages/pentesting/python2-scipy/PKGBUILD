@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-scipy
+_pkgname=scipy
+pkgver=1.2.3
+pkgrel=2
+pkgdesc='Scientific Library for Python.'
+url='https://pypi.org/project/scipy/#files'
+arch=('x86_64' 'aarch64')
+license=('BSD')
+depends=('python2' 'python2-numpy')
+makedepends=('python2-setuptools' 'gcc-fortran')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('d7739fa2f25689fc14ddf09477207c990b39b593a85f5c74687df1ffe097f6eee1bb2123aaa286189309f6d3b25cdd7757053d8b1008d1d6b3367a8e3a0a53b1')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  export LDFLAGS='-shared'
+  python2 setup.py config_fc --fcompiler=gnu95 build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py config_fc --fcompiler=gnu95 install --root="$pkgdir" \
+    --prefix=/usr -O1 --skip-build
+}
+

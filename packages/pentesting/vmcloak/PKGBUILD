@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=vmcloak
+pkgver=912.13853ff
+pkgrel=2
+epoch=2
+pkgdesc='Automated Virtual Machine Generation and Cloaking for Cuckoo Sandbox.'
+groups=('athena-malware')
+url='https://github.com/jbremer/vmcloak'
+arch=('any')
+license=('GPL3')
+depends=('python2' 'python2-sphinx' 'python-setuptools' 'python2-lockfile'
+         'python2-requests' 'python2-alembic' 'python2-sqlalchemy'
+         'python2-yaml' 'python2-pytest' 'python2-pefile' 'python2-jinja'
+         'python2-pyaml' 'python2-click' 'virtualbox' 'lshw' 'dmidecode'
+         'cdrtools')
+makedepends=('git' 'python2-setuptools')
+source=("$pkgname::git+https://github.com/jbremer/$pkgname.git"
+        'setup.py.patch')
+sha512sums=('SKIP'
+            'ac4bf47e6ddf166add9bc55e05328cab32700b7a0c99ffc67986144c13638a13ccb7be9c26912d1a18bd2d3715ab6d52e065372618254c9edc592c47fff8e32f')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  patch -p1 < setup.py.patch
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  install -Dm 644 docs/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

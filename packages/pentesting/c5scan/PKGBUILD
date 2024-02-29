@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=c5scan
+pkgver=30.be8845c
+pkgrel=2
+pkgdesc='Vulnerability scanner and information gatherer for the Concrete5 CMS.'
+groups=('athena' 'athena-webapp' 'athena-scanner' 'athena-recon')
+arch=('any')
+url='https://github.com/auraltension/c5scan'
+license=('GPL2')
+depends=('python2' 'python2-argparse' 'python2-lxml' 'python2-requests'
+         'python2-httplib2')
+makedepends=('git')
+source=("git+https://github.com/auraltension/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i "s|bin/env python|bin/env python2|" "$pkgname.py"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

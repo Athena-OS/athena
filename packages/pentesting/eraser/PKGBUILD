@@ -1,0 +1,20 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=eraser
+pkgver=6.2.0.2992
+pkgrel=1
+pkgdesc='Windows tool which allows you to completely remove sensitive data from your hard drive by overwriting it several times with carefully selected patterns.'
+url='https://eraser.heidi.ie/download/'
+groups=('athena' 'athena-windows' 'athena-defensive')
+license=('custom:unknown')
+arch=('any')
+source=("$pkgname-$pkgver::https://sourceforge.net/projects/eraser/files/Eraser%206/6.2/Eraser%20$pkgver.exe/download")
+sha512sums=('85426624fc16dcf00b8c66f48562554818b2764e621cc76c7d6ca8874ea0954679c87961dbda7197c80545efa24e01682b95ddc57c08a5bd0f291302edaf6b3f')
+
+package() {
+  rm "$pkgname-$pkgver"
+
+  install -Dm 644 -t "$pkgdir/usr/share/windows/eraser/" *
+}
+

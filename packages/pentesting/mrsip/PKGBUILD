@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mrsip
+pkgver=110.bdd98ad
+pkgrel=1
+pkgdesc='SIP-Based Audit and Attack Tool.'
+groups=('athena' 'athena-voip')
+arch=('any')
+url='https://github.com/meliht/mr.sip'
+license=('GPL3')
+depends=('python2' 'python2-scapy' 'toilet' 'python2-netifaces'
+         'python2-pyfiglet' 'python2-ipaddress')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/meliht/mr.sip.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md To-Do.md \
+    Documentation.pdf
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm *.md LICENSE Documentation.pdf
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 mr.sip.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,82 @@
+From: Sophie Brun <sophie@offensive-security.com>
+Date: Mon, 13 Jan 2020 15:29:00 +0100
+Subject: disable update-button
+
+
+Forwarded: not-needed
+---
+ Fern-Wifi-Cracker/core/fern.py       |  8 ++++----
+ Fern-Wifi-Cracker/gui/main_window.py | 32 ++++++++++++++++----------------
+ 2 files changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/Fern-Wifi-Cracker/core/fern.py b/Fern-Wifi-Cracker/core/fern.py
+index 3f103c3..4f9284e 100644
+--- a/Fern-Wifi-Cracker/core/fern.py
++++ b/Fern-Wifi-Cracker/core/fern.py
+@@ -95,10 +95,10 @@ class mainwindow(QtWidgets.QDialog, Ui_Dialog):
+         self.wpa_button_false_signal.connect(self.wpa_button_false)
+ 
+         self.database_button.clicked.connect(self.database_window)
+-        self.update_button.clicked.connect(self.update_fern)
++#        self.update_button.clicked.connect(self.update_fern)
+         self.finished_downloading_signal.connect(self.finished_downloading_files)
+         self.restart_application_signal.connect(self.restart_application)
+-        self.failed_update_signal.connect(self.update_fail)
++#        self.failed_update_signal.connect(self.update_fail)
+         self.already_latest_update_signal.connect(self.latest_update)
+         self.previous_message_signal.connect(self.latest_svn)
+         self.new_update_available_signal.connect(self.new_update_avialable)
+@@ -203,8 +203,8 @@ class mainwindow(QtWidgets.QDialog, Ui_Dialog):
+         self.update_label.setText('<font color=green>Latest update is already installed</font>')
+ 
+     def new_update_avialable(self):
+-        self.update_label.setText('<font color=green>New Update is Available</font>')
+-        self.update_button.setFocus()
++        self.update_label.setText('<font color=green>No New Update is Available</font>')
++#        self.update_button.setFocus()
+ 
+     def update_error(self):
+         global svn_access
+diff --git a/Fern-Wifi-Cracker/gui/main_window.py b/Fern-Wifi-Cracker/gui/main_window.py
+index 0fd770d..0e30e94 100644
+--- a/Fern-Wifi-Cracker/gui/main_window.py
++++ b/Fern-Wifi-Cracker/gui/main_window.py
+@@ -82,22 +82,22 @@ class Ui_Dialog(object):
+         self.horizontalLayout.addItem(spacerItem2)
+         self.verticalLayout_22 = QtWidgets.QVBoxLayout()
+         self.verticalLayout_22.setObjectName(_fromUtf8("verticalLayout_22"))
+-        self.update_button = QtWidgets.QPushButton(Dialog)
+-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
+-        sizePolicy.setHorizontalStretch(0)
+-        sizePolicy.setVerticalStretch(0)
+-        sizePolicy.setHeightForWidth(self.update_button.sizePolicy().hasHeightForWidth())
+-        self.update_button.setSizePolicy(sizePolicy)
+-        font = QtGui.QFont()
+-        font.setPointSize(font_setting)
+-        self.update_button.setFont(font)
+-        self.update_button.setText(_fromUtf8(""))
+-        icon1 = QtGui.QIcon()
+-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("%s/resources/1295008956_system-software-update.png"%(os.getcwd()))), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+-        self.update_button.setIcon(icon1)
+-        self.update_button.setIconSize(QtCore.QSize(35, 34))
+-        self.update_button.setObjectName(_fromUtf8("update_button"))
+-        self.verticalLayout_22.addWidget(self.update_button)
++#        self.update_button = QtWidgets.QPushButton(Dialog)
++#        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
++#        sizePolicy.setHorizontalStretch(0)
++#        sizePolicy.setVerticalStretch(0)
++#        sizePolicy.setHeightForWidth(self.update_button.sizePolicy().hasHeightForWidth())
++#        self.update_button.setSizePolicy(sizePolicy)
++#        font = QtGui.QFont()
++#        font.setPointSize(font_setting)
++#        self.update_button.setFont(font)
++#        self.update_button.setText(_fromUtf8(""))
++#        icon1 = QtGui.QIcon()
++#        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("%s/resources/1295008956_system-software-update.png"%(os.getcwd()))), QtGui.QIcon.Normal, QtGui.QIcon.Off)
++#        self.update_button.setIcon(icon1)
++#        self.update_button.setIconSize(QtCore.QSize(35, 34))
++#        self.update_button.setObjectName(_fromUtf8("update_button"))
++#        self.verticalLayout_22.addWidget(self.update_button)
+         spacerItem3 = QtWidgets.QSpacerItem(13, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+         self.verticalLayout_22.addItem(spacerItem3)
+         self.horizontalLayout.addLayout(self.verticalLayout_22)

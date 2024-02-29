@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=intrace
+pkgver=1.5
+pkgrel=4
+groups=('athena' 'athena-recon')
+pkgdesc='Traceroute-like application piggybacking on existing TCP connections.'
+url='http://intrace.googlecode.com'
+arch=('x86_64' 'aarch64')
+license=('GPL2' 'GPL3')
+source=("http://intrace.googlecode.com/files/$pkgname-$pkgver.tgz"
+        'make.patch')
+sha512sums=('bfcd412051c7c981fee2ea4453c796a17ce581de'
+            '83a4c69d3b2ebba963ba9509f0235e6856cb789c')
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch < "$srcdir/make.patch"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+
+  install -Dm 755 $pkgname "$pkgdir/usr/share/$pkgname/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" ChangeLog README
+
+  ln -sf "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+}
+

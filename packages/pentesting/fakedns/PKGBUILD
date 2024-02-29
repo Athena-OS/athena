@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fakedns
+pkgver=118.39609da
+pkgrel=2
+groups=('athena' 'athena-proxy' 'athena-spoof')
+pkgdesc='A regular-expression based python MITM DNS server with correct DNS request passthrough and "Not Found" responses.'
+arch=('any')
+url='https://github.com/Crypt0s/FakeDns'
+license=('GPL3')
+depends=('python')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/Crypt0s/FakeDns.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin/"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  cp -a dns.conf.example fakedns.py "$pkgdir/usr/share/$pkgname/"
+
+  chmod +x "$pkgdir/usr/share/$pkgname/fakedns.py"
+
+  ln -s "/usr/share/fakedns/fakedns.py" "$pkgdir/usr/bin/$pkgname"
+}
+

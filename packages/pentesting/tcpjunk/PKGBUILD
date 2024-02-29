@@ -1,0 +1,36 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=tcpjunk
+pkgver=2.9.03
+pkgrel=6
+pkgdesc='A general tcp protocols testing and hacking utility.'
+groups=('athena' 'athena-exploitation' 'athena-fuzzer')
+arch=('x86_64' 'aarch64')
+url='http://code.google.com/p/tcpjunk'
+license=('GPL2')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz")
+depends=('gtksourceview2')
+makedepends=('openssl-1.0')
+sha512sums=('25005242b55d1741686fd7368e2722760a137af54374b8d8e756d11af7d27a573450a38e619b4d4b68f153265abad972d2add9faa9eba4976da7212130164c35')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr --docdir=/usr/share/doc
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/share/doc"
+
+  make DESTDIR="$pkgdir" install
+
+  mv "$pkgdir/usr/doc/$pkgname" "$pkgdir/usr/share/doc/$pkgname"
+
+  rm -rf "$pkgdir/usr/doc"
+}
+

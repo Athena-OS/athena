@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+
+pkgname=python-cssutils
+_pkgname=cssutils
+pkgver=2.7.1
+pkgrel=1
+pkgdesc='A CSS Cascading Style Sheets library for Python.'
+arch=('any')
+url='http://cthedot.de/cssutils/'
+license=('LGPL3')
+depends=('python')
+makedepends=('python-pip' 'python-build' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('719b1b0866dd51e9b464659d861caa5eadfb1821b902824064fbf7843b6a2f5cfceb33f1deb2b7aa5dfc3306c94e8e86441aa014ec0c5bf133d5b1c13463b2db')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python -m build --wheel --outdir="$startdir/dist"
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $_pkgname
+}
+

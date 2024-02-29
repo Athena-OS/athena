@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-egg-timer
+_pkgname=egg_timer
+pkgver=1.2.0
+pkgrel=1
+pkgdesc='A simpler way to handle timeouts in Python.'
+arch=('any')
+url='https://pypi.org/project/egg-timer/#files'
+license=('GPL3')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('f84bbcacf8027c72018b6655e9dad8af42306ee9a89f86114b30b140786ae76632388f853649f3bbef841dbf6113ab3e2be66d122d1c5112d7e6124b9f4cca67')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

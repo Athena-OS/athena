@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=l0l
+pkgver=322.1319ea7
+pkgrel=1
+groups=('athena' 'athena-exploitation')
+arch=('x86_64' 'aarch64')
+pkgdesc='The Exploit Development Kit.'
+url="https://github.com/roissy/l0l"
+license=('MIT')
+depends=('python2')
+makedepends=('git')
+source=("git+https://github.com/roissy/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  grep -iRl 'python' . | xargs sed -i 's|python$|python2|g'
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

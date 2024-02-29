@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=inurlbr
+pkgver=34.dbf9773
+pkgrel=1
+groups=('athena' 'athena-scanner' 'athena-webapp'
+        'athena-automation')
+pkgdesc='Advanced search in the search engines - Inurl scanner, dorker, exploiter.'
+arch=('any')
+url='https://code.google.com/p/inurlbr/'
+license=('custom:unknown')
+depends=('php')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/googleinurl/SCANNER-INURLBR.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.php" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=xmlrpc-bruteforcer
+pkgver=35.6023237
+pkgrel=4
+pkgdesc='An XMLRPC brute forcer targeting Wordpress written in Python 3.'
+arch=('any')
+groups=('athena' 'athena-webapp')
+url='https://github.com/kavishgr/xmlrpc-bruteforcer'
+license=('custom:unknown')
+depends=('python' 'python-requests' 'python-termcolor')
+makedepends=('git')
+source=("git+https://github.com/kavishgr/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 xmlrpcbruteforce.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+}
+

@@ -1,0 +1,22 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fuzztalk
+pkgver=1.0.0.0
+pkgrel=5
+groups=('athena' 'athena-windows' 'athena-fuzzer')
+pkgdesc='An XML driven fuzz testing framework that emphasizes easy extensibility and reusability.'
+url='https://code.google.com/p/fuzztalk'
+arch=('any')
+license=('custom:unknown')
+source=("https://fuzztalk.googlecode.com/files/FuzzTalk$pkgver.zip")
+sha512sums=('49d353608347d65718739fc54dbb22aac2aea3a1')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
+
+  rm "FuzzTalk$pkgver.zip"
+
+  cp -a * "$pkgdir/usr/share/windows/$pkgname"
+}
+

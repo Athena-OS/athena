@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=onionscan
+pkgver=130.da42865
+pkgrel=3
+groups=('athena' 'athena-scanner' 'athena-defensive')
+pkgdesc='Scan Onion Services for Security Issues.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/s-rah/onionscan'
+license=('MIT')
+depends=('libexif')
+makedepends=('git' 'go')
+source=("git+https://github.com/s-rah/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  GOPATH="$srcdir" go mod init go.mod
+  GOPATH="$srcdir" go mod tidy
+  GOPATH="$srcdir" go mod download
+  GOPATH="$srcdir" go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-s -w" \
+    -o $pkgname-bin .
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname-bin "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
+

@@ -1,0 +1,40 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=saleae-logic
+pkgver=2.3.47
+pkgrel=1
+pkgdesc='Debug happy.'
+arch=('x86_64')
+groups=('athena' 'athena-debugger')
+url='https://www.saleae.com/downloads'
+license=('custom:unknown')
+depends=('libxss')
+source=("https://downloads.saleae.com/logic2/Logic-$pkgver-master.AppImage")
+sha512sums=('d9cea9b3b6e85a20184a69d30a53ae1865ee300557106c1f0f5dcc4b5d482001e13322b18cc4cba005911a07337200a9ad5dc3df88900bd8418198c9f146363d')
+
+prepare() {
+  chmod +x "Logic-$pkgver-master.AppImage"
+
+  ./"Logic-$pkgver-master.AppImage" --appimage-extract
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -R --no-preserve=ownership squashfs-root/* "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+if [[ \$EUID -ne 0  ]]; then
+  echo "$pkgname requires root privileges to run."
+  exit 1
+fi
+cd /usr/share/$pkgname
+exec ./AppRun "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

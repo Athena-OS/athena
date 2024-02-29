@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=libevtx
+pkgname=('libevtx' 'python2-libevtx-python' 'python-libevtx-python')
+pkgver=20181227
+pkgrel=8
+pkgdesc='Library and tools to access the Windows XML Event Log (EVTX) format.'
+url='https://github.com/libyal/libevtx'
+arch=('x86_64' 'aarch64')
+license=('LGPLv3')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/libevtx-python-$pkgver.tar.gz")
+sha512sums=('6a9e010f2a5df9c93029a0c27c716e1b5cd4e504dab7d8f234f74ffae93a4ab1a30bb08b5ce3bc80fca0a543ffdc939924b97f2292ba5d74247ea68f910e560e')
+
+build() {
+  cd "$pkgbase-$pkgver"
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package_libevtx() {
+  depends=('libbfio')
+
+  cd "libevtx-$pkgver"
+
+  make install DESTDIR=$pkgdir
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgbase" AUTHORS COPYING NEWS \
+    README
+}
+
+package_python2-libevtx-python() {
+  depends=('libevtx' 'python2')
+
+  cd "$pkgbase-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" -O1
+}
+
+package_python-libevtx-python() {
+  depends=('libevtx' 'python')
+
+  cd "$pkgbase-$pkgver"
+
+  python setup.py install --root="$pkgdir" -O1
+}
+

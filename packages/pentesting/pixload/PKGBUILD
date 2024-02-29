@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pixload
+pkgver=87.a8f58a7
+pkgrel=2
+pkgdesc='Image Payload Creating/Injecting tools.'
+groups=('athena' 'athena-webapp' 'athena-backdoor')
+arch=('any')
+url='https://github.com/chinarulezzz/pixload'
+license=('WTFPL')
+depends=('perl' 'perl-gd' 'perl-image-exiftool' 'perl-string-crc32')
+makedepends=('git')
+source=("git+https://github.com/chinarulezzz/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

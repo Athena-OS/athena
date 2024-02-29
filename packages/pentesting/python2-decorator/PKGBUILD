@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-decorator
+_pkgname=decorator
+pkgver=4.4.2
+pkgrel=4
+pkgdesc='Decorators for Humans.'
+url='https://pypi.org/project/decorator/#files'
+arch=('any')
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('c068efd4e70764ac447b772c9c29625c2180dad256b2b4e46a50a8479fc1d7de09b114c2ba11bb37dd58774ed9460d2e0ea9fa76061833a2d3c2676ac91a0db1')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

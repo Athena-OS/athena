@@ -1,0 +1,35 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=unibrute
+pkgver=1.b3fb4b7
+pkgrel=3
+groups=('athena' 'athena-exploitation' 'athena-database')
+pkgdesc='Multithreaded SQL union bruteforcer.'
+arch=('any')
+url='https://github.com/GDSSecurity/Unibrute'
+license=('custom:unknown')
+depends=('python2')
+makedepends=('git')
+source=('git+https://github.com/GDSSecurity/Unibrute.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd Unibrute
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd Unibrute
+
+  sed -i 's|#!/bin/sh|#!/usr/bin/python2|' unibrute.py
+}
+
+package() {
+  cd Unibrute
+
+  install -Dm 755 unibrute.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 README "$pkgdir/usr/share/doc/$pkgname/README"
+}
+

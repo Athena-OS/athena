@@ -1,0 +1,27 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=halcyon
+pkgver=0.1
+pkgrel=4
+groups=('athena' 'athena-recon')
+pkgdesc='A repository crawler that runs checksums for static files found within a given git repository.'
+url='http://www.blackhatlibrary.net/Halcyon'
+arch=('any')
+license=('custom:unknown')
+depends=('python2' 'git')
+source=("http://www.blackhatlibrary.net/releases/$pkgname.tar.gz")
+sha512sums=('2ae0426581081608a57ae677533477c49a458023c0e8647ae0fd0103d8483ba2860f2225c2264b743e568d0f62452c6eb3f33159c79ae584ba1321ee2fa2e726')
+
+prepare(){
+  cd $pkgname
+
+  sed -i 's/python/python2/' *.py
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+}
+

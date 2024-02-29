@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-azure-mgmt-keyvault
+_pkgname=azure-mgmt-keyvault
+pkgver=10.2.3
+pkgrel=1
+pkgdesc='Microsoft Azure Key Vault Management Client Library for Python.'
+arch=('any')
+url='https://pypi.org/project/azure-mgmt-keyvault/#files'
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
+sha512sums=('d910686528f353a248880b9544c99ce4d92e355562f36352ae4aa8954940f038b6ecea01a2a31304ee09fc57e4549b740e4fe0d2f4543974fe17aa87ed8a1b34')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}
+

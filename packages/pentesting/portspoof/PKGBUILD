@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=portspoof
+pkgver=149.c3f3c34
+pkgrel=1
+pkgdesc="This program's primary goal is to enhance OS security through a set of new techniques."
+url='https://drk1wi.github.io/portspoof/'
+groups=('athena' 'athena-defensive' 'athena-spoof')
+arch=('x86_64' 'aarch64')
+license=('GPL2')
+depends=('gcc-libs')
+makedepends=('git' 'automake')
+source=("git+https://github.com/drk1wi/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir"/{usr/bin,etc/portspoof}
+
+  install -Dm 755 "src/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+  install -m 644 -t "$pkgdir/etc/$pkgname/" "tools/$pkgname.conf" \
+    "tools/portspoof_signatures"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS CREDITS FAQ \
+  ChangeLog INSTALL README README.md NEWS
+
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -m 644 COPYRIGHT.GPL\
+    "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT.GPL"
+}
+

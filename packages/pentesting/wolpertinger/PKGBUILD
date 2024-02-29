@@ -1,0 +1,49 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=wolpertinger
+pkgver=3.683ad04
+pkgrel=2
+pkgdesc='A distributed portscanner.'
+groups=('athena' 'athena-scanner')
+arch=('x86_64' 'aarch64')
+url='https://github.com/Crapworks/wolpertinger'
+license=('GPL3')
+depends=('linux-headers' 'sqlite' 'libpcap' 'python2' 'libdnet')
+makedepends=('git')
+source=('git+https://github.com/Crapworks/wolpertinger.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  find . -type f -exec sed -i 's|/usr/bin/python|/usr/bin/python2|g' {} \;
+}
+
+build() {
+  cd $pkgname
+
+  if [[ "$CARCH" == "i686" || "$CARCH" == "x86_64" ]];
+  then
+    ./configure --prefix=/usr --sysconfdir=/etc
+  else
+    ./configure --build=arm --prefix=/usr --sysconfdir=/etc
+  fi
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  make DESTDIR="$pkgdir" install
+
+  mv "$pkgdir/usr/bin/wolper-mcp.py" "$pkgdir/usr/bin/wolper-mcp"
+}
+

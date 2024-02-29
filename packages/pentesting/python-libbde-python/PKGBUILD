@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgbase=python-libbde-python
+pkgname=('python2-libbde-python' 'python-libbde-python')
+_pkgname=libbde-python
+pkgver=20221031
+pkgrel=2
+pkgdesc='Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes.'
+arch=('x86_64' 'aarch64')
+url='https://pypi.org/project/libbde-python/#files'
+license=('LGPL3')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('f6bd1e23460869665f28f8cd7874bd0f2b46b9b617a6980c1e51d820a72989c5302333742c079cc5a5e726005c766d8be0e25cee55ba9772595df819314ec46e')
+
+package_python2-libbde-python() {
+  depends=('python2')
+
+  cd "libbde-$pkgver"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}
+
+package_python-libbde-python() {
+  depends=('python')
+
+  cd "libbde-$pkgver"
+
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}
+

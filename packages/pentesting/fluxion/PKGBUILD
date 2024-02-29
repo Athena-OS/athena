@@ -1,0 +1,52 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=fluxion
+pkgver=1571.4f461a4
+pkgrel=2
+epoch=3
+pkgdesc='A security auditing and social-engineering research tool.'
+arch=('any')
+groups=('athena' 'athena-social' 'athena-wireless')
+url='https://github.com/FluxionNetwork/fluxion'
+license=('GPL3')
+source=("git+https://github.com/FluxionNetwork/$pkgname.git")
+depends=('aircrack-ng' 'bash>=4.2' 'coreutils' 'awk' 'iw' 'unzip' 'curl' 'bc'
+         'xterm' 'cowpatty' 'dhcp' 'p7zip' 'hostapd' 'lighttpd' 'macchanger'
+         'mdk3' 'mdk4' 'nmap' 'php-cgi' 'xorg-xdpyinfo')
+makedepends=('binutils' 'coreutils' 'git')
+sha512sums=('SKIP')
+
+prepare() {
+  install -dm 755 "$srcdir/$pkgname"
+}
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+  install -Dm 644 -t "$pkgdir/usr/share/man/man1/" docs/man/fluxion.1
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -rf *.md .git* *.yml .project .editorconfig
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bash $pkgname.sh "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

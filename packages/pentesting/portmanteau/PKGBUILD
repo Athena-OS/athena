@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=portmanteau
+pkgver=1.0
+pkgrel=3
+groups=('athena' 'athena-fuzzer')
+pkgdesc='An experimental unix driver IOCTL security tool that is useful for fuzzing and discovering device driver attack surface.'
+arch=('x86_64' 'aarch64')
+url='https://packetstormsecurity.com/files/134230/Portmanteau-Unix-Driver-IOCTL-Security-Tool.html'
+license=('custom:unknown')
+depends=('openssl' 'sqlite')
+source=("https://dl.packetstormsecurity.net/UNIX/utilities/$pkgname-release.tar.gz")
+sha512sums=('43cfbe28d9df950f2ffe5cd2c2b843b337e8b278fb9b0bc4ae1b40672aa1743dd13204f9b057bf5c13a4c38e8eb63d32a88b2d55693ada3a952ea6211a62b6f4')
+
+build() {
+  cd "$pkgname-release"
+
+  make
+}
+
+package() {
+  cd "$pkgname-release"
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" doc/*
+}
+

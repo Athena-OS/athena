@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-aiorun
+_pkgname=aiorun
+pkgver=2023.7.2
+pkgrel=1
+pkgdesc='Boilerplate for asyncio applications.'
+arch=('any')
+url='https://pypi.org/project/aiorun/#files'
+license=('Apache')
+depends=('python')
+makedepends=('python-pip' 'python-build' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('fa6bcec2202941c26afd9f04a92ab21ab610067f95011f357d9da3e442fac53d917edb170eb52c06bcf0c73033f0f71a9b83dd23bb28c243b1e4aa46e8dd99a1')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python -m build --wheel --outdir="$startdir/dist"
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $_pkgname
+}
+

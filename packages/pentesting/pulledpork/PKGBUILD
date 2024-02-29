@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pulledpork
+pkgver=397.5ccf5c5
+pkgrel=3
+pkgdesc='Snort rule management.'
+groups=('athena' 'athena-misc')
+arch=('any')
+url='https://github.com/shirkdog/pulledpork'
+license=('GPL2')
+depends=('perl' 'perl-lwp-protocol-https' 'perl-crypt-ssleay'
+         'perl-bytes-random-secure')
+makedepends=('git')
+source=("git+https://github.com/shirkdog/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  install -dm 755 "$pkgdir/etc/$pkgname"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+  cp -a --no-preserve=ownership * "$pkgdir/etc/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec perl $pkgname.pl "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

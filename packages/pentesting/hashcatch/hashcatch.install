@@ -1,0 +1,10 @@
+post_install() {
+  echo
+  echo '>>> Remember to add your wlan interface to /etc/hashcatch/hashcatch.conf'
+  echo
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+

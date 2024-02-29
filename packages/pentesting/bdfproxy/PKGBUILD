@@ -1,0 +1,58 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=bdfproxy
+pkgver=107.276c367
+pkgrel=1
+groups=('athena' 'athena-proxy' 'athena-binary')
+pkgdesc='Patch Binaries via MITM: BackdoorFactory + mitmProxy'
+arch=('any')
+url='https://github.com/secretsquirrel/BDFProxy'
+license=('GPL3')
+depends=('python2' 'python2-simplejson' 'python2-configobj' 'python2-pefile'
+         'backdoor-factory'  'capstone' 'mitmproxy')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/secretsquirrel/BDFProxy.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  git submodule init
+  git submodule update
+
+  sed -i '1s|python$|python2|' bdf_proxy.py
+  sed -i 's|bdfproxy\.cfg|/usr/share/bdfproxy/bdfproxy.cfg|g' bdf_proxy.py
+}
+
+package() {
+  cd $pkgname
+
+  ./install.sh
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 bdf/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  rm README.md bdf/COPYING bdf/README.md
+
+  cp -r * "$pkgdir/usr/share/$pkgname/"
+
+  chmod +x "$pkgdir/usr/share/$pkgname/bdf_proxy.py"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec python2 /usr/share/$pkgname/bdf_proxy.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

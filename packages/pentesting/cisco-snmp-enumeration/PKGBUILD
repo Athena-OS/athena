@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=cisco-snmp-enumeration
+pkgver=10.ad06f57
+pkgrel=3
+groups=('athena' 'athena-automation' 'athena-networking'
+        'athena-exploitation' 'athena-cracker')
+pkgdesc='Automated Cisco SNMP Enumeration, Brute Force, Configuration Download and Password Cracking.'
+arch=('any')
+url='https://github.com/nccgroup/cisco-snmp-enumeration'
+license=('GPL3')
+depends=('bash' 'metasploit' 'net-snmp' 'john' 'screen')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/nccgroup/cisco-SNMP-enumeration.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|metasploit-framework|metasploit|' cisc0wn.sh
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 cisc0wn.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

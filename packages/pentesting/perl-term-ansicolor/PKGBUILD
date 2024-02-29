@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=perl-term-ansicolor
+_pkgname=Term-ANSIColor
+pkgver=5.01
+pkgrel=4
+pkgdesc='Color screen output using ANSI escape sequences.'
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl')
+url='https://metacpan.org/pod/Term::ANSIColor'
+source=("http://search.cpan.org/CPAN/authors/id/R/RR/RRA/$_pkgname-$pkgver.tar.gz")
+sha512sums=('30602fb1553b7af77032e5cf34daf7b7256e9ca6dab914fcd5dfb3dca082c952f692c24b2cfaf0157190286b725bbef91156ee93bdc9946ee078ee4035a1f7d9')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  (
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+
+    perl Makefile.PL
+
+    make
+  )
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+

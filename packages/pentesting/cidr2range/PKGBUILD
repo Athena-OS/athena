@@ -1,0 +1,19 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=cidr2range
+pkgver=1.0
+pkgrel=3
+groups=('athena' 'athena-networking')
+pkgdesc='Script for listing the IP addresses contained in a CIDR netblock.'
+arch=('any')
+url='http://www.cpan.org/authors/id/R/RA/RAYNERLUC'
+license=('custom:unknown')
+depends=('perl' 'perl-net-cidr')
+source=("http://www.cpan.org/authors/id/R/RA/RAYNERLUC/cidr2range/cidr2range-1.0.pl")
+sha512sums=('40100032c81f9ac6f0ca7d6cc05c27943e6c1ab9bdbb0b67b16451ded96f0f45d65ecc0cd335e960ba6f6695da11c171fff0e78d5f711b8398a6e2f2a84686a8')
+
+package() {
+  install -Dm 755 "$pkgname-$pkgver.pl" "$pkgdir/usr/bin/$pkgname"
+}
+

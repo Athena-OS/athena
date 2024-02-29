@@ -1,0 +1,50 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=hakku
+pkgver=436.409a11f
+pkgrel=3
+pkgdesc='Simple framework that has been made for penetration testing tools.'
+groups=('athena' 'athena-scanner' 'athena-recon' 'athena-webapp'
+        'athena-exploitation' 'athena-fingerprint')
+arch=('any')
+url='https://github.com/4shadoww/hakkuframework'
+license=('BSD')
+depends=('python' 'python-lxml' 'python-requests' 'python-future' 'python-scapy'
+          'python-pyopenssl' 'python-netifaces' 'python-six' 'python-dnspython'
+         'python-argparse' 'python-idna' 'python-cryptography'
+         'python-python-whois' 'ethtool' 'aircrack-ng' 'dsniff' 'ettercap'
+         'xterm' 'tcpdump' 'sslstrip' 'bluez-utils')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/4shadoww/hakkuframework.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.md readme \
+    changelog
+  install -Dm 644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm readme* license
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python3 $pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

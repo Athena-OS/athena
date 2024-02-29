@@ -1,0 +1,28 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-dpath
+_pkgname=dpath
+pkgver=2.1.6
+pkgrel=1
+pkgdesc='A python library for accessing and searching dictionaries via /slashed/paths ala xpath.'
+arch=('any')
+url='https://pypi.org/project/dpath/#files'
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('2f2dac39b6e1ad2effd8d61ac4acf6619205423389ecebc54061aa10ec11ce3236ea666b632a7dca349e9b7a6579815c97e01c930eaa1a99d965e37b9825b82c')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

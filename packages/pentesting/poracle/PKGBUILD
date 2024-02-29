@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=poracle
+pkgver=68.dcc00b0
+pkgrel=6
+pkgdesc='A tool for demonstrating padding oracle attacks.'
+groups=('athena' 'athena-crypto' 'athena-webapp')
+arch=('any')
+url='https://github.com/iagox86/poracle'
+license=('BSD')
+depends=('ruby' 'ruby-httparty')
+makedepends=('git')
+source=("git+https://github.com/iagox86/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 644 -t "$pkgdir/usr/share/$pkgname/" *.rb
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

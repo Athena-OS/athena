@@ -1,0 +1,75 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ncpfs
+pkgver=2.2.6
+pkgrel=12
+pkgdesc='Allows you to mount volumes of NetWare servers under Linux.'
+url='http://www.novell.com/'
+groups=('athena' 'athena-networking')
+arch=('x86_64' 'aarch64')
+license=('GPL')
+depends=('linux>=3.0.0' 'pam')
+_url="http://ftp.de.debian.org/debian/pool/main/n/ncpfs"
+_with_php=0
+source=("https://old-releases.ubuntu.com/ubuntu/pool/universe/n/ncpfs/${pkgname}_$pkgver.orig.tar.gz"
+        '01-linux3.0_uname.patch'
+        '02-legacy.patch'
+        '03-multiple_security_issues.patch')
+sha512sums=('51f85eaae85deb66cea2ff434974699f6aa45ed1ed75217ef6176ac0b7d0f9f1c4fb186afc64c1b495474d5bad9ac7614033128c0bec39c05de723a9b29c8602'
+            '4b95f6b78a6b7851195f7353485b7a1e9bad2762f68e546292f46e8238e365dddb6de6eccfd6b5a461b58dc6599df0a1fd459e1447a4f73b126857f771af7127'
+            '09eef893388c731635ab4b991823faf116bda0287c16e2244bbde1726ef90cc9cf13657b65e14068d272f18535b27d452d7c0e4cf561e03fe4b698b2c898f38d'
+            '74d169fa14caaea28930bf24e72a020ecc44f79cdb89068538e923570f288ceb48e8e125fbef7b3f3d04b1ff84dc52e7e9a4fa74507b2f3a5e06cac6d6c9bbe5')
+if [ $_with_php -eq 1 ]; then
+  makedepends=('php')
+  optdepends=('php: PHP NCP authentication support')
+fi
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  patch -p1 -i "$srcdir/01-linux3.0_uname.patch"
+  patch -p1 -i "$srcdir/02-legacy.patch"
+  patch -p1 -i "$srcdir/03-multiple_security_issues.patch"
+
+  # fix glibc 2.16.0-2
+  export ncp_cv_pam_directory='/usr/lib/security'
+
+  if [[ "$CARCH" == "i686" || "$CARCH" == "x86_64" ]];
+  then
+    if [ $_with_php -eq 1 ]; then
+      ./configure --prefix=/usr --mandir=/usr/share
+      sed 's/function_entry/zend_function_entry/' -i contrib/php/php_auth_nds.c
+    else
+      ./configure --prefix=/usr --mandir=/usr/share --disable-php
+    fi
+  else
+    if [ $_with_php -eq 1 ]; then
+      ./configure --prefix=/usr --mandir=/usr/share --build=arm
+      sed 's/function_entry/zend_function_entry/' -i contrib/php/php_auth_nds.c
+    else
+      ./configure --prefix=/usr --mandir=/usr/share --disable-php --build=arm
+    fi
+  fi
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm 755 "$pkgdir/usr/share/man"
+
+  make DESTDIR="$pkgdir" install install-dev
+
+  # fix libncp symlink
+  rm "$pkgdir"/usr/lib/libncp.so
+  ln -s libncp.so.2.3.0 "$pkgdir"/usr/lib/libncp.so
+  ln -s libncp.so.2.3.0 "$pkgdir"/usr/lib/libncp.so.2.3
+
+  mv "$pkgdir/usr/sbin/" "$pkgdir/usr/bin"
+  mv "$pkgdir/usr/share/man1" "$pkgdir/usr/share/man/man1"
+  mv "$pkgdir/usr/share/man3" "$pkgdir/usr/share/man/man3"
+  mv "$pkgdir/usr/share/man8" "$pkgdir/usr/share/man/man8"
+}
+

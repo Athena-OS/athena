@@ -1,0 +1,30 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=imagegrep
+pkgver=8.1f14af2
+pkgrel=1
+pkgdesc='Grep word in pdf or image based on OCR.'
+groups=('athena' 'athena-misc')
+arch=('any')
+url='https://github.com/coderofsalvation/imagegrep-bash'
+license=('LGPL')
+depends=('bash' 'tesseract' 'imagemagick')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/coderofsalvation/imagegrep-bash.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

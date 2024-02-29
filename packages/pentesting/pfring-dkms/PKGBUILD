@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pfring-dkms
+pkgver=3780.c35084d7
+pkgrel=1
+epoch=1
+pkgdesc='Linux kernel module for packet capture at wirespeed.'
+url='https://github.com/ntop/PF_RING'
+arch=('x86_64' 'aarch64')
+license=('LGPL')
+depends=('dkms' 'linux-headers' 'numactl')
+makedepends=('git')
+replaces=('pfring-kmod')
+source=("$pkgname::git+https://github.com/ntop/PF_RING.git#branch=dev")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 644 kernel/linux/pf_ring.h \
+     "$pkgdir/usr/include/linux/pf_ring.h"
+  install -Dm 644 kernel/dkms.conf.in \
+    "$pkgdir/usr/src/pfring-$pkgver/dkms.conf"
+
+  cp -a --no-preserve=ownership kernel/* "$pkgdir/usr/src/pfring-$pkgver/"
+}
+

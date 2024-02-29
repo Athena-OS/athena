@@ -1,0 +1,23 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=uatester
+pkgver=1.06
+pkgrel=6
+groups=('athena' 'athena-misc' 'athena-webapp')
+pkgdesc='User Agent String Tester.'
+url='http://code.google.com/p/ua-tester/'
+arch=('any')
+license=('BSD')
+depends=('python2')
+source=("http://ua-tester.googlecode.com/files/UAtester_$pkgver.py")
+sha512sums=('bda83dc0545c7ac66260e4f5ee911a02382022db')
+
+prepare() {
+  sed -i 's/python/python2/' "UAtester_$pkgver.py"
+}
+
+package() {
+  install -Dm 755 "UAtester_$pkgver.py" "$pkgdir/usr/bin/$pkgname"
+}
+

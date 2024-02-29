@@ -1,0 +1,37 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=orjail
+pkgver=200.ae38ba2
+pkgrel=1
+pkgdesc='A more secure way to force programs to exclusively use tor network.'
+groups=('athena' 'athena-defensive')
+arch=('any')
+url='https://github.com/orjail/orjail'
+license=('WTFPL')
+depends=('bash' 'firejail' 'tor' 'bc' 'iptables')
+makedepends=('git')
+source=("git+https://github.com/$pkgname/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|getent passwd les|getent passwd $user|g' "usr/sbin/$pkgname"
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "usr/sbin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 "man/$pkgname.8.ronn" "$pkgdir/usr/share/man/man8/$pkgname.8"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

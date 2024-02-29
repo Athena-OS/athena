@@ -1,0 +1,43 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=mitmer
+pkgver=22.b01c7fe
+pkgrel=3
+groups=('athena' 'athena-sniffer' 'athena-networking')
+pkgdesc="A man-in-the-middle and phishing attack tool that steals the victim's credentials of some web services like Facebook."
+arch=('any')
+url='https://github.com/husam212/MITMer'
+license=('custom')
+depends=('python2' 'python2-scapy' 'python2-nfqueue')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/husam212/MITMer.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  rm "$pkgdir/usr/share/$pkgname/README.md"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 $pkgname.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

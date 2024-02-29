@@ -1,0 +1,39 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=spiderpig-pdffuzzer
+_pkgname=spiderpig
+pkgver=0.1
+pkgrel=7
+groups=('athena' 'athena-fuzzer')
+pkgdesc='A javascript pdf fuzzer.'
+url='https://code.google.com/p/spiderpig-pdffuzzer/'
+arch=('any')
+license=('MIT')
+makedepends=('dos2unix')
+depends=('python2')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/spiderpig-pdffuzzer/$_pkgname.tar.gz")
+sha512sums=('66427a54ff278bbeccee836d2acdb387fef8b8ddecf93ca7dfa742ad6293ec91b0ed0017247ad734e93bb0fb40b20d97226cb6edf75e43f2a9fcac5ccf0a0571')
+
+prepare() {
+  cd $_pkgname
+
+  sed -i 's|bin/python|bin/python2|' *.py
+
+  dos2unix *.py
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README
+  install -m 755 sp.py "$pkgdir/usr/share/$pkgname/"
+  install -m 755 makepdf.py "$pkgdir/usr/share/$pkgname/"
+  install -m 755 spig.py "$pkgdir/usr/share/$pkgname/"
+
+  ln -s "/usr/share/$pkgname/sp.py" "$pkgdir/usr/bin/$pkgname"
+}
+

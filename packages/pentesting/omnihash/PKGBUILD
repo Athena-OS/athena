@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=omnihash
+pkgver=70.870e9ae
+pkgrel=5
+pkgdesc='Hash files, strings, input streams and network resources in various common algorithms simultaneously.'
+groups=('athena' 'athena-crypto')
+arch=('any')
+url='https://github.com/Miserlou/omnihash'
+license=('MIT')
+depends=('python2' 'python2-requests' 'python2-crcmod' 'python2-click'
+         'python2-colorama' 'python2-validators' 'python2-pyblake2'
+         'python2-sha3' 'python2-setuptools' 'python2-certifi')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/Miserlou/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's/==.*//g' requirements.txt
+}
+
+build() {
+  cd $pkgname
+
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python2 setup.py install --root="$pkgdir" --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm "$pkgdir/usr/bin/oh"
+}
+

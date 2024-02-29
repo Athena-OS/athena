@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=javasnoop
+pkgver=1.1
+pkgrel=8
+groups=('athena' 'athena-reversing')
+pkgdesc="A tool that lets you intercept methods, alter data and otherwise hack Java applications running on your computer"
+url="https://code.google.com/p/javasnoop/"
+arch=('any')
+license=('GPL3')
+depends=('java-environment')
+source=("https://javasnoop.googlecode.com/files/JavaSnoop-$pkgver-RC2.zip")
+sha512sums=('37b11795f1eae3b70ddbd08e7d21973048848c6d')
+
+package(){
+  cd JavaSnoop
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec bash startup.sh
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

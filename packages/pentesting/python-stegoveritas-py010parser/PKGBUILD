@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-stegoveritas-py010parser
+_pkgname=stegoveritas-py010parser
+pkgver=0.1.10
+pkgrel=5
+pkgdesc='010 template parser in Python.'
+arch=('any')
+url='https://pypi.org/project/stegoveritas-py010parser/#files'
+license=('BSD')
+depends=('python' 'python-six')
+makedepends=('python-setuptools')
+replaces=('python-py010parser')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('15b1fec7d404b20c936bc19d4e6a42c69a3eb2d95dda8b9db964174bd775112de0baecdab991c539886f9c14d7c280dcc3f78770da577c63fa2d1c347d854617')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

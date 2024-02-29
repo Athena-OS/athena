@@ -1,0 +1,46 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=drupal-module-enum
+pkgver=11.525543c
+pkgrel=3
+pkgdesc='Enumerate on drupal modules.'
+groups=('athena' 'athena-webapp' 'athena-scanner')
+arch=('any')
+url='https://github.com/Tethik/drupal-module-enumeration'
+license=('MIT')
+depends=('python2' 'python2-httplib2')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/Tethik/drupal-module-enumeration.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|bin/python|bin/python2|' scanner.py
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+
+  install -Dm 655 -t "$pkgdir/usr/share/$pkgname" scanner.py drupal-modules.lst
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec python2 scanner.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

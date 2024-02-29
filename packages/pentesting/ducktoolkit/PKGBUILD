@@ -1,0 +1,47 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ducktoolkit
+pkgver=37.42da733
+pkgrel=3
+pkgdesc='Encoding Tools for Rubber Ducky.'
+groups=('athena' 'athena-exploitation' 'athena-crypto')
+arch=('any')
+url='https://github.com/kevthehermit/DuckToolkit'
+license=('GPL3')
+depends=('python')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/kevthehermit/DuckToolkit.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's|encoding="utf8)|encoding="utf8")|' "$pkgname/encoder.py"
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    CHANGELOG.md README.md
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  mv "$pkgdir/usr/bin/ducktools.py" "$pkgdir/usr/bin/ducktools"
+  mv "$pkgdir/usr/bin/bunnyducky.py" "$pkgdir/usr/bin/bunnyducky"
+}
+

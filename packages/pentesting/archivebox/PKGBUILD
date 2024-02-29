@@ -1,0 +1,31 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=archivebox
+_pkgname=ArchiveBox
+pkgver=903.59da482
+pkgrel=5
+pkgdesc='The open source self-hosted web archive. Takes browser history/bookmarks/Pocket/Pinboard/etc., saves HTML, JS, PDFs, media, and more.'
+arch=('any')
+groups=('athena' 'athena-misc' 'athena-webapp')
+url='https://github.com/pirate/ArchiveBox'
+license=('MIT')
+depends=('python' 'python-pip' 'yt-dlp' 'wget' 'chromium')
+makedepends=('git')
+source=("git+https://github.com/pirate/$_pkgname.git")
+sha512sums=('SKIP')
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+  ln -sf "/usr/share/$pkgname/archivebox/archive.py" "$pkgdir/usr/bin/$pkgname"
+}
+

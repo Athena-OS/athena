@@ -1,0 +1,34 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=btlejack
+pkgver=88.c487859
+pkgrel=1
+pkgdesc='Bluetooth Low Energy Swiss-army knife.'
+arch=('any')
+groups=('athena' 'athena-bluetooth')
+url='https://github.com/virtualabs/btlejack'
+license=('MIT')
+depends=('python' 'python-pyserial' 'python-argparse' 'python-halo')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/virtualabs/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  python setup.py build
+}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
+

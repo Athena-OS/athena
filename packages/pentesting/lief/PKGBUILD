@@ -1,0 +1,48 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=lief
+_pkgname=LIEF
+pkgver=0.13.2
+pkgrel=1
+pkgdesc='Library to Instrument Executable Formats.'
+groups=('athena' 'athena-disassembler' 'athena-reversing')
+arch=('x86_64' 'aarch64')
+url='https://github.com/lief-project/LIEF/'
+license=('Apache')
+depends=('python')
+makedepends=('python-setuptools' 'cmake' 'python-build' 'python-installer'
+             'python-wheel' 'ninja')
+source=("https://github.com/lief-project/LIEF/archive/$pkgver.tar.gz")
+sha512sums=('a8dce9cce9c68d93ec5d78cf9f67eb32dc11d4498c9903f61e34d48683905cdf8040630b390fdaefb66fd18213cdc81682b4acb24ce43fb7fe89202492f71660')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+
+  # tmp dirty fix! we need to change this asap
+  sed -i 's|version   = "0.0.0"|version   = "0.10.1"|' setup.py
+
+  # fix for https://github.com/lief-project/LIEF/issues/918
+  sed -i '1 i\#include <cstdint>' include/LIEF/DEX/Field.hpp
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+	PYTHONPATH="$PWD" python -m build api/python --wheel --no-isolation
+
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" api/python/dist/*.whl
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md AUTHORS \
+    CHANGELOG
+
+  for i in "$pkgdir/usr/bin/"*; do
+    mv $i $(echo $i | sed 's|_|-|g;s|.py||g')
+  done
+}
+

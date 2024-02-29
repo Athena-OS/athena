@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=nfsshell
+pkgver=19980519
+pkgrel=6
+groups=('athena' 'athena-automation' 'athena-networking')
+pkgdesc='Userland NFS command tool.'
+arch=('x86_64' 'aarch64')
+url='http://www.paramecium.org/~leendert/'
+license=('custom:unknown')
+depends=('readline' 'libtirpc' 'libtirpc-compat')
+makedepends=('make' 'gcc')
+source=("http://www.cs.vu.nl/pub/leendert/$pkgname.tar.gz"
+        'gcc.patch'
+        'LICENSE')
+sha512sums=('3d47c36b9769d0f077ddce3b979ebcfac279f40366e9e9d96e7d9356d199b92ce3363454c81064d07ab780c1c312d5b3615c0d7fd69bf8830b64442edd12347f'
+            'edb4035cede02be82ed33d01a0b7cfc6853d72ee2a0436fd5a492fb4bcc0c2ae0e9295e0273e8f12bab2fc9f34345f13deb069be56520005b6b6d73c28ed8cec'
+            'ea74975a2ee809d5172d0badb9674144cdac510f43336c8cf105df16dfac8619961fdebdd61d8bf2ccd9ae41dabd8607d202a1ad2fd26d024e89c05def65e6f9')
+
+build() {
+  cd nfs
+
+  patch -Np1 -i "$srcdir/gcc.patch"
+
+  make
+}
+
+package() {
+  cd nfs
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  cp -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec /usr/share/$pkgname/nfs "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+

@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=halcyon-ide
+pkgver=2.0.2
+pkgrel=1
+groups=('athena' 'athena-misc')
+arch=('any')
+pkgdesc='First IDE for Nmap Script (NSE) Development.'
+url='https://halcyon-ide.org/'
+license=('MIT')
+depends=('java-environment' 'bash')
+source=("https://github.com/s4n7h0/Halcyon/releases/download/v$pkgver/Halcyon_IDE_v$pkgver.jar")
+noextract=("Halcyon_IDE_v$pkgver.jar")
+sha512sums=('d5e3708d422a7febaa4e6b83d56f21ab38bd6c2cfa04c67c11384cde53e26fabba3db0c18d1ebaf425c6dc410b696753553265bebc67aa7877c022386348defa')
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+  install -Dm 644 "Halcyon_IDE_v$pkgver.jar" \
+    "$pkgdir/usr/share/$pkgname/$pkgname.jar"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec java -jar /usr/share/$pkgname/$pkgname.jar "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+
