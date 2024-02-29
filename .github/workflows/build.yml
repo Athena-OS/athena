@@ -84,5 +84,4 @@ jobs:
             repo-add --verify --sign -R athena.db.tar.gz *.pkg.tar.zst
 
             sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" *tar.zst *tar.zst.sig *.db *.db.sig *.db.tar.gz *.db.tar.gz.sig *.files *.files.sig *.files.tar.gz *.files.tar.gz.sig ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena/
-            cd ..
           done
