@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}')
 pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')

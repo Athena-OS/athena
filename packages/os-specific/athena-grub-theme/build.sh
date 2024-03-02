@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 #NEED ONLY TO EDIT sourcefiles VARIABLE
 

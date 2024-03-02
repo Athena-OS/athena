@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-set -e
-
-# If not existing, create the builder user:
-# useradd -m -d /src -G wheel -g users builder -s /bin/bash
-# echo "builder ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
-# chown -R builder .
 
 makepkg_settings() {
     ncores=$(nproc)
@@ -41,7 +35,7 @@ postbuild_command() {
 # Function to find directories containing PKGBUILD files
 find_pkgbuild_dirs() {
     local pkgbuild_paths=()
-    local search_dir="./"
+    local search_dir="/build/packages/"
 
     # If user input is provided, use it as package names to search for
     if [ $# -gt 0 ]; then
@@ -91,20 +85,30 @@ build_package() {
     cpu_arch=$2
     src_dir=$3
     out_dir=$4
-    
+
     echo -e "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
-        
+
     pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
+
     if [ -f "build.sh" ]; then
-        ./build.sh
+        # Error handling to prevent running interruption
+        ./build.sh || {
+            echo "Error: Failed to execute ./build.sh in $pkg_dir"
+            return 1
+        }
     else
         updpkgsums
-        makepkg -f -src --noconfirm
+        # Error handling to prevent running interruption
+        makepkg -f -src --noconfirm || {
+            echo "Error: Failed to execute makepkg in $pkg_dir"
+            return 1
+        }
         rm -rf src pkg
     fi
+
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 
@@ -127,11 +131,18 @@ echo
 # Parse command-line options
 while getopts "dhrs" opt; do
     case $opt in
-        d)  
+        d)
             db=true
             ;;
         h)
             echo "Usage: $0 [-d] [-r] [-s] [package1 package2 ...]"
+            echo
+            echo "Options:"
+            echo "d     Update the package repository database."
+            echo "h     Print this Help."
+            echo "r     Upload packages to the specified repository server. Use '-e SSH_PASSPHRASE=' to specify the SSH passphrase and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
+            echo "s     Sign packages. Use '-e GPG_PASSPHRASE' to specify the signing key passphrase as container environment variable argument."
+            echo
             exit 0
             ;;
         r)
@@ -157,6 +168,7 @@ while getopts "dhrs" opt; do
             ;;
     esac
 done
+shift $((OPTIND - 1))
 
 # Set the CPU Architecture for packaging
 cpu_arch="x86_64"
@@ -183,6 +195,7 @@ done
 
 if [[ "$db" ]]
 then
+    rm $out_dir/athena.db* $out_dir/athena.files*
     repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
 fi
 

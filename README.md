@@ -63,3 +63,87 @@ Click Docker icon above to explore Athena OS Docker containers!
 <h5 align="center">
 Click the icon above to explore Athena OS WSL in Microsoft Store App!
 </h5>
+
+## Hephaestus
+**Hephaestus** is the Athena OS Continuous Integration/Continuous Delivery Builder to improve the integration and delivery of the packages.
+
+As a container, it can be run in every platform supporting Docker or Podman. It is used to automate the building and delivery of Athena OS packages and for package debugging.
+```
+**===========================================================**
+||     __  __           __                    __             ||
+||    / / / /__  ____  / /_  ____ ____  _____/ /___  _______ ||
+||   / /_/ / _ \/ __ \/ __ \/ __ `/ _ \/ ___/ __/ / / / ___/ ||
+||  / __  /  __/ /_/ / / / / /_/ /  __(__  ) /_/ /_/ (__  )  ||
+|| /_/ /_/\___/ .___/_/ /_/\__,_/\___/____/\__/\__,_/____/   ||
+||            /_/                                            ||
+**===========================================================**
+
+The Athena OS CI/CD Builder
+
+Usage: /build/packages/hephaestus [-d] [-r] [-s] [package1 package2 ...]
+
+Options:
+d     Update the package repository database.
+h     Print this Help.
+r     Upload packages to the specified repository server. Use '-e SSH_PASSPHRASE=' to specify the SSH passphrase and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments.
+s     Sign packages. Use '-e GPG_PASSPHRASE' to specify the signing key passphrase as container environment variable argument.
+```
+It builds the specified packages or all the repository packages if no package names are provided.
+
+Hephaestus can be run by using the following parameters:
+```
+podman run \
+    -ti \
+    --rm \
+    --ulimit nofile=1024:524288 \ # Fix fakeroot hanging
+    --userns=keep-id \ # Prevent to set root as owner of mounted volume directories
+    -v "$HOME/output:/build/output" \ # Set the target directory to store packages
+    -v "$HOME/keydir:/build/keydir" \ # Set the target directory to retrieve the signing key from the host
+    -e GPG_PASSPHRASE=$(secret-tool lookup key-sec key-sec) \ # Set the signing key passphrase
+    -e SSH_PASSPHRASE=$(secret-tool lookup ssh-sec ssh-sec) \ # Set the SSH repository server passphrase
+    -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
+    -e PRE_EXEC="ls -la /build" \ # Pre-build command
+    -e POST_EXEC="ls -la /build/output" # Post-build command
+    docker.io/athenaos/hephaestus -d -r -s
+```
+
+Note that the secrets are managed by `secret-tool` for security reasons.
+
+If you are using a Debian CLI host environment, to make secret-tool working correctly, as a standard user, run:
+```
+apt install gnome-keyring libsecret-tools dbus-x11
+```
+Store the [50-systemd-user.sh](https://github.com/systemd/systemd/blob/main/xorg/50-systemd-user.sh) in `/etc/X11/xinit/xinitrc.d/` by running:
+```
+export DISPLAY=:0
+sudo mkdir -p /etc/X11/xinit/xinitrc.d
+sudo wget -O /etc/X11/xinit/xinitrc.d/50-systemd-user.sh https://raw.githubusercontent.com/systemd/systemd/main/xorg/50-systemd-user.sh
+source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+export $(dbus-launch)
+```
+Then, the object "/org/freedesktop/secrets/collection/login" must be created:
+```
+dbus-run-session -- bash
+gnome-keyring-daemon --unlock
+```
+It will be asked for a password to protect the keyring. On the empty terminal row, type your password WITHOUT pressing Enter. Just press CTRL+D two times. Then, run again:
+```
+gnome-keyring-daemon --unlock
+```
+As before, type your password WITHOUT pressing Enter. Just press CTRL+D two times.
+
+Now, you should see `login.keyring` and `user.keystore` files in `~/.local/share/keyrings`.
+
+You can store your secrets by `secret-tool`.
+
+In case you forget the password to unlock the keyring, delete `login.keyring` and `user.keystore` files but you will lose your stored secrets.
+
+To test the right password to unlock the keyring, download [unlock.py](https://codeberg.org/umglurf/gnome-keyring-unlock/raw/branch/main/unlock.py) and test the password by:
+```
+wget -O unlock.py https://codeberg.org/umglurf/gnome-keyring-unlock/raw/branch/main/unlock.py
+chmod +x ./unlock.py
+./unlock.py <<<YourKeyringPassword
+```
+If it does not return anything, the typed password is right, otherwise you will get "Unlock denied" message.
+
+At each login or reboot, you need to unlock the keyring.
