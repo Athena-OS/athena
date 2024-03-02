@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# If not existing, create the builder user:
-# useradd -m -d /src -G wheel -g users builder -s /bin/bash
-# echo "builder ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
-# chown -R builder .
-
 makepkg_settings() {
     ncores=$(nproc)
     if [ $ncores -gt 1 ]
@@ -132,6 +127,13 @@ while getopts "dhrs" opt; do
             ;;
         h)
             echo "Usage: $0 [-d] [-r] [-s] [package1 package2 ...]"
+            echo
+            echo "Options:"
+            echo "d     Update the package repository database."
+            echo "h     Print this Help."
+            echo "r     Upload packages to the specified repository server. Use '-e SSH_PASSPHRASE=' to specify the SSH passphrase and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
+            echo "s     Sign packages. Use '-e GPG_PASSPHRASE' to specify the signing key passphrase as container environment variable argument."
+            echo
             exit 0
             ;;
         r)

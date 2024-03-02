@@ -63,3 +63,48 @@ Click Docker icon above to explore Athena OS Docker containers!
 <h5 align="center">
 Click the icon above to explore Athena OS WSL in Microsoft Store App!
 </h5>
+
+## Hephaestus
+**Hephaestus** is the Athena OS Continuous Integration/Continuous Delivery Builder to improve the integration and delivery of the packages.
+
+As a container, it can be run in every platform supporting Docker or Podman. It is used to automate the building and delivery of Athena OS packages and for package debugging.
+```
+**===========================================================**
+||     __  __           __                    __             ||
+||    / / / /__  ____  / /_  ____ ____  _____/ /___  _______ ||
+||   / /_/ / _ \/ __ \/ __ \/ __ `/ _ \/ ___/ __/ / / / ___/ ||
+||  / __  /  __/ /_/ / / / / /_/ /  __(__  ) /_/ /_/ (__  )  ||
+|| /_/ /_/\___/ .___/_/ /_/\__,_/\___/____/\__/\__,_/____/   ||
+||            /_/                                            ||
+**===========================================================**
+
+The Athena OS CI/CD Builder
+
+Usage: /build/packages/hephaestus [-d] [-r] [-s] [package1 package2 ...]
+
+Options:
+d     Update the package repository database.
+h     Print this Help.
+r     Upload packages to the specified repository server. Use '-e SSH_PASSPHRASE=' to specify the SSH passphrase and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments.
+s     Sign packages. Use '-e GPG_PASSPHRASE' to specify the signing key passphrase as container environment variable argument.
+```
+It builds the specified packages or all the repository packages if no package names are provided.
+
+Hephaestus can be run by using the following parameters:
+```
+podman run \
+    -ti \
+    --rm \
+    --ulimit nofile=1024:524288 \ # Fix fakeroot hanging
+    --userns=keep-id \ # Prevent to set root as owner of mounted volume directories
+    -v "$HOME/output:/build/output" \ # Set the target directory to store packages
+    -v "$HOME/keydir:/build/keydir" \ # Set the target directory to retrieve the signing key from the host
+    -e GPG_PASSPHRASE=$(secret-tool lookup key-sec key-sec) \ # Set the signing key passphrase
+    -e SSH_PASSPHRASE=$(secret-tool lookup ssh-sec ssh-sec) \ # Set the SSH repository server passphrase
+    -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
+    -e PRE_EXEC="ls -la /build" \ # Pre-build command
+    -e POST_EXEC="ls -la /build/output" # Post-build command
+    hephaestus -d -r -s
+```
+
+Note that the secrets are managed by `secret-tool` for security reasons.
