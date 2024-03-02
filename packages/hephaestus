@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+set -e
+
+# If not existing, create the builder user:
+# useradd -m -d /src -G wheel -g users builder -s /bin/bash
+# echo "builder ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+# chown -R builder .
+
+makepkg_settings() {
+    ncores=$(nproc)
+    if [ $ncores -gt 1 ]
+    then
+        echo "$ncores cores available."
+        echo "Changing the makeflags to $ncores cores."
+        sudo sed -i 's/#MAKEFLAGS=.*/MAKEFLAGS="-j'$ncores'"/g' /etc/makepkg.conf;
+        echo "Changing the compression settings for $ncores cores."
+        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
+    fi
+}
+
+prebuild_command() {
+    #* Run pre-build commands
+    if [[ -n "$PRE_EXEC" ]]
+    then
+      echo "Run pre-build commands..."
+      echo "${PRE_EXEC}"
+      ${PRE_EXEC}
+    fi
+}
+
+postbuild_command() {
+    #* Run post-build commands
+    if [[ -n "$POST_EXEC" ]]
+    then
+      echo "Run post-build commands..."
+      echo "${POST_EXEC}"
+      ${POST_EXEC}
+    fi
+}
+
+# Function to find directories containing PKGBUILD files
+find_pkgbuild_dirs() {
+    local pkgbuild_paths=()
+    local search_dir="./"
+
+    # If user input is provided, use it as package names to search for
+    if [ $# -gt 0 ]; then
+        # Loop through provided package names
+        for pkg_name in "$@"; do
+            # Use find to locate PKGBUILD files in subdirectories
+            while IFS= read -r -d '' pkgbuild_path; do
+                # Print the package name and PKGBUILD path
+                pkgbuild_paths+=("$pkgbuild_path")
+            done < <(find "$search_dir" -type d -name "$pkg_name" -exec find {} -maxdepth 1 -type f -name PKGBUILD -print0 \;)
+        done
+    else
+        # Use find to locate PKGBUILD files in subdirectories
+        while IFS= read -r -d '' pkgbuild_path; do
+            # Extract package name from PKGBUILD path
+            pkgbuild_paths+=("$pkgbuild_path")
+        done < <(find "$search_dir" -type f -name PKGBUILD -print0)
+    fi
+
+    # Return the array of PKGBUILD paths
+    echo "${pkgbuild_paths[@]}"
+}
+
+sign_package() {
+    #* If env $sign is false, do not add sign packages
+    if [[ "$sign" ]]
+    then
+        echo "Signing the package..."
+        if id "builder" >/dev/null 2>&1; then
+            user="builder"
+        else
+            user="$(whoami)"
+        fi
+
+        if [ -n "$passphrase" ]; then
+            echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
+        else
+            echo "Error: 'PASSPHRASE' environment variable not set."
+            break
+        fi
+    fi
+}
+
+# Function to build and sign packages
+build_package() {
+    pkg_dir=$1
+    cpu_arch=$2
+    src_dir=$3
+    out_dir=$4
+    
+    echo -e "\nBuilding package in $pkg_dir..."
+    cd $pkg_dir
+        
+    pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
+    if [ -f "build.sh" ]; then
+        ./build.sh
+    else
+        updpkgsums
+        makepkg -f -src --noconfirm
+        rm -rf src pkg
+    fi
+    pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
+
+    sign_package
+
+    #echo -e "Moving $pkgfile $pkgfile.sig to $src_dir"
+    echo -e "Moving $pkgfile to $out_dir"
+    #mv $pkgfile $pkgfile.sig $out_dir
+    #sudo chown $(stat -c '%u:%g' $pkg_dir/PKGBUILD) ./*.pkg.tar.*
+    cp -f $pkgfile* $out_dir
+    rm -f $pkgfile*
+    cd $src_dir
+}
+
+# Parse command-line options
+while getopts "hs" opt; do
+    case $opt in
+        h)
+            echo "Usage: $0 [-s] [package1 package2 ...]"
+            exit 0
+            ;;
+        s)
+            sign=true
+            passphrase="${GPG_PASSPHRASE}" # pass argument -e GPG_PASSPHRASE=$(secret-tool lookup key-sec key-sec) to the container program
+            echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Set the CPU Architecture for packaging
+cpu_arch="x86_64"
+src_dir="$(pwd)"
+out_dir="$(df -P /build/output | awk 'NR==2 {print $6}')"
+
+makepkg_settings
+prebuild_command
+
+# Get user input if provided
+if [ "$#" -gt 0 ]; then
+    result=($(find_pkgbuild_dirs "$@"))
+else
+    result=($(find_pkgbuild_dirs))
+fi
+
+# Print the result array
+for path in "${result[@]}"; do
+    echo "Found PKGBUILD: $path"
+    # Build and sign packages
+    build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir"
+done
+
+postbuild_command
