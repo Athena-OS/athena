@@ -119,6 +119,7 @@ export DISPLAY=:0
 sudo mkdir -p /etc/X11/xinit/xinitrc.d
 sudo wget -O /etc/X11/xinit/xinitrc.d/50-systemd-user.sh https://raw.githubusercontent.com/systemd/systemd/main/xorg/50-systemd-user.sh
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+export $(dbus-launch)
 ```
 Then, the object "/org/freedesktop/secrets/collection/login" must be created:
 ```
@@ -139,6 +140,7 @@ In case you forget the password to unlock the keyring, delete `login.keyring` an
 
 To test the right password to unlock the keyring, download [unlock.py](https://codeberg.org/umglurf/gnome-keyring-unlock/raw/branch/main/unlock.py) and test the password by:
 ```
+wget -O unlock.py https://codeberg.org/umglurf/gnome-keyring-unlock/raw/branch/main/unlock.py
 chmod +x ./unlock.py
 ./unlock.py <<<YourKeyringPassword
 ```
