@@ -111,7 +111,14 @@ Note that the secrets are managed by `secret-tool` for security reasons.
 
 If you are using a Debian CLI host environment, to make secret-tool working correctly, as a standard user, run:
 ```
-apt install gnome-keyring libsecret-tools
+apt install gnome-keyring libsecret-tools dbus-x11
+```
+Store the [50-systemd-user.sh](https://github.com/systemd/systemd/blob/main/xorg/50-systemd-user.sh) in `/etc/X11/xinit/xinitrc.d/` by running:
+```
+export DISPLAY=:0
+sudo mkdir -p /etc/X11/xinit/xinitrc.d
+sudo wget -O /etc/X11/xinit/xinitrc.d/50-systemd-user.sh https://raw.githubusercontent.com/systemd/systemd/main/xorg/50-systemd-user.sh
+source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 ```
 Then, the object "/org/freedesktop/secrets/collection/login" must be created:
 ```
