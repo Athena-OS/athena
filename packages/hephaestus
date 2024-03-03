@@ -93,13 +93,23 @@ build_package() {
     pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
+    
     if [ -f "build.sh" ]; then
-        ./build.sh
+        # Error handling to prevent running interruption
+        ./build.sh || {
+            echo "Error: Failed to execute ./build.sh in $pkg_dir"
+            return 1
+        }
     else
         updpkgsums
-        makepkg -f -src --noconfirm
+        # Error handling to prevent running interruption
+        makepkg -f -src --noconfirm || {
+            echo "Error: Failed to execute makepkg in $pkg_dir"
+            return 1
+        }
         rm -rf src pkg
     fi
+
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 
