@@ -36,7 +36,7 @@ postbuild_command() {
 # Function to find directories containing PKGBUILD files
 find_pkgbuild_dirs() {
     local pkgbuild_paths=()
-    local search_dir="./"
+    local search_dir="/build/packages/"
 
     # If user input is provided, use it as package names to search for
     if [ $# -gt 0 ]; then
@@ -86,10 +86,10 @@ build_package() {
     cpu_arch=$2
     src_dir=$3
     out_dir=$4
-    
+
     echo -e "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
-        
+
     pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
@@ -122,8 +122,9 @@ echo
 # Parse command-line options
 while getopts "dhrs" opt; do
     case $opt in
-        d)  
+        d)
             db=true
+            shift
             ;;
         h)
             echo "Usage: $0 [-d] [-r] [-s] [package1 package2 ...]"
@@ -147,11 +148,13 @@ while getopts "dhrs" opt; do
                 fi
                 exit 1
             fi
+            shift
             ;;
         s)
             sign=true
             passphrase="${GPG_PASSPHRASE}" # pass argument -e GPG_PASSPHRASE=$(secret-tool lookup key-sec key-sec) to the container program
             echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+            shift
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
