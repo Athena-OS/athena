@@ -146,4 +146,4 @@ chmod +x ./unlock.py
 ```
 If it does not return anything, the typed password is right, otherwise you will get "Unlock denied" message.
 
-At each login and reboot, you need to unlock the keyring.
+At each login or reboot, you need to unlock the keyring.
