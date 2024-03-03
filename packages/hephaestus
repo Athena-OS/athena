@@ -186,6 +186,7 @@ done
 
 if [[ "$db" ]]
 then
+    rm $out_dir/athena.db* $out_dir/athena.files*
     repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
 fi
 
