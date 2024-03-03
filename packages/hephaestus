@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 makepkg_settings() {
     ncores=$(nproc)
@@ -93,7 +92,7 @@ build_package() {
     pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
-    
+
     if [ -f "build.sh" ]; then
         # Error handling to prevent running interruption
         ./build.sh || {
