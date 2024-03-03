@@ -92,34 +92,42 @@ build_package() {
     pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
-
-    if [ -f "build.sh" ]; then
-        # Error handling to prevent running interruption
-        ./build.sh || {
-            echo "Error: Failed to execute ./build.sh in $pkg_dir"
-            return 1
-        }
-    else
-        updpkgsums
-        # Error handling to prevent running interruption
-        makepkg -f -src --noconfirm || {
-            echo "Error: Failed to execute makepkg in $pkg_dir"
-            return 1
-        }
-        rm -rf src pkg
-    fi
-
+    # Current version
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 
-    sign_package
+    if [ ! -f "$out_dir/$pkgfile" ]; then
+        if [ -f "build.sh" ]; then
+            # Error handling to prevent running interruption
+            ./build.sh || {
+                >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
+                return 1
+            }
+        else
+            updpkgsums
+            # Error handling to prevent running interruption
+            makepkg -f -src --noconfirm || {
+                >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
+                return 1
+            }
+            rm -rf src pkg
+        fi
 
-    #echo -e "Moving $pkgfile $pkgfile.sig to $src_dir"
-    echo -e "Moving $pkgfile to $out_dir"
-    #mv $pkgfile $pkgfile.sig $out_dir
-    #sudo chown $(stat -c '%u:%g' $pkg_dir/PKGBUILD) ./*.pkg.tar.*
-    cp -f $pkgfile* $out_dir
-    rm -f $pkgfile*
+        # Used for -git updated packages
+        pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+        pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
+
+        sign_package
+
+        #echo -e "Moving $pkgfile $pkgfile.sig to $src_dir"
+        echo -e "Moving $pkgfile to $out_dir"
+        #mv $pkgfile $pkgfile.sig $out_dir
+        #sudo chown $(stat -c '%u:%g' $pkg_dir/PKGBUILD) ./*.pkg.tar.*
+        cp -f $pkgfile* $out_dir
+        rm -f $pkgfile*
+    else
+        >&2 echo "$pkgfile already exists in $out_dir"
+    fi
     cd $src_dir
 }
 
