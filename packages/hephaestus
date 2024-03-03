@@ -96,14 +96,14 @@ build_package() {
     if [ -f "build.sh" ]; then
         # Error handling to prevent running interruption
         ./build.sh || {
-            echo "Error: Failed to execute ./build.sh in $pkg_dir"
+            >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
             return 1
         }
     else
         updpkgsums
         # Error handling to prevent running interruption
         makepkg -f -src --noconfirm || {
-            echo "Error: Failed to execute makepkg in $pkg_dir"
+            >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
             return 1
         }
         rm -rf src pkg
