@@ -112,7 +112,27 @@ Note that the secrets are managed by `secret-tool` for security reasons.
 If you are using a Debian CLI host environment, to make secret-tool working correctly, as a standard user, run:
 ```
 apt install gnome-keyring libsecret-tools
-export $(dbus-launch)
-gnome-keyring-daemon -r --unlock --components=secrets
 ```
-and press CTRL+D two times.
+Then, the object "/org/freedesktop/secrets/collection/login" must be created:
+```
+dbus-run-session -- bash
+gnome-keyring-daemon --unlock
+```
+It will be asked for a password to protect the keyring. On the empty terminal row, type your password WITHOUT pressing Enter. Just press CTRL+D two times. Then, run again:
+```
+gnome-keyring-daemon --unlock
+```
+As before, type your password WITHOUT pressing Enter. Just press CTRL+D two times.
+
+Now, you should see `login.keyring` and `user.keystore` files in `~/.local/share/keyrings`.
+
+You can store your secrets by `secret-tool`.
+
+In case you forget the password to unlock the keyring, delete `login.keyring` and `user.keystore` files but you will lose your stored secrets.
+
+To test the right password to unlock the keyring, download [unlock.py](https://codeberg.org/umglurf/gnome-keyring-unlock/raw/branch/main/unlock.py) and test the password by:
+```
+chmod +x ./unlock.py
+./unlock.py <<<YourKeyringPassword
+```
+If it does not return anything, the typed password is right, otherwise you will get "Unlock denied" message.
