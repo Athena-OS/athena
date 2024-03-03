@@ -108,3 +108,11 @@ podman run \
 ```
 
 Note that the secrets are managed by `secret-tool` for security reasons.
+
+If you are using a Debian CLI host environment, to make secret-tool working correctly, as a standard user, run:
+```
+apt install gnome-keyring libsecret-tools
+export $(dbus-launch)
+gnome-keyring-daemon -r --unlock --components=secrets
+```
+and press CTRL+D two times.
