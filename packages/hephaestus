@@ -124,7 +124,6 @@ while getopts "dhrs" opt; do
     case $opt in
         d)
             db=true
-            shift
             ;;
         h)
             echo "Usage: $0 [-d] [-r] [-s] [package1 package2 ...]"
@@ -148,13 +147,11 @@ while getopts "dhrs" opt; do
                 fi
                 exit 1
             fi
-            shift
             ;;
         s)
             sign=true
             passphrase="${GPG_PASSPHRASE}" # pass argument -e GPG_PASSPHRASE=$(secret-tool lookup key-sec key-sec) to the container program
             echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
-            shift
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
@@ -162,6 +159,7 @@ while getopts "dhrs" opt; do
             ;;
     esac
 done
+shift $((OPTIND - 1))
 
 # Set the CPU Architecture for packaging
 cpu_arch="x86_64"
