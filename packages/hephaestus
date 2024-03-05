@@ -126,7 +126,7 @@ build_package() {
         cp -f $pkgfile* $out_dir
         rm -f $pkgfile*
     else
-        echo "$pkgfile already exists in $out_dir"
+        >&2 echo "$pkgfile already exists in $out_dir"
     fi
     cd $src_dir
 }
