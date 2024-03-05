@@ -10,6 +10,6 @@ source=("alacritty.toml")
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config/alacritty"
 
-  install -Dm644 "${srcdir}/alacritty.yml" "${pkgdir}/etc/skel/.config/alacritty/"
+  install -Dm644 "${srcdir}/alacritty.toml" "${pkgdir}/etc/skel/.config/alacritty/"
 }
 sha512sums=('ce9db82537cee62b5747c3eef85b5dc9d3707f4f5b601e9b91fc9a94b95793a50211ae011821a3b13b69ed530d2e2ab3afbfeeccb16466c9d2486014b2075d88')
