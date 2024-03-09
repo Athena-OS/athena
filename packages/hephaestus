@@ -62,26 +62,6 @@ find_pkgbuild_dirs() {
     echo "${pkgbuild_paths[@]}"
 }
 
-sign_package() {
-    #* If env $sign is false, do not sign packages
-    if [[ "$sign" ]]
-    then
-        echo "Signing the package..."
-        if id "builder" >/dev/null 2>&1; then
-            user="builder"
-        else
-            user="$(whoami)"
-        fi
-
-        if [ -n "$passphrase" ]; then
-            echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
-        else
-            echo "Error: 'PASSPHRASE' environment variable not set."
-            break
-        fi
-    fi
-}
-
 # Function to build and sign packages
 build_package() {
     pkg_dir=$1
@@ -132,6 +112,26 @@ build_package() {
         >&2 echo "$pkgfile already exists in $out_dir"
     fi
     cd $src_dir
+}
+
+sign_package() {
+    #* If env $sign is false, do not sign packages
+    if [[ "$sign" ]]
+    then
+        echo "Signing the package..."
+        if id "builder" >/dev/null 2>&1; then
+            user="builder"
+        else
+            user="$(whoami)"
+        fi
+
+        if [ -n "$passphrase" ]; then
+            echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
+        else
+            echo "Error: 'PASSPHRASE' environment variable not set."
+            break
+        fi
+    fi
 }
 
 printf '%b\n' "$(base64 -d <<<"H4sIAAAAAAAAA6VRWwqAMAz79xR+ahF3Am8yqAfp4W36Yn4IopGFJjbdxoiO7yCaRGaA2VfhJp5ckcg3/3wKGCJqN8BsLSm0yDx8DOC5N+wx8lk2g2Inl5G3PmX/XS1Zq72gYXWtK2Tkw+02cgeXsYVth++cnt9luH+imf0amqd/73cBIZJnZ/8BAAA=" | gunzip)" #User printf for colored output
