@@ -170,7 +170,7 @@ while getopts "dhrs" opt; do
             sign=true
             passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
             if [ -z "$passphrase" ]; then
-                echo "No secret found for GPG key object ${GPG_SEC}: $(ls /run/secrets)."
+                echo "No secret found for GPG key object ${GPG_SEC}."
             else
                 echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
             fi
