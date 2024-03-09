@@ -148,16 +148,17 @@ while getopts "dhrs" opt; do
             echo "Options:"
             echo "d     Update the package repository database."
             echo "h     Print this Help."
-            echo "r     Upload packages to the specified repository server. Use '-e SSH_PASSPHRASE=' to specify the SSH passphrase and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
-            echo "s     Sign packages. Use '-e GPG_PASSPHRASE' to specify the signing key passphrase as container environment variable argument."
+            echo "r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
+            echo "s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
             echo
             exit 0
             ;;
         r)
             rsync=true
-            if [[ -z "${SSH_PASSPHRASE}" || -z "${REPOSITORY_SERVER}" ]]; then
-                if [[ -z "${SSH_PASSPHRASE}" ]]; then
-                    echo "Error -r argument: Missing 'SSH_PASSPHRASE' environment variable passed as container argument."
+            sshsec="$(cat /run/secrets/${SSH_SEC})"
+            if [[ -z "$sshsec" || -z "${REPOSITORY_SERVER}" ]]; then
+                if [[ -z "$sshsec" ]]; then
+                    echo "Error -r argument: Missing 'SSH_SEC' environment variable passed as container argument."
                 fi
                 if [[ -z "${REPOSITORY_SERVER}" ]]; then
                     echo "Error -r argument: Missing 'REPOSITORY_SERVER' environment variable passed as container argument."
@@ -167,8 +168,12 @@ while getopts "dhrs" opt; do
             ;;
         s)
             sign=true
-            passphrase="${GPG_PASSPHRASE}" # pass argument -e GPG_PASSPHRASE=$(secret-tool lookup key-sec key-sec) to the container program
-            echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+            passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
+            if [ -z "$passphrase" ]; then
+                echo "No secret found for GPG key object ${GPG_SEC}."
+            else
+                echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+            fi
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
@@ -207,8 +212,8 @@ then
     repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
 fi
 
-if [[ -n "$rsync" && -n "${SSH_PASSPHRASE}" && -n "${REPOSITORY_SERVER}" ]]; then
-    sshpass -p "${SSH_PASSPHRASE}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" "$out_dir/" "${REPOSITORY_SERVER}"
+if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
+    sshpass -p "$sshsec" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" "$out_dir/" "${REPOSITORY_SERVER}"
 fi
 
 postbuild_command
