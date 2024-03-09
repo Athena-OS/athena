@@ -1,0 +1,11 @@
+post_install() {
+  echo "Setting cyan colorbase"
+
+  mv /usr/share/athena-cyan-base/apps/* /usr/share/icons/hicolor/scalable/apps/
+  mv /usr/share/athena-cyan-base/categories/* /usr/share/icons/hicolor/scalable/categories/
+  rm -rf /usr/share/athena-cyan-base
+}
+
+post_upgrade() {
+    post_install $1
+}

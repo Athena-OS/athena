@@ -1,10 +1,6 @@
 post_install() {
   echo "Setting ParrotCTFs theme"
-
   mv /etc/skel/.config/kitty/AdventureTime.conf /etc/skel/.config/kitty/current-theme.conf
-  mv /usr/share/athena-parrotctfs-theme/apps/* /usr/share/icons/hicolor/scalable/apps/
-  mv /usr/share/athena-parrotctfs-theme/categories/* /usr/share/icons/hicolor/scalable/categories/
-  rm -rf /usr/share/athena-parrotctfs-theme
 }
 
 post_upgrade() {

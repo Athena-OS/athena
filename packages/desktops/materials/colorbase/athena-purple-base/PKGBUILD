@@ -4,6 +4,8 @@ pkgrel=1
 pkgdesc="Purple colorbase resources."
 arch=('any')
 license=("GPL3")
+makedepends=('git')
+install='purple.install'
 source=("git+https://github.com/Athena-OS/athena-purple-base")
 sha512sums=('SKIP')
 

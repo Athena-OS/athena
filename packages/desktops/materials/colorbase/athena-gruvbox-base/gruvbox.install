@@ -1,0 +1,11 @@
+post_install() {
+  echo "Setting gruvbox colorbase"
+
+  mv /usr/share/athena-gruvbox-base/apps/* /usr/share/icons/hicolor/scalable/apps/
+  mv /usr/share/athena-gruvbox-base/categories/* /usr/share/icons/hicolor/scalable/categories/
+  rm -rf /usr/share/athena-gruvbox-base
+}
+
+post_upgrade() {
+    post_install $1
+}
