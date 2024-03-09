@@ -4,6 +4,8 @@ pkgrel=1
 pkgdesc="Cyan colorbase resources."
 arch=('any')
 license=("GPL3")
+makedepends=('git')
+install='cyan.install'
 source=("git+https://github.com/Athena-OS/athena-cyan-base")
 sha512sums=('SKIP')
 

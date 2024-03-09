@@ -4,23 +4,12 @@ pkgrel=1
 pkgdesc="Sweet Dark theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('candy-icons-git' 'oreo-spark-purple-cursors' 'sweet-dark-gtk-theme' 'sweet-folders-icons-git')
+depends=('athena-purple-base' 'candy-icons-git' 'oreo-spark-purple-cursors' 'sweet-dark-gtk-theme' 'sweet-folders-icons-git')
 install='sweetdark-theme.install'
-source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/AdventureTime.conf"
-        "neon-circle.jpg"
-        "$pkgname.tar.gz")
-sha512sums=('0dcd9eca5833d3c3a910c7a3ddd59d2fc8598cf0109fd5408388fc9f88d8cae364d8ac857d09674399cbdab26ea04a4f4585ff2c935ea04d916bf337087aa577'
-            '8dc1636380142b71c9c2af783784161c7663d410437b1fdab4139aeca7f2e611750d9eb1233a75b5d19d9a82985ee4fde1581ef1a952ab24b7ced5b12c54b395'
-            'c3dc82504f7032ae3358595e3314c64f1bcc14762537fa14d06e14ae616875c994dc881f051e3c431e6d4891e14f963a05682b9b629ba99dddace3de2947af1e')
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/AdventureTime.conf")
+sha512sums=('0dcd9eca5833d3c3a910c7a3ddd59d2fc8598cf0109fd5408388fc9f88d8cae364d8ac857d09674399cbdab26ea04a4f4585ff2c935ea04d916bf337087aa577')
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -dm 755 "$pkgdir/usr/share/athena-sweetdark-theme"
-  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
-
-  install -Dm 644 "neon-circle.jpg" "$pkgdir/usr/share/backgrounds/default/"
   install -Dm 644 "AdventureTime.conf" "$pkgdir/etc/skel/.config/kitty/"
-
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-sweetdark-theme/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-sweetdark-theme/"
 }

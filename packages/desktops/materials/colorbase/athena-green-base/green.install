@@ -1,0 +1,11 @@
+post_install() {
+  echo "Setting green colorbase"
+
+  mv /usr/share/athena-green-base/apps/* /usr/share/icons/hicolor/scalable/apps/
+  mv /usr/share/athena-green-base/categories/* /usr/share/icons/hicolor/scalable/categories/
+  rm -rf /usr/share/athena-green-base
+}
+
+post_upgrade() {
+    post_install $1
+}

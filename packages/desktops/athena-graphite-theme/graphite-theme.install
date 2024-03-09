@@ -1,10 +1,6 @@
 post_install() {
   echo "Setting Graphite theme"
-
   mv /etc/skel/.config/kitty/Atom.conf /etc/skel/.config/kitty/current-theme.conf
-  mv /usr/share/athena-graphite-theme/apps/* /usr/share/icons/hicolor/scalable/apps/
-  mv /usr/share/athena-graphite-theme/categories/* /usr/share/icons/hicolor/scalable/categories/
-  rm -rf /usr/share/athena-graphite-theme
 }
 
 post_upgrade() {

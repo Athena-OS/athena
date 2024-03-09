@@ -4,30 +4,12 @@ pkgrel=1
 pkgdesc="Hack The Box theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('afterglow-recolored-green')
-makedepends=('git')
+depends=('athena-green-base' 'afterglow-recolored-green')
 install='htb-theme.install'
-source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Box.conf"
-        "hackthebox.png"
-        "$pkgname.tar.gz")
-sha512sums=('2bced57ecad432cefd060d4f617802a20fb154c4db236b0d9ee070152589ca7c2d9dfaeaaaf7048c5881bb4bb26cc8bbfff7e5f5ea502dbac8f8599135808fe1'
-            'b96074aade5396df359335c5c164b1fdb8280eef354ae487c0cb55ec269d1cf17a4bce9e57e1b94a9622382e23b5f75150432b9ae53eff158ff15a09b8b7034b'
-            'ea5d1f4c4006bb4d3a9b69094f2166f5b7b8482d27c8a014d06d0ff42012f98b6ba2faef794ed54a78d3a36c236b2ec0917d2aeee68a84f6ef5fab9efb999c77')
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Box.conf")
+sha512sums=('2bced57ecad432cefd060d4f617802a20fb154c4db236b0d9ee070152589ca7c2d9dfaeaaaf7048c5881bb4bb26cc8bbfff7e5f5ea502dbac8f8599135808fe1')
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -dm 755 "$pkgdir/usr/share/icons"
-  install -dm 755 "$pkgdir/usr/share/themes"
-  install -dm 755 "$pkgdir/usr/share/athena-htb-theme"
-  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
-
-  cp -a HackTheBox-GTK-Theme/HackTheBox-B "$pkgdir/usr/share/themes/"
-  cp -a HackTheBox-GTK-Theme/HackTheBox-BL "$pkgdir/usr/share/themes/"
-  cp -a HackTheBox-GTK-Theme/HackTheBox-BBL "$pkgdir/usr/share/themes/"
-  cp -a HackTheBox "$pkgdir/usr/share/icons/"
-  install -Dm 644 "hackthebox.png" "$pkgdir/usr/share/backgrounds/default/"
   install -Dm 644 "Box.conf" "$pkgdir/etc/skel/.config/kitty/"
-
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-htb-theme/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-htb-theme/"
 }

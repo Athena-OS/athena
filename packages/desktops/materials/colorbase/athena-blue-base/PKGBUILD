@@ -4,6 +4,8 @@ pkgrel=1
 pkgdesc="Blue colorbase resources."
 arch=('any')
 license=("GPL3")
+makedepends=('git')
+install='blue.install'
 source=("git+https://github.com/Athena-OS/athena-blue-base")
 sha512sums=('SKIP')
 

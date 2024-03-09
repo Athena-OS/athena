@@ -4,20 +4,18 @@ pkgrel=1
 pkgdesc="Parrot CTFs theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('afterglow-recolored-purple' 'fish' 'layan-gtk-theme-git' 'material-black-cherry-suru' 'shell-color-scripts' 'starship')
+depends=('athena-purple-base' 'afterglow-recolored-purple' 'fish' 'layan-gtk-theme-git' 'material-black-cherry-suru' 'shell-color-scripts' 'starship')
 makedepends=('git')
 install='parrotctfs-theme.install'
 conflicts=('athena-fish')
 source=("git+https://github.com/parrotassassin15/ConfigFiles"
         "https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/AdventureTime.conf"
         "$pkgname"
-        "PCTFs.png"
-        "$pkgname.tar.gz")
+        "PCTFs.png")
 sha512sums=('SKIP'
             '0dcd9eca5833d3c3a910c7a3ddd59d2fc8598cf0109fd5408388fc9f88d8cae364d8ac857d09674399cbdab26ea04a4f4585ff2c935ea04d916bf337087aa577'
             '6ca0e93783eea5c8c83a549155eb8b4e4dba3f77549a11eaa7cc37438f8b389d2594ecdfd3823d2391c24e5b4b74b9b76ec01411a9b22d61c4a18943b4002291'
-            '70bd0d55c90fcc0355528551596ec5a439d7c79c87b4c2aa8260d67e19e69283bceeb99cfc4a0d8912a6036bcd112186b275ec96a63e5a5cf16936474bf7c6c8'
-            'fa81f238de5739950544c73c697dfba1d097498723ed7ec2e468284523011d188bca42e50c49c9e7b1a0edf8a8ce7ce6e6b696be32c5d9ee8aebdee5f164658d')
+            '70bd0d55c90fcc0355528551596ec5a439d7c79c87b4c2aa8260d67e19e69283bceeb99cfc4a0d8912a6036bcd112186b275ec96a63e5a5cf16936474bf7c6c8')
 
 pkgver() {
   cd ConfigFiles
@@ -28,16 +26,12 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/athena-parrotctfs-theme"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
   install -dm 755 "$pkgdir/etc/skel/.config"
 
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "PCTFs.png" "$pkgdir/usr/share/backgrounds/default/"
   install -Dm 644 "AdventureTime.conf" "$pkgdir/etc/skel/.config/kitty/"
-
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-parrotctfs-theme/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-parrotctfs-theme/"
 
   install -Dm 644 "ConfigFiles/custom-prompt/starship/starship.toml" "$pkgdir/etc/skel/.config/"
   cp -a "ConfigFiles/custom-prompt/fish" "$pkgdir/etc/skel/.config/"
