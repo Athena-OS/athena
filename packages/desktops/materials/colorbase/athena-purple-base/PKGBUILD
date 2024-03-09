@@ -8,11 +8,12 @@ source=("git+https://github.com/Athena-OS/athena-purple-base")
 sha512sums=('SKIP')
 
 package() {
+  cd athena-purple-base
+
   install -dm 755 "$pkgdir/usr/share/athena-purple-base"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-
   install -Dm 644 "neon-circle.jpg" "$pkgdir/usr/share/backgrounds/athena/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-purple-base/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-purple-base/"
+  cp -a "icons/apps" "$pkgdir/usr/share/athena-purple-base/"
+  cp -a "icons/categories" "$pkgdir/usr/share/athena-purple-base/"
 }

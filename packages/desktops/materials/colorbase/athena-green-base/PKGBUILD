@@ -8,6 +8,8 @@ source=("git+https://github.com/Athena-OS/athena-green-base")
 sha512sums=('SKIP')
 
 package() {
+  cd athena-green-base
+
   install -dm 755 "$pkgdir/usr/share/icons"
   install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/athena-green-base"
@@ -19,6 +21,6 @@ package() {
   cp -a HackTheBox "$pkgdir/usr/share/icons/"
   install -Dm 644 "hackthebox.png" "$pkgdir/usr/share/backgrounds/athena/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-green-base/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-green-base/"
+  cp -a "icons/apps" "$pkgdir/usr/share/athena-green-base/"
+  cp -a "icons/categories" "$pkgdir/usr/share/athena-green-base/"
 }

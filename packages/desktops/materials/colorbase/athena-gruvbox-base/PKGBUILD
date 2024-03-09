@@ -8,11 +8,12 @@ source=("git+https://github.com/Athena-OS/athena-gruvbox-base")
 sha512sums=('SKIP')
 
 package() {
+  cd athena-gruvbox-base
+
   install -dm 755 "$pkgdir/usr/share/athena-gruvbox-base"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-
   install -Dm 644 "cyborg-gruv.png" "$pkgdir/usr/share/backgrounds/athena/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-gruvbox-base/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-gruvbox-base/"
+  cp -a "icons/apps" "$pkgdir/usr/share/athena-gruvbox-base/"
+  cp -a "icons/categories" "$pkgdir/usr/share/athena-gruvbox-base/"
 }
