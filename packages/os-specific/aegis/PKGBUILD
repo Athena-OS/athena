@@ -1,6 +1,5 @@
 pkgname=aegis
-_pkgname=athena-aegis
-pkgver=164.d96127f
+pkgver=165.8f9bd4a
 pkgrel=1
 pkgdesc="Scriptable backend & TUI Installer for Athena OS."
 arch=('x86_64' 'aarch64')
@@ -35,5 +34,6 @@ build() {
 package() {
     cd $pkgname
     
-    install -Dm 755 "target/release/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
+    install -Dm 755 "target/release/$pkgname-arch" "${pkgdir}/usr/bin/$pkgname-arch"
+    install -Dm 755 "target/release/$pkgname-nix" "${pkgdir}/usr/bin/$pkgname-nix"
 }
