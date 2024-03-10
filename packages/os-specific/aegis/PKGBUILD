@@ -1,14 +1,12 @@
 pkgname=aegis
-_pkgname=athena-aegis
-pkgver=164.d96127f
+pkgver=165.8f9bd4a
 pkgrel=1
-pkgdesc="Scriptable backend & TUI Installer for Athena OS."
+pkgdesc="Scriptable backend installer for Athena OS."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Athena-OS/${pkgname}"
 license=('GPL3')
-depends=('parted' 'arch-install-scripts' 'rate-mirrors')
-makedepends=('cargo')
-#source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+depends=('parted' 'arch-install-scripts' 'nix' 'rate-mirrors')
+makedepends=('cargo' 'git')
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
 
@@ -35,5 +33,6 @@ build() {
 package() {
     cd $pkgname
     
-    install -Dm 755 "target/release/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
+    install -Dm 755 "target/release/$pkgname-arch" "${pkgdir}/usr/bin/$pkgname-arch"
+    install -Dm 755 "target/release/$pkgname-nix" "${pkgdir}/usr/bin/$pkgname-nix"
 }
