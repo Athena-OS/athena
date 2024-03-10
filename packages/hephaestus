@@ -99,7 +99,7 @@ build_package() {
 
         # Used for -git updated packages
         pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-        pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
+        pkgfile=$pkgname-$pkgepoch$pkgver-$pkgrel-$arch.pkg.tar.zst
 
         sign_package
 
