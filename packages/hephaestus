@@ -187,6 +187,9 @@ while getopts "dhrs" opt; do
 done
 shift $((OPTIND - 1))
 
+# Need to sync Hephaestus with the updated repository
+sudo pacman -Syy
+
 # Set the CPU Architecture for packaging
 cpu_arch="x86_64"
 src_dir="$(pwd)"
