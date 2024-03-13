@@ -1,0 +1,35 @@
+pkgname=aegis-tui
+pkgver=44.eb49c1d
+pkgrel=1
+pkgdesc='TUI frontend for the Aegis installer.'
+license=('GPL3')
+arch=('x86_64' 'aarch64')
+url="https://github.com/Athena-OS/${pkgname}"
+depends=('aegis' 'gum' 'util-linux')
+makedepends=('git')
+source=("git+https://github.com/Athena-OS/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+    cd $pkgname
+
+    install -dm755 $pkgdir/usr/bin
+    install -dm755 $pkgdir/usr/share/aegis-tui
+    install -Dm755 "aegis-tui" "${pkgdir}/usr/share/aegis-tui/"
+    install -Dm644 "keymaps" "${pkgdir}/usr/share/aegis-tui/"
+    install -Dm644 "locales" "${pkgdir}/usr/share/aegis-tui/"
+
+    cat > "${pkgdir}/usr/bin/aegis-tui" << EOF
+#!/bin/sh
+
+/usr/share/aegis-tui/aegis-tui "\$@"
+EOF
+  
+    chmod a+x "${pkgdir}/usr/bin/aegis-tui"
+}
