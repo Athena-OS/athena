@@ -60,8 +60,8 @@ jobs:
         
       - name: Build ArchISO
         run: |
-          cd installation-scripts
-          ./build-the-iso-the-first-time.sh
+          cd scripts
+          ./build-iso.sh
           
       - name: Upload to SourceForge
         run: |
