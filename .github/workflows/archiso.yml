@@ -60,8 +60,8 @@ jobs:
         
       - name: Build ArchISO
         run: |
-          cd installation-scripts
-          ./build-the-iso-the-first-time.sh
+          cd scripts
+          ./build-iso.sh
           
       - name: Upload to SourceForge
         run: |
@@ -76,8 +76,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd $GITHUB_WORKSPACE
-          git clone https://github.com/Athena-OS/athena-iso
-          cd athena-iso
+          git clone https://github.com/Athena-OS/athena
+          cd athena
           for f in $(find $HOME/Athena-Out -name '*.iso*'); do
             gh release upload v23.11 $f --clobber
           done
