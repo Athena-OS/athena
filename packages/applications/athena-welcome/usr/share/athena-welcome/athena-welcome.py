@@ -101,7 +101,10 @@ class Main(Gtk.Window):
         #t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/modules/packages-system-update.conf", "/etc/calamares/modules/packages.conf"],))
         #t.daemon = True
         #t.start()
-        subprocess.Popen(["/usr/bin/aegis-gui"], shell=False)
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "aegis-tui"],))
+        t.daemon = True
+        t.start()
+        #subprocess.Popen(["/usr/bin/aegis-gui"], shell=False)
 
     #def on_offline_clicked(self, widget):
         #t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/settings-athena-offline.conf", "/etc/calamares/settings.conf"],))

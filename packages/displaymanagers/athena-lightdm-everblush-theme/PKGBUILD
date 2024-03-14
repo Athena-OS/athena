@@ -33,7 +33,7 @@ package() {
     mv "${pkgdir}/usr/share/icons/Nordzy-cyan-dark" "${pkgdir}/usr/share/icons/Nordzy-cyan-dark-lightdm"
 
     cd "${srcdir}"
-    install -dm 755 "$pkgdir/usr/share/backgrounds/default"
+    install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
 
-    install -Dm 644 "mechanic-keyboard-lightdm.png" "$pkgdir/usr/share/backgrounds/default/"
+    install -Dm 644 "mechanic-keyboard-lightdm.png" "$pkgdir/usr/share/backgrounds/athena/"
 }
