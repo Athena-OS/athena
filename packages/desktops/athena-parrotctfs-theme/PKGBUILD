@@ -26,11 +26,11 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
   install -dm 755 "$pkgdir/etc/skel/.config"
 
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
-  install -Dm 644 "PCTFs.png" "$pkgdir/usr/share/backgrounds/default/"
+  install -Dm 644 "PCTFs.png" "$pkgdir/usr/share/backgrounds/athena/"
   install -Dm 644 "AdventureTime.conf" "$pkgdir/etc/skel/.config/kitty/"
 
   install -Dm 644 "ConfigFiles/custom-prompt/starship/starship.toml" "$pkgdir/etc/skel/.config/"
