@@ -41,6 +41,7 @@ update_package_version() {
     makepkg -do
 
     git add PKGBUILD
+    rm -rf /tmp/makepkg/*
 
     cd $src_dir
 }
