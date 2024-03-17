@@ -72,11 +72,12 @@ build_package() {
     echo -e "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
 
+    makepkg -do
+
     pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgepoch=$(grep "^epoch=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1] ":"}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
-    # Current version
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=$pkgname-$pkgepoch$pkgver-$pkgrel-$arch.pkg.tar.zst
 
@@ -96,10 +97,6 @@ build_package() {
             }
             sudo rm -rf src pkg
         fi
-
-        # Used for -git updated packages
-        pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-        pkgfile=$pkgname-$pkgepoch$pkgver-$pkgrel-$arch.pkg.tar.zst
 
         sign_package
 
