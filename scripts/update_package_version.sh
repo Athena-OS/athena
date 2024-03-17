@@ -34,7 +34,7 @@ update_package_version() {
     pkg_dir=$1
     src_dir=$2
 
-    echo -e "\nBuilding package in $pkg_dir..."
+    echo -e "\nUpdating package version in $pkg_dir..."
     cd $pkg_dir
 
     updpkgsums
