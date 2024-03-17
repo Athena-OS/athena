@@ -212,7 +212,7 @@ done
 
 if [[ "$db" ]]
 then
-    rm $out_dir/athena.db* $out_dir/athena.files*
+    # rm $out_dir/athena.db* $out_dir/athena.files*
     # Note that if only one package fails to be processed (i.e., packages with 0 size), athena.db won't be created
     repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
 fi
