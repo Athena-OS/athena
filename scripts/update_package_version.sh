@@ -37,6 +37,7 @@ update_package_version() {
     echo -e "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
 
+    updpkgsums
     makepkg -do
 
     git add PKGBUILD
@@ -63,3 +64,5 @@ done
 
 git commit -am "Bump packages"
 git push
+echo
+echo -e "Remember to not push the entire repository to prevent pushing of git source directories. Delete this repository and clone it again instead."
