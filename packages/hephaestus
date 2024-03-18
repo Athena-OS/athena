@@ -80,8 +80,8 @@ build_package() {
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=()
-    for name in "${pkgname[@]}"; do
-        pkgfile+=("${name}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
+    for pname in "${pkgname[@]}"; do
+        pkgfile+=("${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
     done
 
     if [ ! -f "$out_dir/$pkgfile" ]; then
@@ -127,7 +127,9 @@ sign_package() {
         fi
 
         if [ -n "$passphrase" ]; then
-            echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
+            for pfile in "${pkgfile[@]}"; do
+                echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pfile.sig $pfile
+            done
         else
             echo "Error: 'PASSPHRASE' environment variable not set."
             break
