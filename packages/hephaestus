@@ -74,12 +74,15 @@ build_package() {
 
     makepkg -do
 
-    pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    pkgname=($(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/[\[('\'')]//g' -e 's/"//g'))
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgepoch=$(grep "^epoch=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1] ":"}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-    pkgfile=$pkgname-$pkgepoch$pkgver-$pkgrel-$arch.pkg.tar.zst
+    pkgfile=()
+    for pname in "${pkgname[@]}"; do
+        pkgfile+=("${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
+    done
 
     if [ ! -f "$out_dir/$pkgfile" ]; then
         if [ -f "build.sh" ]; then
@@ -100,12 +103,12 @@ build_package() {
 
         sign_package
 
-        #echo -e "Moving $pkgfile $pkgfile.sig to $src_dir"
-        echo -e "Moving $pkgfile to $out_dir"
-        #mv $pkgfile $pkgfile.sig $out_dir
-        #sudo chown $(stat -c '%u:%g' $pkg_dir/PKGBUILD) ./*.pkg.tar.*
-        cp -f $pkgfile* $out_dir
-        rm -f $pkgfile*
+        # A PKGBUILD could contain more than one package (i.e., python- packages)
+        for pfile in "${pkgfile[@]}"; do
+            echo -e "Moving $pfile to $out_dir"
+            cp -f $pfile* $out_dir
+            rm -f $pfile*
+        done
     else
         >&2 echo "$pkgfile already exists in $out_dir"
     fi
@@ -124,7 +127,9 @@ sign_package() {
         fi
 
         if [ -n "$passphrase" ]; then
-            echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
+            for pfile in "${pkgfile[@]}"; do
+                echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pfile.sig $pfile
+            done
         else
             echo "Error: 'PASSPHRASE' environment variable not set."
             break
