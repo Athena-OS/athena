@@ -128,6 +128,7 @@ sign_package() {
 
         if [ -n "$passphrase" ]; then
             for pfile in "${pkgfile[@]}"; do
+                echo "Creating $pfile.sig"
                 echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pfile.sig $pfile
             done
         else
