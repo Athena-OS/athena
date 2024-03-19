@@ -72,7 +72,7 @@ build_package() {
     echo -e "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
 
-    makepkg -do
+    makepkg -do --noprepare
 
     pkgname=($(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/[\[('\'')]//g' -e 's/"//g'))
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
