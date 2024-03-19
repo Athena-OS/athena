@@ -6,7 +6,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Athena-OS/${pkgname}"
 license=('GPL3')
 depends=('parted' 'arch-install-scripts' 'nix' 'rate-mirrors' 'unzip')
-makedepends=('git' 'rustup')
+makedepends=('cargo' 'git')
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
 
