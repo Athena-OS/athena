@@ -6,12 +6,12 @@ pkgver=0.14.1
 pkgrel=1
 pkgdesc='GooCanvas Python bindings.'
 arch=('x86_64' 'aarch64')
-url='https://wiki.gnome.org/Projects/PyGoocanvas'
+url='https://github.com/dieterv/pygoocanvas'
 license=('LGPL')
 depends=('python2' 'goocanvas1' 'pygtk')
 makedepends=('pkgconfig' 'git' 'gtk-doc')
 options=('docs')
-source=('git+https://github.com/dnut/pygoocanvas.git')
+source=('git+https://github.com/dieterv/$pkgname.git')
 sha512sums=('SKIP')
 
 prepare() {
@@ -24,11 +24,12 @@ build() {
   cd $pkgname
 
   ./configure --prefix=/usr --disable-docs
-
   make
 }
 
 package() {
+  cd $pkgname
+  
   make -C "$pkgname" DESTDIR="$pkgdir" install
 }
 

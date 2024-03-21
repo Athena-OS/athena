@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc='Packet Trace Parser for TCP, SMTP Emails, and HTTP Cookies.'
 groups=('athena' 'athena-networking')
 arch=('x86_64' 'aarch64')
-url='https://github.com/julioreynaga/sniffer'
+url='https://github.com/cys3c/sniffer'
 license=('custom:unknown')
 depends=('libpcap')
 makedepends=('git' 'clang')
-source=("git+https://github.com/julioreynaga/$pkgname.git")
+source=("git+https://github.com/cys3c/$pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {

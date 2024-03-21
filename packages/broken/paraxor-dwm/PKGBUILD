@@ -6,13 +6,13 @@ pkgver=6.0
 pkgrel=4
 pkgdesc="Dynamic window manager for X (paraxor's fork)."
 arch=('x86_64' 'aarch64')
-url='http://dwm.suckless.org/'
+url='https://dwm.suckless.org/'
 license=('GPL')
 depends=('xorg-server' 'xorg-xsetroot' 'libx11' 'libxinerama')
 makedepends=('git')
 conflicts=('dwm')
 provides=('dwm')
-source=("$pkgname::git+http://github.com/paraxor/dwm")
+source=("$pkgname::git+https://github.com/paraxor/dwm")
 sha512sums=('SKIP')
 
 prepare() {

@@ -5,14 +5,14 @@ pkgname=paraxor-st
 pkgver=0.4.1
 pkgrel=2
 pkgdesc="A simple virtual terminal emulator for X (paraxor's fork)"
-url="http://st.suckless.org"
+url="https://st.suckless.org"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('libxext' 'libxft')
 makedepends=('ncurses' 'git')
 conflicts=('st')
 provides=('st')
-source=("$pkgname::git+http://github.com/paraxor/st")
+source=("$pkgname::git+https://github.com/paraxor/st")
 sha512sums=('SKIP')
 
 build() {
