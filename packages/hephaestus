@@ -144,15 +144,19 @@ echo "The Athena OS CI/CD Builder"
 echo
 
 # Parse command-line options
-while getopts "dhrs" opt; do
+while getopts "adhrs" opt; do
     case $opt in
+        a)
+            all=true
+            ;;
         d)
             db=true
             ;;
         h)
-            echo "Usage: $0 [-d] [-r] [-s] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-d] [-r] [-s] [package1 package2 ...]"
             echo
             echo "Options:"
+            echo "a     Build all packages."
             echo "d     Update the package repository database."
             echo "h     Print this Help."
             echo "r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
@@ -204,7 +208,7 @@ prebuild_command
 # Get user input if provided
 if [ "$#" -gt 0 ]; then
     result=($(find_pkgbuild_dirs "$@"))
-else
+elif [[ "$all" ]]; then
     result=($(find_pkgbuild_dirs))
 fi
 
