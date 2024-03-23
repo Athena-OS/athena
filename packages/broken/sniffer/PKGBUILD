@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=sniffer
+pkgver=4.688854e
+pkgrel=1
+pkgdesc='Packet Trace Parser for TCP, SMTP Emails, and HTTP Cookies.'
+groups=('athena' 'athena-networking')
+arch=('x86_64' 'aarch64')
+url='https://github.com/cys3c/sniffer'
+license=('custom:unknown')
+depends=('libpcap')
+makedepends=('git' 'clang')
+source=("git+https://github.com/cys3c/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 755 cookie_parser "$pkgdir/usr/bin/cookie-parser"
+  install -Dm 755 email_parser "$pkgdir/usr/bin/email-parser"
+  install -Dm 755 packet_parser "$pkgdir/usr/bin/packet-parser"
+  install -Dm 755 tcp_parser "$pkgdir/usr/bin/tcp-parser"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  rm README.md
+
+  cp -a sample "$pkgdir/usr/share/$pkgname/"
+}
+
