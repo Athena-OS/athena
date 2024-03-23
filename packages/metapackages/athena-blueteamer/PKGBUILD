@@ -1,11 +1,11 @@
 pkgname=athena-blueteamer
 pkgver=1.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Blue Teamer Role tools."
 arch=('any')
 license=("custom")
 depends=(
-    'amass' 'assetfinder' 'cisco-auditing-tool' 'heartbleed-honeypot' 'maltego' 'maryam' 'nipper' 'osrframework' 'exploitdb' 'spiderfoot' 'tiger' 'wapiti' 'python-witnessme' 'zaproxy'
+    'amass' 'assetfinder' 'cisco-auditing-tool' 'heartbleed-honeypot' 'maltego' 'nipper' 'osrframework' 'exploitdb' 'spiderfoot' 'tiger' 'wapiti' 'python-witnessme' 'zaproxy'
     'clamav' 'cryptsetup' 'fwbuilder'
     'dc3dd' 'foremost' 'galleta' 'ghidra' 'guymager' 'sleuthkit' 'impacket' 'mac-robber' 'netsniff-ng' 'ollydbg' 'rkhunter' 'unhide' 'wireshark-qt'
     'ddrescue' 'ext3grep' 'ext4magic' 'extundelete' 'recoverjpeg' 'scrounge-ntfs')
