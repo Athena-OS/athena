@@ -7,5 +7,4 @@ sed -i '/^$/d' PKGBUILD #Delete all empty lines
 
 printf 'depends=( ' >> PKGBUILD
 printf "'%s' " $(pacman -Sgq athena-mobile athena-reversing | awk '!seen[$0]++' | sort | sed -e "$(sed 's:.*:s/^&$//ig:' <<<$(printf "%s\n" "${to_exclude[@]}"))") >> PKGBUILD
-printf "'python-pwntools' " >> PKGBUILD
 printf ')\n' >> PKGBUILD
