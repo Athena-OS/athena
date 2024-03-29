@@ -20,7 +20,7 @@ build() {
     cd $pkgname
 
     yarn install
-    cargo tauri build -- --locked
+    NO_STRIP=true cargo tauri build -- --locked
 }
 
 package() {
