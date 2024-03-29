@@ -5,8 +5,8 @@ pkgdesc="Tauri-based GUI front-end for Aegis."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Athena-OS/${pkgname}"
 license=('GPL3')
-depends=()
-makedepends=('cargo-tauri' 'yarn' 'git')
+depends=('gtk3' 'libappindicator-gtk3' 'libsoup' 'webkit2gtk')
+makedepends=('cargo-tauri' 'pnpm' 'yarn' 'git')
 source=("git+https://github.com/mwaurawakati/$pkgname.git")
 sha512sums=('SKIP')
 
@@ -19,8 +19,11 @@ pkgver() {
 build() {
     cd $pkgname
 
-    yarn install
-    cargo tauri build -- --locked
+    #export NO_STRIP=true
+    pnpm install
+    NO_STRIP=true pnpm tauri build -- --locked
+    #yarn install
+    #cargo tauri build -- --locked
 }
 
 package() {
