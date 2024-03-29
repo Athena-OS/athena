@@ -19,8 +19,9 @@ pkgver() {
 build() {
     cd $pkgname
 
+    export NO_STRIP=true
     yarn install
-    NO_STRIP=true cargo tauri build -- --locked
+    cargo tauri build -- --locked
 }
 
 package() {
