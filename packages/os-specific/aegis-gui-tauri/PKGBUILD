@@ -18,16 +18,15 @@ pkgver() {
 
 build() {
     cd $pkgname
-
-    #export NO_STRIP=true
-    pnpm install
-    NO_STRIP=true pnpm tauri build -- --locked
-    #yarn install
-    #cargo tauri build -- --locked
+    
+    export NO_STRIP=true
+    yarn install
+    NO_STRIP=true 
+    unset SOURCE_DATE_EPOCH
+    cargo tauri build
 }
 
 package() {
     cd $pkgname
-
-    install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm 755 "src-tauri/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
