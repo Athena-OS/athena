@@ -21,7 +21,7 @@ build() {
     cd $pkgname
 
     yarn install
-    cargo tauri build -- --locked
+    cargo tauri build
 }
 
 package() {
