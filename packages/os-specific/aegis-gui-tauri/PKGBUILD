@@ -6,9 +6,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Athena-OS/${pkgname}"
 license=('GPL3')
 depends=('gtk3' 'libappindicator-gtk3' 'libsoup' 'webkit2gtk')
-makedepends=('cargo-tauri' 'yarn' 'git')
+makedepends=('cargo-tauri' 'pnpm' 'yarn' 'git')
 source=("git+https://github.com/mwaurawakati/$pkgname.git")
-options=(!strip)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -19,13 +18,15 @@ pkgver() {
 
 build() {
     cd $pkgname
-
+    
+    export NO_STRIP=true
     yarn install
+    NO_STRIP=true 
+    unset SOURCE_DATE_EPOCH
     cargo tauri build
 }
 
 package() {
     cd $pkgname
-
-    install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm 755 "src-tauri/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
