@@ -1,6 +1,6 @@
 post_install() {
 
-if grep -q GRUB_THEME= /etc/default/grub; then
+  if grep -q GRUB_THEME= /etc/default/grub; then
     sed -i 's/.*GRUB_THEME=.*/GRUB_THEME="\/usr\/share\/grub\/themes\/athena\/theme.txt"/g' /etc/default/grub
   else
     echo "GRUB_THEME=\"/usr/share/grub/themes/athena/theme.txt\"" >> /etc/default/grub
