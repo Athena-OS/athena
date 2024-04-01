@@ -1,9 +1,9 @@
 post_install() {
 
   if grep -q GRUB_THEME= /etc/default/grub; then
-    sed -i 's/.*GRUB_THEME=.*/GRUB_THEME="\/usr\/share\/grub\/themes\/athena\/theme.txt"/g' /etc/default/grub
+    sed -i 's/.*GRUB_THEME=.*/GRUB_THEME="\/boot\/grub\/themes\/athena\/theme.txt"/g' /etc/default/grub
   else
-    echo "GRUB_THEME=\"/usr/share/grub/themes/athena/theme.txt\"" >> /etc/default/grub
+    echo "GRUB_THEME=\"/boot/grub/themes/athena/theme.txt\"" >> /etc/default/grub
   fi
   
   sed -i 's/GRUB_ENABLE_BLSCFG=.*/GRUB_ENABLE_BLSCFG=false/g' /etc/default/grub
