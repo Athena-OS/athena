@@ -1,6 +1,6 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=294.55bc584b
+pkgver=718.dc608997
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
@@ -18,9 +18,10 @@ depends=('coreutils' 'cliphist' 'curl' 'fuzzel' 'rsync' 'wget' 'ripgrep' 'gojq' 
 'python-pywayland' 'python-psutil' 'hypridle-git' 'hyprlock-git' 'wlogout' 'wl-clipboard' 'hyprpicker-git' 'anyrun-git'
 'adw-gtk3-git' 'qt5ct' 'qt5-wayland' 'gradience-git' 'fontconfig' 'ttf-readex-pro' 'ttf-jetbrains-mono-nerd' 'ttf-material-symbols-variable-git' 'ttf-space-mono-nerd' 'fish' 'foot' 'starship'
 'swappy' 'wf-recorder' 'grim' 'tesseract' 'tesseract-data-eng' 'slurp'
+'aylurs-gtk-shell' 'plasma-browser-integration'
 )
 makedepends=('git' 'rsync' 'cmake' 'meson' 'gobject-introspection' 'python-build' 'python-setuptools-scm' 'python-wheel')
-source=("git+https://github.com/end-4/$_pkgname#branch=illogical-impulse"
+source=("git+https://github.com/end-4/$_pkgname"
         "hyprland-init"
         "dconf-desktop.ini")
 sha512sums=('SKIP'
@@ -41,20 +42,23 @@ package() {
   install -dm 755 "$pkgdir/usr/share/$pkgname"
   
   cd $_pkgname
+  ls -la
 
   rsync -av --progress ./.config/ags "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/anyrun "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/fish "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/fontconfig "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/foot "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/fuzzel "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./.config/gtk-3.0 "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./.config/gtk-4.0 "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./.config/gtklock "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/hypr "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/mpv "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/qt5ct "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/wlogout "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./.config/code-flags.conf "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/zshrc.d "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/starship.toml "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/thorium-flags.conf "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.local/bin "$pkgdir/etc/skel/.local/"
-  rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
+  rsync -av --progress "./Import Manually/swaylock" "$pkgdir/etc/skel/.config/"
   #rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
 
   install -Dm 755 $srcdir/hyprland-init "$pkgdir/usr/bin/"
