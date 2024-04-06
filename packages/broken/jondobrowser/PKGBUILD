@@ -1,0 +1,44 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=jondobrowser
+pkgver=3.053b888
+pkgrel=1
+_language='en-US'
+pkgdesc='Firefox tweaked to work with JonDo (anonymous browsing)'
+url='https://github.com/jondos/jondobrowser-japlauncher'
+arch=('x86_64')
+license=('GPL')
+depends=('java-environment')
+makedepends=('gcc')
+optdepends=('zenity: simple dialog boxes'
+      'kdialog: KDE dialog boxes'
+      'notify-send: Gnome dialog boxes'
+      'jondo: connection to jondo proxy cascades, gui version'
+      'jondoconsole: connection to jondo proxy cascades, cli version')
+install="jondobrowser.install"
+source=("$pkgname::git+https://github.com/jondos/$pkgname-japlauncher.git"
+        "jondobrowser.desktop")
+sha512sums=('SKIP'
+            'c80c26cf51af8be0e711480d908bb1204d7cf07cea560ceb5f81c6534c86dd5f40f00a4813719aa938c951293cda73e15f80876cfcc7755a0ea7ca2a69a9d10b')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  make -C Linux JonDoLauncher64
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755  "$pkgdir/usr/bin"
+  install -Dm 755 Linux/JonDoLauncher64 "$pkgdir/usr/bin/$pkgname"
+  install -Dm 644 ../jondobrowser.desktop "$pkgdir/usr/share/applications/jondobrowser.desktop"
+}
+

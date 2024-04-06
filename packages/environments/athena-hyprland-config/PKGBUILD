@@ -6,8 +6,20 @@ pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL3")
-depends=('aylurs-gtk-shell-git' 'bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'brightnessctl' 'cava' 'cliphist' 'coreutils' 'curl' 'fcitx5' 'findutils' 'foot' 'fuzzel' 'fzf' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-git' 'hyprpicker' 'ibus' 'imagemagick' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'nwg-look' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pillow' 'python-poetry' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'swww' 'ttf-material-symbols-variable-git' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git' 'xdg-user-dirs' 'xorg-xrandr' 'yad' 'ydotool')
-makedepends=('git' 'rsync')
+depends=('coreutils' 'cliphist' 'curl' 'fuzzel' 'rsync' 'wget' 'ripgrep' 'gojq' 'npm' 'typescript' 'gjs' 'dart-sass' 'axel'
+'tinyxml2' 'gtkmm3' 'gtksourceviewmm' 'cairomm'
+'python-materialyoucolor-git' 'python-pillow' 'python-pywal'
+'hyprland-git' 'xorg-xrandr'
+'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'xdg-desktop-portal-hyprland-git'
+'pavucontrol' 'wireplumber' 'libdbusmenu-gtk3' 'playerctl' 'swww'
+'webp-pixbuf-loader' 'gtk-layer-shell' 'gtk3' 'gtksourceview3'
+'upower' 'yad' 'ydotool'
+'polkit-gnome' 'gnome-keyring' 'gnome-control-center' 'blueberry' 'networkmanager' 'brightnessctl' 'wlsunset' 'gnome-bluetooth-3.0'
+'python-pywayland' 'python-psutil' 'hypridle-git' 'hyprlock-git' 'wlogout' 'wl-clipboard' 'hyprpicker-git' 'anyrun-git'
+'adw-gtk3-git' 'qt5ct' 'qt5-wayland' 'gradience-git' 'fontconfig' 'ttf-readex-pro' 'ttf-jetbrains-mono-nerd' 'ttf-material-symbols-variable-git' 'ttf-space-mono-nerd' 'fish' 'foot' 'starship'
+'swappy' 'wf-recorder' 'grim' 'tesseract' 'tesseract-data-eng' 'slurp'
+)
+makedepends=('git' 'rsync' 'cmake' 'meson' 'gobject-introspection' 'python-build' 'python-setuptools-scm' 'python-wheel')
 source=("git+https://github.com/end-4/$_pkgname#branch=illogical-impulse"
         "hyprland-init"
         "dconf-desktop.ini")
