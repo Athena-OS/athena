@@ -2,18 +2,22 @@
 
 makepkg_settings() {
     if [[ "$buildcores" ]]; then
-        ncores=$(nproc)
+        ncores=$coresnum
     else
         ncores=$(nproc)
     fi
-    if [ $ncores -gt 1 ]
+    if [ $ncores != 1 ]
     then
         echo "$ncores cores available."
         echo "Changing the makeflags to $ncores cores."
-        sudo sed -i 's/#MAKEFLAGS=.*/MAKEFLAGS="-j'$ncores'"/g' /etc/makepkg.conf;
         echo "Changing the compression settings for $ncores cores."
-        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
+    else
+        echo "$ncores core available."
+        echo "Changing the makeflags to $ncores core."
+        echo "Changing the compression settings for $ncores core."
     fi
+    sudo sed -i 's/#MAKEFLAGS=.*/MAKEFLAGS="-j'$ncores'"/g' /etc/makepkg.conf;
+    sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
 }
 
 prebuild_command() {
@@ -156,7 +160,7 @@ while getopts "ac:dhrs" opt; do
         c)
             buildcores=true
             if [[ $OPTARG =~ ^[0-9]+$ ]]; then
-                ncores=$OPTARG
+                coresnum=$((OPTARG))
             else
                 echo "Error: Number of cores must be a positive integer." >&2
                 exit 1
