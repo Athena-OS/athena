@@ -165,7 +165,6 @@ while getopts "ac:dhrs" opt; do
                 echo "Error: Number of cores must be a positive integer." >&2
                 exit 1
             fi
-            shift $((OPTIND - 1))
             ;;
         d)
             db=true
