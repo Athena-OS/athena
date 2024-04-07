@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 
 makepkg_settings() {
-    ncores=$(nproc)
-    if [ $ncores -gt 1 ]
+    if [[ "$buildcores" ]]; then
+        ncores=$coresnum
+    else
+        ncores=$(nproc)
+    fi
+    if [ $ncores != 1 ]
     then
         echo "$ncores cores available."
         echo "Changing the makeflags to $ncores cores."
-        sudo sed -i 's/#MAKEFLAGS=.*/MAKEFLAGS="-j'$ncores'"/g' /etc/makepkg.conf;
         echo "Changing the compression settings for $ncores cores."
-        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
+    else
+        echo "$ncores core available."
+        echo "Changing the makeflags to $ncores core."
+        echo "Changing the compression settings for $ncores core."
     fi
+    sudo sed -i 's/#MAKEFLAGS=.*/MAKEFLAGS="-j'$ncores'"/g' /etc/makepkg.conf;
+    sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
 }
 
 prebuild_command() {
@@ -144,19 +152,29 @@ echo "The Athena OS CI/CD Builder"
 echo
 
 # Parse command-line options
-while getopts "adhrs" opt; do
+while getopts "ac:dhrs" opt; do
     case $opt in
         a)
             all=true
+            ;;
+        c)
+            buildcores=true
+            if [[ $OPTARG =~ ^[0-9]+$ ]]; then
+                coresnum=$((OPTARG))
+            else
+                echo "Error: Number of cores must be a positive integer." >&2
+                exit 1
+            fi
             ;;
         d)
             db=true
             ;;
         h)
-            echo "Usage: $0 [-a] [-d] [-r] [-s] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [package1 package2 ...]"
             echo
             echo "Options:"
             echo "a     Build all packages."
+            echo "c     Set number of cores for building (maximum $(nproc))."
             echo "d     Update the package repository database."
             echo "h     Print this Help."
             echo "r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
@@ -222,6 +240,19 @@ done
 
 if [[ "$db" ]]
 then
+    echo "Invoking the key..."
+    if id "builder" >/dev/null 2>&1; then
+        user="builder"
+    else
+        user="$(whoami)"
+    fi
+
+    if [ -n "$passphrase" ]; then
+        echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0
+    else
+        echo "Error: 'PASSPHRASE' environment variable not set."
+        break
+    fi
     # rm $out_dir/athena.db* $out_dir/athena.files*
     # Note that if only one package fails to be processed (i.e., packages with 0 size), athena.db won't be created
     repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
