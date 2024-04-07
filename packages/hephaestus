@@ -141,7 +141,7 @@ sign_package() {
             done
         else
             echo "Error: 'PASSPHRASE' environment variable not set."
-            break
+            exit 1
         fi
     fi
 }
@@ -168,6 +168,12 @@ while getopts "ac:dhrs" opt; do
             ;;
         d)
             db=true
+            passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
+            if [ -z "$passphrase" ]; then
+                echo "No secret found for GPG key object ${GPG_SEC}."
+            else
+                echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+            fi
             ;;
         h)
             echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [package1 package2 ...]"
@@ -251,7 +257,7 @@ then
         echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0
     else
         echo "Error: 'PASSPHRASE' environment variable not set."
-        break
+        exit 1
     fi
     # rm $out_dir/athena.db* $out_dir/athena.files*
     # Note that if only one package fails to be processed (i.e., packages with 0 size), athena.db won't be created
