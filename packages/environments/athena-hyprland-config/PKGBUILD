@@ -1,6 +1,6 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=718.dc608997
+pkgver=750.8e890cad
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
@@ -58,8 +58,8 @@ package() {
   rsync -av --progress ./.config/starship.toml "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/thorium-flags.conf "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.local/bin "$pkgdir/etc/skel/.local/"
-  rsync -av --progress "./Import Manually/swaylock" "$pkgdir/etc/skel/.config/"
-  #rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
+  rsync -av --progress "./Extras/swaylock" "$pkgdir/etc/skel/.config/"
+  #rsync -av --progress "./Extras/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
 
   install -Dm 755 $srcdir/hyprland-init "$pkgdir/usr/bin/"
   #install -Dm 644 $srcdir/hyprland.conf "$pkgdir/etc/skel/.config/hypr/"
