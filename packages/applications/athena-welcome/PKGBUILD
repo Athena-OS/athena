@@ -1,29 +1,41 @@
 pkgname=athena-welcome
-pkgver=2.0.4
+pkgver=7.1cefe22
 pkgrel=1
 pkgdesc="Welcome App for Athena."
 arch=('any')
-license=("custom")
-depends=('athena-config' 'cyber-toolkit' 'htb-toolkit' 'libwnck3' 'rate-mirrors' 'rsync')
-source=("$pkgname.tar.gz")
+license=("GPL3")
+depends=('athena-config' 'cyber-toolkit' 'htb-toolkit' 'rate-mirrors' 'rsync')
+source=("git+https://github.com/Athena-OS/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
-  mkdir -p "${pkgdir}/etc/skel/.config/autostart"
-  mkdir -p "${pkgdir}/etc/skel/.config/athena-welcome"
-  mkdir -p "${pkgdir}/usr/local/bin"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+  cd $pkgname
 
-  install -Dm644 "${srcdir}/etc/skel/.config/autostart/athena-welcome.desktop" "${pkgdir}/etc/skel/.config/autostart/"
-  install -Dm644 "${srcdir}/etc/skel/.config/athena-welcome/settings.conf" "${pkgdir}/etc/skel/.config/athena-welcome/"
-  install -Dm755 "${srcdir}/usr/local/bin/athena-welcome" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/local/bin/hacking-variables" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/local/bin/role-viewer" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/local/bin/tool-recipe" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/local/bin/athena-upgrade" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/local/bin/athena-fix" "${pkgdir}/usr/local/bin/"
-  install -Dm644 "${srcdir}/usr/share/applications/athena-welcome.desktop" "${pkgdir}/usr/share/applications/"
-  install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/athenaos-hello-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-  cp -rf "${srcdir}/usr/share/athena-welcome" "${pkgdir}/usr/share/"
+  mkdir -p "$pkgdir/etc/skel/.config/autostart"
+  mkdir -p "$pkgdir/etc/skel/.config/athena-welcome"
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+
+  install -Dm644 "autostart/athena-welcome.desktop" "${pkgdir}/etc/skel/.config/autostart/"
+  #install -Dm755 "usr/local/bin/hacking-variables" "${pkgdir}/usr/local/bin/"
+  #install -Dm755 "usr/local/bin/role-viewer" "${pkgdir}/usr/local/bin/"
+  #install -Dm755 "usr/local/bin/tool-recipe" "${pkgdir}/usr/local/bin/"
+  install -Dm644 "share/applications/athena-welcome.desktop" "${pkgdir}/usr/share/applications/"
+  install -Dm644 "share/icons/hicolor/scalable/apps/athenaos-hello.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  cp -a "share/athena-welcome" "${pkgdir}/usr/share/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/usr/bin/env bash
+cd /usr/share/$pkgname/
+exec python ./athena-welcome.py "\${@}"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
 }
-sha256sums=('4d02022a92fd48b478a92bc4ccc7e541175bf609ae9bfb32713ea54aed532ba1')
