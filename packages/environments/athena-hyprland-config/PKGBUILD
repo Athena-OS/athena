@@ -1,7 +1,7 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
 pkgver=750.8e890cad
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
@@ -26,7 +26,7 @@ source=("git+https://github.com/end-4/$_pkgname"
         "dconf-desktop.ini")
 sha512sums=('SKIP'
             '6139cdeeb6224d873fb7fcad488d3a7b9b3d700889e45ccb90edf63fd514bba11410d96bc893de2df7761234401216a282b3e504312ad2d11f98fb0baa9e0a81'
-            'a7a8b2f5e34d83d7f413b33941869dd29d4b3277821f63fe6972d8dbed6937743229bde2bbc49bd1ef91eda733ec720c9a501e395815197dc83d7e7718c90b31')
+            '9bac9b64d5cc90605e1aa3fa7a73f7d81d0f2c3d8f30aeb68c51ef9558ef5a82b4aba60c9917babd374a9325e4b5521107e3fcd73e29ad0878882ecf7d5840cf')
 
 pkgver() {
   cd $_pkgname
@@ -68,5 +68,8 @@ package() {
 
   echo -ne "\n #Hyprland init script\nexec-once = hyprland-init" >> "$pkgdir/etc/skel/.config/hypr/execs.conf"
   echo -ne "\n #Set wallpaper\nexec = swww img \$HOME/.config/hypr/wallpaper" >> "$pkgdir/etc/skel/.config/hypr/execs.conf"
+  sed -i '/clipboard-copy/d' "$pkgdir/etc/skel/.config/foot/foot.ini"
+  sed -i '/clipboard-paste/d' "$pkgdir/etc/skel/.config/foot/foot.ini"
+
   touch "${pkgdir}/etc/skel/.flag-hyprland-once"
 }
