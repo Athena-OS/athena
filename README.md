@@ -81,13 +81,16 @@ As a container, it can be run in every platform supporting Docker or Podman. It 
 
 The Athena OS CI/CD Builder
 
-Usage: /build/packages/hephaestus [-d] [-r] [-s] [package1 package2 ...]
+Usage: /build/packages/hephaestus [-a] [-c <ncores>] [-d] [-r] [-s] [-x] [package1 package2 ...]
 
 Options:
-d     Update the package repository database.
-h     Print this Help.
-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments.
-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument.
+-a     Build all packages.
+-c     Set number of cores for building (maximum 4).
+-d     Update the package repository database.
+-h     Print this Help.
+-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments.
+-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument.
+-x     Search for the fastest mirrors.
 ```
 It builds the specified packages or all the repository packages if no package names are provided.
 
@@ -122,5 +125,5 @@ podman run \
     -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
     -e PRE_EXEC="ls -la /build" \ # Pre-build command
     -e POST_EXEC="ls -la /build/output" # Post-build command
-    docker.io/athenaos/hephaestus -d -r -s
+    docker.io/athenaos/hephaestus -a -d -r -s -x
 ```
