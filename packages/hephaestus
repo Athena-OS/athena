@@ -152,7 +152,7 @@ echo "The Athena OS CI/CD Builder"
 echo
 
 # Parse command-line options
-while getopts "ac:dhrs" opt; do
+while getopts "ac:dhrsx" opt; do
     case $opt in
         a)
             all=true
@@ -176,7 +176,7 @@ while getopts "ac:dhrs" opt; do
             fi
             ;;
         h)
-            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-x] [package1 package2 ...]"
             echo
             echo "Options:"
             echo "a     Build all packages."
@@ -185,6 +185,7 @@ while getopts "ac:dhrs" opt; do
             echo "h     Print this Help."
             echo "r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
             echo "s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
+            echo "x     Search for the fastest mirrors."
             echo
             exit 0
             ;;
@@ -210,6 +211,9 @@ while getopts "ac:dhrs" opt; do
                 echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
             fi
             ;;
+        x)
+            mirr=true
+            ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
             exit 1
@@ -217,6 +221,12 @@ while getopts "ac:dhrs" opt; do
     esac
 done
 shift $((OPTIND - 1))
+
+if [[ "$mirr" ]]
+then
+    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
+fi
 
 # Need to sync Hephaestus with the updated repository
 sudo pacman -Syy
