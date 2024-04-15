@@ -125,5 +125,5 @@ podman run \
     -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
     -e PRE_EXEC="ls -la /build" \ # Pre-build command
     -e POST_EXEC="ls -la /build/output" # Post-build command
-    docker.io/athenaos/hephaestus -d -r -s
+    docker.io/athenaos/hephaestus -a -d -r -s -x
 ```
