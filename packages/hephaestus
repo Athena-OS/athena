@@ -168,12 +168,6 @@ while getopts "ac:dhrsx" opt; do
             ;;
         d)
             db=true
-            passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
-            if [ -z "$passphrase" ]; then
-                echo "No secret found for GPG key object ${GPG_SEC}."
-            else
-                echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
-            fi
             ;;
         h)
             echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-x] [package1 package2 ...]"
@@ -204,12 +198,6 @@ while getopts "ac:dhrsx" opt; do
             ;;
         s)
             sign=true
-            passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
-            if [ -z "$passphrase" ]; then
-                echo "No secret found for GPG key object ${GPG_SEC}."
-            else
-                echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
-            fi
             ;;
         x)
             mirr=true
@@ -221,6 +209,14 @@ while getopts "ac:dhrsx" opt; do
     esac
 done
 shift $((OPTIND - 1))
+
+# Import the signing key
+passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
+if [ -z "$passphrase" ]; then
+    echo "No secret found for GPG key object ${GPG_SEC}."
+else
+    echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+fi
 
 if [[ "$mirr" ]]
 then
