@@ -33,8 +33,7 @@ package() {
 
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/usr/bin/env bash
-cd /usr/share/$pkgname/
-exec python ./athena-welcome.py "\${@}"
+exec python /usr/share/$pkgname/athena-welcome.py "\$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/$pkgname"
