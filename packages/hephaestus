@@ -173,13 +173,13 @@ while getopts "ac:dhrsx" opt; do
             echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-x] [package1 package2 ...]"
             echo
             echo "Options:"
-            echo "a     Build all packages."
-            echo "c     Set number of cores for building (maximum $(nproc))."
-            echo "d     Update the package repository database."
-            echo "h     Print this Help."
-            echo "r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
-            echo "s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
-            echo "x     Search for the fastest mirrors."
+            echo "-a     Build all packages."
+            echo "-c     Set number of cores for building (maximum $(nproc))."
+            echo "-d     Update the package repository database."
+            echo "-h     Print this Help."
+            echo "-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
+            echo "-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
+            echo "-x     Search for the fastest mirrors."
             echo
             exit 0
             ;;
