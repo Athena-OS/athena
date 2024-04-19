@@ -286,7 +286,7 @@ echo "- Copying pkglist"
 tput sgr0
 echo "###################################################################"
 echo
-
+	# Needed to prevent the hash calculation containing the absolute path
 	cd $outFolder
 
 	echo "Creating checksums for : "$isoLabel
@@ -294,16 +294,16 @@ echo
 	echo
 	echo "Building md5sum"
 	echo "########################"
-	md5sum $outFolder/$isoLabel | tee $outFolder/$isoLabel.md5
+	md5sum $isoLabel | tee $outFolder/$isoLabel.md5
 	echo "Building sha1sum"
 	echo "########################"
-	sha1sum $outFolder/$isoLabel | tee $outFolder/$isoLabel.sha1
+	sha1sum $isoLabel | tee $outFolder/$isoLabel.sha1
 	echo "Building sha256sum"
 	echo "########################"
-	sha256sum $outFolder/$isoLabel | tee $outFolder/$isoLabel.sha256
+	sha256sum $isoLabel | tee $outFolder/$isoLabel.sha256
 	echo "Building sha512sum"
 	echo "########################"
-	sha512sum $outFolder/$isoLabel | tee $outFolder/$isoLabel.sha512
+	sha512sum $isoLabel | tee $outFolder/$isoLabel.sha512
 	echo
 	echo "Moving pkglist.x86_64.txt"
 	echo "########################"
