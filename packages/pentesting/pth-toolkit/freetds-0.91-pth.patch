@@ -1,0 +1,66 @@
+diff -rubN freetds-0.91/src/tds/challenge.c freetds-0.91-working/src/tds/challenge.c
+--- freetds-0.91/src/tds/challenge.c	2011-04-11 17:33:54.000000000 -0400
++++ freetds-0.91-working/src/tds/challenge.c	2012-04-22 23:56:51.990928917 -0400
+@@ -167,9 +167,53 @@
+ 	size_t passwd_len = 0;
+ 	char passwd_usc2le[256];
+ 	size_t passwd_usc2le_len = 0;
++	int i=0;
++  int j=0;
++  int HexValue=0;
++  int HexChar=0;
+ 
+ 	passwd_len = strlen(passwd);
++  if (passwd_len == 65)
++  {  
++    // we're assuming the hash is of the 65 character format
++    // LMLMLMLMLMLMLMLMLMLMLMLMLMLMLMLM:NTNTNTNTNTNTNTNTNTNTNTNTNTNTNTN
++    // since this fuction wants the NT hash, we use from 33-64
++    // based on foofus/JMK patch for samba
++    // convert NT hash (b33-65) to lower case
++    for (i=0;i<33;i++)
++      {
++      	passwd_usc2le[i] = tolower(passwd[i+33]);
++      }
++    for (i=33;i<256; i++)
++      {
++        passwd_usc2le[i] = 0; 
++    } 
++   // stuff from jmk's foofus patch that converts hex nibbles into bytes 
++    for (i=0; i<16; i++) {
++     HexValue = 0x0;
++     for (j=0; j<2; j++) {
++         HexChar = (char)passwd_usc2le[2*i+j];
++
++       //if (HexChar > 0x39)
++       //  HexChar = HexChar | 0x20;  /* convert upper case to lower */
++
++       if (!(((HexChar >= 0x30) && (HexChar <= 0x39))||   /* 0 - 9 */
++          ((HexChar >= 0x61) && (HexChar <= 0x66)))) {    /* a - f */
++         fprintf(stderr, "Error invalid char (%c) for hash.\n", HexChar);
++         exit(1);
++       }
+ 
++       HexChar -= 0x30;
++       if (HexChar > 0x09)  /* HexChar is "a" - "f" */
++         HexChar -= 0x27;
++
++       HexValue = (HexValue << 4) | (char)HexChar;
++     }
++     ntlm_hash[i] = (unsigned char)HexValue;
++  }
++  }
++  else
++  {	
+ 	if (passwd_len > 128)
+ 		passwd_len = 128;
+ 
+@@ -183,7 +227,7 @@
+ 	MD4Init(&context);
+ 	MD4Update(&context, (unsigned char *) passwd_usc2le, passwd_usc2le_len);
+ 	MD4Final(&context, ntlm_hash);
+-
++      }
+ 	/* with security is best be pedantic */
+ 	memset((char *) passwd_usc2le, 0, passwd_usc2le_len);
+ 	memset(&context, 0, sizeof(context));

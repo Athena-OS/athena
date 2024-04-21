@@ -1,0 +1,21 @@
+From: Sophie Brun <sophie@offensive-security.com>
+Date: Fri, 18 Jun 2021 15:31:26 +0200
+Subject: Fix for new ssl
+
+---
+ src/chap_ms.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/chap_ms.c b/src/chap_ms.c
+index d4551f2..9ed6010 100644
+--- a/src/chap_ms.c
++++ b/src/chap_ms.c
+@@ -112,7 +112,7 @@ ChapMS_v2(unsigned char *resp, unsigned char *chl, unsigned char *secret, int se
+ 	memset(resp, 0x66, 16);	/* FIXED peer challenge */
+ 	//memcpy(resp, "\xb7\x4a\xb2\x88\xde\xe9\xa8\x50\x2f\xa3\x2c\x5d\xee\xa2\x05\x1e", 16);
+ 	//memcpy(resp, "\xb8\xf5\x8a\xb2\x19\xdf\x44\xe0\xea\x01\x2a\xb0\x27\xf1\x9a\x06", 16);
+-	SHA_Init(&ctx);
++	SHA1_Init(&ctx);
+ 	SHA1_Update(&ctx, resp, 16);
+ 	SHA1_Update(&ctx, chl, 16);
+ 	SHA1_Update(&ctx, username, strlen(username));
