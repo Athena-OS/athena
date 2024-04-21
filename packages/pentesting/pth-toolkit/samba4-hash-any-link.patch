@@ -1,0 +1,27 @@
+diff --git a/source3/lib/util.c b/source3/lib/util.c
+index 2e432ab..5be15f6 100644
+--- a/source3/lib/util.c
++++ b/source3/lib/util.c
+@@ -28,7 +28,7 @@
+ #include "ctdbd_conn.h"
+ #include "../lib/util/util_pw.h"
+ #include "messages.h"
+-#include <ccan/hash/hash.h>
++//#include <ccan/hash/hash.h>
+ #include "libcli/security/security.h"
+ 
+ #ifdef HAVE_SYS_PRCTL_H
+@@ -1357,9 +1357,8 @@ const char *tab_depth(int level, int depth)
+ 
+ int str_checksum(const char *s)
+ {
+-	if (s == NULL)
+-		return 0;
+-	return hash(s, strlen(s), 0);
++       TDB_DATA key = string_tdb_data(s);
++       return tdb_jenkins_hash(&key);
+ }
+ 
+ /*****************************************************************
+-- 
+1.7.0.4
