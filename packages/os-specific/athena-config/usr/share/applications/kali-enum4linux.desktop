@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=enum4linux
 Encoding=UTF-8
-Exec=shell-rocket "if command -v enum4linux &> /dev/null;then enum4linux;$SHELL;else echo \\"enum4linux is not installed. I'm retrieving it for you...\\";sudo pacman -S enum4linux;enum4linux;$SHELL;fi;"
+Exec=shell-rocket -b enum4linux
 Icon=kali-enum4linux
 StartupNotify=false
 Terminal=false

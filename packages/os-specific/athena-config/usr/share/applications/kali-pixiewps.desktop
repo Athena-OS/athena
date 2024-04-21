@@ -2,7 +2,7 @@
 Name=pixiewps
 Comment=Offline Wi-Fi Protected Setup bruteforce tool
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pixiewps &> /dev/null;then pixiewps -h;$SHELL;else echo \\"pixiewps is not installed. I'm retrieving it for you...\\";sudo pacman -S pixiewps;pixiewps -h;$SHELL;fi;"
+Exec=shell-rocket -b pixiewps -x '-h'
 Icon=kali-pixiewps
 StartupNotify=false
 Terminal=false

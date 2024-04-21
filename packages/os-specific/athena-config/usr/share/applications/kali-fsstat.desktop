@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=fsstat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v fsstat &> /dev/null;then fsstat;$SHELL;else echo \\"fsstat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;fsstat;$SHELL;fi;"
+Exec=shell-rocket -b fsstat -p sleuthkit
 Icon=kali-fsstat
 StartupNotify=false
 Terminal=false

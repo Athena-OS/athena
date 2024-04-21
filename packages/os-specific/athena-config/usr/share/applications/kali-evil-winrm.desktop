@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=evil-winrm
 Encoding=UTF-8
-Exec=shell-rocket "if command -v evil-winrm &> /dev/null;then evil-winrm -h;$SHELL;else echo \\"evil-winrm is not installed. I'm retrieving it for you...\\";sudo pacman -S evil-winrm;evil-winrm -h;$SHELL;fi;"
+Exec=shell-rocket -b evil-winrm -x '-h'
 Icon=kali-evil-winrm
 StartupNotify=false
 Terminal=false

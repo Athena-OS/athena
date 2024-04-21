@@ -2,7 +2,7 @@
 Name=scalpel
 Comment=Recover files using a header/footer database
 Encoding=UTF-8
-Exec=shell-rocket "if command -v scalpel &> /dev/null;then scalpel -h;$SHELL;else echo \\"scalpel is not installed. I'm retrieving it for you...\\";sudo pacman -S scalpel;scalpel -h;$SHELL;fi;"
+Exec=shell-rocket -b scalpel -x '-h'
 Icon=kali-scalpel
 StartupNotify=false
 Terminal=false

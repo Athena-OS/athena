@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=stunnel
 Encoding=UTF-8
-Exec=shell-rocket "if command -v stunnel &> /dev/null;then stunnel -help;$SHELL;else echo \\"stunnel is not installed. I'm retrieving it for you...\\";sudo pacman -S stunnel;stunnel -help;$SHELL;fi;"
+Exec=shell-rocket -b stunnel -x '-help'
 Icon=kali-stunnel4
 StartupNotify=false
 Terminal=false

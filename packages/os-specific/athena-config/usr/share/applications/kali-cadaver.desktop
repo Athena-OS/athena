@@ -2,7 +2,7 @@
 Name=cadaver
 Comment=A command-line WebDAV client for Unix.
 Encoding=UTF-8
-Exec=shell-rocket "if command -v cadaver &> /dev/null;then cadaver;$SHELL;else echo \\"Cadaver is not installed. I'm retrieving it for you...\\";sudo pacman -S cadaver;cadaver;$SHELL;fi;"
+Exec=shell-rocket -b cadaver -x '-h'
 Icon=kali-cadaver
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=spiderfoot-cli
 Encoding=UTF-8
-Exec=shell-rocket "if command -v spiderfoot-cli &> /dev/null;then spiderfoot-cli --help;$SHELL;else echo \\"spiderfoot is not installed. I'm retrieving it for you...\\";sudo pacman -S spiderfoot;spiderfoot-cli --help;$SHELL;fi;"
+Exec=shell-rocket -b spiderfoot-cli -p spiderfoot -x '--help'
 Icon=kali-spiderfoot
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=xplico stop
 Encoding=UTF-8
-Exec=shell-rocket "if command -v xplico &> /dev/null;then sudo systemctl stop xplico && systemctl --no-pager status xplico;$SHELL;else echo \\"xplico is not installed. I'm retrieving it for you...\\";sudo pacman -S xplico;sudo systemctl stop xplico && systemctl --no-pager status xplico;$SHELL;fi;"
+Exec=sh -c "if command -v xplico &> /dev/null;then sudo systemctl stop xplico && systemctl --no-pager status xplico;$SHELL;else echo 'xplico is not installed. Installing...';sudo pacman -S xplico;sudo systemctl stop xplico && systemctl --no-pager status xplico;$SHELL;fi;"
 Icon=kali-xplico
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sorter
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sorter &> /dev/null;then sorter;$SHELL;else echo \\"sorter is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;sorter;$SHELL;fi;"
+Exec=shell-rocket -b sorter -p sleuthkit
 Icon=kali-sorter
 StartupNotify=false
 Terminal=false

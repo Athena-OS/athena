@@ -2,7 +2,7 @@
 Name=sqlmap
 Comment=Automatic SQL injection tool
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sqlmap &> /dev/null;then sqlmap --wizard;$SHELL;else echo \\"sqlmap is not installed. I'm retrieving it for you...\\";sudo pacman -S sqlmap;sqlmap --wizard;$SHELL;fi;"
+Exec=shell-rocket -b sqlmap -x '--wizard'
 Icon=kali-sqlmap
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=weevely
 Comment=Weaponized web shell
 Encoding=UTF-8
-Exec=shell-rocket "if command -v weevely &> /dev/null;then weevely terminal -h;$SHELL;else echo \\"weevely is not installed. I'm retrieving it for you...\\";sudo pacman -S weevely;weevely terminal -h;$SHELL;fi;"
+Exec=shell-rocket -b weevely -x 'terminal -h'
 Icon=kali-weevely
 StartupNotify=false
 Terminal=false

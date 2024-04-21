@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=blkcalc
 Encoding=UTF-8
-Exec=shell-rocket "if command -v blkcalc &> /dev/null;then blkcalc;$SHELL;else echo \\"Blkcalc is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;blkcalc;$SHELL;fi;"
+Exec=shell-rocket -b blkcalc -p sleuthkit
 Icon=kali-blkcalc
 StartupNotify=false
 Terminal=false

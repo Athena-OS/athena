@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=spike-fuzzer-generic-send_udp
 Encoding=UTF-8
-Exec=shell-rocket "if command -v spike-fuzzer-generic-send_udp &> /dev/null;then spike-fuzzer-generic-send_udp;$SHELL;else echo \\"Spike Fuzzer is not installed. I'm retrieving it for you...\\";sudo pacman -S spike-fuzzer;spike-fuzzer-generic-send_udp;$SHELL;fi;"
+Exec=shell-rocket -b spike-fuzzer-generic-send_udp -p spike-fuzzer
 Icon=kali-spike
 StartupNotify=false
 Terminal=false

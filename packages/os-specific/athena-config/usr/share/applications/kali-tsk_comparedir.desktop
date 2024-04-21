@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=tsk_comparedir
 Encoding=UTF-8
-Exec=shell-rocket "if command -v tsk_comparedir &> /dev/null;then tsk_comparedir;$SHELL;else echo \\"tsk_comparedir is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;tsk_comparedir;$SHELL;fi;"
+Exec=shell-rocket -b tsk_comparedir -p sleuthkit
 Icon=kali-tsk_comparedir
 StartupNotify=false
 Terminal=false

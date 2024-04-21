@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pth-sqsh
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pth-sqsh &> /dev/null;then pth-sqsh --help;$SHELL;else echo \\"pth-sqsh is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-sqsh --help;$SHELL;fi;"
+Exec=shell-rocket -b pth-sqsh -p pth-toolkit -x '--help'
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

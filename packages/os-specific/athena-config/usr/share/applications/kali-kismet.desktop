@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=kismet
 Encoding=UTF-8
-Exec=shell-rocket "if command -v kismet &> /dev/null;then kismet -h;$SHELL;else echo \\"kismet is not installed. I'm retrieving it for you...\\";sudo pacman -S kismet;kismet -h;$SHELL;fi;"
+Exec=shell-rocket -b kismet -x '-h'
 Icon=kali-kismet
 StartupNotify=false
 Terminal=false

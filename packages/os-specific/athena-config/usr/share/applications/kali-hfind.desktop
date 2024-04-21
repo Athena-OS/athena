@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=hfind
 Encoding=UTF-8
-Exec=shell-rocket "if command -v hfind &> /dev/null;then hfind;$SHELL;else echo \\"hfind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;hfind;$SHELL;fi;"
+Exec=shell-rocket -b hfind -p sleuthkit
 Icon=kali-hfind
 StartupNotify=false
 Terminal=false

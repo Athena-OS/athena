@@ -2,7 +2,7 @@
 Name=missidentify
 Comment=Find executable files without an executable extension
 Encoding=UTF-8
-Exec=shell-rocket "if command -v missidentify &> /dev/null;then missidentify -h;$SHELL;else echo \\"missidentify is not installed. I'm retrieving it for you...\\";sudo pacman -S missidentify;missidentify -h;$SHELL;fi;"
+Exec=shell-rocket -b missidentify -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

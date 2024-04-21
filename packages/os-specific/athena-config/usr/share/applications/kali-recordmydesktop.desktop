@@ -2,7 +2,7 @@
 Name=recordmydesktop
 Comment=Record desktop sessions to an Ogg-Theora-Vorbis file.
 Encoding=UTF-8
-Exec=shell-rocket "if command -v recordmydesktop &> /dev/null;then recordmydesktop -h;$SHELL;else echo \\"recordmydesktop is not installed. I'm retrieving it for you...\\";sudo pacman -S recordmydesktop;recordmydesktop -h;$SHELL;fi;"
+Exec=shell-rocket -b recordmydesktop -x '-h'
 Icon=kali-recordmydesktop
 StartupNotify=false
 Terminal=false

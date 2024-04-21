@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=blkstat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v blkstat &> /dev/null;then blkstat;$SHELL;else echo \\"Blkstat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;blkstat;$SHELL;fi;"
+Exec=shell-rocket -b blkstat -p sleuthkit
 Icon=kali-blkstat
 StartupNotify=false
 Terminal=false

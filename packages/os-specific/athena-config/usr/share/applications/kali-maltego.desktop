@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=maltego
 Encoding=UTF-8
-Exec=shell-rocket "if command -v maltego &> /dev/null;then maltego;$SHELL;else echo \\"maltego is not installed. I'm retrieving it for you...\\";sudo pacman -S maltego;maltego;$SHELL;fi;"
+Exec=shell-rocket -b maltego -g
 Icon=kali-maltego
 StartupNotify=false
 Terminal=false

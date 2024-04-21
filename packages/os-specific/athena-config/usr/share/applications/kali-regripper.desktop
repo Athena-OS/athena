@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=regripper
 Encoding=UTF-8
-Exec=shell-rocket "if command -v regripper &> /dev/null;then regripper;$SHELL;else echo \\"regripper is not installed. I'm retrieving it for you...\\";sudo pacman -S regripper;regripper;$SHELL;fi;"
+Exec=shell-rocket -b regripper
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=rifiuti
 Comment=Tool to extract information from MS recycle bins info2 files.
 Encoding=UTF-8
-Exec=shell-rocket "if command -v rifiuti &> /dev/null;then rifiuti;$SHELL;else echo \\"rifiuti is not installed. I'm retrieving it for you...\\";sudo pacman -S rifiuti2;rifiuti;$SHELL;fi;"
+Exec=shell-rocket -b rifiuti -p rifiuti2
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

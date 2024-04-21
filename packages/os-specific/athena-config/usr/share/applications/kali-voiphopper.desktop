@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=voiphopper
 Encoding=UTF-8
-Exec=shell-rocket "if command -v voiphopper &> /dev/null;then voiphopper;$SHELL;else echo \\"voiphopper is not installed. I'm retrieving it for you...\\";sudo pacman -S voiphopper;voiphopper;$SHELL;fi;"
+Exec=shell-rocket -b voiphopper
 Icon=kali-voiphopper
 StartupNotify=false
 Terminal=false

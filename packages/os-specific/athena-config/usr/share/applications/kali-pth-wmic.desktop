@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pth-wmic
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pth-wmic &> /dev/null;then pth-wmic -h;$SHELL;else echo \\"pth-wmic is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-wmic -h;$SHELL;fi;"
+Exec=shell-rocket -b pth-wmic -p pth-toolkit -x '-h'
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

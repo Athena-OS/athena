@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=witnessme
 Encoding=UTF-8
-Exec=shell-rocket "if command -v witnessme &> /dev/null;then witnessme -h;$SHELL;else echo \\"witnessme is not installed. I'm retrieving it for you...\\";sudo pacman -S python-witnessme;witnessme -h;$SHELL;fi;"
+Exec=shell-rocket -b witnessme -p python-witnessme -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

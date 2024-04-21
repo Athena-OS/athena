@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=spike-fuzzer-generic-send_tcp
 Encoding=UTF-8
-Exec=shell-rocket "if command -v spike-fuzzer-generic-send_tcp &> /dev/null;then spike-fuzzer-generic-send_tcp;$SHELL;else echo \\"Spike Fuzzer is not installed. I'm retrieving it for you...\\";sudo pacman -S spike-fuzzer;spike-fuzzer-generic-send_tcp;$SHELL;fi;"
+Exec=shell-rocket -b spike-fuzzer-generic-send_tcp -p spike-fuzzer
 Icon=kali-spike
 StartupNotify=false
 Terminal=false

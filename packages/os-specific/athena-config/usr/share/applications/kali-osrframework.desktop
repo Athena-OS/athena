@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=osrframework
 Encoding=UTF-8
-Exec=shell-rocket "if command -v osr-osrframework-cli &> /dev/null;then osr-osrframework-cli -h;$SHELL;else echo \\"osr-osrframework-cli is not installed. I'm retrieving it for you...\\";sudo pacman -S osrframework;osr-osrframework-cli -h;$SHELL;fi;"
+Exec=shell-rocket -b osr-osrframework-cli -p osrframework -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

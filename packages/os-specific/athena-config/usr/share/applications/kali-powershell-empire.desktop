@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Empire
 Encoding=UTF-8
-Exec=shell-rocket "if command -v empire &> /dev/null;then empire -h;$SHELL;else echo \\"Empire is not installed. I'm retrieving it for you...\\";sudo pacman -S empire;empire -h;$SHELL;fi;"
+Exec=shell-rocket -b empire
 Icon=kali-powershell-empire
 StartupNotify=false
 Terminal=false

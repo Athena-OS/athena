@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sigfind
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sigfind &> /dev/null;then sigfind;$SHELL;else echo \\"sigfind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;sigfind;$SHELL;fi;"
+Exec=shell-rocket -b sigfind -p sleuthkit
 Icon=kali-sigfind
 StartupNotify=false
 Terminal=false

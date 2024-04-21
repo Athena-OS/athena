@@ -2,7 +2,7 @@
 Name=ffuf
 Comment=Fast web fuzzer written in Go
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ffuf &> /dev/null;then ffuf -h;$SHELL;else echo \\"ffuf is not installed. I'm retrieving it for you...\\";sudo pacman -S ffuf;ffuf -h;$SHELL;fi;"
+Exec=shell-rocket -b ffuf -x '-h'
 Icon=kali-ffuf
 StartupNotify=false
 Terminal=false

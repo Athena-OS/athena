@@ -2,7 +2,7 @@
 Name=apktool
 Comment=Tool for reverse engineering Android apk files
 Encoding=UTF-8
-Exec=shell-rocket "if command -v apktool &> /dev/null;then apktool;$SHELL;else echo \\"apktool is not installed. I'm retrieving it for you...\\";sudo pacman -S android-apktool;apktool;$SHELL;fi;"
+Exec=shell-rocket -b apktool -p android-apktool
 Icon=kali-apktool
 StartupNotify=false
 Terminal=false

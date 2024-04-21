@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=tsk_recover
 Encoding=UTF-8
-Exec=shell-rocket "if command -v tsk_recover &> /dev/null;then tsk_recover;$SHELL;else echo \\"tsk_recover is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;tsk_recover;$SHELL;fi;"
+Exec=shell-rocket -b tsk_recover -p sleuthkit
 Icon=kali-tsk_recover
 StartupNotify=false
 Terminal=false

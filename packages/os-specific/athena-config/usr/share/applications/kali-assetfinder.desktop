@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=assetfinder
 Encoding=UTF-8
-Exec=shell-rocket "if command -v assetfinder &> /dev/null;then assetfinder -h;$SHELL;else echo \\"assetfinder is not installed. I'm retrieving it for you...\\";sudo pacman -S assetfinder;assetfinder -h;$SHELL;fi;"
+Exec=shell-rocket -b assetfinder -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

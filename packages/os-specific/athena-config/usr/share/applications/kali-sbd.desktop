@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sbd
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sbd &> /dev/null;then sbd -h;$SHELL;else echo \\"sbd is not installed. I'm retrieving it for you...\\";sudo pacman -S sbd;sbd -h;$SHELL;fi;"
+Exec=shell-rocket -b sbd -x '-h'
 Icon=kali-sbd
 StartupNotify=false
 Terminal=false

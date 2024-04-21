@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pth-wmis
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pth-wmis &> /dev/null;then pth-wmis -h;$SHELL;else echo \\"pth-wmis is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-wmis -h;$SHELL;fi;"
+Exec=shell-rocket -b pth-wmis -p pth-toolkit -x '-h'
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

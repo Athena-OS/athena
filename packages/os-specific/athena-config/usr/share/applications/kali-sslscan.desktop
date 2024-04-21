@@ -2,7 +2,7 @@
 Name=sslscan
 Comment=Fast SSL/TLS scanner
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sslscan &> /dev/null;then sslscan;$SHELL;else echo \\"sslscan is not installed. I'm retrieving it for you...\\";sudo pacman -S sslscan;sslscan;$SHELL;fi;"
+Exec=shell-rocket -b sslscan
 Icon=kali-sslscan
 StartupNotify=false
 Terminal=false

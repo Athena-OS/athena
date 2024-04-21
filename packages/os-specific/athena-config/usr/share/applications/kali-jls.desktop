@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=jls
 Encoding=UTF-8
-Exec=shell-rocket "if command -v jls &> /dev/null;then jls;$SHELL;else echo \\"jls is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;jls;$SHELL;fi;"
+Exec=shell-rocket -b jls -p sleuthkit
 Icon=kali-jls
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=unhide
 Encoding=UTF-8
-Exec=shell-rocket "if command -v unhide &> /dev/null;then sudo unhide;$SHELL;else echo \\"unhide is not installed. I'm retrieving it for you...\\";sudo pacman -S unhide;sudo unhide;$SHELL;fi;"
+Exec=shell-rocket -b unhide -r
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

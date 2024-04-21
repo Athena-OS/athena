@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=rsmangler
 Encoding=UTF-8
-Exec=shell-rocket "if command -v rsmangler &> /dev/null;then rsmangler -h;$SHELL;else echo \\"rsmangler is not installed. I'm retrieving it for you...\\";sudo pacman -S rsmangler;rsmangler -h;$SHELL;fi;"
+Exec=shell-rocket -b rsmangler -x '-h'
 Icon=kali-rsmangler
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=medusa
 Encoding=UTF-8
-Exec=shell-rocket "if command -v medusa &> /dev/null;then medusa -h;$SHELL;else echo \\"medusa is not installed. I'm retrieving it for you...\\";sudo pacman -S medusa;medusa -h;$SHELL;fi;"
+Exec=shell-rocket -b medusa -x '-h'
 Icon=kali-medusa
 StartupNotify=false
 Terminal=false

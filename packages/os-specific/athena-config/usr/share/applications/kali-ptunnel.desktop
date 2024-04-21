@@ -2,7 +2,7 @@
 Name=ptunnel
 Comment=Tunnel TCP connections over ICMP echo request/reply packets.
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ptunnel &> /dev/null;then ptunnel -h;$SHELL;else echo \\"ptunnel is not installed. I'm retrieving it for you...\\";sudo pacman -S ptunnel;ptunnel -h;$SHELL;fi;"
+Exec=shell-rocket -b ptunnel -x '-h'
 Icon=kali-ptunnel
 StartupNotify=false
 Terminal=false

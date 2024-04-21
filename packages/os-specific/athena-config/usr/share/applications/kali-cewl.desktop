@@ -2,7 +2,7 @@
 Name=cewl
 Comment=Custom word list generator
 Encoding=UTF-8
-Exec=shell-rocket "if command -v cewl &> /dev/null;then cewl --help;$SHELL;else echo \\"CeWL is not installed. I'm retrieving it for you...\\";sudo pacman -S cewl;cewl --help;$SHELL;fi;"
+Exec=shell-rocket -b cewl -x '--help'
 Icon=kali-cewl
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=chkrootkit
 Encoding=UTF-8
-Exec=shell-rocket "if command -v chkrootkit &> /dev/null;then chkrootkit -h;$SHELL;else echo \\"chkrootkit is not installed. I'm retrieving it for you...\\";sudo pacman -S chkrootkit;chkrootkit -h;$SHELL;fi;"
+Exec=shell-rocket -b chkrootkit -x '-h'
 Icon=kali-chkrootkit
 StartupNotify=false
 Terminal=false

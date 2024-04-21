@@ -2,7 +2,7 @@
 Name=recoverjpeg
 Comment=Recover jpeg pictures from a filesystem image
 Encoding=UTF-8
-Exec=shell-rocket "if command -v recoverjpeg &> /dev/null;then recoverjpeg -h;$SHELL;else echo \\"recoverjpeg is not installed. I'm retrieving it for you...\\";sudo pacman -S recoverjpeg;recoverjpeg -h;$SHELL;fi;"
+Exec=shell-rocket -b recoverjpeg -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

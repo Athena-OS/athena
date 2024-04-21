@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sentrypeer
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sentrypeer &> /dev/null;then sentrypeer -h;$SHELL;else echo \\"sentrypeer is not installed. I'm retrieving it for you...\\";sudo pacman -S sentrypeer;sentrypeer -h;$SHELL;fi;"
+Exec=shell-rocket -b sentrypeer -x '-h'
 Icon=kali-sentrypeer
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ewfacquire
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ewfacquire &> /dev/null;then ewfacquire -h;$SHELL;else echo \\"ewfacquire is not installed. I'm retrieving it for you...\\";sudo pacman -S libewf;ewfacquire -h;$SHELL;fi;"
+Exec=shell-rocket -b ewfacquire -p libewf -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

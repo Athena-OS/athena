@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=grokevt-builddb
 Encoding=UTF-8
-Exec=shell-rocket "if command -v grokevt-builddb &> /dev/null;then grokevt-builddb -h;$SHELL;else echo \\"grokevt-builddb is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-builddb -h;$SHELL;fi;"
+Exec=shell-rocket -b grokevt-builddb -p grokevt -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

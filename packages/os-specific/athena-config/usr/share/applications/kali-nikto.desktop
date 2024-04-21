@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=nikto
 Encoding=UTF-8
-Exec=shell-rocket "if command -v nikto &> /dev/null;then nikto -h;$SHELL;else echo \\"nikto is not installed. I'm retrieving it for you...\\";sudo pacman -S nikto;nikto -h;$SHELL;fi;"
+Exec=shell-rocket -b nikto -x '-h'
 Icon=kali-nikto
 StartupNotify=false
 Terminal=false

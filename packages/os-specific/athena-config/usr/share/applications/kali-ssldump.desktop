@@ -2,7 +2,7 @@
 Name=ssldump
 Comment=Dump SSL traffic on a network
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ssldump &> /dev/null;then ssldump -h;$SHELL;else echo \\"ssldump is not installed. I'm retrieving it for you...\\";sudo pacman -S ssldump;ssldump -h;$SHELL;fi;"
+Exec=shell-rocket -b ssldump -x '-h'
 Icon=kali-ssldump
 StartupNotify=false
 Terminal=false

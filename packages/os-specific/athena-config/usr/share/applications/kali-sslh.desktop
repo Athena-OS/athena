@@ -2,7 +2,7 @@
 Name=sslh
 Comment=Protocol demultiplexer
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sslh &> /dev/null;then sslh -h;$SHELL;else echo \\"sslh is not installed. I'm retrieving it for you...\\";sudo pacman -S sslh;sslh -h;$SHELL;fi;"
+Exec=shell-rocket -b sslh -x '-h'
 Icon=kali-sslh
 StartupNotify=false
 Terminal=false

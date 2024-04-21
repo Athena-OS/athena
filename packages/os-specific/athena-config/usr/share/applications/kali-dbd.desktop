@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=dbd
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dbd &> /dev/null;then dbd -h;$SHELL;else echo \\"dbd is not installed. I'm retrieving it for you...\\";sudo pacman -S dbd;dbd -h;$SHELL;fi;"
+Exec=shell-rocket -b dbd -x '-h'
 Icon=kali-dbd
 StartupNotify=false
 Terminal=false

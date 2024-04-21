@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=whatweb
 Encoding=UTF-8
-Exec=shell-rocket "if command -v whatweb &> /dev/null;then whatweb -h;$SHELL;else echo \\"whatweb is not installed. I'm retrieving it for you...\\";sudo pacman -S whatweb;whatweb -h;$SHELL;fi;"
+Exec=shell-rocket -b whatweb -x '-h'
 Icon=kali-whatweb
 StartupNotify=false
 Terminal=false

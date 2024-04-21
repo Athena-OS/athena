@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ext3grep
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ext3grep &> /dev/null;then ext3grep -h;$SHELL;else echo \\"ext3grep is not installed. I'm retrieving it for you...\\";sudo pacman -S ext3grep;ext3grep -h;$SHELL;fi;"
+Exec=shell-rocket -b ext3grep -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

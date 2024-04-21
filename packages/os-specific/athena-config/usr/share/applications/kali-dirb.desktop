@@ -2,7 +2,7 @@
 Name=dirb
 Comment=Web Content Scanner
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dirb &> /dev/null;then dirb;$SHELL;else echo \\"dirb is not installed. I'm retrieving it for you...\\";sudo pacman -S dirb;dirb;$SHELL;fi;"
+Exec=shell-rocket -b dirb
 Icon=kali-dirb
 StartupNotify=false
 Terminal=false

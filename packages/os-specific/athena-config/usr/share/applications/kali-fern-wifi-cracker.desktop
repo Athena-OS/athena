@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=fern wifi cracker (root)
 Encoding=UTF-8
-Exec=shell-rocket "if command -v fern-wifi-cracker &> /dev/null;then sudo nohup fern-wifi-cracker;$SHELL;else echo \\"fern-wifi-cracker is not installed. I'm retrieving it for you...\\";sudo pacman -S fern-wifi-cracker;sudo nohup fern-wifi-cracker;$SHELL;fi;"
+Exec=shell-rocket -b fern-wifi-cracker -g -r
 Icon=kali-fern-wifi-cracker
 StartupNotify=false
 Terminal=false

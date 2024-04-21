@@ -2,7 +2,7 @@
 Name=ncrack
 Comment=Network authentication cracking tool
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ncrack &> /dev/null;then ncrack -h;$SHELL;else echo \\"ncrack is not installed. I'm retrieving it for you...\\";sudo pacman -S ncrack;ncrack -h;$SHELL;fi;"
+Exec=shell-rocket -b ncrack -x '-h'
 Icon=kali-ncrack
 StartupNotify=false
 Terminal=false

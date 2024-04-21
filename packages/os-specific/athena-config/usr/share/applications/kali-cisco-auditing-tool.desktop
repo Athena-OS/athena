@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=cisco-auditing-tool
 Encoding=UTF-8
-Exec=shell-rocket "if command -v CAT &> /dev/null;then CAT;$SHELL;else echo \\"Cisco Auditing Tool is not installed. I'm retrieving it for you...\\";sudo pacman -S cisco-auditing-tool;CAT;$SHELL;fi;"
+Exec=shell-rocket -b CAT -p cisco-auditing-tool
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

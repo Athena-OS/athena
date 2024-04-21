@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=dnsrecon
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dnsrecon &> /dev/null;then dnsrecon -h;$SHELL;else echo \\"dnsrecon is not installed. I'm retrieving it for you...\\";sudo pacman -S dnsrecon;dnsrecon -h;$SHELL;fi;"
+Exec=shell-rocket -b dnsrecon -x '-h'
 Icon=kali-dnsrecon
 StartupNotify=false
 Terminal=false

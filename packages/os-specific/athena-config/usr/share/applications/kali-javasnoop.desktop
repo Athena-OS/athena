@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=javasnoop
 Encoding=UTF-8
-Exec=shell-rocket "if command -v javasnoop &> /dev/null;then javasnoop;$SHELL;else echo \\"javasnoop is not installed. I'm retrieving it for you...\\";sudo pacman -S javasnoop;javasnoop;$SHELL;fi;"
+Exec=shell-rocket -b javasnoop
 Icon=kali-javasnoop
 StartupNotify=false
 Terminal=false

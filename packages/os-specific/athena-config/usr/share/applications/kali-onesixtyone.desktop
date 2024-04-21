@@ -2,7 +2,7 @@
 Name=onesixtyone
 Comment=Fast and simple SNMP scanner
 Encoding=UTF-8
-Exec=shell-rocket "if command -v onesixtyone &> /dev/null;then onesixtyone;$SHELL;else echo \\"onesixtyone is not installed. I'm retrieving it for you...\\";sudo pacman -S onesixtyone;onesixtyone;$SHELL;fi;"
+Exec=shell-rocket -b onesixtyone
 Icon=kali-onesixtyone
 StartupNotify=false
 Terminal=false

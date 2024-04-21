@@ -2,7 +2,7 @@
 Name=dnsenum
 Comment=Multithread script to enumerate information on a domain and to discover non-contiguous IP blocks
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dnsenum &> /dev/null;then dnsenum -h;$SHELL;else echo \\"dnsenum is not installed. I'm retrieving it for you...\\";sudo pacman -S dnsenum;dnsenum -h;$SHELL;fi;"
+Exec=shell-rocket -b dnsenum -x '-h'
 Icon=kali-dnsenum
 StartupNotify=false
 Terminal=false

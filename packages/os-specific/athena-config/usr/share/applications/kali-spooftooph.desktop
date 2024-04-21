@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=spooftooph
 Encoding=UTF-8
-Exec=shell-rocket "if command -v spooftooph &> /dev/null;then spooftooph -h;$SHELL;else echo \\"spooftooph is not installed. I'm retrieving it for you...\\";sudo pacman -S spooftooph;spooftooph -h;$SHELL;fi;"
+Exec=shell-rocket -b spooftooph -x '-h'
 Icon=kali-spooftooph
 StartupNotify=false
 Terminal=false

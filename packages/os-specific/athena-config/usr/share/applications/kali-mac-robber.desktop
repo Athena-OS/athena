@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mac-robber
 Encoding=UTF-8
-Exec=shell-rocket "if command -v mac-robber &> /dev/null;then mac-robber;$SHELL;else echo \\"mac-robber is not installed. I'm retrieving it for you...\\";sudo pacman -S mac-robber;mac-robber;$SHELL;fi;"
+Exec=shell-rocket -b mac-robber
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

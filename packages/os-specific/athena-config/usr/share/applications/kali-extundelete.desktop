@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=extundelete
 Encoding=UTF-8
-Exec=shell-rocket "if command -v extundelete &> /dev/null;then extundelete --help;$SHELL;else echo \\"extundelete is not installed. I'm retrieving it for you...\\";sudo pacman -S extundelete;extundelete --help;$SHELL;fi;"
+Exec=shell-rocket -b extundelete -x '--help'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

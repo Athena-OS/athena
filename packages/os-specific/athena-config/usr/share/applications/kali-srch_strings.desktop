@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=srch_strings
 Encoding=UTF-8
-Exec=shell-rocket "if command -v srch_strings &> /dev/null;then srch_strings -h;$SHELL;else echo \\"srch_strings is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;srch_strings -h;$SHELL;fi;"
+Exec=shell-rocket -b srch_strings -p sleuthkit -x '-h'
 Icon=kali-srch-string
 StartupNotify=false
 Terminal=false

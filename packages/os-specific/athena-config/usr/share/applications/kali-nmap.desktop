@@ -2,7 +2,7 @@
 Name=nmap
 Comment=Network exploration tool and security / port scanner
 Encoding=UTF-8
-Exec=shell-rocket "if command -v nmap &> /dev/null;then nmap;$SHELL;else echo \\"nmap is not installed. I'm retrieving it for you...\\";sudo pacman -S nmap;nmap;$SHELL;fi"
+Exec=shell-rocket -b nmap
 Icon=kali-nmap
 StartupNotify=false
 Terminal=false

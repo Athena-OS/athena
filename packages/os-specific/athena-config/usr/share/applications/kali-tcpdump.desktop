@@ -2,7 +2,7 @@
 Name=tcpdump
 Comment=Dump traffic on a network
 Encoding=UTF-8
-Exec=shell-rocket "if command -v tcpdump &> /dev/null;then tcpdump -h;$SHELL;else echo \\"tcpdump is not installed. I'm retrieving it for you...\\";sudo pacman -S tcpdump;tcpdump -h;$SHELL;fi;"
+Exec=shell-rocket -b tcpdump -x '-h'
 Icon=kali-tcpdump
 StartupNotify=false
 Terminal=false

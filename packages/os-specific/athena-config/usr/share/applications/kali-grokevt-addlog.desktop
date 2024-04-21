@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=grokevt-addlog
 Encoding=UTF-8
-Exec=shell-rocket "if command -v grokevt-addlog &> /dev/null;then grokevt-addlog -h;$SHELL;else echo \\"grokevt-addlog is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-addlog -h;$SHELL;fi;"
+Exec=shell-rocket -b grokevt-addlog -p grokevt -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

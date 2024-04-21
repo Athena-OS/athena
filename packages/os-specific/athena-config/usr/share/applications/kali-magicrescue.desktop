@@ -2,7 +2,7 @@
 Name=magicrescue
 Comment=Scans a block device and extracts known file types by looking at magic bytes.
 Encoding=UTF-8
-Exec=shell-rocket "if command -v magicrescue &> /dev/null;then magicrescue;$SHELL;else echo \\"magicrescue is not installed. I'm retrieving it for you...\\";sudo pacman -S magicrescue;magicrescue;$SHELL;fi;"
+Exec=shell-rocket -b magicrescue
 Icon=kali-magicrescue
 StartupNotify=false
 Terminal=false

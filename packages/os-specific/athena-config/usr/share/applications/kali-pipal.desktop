@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pipal
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pipal &> /dev/null;then pipal -h;$SHELL;else echo \\"pipal is not installed. I'm retrieving it for you...\\";sudo pacman -S pipal;pipal -h;$SHELL;fi;"
+Exec=shell-rocket -b pipal -x '-h'
 Icon=kali-pipal
 StartupNotify=false
 Terminal=false

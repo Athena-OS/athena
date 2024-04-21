@@ -2,7 +2,7 @@
 Name=scapy
 Comment=Interactive packet manipulation tool
 Encoding=UTF-8
-Exec=shell-rocket "if command -v scapy &> /dev/null;then scapy;$SHELL;else echo \\"scapy is not installed. I'm retrieving it for you...\\";sudo pacman -S scapy;scapy;$SHELL;fi;"
+Exec=shell-rocket -b scapy
 Icon=kali-scapy
 StartupNotify=false
 Terminal=false

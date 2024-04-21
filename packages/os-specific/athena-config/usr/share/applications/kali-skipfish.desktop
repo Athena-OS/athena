@@ -2,7 +2,7 @@
 Name=skipfish
 Comment=Web application security scanner
 Encoding=UTF-8
-Exec=shell-rocket "if command -v skipfish &> /dev/null;then skipfish -h;$SHELL;else echo \\"skipfish is not installed. I'm retrieving it for you...\\";sudo pacman -S skipfish;skipfish -h;$SHELL;fi;"
+Exec=shell-rocket -b skipfish -x '-h'
 Icon=kali-skipfish
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=istat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v istat &> /dev/null;then istat;$SHELL;else echo \\"istat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;istat;$SHELL;fi;"
+Exec=shell-rocket -b istat -p sleuthkit
 Icon=kali-istat
 StartupNotify=false
 Terminal=false

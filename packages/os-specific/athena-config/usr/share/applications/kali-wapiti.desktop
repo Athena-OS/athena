@@ -2,7 +2,7 @@
 Name=wapiti
 Comment=A web application vulnerability scanner in Python
 Encoding=UTF-8
-Exec=shell-rocket "if command -v wapiti &> /dev/null;then wapiti -h;$SHELL;else echo \\"wapiti is not installed. I'm retrieving it for you...\\";sudo pacman -S wapiti;wapiti -h;$SHELL;fi;"
+Exec=shell-rocket -b wapiti -x '-h'
 Icon=kali-wapiti
 StartupNotify=false
 Terminal=false

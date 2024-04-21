@@ -2,7 +2,7 @@
 Name=safecopy
 Comment=Rescue data from a source that causes IO errors
 Encoding=UTF-8
-Exec=shell-rocket "if command -v safecopy &> /dev/null;then safecopy -h;$SHELL;else echo \\"safecopy is not installed. I'm retrieving it for you...\\";sudo pacman -S safecopy;safecopy -h;$SHELL;fi;"
+Exec=shell-rocket -b safecopy -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=chntpw
 Comment=Utility to overwrite passwords of Windows systems
 Encoding=UTF-8
-Exec=shell-rocket "if command -v chntpw &> /dev/null;then chntpw -h;$SHELL;else echo \\"chntpw is not installed. I'm retrieving it for you...\\";sudo pacman -S chntpw;chntpw -h;$SHELL;fi;"
+Exec=shell-rocket -b chntpw
 Icon=kali-chntpw
 StartupNotify=false
 Terminal=false

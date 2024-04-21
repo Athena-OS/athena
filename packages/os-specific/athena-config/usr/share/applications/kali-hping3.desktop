@@ -2,7 +2,7 @@
 Name=hping3
 Comment=Send (almost) arbitrary TCP/IP packets to network hosts
 Encoding=UTF-8
-Exec=shell-rocket "if command -v hping3 &> /dev/null;then hping3 -h;$SHELL;else echo \\"hping3 is not installed. I'm retrieving it for you...\\";sudo pacman -S hping;hping3 -h;$SHELL;fi;"
+Exec=shell-rocket -b hping3 -p hping -x '-h'
 Icon=kali-hping3
 StartupNotify=false
 Terminal=false
