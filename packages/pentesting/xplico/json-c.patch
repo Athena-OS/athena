@@ -1,0 +1,22 @@
+--- a/manipulators/mwebymsg/analyse.c	2019-05-26 18:38:15.722151286 +0200
++++ b/ manipulators/mwebymsg/analyse.c	2019-05-26 18:38:37.785856970 +0200
+@@ -24,6 +24,8 @@
+  */
+ 
+ #define _GNU_SOURCE
++#define JSON_C_VER_013 (13 << 8)
++
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+@@ -32,8 +34,9 @@
+ #include <signal.h>
+ #include <unistd.h>
+ #include <json-c/json.h>
++#if (!defined(JSON_C_VERSION_NUM)) || (JSON_C_VERSION_NUM < JSON_C_VER_013)
+ #include <json-c/json_object_private.h>
+-
++#endif
+ #include "log.h"
+ #include "analyse.h"
+ #include "proto.h"
