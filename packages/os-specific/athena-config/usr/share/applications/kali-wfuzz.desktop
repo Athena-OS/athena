@@ -2,7 +2,7 @@
 Name=wfuzz
 Comment=A web application bruteforcer
 Encoding=UTF-8
-Exec=shell-rocket "if command -v wfuzz &> /dev/null;then wfuzz;$SHELL;else echo \\"wfuzz is not installed. I'm retrieving it for you...\\";sudo pacman -S wfuzz;wfuzz;$SHELL;fi;"
+Exec=shell-rocket -b wfuzz
 Icon=kali-wfuzz
 StartupNotify=false
 Terminal=false

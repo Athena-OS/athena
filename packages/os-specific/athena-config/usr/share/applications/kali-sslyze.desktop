@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sslyze
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sslyze &> /dev/null;then sslyze -h;$SHELL;else echo \\"sslyze is not installed. I'm retrieving it for you...\\";sudo pacman -S sslyze;sslyze -h;$SHELL;fi;"
+Exec=shell-rocket -b sslyze -x '-h'
 Icon=kali-sslyze
 StartupNotify=false
 Terminal=false

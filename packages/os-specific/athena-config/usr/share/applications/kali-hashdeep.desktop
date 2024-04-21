@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=hashdeep
 Encoding=UTF-8
-Exec=shell-rocket "if command -v hashdeep &> /dev/null;then hashdeep -h;$SHELL;else echo \\"hashdeep is not installed. I'm retrieving it for you...\\";sudo pacman -S hashdeep;hashdeep -h;$SHELL;fi;"
+Exec=shell-rocket -b hashdeep -x '-h'
 Icon=kali-hashdeep
 StartupNotify=false
 Terminal=false

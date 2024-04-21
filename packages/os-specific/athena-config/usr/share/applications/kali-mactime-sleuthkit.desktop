@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mactime-sleuthkit
 Encoding=UTF-8
-Exec=shell-rocket "if command -v mactime &> /dev/null;then mactime;$SHELL;else echo \\"mactime is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mactime;$SHELL;fi;"
+Exec=shell-rocket -b mactime -p sleuthkit
 Icon=kali-mactime
 StartupNotify=false
 Terminal=false

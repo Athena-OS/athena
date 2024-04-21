@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=laudanum
 Encoding=UTF-8
-Exec=shell-rocket "if test -d /usr/share/laudanum;then cd /usr/share/laudanum;$SHELL;else echo \\"laudanum is not installed. I'm retrieving it for you...\\";sudo pacman -S laudanum;cd /usr/share/laudanum;$SHELL;fi;"
+Exec=shell-rocket -b laudanum -d /usr/share/laudanum
 Icon=kali-laudanum
 StartupNotify=false
 Terminal=false

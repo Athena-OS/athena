@@ -2,7 +2,7 @@
 Name=sslsplit
 Comment=Transparent SSL/TLS interception
 Encoding=UTF-8
-Exec=shell-rocket "if command -v sslsplit &> /dev/null;then sslsplit -h;$SHELL;else echo \\"sslsplit is not installed. I'm retrieving it for you...\\";sudo pacman -S sslsplit;sslsplit -h;$SHELL;fi;"
+Exec=shell-rocket -b sslsplit -x '-h'
 Icon=kali-sslsplit
 StartupNotify=false
 Terminal=false

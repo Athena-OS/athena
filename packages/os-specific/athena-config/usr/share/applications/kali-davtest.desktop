@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=davtest
 Encoding=UTF-8
-Exec=shell-rocket "if command -v davtest &> /dev/null;then davtest;$SHELL;else echo \\"davtest is not installed. I'm retrieving it for you...\\";sudo pacman -S davtest;davtest;$SHELL;fi;"
+Exec=shell-rocket -b davtest
 Icon=kali-davtest
 StartupNotify=false
 Terminal=false

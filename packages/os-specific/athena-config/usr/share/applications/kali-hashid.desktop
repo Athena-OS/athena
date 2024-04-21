@@ -2,7 +2,7 @@
 Name=hashid
 Comment=Identify the different types of hashes used to encrypt data
 Encoding=UTF-8
-Exec=shell-rocket "if command -v hashid &> /dev/null;then hashid -h;$SHELL;else echo \\"hashid is not installed. I'm retrieving it for you...\\";sudo pacman -S hashid;hashid -h;$SHELL;fi;"
+Exec=shell-rocket -b hashid -x '-h'
 Icon=kali-hashid
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=wafw00f
 Comment=Identify and fingerprint Web Application Firewall products
 Encoding=UTF-8
-Exec=shell-rocket "if command -v wafw00f &> /dev/null;then wafw00f -h;$SHELL;else echo \\"wafw00f is not installed. I'm retrieving it for you...\\";sudo pacman -S wafw00f;wafw00f -h;$SHELL;fi;"
+Exec=shell-rocket -b wafw00f -x '-h'
 Icon=kali-wafw00f
 StartupNotify=false
 Terminal=false

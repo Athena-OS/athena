@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=powersploit
 Encoding=UTF-8
-Exec=shell-rocket "if test -d /usr/share/windows/powersploit;then cd /usr/share/windows/powersploit;$SHELL;else echo \\"Powersploit is not installed. I'm retrieving it for you...\\";sudo pacman -S --noconfirm powersploit;cd /usr/share/windows/powersploit;$SHELL;fi;"
+Exec=shell-rocket -b powersploit -d /usr/share/windows/powersploit
 Icon=kali-powersploit
 StartupNotify=false
 Terminal=false

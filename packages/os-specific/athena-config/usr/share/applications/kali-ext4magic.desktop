@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ext4magic
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ext4magic &> /dev/null;then ext4magic -h;$SHELL;else echo \\"ext4magic is not installed. I'm retrieving it for you...\\";sudo pacman -S ext4magic;ext4magic -h;$SHELL;fi;"
+Exec=shell-rocket -b ext4magic -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

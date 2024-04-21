@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=searchsploit
 Encoding=UTF-8
-Exec=shell-rocket "if command -v searchsploit &> /dev/null;then searchsploit;$SHELL;else echo \\"searchsploit is not installed. I'm retrieving it for you...\\";sudo pacman -S exploitdb;searchsploit;$SHELL;fi;"
+Exec=shell-rocket -b searchsploit -p exploitdb
 Icon=kali-searchsploit
 StartupNotify=false
 Terminal=false

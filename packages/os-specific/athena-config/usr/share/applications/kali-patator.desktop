@@ -2,7 +2,7 @@
 Name=patator
 Comment=Multi-purpose brute-forcer
 Encoding=UTF-8
-Exec=shell-rocket "if command -v patator &> /dev/null;then patator -h;$SHELL;else echo \\"patator is not installed. I'm retrieving it for you...\\";sudo pacman -S patator;patator -h;$SHELL;fi;"
+Exec=shell-rocket -b patator -x '-h'
 Icon=kali-patator
 StartupNotify=false
 Terminal=false

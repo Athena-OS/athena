@@ -2,7 +2,7 @@
 Name=netmask
 Comment=A netmask generation and conversion program
 Encoding=UTF-8
-Exec=shell-rocket "if command -v netmask &> /dev/null;then netmask -h;$SHELL;else echo \\"netmask is not installed. I'm retrieving it for you...\\";sudo pacman -S netmask;netmask -h;$SHELL;fi;"
+Exec=shell-rocket -b netmask -x '-h'
 Icon=kali-netmask
 StartupNotify=false
 Terminal=false

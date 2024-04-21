@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=grokevt-parselog
 Encoding=UTF-8
-Exec=shell-rocket "if command -v grokevt-parselog &> /dev/null;then grokevt-parselog -h;$SHELL;else echo \\"grokevt-parselog is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-parselog -h;$SHELL;fi;"
+Exec=shell-rocket -b grokevt-parselog -p grokevt -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

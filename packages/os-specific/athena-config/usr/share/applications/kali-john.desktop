@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=john
 Encoding=UTF-8
-Exec=shell-rocket "if command -v john &> /dev/null;then john;$SHELL;else echo \\"john is not installed. I'm retrieving it for you...\\";sudo pacman -S john;john;$SHELL;fi;"
+Exec=shell-rocket -b john
 Icon=kali-john
 StartupNotify=false
 Terminal=false

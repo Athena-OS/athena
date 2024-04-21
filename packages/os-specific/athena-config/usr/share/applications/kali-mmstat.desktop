@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mmstat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v mmstat &> /dev/null;then mmstat;$SHELL;else echo \\"mmstat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mmstat;$SHELL;fi;"
+Exec=shell-rocket -b mmstat -p sleuthkit
 Icon=kali-mmstat
 StartupNotify=false
 Terminal=false

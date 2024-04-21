@@ -2,7 +2,7 @@
 Name=aircrack-ng
 Comment=A 802.11 WEP / WPA-PSK key cracker
 Encoding=UTF-8
-Exec=shell-rocket "if command -v aircrack-ng &> /dev/null;then aircrack-ng --help;$SHELL;else echo \\"Aircrack-ng is not installed. I'm retrieving it for you...\\";sudo pacman -S aircrack-ng;aircrack-ng --help;$SHELL;fi;"
+Exec=shell-rocket -b aircrack-ng
 Icon=kali-aircrack-ng
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=pasco
 Comment=Tool to extract information from MS IE cache files
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pasco &> /dev/null;then pasco;$SHELL;else echo \\"pasco is not installed. I'm retrieving it for you...\\";sudo pacman -S pasco;pasco;$SHELL;fi;"
+Exec=shell-rocket -b pasco
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

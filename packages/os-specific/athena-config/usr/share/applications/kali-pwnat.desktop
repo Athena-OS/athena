@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pwnat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pwnat &> /dev/null;then pwnat -h;$SHELL;else echo \\"pwnat is not installed. I'm retrieving it for you...\\";sudo pacman -S pwnat;pwnat -h;$SHELL;fi;"
+Exec=shell-rocket -b pwnat -x '-h'
 Icon=kali-pwnat
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=img_cat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v img_cat &> /dev/null;then img_cat;$SHELL;else echo \\"img_cat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;img_cat;$SHELL;fi;"
+Exec=shell-rocket -b img_cat -p sleuthkit
 Icon=kali-img_cat
 StartupNotify=false
 Terminal=false

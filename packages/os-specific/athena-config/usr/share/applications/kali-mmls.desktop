@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mmls
 Encoding=UTF-8
-Exec=shell-rocket "if command -v mmls &> /dev/null;then mmls;$SHELL;else echo \\"mmls is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mmls;$SHELL;fi;"
+Exec=shell-rocket -b mmls -p sleuthkit
 Icon=kali-mmls
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=scrounge-ntfs
 Comment=Helps retrieve data from corrupted NTFS partitions
 Encoding=UTF-8
-Exec=shell-rocket "if command -v scrounge-ntfs &> /dev/null;then scrounge-ntfs -h;$SHELL;else echo \\"scrounge-ntfs is not installed. I'm retrieving it for you...\\";sudo pacman -S scrounge-ntfs;scrounge-ntfs -h;$SHELL;fi;"
+Exec=shell-rocket -b scrounge-ntfs -x '-h'
 Icon=kali-scrounge-ntfs
 StartupNotify=false
 Terminal=false

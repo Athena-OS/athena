@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=clamav
 Encoding=UTF-8
-Exec=shell-rocket "if command -v clamscan &> /dev/null;then clamscan -h;$SHELL;else echo \\"ClamAV is not installed. I'm retrieving it for you...\\";sudo pacman -S clamav;clamscan -h;$SHELL;fi;"
+Exec=shell-rocket -b clamscan -p clamav -x '-h'
 Icon=kali-clamav
 StartupNotify=false
 Terminal=false

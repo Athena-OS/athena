@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ils-sleuthkit
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ils &> /dev/null;then ils;$SHELL;else echo \\"ils is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;ils;$SHELL;fi;"
+Exec=shell-rocket -b ils -p sleuthkit
 Icon=kali-ils
 StartupNotify=false
 Terminal=false

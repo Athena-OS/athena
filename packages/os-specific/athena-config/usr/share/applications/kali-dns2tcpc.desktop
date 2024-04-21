@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=dns2tcpc
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dns2tcpc &> /dev/null;then dns2tcpc;$SHELL;else echo \\"dns2tcpc is not installed. I'm retrieving it for you...\\";sudo pacman -S dns2tcp;dns2tcpc;$SHELL;fi;"
+Exec=shell-rocket -b dns2tcpc -p dns2tcp
 Icon=kali-dns2tcp
 StartupNotify=false
 Terminal=false

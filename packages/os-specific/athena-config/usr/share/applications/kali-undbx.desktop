@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=undbx
 Encoding=UTF-8
-Exec=shell-rocket "if command -v undbx &> /dev/null;then undbx -h;$SHELL;else echo \\"undbx is not installed. I'm retrieving it for you...\\";sudo pacman -S undbx;undbx -h;$SHELL;fi;"
+Exec=shell-rocket -b undbx -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

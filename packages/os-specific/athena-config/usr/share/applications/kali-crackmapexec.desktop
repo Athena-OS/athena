@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=crackmapexec
 Encoding=UTF-8
-Exec=shell-rocket "if command -v crackmapexec &> /dev/null;then crackmapexec -h;$SHELL;else echo \\"crackmapexec is not installed. I'm retrieving it for you...\\";sudo pacman -S crackmapexec;crackmapexec -h;$SHELL;fi;"
+Exec=shell-rocket -b crackmapexec -r
 Icon=kali-crackmapexec
 StartupNotify=false
 Terminal=false

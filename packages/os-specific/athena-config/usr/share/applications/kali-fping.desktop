@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=fping
 Encoding=UTF-8
-Exec=shell-rocket "if command -v fping &> /dev/null;then fping -h;$SHELL;else echo \\"fping is not installed. I'm retrieving it for you...\\";sudo pacman -S fping;fping -h;$SHELL;fi;"
+Exec=shell-rocket -b fping -x '-h'
 Icon=kali-fping
 StartupNotify=false
 Terminal=false

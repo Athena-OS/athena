@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=jadx-gui
 Encoding=UTF-8
-Exec=shell-rocket "if command -v jadx-gui &> /dev/null;then nohup jadx-gui;$SHELL;else echo \\"jadx-gui is not installed. I'm retrieving it for you...\\";sudo pacman -S jadx;nohup jadx-gui;$SHELL;fi;"
+Exec=shell-rocket -b jadx-gui -p jadx -g
 Icon=kali-jadx
 StartupNotify=false
 Terminal=false

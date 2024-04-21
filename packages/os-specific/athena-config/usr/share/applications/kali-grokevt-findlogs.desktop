@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=grokevt-findlogs
 Encoding=UTF-8
-Exec=shell-rocket "if command -v grokevt-findlogs &> /dev/null;then grokevt-findlogs -h;$SHELL;else echo \\"grokevt-findlogs is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-findlogs -h;$SHELL;fi;"
+Exec=shell-rocket -b grokevt-findlogs -p grokevt -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=dnschef
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dnschef &> /dev/null;then dnschef -h;$SHELL;else echo \\"dnschef is not installed. I'm retrieving it for you...\\";sudo pacman -S dnschef;dnschef -h;$SHELL;fi;"
+Exec=shell-rocket -b dnschef -x '-h'
 Icon=kali-dnschef
 StartupNotify=false
 Terminal=false

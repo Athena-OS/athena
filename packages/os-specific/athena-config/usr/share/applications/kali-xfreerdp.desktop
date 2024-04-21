@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=xfreerdp
 Encoding=UTF-8
-Exec=shell-rocket "if command -v xfreerdp &> /dev/null;then xfreerdp;$SHELL;else echo \\"xfreerdp is not installed. I'm retrieving it for you...\\";sudo pacman -S freerdp;xfreerdp;$SHELL;fi;"
+Exec=shell-rocket -b xfreerdp -p freerdp
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

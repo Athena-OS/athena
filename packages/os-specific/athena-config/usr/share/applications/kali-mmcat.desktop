@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mmcat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v mmcat &> /dev/null;then mmcat;$SHELL;else echo \\"mmcat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mmcat;$SHELL;fi;"
+Exec=shell-rocket -b mmcat -p sleuthkit
 Icon=kali-mmcat
 StartupNotify=false
 Terminal=false

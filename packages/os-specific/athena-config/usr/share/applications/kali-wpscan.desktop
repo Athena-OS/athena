@@ -2,7 +2,7 @@
 Name=wpscan
 Comment=WordPress Security Scanner
 Encoding=UTF-8
-Exec=shell-rocket "if command -v wpscan &> /dev/null;then wpscan --help;$SHELL;else echo \\"wpscan is not installed. I'm retrieving it for you...\\";sudo pacman -S wpscan;wpscan --help;$SHELL;fi;"
+Exec=shell-rocket -b wpscan -x '--help'
 Icon=kali-wpscan
 StartupNotify=false
 Terminal=false

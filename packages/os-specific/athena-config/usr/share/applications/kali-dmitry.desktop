@@ -2,7 +2,7 @@
 Name=dmitry
 Comment=Deepmagic Information Gathering Tool
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dmitry &> /dev/null;then dmitry;$SHELL;else echo \\"dmitry is not installed. I'm retrieving it for you...\\";sudo pacman -S dmitry;dmitry;$SHELL;fi;"
+Exec=shell-rocket -b dmitry
 Icon=kali-dmitry
 StartupNotify=false
 Terminal=false

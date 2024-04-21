@@ -2,7 +2,7 @@
 Name=crunch
 Comment=Generate wordlists from a character set
 Encoding=UTF-8
-Exec=shell-rocket "if command -v crunch &> /dev/null;then crunch;$SHELL;else echo \\"crunch is not installed. I'm retrieving it for you...\\";sudo pacman -S crunch;crunch;$SHELL;fi;"
+Exec=shell-rocket -b crunch
 Icon=kali-crunch
 StartupNotify=false
 Terminal=false

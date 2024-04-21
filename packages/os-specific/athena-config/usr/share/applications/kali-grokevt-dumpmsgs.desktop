@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=grokevt-dumpmsgs
 Encoding=UTF-8
-Exec=shell-rocket "if command -v grokevt-dumpmsgs &> /dev/null;then grokevt-dumpmsgs -h;$SHELL;else echo \\"grokevt-dumpmsgs is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-dumpmsgs -h;$SHELL;fi;"
+Exec=shell-rocket -b grokevt-dumpmsgs -p grokevt -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

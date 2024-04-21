@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pev
 Encoding=UTF-8
-Exec=shell-rocket "if command -v readpe &> /dev/null;then readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;else echo \\"pev is not installed. I'm retrieving it for you...\\";sudo pacman -S pev;readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;fi;"
+Exec=shell-rocket -b readpe -p pev -x '--help'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=foremost
 Comment=Recover files using their headers, footers, and data structures
 Encoding=UTF-8
-Exec=shell-rocket "if command -v foremost &> /dev/null;then foremost -h;$SHELL;else echo \\"foremost is not installed. I'm retrieving it for you...\\";sudo pacman -S foremost;foremost -h;$SHELL;fi;"
+Exec=shell-rocket -b foremost -x '-h'
 Icon=kali-foremost
 StartupNotify=false
 Terminal=false

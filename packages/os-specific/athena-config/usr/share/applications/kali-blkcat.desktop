@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=blkcat
 Encoding=UTF-8
-Exec=shell-rocket "if command -v blkcat &> /dev/null;then blkcat;$SHELL;else echo \\"Blkcat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;blkcat;$SHELL;fi;"
+Exec=shell-rocket -b blkcat -p sleuthkit
 Icon=kali-blkcat
 StartupNotify=false
 Terminal=false

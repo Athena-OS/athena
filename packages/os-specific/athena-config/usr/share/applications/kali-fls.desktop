@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=fls
 Encoding=UTF-8
-Exec=shell-rocket "if command -v fls &> /dev/null;then fls;$SHELL;else echo \\"fls is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;fls;$SHELL;fi;"
+Exec=shell-rocket -b fls -p sleuthkit
 Icon=kali-fls
 StartupNotify=false
 Terminal=false

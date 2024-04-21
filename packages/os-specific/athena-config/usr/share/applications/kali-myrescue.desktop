@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=myrescue
 Encoding=UTF-8
-Exec=shell-rocket "if command -v myrescue &> /dev/null;then myrescue -h;$SHELL;else echo \\"myrescue is not installed. I'm retrieving it for you...\\";sudo pacman -S myrescue;myrescue -h;$SHELL;fi;"
+Exec=shell-rocket -b myrescue -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=masscan
 Encoding=UTF-8
-Exec=shell-rocket "if command -v masscan &> /dev/null;then masscan --help;$SHELL;else echo \\"masscan is not installed. I'm retrieving it for you...\\";sudo pacman -S masscan;masscan --help;$SHELL;fi;"
+Exec=shell-rocket -b masscan -x '--help'
 Icon=kali-masscan
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=dcfldd
 Comment=Enhanced version of dd for forensics and security
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dcfldd &> /dev/null;then dcfldd --help;$SHELL;else echo \\"dcfldd is not installed. I'm retrieving it for you...\\";sudo pacman -S dcfldd;dcfldd --help;$SHELL;fi;"
+Exec=shell-rocket -b dcfldd -x '--help'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

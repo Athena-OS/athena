@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=udptunnel
 Encoding=UTF-8
-Exec=shell-rocket "if command -v udptunnel &> /dev/null;then udptunnel -h;$SHELL;else echo \\"udptunnel is not installed. I'm retrieving it for you...\\";sudo pacman -S udptunnel;udptunnel -h;$SHELL;fi;"
+Exec=shell-rocket -b udptunnel -x '-h'
 Icon=kali-udptunnel
 StartupNotify=false
 Terminal=false

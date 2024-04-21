@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=rebind
 Encoding=UTF-8
-Exec=shell-rocket "if command -v rebind_dns &> /dev/null;then rebind_dns;$SHELL;else echo \\"Rebind is not installed. I'm retrieving it for you...\\";sudo pacman -S rebind;rebind_dns;$SHELL;fi;"
+Exec=shell-rocket -b rebind_dns -p rebind
 Icon=kali-rebind
 StartupNotify=false
 Terminal=false

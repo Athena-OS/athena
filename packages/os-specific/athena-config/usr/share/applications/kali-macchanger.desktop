@@ -2,7 +2,7 @@
 Name=macchanger
 Comment=MAC Changer
 Encoding=UTF-8
-Exec=shell-rocket "if command -v macchanger &> /dev/null;then macchanger -h;$SHELL;else echo \\"macchanger is not installed. I'm retrieving it for you...\\";sudo pacman -S macchanger;macchanger -h;$SHELL;fi;"
+Exec=shell-rocket -b macchanger -x '-h'
 Icon=kali-macchanger
 StartupNotify=false
 Terminal=false

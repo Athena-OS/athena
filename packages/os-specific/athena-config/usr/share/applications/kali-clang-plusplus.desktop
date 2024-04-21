@@ -2,7 +2,7 @@
 Name=clang++
 Comment=The Clang C, C++, and Objective-C compiler
 Encoding=UTF-8
-Exec=shell-rocket "if command -v clang++ &> /dev/null;then clang++ --help;$SHELL;else echo \\"clang++ is not installed. I'm retrieving it for you...\\";sudo pacman -S clang;clang++ --help;$SHELL;fi;"
+Exec=shell-rocket -b clang++ -p clang -x '--help'
 Icon=kali-clang
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=ophcrack
 Comment=A Microsoft Windows password cracker using rainbow tables.
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ophcrack &> /dev/null;then ophcrack;$SHELL;else echo \\"ophcrack is not installed. I'm retrieving it for you...\\";sudo pacman -S ophcrack;ophcrack;$SHELL;fi;"
+Exec=shell-rocket -b ophcrack -g
 Icon=kali-ophcrack
 StartupNotify=false
 Terminal=false

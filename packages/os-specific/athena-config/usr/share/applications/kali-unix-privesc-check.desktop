@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=unix-privesc-check
 Encoding=UTF-8
-Exec=shell-rocket "if command -v unix-privesc-check &> /dev/null;then unix-privesc-check;$SHELL;else echo \\"unix-privesc-check is not installed. I'm retrieving it for you...\\";sudo pacman -S unix-privesc-check;unix-privesc-check;$SHELL;fi;"
+Exec=shell-rocket -b unix-privesc-check
 Icon=kali-unix-privesc-check
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=hash-identifier
 Encoding=UTF-8
-Exec=shell-rocket "if command -v hash-identifier &> /dev/null;then hash-identifier;$SHELL;else echo \\"hash-identifier is not installed. I'm retrieving it for you...\\";sudo pacman -S hash-identifier;hash-identifier;$SHELL;fi;"
+Exec=shell-rocket -b hash-identifier
 Icon=kali-hash-identifier
 StartupNotify=false
 Terminal=false

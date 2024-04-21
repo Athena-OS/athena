@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=Security Wordlist
 Comment=Security Wordlist
 Icon=kali-golismero
-Exec=shell-rocket "if test -d /usr/share/payloads/Security-Wordlist;then cd /usr/share/payloads/Security-Wordlist;$SHELL;else echo \\"Security Wordlist not found. I'm retrieving it for you...\\";sudo git clone https://github.com/DragonJAR/Security-Wordlist /usr/share/payloads/Security-Wordlist;cd /usr/share/payloads/Security-Wordlist;$SHELL;fi;"
+Exec=shell-rocket -b security-wordlist -d /usr/share/payloads/security-wordlist
 Terminal=false
 Categories=Tags;Describing;Application;Utility

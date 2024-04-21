@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=icat-sleuthkit
 Encoding=UTF-8
-Exec=shell-rocket "if command -v icat &> /dev/null;then icat;$SHELL;else echo \\"icat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;icat;$SHELL;fi;"
+Exec=shell-rocket -b icat -p sleuthkit
 Icon=kali-icat
 StartupNotify=false
 Terminal=false

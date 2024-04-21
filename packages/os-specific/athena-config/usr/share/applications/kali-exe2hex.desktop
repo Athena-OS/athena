@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=exe2hex
 Encoding=UTF-8
-Exec=shell-rocket "if command -v exe2hex &> /dev/null;then exe2hex;$SHELL;else echo \\"exe2hex is not installed. I'm retrieving it for you...\\";sudo pacman -S exe2hexbat;exe2hex;$SHELL;fi;"
+Exec=shell-rocket -b exe2hex -p exe2hex
 Icon=kali-exe2hexbat
 StartupNotify=false
 Terminal=false

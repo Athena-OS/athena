@@ -2,7 +2,7 @@
 Name=rkhunter
 Comment=RootKit Hunter
 Encoding=UTF-8
-Exec=shell-rocket "if command -v rkhunter &> /dev/null;then rkhunter -h;$SHELL;else echo \\"rkhunter is not installed. I'm retrieving it for you...\\";sudo pacman -S rkhunter;rkhunter -h;$SHELL;fi;"
+Exec=shell-rocket -b rkhunter -r -x '-h'
 Icon=kali-rkhunter
 StartupNotify=false
 Terminal=false

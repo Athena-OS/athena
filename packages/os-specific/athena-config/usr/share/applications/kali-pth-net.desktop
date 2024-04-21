@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pth-net
 Encoding=UTF-8
-Exec=shell-rocket "if command -v pth-net &> /dev/null;then pth-net help;$SHELL;else echo \\"pth-net is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-net help;$SHELL;fi;"
+Exec=shell-rocket -b pth-net -p pth-toolkit -x 'help'
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

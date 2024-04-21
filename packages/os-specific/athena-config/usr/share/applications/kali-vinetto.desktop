@@ -2,7 +2,7 @@
 Name=vinetto
 Comment=Extract thumbnails and associated metadata from Thumbs.db files
 Encoding=UTF-8
-Exec=shell-rocket "if command -v vinetto &> /dev/null;then vinetto -h;$SHELL;else echo \\"vinetto is not installed. I'm retrieving it for you...\\";sudo pacman -S vinetto;vinetto -h;$SHELL;fi;"
+Exec=shell-rocket -b vinetto -x '-h'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

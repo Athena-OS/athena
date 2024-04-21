@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=dirbuster
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dirbuster &> /dev/null;then nohup dirbuster;$SHELL;else echo \\"dirbuster is not installed. I'm retrieving it for you...\\";sudo pacman -S dirbuster;nohup dirbuster;$SHELL;fi;"
+Exec=shell-rocket -b dirbuster -g
 Icon=kali-dirbuster
 StartupNotify=false
 Terminal=false

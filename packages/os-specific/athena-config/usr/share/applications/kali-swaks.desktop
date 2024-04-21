@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=swaks
 Encoding=UTF-8
-Exec=shell-rocket "if command -v swaks &> /dev/null;then swaks --help;$SHELL;else echo \\"swaks is not installed. I'm retrieving it for you...\\";sudo pacman -S swaks;swaks --help;$SHELL;fi;"
+Exec=shell-rocket -b swaks -x '--help'
 Icon=kali-swaks
 StartupNotify=false
 Terminal=false

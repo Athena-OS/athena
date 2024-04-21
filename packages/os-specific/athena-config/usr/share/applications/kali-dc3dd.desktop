@@ -2,7 +2,7 @@
 Name=dc3dd
 Comment=Convert and copy a file
 Encoding=UTF-8
-Exec=shell-rocket "if command -v dc3dd &> /dev/null;then dc3dd --help;$SHELL;else echo \\"dc3dd is not installed. I'm retrieving it for you...\\";sudo pacman -S dc3dd;dc3dd --help;$SHELL;fi;"
+Exec=shell-rocket -b dc3dd -x '--help'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

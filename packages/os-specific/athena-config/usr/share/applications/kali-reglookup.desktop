@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=reglookup
 Encoding=UTF-8
-Exec=shell-rocket "if command -v reglookup &> /dev/null;then reglookup;$SHELL;else echo \\"reglookup is not installed. I'm retrieving it for you...\\";sudo pacman -S reglookup;reglookup;$SHELL;fi;"
+Exec=shell-rocket -b reglookup
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

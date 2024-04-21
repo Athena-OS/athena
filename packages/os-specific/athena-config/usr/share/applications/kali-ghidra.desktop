@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ghidra
 Encoding=UTF-8
-Exec=shell-rocket "if command -v ghidra &> /dev/null;then ghidra;$SHELL;else echo \\"ghidra is not installed. I'm retrieving it for you...\\";sudo pacman -S ghidra;ghidra;$SHELL;fi;"
+Exec=shell-rocket -b ghidra -g
 Icon=kali-ghidra
 StartupNotify=false
 Terminal=false

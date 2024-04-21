@@ -2,7 +2,7 @@
 Name=fcrackzip
 Comment=A Free/Fast Zip Password Cracker
 Encoding=UTF-8
-Exec=shell-rocket "if command -v fcrackzip &> /dev/null;then fcrackzip --help;$SHELL;else echo \\"fcrackzip is not installed. I'm retrieving it for you...\\";sudo pacman -S fcrackzip;fcrackzip --help;$SHELL;fi;"
+Exec=shell-rocket -b fcrackzip -x '--help'
 Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false

@@ -3,7 +3,7 @@ Name=hydra
 Comment=A very fast network logon cracker which supports many different services
 Encoding=UTF-8
 # grep is used to highlight the supported services before running the wizard
-Exec=shell-rocket "if command -v hydra &> /dev/null;then hydra | grep --color=auto '^\\|Supported services:'; hydra-wizard.sh;$SHELL;else echo \\"hydra is not installed. I'm retrieving it for you...\\";sudo pacman -S hydra;hydra | grep --color=auto '^\\|Supported services:'; hydra-wizard.sh;$SHELL;fi;"
+Exec=shell-rocket -b hydra -x '| grep --color=auto "^\\|Supported services:"; hydra-wizard.sh'
 Icon=kali-hydra
 StartupNotify=false
 Terminal=false

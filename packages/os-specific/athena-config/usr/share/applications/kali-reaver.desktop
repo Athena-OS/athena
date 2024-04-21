@@ -2,7 +2,7 @@
 Name=reaver
 Comment=WPS Cracker
 Encoding=UTF-8
-Exec=shell-rocket "if command -v reaver &> /dev/null;then reaver -h;$SHELL;else echo \\"reaver is not installed. I'm retrieving it for you...\\";sudo pacman -S reaver;reaver -h;$SHELL;fi;"
+Exec=shell-rocket -b reaver -x '-h'
 Icon=kali-reaver
 StartupNotify=false
 Terminal=false

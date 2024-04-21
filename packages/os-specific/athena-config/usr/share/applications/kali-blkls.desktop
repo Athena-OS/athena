@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=blkls
 Encoding=UTF-8
-Exec=shell-rocket "if command -v blkls &> /dev/null;then blkls;$SHELL;else echo \\"Blkls is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;blkls;$SHELL;fi;"
+Exec=shell-rocket -b blkls -p sleuthkit
 Icon=kali-blkls
 StartupNotify=false
 Terminal=false
