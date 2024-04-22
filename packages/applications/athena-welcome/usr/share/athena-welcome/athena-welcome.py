@@ -101,7 +101,7 @@ class Main(Gtk.Window):
         #t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/modules/packages-system-update.conf", "/etc/calamares/modules/packages.conf"],))
         #t.daemon = True
         #t.start()
-        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "aegis-tui"],))
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "-b", "aegis-tui"],))
         t.daemon = True
         t.start()
         #subprocess.Popen(["/usr/bin/aegis-gui"], shell=False)
@@ -118,7 +118,7 @@ class Main(Gtk.Window):
         t.start()
 
     #def on_calamares_update_clicked(self, widget):
-        #t = threading.Thread(target=self.run_app, args=(["shell-rocket", "/usr/local/bin/calamares-update"],))
+        #t = threading.Thread(target=self.run_app, args=(["shell-rocket", "-b", "/usr/local/bin/calamares-update"],))
         #t.daemon = True
         #t.start()
 
@@ -128,7 +128,7 @@ class Main(Gtk.Window):
         #t.start()
 
     def on_buttonhtb_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "htb-toolkit -u"],))
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "-b", "htb-toolkit", "-x", "-u"],))
         t.daemon = True
         t.start()
 
@@ -138,7 +138,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_buttonrtm_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "sudo cyber-toolkit "+self.role_id],))
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "-b", "cyber-toolkit", "-r", "-x", self.role_id],))
         t.daemon = True
         t.start()
 
@@ -148,7 +148,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_buttonupdate_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "/usr/local/bin/athena-upgrade"],))
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "-c", "/usr/local/bin/athena-upgrade"],))
         t.daemon = True
         t.start()
 
