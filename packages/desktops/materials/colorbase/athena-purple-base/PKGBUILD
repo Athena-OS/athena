@@ -1,5 +1,5 @@
 pkgname=athena-purple-base
-pkgver=1.0.0
+pkgver=9.32993ef
 pkgrel=1
 pkgdesc="Purple colorbase resources."
 arch=('any')
@@ -8,6 +8,12 @@ makedepends=('git')
 install='purple.install'
 source=("git+https://github.com/Athena-OS/athena-purple-base")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
   cd athena-purple-base

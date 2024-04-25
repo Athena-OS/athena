@@ -1,5 +1,5 @@
 pkgname=athena-cyan-base
-pkgver=1.0.0
+pkgver=3.2daa0aa
 pkgrel=1
 pkgdesc="Cyan colorbase resources."
 arch=('any')
@@ -8,6 +8,12 @@ makedepends=('git')
 install='cyan.install'
 source=("git+https://github.com/Athena-OS/athena-cyan-base")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
   cd athena-cyan-base
