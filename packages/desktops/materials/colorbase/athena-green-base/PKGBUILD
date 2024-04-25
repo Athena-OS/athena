@@ -1,5 +1,5 @@
 pkgname=athena-green-base
-pkgver=1.0.0
+pkgver=5.a74e5d8
 pkgrel=1
 pkgdesc="Green colorbase resources."
 arch=('any')
@@ -8,6 +8,12 @@ makedepends=('git')
 install='green.install'
 source=("git+https://github.com/Athena-OS/athena-green-base")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
   cd athena-green-base

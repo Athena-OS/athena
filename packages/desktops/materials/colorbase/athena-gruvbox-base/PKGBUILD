@@ -1,5 +1,5 @@
 pkgname=athena-gruvbox-base
-pkgver=1.0.0
+pkgver=3.35c8619
 pkgrel=1
 pkgdesc="Gruvbox colorbase resources."
 arch=('any')
@@ -8,6 +8,12 @@ makedepends=('git')
 install='gruvbox.install'
 source=("git+https://github.com/Athena-OS/athena-gruvbox-base")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
   cd athena-gruvbox-base

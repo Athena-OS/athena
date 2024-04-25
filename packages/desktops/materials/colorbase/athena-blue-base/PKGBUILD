@@ -1,5 +1,5 @@
 pkgname=athena-blue-base
-pkgver=1.0.0
+pkgver=6.f0741ba
 pkgrel=1
 pkgdesc="Blue colorbase resources."
 arch=('any')
@@ -8,6 +8,12 @@ makedepends=('git')
 install='blue.install'
 source=("git+https://github.com/Athena-OS/athena-blue-base")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
   cd athena-blue-base
