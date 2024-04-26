@@ -160,8 +160,8 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]]; then
     dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:$theme_name"
     /usr/lib/plasma-changeicons "$icon_theme"
     plasma-apply-cursortheme "$cursor_theme"
-    qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops(); for(i=0; i<allDesktops.length; i++) { myDesktop=allDesktops[i]; print(myDesktop); myDesktop.currentConfigGroup = Array(\"Wallpaper\",\"org.kde.image\",\"General\");var wallpaper = \"$background_theme\"; myDesktop.writeConfig(\"Image\", wallpaper);print(myDesktop.readConfig(\"Image\"));}"
-    kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$background_theme"
+    qdbus6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops(); for(i=0; i<allDesktops.length; i++) { myDesktop=allDesktops[i]; print(myDesktop); myDesktop.currentConfigGroup = Array(\"Wallpaper\",\"org.kde.image\",\"General\");var wallpaper = \"$background_theme\"; myDesktop.writeConfig(\"Image\", wallpaper);print(myDesktop.readConfig(\"Image\"));}"
+    kwriteconfig6 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$background_theme"
 fi
 
 if [[ "$XDG_CURRENT_DESKTOP" =~ "MATE" ]]; then
