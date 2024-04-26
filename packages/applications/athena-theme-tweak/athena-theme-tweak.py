@@ -55,7 +55,7 @@ def arg_parse():
     parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "foot", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
-    parser.add_argument("-t", "--theme", choices=["AkameGaKill", "Cyborg", "Everblush", "Graphite", "HackTheBox", "SamuraiGirl", "SweetDark", "XXE"], help="specify an Athena theme to be set [AkameGaKill|Cyborg|Everblush|Graphite|HackTheBox|SamuraiGirl|SweetDark|XXE]")
+    parser.add_argument("-t", "--theme", choices=["AkameGaKill", "Cyborg", "Graphite", "HackTheBox", "SamuraiGirl", "SweetDark"], help="specify an Athena theme to be set [AkameGaKill|Cyborg|Graphite|HackTheBox|SamuraiGirl|SweetDark]")
     
 
     args = parser.parse_args()
@@ -72,7 +72,7 @@ def help():
    print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|urxvt|xterm]")
    print("-h, --help                    show this help message and exit")
    print("-l, --list                    list all available Athena themes")
-   print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|Cyborg|Everblush|Graphite|HackTheBox|SamuraiGirl|SweetDark|XXE]")
+   print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|Cyborg|Graphite|HackTheBox|SamuraiGirl|SweetDark]")
    print("\n")
    print("Usage Examples:")
    print("athena-theme-tweak -l")
@@ -143,12 +143,10 @@ if args.browser:
 theme_map = {
     "AkameGaKill": "athena-akame-theme",
     "Cyborg": "athena-cyborg-theme",
-    "Everblush": "athena-everblush-theme",
     "Graphite": "athena-graphite-theme",
     "HackTheBox": "athena-htb-theme",
     "SamuraiGirl": "athena-samurai-theme",
-    "SweetDark": "athena-sweetdark-theme",
-    "XXE": "athena-xxe-theme"
+    "SweetDark": "athena-sweetdark-theme"
 }
 
 if args.list:
