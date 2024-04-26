@@ -21,4 +21,3 @@ prepare() {
 package() {
   install -Dm 755 "${_pkgname//-/_}.py" "$pkgdir/usr/bin/$pkgname"
 }
-
