@@ -1,0 +1,20 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=grabitall
+pkgver=1.1
+pkgrel=3
+pkgdesc='Performs traffic redirection by sending spoofed ARP replies.'
+url='http://ntsecurity.nu/toolbox/grabitall/'
+groups=('athena' 'athena-windows' 'athena-spoof'
+        'athena-networking')
+license=('custom:unknown')
+arch=('any')
+source=('http://ntsecurity.nu/downloads/grabitall.zip')
+sha512sums=('25c2175211a61bb9897b483ea4ad8c00959f6549')
+
+package() {
+  rm grabitall.zip
+
+  install -Dm 644 -t "$pkgdir/usr/share/windows/grabitall/" *
+}
