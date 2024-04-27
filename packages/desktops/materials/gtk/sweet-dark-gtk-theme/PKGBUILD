@@ -1,11 +1,11 @@
 pkgname=sweet-dark-gtk-theme
-pkgver=3.0
-pkgrel=2
-pkgdesc="Sweet Dark theme."
+pkgver=4.0
+pkgrel=1
+pkgdesc="Sweet Dark GTK theme."
 arch=('any')
 license=("GPL3")
-source=("$pkgname.tar.gz")
-sha512sums=('9e07eb2df4fa0b6f3a686720e4362a91e4935cd53f35b01b40ba43c4d56d6de3cff220758c1f6220002758ef6730e9be2935a335f02492936034395e0e3883b3')
+source=("https://github.com/EliverLara/Sweet/releases/download/v$pkgver/Sweet-Dark-v40.zip")
+sha512sums=('f4147ae7848b3f4b0d7a345d24e968a4bcc91c9fa42419211ca522563f143fd115b01ed253a379f22f49372f374d2a1e962892bba19ed9305b71e12775d4ac7a')
 
 package() {
   install -dm 755 "$pkgdir/usr/share/themes"
