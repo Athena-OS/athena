@@ -20,7 +20,6 @@ pkgver() {
 build() {
     cd $pkgname
     
-    yarn install
     cargo tauri build
 }
 
