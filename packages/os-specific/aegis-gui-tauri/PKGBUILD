@@ -7,6 +7,7 @@ url="https://github.com/Athena-OS/${pkgname}"
 license=('GPL3')
 depends=('gtk3' 'libappindicator-gtk3' 'libsoup' 'webkit2gtk')
 makedepends=('cargo-tauri' 'pnpm' 'yarn' 'git')
+options=('!strip' '!debug')
 source=("git+https://github.com/mwaurawakati/$pkgname.git")
 sha512sums=('SKIP')
 
@@ -20,7 +21,7 @@ build() {
     cd $pkgname
     
     yarn install
-    NO_STRIP=true cargo tauri build
+    cargo tauri build
 }
 
 package() {
