@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+timestamp() {
+    ts '[%Y-%m-%d %H:%M:%S]'
+}
+
+techo() {
+  echo -e "$@" | timestamp
+}
+
 makepkg_settings() {
     if [[ "$buildcores" ]]; then
         ncores=$coresnum
@@ -8,13 +16,13 @@ makepkg_settings() {
     fi
     if [ $ncores != 1 ]
     then
-        echo "$ncores cores available."
-        echo "Changing the makeflags to $ncores cores."
-        echo "Changing the compression settings for $ncores cores."
+        techo "$ncores cores available."
+        techo "Changing the makeflags to $ncores cores."
+        techo "Changing the compression settings for $ncores cores."
     else
-        echo "$ncores core available."
-        echo "Changing the makeflags to $ncores core."
-        echo "Changing the compression settings for $ncores core."
+        techo "$ncores core available."
+        techo "Changing the makeflags to $ncores core."
+        techo "Changing the compression settings for $ncores core."
     fi
     sudo sed -i 's/#MAKEFLAGS=.*/MAKEFLAGS="-j'$ncores'"/g' /etc/makepkg.conf;
     sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
@@ -24,7 +32,7 @@ prebuild_command() {
     #* Run pre-build commands
     if [[ -n "$PRE_EXEC" ]]
     then
-      echo "Run pre-build commands..."
+      techo "Run pre-build commands..."
       echo "${PRE_EXEC}"
       ${PRE_EXEC}
     fi
@@ -34,7 +42,7 @@ postbuild_command() {
     #* Run post-build commands
     if [[ -n "$POST_EXEC" ]]
     then
-      echo "Run post-build commands..."
+      techo "Run post-build commands..."
       echo "${POST_EXEC}"
       ${POST_EXEC}
     fi
@@ -77,10 +85,10 @@ build_package() {
     src_dir=$3
     out_dir=$4
 
-    echo -e "\nBuilding package in $pkg_dir..."
+    techo "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
 
-    makepkg -do --noprepare
+    makepkg -do --noprepare | timestamp
 
     pkgname=($(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/[\[('\'')]//g' -e 's/"//g'))
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
@@ -95,15 +103,15 @@ build_package() {
     if [ ! -f "$out_dir/$pkgfile" ]; then
         if [ -f "build.sh" ]; then
             # Error handling to prevent running interruption
-            ./build.sh || {
-                >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
+            ./build.sh | timestamp || {
+                >&2 techo "ERROR: Failed to execute build.sh in $pkg_dir"
                 return 1
             }
         else
             updpkgsums
             # Error handling to prevent running interruption
-            makepkg -f -src --noconfirm || {
-                >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
+            makepkg -f -src --noconfirm | timestamp || {
+                >&2 techo "ERROR: Failed to execute makepkg in $pkg_dir"
                 return 1
             }
             sudo rm -rf src pkg
@@ -113,12 +121,12 @@ build_package() {
 
         # A PKGBUILD could contain more than one package (i.e., python- packages)
         for pfile in "${pkgfile[@]}"; do
-            echo -e "Moving $pfile to $out_dir"
+            techo "Moving $pfile to $out_dir"
             cp -f $pfile* $out_dir
             rm -f $pfile*
         done
     else
-        >&2 echo "$pkgfile already exists in $out_dir"
+        >&2 techo "$pkgfile already exists in $out_dir"
     fi
     cd $src_dir
 }
@@ -127,7 +135,7 @@ sign_package() {
     #* If env $sign is false, do not sign packages
     if [[ "$sign" ]]
     then
-        echo "Signing the package..."
+        techo "Signing the package..."
         if id "builder" >/dev/null 2>&1; then
             user="builder"
         else
@@ -136,11 +144,11 @@ sign_package() {
 
         if [ -n "$passphrase" ]; then
             for pfile in "${pkgfile[@]}"; do
-                echo "Creating $pfile.sig"
+                techo "Creating $pfile.sig"
                 echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pfile.sig $pfile
             done
         else
-            echo "Error: 'PASSPHRASE' environment variable not set."
+            techo "Error: 'PASSPHRASE' environment variable not set."
             exit 1
         fi
     fi
@@ -162,7 +170,7 @@ while getopts "ac:dhrsx" opt; do
             if [[ $OPTARG =~ ^[0-9]+$ ]]; then
                 coresnum=$((OPTARG))
             else
-                echo "Error: Number of cores must be a positive integer." >&2
+                techo "Error: Number of cores must be a positive integer." >&2
                 exit 1
             fi
             ;;
@@ -188,10 +196,10 @@ while getopts "ac:dhrsx" opt; do
             sshsec="$(cat /run/secrets/${SSH_SEC})"
             if [[ -z "$sshsec" || -z "${REPOSITORY_SERVER}" ]]; then
                 if [[ -z "$sshsec" ]]; then
-                    echo "Error -r argument: Missing 'SSH_SEC' environment variable passed as container argument."
+                    techo "Error -r argument: Missing 'SSH_SEC' environment variable passed as container argument."
                 fi
                 if [[ -z "${REPOSITORY_SERVER}" ]]; then
-                    echo "Error -r argument: Missing 'REPOSITORY_SERVER' environment variable passed as container argument."
+                    techo "Error -r argument: Missing 'REPOSITORY_SERVER' environment variable passed as container argument."
                 fi
                 exit 1
             fi
@@ -213,19 +221,19 @@ shift $((OPTIND - 1))
 # Import the signing key
 passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
 if [ -z "$passphrase" ]; then
-    echo "No secret found for GPG key object ${GPG_SEC}."
+    techo "No secret found for GPG key object ${GPG_SEC}."
 else
     echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
 fi
 
 if [[ "$mirr" ]]
 then
-    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
-    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
+    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch | timestamp
+    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur | timestamp
 fi
 
 # Need to sync Hephaestus with the updated repository
-sudo pacman -Syy
+sudo pacman -Syy | timestamp
 
 # Set the CPU Architecture for packaging
 cpu_arch="x86_64"
@@ -244,7 +252,7 @@ fi
 
 # Print the result array
 for path in "${result[@]}"; do
-    echo "Found PKGBUILD: $path"
+    techo "Found PKGBUILD: $path"
     # Build and sign packages
     build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir"
     echo
@@ -252,7 +260,7 @@ done
 
 if [[ "$db" ]]
 then
-    echo "Invoking the key..."
+    techo "Invoking the key..."
     if id "builder" >/dev/null 2>&1; then
         user="builder"
     else
@@ -262,12 +270,12 @@ then
     if [ -n "$passphrase" ]; then
         echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0
     else
-        echo "Error: 'PASSPHRASE' environment variable not set."
+        techo "Error: 'PASSPHRASE' environment variable not set."
         exit 1
     fi
     # rm $out_dir/athena.db* $out_dir/athena.files*
     # Note that if only one package fails to be processed (i.e., packages with 0 size), athena.db won't be created
-    repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
+    repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst | timestamp
 fi
 
 if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
