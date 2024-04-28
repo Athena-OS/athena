@@ -19,11 +19,8 @@ pkgver() {
 build() {
     cd $pkgname
     
-    export NO_STRIP=true
     yarn install
-    NO_STRIP=true 
-    unset SOURCE_DATE_EPOCH
-    cargo tauri build
+    NO_STRIP=true cargo tauri build
 }
 
 package() {
