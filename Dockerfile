@@ -22,4 +22,4 @@ USER $PUSER:$PUSER
 WORKDIR /build/packages
 
 # Define the entry point
-ENTRYPOINT ["/build/packages/hephaestus | ts '[%Y-%m-%d %H:%M:%S]'"]
+ENTRYPOINT ["/bin/bash", "-c", "/build/packages/hephaestus \"$@\" | ts '[%Y-%m-%d %H:%M:%S]'"]
