@@ -1,0 +1,56 @@
+/* ---------- Alternative Themes ---------- */
+
+/* ----- moonlight ----- */
+:root.moonlight {
+  --bg: #fff;
+  --body-bg: #f9f9fb;
+
+  --nav-bg: #d9d9db;
+  --nav-hover: var(--hover);
+  --nav-color: var(--color);
+}
+
+:root.moonlight .flat {
+  color: inherit;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+}
+
+:root.moonlight .flat:hover {
+  background-color: var(--hover);
+}
+
+:root.moonlight .pattern-head button span.plus {
+  filter: unset;
+}
+
+:root.moonlight .popup-buttons button {
+  color: inherit;
+  background-color: var(--alt-bg);
+}
+
+:root.moonlight .popup-buttons button:hover {
+  background-color: var(--hover);
+}
+
+
+@media screen and (prefers-color-scheme: dark) {
+  :root.moonlight {
+    --bg: #333;
+    --body-bg: #444;
+    --nav-bg: #000;
+  }
+
+  :root.moonlight .pattern-head button span.plus {
+    filter: brightness(0) invert(1);
+  }
+}
+/* ----- /moonlight ----- */
+
+
+
+/* ----- alt ----- */
+:root.alt {
+  --body-bg: var(--bg);
+}
+/* ----- /alt ----- */

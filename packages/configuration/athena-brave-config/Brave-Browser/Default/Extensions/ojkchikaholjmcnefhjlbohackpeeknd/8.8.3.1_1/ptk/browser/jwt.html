@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Penetration Testing Kit - cross-browser extension for penetration testing" name="description" />
+    <meta content="Penetration Testing Kit, request builder, traffic recording, macro recording" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+    <title>OWASP Penetration Testing Kit - JWT Inspector</title>
+
+    <script src="../packages/browser-polyfill/browser-polyfill.min.js"></script>
+    <script src="../packages/jquery/jquery.min.js"></script>
+    <script src="../packages/jquery/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/semantic-ui/semantic.min.css" type="text/css" />
+    <script src="../packages/semantic-ui/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/codemirror/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="../packages/codemirror/addon/fold/foldgutter.css" type="text/css" />
+    <script src="../packages/codemirror/codemirror.js"></script>
+    <script src="../packages/codemirror/mode/javascript/javascript.js"></script>
+    <script src="../packages/codemirror/addon/fold/foldcode.js"></script>
+    <script src="../packages/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="../packages/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/indent-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/markdown-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/comment-fold.js"></script>
+
+
+    <script src="../packages/codemirror/addon/search/searchcursor.js"></script>
+    <script src="../packages/codemirror/addon/selection/mark-selection.js"></script>
+
+    <link rel="stylesheet" href="assets/css/default.css" type="text/css" />
+    <script src="assets/js/menu.js"></script>
+    <script type="module" src="assets/js/jwt.js"></script>
+    <style>
+        #rawToken::placeholder {
+            font-size: 16px;
+        }
+
+        .algorithm-select>.menu.transition.visible {
+            min-height: 445px;
+        }
+
+        .algorithm-select-keys-dlg>.menu.transition.visible {
+            min-height: 355px;
+        }
+
+        .dropdown.algorithm-select.selection {
+            z-index: 1;
+        }
+
+        #generate_keys_dlg_form .prompt.label {
+            z-index: 1;
+        }
+
+        #rawToken+.CodeMirror {
+            font-size: 1.1em;
+            font-weight: 300;
+            min-height: 350px;
+            height: 50vh !important;
+        }
+
+        .CodeMirror-wrap {
+            height: 100% !important;
+        }
+
+
+        .CodeMirror-vscrollbar {
+            width: 0px;
+        }
+
+        .CodeMirror-hscrollbar {
+            height: 0px;
+        }
+
+        .styled-header {
+            color: deeppink;
+        }
+
+        .styled-payload {
+            color: darkviolet;
+        }
+
+        .styled-signature {
+            color: mediumblue;
+        }
+
+        .dropdown.source,
+        .dropdown.source>.menu>.item,
+        .dropdown.algorithm-select {
+            font-size: 14px !important;
+        }
+
+        .dropdown.source {
+            width: calc(100% - 90px) !important;
+        }
+
+        .prompt.label {
+            z-index: 1;
+        }
+
+        #pem_jwk_convertor_jwk+.prompt.label {
+            position: absolute;
+            bottom: -30px;
+            left: 10px;
+        }
+
+        #pem_jwk_convertor_pem+.prompt.label {
+            position: absolute;
+            bottom: -30px;
+            left: 10px;
+        }
+
+        #jwk_injection_attack_dlg_token+.prompt.label {
+            position: absolute;
+            left: 0px;
+            bottom: -25px;
+        }
+
+        #jwk_injection_attack_dlg_private_key+.prompt.label {
+            position: absolute;
+            left: 0px;
+            bottom: -25px;
+        }
+
+        #jwk_injection_attack_dlg_public_key+.prompt.label {
+            position: absolute;
+            left: 0px;
+            bottom: -25px;
+        }
+
+        #jwk_injection_attack_dlg_alg~.prompt.label {
+            min-width: 150px;
+            position: absolute;
+            left: 0px;
+            bottom: 25px;
+        }
+
+        /* .ui.large.fluid.dropdown.source.selection {
+            width: calc(100% - 90px) !important;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="mainMenuWrapper">
+
+        <div class="ui segment clearing info_tab">
+            <div style="padding-top: 5px; padding-right: 2px;">
+                <div id="dashboard_message_text" class="ui left floated header short_message_text"
+                    style="width: calc(100vw - 218px);margin-bottom: 0px !important">JWT Inspector</div>
+
+                <div class="ui right floated header icons"
+                    style="margin-left: 0px !important;margin-bottom: 0px !important">
+                    <div class="ui mini icon button item clean"><i class="trash all alternate large icon resetall"
+                            title="Reset all"></i>
+                    </div>
+                </div>
+
+                <div class="ui small secondary top right pointing  dropdown icon button">
+                    Keys
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="#" id="generate_keys">Generate key pair</a>
+                        <a class="item" href="#" id="pem_jwk_convertor">PEM &lt; - &gt; JWK convertor</a>
+                    </div>
+                </div>
+
+                <div class="ui small secondary top right pointing  dropdown icon button">
+                    Attacks
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="#" id="bruteforce_secret_menu_btn">Secret brute-force</a>
+                        <a class="item" href="#" id="algorithm_confusion_menu_btn">Algorithm confusion
+                            (CVE-2016-5431)</a>
+                        <a class="item" href="#" id="jwt_injection_menu_btn">JWK injection (CVE-2018-0114)</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div id="pagecontent" style="padding-top:80px; ">
+        <div id="main">
+
+
+            <form class="ui tiny form controls" id="jwt_form">
+                <div class="ui padded height grid" style="height: 100%;">
+                    <div class="eight wide column" style="padding:0px 1px 1px 1px;">
+                        <div class="field" style="margin: 0px;padding: 0px;">
+                            <div class="ui large secondary label" style="width: 100%;">Source</div>
+
+                            <select id="source" name="source" class="ui large fluid dropdown source"
+                                style="font-size: 14px;">
+                                <option name="source" value="none" data-value="none" selected="">None</option>
+                            </select>
+
+                            <textarea id="rawToken" name="rawToken" class="ui small input decoderTextArea" rows="25"
+                                placeholder="Text to decode"></textarea>
+                            <div class="ui primary right floated top pointing small icon dropdown button updatein">
+                                Update in<i class="dropdown icon" style="padding-left: 5px;"></i>
+                                <div class="menu" style="width: 120px;top: 25px;">
+                                    <a class="item" href="#" id="this_source_upd">This source</a>
+
+                                    <a class="item" href="#" id="all_sources_upd">All sources</a>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="field" style="position: fixed;height: 60px;bottom: 1px !important; width: 50%;">
+                            <div class="ui message" id="signature_msg_wrapper"
+                                style="margin-right: 3px;height: 99%;margin-left: -2px;">
+                                <div class="header" id="signature_msg"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="eight wide column" style="padding:0px 1px 1px 1px; ">
+                        <div class="field">
+                            <div class="ui large secondary label" style="width: 100%;">Algorithm</div>
+                            <select id="algorithm-select" name="algorithm-select"
+                                class="ui small fluid scrolling dropdown algorithm-select" style="z-index: 2;">
+                                <option value="none" selected="">None</option>
+                                <option value="HS256" data-value="HMACSHA256">HS256
+                                </option>
+                                <option value="HS384" data-value="HMACSHA384">HS384
+                                </option>
+                                <option value="HS512" data-value="HMACSHA512">HS512
+                                </option>
+                                <option value="RS256" data-value="RSASHA256">RS256
+                                </option>
+                                <option value="RS384" data-value="RSASHA384">RS384
+                                </option>
+                                <option value="RS512" data-value="RSASHA512">RS512
+                                </option>
+                                <option value="ES256" data-value="ECDSASHA256">ES256
+                                </option>
+                                <option value="ES384" data-value="ECDSASHA384">ES384
+                                </option>
+                                <option value="ES512" data-value="ECDSASHA512">ES512
+                                </option>
+                                <option value="PS256" data-value="RSAPSSSHA256">PS256
+                                </option>
+                                <option value="PS384" data-value="RSAPSSSHA384">PS384
+                                </option>
+                                <option value="PS512" data-value="RSAPSSSHA512">PS512
+                                </option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <div class="ui large label" style="width: 100%;">Header</div>
+                            <div class="ui segment" style="padding: 0px;margin: 0px; height: 20vh;">
+                                <textarea id="encodeHeader" name="encodeHeader" class="ui medium input" rows="25"
+                                    placeholder="Header to encode"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="field" style="overflow: scroll;padding-bottom: 30px;">
+                            <div class="ui large label" style="width: 100%;position: fixed;">Payload</div>
+                            <div class="ui segment"
+                                style="padding:  0px 0px 15vh 0px; margin: 28px 0px 5vh 0px; position: fixed;width: 100%;height: 25vh;overflow-y: scroll;">
+                                <textarea id="encodePayload" name="encodePayload" class="ui small input"
+                                    placeholder="Payload to encode" rows="25"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field" style="position: fixed;height: 25%;bottom: 1px !important; width: 100%;">
+                            <div class="ui large label" style="width: 100%;">Signature</div>
+                            <div class="ui segment" style="padding: 0px; margin-top: -1px; width: 50%;height: 22vh;">
+                                <div id="none_alg" class="ui segment"
+                                    style="width: 100%;height: 100%;margin: 0px; display: none;">
+                                    None
+                                </div>
+                                <div id="alg_secret_wrapper" class="ui segment alg_wrapper"
+                                    style="width: 100%;height: 100%;margin: 0px; display: none;">
+
+                                    <div>
+                                        <span id="secret_method" style="font-weight: bold;">HMACSHA256</span><span
+                                            style="font-size: 20px;">(</span>
+                                        base64UrlEncode(header) + "." +
+                                        base64UrlEncode(payload)<span style="font-size: 20px;">,</span>&nbsp;
+
+                                        <textarea type="text" id="alg_secret" name="alg_secret"
+                                            class="alg_input textarea"
+                                            style="height: 94%; border: solid 1px black;font-size: 0.8em; width: 97%;"
+                                            placeholder="your-secret-here" spellcheck="false"
+                                            rows="2">your-secret-here</textarea>
+                                        <span style="font-size: 20px;bottom: -10px;position: relative;">)</span>
+
+                                    </div>
+                                </div>
+                                <div id="key_alg_wrapper" class="ui segment alg_wrapper"
+                                    style="width: 100%;height: 100%;margin: 0px;display: none;">
+                                    <!-- <div class="ui vertical animated tiny secondary button" tabindex="0"
+                                        style="position: absolute; top: 0px; right: -3px;width: 50px;"
+                                        id="generate_keys">
+                                        <div class="hidden content">Keys</div>
+                                        <div class="visible content">
+                                            <i class="key icon"></i>
+                                        </div>
+                                    </div> -->
+                                    <div style="position: relative;    height: 100%;">
+                                        <span id="key_method" style="font-weight: bold;">RSASHA256</span> <span
+                                            style="font-size: 20px;">(</span>
+                                        base64UrlEncode(header) + "." +
+                                        base64UrlEncode(payload)<span style="font-size: 20px;">,</span>
+                                        <div style="height: 100%; width: 100%;  bottom: 2px;">
+                                            <div class="ui grid"
+                                                style="padding-left: 10px;height: 100%;    padding-bottom: 10px;">
+                                                <div class="seven wide column"
+                                                    style="padding-left: 2px;padding-right: 2px;">
+                                                    <textarea type="text" id="key_public_key" name="key_public_key"
+                                                        class="alg_input_public_key textarea"
+                                                        style="height: 94%; border: solid 1px black;font-size: 0.8em; "
+                                                        placeholder="PUBLIC KEY" spellcheck="false" rows="2"></textarea>
+                                                </div>
+                                                <div class="one wide column"
+                                                    style="padding: 30px 0px 0px 0px; width: 2px !important;">
+                                                    <span style="font-size: 20px;">,</span>
+                                                </div>
+                                                <div class="seven wide column"
+                                                    style="padding-left: 4px;padding-right: 0px;">
+                                                    <textarea type="text" id="key_private_key" name="key_private_key"
+                                                        class="alg_input textarea"
+                                                        style="height: 94%; border: solid 1px black; font-size: 0.8em;"
+                                                        placeholder="PRIVATE KEY" spellcheck="false"
+                                                        rows="2"></textarea>
+                                                </div>
+                                                <div class="one wide column" style="padding-top: 30px;">
+                                                    <span style="font-size: 20px;">)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- keys dialogs -->
+    <div id="generate_keys_dlg" class="ui fullscreen modal" style="min-height: 300px;">
+        <i class="close icon"></i>
+
+        <div class="header">Generate key pair</div>
+        <div class="content" style="overflow: scroll;scrollbar-width: none;">
+            <form class="ui tiny form controls" id="generate_keys_dlg_form">
+                <div class="field" style="height: 30px;">
+                    <select id="generate_keys_dlg_algorithm" name="generate_keys_dlg_algorithm"
+                        class="ui small fluid scrolling dropdown algorithm-select-keys-dlg" style="z-index: 2;">
+                        <option value="">Select algorithm</option>
+                        <option value="RS256" data-value="RSASHA256">RS256
+                        </option>
+                        <option value="RS384" data-value="RSASHA384">RS384
+                        </option>
+                        <option value="RS512" data-value="RSASHA512">RS512
+                        </option>
+                        <option value="ES256" data-value="ECDSASHA256">ES256
+                        </option>
+                        <option value="ES384" data-value="ECDSASHA384">ES384
+                        </option>
+                        <option value="ES512" data-value="ECDSASHA512">ES512
+                        </option>
+                        <option value="PS256" data-value="RSAPSSSHA256">PS256
+                        </option>
+                        <option value="PS384" data-value="RSAPSSSHA384">PS384
+                        </option>
+                        <option value="PS512" data-value="RSAPSSSHA512">PS512
+                        </option>
+                    </select>
+                </div>
+
+                <div>
+                    <div class="ui top attached tabular menu" style="margin-left: -1px;">
+                        <a class="active item" data-tab="pem">PEM</a>
+                        <a class="item" data-tab="jwk">JWK</a>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="pem">
+                        <div class="ui grid">
+                            <div class="ui row">
+                                <div class="eight wide column">
+                                    <div class="ui large label" style="width: 100%;">Public key</div>
+                                    <textarea id="dlg_publicKey_pem" name="dlg_publicKey_pem" class="ui medium input"
+                                        placeholder="PEM PUBLIC KEY" spellcheck="false"
+                                        style="min-height: 240px;"></textarea>
+
+                                </div>
+                                <div class="eight wide column">
+                                    <div class="ui large label" style="width: 100%;">Private key</div>
+                                    <textarea id="dlg_privateKey_pem" name="dlg_privateKey_pem" class="ui medium input"
+                                        placeholder="PEM PRIVATE KEY" spellcheck="false"
+                                        style="min-height: 240px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="jwk">
+                        <div class="ui grid">
+                            <div class="ui row">
+                                <div class="eight wide column">
+                                    <div class="ui large label" style="width: 100%;">Public key</div>
+                                    <textarea id="dlg_publicKey_jwk" name="dlg_publicKey_jwk" class="ui medium input"
+                                        placeholder="JWK PUBLIC KEY" spellcheck="false"
+                                        style="min-height: 240px;"></textarea>
+
+                                </div>
+                                <div class="eight wide column">
+                                    <div class="ui large label" style="width: 100%;">Private key</div>
+                                    <textarea id="dlg_privateKey_jwk" name="dlg_privateKey_jwk" class="ui medium input"
+                                        placeholder="JWK PRIVATE KEY" spellcheck="false"
+                                        style="min-height: 240px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sixteen wide column" style="text-align: center;">
+
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui secondary button" id="dlg_btn_key_generate" style="min-width: 120px;">
+                Generate
+            </div>
+            <div class="ui secondary button" id="dlg_btn_key_download" style="min-width: 120px;">
+                Download
+            </div>
+        </div>
+    </div>
+
+    <!-- PEM <-> JWK -->
+    <div id="pem_jwk_convertor_dlg" class="ui fullscreen modal" style="min-height: 300px;">
+        <i class="close icon"></i>
+        <div class="header">PEM &lt;--&gt; JWK convertor - <span id="dlg_key_alg"></div>
+        <div class="content" style="overflow: scroll;scrollbar-width: none;">
+            <form class="ui tiny form controls" id="pem_jwk_convertor_form">
+                <div class="field" style="height: 30px;">
+                    <select id="pem_jwk_convertor_algorithm" name="pem_jwk_convertor_algorithm"
+                        class="ui small fluid scrolling dropdown algorithm-select-keys-dlg" style="z-index: 2;">
+                        <option value="">Select algorithm</option>
+                        <option value="RS256" data-value="RSASHA256">RS256
+                        </option>
+                        <option value="RS384" data-value="RSASHA384">RS384
+                        </option>
+                        <option value="RS512" data-value="RSASHA512">RS512
+                        </option>
+                        <option value="ES256" data-value="ECDSASHA256">ES256
+                        </option>
+                        <option value="ES384" data-value="ECDSASHA384">ES384
+                        </option>
+                        <option value="ES512" data-value="ECDSASHA512">ES512
+                        </option>
+                        <option value="PS256" data-value="RSAPSSSHA256">PS256
+                        </option>
+                        <option value="PS384" data-value="RSAPSSSHA384">PS384
+                        </option>
+                        <option value="PS512" data-value="RSAPSSSHA512">PS512
+                        </option>
+                    </select>
+                </div>
+
+                <div class="ui grid" style="padding: 5px;">
+                    <div class="ui row">
+                        <div class="eight wide column field">
+                            <textarea id="pem_jwk_convertor_pem" name="pem_jwk_convertor_pem" class="ui medium input"
+                                placeholder="PEM" spellcheck="false" style="min-height: 270px;"></textarea>
+                        </div>
+                        <div class="eight wide column field">
+                            <textarea id="pem_jwk_convertor_jwk" name="pem_jwk_convertor_jwk" class="ui medium input"
+                                placeholder="JWK" spellcheck="false" style="min-height: 270px;"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sixteen wide column" style="text-align: center;">
+
+                </div>
+            </form>
+        </div>
+        <div class="actions center aligned">
+            <div class="ui secondary button" id="pem_jwk_convertor_pem_btn" style="min-width: 120px;">
+                PEM to JWK
+            </div>
+            <div class="ui secondary button" id="pem_jwk_convertor_jwk_btn" style="min-width: 120px;">
+                JWK to PEM
+            </div>
+        </div>
+    </div>
+
+
+    <!-- attacks -->
+
+    <!-- RSA confusion -->
+    <div id="confusion_attack_dlg" class="ui fullscreen modal" style="min-height: 500px;">
+        <i class="close icon"></i>
+        <div class="header">Algorithm/Key confusion attack (CVE-2016-5431)</div>
+        <div class="content">
+            <form class="ui form controls" id="confusion_attack_dlg_form">
+                <div class="ui padded height grid">
+                    <div class="sixteen wide column" style="padding:0px 1px 1px 1px;">
+                        <a href="https://pentestkit.co.uk/jwt.html#algorithm_confusion" target="_blank"
+                            class="ui button right floated"><i class="ui external square alternate icon"></i>Read
+                            more</a>
+                        The following conditions need to be met :
+                        <ul>
+                            <li>The application must expect the JWT to be signed with a public key based algorithm (i.e,
+                                RSxxx
+                                or
+                                ESxxx)</li>
+                            <li>The application must not check which algorithm the JWT is actually using for the
+                                signature
+                            </li>
+                            <li>The public key used to verify the JWT must be available to the attacker</li>
+                        </ul>
+
+                    </div>
+                    <div class="ten wide column" style="padding:0px 1px 1px 1px;">
+                        <textarea id="confusion_attack_dlg_token" name="confusion_attack_dlg_token"
+                            class="ui medium input no-webkit-scrollbar" placeholder="JWT token" spellcheck="false"
+                            style="min-height: 100px;width: 100%;height: 20vh;" tabindex="100"></textarea>
+                    </div>
+                    <div class="six wide column" style="padding:0px 1px 1px 1px;">
+                        <textarea id="confusion_attack_dlg_key" name="confusion_attack_dlg_key" class="ui medium input no-webkit-scrollbar"
+                            placeholder="PUBLIC KEY PEM" spellcheck="false"
+                            style="min-height: 100px;width: 100%;height: 20vh;" tabindex="101"></textarea>
+                    </div>
+
+                    <div class="sixteen wide column"
+                        style="padding:0px 1px 1px 1px; min-height: 150px;height: 27vh; overflow: scroll;scrollbar-width: none;">
+                        <div class="ui error message" style="display: none;" id="confusion_attack_dlg_error_msg">
+                            <div class="header">Error</div>
+                            <p id="confusion_attack_dlg_error_text"></p>
+                        </div>
+                        <div class="ui segment no-webkit-scrollbar" style="padding: 0px; margin: 0px; overflow: scroll;height: 100%;scrollbar-width: none;">
+                            <table id="tbl_attack_tokens_confusion"
+                                class="ui celled table small responsive nowrap unstackable no-webkit-scrollbar"
+                                style="overflow: scroll; display: none;scrollbar-width: none;" tabindex="1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;"></th>
+                                        <th>Type</th>
+                                        <th>Token</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui secondary button" id="confusion_attack_dlg_generate" style="min-width: 120px;">
+                Generate
+            </div>
+        </div>
+    </div>
+
+    <!--JWK injection-->
+    <div id="jwk_injection_attack_dlg" class="ui fullscreen modal" style="min-height: 500px;">
+
+        <i class="close icon"></i>
+        <div class="header">JWK injection attack (CVE-2018-0114)</div>
+
+        <div class="content">
+            <form class="ui form controls" id="jwk_injection_attack_dlg_form">
+                <div class="ui padded height grid">
+                    <div class="sixteen wide column" style="padding:0px 1px 1px 1px;">
+                        <a href="https://pentestkit.co.uk/jwt.html#jwk_injection" target="_blank"
+                            class="ui button right floated"><i class="ui external square alternate icon"></i>Read
+                            more</a>
+                        The application should support JSON Web Key (JWK) embedded within the header of a JWT
+                    </div>
+                    <div class="sixteen wide column field" style="padding:0px 1px 1px 1px;">
+                        <textarea id="jwk_injection_attack_dlg_token" name="jwk_injection_attack_dlg_token"
+                            class="ui small input " placeholder="JWT token" spellcheck="false"
+                            style="min-height: 80px;width: 100%;height: 10vh;" tabindex="100"></textarea>
+                    </div>
+                    <div class="six wide column field" style="padding:0px 1px 1px 1px;">
+                        <textarea id="jwk_injection_attack_dlg_public_key" name="jwk_injection_attack_dlg_public_key"
+                            class="ui small input " placeholder="PUBLIC KEY JWK" spellcheck="false"
+                            style="min-height: 80px;width: 100%;height: 10vh;" tabindex="101"></textarea>
+                    </div>
+                    <div class="six wide column field" style="padding:0px 1px 1px 1px;">
+                        <textarea id="jwk_injection_attack_dlg_private_key" name="jwk_injection_attack_dlg_private_key"
+                            class="ui small input " placeholder="PRIVATE KEY JWK" spellcheck="false"
+                            style="min-height: 80px;width: 100%;height: 10vh;" tabindex="101"></textarea>
+                    </div>
+                    <div class="four wide column " style="padding:0px 1px 1px 1px;text-align: end;">
+
+                        <select id="jwk_injection_attack_dlg_alg" name="jwk_injection_attack_dlg_alg"
+                            class="ui small fluid scrolling dropdown field" style="z-index: 2;margin-bottom: 0px;">
+                            <option value="">Select algorithm</option>
+                            <option value="RS256" data-value="RSASHA256">RS256
+                            </option>
+                            <option value="RS384" data-value="RSASHA384">RS384
+                            </option>
+                            <option value="RS512" data-value="RSASHA512">RS512
+                            </option>
+                            <option value="ES256" data-value="ECDSASHA256">ES256
+                            </option>
+                            <option value="ES384" data-value="ECDSASHA384">ES384
+                            </option>
+                            <option value="ES512" data-value="ECDSASHA512">ES512
+                            </option>
+                            <option value="PS256" data-value="RSAPSSSHA256">PS256
+                            </option>
+                            <option value="PS384" data-value="RSAPSSSHA384">PS384
+                            </option>
+                            <option value="PS512" data-value="RSAPSSSHA512">PS512
+                            </option>
+                        </select>
+                        <div class="ui secondary fluid icon button" id="jwk_injection_attack_dlg_pair"
+                            style="min-width: 120px;position: absolute;bottom: 15px;">
+                            Create key pair
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column"
+                        style="padding:0px 1px 1px 1px;min-height: 60px;height: 25vh;overflow: scroll;scrollbar-width: none;">
+                        <div class="ui error message" style="display: none;" id="jwk_injection_attack_dlg_error_msg">
+                            <div class="header">Error</div>
+                            <p id="jwk_injection_attack_dlg_error_text"></p>
+                        </div>
+                        <div class="ui positive message" style="display: none;"
+                            id="jwk_injection_attack_dlg_positive_msg">
+                            <div class="ui mini icon right floated button jwk_injection_copy" tabindex="1">
+                                <i class=" large icon copy " data-position="bottom left" title="Copy" tabindex="1"></i>
+                            </div>
+                            <div class="header">Token</div>
+                            <p id="jwk_injection_attack_dlg_token_text"></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="actions">
+            <div class="ui secondary button" id="jwk_injection_attack_dlg_generate" style="min-width: 120px;">
+                Generate
+            </div>
+        </div>
+
+    </div>
+
+    <!--Brute force attack-->
+    <div id="bruteforce_secret_dlg" class="ui fullscreen modal" style="min-height: 500px;">
+        <i class="close icon"></i>
+        <div class="header">Brute-force JWT secret</div>
+        <div class="content">
+            <a href="https://pentestkit.co.uk/jwt.html#brute_force" target="_blank" class="ui button right floated"><i
+                    class="ui external square alternate icon"></i>Read
+                more</a>
+            The following conditions need to be met:
+            <ul>
+                <li>The JWT must be signed with using a HMAC-based algorithm (such as HS256)</li>
+            </ul>
+            <p>Default dictionary is: <a href="https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list" target="_blank">https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list</a></p>
+            <div class="ui padded height grid">
+                <div class="sixteen wide column" style="padding:0px 1px 1px 1px;">
+                    <textarea id="bruteforce_secret_dlg_token" name="bruteforce_secret_dlg_token"
+                        class="ui medium input" placeholder="JWT token" spellcheck="false"
+                        style="min-height: 100px;width: 100%;"></textarea>
+                </div>
+                <div class="sixteen wide column" style="padding:0px 1px 1px 1px; min-height: 150px;">
+                    <div class="ui blue indicating progress" id="bruteforce_secret_dlg_progress">
+                        <div class="bar">
+                            <div class="progress"></div>
+                            
+                        </div>
+                        <div class="label"></div>
+                    </div>
+                    <div class="ui error message" style="display: none;" id="bruteforce_secret_dlg_error_msg">
+                        <div class="header">Error</div>
+                        <p id="bruteforce_secret_dlg_error_text"></p>
+                    </div>
+                    <div class="ui positive message" style="display: none;" id="bruteforce_secret_dlg_secret_msg">
+                        <div class="header">The secret is:</div>
+                        <p id="bruteforce_secret_dlg_found_text" style="font-weight: bold; min-height: 21px;"></p>
+                        <div class="ui mini icon right floated button brute_force_secret_copy" tabindex="1" style="position: absolute;top: 0px;right: 0px;">
+                            <i class=" large icon copy " data-position="bottom left" title="Copy" tabindex="1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="actions">
+            <div class="ui secondary  button" id="bruteforce_secret_dlg_generate" style="min-width: 120px;">
+                Brute-force
+            </div>
+            <div class="ui secondary  button" id="bruteforce_secret_dlg_load_list" style="min-width: 120px;">
+                Load dictionary
+            </div>
+            <input id="load_list_file_input" type="file" hidden/>
+        </div>
+    </div>
+
+
+
+    <div class="ui mini modal">
+        <div class="header">Operation error</div>
+        <div class="content">
+            <span id="traffic_error_message"></span>
+        </div>
+        <div class="actions">
+            <div class="ui approve button">Close</div>
+        </div>
+    </div>
+</body>
+
+</html>

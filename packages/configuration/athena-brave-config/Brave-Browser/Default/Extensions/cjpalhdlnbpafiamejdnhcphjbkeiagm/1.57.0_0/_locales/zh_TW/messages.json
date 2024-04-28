@@ -1,0 +1,1306 @@
+{
+   "1pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "套用變更"
+   },
+   "1pEnableMyFiltersLabel": {
+      "description": "Label for the checkbox use to enable/disable 'My filters' list",
+      "message": "啟用自訂過濾器"
+   },
+   "1pExport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "匯出…"
+   },
+   "1pExportFilename": {
+      "description": "English: my-ublock-static-filters_{{datetime}}.txt",
+      "message": "my-ublock-static-filters_{{datetime}}.txt"
+   },
+   "1pImport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "匯入並加入…"
+   },
+   "1pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "自訂靜態過濾規則"
+   },
+   "1pTrustMyFiltersLabel": {
+      "description": "Label for the checkbox use to trust the content of 'My filters' list",
+      "message": "允許需要信任的自訂過濾規則"
+   },
+   "1pTrustWarning": {
+      "description": "Warning against copy-pasting filters from random sources",
+      "message": "切勿添加來歷不明的過濾規則。"
+   },
+   "3pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "套用變更"
+   },
+   "3pAutoUpdatePrompt1": {
+      "description": "A checkbox in the _3rd-party filters_ pane",
+      "message": "自動更新過濾規則"
+   },
+   "3pExternalListObsolete": {
+      "description": "used as a tooltip for the out-of-date icon beside a list",
+      "message": "過久未更新。"
+   },
+   "3pExternalListsHint": {
+      "description": "Short information about how to use the textarea to import external filter lists by URL",
+      "message": "每行一個網址。無效的網址將被忽略。"
+   },
+   "3pGroupAds": {
+      "description": "Filter lists section name",
+      "message": "廣告"
+   },
+   "3pGroupAnnoyances": {
+      "description": "Filter lists section name",
+      "message": "嫌惡元素"
+   },
+   "3pGroupCookies": {
+      "description": "Filter lists section name",
+      "message": "Cookie 通知"
+   },
+   "3pGroupCustom": {
+      "description": "Filter lists section name",
+      "message": "自訂"
+   },
+   "3pGroupDefault": {
+      "description": "Filter lists section name",
+      "message": "內置"
+   },
+   "3pGroupMalware": {
+      "description": "Filter lists section name",
+      "message": "惡意軟體保護及保安"
+   },
+   "3pGroupMultipurpose": {
+      "description": "Filter lists section name",
+      "message": "多用途"
+   },
+   "3pGroupPrivacy": {
+      "description": "Filter lists section name",
+      "message": "隱私"
+   },
+   "3pGroupRegions": {
+      "description": "Filter lists section name",
+      "message": "地區、語言"
+   },
+   "3pGroupSocial": {
+      "description": "Filter lists section name",
+      "message": "社交媒體小工具"
+   },
+   "3pIgnoreGenericCosmeticFilters": {
+      "description": "This will cause uBO to ignore all generic cosmetic filters.",
+      "message": "忽略一般元素隱藏過濾規則"
+   },
+   "3pIgnoreGenericCosmeticFiltersInfo": {
+      "description": "Describes the purpose of the 'Ignore generic cosmetic filters' feature.",
+      "message": "「通用元素隱藏過濾規則」是會套用在所有網站上的元素隱藏過濾規則。啟用此選項會消除網頁處理此類規則時增加的額外記憶體與 CPU 使用量。\n\n建議在較低效能的裝置上啟用此選項。"
+   },
+   "3pImport": {
+      "description": "The label for the checkbox used to import external filter lists",
+      "message": "匯入…"
+   },
+   "3pLastUpdate": {
+      "description": "used as a tooltip for the clock icon beside a list",
+      "message": "上次更新：{{ago}}。\n點擊此處以強制更新。"
+   },
+   "3pListsOfBlockedHostsHeader": {
+      "description": "English: Lists of blocked hosts",
+      "message": "被阻擋網域的列表"
+   },
+   "3pListsOfBlockedHostsPerListStats": {
+      "description": "Appears aside each filter list in the _3rd-party filters_ pane",
+      "message": "{{used}} / {{total}}"
+   },
+   "3pListsOfBlockedHostsPrompt": {
+      "description": "Appears at the top of the _3rd-party filters_ pane",
+      "message": "目前已使用 {{netFilterCount}} 個網址過濾規則 ＋ {{cosmeticFilterCount}} 個元素隱藏過濾規則："
+   },
+   "3pNetworkError": {
+      "description": "used as a tooltip for error icon beside a list",
+      "message": "因網路錯誤無法更新資源。"
+   },
+   "3pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "過濾規則清單"
+   },
+   "3pParseAllABPHideFiltersInfo": {
+      "description": "Describes the purpose of the 'Parse and enforce cosmetic filters' feature.",
+      "message": "「元素隱藏過濾規則」用於隱藏網頁中礙眼，且不能被以網路請求為基礎之過濾引擎所阻擋的元素。"
+   },
+   "3pParseAllABPHideFiltersPrompt1": {
+      "description": "English: Parse and enforce Adblock+ element hiding filters.",
+      "message": "解析並套用元素隱藏過濾規則"
+   },
+   "3pPurgeAll": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "清除所有快取"
+   },
+   "3pSuspendUntilListsAreLoaded": {
+      "description": "A checkbox in the 'Filter lists' pane",
+      "message": "在所有過濾器清單載入完成前暫停網路活動"
+   },
+   "3pUpdateNow": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "立即更新"
+   },
+   "3pUpdating": {
+      "description": "used as a tooltip for the spinner icon beside a list",
+      "message": "更新中…"
+   },
+   "3pViewContent": {
+      "description": "used as a tooltip for eye icon beside a list",
+      "message": "查看內容"
+   },
+   "GB": {
+      "description": "short for 'gigabytes'",
+      "message": "GB"
+   },
+   "KB": {
+      "description": "short for 'kilobytes'",
+      "message": "KB"
+   },
+   "MB": {
+      "description": "short for 'megabytes'",
+      "message": "MB"
+   },
+   "aboutBackupDataButton": {
+      "description": "Text for button to create a backup of all settings",
+      "message": "備份至檔案…"
+   },
+   "aboutBackupFilename": {
+      "description": "English: my-ublock-backup_{{datetime}}.txt",
+      "message": "my-ublock-backup_{{datetime}}.txt"
+   },
+   "aboutCDNs": {
+      "description": "Shown in the About pane",
+      "message": "uBO 自家的過濾規則清單由下列 \u003Ca href=\"https://wikipedia.org/wiki/Content_delivery_network\">CDN\u003C/a> 免費代管："
+   },
+   "aboutCDNsInfo": {
+      "description": "Shown in the About pane",
+      "message": "當過濾清單需要更新時，將隨機選擇一組 CDN 連線下載"
+   },
+   "aboutChangelog": {
+      "description": "",
+      "message": "更新日誌"
+   },
+   "aboutCode": {
+      "description": "English: Source code (GPLv3)",
+      "message": "源碼（GPLv3）"
+   },
+   "aboutContributors": {
+      "description": "English: Contributors",
+      "message": "貢獻者"
+   },
+   "aboutDependencies": {
+      "description": "Shown in the About pane",
+      "message": "外部相依套件（與 GPLv3 相容）："
+   },
+   "aboutFilterLists": {
+      "description": "Link text to uBO's own filter lists repo",
+      "message": "過濾規則清單"
+   },
+   "aboutPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "關於"
+   },
+   "aboutPrivacyPolicy": {
+      "description": "Link to privacy policy on GitHub (English)",
+      "message": "隱私權條款"
+   },
+   "aboutResetDataButton": {
+      "description": "English: Reset to default settings...",
+      "message": "重設為預設設定…"
+   },
+   "aboutResetDataConfirm": {
+      "description": "Message asking user to confirm reset",
+      "message": "您所有的設定都將被移除，並將重新啟動 uBlock₀。\n\n您確定要將 uBlock₀ 回復為原廠設定？"
+   },
+   "aboutRestoreDataButton": {
+      "description": "English: Restore from file...",
+      "message": "從檔案還原…"
+   },
+   "aboutRestoreDataConfirm": {
+      "description": "Message asking user to confirm restore",
+      "message": "您所有的設定將會被 {{time}} 的備份資料覆蓋，並將重新啟動 uBlock₀。\n\n您確定要用備份資料蓋過目前的所有設定嗎？"
+   },
+   "aboutRestoreDataError": {
+      "description": "Message to display when an error occurred during restore",
+      "message": "無法讀取資料，或資料無效"
+   },
+   "aboutSourceCode": {
+      "description": "Link text to source code repo",
+      "message": "源碼"
+   },
+   "aboutTranslations": {
+      "description": "Link text to translations repo",
+      "message": "翻譯"
+   },
+   "advancedSettingsPageName": {
+      "description": "Title for the advanced settings page",
+      "message": "進階設定"
+   },
+   "advancedSettingsWarning": {
+      "description": "A warning to users at the top of 'Advanced settings' page",
+      "message": "警告！修改進階設定時請自負風險。"
+   },
+   "assetViewerPageName": {
+      "description": "Title for the asset viewer page",
+      "message": "uBlock₀ — 資源檢視器"
+   },
+   "clickToLoad": {
+      "description": "Message used in frame placeholders",
+      "message": "點擊以載入"
+   },
+   "cloudDeviceNamePrompt": {
+      "description": "used as a prompt for the user to provide a custom device name",
+      "message": "此裝置的名稱："
+   },
+   "cloudNoData": {
+      "description": "",
+      "message": "…\n…"
+   },
+   "cloudPull": {
+      "description": "tooltip",
+      "message": "從雲端儲存空間匯入"
+   },
+   "cloudPullAndMerge": {
+      "description": "tooltip",
+      "message": "自雲端匯入，並與目前設定合併"
+   },
+   "cloudPush": {
+      "description": "tooltip",
+      "message": "匯出至雲端儲存空間"
+   },
+   "contextMenuBlockElementInFrame": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "阻擋框架中的內容…"
+   },
+   "contextMenuSubscribeToList": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "訂閱過濾規則清單…"
+   },
+   "contextMenuTemporarilyAllowLargeMediaElements": {
+      "description": "A context menu entry, present when large media elements have been blocked on the current site",
+      "message": "暫時允許大型媒體元素"
+   },
+   "contextMenuViewSource": {
+      "description": "A context menu entry, to view the source code of the target resource",
+      "message": "檢視源碼…"
+   },
+   "dashboardName": {
+      "description": "English: uBlock₀ — Dashboard",
+      "message": "uBlock₀ — 控制台"
+   },
+   "dashboardUnsavedWarning": {
+      "description": "A warning in the dashboard when navigating away from unsaved changes",
+      "message": "警告！您有尚未儲存的變更"
+   },
+   "dashboardUnsavedWarningIgnore": {
+      "description": "Label for button to ignore unsaved changes",
+      "message": "忽略"
+   },
+   "dashboardUnsavedWarningStay": {
+      "description": "Label for button to prevent navigating away from unsaved changes",
+      "message": "留下"
+   },
+   "docblockedBack": {
+      "description": "English: Go back",
+      "message": "返回"
+   },
+   "docblockedClose": {
+      "description": "English: Close this window",
+      "message": "關閉此視窗"
+   },
+   "docblockedDisable": {
+      "description": "Button text to navigate to the blocked page",
+      "message": "繼續載入"
+   },
+   "docblockedDisablePermanent": {
+      "description": "English: Permanently",
+      "message": "永久"
+   },
+   "docblockedDisableTemporary": {
+      "description": "English: Temporarily",
+      "message": "暫時"
+   },
+   "docblockedDontWarn": {
+      "description": "Label for checkbox in document-blocked page",
+      "message": "不再針對此網站作出警告"
+   },
+   "docblockedFoundIn": {
+      "description": "English: List of filter list names follows",
+      "message": "在下列清單找到："
+   },
+   "docblockedNoParamsPrompt": {
+      "description": "label to be used for the parameter-less URL: https://cloud.githubusercontent.com/assets/585534/9832014/bfb1b8f0-593b-11e5-8a27-fba472a5529a.png",
+      "message": "不帶參數"
+   },
+   "docblockedProceed": {
+      "description": "English: Disable strict blocking for {{hostname}} ...",
+      "message": "停止針對 {{hostname}} 的嚴格封鎖"
+   },
+   "docblockedPrompt1": {
+      "description": "Used in the strict-blocking page",
+      "message": "uBlock Origin 已防止下列頁面載入："
+   },
+   "docblockedPrompt2": {
+      "description": "Used in the strict-blocking page",
+      "message": "因為下列過濾規則："
+   },
+   "docblockedTitle": {
+      "description": "Used as a title for the document-blocked page",
+      "message": "頁面已阻擋"
+   },
+   "dummy": {
+      "description": "so we dont need to deal with comma for last entry",
+      "message": "此條目須為最後一個"
+   },
+   "elapsedManyDaysAgo": {
+      "description": "English: {{value}} days ago",
+      "message": "{{value}} 天前"
+   },
+   "elapsedManyHoursAgo": {
+      "description": "English: {{value}} hours ago",
+      "message": "{{value}} 小時前"
+   },
+   "elapsedManyMinutesAgo": {
+      "description": "English: {{value}} minutes ago",
+      "message": "{{value}} 分鐘前"
+   },
+   "elapsedOneDayAgo": {
+      "description": "English: a day ago",
+      "message": "1 天前"
+   },
+   "elapsedOneHourAgo": {
+      "description": "English: an hour ago",
+      "message": "1 小時前"
+   },
+   "elapsedOneMinuteAgo": {
+      "description": "English: a minute ago",
+      "message": "1 分鐘前"
+   },
+   "errorCantConnectTo": {
+      "description": "English: Network error: {{msg}}",
+      "message": "網路錯誤：{{msg}}"
+   },
+   "extName": {
+      "description": "extension name.",
+      "message": "uBlock Origin"
+   },
+   "extShortDesc": {
+      "description": "this will be in the Chrome web store: must be 132 characters or less",
+      "message": "終於有套使用不多的 CPU 及記憶體資源的高效率阻擋器。"
+   },
+   "fennecMenuItemBlockingOff": {
+      "description": "Firefox-specific: appears as 'uBlock₀ (off)'",
+      "message": "關閉"
+   },
+   "genericApplyChanges": {
+      "description": "for generic 'Apply changes' buttons",
+      "message": "套用變更"
+   },
+   "genericBytes": {
+      "description": "",
+      "message": "位元組"
+   },
+   "genericCopyToClipboard": {
+      "description": "Label for buttons used to copy something to the clipboard",
+      "message": "複製到剪貼簿"
+   },
+   "genericMergeViewScrollLock": {
+      "description": "Tooltip for the button used to lock scrolling between the views in the 'My rules' pane",
+      "message": "切換是否啟用同步捲動"
+   },
+   "genericRevert": {
+      "description": "for generic 'Revert' buttons",
+      "message": "還原"
+   },
+   "genericSelectAll": {
+      "description": "Label for buttons used to select all text in editor",
+      "message": "全選"
+   },
+   "genericSubmit": {
+      "description": "for generic 'Submit' buttons",
+      "message": "送出"
+   },
+   "linterMainReport": {
+      "description": "Summary of number of errors as reported by the linter ",
+      "message": "錯誤：{{count}}"
+   },
+   "logAll": {
+      "description": "Appears in the logger's tab selector",
+      "message": "全部"
+   },
+   "logBehindTheScene": {
+      "description": "Pretty name for behind-the-scene network requests",
+      "message": "背景網路連線請求"
+   },
+   "logFilterPrompt": {
+      "description": "Placeholder string for logger output filtering input field",
+      "message": "篩選記錄條目"
+   },
+   "logRequestsHeaderDomain": {
+      "description": "English: Domain",
+      "message": "網域"
+   },
+   "logRequestsHeaderFilter": {
+      "description": "English: Filter",
+      "message": "過濾規則"
+   },
+   "logRequestsHeaderType": {
+      "description": "English: Type",
+      "message": "類型"
+   },
+   "logRequestsHeaderURL": {
+      "description": "English: URL",
+      "message": "網址"
+   },
+   "loggerClearTip": {
+      "description": "Tooltip for the eraser in the logger page; used to blank the content of the logger",
+      "message": "清除記錄"
+   },
+   "loggerCurrentTab": {
+      "description": "Appears in the logger's tab selector",
+      "message": "目前分頁"
+   },
+   "loggerDomInspectorTip": {
+      "description": "Tooltip for the DOM inspector button in the logger page",
+      "message": "切換是否啟用 DOM 檢視器"
+   },
+   "loggerEntryDetailsContext": {
+      "description": "Label to identify a context field (typically a hostname)",
+      "message": "上下文"
+   },
+   "loggerEntryDetailsFilter": {
+      "description": "Label to identify a filter field",
+      "message": "過濾規則"
+   },
+   "loggerEntryDetailsFilterList": {
+      "description": "Label to identify a filter list field",
+      "message": "過濾規則清單"
+   },
+   "loggerEntryDetailsHeader": {
+      "description": "Small header to identify the 'Details' pane for a specific logger entry",
+      "message": "詳細資料"
+   },
+   "loggerEntryDetailsPartyness": {
+      "description": "Label to identify a field providing partyness information",
+      "message": "第一方/第三方"
+   },
+   "loggerEntryDetailsRootContext": {
+      "description": "Label to identify a root context field (typically a hostname)",
+      "message": "根上下文"
+   },
+   "loggerEntryDetailsRule": {
+      "description": "Label to identify a rule field",
+      "message": "規則"
+   },
+   "loggerEntryDetailsType": {
+      "description": "Label to identify the type of an entry",
+      "message": "類型"
+   },
+   "loggerEntryDetailsURL": {
+      "description": "Label to identify the URL of an entry",
+      "message": "網址"
+   },
+   "loggerExportEncodeMarkdown": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Markdown"
+   },
+   "loggerExportEncodePlain": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "純文字"
+   },
+   "loggerExportFormatList": {
+      "description": "Label for radio-button to pick export format",
+      "message": "清單"
+   },
+   "loggerExportFormatTable": {
+      "description": "Label for radio-button to pick export format",
+      "message": "表格"
+   },
+   "loggerInfoTip": {
+      "description": "Tooltip for the top-right info label in the logger page",
+      "message": "uBlock Origin wiki：記錄器"
+   },
+   "loggerPauseTip": {
+      "description": "Tooltip for the pause button in the logger page",
+      "message": "暫停記錄（捨棄所有傳入資料）"
+   },
+   "loggerPopupPanelTip": {
+      "description": "Tooltip for the popup panel button in the logger page",
+      "message": "切換是否啟用彈出式面板"
+   },
+   "loggerReloadTip": {
+      "description": "Tooltip for the reload button in the logger page",
+      "message": "重新載入分頁內容"
+   },
+   "loggerRowFiltererBuiltin1p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "第一方"
+   },
+   "loggerRowFiltererBuiltin3p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "第三方"
+   },
+   "loggerRowFiltererBuiltinAllowed": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "已允許"
+   },
+   "loggerRowFiltererBuiltinBlocked": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "已封鎖"
+   },
+   "loggerRowFiltererBuiltinEventful": {
+      "description": "A keyword in the built-in row filtering expression: all items corresponding to uBO doing something (blocked, allowed, redirected, etc.)",
+      "message": "已套用規則"
+   },
+   "loggerRowFiltererBuiltinModified": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "已修改"
+   },
+   "loggerRowFiltererBuiltinNot": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "非"
+   },
+   "loggerRowFiltererBuiltinTip": {
+      "description": "Tooltip for the button to bring up logger output filtering options",
+      "message": "記錄器篩選設定"
+   },
+   "loggerRowFiltererButtonTip": {
+      "description": "Tooltip for the row filterer button in the logger page",
+      "message": "切換是否啟用記錄篩選"
+   },
+   "loggerSettingDiscardPrompt": {
+      "description": "Logger setting: A sentence to describe the purpose of the settings below",
+      "message": "未符合以下所有條件的記錄將會被自動捨棄："
+   },
+   "loggerSettingHideColumnContext": {
+      "description": "A label for the context column",
+      "message": "{{input}} 上下文"
+   },
+   "loggerSettingHideColumnFilter": {
+      "description": "A label for the filter or rule column",
+      "message": "{{input}} 過濾規則"
+   },
+   "loggerSettingHideColumnPartyness": {
+      "description": "A label for the partyness column",
+      "message": "{{input}} 第一方/第三方"
+   },
+   "loggerSettingHideColumnTime": {
+      "description": "A label for the time column",
+      "message": "{{input}} 時間"
+   },
+   "loggerSettingHideColumnsPrompt": {
+      "description": "Logger settings: a sentence to describe the purpose of the checkboxes below",
+      "message": "隱藏欄位："
+   },
+   "loggerSettingPerEntryLineCount": {
+      "description": "A logger setting",
+      "message": "在垂直延展模式中每條記錄顯示 {{input}} 行"
+   },
+   "loggerSettingPerEntryMaxAge": {
+      "description": "A logger setting",
+      "message": "最多保留 {{input}} 分鐘以內的記錄"
+   },
+   "loggerSettingPerTabMaxEntries": {
+      "description": "A logger setting",
+      "message": "每個分頁最多保留 {{input}} 條記錄"
+   },
+   "loggerSettingPerTabMaxLoads": {
+      "description": "A logger setting",
+      "message": "每個分頁最多保留 {{input}} 次重新載入該頁所產生的記錄"
+   },
+   "loggerStaticFilteringFinderSentence1": {
+      "description": "Below this sentence, the filter list(s) in which the filter was found",
+      "message": "在下列清單中找到靜態過濾規則 \u003Ccode>{{filter}}\u003C/code>："
+   },
+   "loggerStaticFilteringFinderSentence2": {
+      "description": "Message to show when a filter cannot be found in any filter lists",
+      "message": "無法在任何目前已啟用的過濾規則清單中找到靜態過濾規則"
+   },
+   "loggerStaticFilteringHeader": {
+      "description": "Small header to identify the static filtering section",
+      "message": "靜態過濾"
+   },
+   "loggerStaticFilteringSentence": {
+      "description": "Used in the static filtering wizard",
+      "message": "當網址符合 {{url}}，{{br}}並且來自 {{origin}} 時，{{br}}{{action}} {{type}} 的網路請求，{{br}}{{importance}} 已有符合的過濾例外規則。"
+   },
+   "loggerStaticFilteringSentencePartAllow": {
+      "description": "Used in the static filtering wizard",
+      "message": "允許"
+   },
+   "loggerStaticFilteringSentencePartAnyOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "來自任何地方"
+   },
+   "loggerStaticFilteringSentencePartAnyType": {
+      "description": "Used in the static filtering wizard",
+      "message": "任何類型"
+   },
+   "loggerStaticFilteringSentencePartBlock": {
+      "description": "Used in the static filtering wizard",
+      "message": "封鎖"
+   },
+   "loggerStaticFilteringSentencePartImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "就算"
+   },
+   "loggerStaticFilteringSentencePartNotImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "除非"
+   },
+   "loggerStaticFilteringSentencePartOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "來自「{{origin}}」"
+   },
+   "loggerStaticFilteringSentencePartType": {
+      "description": "Used in the static filtering wizard",
+      "message": "{{type}} 類型"
+   },
+   "loggerURLFilteringContextLabel": {
+      "description": "Label for the context selector",
+      "message": "上下文："
+   },
+   "loggerURLFilteringHeader": {
+      "description": "Small header to identify the dynamic URL filtering section",
+      "message": "網址規則"
+   },
+   "loggerURLFilteringTypeLabel": {
+      "description": "Label for the type selector",
+      "message": "類型："
+   },
+   "loggerUnpauseTip": {
+      "description": "Tooltip for the play button in the logger page",
+      "message": "取消暫停記錄"
+   },
+   "pickerContextMenuEntry": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "阻擋元素…"
+   },
+   "pickerCosmeticFilters": {
+      "description": "English: Cosmetic filters",
+      "message": "元素隱藏過濾規則"
+   },
+   "pickerCosmeticFiltersHint": {
+      "description": "English: Click, Ctrl-click",
+      "message": "點擊，按住 Ctrl 鍵點擊"
+   },
+   "pickerCreate": {
+      "description": "English: Create",
+      "message": "建立"
+   },
+   "pickerNetFilters": {
+      "description": "English: header for a type of filter in the element picker dialog",
+      "message": "網址過濾規則"
+   },
+   "pickerPick": {
+      "description": "English: Pick",
+      "message": "選擇"
+   },
+   "pickerPreview": {
+      "description": "Element picker preview mode: will cause the elements matching the current filter to be removed from the page",
+      "message": "預覽"
+   },
+   "pickerQuit": {
+      "description": "English: Quit",
+      "message": "放棄"
+   },
+   "popup1pScriptRulePrompt": {
+      "description": "",
+      "message": "第一方腳本"
+   },
+   "popup3pAnyRulePrompt": {
+      "description": "",
+      "message": "第三方"
+   },
+   "popup3pFrameFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "框架"
+   },
+   "popup3pFrameRulePrompt": {
+      "description": "",
+      "message": "第三方框架"
+   },
+   "popup3pPassiveRulePrompt": {
+      "description": "",
+      "message": "第三方 CSS / 圖片"
+   },
+   "popup3pScriptFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "腳本"
+   },
+   "popup3pScriptRulePrompt": {
+      "description": "",
+      "message": "第三方腳本"
+   },
+   "popupAnyRulePrompt": {
+      "description": "",
+      "message": "全部"
+   },
+   "popupBlockedOnThisPagePrompt": {
+      "description": "English: on this page",
+      "message": "在此頁面"
+   },
+   "popupBlockedOnThisPage_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "此頁面已阻擋"
+   },
+   "popupBlockedRequestPrompt": {
+      "description": "English: requests blocked",
+      "message": "已阻擋的連線請求"
+   },
+   "popupBlockedSinceInstallPrompt": {
+      "description": "English: since install",
+      "message": "自安裝後"
+   },
+   "popupBlockedSinceInstall_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "安裝後已阻擋"
+   },
+   "popupBlockedStats": {
+      "description": "Example: 15 (13%)",
+      "message": "{{count}} ({{percent}}%)"
+   },
+   "popupDomainsConnected_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "已連接的網域"
+   },
+   "popupHitDomainCount": {
+      "description": "appears in popup",
+      "message": "{{count}} / {{total}}"
+   },
+   "popupHitDomainCountPrompt": {
+      "description": "appears in popup",
+      "message": "已連結的網域"
+   },
+   "popupImageRulePrompt": {
+      "description": "",
+      "message": "圖片"
+   },
+   "popupInlineScriptRulePrompt": {
+      "description": "",
+      "message": "內聯腳本"
+   },
+   "popupLessButton_v2": {
+      "description": "Label to be used to hide popup panel sections",
+      "message": "更少"
+   },
+   "popupMoreButton_v2": {
+      "description": "Label to be used to show popup panel sections",
+      "message": "更多"
+   },
+   "popupNoCosmeticFiltering_v2": {
+      "description": "Caption for the no-cosmetic-filtering per-site switch",
+      "message": "網頁元素過濾"
+   },
+   "popupNoLargeMedia_v2": {
+      "description": "Caption for the no-large-media per-site switch",
+      "message": "大型媒體元素"
+   },
+   "popupNoPopups_v2": {
+      "description": "Caption for the no-popups per-site switch",
+      "message": "彈出式視窗"
+   },
+   "popupNoRemoteFonts_v2": {
+      "description": "Caption for the no-remote-fonts per-site switch",
+      "message": "遠端字體"
+   },
+   "popupNoScripting_v2": {
+      "description": "Caption for the no-scripting per-site switch",
+      "message": "JavaScript"
+   },
+   "popupOr": {
+      "description": "English: or",
+      "message": "或"
+   },
+   "popupPowerSwitchInfo": {
+      "description": "English: Click: disable/enable uBlock₀ for this site.\n\nCtrl+click: disable uBlock₀ only on this page.",
+      "message": "點擊：在此網站 停用/啟用 uBlock₀ 。\n\nCtrl + 點擊：僅在此頁面停用 uBlock₀ 。"
+   },
+   "popupPowerSwitchInfo1": {
+      "description": "Message to be read by screen readers",
+      "message": "點擊：在此網站停用 uBlock₀ 。\n\nCtrl + 點擊：僅在此頁面停用 uBlock₀ 。"
+   },
+   "popupPowerSwitchInfo2": {
+      "description": "Message to be read by screen readers",
+      "message": "點擊以在此網站啟用 uBlock₀ 。"
+   },
+   "popupTipDashboard": {
+      "description": "English: Click to open the dashboard",
+      "message": "開啟控制台"
+   },
+   "popupTipGlobalRules": {
+      "description": "Tooltip when hovering the top-most cell of the global-rules column.",
+      "message": "全域規則：此欄位的規則會套用至所有網站。"
+   },
+   "popupTipLocalRules": {
+      "description": "Tooltip when hovering the top-most cell of the local-rules column.",
+      "message": "區域規則：此欄位的規則僅會套用至目前網站。\n區域規則會覆蓋過全域規則。"
+   },
+   "popupTipLog": {
+      "description": "Tooltip used for the logger icon in the panel",
+      "message": "開啟記錄器"
+   },
+   "popupTipNoCosmeticFiltering": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "切換是否在此網站過濾網頁元素"
+   },
+   "popupTipNoCosmeticFiltering1": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "點擊以停用此網站的網頁元素過濾"
+   },
+   "popupTipNoCosmeticFiltering2": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "點擊以啟用此網站的網頁元素過濾"
+   },
+   "popupTipNoLargeMedia": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "切換是否封鎖此網站的大型媒體元素"
+   },
+   "popupTipNoLargeMedia1": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "點擊以封鎖此網站的大型媒體元素"
+   },
+   "popupTipNoLargeMedia2": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "點擊以停止封鎖此網站的大型媒體元素"
+   },
+   "popupTipNoPopups": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "切換是否阻擋此網站的所有彈出型視窗"
+   },
+   "popupTipNoPopups1": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "點擊以阻擋此網站的所有彈出式視窗"
+   },
+   "popupTipNoPopups2": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "點擊後將不再封鎖此網站的所有彈出式廣告"
+   },
+   "popupTipNoRemoteFonts": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "切換是否封鎖此網站的遠端字體"
+   },
+   "popupTipNoRemoteFonts1": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "點擊以封鎖此網站的遠端字型"
+   },
+   "popupTipNoRemoteFonts2": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "點擊以停止封鎖此網站的遠端字型"
+   },
+   "popupTipNoScripting1": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "點擊以停用此網站的 JavaScript"
+   },
+   "popupTipNoScripting2": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "點擊以重新啟用此網站的 JavaScript "
+   },
+   "popupTipPicker": {
+      "description": "English: Enter element picker mode",
+      "message": "進入元素選擇器模式"
+   },
+   "popupTipReport": {
+      "description": "Tooltip used for the 'chat' icon in the panel",
+      "message": "回報此網站的問題"
+   },
+   "popupTipRevertRules": {
+      "description": "Tooltip when hovering over the eraser in the dynamic filtering pane.",
+      "message": "點擊以撤銷變更。"
+   },
+   "popupTipSaveRules": {
+      "description": "Tooltip when hovering over the padlock in the dynamic filtering pane.",
+      "message": "點擊此處讓變更永久生效。"
+   },
+   "popupTipZapper": {
+      "description": "Tooltip for the element-zapper icon in the popup panel",
+      "message": "進入元素臨時移除模式"
+   },
+   "popupVersion": {
+      "description": "Example of use: Version 1.26.4",
+      "message": "版本"
+   },
+   "relaxBlockingMode": {
+      "description": "Label for keyboard shortcut used to relax blocking mode",
+      "message": "放寬封鎖量模式"
+   },
+   "rulesCommit": {
+      "description": "This will persist temporary rules",
+      "message": "提交"
+   },
+   "rulesDefaultFileName": {
+      "description": "default file name to use",
+      "message": "my-ublock-dynamic-rules_{{datetime}}.txt"
+   },
+   "rulesEdit": {
+      "description": "Will enable manual-edit mode (textarea)",
+      "message": "編輯"
+   },
+   "rulesEditDiscard": {
+      "description": "Will discard manually-edited content and exit manual-edit mode",
+      "message": "捨棄"
+   },
+   "rulesEditSave": {
+      "description": "Will save manually-edited content and exit manual-edit mode",
+      "message": "儲存"
+   },
+   "rulesExport": {
+      "description": "Button in the 'My rules' pane",
+      "message": "匯出至檔案…"
+   },
+   "rulesFormatHint": {
+      "description": "English: dynamic rule syntax and full documentation.",
+      "message": "規則語法：\u003Ccode>來源主機名稱 目標主機名稱 連線請求類型 操作\u003C/code>（\u003Ca href='https://github.com/gorhill/uBlock/wiki/Dynamic-filtering:-rule-syntax'>完整說明\u003C/a>）。"
+   },
+   "rulesHint": {
+      "description": "English: List of your dynamic filtering rules.",
+      "message": "您的動態過濾規則清單。"
+   },
+   "rulesImport": {
+      "description": "",
+      "message": "從檔案匯入…"
+   },
+   "rulesPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "自訂動態過濾規則"
+   },
+   "rulesPermanentHeader": {
+      "description": "header",
+      "message": "永久規則"
+   },
+   "rulesRevert": {
+      "description": "This will remove all temporary rules",
+      "message": "還原"
+   },
+   "rulesSort": {
+      "description": "English: label for sort option.",
+      "message": "排序："
+   },
+   "rulesSortByDestination": {
+      "description": "English: a sort option for list of rules.",
+      "message": "目標"
+   },
+   "rulesSortBySource": {
+      "description": "English: a sort option for list of rules.",
+      "message": "來源"
+   },
+   "rulesSortByType": {
+      "description": "English: a sort option for list of rules.",
+      "message": "規則類型"
+   },
+   "rulesTemporaryHeader": {
+      "description": "header",
+      "message": "臨時規則"
+   },
+   "settingPerSiteSwitchGroup": {
+      "description": "",
+      "message": "預設行為"
+   },
+   "settingPerSiteSwitchGroupSynopsis": {
+      "description": "",
+      "message": "這些預設行為可再依各網站調整"
+   },
+   "settingsAdvanced": {
+      "description": "Section for controlling advanced-user settings",
+      "message": "進階"
+   },
+   "settingsAdvancedSynopsis": {
+      "description": "Description of section controlling advanced-user settings",
+      "message": "僅適合技術性使用者的功能"
+   },
+   "settingsAdvancedUserPrompt": {
+      "description": "Checkbox to let user access advanced, technical features",
+      "message": "我是進階使用者"
+   },
+   "settingsAdvancedUserSettings": {
+      "description": "For the tooltip of a link which gives access to advanced settings",
+      "message": "進階設定"
+   },
+   "settingsAppearance": {
+      "description": "Section for controlling user interface appearance",
+      "message": "外觀"
+   },
+   "settingsCloudStorageEnabledPrompt": {
+      "description": "",
+      "message": "啟用雲端儲存空間的支援"
+   },
+   "settingsCollapseBlockedPrompt": {
+      "description": "English: Hide placeholders of blocked elements",
+      "message": "隱藏已阻擋元素的佔位元素"
+   },
+   "settingsColorBlindPrompt": {
+      "description": "English: Color-blind friendly",
+      "message": "使用對色盲友善的色彩"
+   },
+   "settingsContextMenuPrompt": {
+      "description": "English: Make use of context menu where appropriate",
+      "message": "將 uBlock Origin 加入右鍵選單"
+   },
+   "settingsHyperlinkAuditingDisabledPrompt": {
+      "description": "English: ",
+      "message": "停用超連結監測"
+   },
+   "settingsIconBadgePrompt": {
+      "description": "English: Show the number of blocked requests on the icon",
+      "message": "在圖示上顯示被阻擋的連線請求的數量"
+   },
+   "settingsLastBackupPrompt": {
+      "description": "English: Last backup:",
+      "message": "上次備份："
+   },
+   "settingsLastRestorePrompt": {
+      "description": "English: Last restore:",
+      "message": "上次還原："
+   },
+   "settingsNoCSPReportsPrompt": {
+      "description": "background information: https://github.com/gorhill/uBlock/issues/3150",
+      "message": "封鎖內容安全策略報告"
+   },
+   "settingsNoCosmeticFilteringPrompt": {
+      "description": "",
+      "message": "停用元素隱藏過濾規則"
+   },
+   "settingsNoLargeMediaPrompt": {
+      "description": "",
+      "message": "封鎖超過 {{input}} KB 的媒體元素"
+   },
+   "settingsNoRemoteFontsPrompt": {
+      "description": "",
+      "message": "封鎖遠端字型"
+   },
+   "settingsNoScriptingPrompt": {
+      "description": "The default state for the per-site no-scripting switch",
+      "message": "停用 JavaScript"
+   },
+   "settingsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "設定"
+   },
+   "settingsPrefetchingDisabledPrompt": {
+      "description": "English: ",
+      "message": "停用「預先取回連結」功能（避免連接至已阻擋的網路請求）"
+   },
+   "settingsThemeAccent0Label": {
+      "description": "Label for checkbox to pick an accent color",
+      "message": "自訂強調顏色"
+   },
+   "settingsThemeLabel": {
+      "description": "Label for checkbox to enable a custom dark theme",
+      "message": "佈景主題"
+   },
+   "settingsTooltipsPrompt": {
+      "description": "A checkbox in the Settings pane",
+      "message": "關閉提示文字功能"
+   },
+   "settingsUncloakCnamePrompt": {
+      "description": "background information: https://github.com/uBlockOrigin/uBlock-issues/issues/1513",
+      "message": "揭露網域真實名稱"
+   },
+   "settingsWebRTCIPAddressHiddenPrompt": {
+      "description": "English: ",
+      "message": "防止 WebRTC 洩漏本地 IP 位址"
+   },
+   "shortcutCapturePlaceholder": {
+      "description": "Placeholder string for input field used to capture a keyboard shortcut",
+      "message": "輸入快捷鍵"
+   },
+   "shortcutsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "快速鍵"
+   },
+   "showDashboardButton": {
+      "description": "Firefox/Fennec-specific: Show Dashboard",
+      "message": "顯示控制台"
+   },
+   "showNetworkLogButton": {
+      "description": "Firefox/Fennec-specific: Show Logger",
+      "message": "顯示記錄器"
+   },
+   "statsPageName": {
+      "description": "Title for the logger window",
+      "message": "uBlock₀ — 記錄器"
+   },
+   "storageUsed": {
+      "description": " In Setting pane, renders as (example): Storage used: 13.2 MB",
+      "message": "儲存空間用量：{{value}} {{unit}}"
+   },
+   "subscribeButton": {
+      "description": "For the button used to subscribe to a filter list",
+      "message": "訂閱"
+   },
+   "subscriberConfirm": {
+      "description": "No longer used",
+      "message": "確定要新增下列網址至自訂過濾規則清單？\n\n標題：「{{title}}」\n網址：{{url}}"
+   },
+   "supportFindSpecificButton": {
+      "description": "A clickable link in the filter issue reporter section",
+      "message": "尋找類似報告"
+   },
+   "supportOpenButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "開啟"
+   },
+   "supportPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "支援"
+   },
+   "supportRedact": {
+      "description": "Text for 'Redact' button",
+      "message": "替換"
+   },
+   "supportReportSpecificButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "建立新報告"
+   },
+   "supportS1H": {
+      "description": "Header of 'Documentation' section in Support pane",
+      "message": "文件"
+   },
+   "supportS1P1": {
+      "description": "First paragraph of 'Documentation' section in Support pane",
+      "message": "欲了解 uBlock Origin 所有的功能，請閱讀 \u003Ccode>uBlock/wiki\u003C/code> 中的文件。"
+   },
+   "supportS2H": {
+      "description": "Header of 'Questions and support' section in Support pane",
+      "message": "問題與支援"
+   },
+   "supportS2P1": {
+      "description": "First paragraph of 'Questions and support' section in Support pane",
+      "message": "如有問題或需要其他類型的幫助，可以在 \u003Ccode>/r/uBlockOrigin\u003C/code> subreddit 獲得協助與解答。"
+   },
+   "supportS3H": {
+      "description": "Header of 'Filter issues' section in Support pane",
+      "message": "過濾器問題 / 網站被破壞"
+   },
+   "supportS3P1": {
+      "description": "First paragraph of 'Filter issues' section in Support pane",
+      "message": "請到 \u003Cspan data-url=\"https://github.com/uBlockOrigin/uAssets/issues?q=is%3Aissue\">\u003Ccode>uBlockOrigin/uAssets\u003C/code> 議題追蹤系統\u003C/span>回報特定網站的過濾器問題。需要 GitHub 帳號。"
+   },
+   "supportS3P2": {
+      "description": "Second paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>特別注意：\u003C/b>不要把其他同性質的阻擋工具跟 uBlock Origin 混用，否則可能會在特定網站造成過濾問題。"
+   },
+   "supportS3P3": {
+      "description": "Third paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>小提示：\u003C/b>請確定您的過濾器清單已經更新至最新版本。我們主要用\u003Cspan data-url=\"logger-ui.html#_\">「記錄器」\u003C/span>來分析過濾器相關問題。"
+   },
+   "supportS4H": {
+      "description": "Header of 'Bug report' section in Support pane",
+      "message": "錯誤報告"
+   },
+   "supportS4P1": {
+      "description": "First paragraph of 'Bug report' section in Support pane",
+      "message": "請到 \u003Cspan data-url=\"https://github.com/uBlockOrigin/uBlock-issues/issues?q=is%3Aissue\">\u003Ccode>uBlockOrigin/uBlock-issue\u003C/code> 議題追蹤系統\u003C/span>回報 uBlock Origin 本身的問題。需要 GitHub 帳號。"
+   },
+   "supportS5H": {
+      "description": "Header of 'Troubleshooting Information' section in Support pane",
+      "message": "疑難排解資訊"
+   },
+   "supportS5P1": {
+      "description": "First paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "以下是志願者嘗試幫您解決問題時，可能會用到的技術資訊："
+   },
+   "supportS5P2": {
+      "description": "Second paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "\u003Cb>特別注意：\u003C/b>預設情況下，潛在私人或敏感的資料會被略去。略去的資訊可能會讓問題更難獲解決。"
+   },
+   "supportS6Checkbox1": {
+      "description": "A checkbox to use for NSFW sites",
+      "message": "將網頁標記為「NSFW」（\u003Ca href=\"https://zh.wikipedia.org/wiki/NSFW\">工作場所不宜\u003C/a>）"
+   },
+   "supportS6H": {
+      "description": "Header of 'Report a filter issue' section in Support pane",
+      "message": "回報過濾規則的問題"
+   },
+   "supportS6P1S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "為免給志願者帶來額外負擔，請先檢查問題有沒有被回報過，避免重複回報。"
+   },
+   "supportS6P2S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "過濾器清單每天更新，請確保問題尚未在最新版本中解決。"
+   },
+   "supportS6P2S2": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "重新載入有問題的網頁後，驗證問題是否仍然存在。"
+   },
+   "supportS6Select1": {
+      "description": "Label for widget to select type of issue",
+      "message": "這個網頁…"
+   },
+   "supportS6Select1Option0": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "-- 挑選一種情況 --"
+   },
+   "supportS6Select1Option1": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "會顯示廣告或殘留空位"
+   },
+   "supportS6Select1Option2": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "含有覆蓋物或其他滋擾"
+   },
+   "supportS6Select1Option3": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "偵測到 uBlock Origin"
+   },
+   "supportS6Select1Option4": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "有私穩相關問題"
+   },
+   "supportS6Select1Option5": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "開啟 uBlock Origin 的時候運作不正常"
+   },
+   "supportS6Select1Option6": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "會開啟不想要的分頁或視窗"
+   },
+   "supportS6URL": {
+      "description": "Label for the URL of the page",
+      "message": "網址："
+   },
+   "supportUnredact": {
+      "description": "Text for 'Unredact' button",
+      "message": "不要替換"
+   },
+   "toggleCosmeticFiltering": {
+      "description": "Label for keyboard shortcut used to toggle cosmetic filtering",
+      "message": "切換是否啟用元素隱藏過濾規則"
+   },
+   "toggleJavascript": {
+      "description": "Label for keyboard shortcut used to toggle no-scripting switch",
+      "message": "切換 JavaScript"
+   },
+   "unprocessedRequestTooltip": {
+      "description": "A warning which will appear in the popup panel if needed",
+      "message": "無法在瀏覽器啟動的時候正確過濾頁面。請重新載入來確保過濾正確。"
+   },
+   "whitelistApply": {
+      "description": "English: Apply changes",
+      "message": "套用變更"
+   },
+   "whitelistExport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "匯出…"
+   },
+   "whitelistExportFilename": {
+      "description": "The default filename to use for import/export purpose",
+      "message": "my-ublock-trusted-sites_{{datetime}}.txt"
+   },
+   "whitelistImport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "匯入並加入…"
+   },
+   "whitelistPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "受信任網站"
+   },
+   "whitelistPrompt": {
+      "description": "A concise description of the 'Trusted sites' pane.",
+      "message": "信任名單中的規則適用的頁面不會被 uBlock Origin 過濾或阻擋。每行一個規則。"
+   }
+}

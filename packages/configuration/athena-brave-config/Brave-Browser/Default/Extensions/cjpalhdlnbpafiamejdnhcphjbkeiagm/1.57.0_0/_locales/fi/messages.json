@@ -1,0 +1,1306 @@
+{
+   "1pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Vahvista muutokset"
+   },
+   "1pEnableMyFiltersLabel": {
+      "description": "Label for the checkbox use to enable/disable 'My filters' list",
+      "message": "Ota omat suodattimet käyttöön"
+   },
+   "1pExport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "Vie…"
+   },
+   "1pExportFilename": {
+      "description": "English: my-ublock-static-filters_{{datetime}}.txt",
+      "message": "omat-staattiset-ublock-suodattimet_{{datetime}}.txt"
+   },
+   "1pImport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "Tuo ja lisää…"
+   },
+   "1pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Omat suodattimet"
+   },
+   "1pTrustMyFiltersLabel": {
+      "description": "Label for the checkbox use to trust the content of 'My filters' list",
+      "message": "Allow custom filters requiring trust"
+   },
+   "1pTrustWarning": {
+      "description": "Warning against copy-pasting filters from random sources",
+      "message": "Älä lisää suodattimia lähteistä, joihin et luota."
+   },
+   "3pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Vahvista muutokset"
+   },
+   "3pAutoUpdatePrompt1": {
+      "description": "A checkbox in the _3rd-party filters_ pane",
+      "message": "Päivitä suodatinlistat automaattisesti"
+   },
+   "3pExternalListObsolete": {
+      "description": "used as a tooltip for the out-of-date icon beside a list",
+      "message": "Vanhentunut"
+   },
+   "3pExternalListsHint": {
+      "description": "Short information about how to use the textarea to import external filter lists by URL",
+      "message": "Yksi URL-osoite riviä kohden. Virheelliset osoitteet ohitetaan huomaamattomasti."
+   },
+   "3pGroupAds": {
+      "description": "Filter lists section name",
+      "message": "Mainokset"
+   },
+   "3pGroupAnnoyances": {
+      "description": "Filter lists section name",
+      "message": "Ärsykkeet"
+   },
+   "3pGroupCookies": {
+      "description": "Filter lists section name",
+      "message": "Evästeilmoitukset"
+   },
+   "3pGroupCustom": {
+      "description": "Filter lists section name",
+      "message": "Muut listat"
+   },
+   "3pGroupDefault": {
+      "description": "Filter lists section name",
+      "message": "Laajennukseen sisältyvät"
+   },
+   "3pGroupMalware": {
+      "description": "Filter lists section name",
+      "message": "Haittaohjelmasuojaus, tietoturva"
+   },
+   "3pGroupMultipurpose": {
+      "description": "Filter lists section name",
+      "message": "Yleishyödylliset"
+   },
+   "3pGroupPrivacy": {
+      "description": "Filter lists section name",
+      "message": "Tietosuoja"
+   },
+   "3pGroupRegions": {
+      "description": "Filter lists section name",
+      "message": "Alueet, kielet"
+   },
+   "3pGroupSocial": {
+      "description": "Filter lists section name",
+      "message": "Sosiaaliset widgetit"
+   },
+   "3pIgnoreGenericCosmeticFilters": {
+      "description": "This will cause uBO to ignore all generic cosmetic filters.",
+      "message": "Ohita kosmeettiset yleissuodattimet"
+   },
+   "3pIgnoreGenericCosmeticFiltersInfo": {
+      "description": "Describes the purpose of the 'Ignore generic cosmetic filters' feature.",
+      "message": "Kosmeettiset yleissuodattimet ovat sellaisia kosmeettisia suodattimia, jotka on tarkoitettu käytettäväksi kaikilla verkkosivustoilla. Tämä asetus poistaa tällaisten suodattimien käsittelystä verkkosivuille aiheutuvan, korkeamman keskusmuistin ja suorittimen kuormituksen.\n\nAsetuksen käyttö on suositeltavaa heikkotehoisilla laitteilla."
+   },
+   "3pImport": {
+      "description": "The label for the checkbox used to import external filter lists",
+      "message": "Tuo…"
+   },
+   "3pLastUpdate": {
+      "description": "used as a tooltip for the clock icon beside a list",
+      "message": "Viimeisin päivitys: {{ago}}.\nPakota päivitys painamalla tästä."
+   },
+   "3pListsOfBlockedHostsHeader": {
+      "description": "English: Lists of blocked hosts",
+      "message": "Lista estetyistä osoitteista"
+   },
+   "3pListsOfBlockedHostsPerListStats": {
+      "description": "Appears aside each filter list in the _3rd-party filters_ pane",
+      "message": "Käytössä {{used}}/{{total}}"
+   },
+   "3pListsOfBlockedHostsPrompt": {
+      "description": "Appears at the top of the _3rd-party filters_ pane",
+      "message": "{{netFilterCount}} verkkosuodatinta ＋ {{cosmeticFilterCount}} kosmeettista suodatinta:"
+   },
+   "3pNetworkError": {
+      "description": "used as a tooltip for error icon beside a list",
+      "message": "Verkkovirhe esti resurssin päivityksen."
+   },
+   "3pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Suodatinlistat"
+   },
+   "3pParseAllABPHideFiltersInfo": {
+      "description": "Describes the purpose of the 'Parse and enforce cosmetic filters' feature.",
+      "message": "Kosmeettisten suodattimien tehtävä on piilottaa sivujen elementtejä, jotka on luokiteltu visuaalisiksi ärsykkeiksi ja joiden esto ei ole mahdollista verkkopyyntöjen estoon perustuvien suodatusmoottoreiden avulla."
+   },
+   "3pParseAllABPHideFiltersPrompt1": {
+      "description": "English: Parse and enforce Adblock+ element hiding filters.",
+      "message": "Jäsennä ja pakota kosmeettiset suodattimet"
+   },
+   "3pPurgeAll": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "Tyhjennä kaikki välimuistit"
+   },
+   "3pSuspendUntilListsAreLoaded": {
+      "description": "A checkbox in the 'Filter lists' pane",
+      "message": "Keskeytä verkon toiminta, kunnes kaikki suodatinlistat on ladattu"
+   },
+   "3pUpdateNow": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "Päivitä nyt"
+   },
+   "3pUpdating": {
+      "description": "used as a tooltip for the spinner icon beside a list",
+      "message": "Päivitetään…"
+   },
+   "3pViewContent": {
+      "description": "used as a tooltip for eye icon beside a list",
+      "message": "Näytä sisältö"
+   },
+   "GB": {
+      "description": "short for 'gigabytes'",
+      "message": "Gt"
+   },
+   "KB": {
+      "description": "short for 'kilobytes'",
+      "message": "kt"
+   },
+   "MB": {
+      "description": "short for 'megabytes'",
+      "message": "Mt"
+   },
+   "aboutBackupDataButton": {
+      "description": "Text for button to create a backup of all settings",
+      "message": "Varmuuskopioi tiedostoon…"
+   },
+   "aboutBackupFilename": {
+      "description": "English: my-ublock-backup_{{datetime}}.txt",
+      "message": "oma-ublock-varmuuskopio_{{datetime}}.txt"
+   },
+   "aboutCDNs": {
+      "description": "Shown in the About pane",
+      "message": "uBO:n omat suodatinlistat ovat vapaasti saatavilla seuraavista \u003Ca href=\"https://fi.wikipedia.org/wiki/Sis%C3%A4ll%C3%B6njakeluverkko\">sisällönjakeluverkoista\u003C/a>:"
+   },
+   "aboutCDNsInfo": {
+      "description": "Shown in the About pane",
+      "message": "Suodatinlistat päivitetään satunnaisesti valitusta sisällönjakeluverkosta (CDN)."
+   },
+   "aboutChangelog": {
+      "description": "",
+      "message": "Muutoshistoria"
+   },
+   "aboutCode": {
+      "description": "English: Source code (GPLv3)",
+      "message": "Lähdekoodi (GPLv3)"
+   },
+   "aboutContributors": {
+      "description": "English: Contributors",
+      "message": "Avustajat"
+   },
+   "aboutDependencies": {
+      "description": "Shown in the About pane",
+      "message": "Ulkopuoliset riippuvuudet (GPLv3-yhteensopiva):"
+   },
+   "aboutFilterLists": {
+      "description": "Link text to uBO's own filter lists repo",
+      "message": "Suodatinlistat"
+   },
+   "aboutPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Tietoja"
+   },
+   "aboutPrivacyPolicy": {
+      "description": "Link to privacy policy on GitHub (English)",
+      "message": "Tietosuojakäytäntö"
+   },
+   "aboutResetDataButton": {
+      "description": "English: Reset to default settings...",
+      "message": "Palauta oletusasetukset…"
+   },
+   "aboutResetDataConfirm": {
+      "description": "Message asking user to confirm reset",
+      "message": "Kaikki asetuksesi poistetaan ja uBlock₀ käynnistyy uudelleen. \n\nPalautetaanko uBlock₀ oletusasetuksiin?"
+   },
+   "aboutRestoreDataButton": {
+      "description": "English: Restore from file...",
+      "message": "Palauta tiedostosta…"
+   },
+   "aboutRestoreDataConfirm": {
+      "description": "Message asking user to confirm restore",
+      "message": "Kaikki asetuksesi korvataan {{time}} varmuuskopioiduilla tiedoilla ja uBlock₀ käynnistyy uudelleen.\n\nKorvataanko kaikki nykyiset asetukset varmuuskopioduilla tiedoilla?"
+   },
+   "aboutRestoreDataError": {
+      "description": "Message to display when an error occurred during restore",
+      "message": "Tietoja ei voitu lukea tai ne ovat virheellisiä"
+   },
+   "aboutSourceCode": {
+      "description": "Link text to source code repo",
+      "message": "Lähdekoodi"
+   },
+   "aboutTranslations": {
+      "description": "Link text to translations repo",
+      "message": "Käännökset"
+   },
+   "advancedSettingsPageName": {
+      "description": "Title for the advanced settings page",
+      "message": "Lisäasetukset"
+   },
+   "advancedSettingsWarning": {
+      "description": "A warning to users at the top of 'Advanced settings' page",
+      "message": "Varoitus! Muuta näitä lisäasetuksia omalla vastuullasi."
+   },
+   "assetViewerPageName": {
+      "description": "Title for the asset viewer page",
+      "message": "uBlock₀ — Resurssien katselu"
+   },
+   "clickToLoad": {
+      "description": "Message used in frame placeholders",
+      "message": "Lataa painamalla tästä"
+   },
+   "cloudDeviceNamePrompt": {
+      "description": "used as a prompt for the user to provide a custom device name",
+      "message": "Tämän laitteen nimi:"
+   },
+   "cloudNoData": {
+      "description": "",
+      "message": "…\n…"
+   },
+   "cloudPull": {
+      "description": "tooltip",
+      "message": "Tuo pilvitallennustilasta"
+   },
+   "cloudPullAndMerge": {
+      "description": "tooltip",
+      "message": "Tuo pilvitallennustilasta ja yhdistä nykyisiin asetuksiin"
+   },
+   "cloudPush": {
+      "description": "tooltip",
+      "message": "Vie pilvitallennustilaan"
+   },
+   "contextMenuBlockElementInFrame": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Estä elementti kehyksestä…"
+   },
+   "contextMenuSubscribeToList": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Tilaa suodatinlista…"
+   },
+   "contextMenuTemporarilyAllowLargeMediaElements": {
+      "description": "A context menu entry, present when large media elements have been blocked on the current site",
+      "message": "Salli suuret mediaelementit tilapäisesti"
+   },
+   "contextMenuViewSource": {
+      "description": "A context menu entry, to view the source code of the target resource",
+      "message": "Näytä lähdekoodi…"
+   },
+   "dashboardName": {
+      "description": "English: uBlock₀ — Dashboard",
+      "message": "uBlock₀ — Hallintapaneeli"
+   },
+   "dashboardUnsavedWarning": {
+      "description": "A warning in the dashboard when navigating away from unsaved changes",
+      "message": "Varoitus! Olet tehnyt muutoksia, joita ei ole vielä tallennettu"
+   },
+   "dashboardUnsavedWarningIgnore": {
+      "description": "Label for button to ignore unsaved changes",
+      "message": "Ohita"
+   },
+   "dashboardUnsavedWarningStay": {
+      "description": "Label for button to prevent navigating away from unsaved changes",
+      "message": "Älä poistu"
+   },
+   "docblockedBack": {
+      "description": "English: Go back",
+      "message": "Palaa takaisin"
+   },
+   "docblockedClose": {
+      "description": "English: Close this window",
+      "message": "Sulje tämä ikkuna"
+   },
+   "docblockedDisable": {
+      "description": "Button text to navigate to the blocked page",
+      "message": "Jatka"
+   },
+   "docblockedDisablePermanent": {
+      "description": "English: Permanently",
+      "message": "Pysyvästi"
+   },
+   "docblockedDisableTemporary": {
+      "description": "English: Temporarily",
+      "message": "Tilapäisesti"
+   },
+   "docblockedDontWarn": {
+      "description": "Label for checkbox in document-blocked page",
+      "message": "Älä varoita tästä sivustosta uudelleen"
+   },
+   "docblockedFoundIn": {
+      "description": "English: List of filter list names follows",
+      "message": "Sisältyy listoihin:"
+   },
+   "docblockedNoParamsPrompt": {
+      "description": "label to be used for the parameter-less URL: https://cloud.githubusercontent.com/assets/585534/9832014/bfb1b8f0-593b-11e5-8a27-fba472a5529a.png",
+      "message": "ilman parametrejä"
+   },
+   "docblockedProceed": {
+      "description": "English: Disable strict blocking for {{hostname}} ...",
+      "message": "Älä käytä tiukkaa estoa osoitteelle {{hostname}}"
+   },
+   "docblockedPrompt1": {
+      "description": "Used in the strict-blocking page",
+      "message": "uBlock₀ on estänyt seuraavan sivun latauksen:"
+   },
+   "docblockedPrompt2": {
+      "description": "Used in the strict-blocking page",
+      "message": "Seuraavan suodattimen vuoksi:"
+   },
+   "docblockedTitle": {
+      "description": "Used as a title for the document-blocked page",
+      "message": "Sivu estetty"
+   },
+   "dummy": {
+      "description": "so we dont need to deal with comma for last entry",
+      "message": "Tämän on oltava viimeinen merkintä"
+   },
+   "elapsedManyDaysAgo": {
+      "description": "English: {{value}} days ago",
+      "message": "{{value}} päivää sitten"
+   },
+   "elapsedManyHoursAgo": {
+      "description": "English: {{value}} hours ago",
+      "message": "{{value}} tuntia sitten"
+   },
+   "elapsedManyMinutesAgo": {
+      "description": "English: {{value}} minutes ago",
+      "message": "{{value}} minuuttia sitten"
+   },
+   "elapsedOneDayAgo": {
+      "description": "English: a day ago",
+      "message": "päivä sitten"
+   },
+   "elapsedOneHourAgo": {
+      "description": "English: an hour ago",
+      "message": "tunti sitten"
+   },
+   "elapsedOneMinuteAgo": {
+      "description": "English: a minute ago",
+      "message": "minuutti sitten"
+   },
+   "errorCantConnectTo": {
+      "description": "English: Network error: {{msg}}",
+      "message": "Verkkovirhe: {{msg}}"
+   },
+   "extName": {
+      "description": "extension name.",
+      "message": "uBlock Origin"
+   },
+   "extShortDesc": {
+      "description": "this will be in the Chrome web store: must be 132 characters or less",
+      "message": "Viimeinkin tehokas estotyökalu, joka ei kuormita prosessoria ja muistia."
+   },
+   "fennecMenuItemBlockingOff": {
+      "description": "Firefox-specific: appears as 'uBlock₀ (off)'",
+      "message": "ei käytössä"
+   },
+   "genericApplyChanges": {
+      "description": "for generic 'Apply changes' buttons",
+      "message": "Vahvista muutokset"
+   },
+   "genericBytes": {
+      "description": "",
+      "message": "tavua"
+   },
+   "genericCopyToClipboard": {
+      "description": "Label for buttons used to copy something to the clipboard",
+      "message": "Kopioi leikepöydälle"
+   },
+   "genericMergeViewScrollLock": {
+      "description": "Tooltip for the button used to lock scrolling between the views in the 'My rules' pane",
+      "message": "Kytke puoliskojen välisen vierityksen lukitus"
+   },
+   "genericRevert": {
+      "description": "for generic 'Revert' buttons",
+      "message": "Palauta"
+   },
+   "genericSelectAll": {
+      "description": "Label for buttons used to select all text in editor",
+      "message": "Valitse kaikki"
+   },
+   "genericSubmit": {
+      "description": "for generic 'Submit' buttons",
+      "message": "Lähetä"
+   },
+   "linterMainReport": {
+      "description": "Summary of number of errors as reported by the linter ",
+      "message": "Virheitä: {{count}}"
+   },
+   "logAll": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Kaikki"
+   },
+   "logBehindTheScene": {
+      "description": "Pretty name for behind-the-scene network requests",
+      "message": "Piilotetut"
+   },
+   "logFilterPrompt": {
+      "description": "Placeholder string for logger output filtering input field",
+      "message": "Suodata pyyntöhistoriaa"
+   },
+   "logRequestsHeaderDomain": {
+      "description": "English: Domain",
+      "message": "Verkkotunnus"
+   },
+   "logRequestsHeaderFilter": {
+      "description": "English: Filter",
+      "message": "Suodatin"
+   },
+   "logRequestsHeaderType": {
+      "description": "English: Type",
+      "message": "Tyyppi"
+   },
+   "logRequestsHeaderURL": {
+      "description": "English: URL",
+      "message": "URL"
+   },
+   "loggerClearTip": {
+      "description": "Tooltip for the eraser in the logger page; used to blank the content of the logger",
+      "message": "Tyhjennä pyyntöhistoria"
+   },
+   "loggerCurrentTab": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Nykyinen välilehti"
+   },
+   "loggerDomInspectorTip": {
+      "description": "Tooltip for the DOM inspector button in the logger page",
+      "message": "Kytke DOM-rakennenäkymä"
+   },
+   "loggerEntryDetailsContext": {
+      "description": "Label to identify a context field (typically a hostname)",
+      "message": "Konteksti"
+   },
+   "loggerEntryDetailsFilter": {
+      "description": "Label to identify a filter field",
+      "message": "Suodatin"
+   },
+   "loggerEntryDetailsFilterList": {
+      "description": "Label to identify a filter list field",
+      "message": "Suodatinlista"
+   },
+   "loggerEntryDetailsHeader": {
+      "description": "Small header to identify the 'Details' pane for a specific logger entry",
+      "message": "Tiedot"
+   },
+   "loggerEntryDetailsPartyness": {
+      "description": "Label to identify a field providing partyness information",
+      "message": "Osapuoli"
+   },
+   "loggerEntryDetailsRootContext": {
+      "description": "Label to identify a root context field (typically a hostname)",
+      "message": "Juurikonteksti"
+   },
+   "loggerEntryDetailsRule": {
+      "description": "Label to identify a rule field",
+      "message": "Sääntö"
+   },
+   "loggerEntryDetailsType": {
+      "description": "Label to identify the type of an entry",
+      "message": "Tyyppi"
+   },
+   "loggerEntryDetailsURL": {
+      "description": "Label to identify the URL of an entry",
+      "message": "URL"
+   },
+   "loggerExportEncodeMarkdown": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Markdown-kieli"
+   },
+   "loggerExportEncodePlain": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Pelkkä teksti"
+   },
+   "loggerExportFormatList": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Lista"
+   },
+   "loggerExportFormatTable": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Taulukko"
+   },
+   "loggerInfoTip": {
+      "description": "Tooltip for the top-right info label in the logger page",
+      "message": "uBlock Origin wiki: Pyyntöhistoria"
+   },
+   "loggerPauseTip": {
+      "description": "Tooltip for the pause button in the logger page",
+      "message": "Pysäytä pyyntöhistoria (ohita kaikki saapuva tietoliikenne)"
+   },
+   "loggerPopupPanelTip": {
+      "description": "Tooltip for the popup panel button in the logger page",
+      "message": "Kytke ponnahduspaneeli"
+   },
+   "loggerReloadTip": {
+      "description": "Tooltip for the reload button in the logger page",
+      "message": "Lataa välilehden sisältö uudelleen"
+   },
+   "loggerRowFiltererBuiltin1p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "1. osapuoli"
+   },
+   "loggerRowFiltererBuiltin3p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "3. osapuoli"
+   },
+   "loggerRowFiltererBuiltinAllowed": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "sallittu"
+   },
+   "loggerRowFiltererBuiltinBlocked": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "estetty"
+   },
+   "loggerRowFiltererBuiltinEventful": {
+      "description": "A keyword in the built-in row filtering expression: all items corresponding to uBO doing something (blocked, allowed, redirected, etc.)",
+      "message": "tapahtumarikas"
+   },
+   "loggerRowFiltererBuiltinModified": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "muokattu"
+   },
+   "loggerRowFiltererBuiltinNot": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "Ei"
+   },
+   "loggerRowFiltererBuiltinTip": {
+      "description": "Tooltip for the button to bring up logger output filtering options",
+      "message": "Pyyntöhistorian suodatusvalinnat"
+   },
+   "loggerRowFiltererButtonTip": {
+      "description": "Tooltip for the row filterer button in the logger page",
+      "message": "Muuta pyyntöhistorian suodatusta"
+   },
+   "loggerSettingDiscardPrompt": {
+      "description": "Logger setting: A sentence to describe the purpose of the settings below",
+      "message": "Merkinnät, jotka eivät täytä alla olevista kolmesta ehdosta jokaista, ohitetaan automaattisesti:"
+   },
+   "loggerSettingHideColumnContext": {
+      "description": "A label for the context column",
+      "message": "{{input}} Konteksti"
+   },
+   "loggerSettingHideColumnFilter": {
+      "description": "A label for the filter or rule column",
+      "message": "{{input}} Suodatin/sääntö"
+   },
+   "loggerSettingHideColumnPartyness": {
+      "description": "A label for the partyness column",
+      "message": "{{input}} Osapuoli"
+   },
+   "loggerSettingHideColumnTime": {
+      "description": "A label for the time column",
+      "message": "{{input}} Aika"
+   },
+   "loggerSettingHideColumnsPrompt": {
+      "description": "Logger settings: a sentence to describe the purpose of the checkboxes below",
+      "message": "Piilota sarakkeita:"
+   },
+   "loggerSettingPerEntryLineCount": {
+      "description": "A logger setting",
+      "message": "Näytä pyynnöille {{input}} riviä pystysuutaan laajennetussa tilassa"
+   },
+   "loggerSettingPerEntryMaxAge": {
+      "description": "A logger setting",
+      "message": "Säilytä merkinnät viimeisten {{input}} minuutin ajalta"
+   },
+   "loggerSettingPerTabMaxEntries": {
+      "description": "A logger setting",
+      "message": "Säilytä enintään {{input}} pyyntöä välilehteä kohden"
+   },
+   "loggerSettingPerTabMaxLoads": {
+      "description": "A logger setting",
+      "message": "Säilytä enintään {{input}} sivulatausta välilehteä kohden"
+   },
+   "loggerStaticFilteringFinderSentence1": {
+      "description": "Below this sentence, the filter list(s) in which the filter was found",
+      "message": "Staattinen suodatin \u003Ccode>{{filter}}\u003C/code> löydettiin:"
+   },
+   "loggerStaticFilteringFinderSentence2": {
+      "description": "Message to show when a filter cannot be found in any filter lists",
+      "message": "Staattista suodatinta ei löytynyt tällä hetkellä käytössä olevilta suodatinlistoilta"
+   },
+   "loggerStaticFilteringHeader": {
+      "description": "Small header to identify the static filtering section",
+      "message": "Staattinen suodatus"
+   },
+   "loggerStaticFilteringSentence": {
+      "description": "Used in the static filtering wizard",
+      "message": "{{action}} verkkopyynnöt, joiden tyyppi on {{type}}, {{br}}URL vastaa osoitetta {{url}} {{br}}ja joiden lähde on {{origin}},{{br}}{{importance}} vastaava poikkeussuodatin."
+   },
+   "loggerStaticFilteringSentencePartAllow": {
+      "description": "Used in the static filtering wizard",
+      "message": "Salli"
+   },
+   "loggerStaticFilteringSentencePartAnyOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "mikä tahansa"
+   },
+   "loggerStaticFilteringSentencePartAnyType": {
+      "description": "Used in the static filtering wizard",
+      "message": "mikä tahansa"
+   },
+   "loggerStaticFilteringSentencePartBlock": {
+      "description": "Used in the static filtering wizard",
+      "message": "Estä"
+   },
+   "loggerStaticFilteringSentencePartImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "vaikka löytyisi"
+   },
+   "loggerStaticFilteringSentencePartNotImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "paitsi, kun löytyy"
+   },
+   "loggerStaticFilteringSentencePartOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "{{origin}}"
+   },
+   "loggerStaticFilteringSentencePartType": {
+      "description": "Used in the static filtering wizard",
+      "message": "{{type}}"
+   },
+   "loggerURLFilteringContextLabel": {
+      "description": "Label for the context selector",
+      "message": "Konteksti: "
+   },
+   "loggerURLFilteringHeader": {
+      "description": "Small header to identify the dynamic URL filtering section",
+      "message": "URL-sääntö"
+   },
+   "loggerURLFilteringTypeLabel": {
+      "description": "Label for the type selector",
+      "message": "Tyyppi: "
+   },
+   "loggerUnpauseTip": {
+      "description": "Tooltip for the play button in the logger page",
+      "message": "Käynnistä pyyntöhistoria"
+   },
+   "pickerContextMenuEntry": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Estä elementti…"
+   },
+   "pickerCosmeticFilters": {
+      "description": "English: Cosmetic filters",
+      "message": "Kosmeettiset suodattimet"
+   },
+   "pickerCosmeticFiltersHint": {
+      "description": "English: Click, Ctrl-click",
+      "message": "Painallus, Ctrl-painallus"
+   },
+   "pickerCreate": {
+      "description": "English: Create",
+      "message": "Luo"
+   },
+   "pickerNetFilters": {
+      "description": "English: header for a type of filter in the element picker dialog",
+      "message": "Verkkosuodattimet"
+   },
+   "pickerPick": {
+      "description": "English: Pick",
+      "message": "Valitse"
+   },
+   "pickerPreview": {
+      "description": "Element picker preview mode: will cause the elements matching the current filter to be removed from the page",
+      "message": "Esikatsele"
+   },
+   "pickerQuit": {
+      "description": "English: Quit",
+      "message": "Lopeta"
+   },
+   "popup1pScriptRulePrompt": {
+      "description": "",
+      "message": "1. osapuolen komentosarjat"
+   },
+   "popup3pAnyRulePrompt": {
+      "description": "",
+      "message": "3. osapuoli"
+   },
+   "popup3pFrameFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "kehys"
+   },
+   "popup3pFrameRulePrompt": {
+      "description": "",
+      "message": "3. osapuolen kehykset"
+   },
+   "popup3pPassiveRulePrompt": {
+      "description": "",
+      "message": "Kolmannen osapuolen css/kuvat"
+   },
+   "popup3pScriptFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "komentosarja"
+   },
+   "popup3pScriptRulePrompt": {
+      "description": "",
+      "message": "3. osapuolen komentosarjat"
+   },
+   "popupAnyRulePrompt": {
+      "description": "",
+      "message": "kaikki"
+   },
+   "popupBlockedOnThisPagePrompt": {
+      "description": "English: on this page",
+      "message": "tällä sivulla"
+   },
+   "popupBlockedOnThisPage_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Estetty tällä sivulla"
+   },
+   "popupBlockedRequestPrompt": {
+      "description": "English: requests blocked",
+      "message": "pyyntöjä estetty"
+   },
+   "popupBlockedSinceInstallPrompt": {
+      "description": "English: since install",
+      "message": "asennuksen jälkeen"
+   },
+   "popupBlockedSinceInstall_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Estetty asennuksen jälkeen"
+   },
+   "popupBlockedStats": {
+      "description": "Example: 15 (13%)",
+      "message": "{{count}} ({{percent}}%)"
+   },
+   "popupDomainsConnected_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Verkkotunnuksia yhdistetty"
+   },
+   "popupHitDomainCount": {
+      "description": "appears in popup",
+      "message": "{{count}}/{{total}}"
+   },
+   "popupHitDomainCountPrompt": {
+      "description": "appears in popup",
+      "message": "verkkotunnuksia yhdistetty"
+   },
+   "popupImageRulePrompt": {
+      "description": "",
+      "message": "kuvat"
+   },
+   "popupInlineScriptRulePrompt": {
+      "description": "",
+      "message": "upotetut komentosarjat"
+   },
+   "popupLessButton_v2": {
+      "description": "Label to be used to hide popup panel sections",
+      "message": "Vähemmän"
+   },
+   "popupMoreButton_v2": {
+      "description": "Label to be used to show popup panel sections",
+      "message": "Enemmän"
+   },
+   "popupNoCosmeticFiltering_v2": {
+      "description": "Caption for the no-cosmetic-filtering per-site switch",
+      "message": "Kosmeettinen suodatus"
+   },
+   "popupNoLargeMedia_v2": {
+      "description": "Caption for the no-large-media per-site switch",
+      "message": "Suuret mediaelementit"
+   },
+   "popupNoPopups_v2": {
+      "description": "Caption for the no-popups per-site switch",
+      "message": "Ponnahdukset"
+   },
+   "popupNoRemoteFonts_v2": {
+      "description": "Caption for the no-remote-fonts per-site switch",
+      "message": "Ulkoiset fontit"
+   },
+   "popupNoScripting_v2": {
+      "description": "Caption for the no-scripting per-site switch",
+      "message": "JavaScript"
+   },
+   "popupOr": {
+      "description": "English: or",
+      "message": "tai"
+   },
+   "popupPowerSwitchInfo": {
+      "description": "English: Click: disable/enable uBlock₀ for this site.\n\nCtrl+click: disable uBlock₀ only on this page.",
+      "message": "Painallus: poista uBlock₀ käytöstä/ota se käyttöön tällä sivustolla.\n\nCtrl+painallus: poista uBlock₀ käytöstä vain tällä sivulla."
+   },
+   "popupPowerSwitchInfo1": {
+      "description": "Message to be read by screen readers",
+      "message": "Poista uBlock₀ käytöstä tällä sivustolla painamalla tästä.\n\nCtrl+painallus poistaa uBlock₀:n käytöstä vain tällä sivulla."
+   },
+   "popupPowerSwitchInfo2": {
+      "description": "Message to be read by screen readers",
+      "message": "Ota uBlock₀ käyttöön tällä sivustolla painamalla tästä."
+   },
+   "popupTipDashboard": {
+      "description": "English: Click to open the dashboard",
+      "message": "Avaa hallintapaneeli"
+   },
+   "popupTipGlobalRules": {
+      "description": "Tooltip when hovering the top-most cell of the global-rules column.",
+      "message": "Yleiset säännöt: Sarake säännöille, joita käytetään kaikilla sivustoilla."
+   },
+   "popupTipLocalRules": {
+      "description": "Tooltip when hovering the top-most cell of the local-rules column.",
+      "message": "Paikalliset säännöt: Sarake säännöille, joita käytetään vain nykyisellä sivustolla.\nPaikalliset säännöt ohittavat yleiset säännöt."
+   },
+   "popupTipLog": {
+      "description": "Tooltip used for the logger icon in the panel",
+      "message": "Näytä pyyntöhistoria"
+   },
+   "popupTipNoCosmeticFiltering": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Muuta kosmeettisen suodatuksen tilaa tällä sivustolla"
+   },
+   "popupTipNoCosmeticFiltering1": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Poista kosmeettinen suodatus käytöstä tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoCosmeticFiltering2": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Ota kosmeettinen suodatus käyttöön tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoLargeMedia": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Muuta suurten mediaelementtien eston tilaa tällä sivustolla"
+   },
+   "popupTipNoLargeMedia1": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Estä suuret mediaelementit tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoLargeMedia2": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Salli suuret mediaelementit tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoPopups": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Muuta ponnahduseston tilaa tällä sivustolla"
+   },
+   "popupTipNoPopups1": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Estä kaikki ponnahdukset tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoPopups2": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Salli kaikki ponnahdukset tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoRemoteFonts": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Muuta ulkoisten fonttien lataustilaa tällä sivustolla"
+   },
+   "popupTipNoRemoteFonts1": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Estä ulkoisten fonttien lataus tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoRemoteFonts2": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Salli ulkoisten fonttien lataus tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoScripting1": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Estä JavaScript tällä sivustolla painamalla tästä"
+   },
+   "popupTipNoScripting2": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Salli JavaScript tällä sivustolla painamalla tästä"
+   },
+   "popupTipPicker": {
+      "description": "English: Enter element picker mode",
+      "message": "Avaa elementtien valintatila"
+   },
+   "popupTipReport": {
+      "description": "Tooltip used for the 'chat' icon in the panel",
+      "message": "Ilmoita ongelmasta tällä verkkosivustolla"
+   },
+   "popupTipRevertRules": {
+      "description": "Tooltip when hovering over the eraser in the dynamic filtering pane.",
+      "message": "Kumoa muutoksesi painamalla tästä."
+   },
+   "popupTipSaveRules": {
+      "description": "Tooltip when hovering over the padlock in the dynamic filtering pane.",
+      "message": "Tee muutoksistasi pysyviä painamalla tästä."
+   },
+   "popupTipZapper": {
+      "description": "Tooltip for the element-zapper icon in the popup panel",
+      "message": "Avaa elementtien piilotustila"
+   },
+   "popupVersion": {
+      "description": "Example of use: Version 1.26.4",
+      "message": "Versio"
+   },
+   "relaxBlockingMode": {
+      "description": "Label for keyboard shortcut used to relax blocking mode",
+      "message": "Kevennetty estotila"
+   },
+   "rulesCommit": {
+      "description": "This will persist temporary rules",
+      "message": "Pysyväksi"
+   },
+   "rulesDefaultFileName": {
+      "description": "default file name to use",
+      "message": "omat-dynaamiset-ublock-saannot_{{datetime}}.txt"
+   },
+   "rulesEdit": {
+      "description": "Will enable manual-edit mode (textarea)",
+      "message": "Muokkaa"
+   },
+   "rulesEditDiscard": {
+      "description": "Will discard manually-edited content and exit manual-edit mode",
+      "message": "Hylkää"
+   },
+   "rulesEditSave": {
+      "description": "Will save manually-edited content and exit manual-edit mode",
+      "message": "Tallenna"
+   },
+   "rulesExport": {
+      "description": "Button in the 'My rules' pane",
+      "message": "Vie tiedostoon…"
+   },
+   "rulesFormatHint": {
+      "description": "English: dynamic rule syntax and full documentation.",
+      "message": "Sääntösyntaksi: \u003Ccode>lähde kohde tyyppi toiminto\u003C/code> (\u003Ca href='https://github.com/gorhill/uBlock/wiki/Dynamic-filtering:-rule-syntax'>täysi ohje\u003C/a>)."
+   },
+   "rulesHint": {
+      "description": "English: List of your dynamic filtering rules.",
+      "message": "Listaus dynaamisista suodatussäännöistä."
+   },
+   "rulesImport": {
+      "description": "",
+      "message": "Tuo tiedostosta…"
+   },
+   "rulesPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Omat säännöt"
+   },
+   "rulesPermanentHeader": {
+      "description": "header",
+      "message": "Pysyvät säännöt"
+   },
+   "rulesRevert": {
+      "description": "This will remove all temporary rules",
+      "message": "Palauta"
+   },
+   "rulesSort": {
+      "description": "English: label for sort option.",
+      "message": "Järjestys:"
+   },
+   "rulesSortByDestination": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Kohde"
+   },
+   "rulesSortBySource": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Lähde"
+   },
+   "rulesSortByType": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Säännön tyyppi"
+   },
+   "rulesTemporaryHeader": {
+      "description": "header",
+      "message": "Tilapäiset säännöt"
+   },
+   "settingPerSiteSwitchGroup": {
+      "description": "",
+      "message": "Oletuskäytännöt"
+   },
+   "settingPerSiteSwitchGroupSynopsis": {
+      "description": "",
+      "message": "Nämä oletuskäytännöt voidaan ohittaa sivustokohtaisesti"
+   },
+   "settingsAdvanced": {
+      "description": "Section for controlling advanced-user settings",
+      "message": "Lisäasetukset"
+   },
+   "settingsAdvancedSynopsis": {
+      "description": "Description of section controlling advanced-user settings",
+      "message": "Teknisille käyttäjille sopivat ominaisuudet"
+   },
+   "settingsAdvancedUserPrompt": {
+      "description": "Checkbox to let user access advanced, technical features",
+      "message": "Olen edistynyt käyttäjä"
+   },
+   "settingsAdvancedUserSettings": {
+      "description": "For the tooltip of a link which gives access to advanced settings",
+      "message": "Lisäasetukset"
+   },
+   "settingsAppearance": {
+      "description": "Section for controlling user interface appearance",
+      "message": "Ulkoasu"
+   },
+   "settingsCloudStorageEnabledPrompt": {
+      "description": "",
+      "message": "Käytä pilvitallennusta"
+   },
+   "settingsCollapseBlockedPrompt": {
+      "description": "English: Hide placeholders of blocked elements",
+      "message": "Piilota estettyjen elementtien paikkamerkit"
+   },
+   "settingsColorBlindPrompt": {
+      "description": "English: Color-blind friendly",
+      "message": "Värisokeille sopiva tila"
+   },
+   "settingsContextMenuPrompt": {
+      "description": "English: Make use of context menu where appropriate",
+      "message": "Käytä kontekstivalikkoa tarvittaessa"
+   },
+   "settingsHyperlinkAuditingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Älä salli hyperlinkkien käytönseurantaa"
+   },
+   "settingsIconBadgePrompt": {
+      "description": "English: Show the number of blocked requests on the icon",
+      "message": "Näytä estettyjen pyyntöjen määrä"
+   },
+   "settingsLastBackupPrompt": {
+      "description": "English: Last backup:",
+      "message": "Viimeisin varmuuskopio:"
+   },
+   "settingsLastRestorePrompt": {
+      "description": "English: Last restore:",
+      "message": "Viimeisin palautus:"
+   },
+   "settingsNoCSPReportsPrompt": {
+      "description": "background information: https://github.com/gorhill/uBlock/issues/3150",
+      "message": "Estä CSP-raportit"
+   },
+   "settingsNoCosmeticFilteringPrompt": {
+      "description": "",
+      "message": "Älä käytä kosmeetista suodatusta"
+   },
+   "settingsNoLargeMediaPrompt": {
+      "description": "",
+      "message": "Estä mediaelementit, jotka ovat suurempia kuin {{input:number}} kt"
+   },
+   "settingsNoRemoteFontsPrompt": {
+      "description": "",
+      "message": "Estä ulkoisten fonttien lataus"
+   },
+   "settingsNoScriptingPrompt": {
+      "description": "The default state for the per-site no-scripting switch",
+      "message": "Poista JavaScript käytöstä"
+   },
+   "settingsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Asetukset"
+   },
+   "settingsPrefetchingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Älä käytä esihakua (estää kaikki yhteydet estetyiltä verkkopyynnöiltä)"
+   },
+   "settingsThemeAccent0Label": {
+      "description": "Label for checkbox to pick an accent color",
+      "message": "Oma korostusväri"
+   },
+   "settingsThemeLabel": {
+      "description": "Label for checkbox to enable a custom dark theme",
+      "message": "Teema"
+   },
+   "settingsTooltipsPrompt": {
+      "description": "A checkbox in the Settings pane",
+      "message": "Älä näytä työkaluvihjeitä"
+   },
+   "settingsUncloakCnamePrompt": {
+      "description": "background information: https://github.com/uBlockOrigin/uBlock-issues/issues/1513",
+      "message": "Paljasta kanoniset nimet (CNAME-uncloaking)"
+   },
+   "settingsWebRTCIPAddressHiddenPrompt": {
+      "description": "English: ",
+      "message": "Estä paikallisen IP-osoitteen vuoto WebRTC:n välityksellä"
+   },
+   "shortcutCapturePlaceholder": {
+      "description": "Placeholder string for input field used to capture a keyboard shortcut",
+      "message": "Syötä näppäinyhdistelmä"
+   },
+   "shortcutsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Pikanäppäimet"
+   },
+   "showDashboardButton": {
+      "description": "Firefox/Fennec-specific: Show Dashboard",
+      "message": "Näytä Hallintapaneeli"
+   },
+   "showNetworkLogButton": {
+      "description": "Firefox/Fennec-specific: Show Logger",
+      "message": "Näytä pyyntöhistoria"
+   },
+   "statsPageName": {
+      "description": "Title for the logger window",
+      "message": "uBlock₀ — Pyyntöhistoria"
+   },
+   "storageUsed": {
+      "description": " In Setting pane, renders as (example): Storage used: 13.2 MB",
+      "message": "Tallennustilan käyttö: {{value}} {{unit}}"
+   },
+   "subscribeButton": {
+      "description": "For the button used to subscribe to a filter list",
+      "message": "Tilaa"
+   },
+   "subscriberConfirm": {
+      "description": "No longer used",
+      "message": "Lisätäänkö seuraava URL-osoite omiin suodatinlistoihisi?\n\nOtsikko: \"{{title}}\"\nURL: {{url}}"
+   },
+   "supportFindSpecificButton": {
+      "description": "A clickable link in the filter issue reporter section",
+      "message": "Etsi samankaltaisia ilmoituksia"
+   },
+   "supportOpenButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Avaa"
+   },
+   "supportPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Tuki"
+   },
+   "supportRedact": {
+      "description": "Text for 'Redact' button",
+      "message": "Älä sisällytä"
+   },
+   "supportReportSpecificButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Luo uusi ilmoitus"
+   },
+   "supportS1H": {
+      "description": "Header of 'Documentation' section in Support pane",
+      "message": "Ohje"
+   },
+   "supportS1P1": {
+      "description": "First paragraph of 'Documentation' section in Support pane",
+      "message": "Lue ohjeet sijainnista \u003Ccode>uBlock/wiki\u003C/code> tutustuaksesi uBlock Originin kaikkiin ominaisuuksiin."
+   },
+   "supportS2H": {
+      "description": "Header of 'Questions and support' section in Support pane",
+      "message": "Kysymykset ja tuki"
+   },
+   "supportS2P1": {
+      "description": "First paragraph of 'Questions and support' section in Support pane",
+      "message": "Vastauksia kysymyksiin ja muuta tukea on saatavilla \u003Ccode>/r/uBlockOrigin\u003C/code>-subredditistä."
+   },
+   "supportS3H": {
+      "description": "Header of 'Filter issues' section in Support pane",
+      "message": "Suodatusongelma/sivusto on hajonnut"
+   },
+   "supportS3P1": {
+      "description": "First paragraph of 'Filter issues' section in Support pane",
+      "message": "Ilmoita ongelmista suodatuksessa tietyillä sivustoilla \u003Cspan data-url=\"https://github.com/uBlockOrigin/uAssets/issues?q=is%3Aissue\">\u003Ccode>uBlockOrigin/uAssets\u003C/code>-ongelmaseurannassa\u003C/span>. \u003Cu>Vaatii GitHub-tilin\u003C/u>."
+   },
+   "supportS3P2": {
+      "description": "Second paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Tärkeää:\u003C/b> Vältä muiden vastaavien estotyökalujen samanaikaista käyttöä uBlock Originin kanssa, koska se voi aiheuttaa ongelmia joillakin sivustoilla."
+   },
+   "supportS3P3": {
+      "description": "Third paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Vinkkejä:\u003C/b> Varmista, että suodatinlistasi ovat ajan tasalla. \u003Cspan data-url=\"logger-ui.html#_\">Pyyntöhistoria\u003C/span> on pääasiallinen työkalu suodattimiin liittyvien ongelmien selvityksessä."
+   },
+   "supportS4H": {
+      "description": "Header of 'Bug report' section in Support pane",
+      "message": "Virheilmoitus"
+   },
+   "supportS4P1": {
+      "description": "First paragraph of 'Bug report' section in Support pane",
+      "message": "Ilmoita uBlock Origin -laajennuksen ongelmista \u003Cspan data-url=\"https://github.com/uBlockOrigin/uBlock-issues/issues?q=is%3Aissue\">\u003Ccode>uBlockOrigin/uBlock\u003C/code>-ongelmaseurannanssa\u003C/span>. \u003Cu>Vaatii GitHub-tilin\u003C/u>."
+   },
+   "supportS5H": {
+      "description": "Header of 'Troubleshooting Information' section in Support pane",
+      "message": "Vianmääritystiedot"
+   },
+   "supportS5P1": {
+      "description": "First paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "Alla on teknisiä tietoja, joista voi olla hyötyä vapaaehtoisille, jotka pyrkivät auttamaan ongelmasi ratkaisussa."
+   },
+   "supportS5P2": {
+      "description": "Second paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "\u003Cb>Tärkeää:\u003C/b> Mahdolliset yksityiset ja arkaluonteiset tiedot poistetaan oletusarvoisesti. Tietojen puuttuminen saattaa vaikeuttaa ongelman ratkaisemista."
+   },
+   "supportS6Checkbox1": {
+      "description": "A checkbox to use for NSFW sites",
+      "message": "Luokittele verkkosivu ns. työpaikalle sopimattomaksi, \"NSFW\" (\u003Ca href=\"https://wikipedia.org/wiki/Not_safe_for_work\">\"Not Safe For Work\"\u003C/a>)"
+   },
+   "supportS6H": {
+      "description": "Header of 'Report a filter issue' section in Support pane",
+      "message": "Ilmoita suodatinongelmasta"
+   },
+   "supportS6P1S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Välttääksesi vapaaehtoisten kuormittamisen ylimääräisillä ilmoituksilla, tarkista ensin onko ongelmasta jo ilmoitettu."
+   },
+   "supportS6P2S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Suodatinlistoja päivitetään päivittäin. Varmista, ettei ongelmaasi ole jo korjattu listojen uusissa versioissa."
+   },
+   "supportS6P2S2": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Vahvista ongelman edelleen esiintyvän kyseisellä verkkosivulla."
+   },
+   "supportS6Select1": {
+      "description": "Label for widget to select type of issue",
+      "message": "Verkkosivu…"
+   },
+   "supportS6Select1Option0": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "-- Valitse aihe --"
+   },
+   "supportS6Select1Option1": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Näyttää mainoksia tai niiden jäänteitä"
+   },
+   "supportS6Select1Option2": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Sisältää peiteruutuja tai muita ärsykkeitä"
+   },
+   "supportS6Select1Option3": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Havaitsee uBlock Originin"
+   },
+   "supportS6Select1Option4": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Sisältää tietosuojaan liittyviä ongelmia"
+   },
+   "supportS6Select1Option5": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Hajoaa, kun uBlock Origin on käytössä"
+   },
+   "supportS6Select1Option6": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Avaa ei-toivottuja välilehtiä tai ikkunoita"
+   },
+   "supportS6URL": {
+      "description": "Label for the URL of the page",
+      "message": "Verkkosivun osoite:"
+   },
+   "supportUnredact": {
+      "description": "Text for 'Unredact' button",
+      "message": "Sisällytä"
+   },
+   "toggleCosmeticFiltering": {
+      "description": "Label for keyboard shortcut used to toggle cosmetic filtering",
+      "message": "Kytke kosmeettinen suodatus"
+   },
+   "toggleJavascript": {
+      "description": "Label for keyboard shortcut used to toggle no-scripting switch",
+      "message": "Kytke JavaScript"
+   },
+   "unprocessedRequestTooltip": {
+      "description": "A warning which will appear in the popup panel if needed",
+      "message": "Suodatus ei onnistunut kunnolla selaimen käynnistyessä. Päivitä sivu varmistaaksesi kunnollisen suodatuksen."
+   },
+   "whitelistApply": {
+      "description": "English: Apply changes",
+      "message": "Vahvista muutokset"
+   },
+   "whitelistExport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "Vie…"
+   },
+   "whitelistExportFilename": {
+      "description": "The default filename to use for import/export purpose",
+      "message": "omat-luotetut-ublock-sivustot_{{datetime}}.txt"
+   },
+   "whitelistImport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "Tuo ja lisää…"
+   },
+   "whitelistPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Luotetut sivustot"
+   },
+   "whitelistPrompt": {
+      "description": "A concise description of the 'Trusted sites' pane.",
+      "message": "Luotettu sivusto -luokitukset määrittelevät millä sivuilla uBlock Originia ei käytetä. Yksi osoite riviä kohden."
+   }
+}

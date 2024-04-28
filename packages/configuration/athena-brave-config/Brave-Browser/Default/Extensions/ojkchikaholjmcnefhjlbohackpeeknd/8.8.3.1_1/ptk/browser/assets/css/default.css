@@ -1,0 +1,929 @@
+@charset "UTF-8";
+/* Some mixins */
+
+/* Basic style for some HTML elements */
+
+html {
+    scrollbar-width: none;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    min-width: 800px;
+    max-width: 100%;
+    margin-top: 4px;
+}
+
+body:before {
+    content: ' ';
+    background-image: url(../../assets/images/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+    z-index: -1;
+    opacity: 0.02;
+}
+
+footer.center.aligned p {
+    text-align: center;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+ul, ol {
+    padding-left: 2rem;
+}
+
+p {
+    line-height: 1.5rem;
+}
+
+[lang='cn'] p {
+    text-align: justify;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-bottom: 3px double #EEE;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+hr.plain {
+    border-bottom: 1px solid #DDD;
+}
+
+/* blockquote styles comes from bootstrap */
+
+blockquote {
+    padding: 0.6rem 1rem 0.4rem;
+    margin: 0 0 0.8rem;
+    border-left: 3px solid #eee;
+}
+
+blockquote p {
+    line-height: 1.2rem;
+    margin-bottom: 0.3rem;
+    text-align: start !important;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+blockquote ul:last-child, blockquote ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote footer, blockquote small, blockquote .small {
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 80%;
+    line-height: 1.42857;
+    color: #999;
+    padding: 0;
+}
+
+blockquote footer:before, blockquote small:before, blockquote .small:before {
+    content: "— ";
+}
+
+blockquote cite:before {
+    content: "«";
+}
+
+blockquote cite:after {
+    content: "»";
+}
+
+img {
+    width: 100%;
+}
+
+img.logo {
+    width: 200px;
+    margin: 3rem 0 1rem;
+}
+
+nav.ui.menu {
+    border-radius: 0;
+}
+
+nav.ui.menu.ui.container>a.item:first-child {
+    margin-left: -1.14286em;
+}
+
+nav.ui.menu.ui.container>.right.menu>a.item:last-child {
+    padding-right: 0;
+}
+
+/* Styles for semantic-ui elements */
+
+.ui.alternative.segment {
+    background: #FFFFFF;
+}
+
+.ui.vertical.stripe.segment {
+    padding: 4rem 0;
+}
+
+.ui.vertical.segment {
+    padding: 2rem 0;
+}
+
+.ui.menu {
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+    -moz-font-feature-settings: "smcp" 0, "onum" 0;
+    -ms-font-feature-settings: "smcp" 0, "onum" 0;
+    -o-font-feature-settings: "smcp" 0, "onum" 0;
+    -webkit-font-feature-settings: "smcp" 0, "onum" 0;
+    font-feature-settings: "smcp" 0, "onum" 0;
+}
+
+.ui.menu form {
+    font-size: 14px;
+}
+
+.ui.menu input {
+    -moz-font-feature-settings: "smcp" 0, "onum" 0;
+    -ms-font-feature-settings: "smcp" 0, "onum" 0;
+    -o-font-feature-settings: "smcp" 0, "onum" 0;
+    -webkit-font-feature-settings: "smcp" 0, "onum" 0;
+    font-feature-settings: "smcp" 0, "onum" 0;
+    font-size: 14px;
+}
+
+.ui.menu>.logo {
+    color: #ffffff;
+    min-width: 250px;
+    margin: 10px !important;
+}
+
+#ptkicon {
+    width: 32px;
+    height: 32px;
+    margin: 2px;
+}
+
+.ui.progress {
+    margin: 1rem 0;
+}
+
+.ui.progress .ui.label {
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+}
+
+.ui.article.segment {
+    font-feature-settings: "onum" 0;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.65);
+    margin: 1.5rem 0 2.5rem 0;
+    padding-top: 2rem;
+}
+
+.ui.article>.ui.grid>.row.article-head {
+    padding-bottom: 1rem;
+}
+
+.ui.article>.ui.grid>.row.article-body {
+    padding-top: 0;
+}
+
+.ui.article>.ui.grid>.row.article-body>aside {
+    display: table;
+}
+
+.ui.article>.ui.grid>.row.article-body>aside>.ui.header {
+    margin-bottom: 0.2rem;
+}
+
+.ui.article>.ui.grid>.row.article-body>aside>.ui.list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ui.article>.ui.grid>.row.article-body .ui.header a {
+    color: inherit;
+}
+
+/* Position, width, margin modifications for right rail */
+
+.right.rail .header {
+    margin-top: 3em !important;
+}
+
+.ui.demo.container .tab .example {
+    margin: 2em 0em;
+    padding: 2em 0em;
+    position: relative;
+}
+
+.ui.demo.container .tab .example:last-child:not(.position) {
+    padding-bottom: auto;
+}
+
+.ui.demo.container.basic.segment {
+    padding-left: 0em;
+}
+
+/* Width and position on <- 768 - 992 - 1200 -> px screens */
+
+@media only screen and (min-width: 1200px) {
+    .right.rail {
+        left: 827px !important;
+    }
+    .ui.demo.container {
+        margin-left: calc((100% - 1127px)/2) !important;
+        margin-right: 387px !important;
+    }
+    .ui.demo.container>.tab {
+        width: 827px;
+    }
+    #content .vertical.segment:not(.center) .container {
+        width: 827px;
+        margin-left: calc((100% - 1127px)/2) !important;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .right.rail {
+        left: 732px !important;
+        width: 200px !important;
+    }
+    .ui.demo.container {
+        margin-left: calc((100% - 933px)/2) !important;
+        margin-right: 250px !important;
+    }
+    .ui.demo.container>.tab {
+        width: 732px;
+    }
+    #content .vertical.segment:not(.center) .container {
+        width: 732px;
+        margin-left: calc((100% - 933px)/2) !important;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .right.rail {
+        left: 550px !important;
+        width: 160px !important;
+    }
+    .ui.demo.container {
+        margin-left: calc((100% - 723px)/2) !important;
+        margin-right: 250 !important;
+    }
+    .ui.demo.container>.tab {
+        width: 550px;
+    }
+    #content .vertical.segment:not(.center) .container {
+        width: 550px;
+        margin-left: calc((100% - 723px)/2) !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .right.rail {
+        display: none;
+    }
+    .ui.demo.container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .ui.demo.container>.tab {
+        width: auto;
+    }
+    #content .vertical.segment .container {
+        width: auto;
+    }
+}
+
+/* Enable smallcaps and oldstyle-number OpenType features for English */
+
+[lang='en'] {
+    -moz-font-feature-settings: "smcp" 0, "onum" 1;
+    -ms-font-feature-settings: "smcp" 0, "onum" 1;
+    -o-font-feature-settings: "smcp" 0, "onum" 1;
+    -webkit-font-feature-settings: "smcp" 0, "onum" 1;
+    font-feature-settings: "smcp" 0, "onum" 1;
+}
+
+/* Disable smallcaps and oldstyle-number OpenType features for Chinese */
+
+[lang='cn'] {
+    -moz-font-feature-settings: "smcp" 0, "onum" 0;
+    -ms-font-feature-settings: "smcp" 0, "onum" 0;
+    -o-font-feature-settings: "smcp" 0, "onum" 0;
+    -webkit-font-feature-settings: "smcp" 0, "onum" 0;
+    font-feature-settings: "smcp" 0, "onum" 0;
+}
+
+/* TeX and LaTeX Logo in HTML */
+
+.tex sub {
+    text-transform: uppercase;
+    top: auto;
+    bottom: auto;
+}
+
+.latex sub, .latex sup {
+    text-transform: uppercase;
+    top: auto;
+    bottom: auto;
+}
+
+.tex sub, .latex sub {
+    vertical-align: -0.5ex;
+    margin-left: -0.1667rem;
+    margin-right: -0.125rem;
+}
+
+.tex, .latex, .tex sub, .latex sub {
+    font-size: 1rem;
+}
+
+/* disqus comment div */
+
+#disqus_thread {
+    margin-top: 2rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .desktop-only {
+        display: none;
+    }
+    .ui.menu .item.desktop-only {
+        display: none;
+    }
+    .ui[class*="padded"].segment {
+        padding: 1.5rem;
+    }
+    .ui.grid .ui.stackable.grid {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+.ui.massive.header {
+    font-size: 4em;
+}
+
+.ui.fixed.inverted.borderless.menu a.header.item {
+    margin-left: -1.125em;
+}
+
+.ui.secondary.compact.menu#badges .item {
+    margin: 0;
+}
+
+.ui.jumbotron.message {
+    padding: 6em 4em;
+    box-shadow: none;
+    background-color: #eeeeee;
+}
+
+.ui.jumbotron.message p {
+    font-size: 1.5em;
+    font-weight: 200;
+}
+
+.ui.dividing.header {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+#pagecontent {
+    min-height: 595px;
+    padding: 35px 2px 0px 2px;
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0px !important;
+    /* remove scrollbar space */
+    height: 0px !important;
+    background: transparent !important;
+    /* optional: just make scrollbar invisible */
+}
+
+
+
+.transparent {
+    background-color: transparent !important;
+}
+
+.noborder {
+    border: 0px !important;
+    box-shadow: none !important;
+}
+
+.absolute {
+    position: absolute !important;
+    top: 89px;
+    width: 100%;
+    padding-right: 8px;
+}
+
+._segment {
+    padding-left: 0px;
+    margin-right: 10px;
+}
+
+.icon_settings {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.icon_backsettings {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: black;
+}
+
+.dashboard {
+    margin: 0px !important;
+    padding: 0px !important;
+    border-bottom: none;
+}
+
+.fullwidth {
+    width: 100% !important;
+}
+
+.scroll ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0px;
+    height: 0px;
+}
+
+#pagecontent .item.request_tab {
+    width: 100px;
+    height: 35px;
+}
+
+#pagecontent .window.close.icon {
+    top: 1px;
+    right: -7px;
+    padding: 0px;
+    margin: -10px;
+    position: relative;
+}
+
+#pagecontent .new_request_btn {
+    position: fixed;
+    right: 114px;
+    margin: 0px;
+}
+
+#pagecontent .export_har_btn {
+    position: fixed;
+    right: 2px;
+    margin: 0px;
+}
+
+.expandbtn {
+    width: 10px !important;
+    cursor: pointer;
+}
+
+#request_details {
+    top: 10%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    right: 15%;
+}
+
+/* The Close Button */
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.CodeMirror {
+    border: 1px solid #eee;
+    height: fit-content;
+}
+
+.CodeMirror-scroll {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.content.container {
+    min-height: 500px;
+    position: relative;
+}
+
+.content.container .menu {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding-left: 10px
+}
+
+#mainMenuWrapper {
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+    background-color: white;
+    width: 100%;
+}
+
+#mainMenuWrapper .borderless.menu {
+    z-index: 10;
+}
+
+#mainMenu {
+    width: 100%;
+}
+
+#mainMenu > .item{
+   padding: 10px;
+}
+
+.request_methods .menu.transition {
+    min-height: 255px;
+}
+
+.menu.dashboard .transition {
+    min-width: 300px !important;
+}
+
+.menu.top_right_icon.transition {
+    min-width: 150px !important;
+}
+
+.menu.dashboard .item {
+    height: 45px !important;
+}
+
+.schemes_dropdown {
+    width: 100% !important;
+}
+
+.schemes_dropdown .menu.transition {
+    position: absolute;
+    top: 34px;
+    height: 90px;
+    padding-left: 0px;
+}
+
+.segment.request {
+    width: 100% !important;
+    padding-bottom: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 100%;
+    margin: 0px !important;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+#request_form .prompt {
+    position: absolute !important;
+    z-index: 100;
+    top: 25px;
+    left: 0px;
+    min-width: 150px
+}
+
+#macro_form .prompt {
+    position: absolute !important;
+    z-index: 100;
+    top: 25px;
+    left: -2px;
+    min-width: 150px
+}
+
+#traffic_form .prompt {
+    position: absolute !important;
+    z-index: 100;
+    top: 25px;
+    left: -2px;
+    min-width: 150px
+}
+
+#swagger_form .prompt {
+    position: absolute !important;
+    z-index: 1;
+    top: 25px;
+    left: -1px;
+    min-width: 150px
+}
+
+#swagger_form .swagger_host .prompt {
+    top: 2px;
+    left: -160px;
+    width: 100px;
+}
+
+#swagger_form .swagger_schemes .prompt {
+    top: 2px;
+    left: -160px;
+    width: 100px;
+}
+
+#portscanner_form .prompt {
+    position: absolute !important;
+    z-index: 100;
+    top: 25px;
+    left: 0px;
+    min-width: 150px
+}
+
+#macroGif {
+    position: absolute;
+    right: 0px;
+    top: -23px;
+}
+
+#trafficGif {
+    position: absolute;
+    right: 0px;
+    top: -23px;
+}
+
+#swaggerGif {
+    position: absolute;
+    right: 14px;
+    top: -8px;
+}
+
+.infoSigns {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    z-index: 10;
+}
+
+.iframeSign {
+    display: none !important;
+    z-index: 100;
+    width: 85px
+}
+
+.savedMacro {
+    display: none !important;
+    z-index: 100;
+    width: 85px
+}
+
+.exportType {
+    display: none !important;
+    z-index: 100;
+    width: 85px
+}
+
+.display {
+    display: block !important;
+}
+
+.harinputfile {
+    margin-top: -32px !important;
+    margin-right: 20px !important;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.short_message_text {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-top: 10px;
+    padding-left: 5px;
+    margin-left: 10px;
+
+}
+
+.frameIP_s {
+    display: block;
+    width: 900px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.harviewerDropdown {
+    width: 99%;
+    margin: 3px;
+}
+
+.dataTables_wrapper {
+    font-size: 13px
+}
+
+.form.controls {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.form.controls .fields.top {
+    margin-bottom: 2px
+}
+
+.form.controls .fields.main {
+    margin-bottom: 0px;
+    height: 100%;
+    overflow: scroll;
+}
+
+.form.controls .leftside {
+    padding-right: 5px;
+    position: relative;
+    height: 99%;
+}
+
+.form.controls .rightside {
+    padding-left: 0px;
+    min-width: 250px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+}
+
+.form.controls .rightside .inline.fields {
+    margin-bottom: 3px;
+}
+
+.form.controls .rightside .bottommenu {
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+    right: 5px;
+    padding-right: 13px;
+    padding-left: 13px;
+}
+
+.form.controls .rightside .menu button {
+    margin: 0px;
+}
+
+.form.controls .rightside .menu .two.fields {
+    margin-bottom: 2px;
+}
+
+#svgElement {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+#attacks_info::-webkit-scrollbar {
+    display: none;
+}
+
+#ptk_popup_dialog {
+    display: none;
+    height: 85%;
+}
+
+.rattacker.field {
+    height: 100vh;
+    overflow: scroll;
+    position: relative;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+}
+
+
+.decoderDecodeBtn {
+    top: 1px;
+    right: -2px;
+    z-index: 1;
+}
+
+.decoderEncodeBtn {
+    top: 1px;
+    left: 1px;
+    z-index: 1;
+}
+
+.buttons .oneway .button{
+    min-width: 90px;
+}
+
+.buttons .twoway .button{
+    min-width: 70px;
+}
+
+.notifications .menu.left.transition.visible{
+    margin-top: 5px;
+}
+
+.cookie_column_first{
+    width: 8% !important;
+    min-width: 70px;
+}
+.cookie_column_second{
+    width: 48% !important;
+}
+.cookie_column_third{
+    width: 44% !important;
+}
+
+.proxy_column_1{
+    width: 55px !important;
+}
+.proxy_column_2{
+    min-width: 100px !important;
+}
+.proxy_column_3{
+    min-width: 250px !important;
+}
+.proxy_column_4{
+    width: 90% !important;
+}
+
+.info_tab{
+    height: 45px !important;
+    border: none !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    margin-right: 0px !important; 
+}
+
+.info_tab .short_message_text{
+    padding-top: 9px !important;
+} 
+.info_tab .icons{
+    margin-right: 0px !important; 
+} 
+
+.info_tab .buttons{
+    padding-top: 4px !important; 
+    margin-right: 0px !important; 
+} 
+.proxy_child_row{
+    transform: rotateX(180deg);
+}
+.proxy_child_row::-webkit-scrollbar {
+    height: 8px !important;
+    /* remove scrollbar space */
+    background: transparent !important;
+    
+    /* optional: just make scrollbar invisible */
+}
+
+.scan_info{
+    float: left;
+    position: absolute !important;
+    top: -8px;
+    width: calc((100% - 270px));
+    left: 2px;
+}
+
+.alg_input.textarea::-webkit-scrollbar {
+    scrollbar-width: none !important;
+    width: 6px !important;
+    background: transparent !important;
+}
+
+.no-webkit-scrollbar::-webkit-scrollbar {
+    scrollbar-width: none !important;
+    width: 0px !important;
+    background: transparent !important;
+}
+
+

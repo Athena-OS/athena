@@ -1,0 +1,1306 @@
+{
+   "1pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Ilapat ang mga pagbabago"
+   },
+   "1pEnableMyFiltersLabel": {
+      "description": "Label for the checkbox use to enable/disable 'My filters' list",
+      "message": "Enable my custom filters"
+   },
+   "1pExport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "I-export"
+   },
+   "1pExportFilename": {
+      "description": "English: my-ublock-static-filters_{{datetime}}.txt",
+      "message": "mga-static-filter-ko-sa-ublock_{{datetime}}.txt"
+   },
+   "1pImport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "I-import at idagdag"
+   },
+   "1pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Mga filter ko"
+   },
+   "1pTrustMyFiltersLabel": {
+      "description": "Label for the checkbox use to trust the content of 'My filters' list",
+      "message": "Allow custom filters requiring trust"
+   },
+   "1pTrustWarning": {
+      "description": "Warning against copy-pasting filters from random sources",
+      "message": "Huwag magdagdag ng pangsala mula sa mga hindi katiwa-tiwalang pinagmulan."
+   },
+   "3pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Ilapat ang mga pagbabago"
+   },
+   "3pAutoUpdatePrompt1": {
+      "description": "A checkbox in the _3rd-party filters_ pane",
+      "message": "Awtomatikong i-update ang listahan ng mga filter"
+   },
+   "3pExternalListObsolete": {
+      "description": "used as a tooltip for the out-of-date icon beside a list",
+      "message": "Luma na"
+   },
+   "3pExternalListsHint": {
+      "description": "Short information about how to use the textarea to import external filter lists by URL",
+      "message": "Isang URL kada linya. Hindi papansinin ang mga invalid na URL."
+   },
+   "3pGroupAds": {
+      "description": "Filter lists section name",
+      "message": "Mga ad"
+   },
+   "3pGroupAnnoyances": {
+      "description": "Filter lists section name",
+      "message": "Mga nakakaabalang bagay"
+   },
+   "3pGroupCookies": {
+      "description": "Filter lists section name",
+      "message": "Cookie notices"
+   },
+   "3pGroupCustom": {
+      "description": "Filter lists section name",
+      "message": "Ipinasadya"
+   },
+   "3pGroupDefault": {
+      "description": "Filter lists section name",
+      "message": "Built-in"
+   },
+   "3pGroupMalware": {
+      "description": "Filter lists section name",
+      "message": "Mga domain na may malware"
+   },
+   "3pGroupMultipurpose": {
+      "description": "Filter lists section name",
+      "message": "Maraming-mapaggagamitan"
+   },
+   "3pGroupPrivacy": {
+      "description": "Filter lists section name",
+      "message": "Pagkapribado"
+   },
+   "3pGroupRegions": {
+      "description": "Filter lists section name",
+      "message": "Mga rehiyon o wika"
+   },
+   "3pGroupSocial": {
+      "description": "Filter lists section name",
+      "message": "Social widgets"
+   },
+   "3pIgnoreGenericCosmeticFilters": {
+      "description": "This will cause uBO to ignore all generic cosmetic filters.",
+      "message": "Huwag pansinin ang mga generikong kosmetikong filter"
+   },
+   "3pIgnoreGenericCosmeticFiltersInfo": {
+      "description": "Describes the purpose of the 'Ignore generic cosmetic filters' feature.",
+      "message": "Ang generikong kosmetikong filter ay ang mga kosmetikong filter na para sa lahat ng mga website. Nakakatipid ito ng memorya at CPU sapagkat ihihinto ang pagproseso sa mga generikong kosmetikong filter.\n\nMainam na gamitin ang opsyong ito sa mga device na hindi ganoon kalakas."
+   },
+   "3pImport": {
+      "description": "The label for the checkbox used to import external filter lists",
+      "message": "Mag-import…"
+   },
+   "3pLastUpdate": {
+      "description": "used as a tooltip for the clock icon beside a list",
+      "message": "Huling update: {{ago}}.\nPindutin upang pilitin ang pag-update."
+   },
+   "3pListsOfBlockedHostsHeader": {
+      "description": "English: Lists of blocked hosts",
+      "message": "Listahan ng mga naharang na host"
+   },
+   "3pListsOfBlockedHostsPerListStats": {
+      "description": "Appears aside each filter list in the _3rd-party filters_ pane",
+      "message": "{{used}} ginagamit sa {{total}}"
+   },
+   "3pListsOfBlockedHostsPrompt": {
+      "description": "Appears at the top of the _3rd-party filters_ pane",
+      "message": "{{netFilterCount}} (na) mga network filter ＋ {{cosmeticFilterCount}} (na) mga kosmetikong filter mula sa:"
+   },
+   "3pNetworkError": {
+      "description": "used as a tooltip for error icon beside a list",
+      "message": "Hindi na-update ang resource dahil sa isang network error."
+   },
+   "3pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Listahan ng mga filter"
+   },
+   "3pParseAllABPHideFiltersInfo": {
+      "description": "Describes the purpose of the 'Parse and enforce cosmetic filters' feature.",
+      "message": "Hinaharang ng kosmetikong filter ang mga elemento sa web page na nakakaabala at hindi maharang ng mga pangharang na nakabase sa mga hiling sa network."
+   },
+   "3pParseAllABPHideFiltersPrompt1": {
+      "description": "English: Parse and enforce Adblock+ element hiding filters.",
+      "message": "Iproseso at ipatupad ang mga kosmetikong filter"
+   },
+   "3pPurgeAll": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "Tanggalin lahat ng mga cache"
+   },
+   "3pSuspendUntilListsAreLoaded": {
+      "description": "A checkbox in the 'Filter lists' pane",
+      "message": "Itigil ang lahat ng mga aktibidad sa network hanggang sa ma-load ang lahat ng mga listahan ng mga filter"
+   },
+   "3pUpdateNow": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "I-update ngayon"
+   },
+   "3pUpdating": {
+      "description": "used as a tooltip for the spinner icon beside a list",
+      "message": "Ina-update…"
+   },
+   "3pViewContent": {
+      "description": "used as a tooltip for eye icon beside a list",
+      "message": "tingnan ang nilalaman"
+   },
+   "GB": {
+      "description": "short for 'gigabytes'",
+      "message": "GB"
+   },
+   "KB": {
+      "description": "short for 'kilobytes'",
+      "message": "KB"
+   },
+   "MB": {
+      "description": "short for 'megabytes'",
+      "message": "MB"
+   },
+   "aboutBackupDataButton": {
+      "description": "Text for button to create a backup of all settings",
+      "message": "I-back up sa file…"
+   },
+   "aboutBackupFilename": {
+      "description": "English: my-ublock-backup_{{datetime}}.txt",
+      "message": "ublock-backup-ko_{{datetime}}.txt"
+   },
+   "aboutCDNs": {
+      "description": "Shown in the About pane",
+      "message": "Naka-host sa mga \u003Ca href=\"https://wikipedia.org/wiki/Content_delivery_network\">CDN\u003C/a> na ito ang mga listahan ng mga filter ng uBO:"
+   },
+   "aboutCDNsInfo": {
+      "description": "Shown in the About pane",
+      "message": "Random na pumipili ng CDN ang uBO kung may listahan ng mga filter na kailangang i-update"
+   },
+   "aboutChangelog": {
+      "description": "",
+      "message": "Talaan ng mga pagbabago"
+   },
+   "aboutCode": {
+      "description": "English: Source code (GPLv3)",
+      "message": "Source code (GPLv3)"
+   },
+   "aboutContributors": {
+      "description": "English: Contributors",
+      "message": "Mga nag-ambag"
+   },
+   "aboutDependencies": {
+      "description": "Shown in the About pane",
+      "message": "Mga panlabas na dependency (angkop sa GPLv3)"
+   },
+   "aboutFilterLists": {
+      "description": "Link text to uBO's own filter lists repo",
+      "message": "Listahan ng mga filter"
+   },
+   "aboutPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Tungkol"
+   },
+   "aboutPrivacyPolicy": {
+      "description": "Link to privacy policy on GitHub (English)",
+      "message": "Patakaran sa pagkapribado"
+   },
+   "aboutResetDataButton": {
+      "description": "English: Reset to default settings...",
+      "message": "I-reset sa mga default na setting…"
+   },
+   "aboutResetDataConfirm": {
+      "description": "Message asking user to confirm reset",
+      "message": "Tatanggalin lahat ng mga setting mo, at magre-restart ang uBlock₀.\n\nI-reset ang uBlock₀ sa default na mga setting?"
+   },
+   "aboutRestoreDataButton": {
+      "description": "English: Restore from file...",
+      "message": "Ibalik mula sa file…"
+   },
+   "aboutRestoreDataConfirm": {
+      "description": "Message asking user to confirm restore",
+      "message": "Papalitan ng datos na binack-up noong {{time}} ang mga setting mo, at magre-restart ang uBlock₀.\n\nPayagang palitan ng naka-back up na data ang kasalukuyan mong mga setting?"
+   },
+   "aboutRestoreDataError": {
+      "description": "Message to display when an error occurred during restore",
+      "message": "Hindi mabasa o invalid ang datos"
+   },
+   "aboutSourceCode": {
+      "description": "Link text to source code repo",
+      "message": "Source code"
+   },
+   "aboutTranslations": {
+      "description": "Link text to translations repo",
+      "message": "Mga pagsasalin"
+   },
+   "advancedSettingsPageName": {
+      "description": "Title for the advanced settings page",
+      "message": "Karagdagang mga setting"
+   },
+   "advancedSettingsWarning": {
+      "description": "A warning to users at the top of 'Advanced settings' page",
+      "message": "Babala! Mag-ingat kung babaguhin mo ang mga advanced na setting."
+   },
+   "assetViewerPageName": {
+      "description": "Title for the asset viewer page",
+      "message": "uBlock₀ — Tingnan ang mga Asset"
+   },
+   "clickToLoad": {
+      "description": "Message used in frame placeholders",
+      "message": "Pindutin upang i-load"
+   },
+   "cloudDeviceNamePrompt": {
+      "description": "used as a prompt for the user to provide a custom device name",
+      "message": "Itong pangalan ng device:"
+   },
+   "cloudNoData": {
+      "description": "",
+      "message": "…\n…"
+   },
+   "cloudPull": {
+      "description": "tooltip",
+      "message": "Mag-export mula sa imbakan sa cloud"
+   },
+   "cloudPullAndMerge": {
+      "description": "tooltip",
+      "message": "Mag-export mula sa imbakan sa cloud at ihalo sa mga kasalukuyang setting"
+   },
+   "cloudPush": {
+      "description": "tooltip",
+      "message": "I-export sa imbakan sa cloud"
+   },
+   "contextMenuBlockElementInFrame": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Harangin ang elemento sa frame…"
+   },
+   "contextMenuSubscribeToList": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Subaybayan ang listahan ng filter…"
+   },
+   "contextMenuTemporarilyAllowLargeMediaElements": {
+      "description": "A context menu entry, present when large media elements have been blocked on the current site",
+      "message": "Pansamantalang payagan ang mga malalaking elemento ng media"
+   },
+   "contextMenuViewSource": {
+      "description": "A context menu entry, to view the source code of the target resource",
+      "message": "Tingnan ang source code…"
+   },
+   "dashboardName": {
+      "description": "English: uBlock₀ — Dashboard",
+      "message": "uBlock₀ — Dashboard"
+   },
+   "dashboardUnsavedWarning": {
+      "description": "A warning in the dashboard when navigating away from unsaved changes",
+      "message": "Babala! Hindi pa na-save ang ilan mong mga pagbabago"
+   },
+   "dashboardUnsavedWarningIgnore": {
+      "description": "Label for button to ignore unsaved changes",
+      "message": "Balewalain"
+   },
+   "dashboardUnsavedWarningStay": {
+      "description": "Label for button to prevent navigating away from unsaved changes",
+      "message": "Manatili"
+   },
+   "docblockedBack": {
+      "description": "English: Go back",
+      "message": "Bumalik"
+   },
+   "docblockedClose": {
+      "description": "English: Close this window",
+      "message": "Isarado ang window na ito"
+   },
+   "docblockedDisable": {
+      "description": "Button text to navigate to the blocked page",
+      "message": "Tumuloy"
+   },
+   "docblockedDisablePermanent": {
+      "description": "English: Permanently",
+      "message": "Permanente"
+   },
+   "docblockedDisableTemporary": {
+      "description": "English: Temporarily",
+      "message": "Pansamantala"
+   },
+   "docblockedDontWarn": {
+      "description": "Label for checkbox in document-blocked page",
+      "message": "Huwag na akong balaan ulit tungkol sa site na ito"
+   },
+   "docblockedFoundIn": {
+      "description": "English: List of filter list names follows",
+      "message": "Nahanap sa:"
+   },
+   "docblockedNoParamsPrompt": {
+      "description": "label to be used for the parameter-less URL: https://cloud.githubusercontent.com/assets/585534/9832014/bfb1b8f0-593b-11e5-8a27-fba472a5529a.png",
+      "message": "kung walang mga parameter"
+   },
+   "docblockedProceed": {
+      "description": "English: Disable strict blocking for {{hostname}} ...",
+      "message": "Patayin ang striktong pagharang para sa {{hostname}}"
+   },
+   "docblockedPrompt1": {
+      "description": "Used in the strict-blocking page",
+      "message": "Hinarang ng uBlock Origin ang sumusunod na pahina sa paglo-load:"
+   },
+   "docblockedPrompt2": {
+      "description": "Used in the strict-blocking page",
+      "message": "Dahil sa sumusunod na filter:"
+   },
+   "docblockedTitle": {
+      "description": "Used as a title for the document-blocked page",
+      "message": "Hinarang ang pahina"
+   },
+   "dummy": {
+      "description": "so we dont need to deal with comma for last entry",
+      "message": "Dapat mahuli ang entry na ito"
+   },
+   "elapsedManyDaysAgo": {
+      "description": "English: {{value}} days ago",
+      "message": "{{value}} (na) mga araw ang nakalipas"
+   },
+   "elapsedManyHoursAgo": {
+      "description": "English: {{value}} hours ago",
+      "message": "{{value}} (na) mga oras ang nakalipas"
+   },
+   "elapsedManyMinutesAgo": {
+      "description": "English: {{value}} minutes ago",
+      "message": "{{value}} (na) mga minuto ang nakalipas"
+   },
+   "elapsedOneDayAgo": {
+      "description": "English: a day ago",
+      "message": "isang araw ang nakalipas"
+   },
+   "elapsedOneHourAgo": {
+      "description": "English: an hour ago",
+      "message": "isang oras ang nakalipas"
+   },
+   "elapsedOneMinuteAgo": {
+      "description": "English: a minute ago",
+      "message": "isang minuto ang nakalipas"
+   },
+   "errorCantConnectTo": {
+      "description": "English: Network error: {{msg}}",
+      "message": "Error sa network: {{msg}}"
+   },
+   "extName": {
+      "description": "extension name.",
+      "message": "uBlock Origin"
+   },
+   "extShortDesc": {
+      "description": "this will be in the Chrome web store: must be 132 characters or less",
+      "message": "Mainam na pangharang sa content. Magaan sa CPU at memorya."
+   },
+   "fennecMenuItemBlockingOff": {
+      "description": "Firefox-specific: appears as 'uBlock₀ (off)'",
+      "message": "hindi umaandar"
+   },
+   "genericApplyChanges": {
+      "description": "for generic 'Apply changes' buttons",
+      "message": "Ilapat ang mga pagbabago"
+   },
+   "genericBytes": {
+      "description": "",
+      "message": "(na) mga byte"
+   },
+   "genericCopyToClipboard": {
+      "description": "Label for buttons used to copy something to the clipboard",
+      "message": "Kopyahin sa clipboard"
+   },
+   "genericMergeViewScrollLock": {
+      "description": "Tooltip for the button used to lock scrolling between the views in the 'My rules' pane",
+      "message": "Paandarin/patayin ang naka-lock na pagso-scroll"
+   },
+   "genericRevert": {
+      "description": "for generic 'Revert' buttons",
+      "message": "Ibalik"
+   },
+   "genericSelectAll": {
+      "description": "Label for buttons used to select all text in editor",
+      "message": "Piliin lahat"
+   },
+   "genericSubmit": {
+      "description": "for generic 'Submit' buttons",
+      "message": "I-submit"
+   },
+   "linterMainReport": {
+      "description": "Summary of number of errors as reported by the linter ",
+      "message": "Errors: {{count}}"
+   },
+   "logAll": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Lahat"
+   },
+   "logBehindTheScene": {
+      "description": "Pretty name for behind-the-scene network requests",
+      "message": "Walang tab"
+   },
+   "logFilterPrompt": {
+      "description": "Placeholder string for logger output filtering input field",
+      "message": "nilalaman ng filter sa pagtatala"
+   },
+   "logRequestsHeaderDomain": {
+      "description": "English: Domain",
+      "message": "Domain"
+   },
+   "logRequestsHeaderFilter": {
+      "description": "English: Filter",
+      "message": "Filter"
+   },
+   "logRequestsHeaderType": {
+      "description": "English: Type",
+      "message": "Uri"
+   },
+   "logRequestsHeaderURL": {
+      "description": "English: URL",
+      "message": "URL"
+   },
+   "loggerClearTip": {
+      "description": "Tooltip for the eraser in the logger page; used to blank the content of the logger",
+      "message": "Linisin ang talaan"
+   },
+   "loggerCurrentTab": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Kasalukuyang tab"
+   },
+   "loggerDomInspectorTip": {
+      "description": "Tooltip for the DOM inspector button in the logger page",
+      "message": "Buksan/isara ang inspektor ng DOM"
+   },
+   "loggerEntryDetailsContext": {
+      "description": "Label to identify a context field (typically a hostname)",
+      "message": "Konteksto"
+   },
+   "loggerEntryDetailsFilter": {
+      "description": "Label to identify a filter field",
+      "message": "Filter"
+   },
+   "loggerEntryDetailsFilterList": {
+      "description": "Label to identify a filter list field",
+      "message": "Listahan ng filter"
+   },
+   "loggerEntryDetailsHeader": {
+      "description": "Small header to identify the 'Details' pane for a specific logger entry",
+      "message": "Mga detalye"
+   },
+   "loggerEntryDetailsPartyness": {
+      "description": "Label to identify a field providing partyness information",
+      "message": "Pagkapartido"
+   },
+   "loggerEntryDetailsRootContext": {
+      "description": "Label to identify a root context field (typically a hostname)",
+      "message": "Pangunahing konteksto"
+   },
+   "loggerEntryDetailsRule": {
+      "description": "Label to identify a rule field",
+      "message": "Patakaran"
+   },
+   "loggerEntryDetailsType": {
+      "description": "Label to identify the type of an entry",
+      "message": "Uri"
+   },
+   "loggerEntryDetailsURL": {
+      "description": "Label to identify the URL of an entry",
+      "message": "URL"
+   },
+   "loggerExportEncodeMarkdown": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Markdown"
+   },
+   "loggerExportEncodePlain": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Plain"
+   },
+   "loggerExportFormatList": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Listahan"
+   },
+   "loggerExportFormatTable": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Talahanayan"
+   },
+   "loggerInfoTip": {
+      "description": "Tooltip for the top-right info label in the logger page",
+      "message": "wiki ng uBlock Origin: Ang talaan"
+   },
+   "loggerPauseTip": {
+      "description": "Tooltip for the pause button in the logger page",
+      "message": "Ihinto ang tagatala (itapon ang lahat ng papasok na datos)"
+   },
+   "loggerPopupPanelTip": {
+      "description": "Tooltip for the popup panel button in the logger page",
+      "message": "Buksan/isara ang popup panel"
+   },
+   "loggerReloadTip": {
+      "description": "Tooltip for the reload button in the logger page",
+      "message": "I-reload ang nilalaman ng tab"
+   },
+   "loggerRowFiltererBuiltin1p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "1st-party"
+   },
+   "loggerRowFiltererBuiltin3p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "3rd-party"
+   },
+   "loggerRowFiltererBuiltinAllowed": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "pinayagan"
+   },
+   "loggerRowFiltererBuiltinBlocked": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "hinarang"
+   },
+   "loggerRowFiltererBuiltinEventful": {
+      "description": "A keyword in the built-in row filtering expression: all items corresponding to uBO doing something (blocked, allowed, redirected, etc.)",
+      "message": "inaksyunan"
+   },
+   "loggerRowFiltererBuiltinModified": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "binago"
+   },
+   "loggerRowFiltererBuiltinNot": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "Hindi"
+   },
+   "loggerRowFiltererBuiltinTip": {
+      "description": "Tooltip for the button to bring up logger output filtering options",
+      "message": "Mga opsyon sa pagfi-filter ng talaan"
+   },
+   "loggerRowFiltererButtonTip": {
+      "description": "Tooltip for the row filterer button in the logger page",
+      "message": "Paandarin/patayin ang pagfi-filter ng talaan"
+   },
+   "loggerSettingDiscardPrompt": {
+      "description": "Logger setting: A sentence to describe the purpose of the settings below",
+      "message": "Awtomatikong itatapon ang mga entry sa talaan na hindi nakakasunod sa lahat ng mga kondisyon sa ibaba:"
+   },
+   "loggerSettingHideColumnContext": {
+      "description": "A label for the context column",
+      "message": "{{input}} Konteksto"
+   },
+   "loggerSettingHideColumnFilter": {
+      "description": "A label for the filter or rule column",
+      "message": "{{input}} Filter/patakaran"
+   },
+   "loggerSettingHideColumnPartyness": {
+      "description": "A label for the partyness column",
+      "message": "{{input}} Pagkapartido"
+   },
+   "loggerSettingHideColumnTime": {
+      "description": "A label for the time column",
+      "message": "{{input}} Oras"
+   },
+   "loggerSettingHideColumnsPrompt": {
+      "description": "Logger settings: a sentence to describe the purpose of the checkboxes below",
+      "message": "Itago ang mga hanay:"
+   },
+   "loggerSettingPerEntryLineCount": {
+      "description": "A logger setting",
+      "message": "Gumamit ng {{input}} (na mga) linya kada entry sa mode na pinalaki patayo"
+   },
+   "loggerSettingPerEntryMaxAge": {
+      "description": "A logger setting",
+      "message": "Panatilihin ang mga entry mula sa huling {{input}} (na mga) minuto"
+   },
+   "loggerSettingPerTabMaxEntries": {
+      "description": "A logger setting",
+      "message": "Panatilihin ang hanggang sa {{input}} entry kada tab"
+   },
+   "loggerSettingPerTabMaxLoads": {
+      "description": "A logger setting",
+      "message": "Panatilihin ang hanggang sa {{input}} page load kada tab"
+   },
+   "loggerStaticFilteringFinderSentence1": {
+      "description": "Below this sentence, the filter list(s) in which the filter was found",
+      "message": "Statikong filter \u003Ccode>{{filter}}\u003C/code> sa:"
+   },
+   "loggerStaticFilteringFinderSentence2": {
+      "description": "Message to show when a filter cannot be found in any filter lists",
+      "message": "Hindi mahanap ang statikong filter sa mga kasalukuyang ipinapatupad na listahan ng mga filter"
+   },
+   "loggerStaticFilteringHeader": {
+      "description": "Small header to identify the static filtering section",
+      "message": "Statikong filter"
+   },
+   "loggerStaticFilteringSentence": {
+      "description": "Used in the static filtering wizard",
+      "message": "{{action}} ang mga hiling sa network na {{type}} {{br}}kung tumutugma ang URL address nito sa {{url}} {{br}}at nagmumula ito sa {{origin}},{{br}}{{importance}} may tugmang exception filter."
+   },
+   "loggerStaticFilteringSentencePartAllow": {
+      "description": "Used in the static filtering wizard",
+      "message": "Payagan"
+   },
+   "loggerStaticFilteringSentencePartAnyOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "mula saanman"
+   },
+   "loggerStaticFilteringSentencePartAnyType": {
+      "description": "Used in the static filtering wizard",
+      "message": "anumang uri"
+   },
+   "loggerStaticFilteringSentencePartBlock": {
+      "description": "Used in the static filtering wizard",
+      "message": "Harangin"
+   },
+   "loggerStaticFilteringSentencePartImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "kahit na"
+   },
+   "loggerStaticFilteringSentencePartNotImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "maliban na lang kung"
+   },
+   "loggerStaticFilteringSentencePartOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "mula sa “{{origin}}”"
+   },
+   "loggerStaticFilteringSentencePartType": {
+      "description": "Used in the static filtering wizard",
+      "message": "uri “{{type}}”"
+   },
+   "loggerURLFilteringContextLabel": {
+      "description": "Label for the context selector",
+      "message": "Konteksto:"
+   },
+   "loggerURLFilteringHeader": {
+      "description": "Small header to identify the dynamic URL filtering section",
+      "message": "Patakaran sa URL"
+   },
+   "loggerURLFilteringTypeLabel": {
+      "description": "Label for the type selector",
+      "message": "Uri:"
+   },
+   "loggerUnpauseTip": {
+      "description": "Tooltip for the play button in the logger page",
+      "message": "Ituloy ang pagtatala"
+   },
+   "pickerContextMenuEntry": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Harangin ang elemento…"
+   },
+   "pickerCosmeticFilters": {
+      "description": "English: Cosmetic filters",
+      "message": "Mga kosmetikong filter"
+   },
+   "pickerCosmeticFiltersHint": {
+      "description": "English: Click, Ctrl-click",
+      "message": "I-click, Ctrl-click"
+   },
+   "pickerCreate": {
+      "description": "English: Create",
+      "message": "Lumikha"
+   },
+   "pickerNetFilters": {
+      "description": "English: header for a type of filter in the element picker dialog",
+      "message": "Mga filter sa network"
+   },
+   "pickerPick": {
+      "description": "English: Pick",
+      "message": "Pumili"
+   },
+   "pickerPreview": {
+      "description": "Element picker preview mode: will cause the elements matching the current filter to be removed from the page",
+      "message": "Silipin"
+   },
+   "pickerQuit": {
+      "description": "English: Quit",
+      "message": "Umalis"
+   },
+   "popup1pScriptRulePrompt": {
+      "description": "",
+      "message": "mga 1st-party na script"
+   },
+   "popup3pAnyRulePrompt": {
+      "description": "",
+      "message": "3rd-party"
+   },
+   "popup3pFrameFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "frame"
+   },
+   "popup3pFrameRulePrompt": {
+      "description": "",
+      "message": "mga 3rd-party na frame"
+   },
+   "popup3pPassiveRulePrompt": {
+      "description": "",
+      "message": "mga 3rd-party na CSS/larawan"
+   },
+   "popup3pScriptFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "script"
+   },
+   "popup3pScriptRulePrompt": {
+      "description": "",
+      "message": "mga 3rd-party na script"
+   },
+   "popupAnyRulePrompt": {
+      "description": "",
+      "message": "lahat"
+   },
+   "popupBlockedOnThisPagePrompt": {
+      "description": "English: on this page",
+      "message": "sa pahinang ito"
+   },
+   "popupBlockedOnThisPage_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Hinarang sa pahinang ito"
+   },
+   "popupBlockedRequestPrompt": {
+      "description": "English: requests blocked",
+      "message": "mga hinarang na hiling"
+   },
+   "popupBlockedSinceInstallPrompt": {
+      "description": "English: since install",
+      "message": "mula pagka-install"
+   },
+   "popupBlockedSinceInstall_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Hinarang mula pagka-install"
+   },
+   "popupBlockedStats": {
+      "description": "Example: 15 (13%)",
+      "message": "{{count}} ({{percent}}%)"
+   },
+   "popupDomainsConnected_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Mga konektadong domain"
+   },
+   "popupHitDomainCount": {
+      "description": "appears in popup",
+      "message": "{{count}} sa {{total}}"
+   },
+   "popupHitDomainCountPrompt": {
+      "description": "appears in popup",
+      "message": "mga konektadong domain"
+   },
+   "popupImageRulePrompt": {
+      "description": "",
+      "message": "mga larawan"
+   },
+   "popupInlineScriptRulePrompt": {
+      "description": "",
+      "message": "mga nakapaloob na script"
+   },
+   "popupLessButton_v2": {
+      "description": "Label to be used to hide popup panel sections",
+      "message": "Mas konti"
+   },
+   "popupMoreButton_v2": {
+      "description": "Label to be used to show popup panel sections",
+      "message": "Higit pa"
+   },
+   "popupNoCosmeticFiltering_v2": {
+      "description": "Caption for the no-cosmetic-filtering per-site switch",
+      "message": "Kosmetikong pagfi-filter"
+   },
+   "popupNoLargeMedia_v2": {
+      "description": "Caption for the no-large-media per-site switch",
+      "message": "Malalaking mga elemento ng media"
+   },
+   "popupNoPopups_v2": {
+      "description": "Caption for the no-popups per-site switch",
+      "message": "Mga window na nagpa-pop-up"
+   },
+   "popupNoRemoteFonts_v2": {
+      "description": "Caption for the no-remote-fonts per-site switch",
+      "message": "Remote fonts"
+   },
+   "popupNoScripting_v2": {
+      "description": "Caption for the no-scripting per-site switch",
+      "message": "JavaScript"
+   },
+   "popupOr": {
+      "description": "English: or",
+      "message": "o"
+   },
+   "popupPowerSwitchInfo": {
+      "description": "English: Click: disable/enable uBlock₀ for this site.\n\nCtrl+click: disable uBlock₀ only on this page.",
+      "message": "Click: patayin/paandarin ang uBlock₀ para sa site na ito.\n\nCtrl+click: patayin ang uBlock₀ sa pahinang ito lang."
+   },
+   "popupPowerSwitchInfo1": {
+      "description": "Message to be read by screen readers",
+      "message": "I-click para patayin ang uBlock₀ sa site na ito.\n\nI-Ctrl+click para patayin ang uBlock₀ sa pahinang ito lang."
+   },
+   "popupPowerSwitchInfo2": {
+      "description": "Message to be read by screen readers",
+      "message": "I-click para paandarin ang uBlock₀ sa site na ito."
+   },
+   "popupTipDashboard": {
+      "description": "English: Click to open the dashboard",
+      "message": "Buksan ang dashboard"
+   },
+   "popupTipGlobalRules": {
+      "description": "Tooltip when hovering the top-most cell of the global-rules column.",
+      "message": "Mga pangkalahatang patakaran: ang hanay na ito ay para sa mga patakarang ipinapatupad sa lahat ng mga site."
+   },
+   "popupTipLocalRules": {
+      "description": "Tooltip when hovering the top-most cell of the local-rules column.",
+      "message": "Mga lokal na patakaran: ang hanay na ito ay para sa mga patakarang ipinapatupad sa site site na ito lamang. Mas sinusunod ang mga lokal na patakaran kaysa sa mga pandaigdigang patakaran."
+   },
+   "popupTipLog": {
+      "description": "Tooltip used for the logger icon in the panel",
+      "message": "Buksan ang talaan"
+   },
+   "popupTipNoCosmeticFiltering": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Paandarin/patayin ang kosmetikong pagfi-filter sa site na ito"
+   },
+   "popupTipNoCosmeticFiltering1": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Pindutin upang ihinto ang kosmetikong pagfi-filter sa site na ito"
+   },
+   "popupTipNoCosmeticFiltering2": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Pindutin upang paandarin ang kosmetikong pagfi-filter sa site na ito"
+   },
+   "popupTipNoLargeMedia": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Paandarin/patayin ang pagharang sa mga malalaking elemento ng media sa site na ito"
+   },
+   "popupTipNoLargeMedia1": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Pindutin upang harangin ang mga malalaking elemento ng media sa site na ito"
+   },
+   "popupTipNoLargeMedia2": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Pindutin upang ihinto ang pagharang sa mga malalaking elemento ng media sa site na ito"
+   },
+   "popupTipNoPopups": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Paandarin/patayin ang pagharang sa mga popup sa site na ito"
+   },
+   "popupTipNoPopups1": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Pindutin upang harangin lahat ng mga popup sa site na ito"
+   },
+   "popupTipNoPopups2": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Pindutin upang payagan lahat ng mga popup sa site na ito"
+   },
+   "popupTipNoRemoteFonts": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Paandarin/patayin ang pagharang sa remote fonts sa site na ito"
+   },
+   "popupTipNoRemoteFonts1": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Pindutin upang harangin ang remote fonts sa site na ito"
+   },
+   "popupTipNoRemoteFonts2": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Pindutin upang ihinto ang pagharang sa remote fonts sa site na ito"
+   },
+   "popupTipNoScripting1": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Pindutin upang harangin ang JavaScript sa site na ito"
+   },
+   "popupTipNoScripting2": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Pindutin upang paandarin ang JavaScript sa site na ito"
+   },
+   "popupTipPicker": {
+      "description": "English: Enter element picker mode",
+      "message": "Buksan ang tagapili sa mga elemento"
+   },
+   "popupTipReport": {
+      "description": "Tooltip used for the 'chat' icon in the panel",
+      "message": "Mag-ulat ng isyu sa website na ito"
+   },
+   "popupTipRevertRules": {
+      "description": "Tooltip when hovering over the eraser in the dynamic filtering pane.",
+      "message": "Pindutin upang kanselahin ang mga pagbabago mo."
+   },
+   "popupTipSaveRules": {
+      "description": "Tooltip when hovering over the padlock in the dynamic filtering pane.",
+      "message": "Pindutin upang maging permanente ang mga pagbabago mo."
+   },
+   "popupTipZapper": {
+      "description": "Tooltip for the element-zapper icon in the popup panel",
+      "message": "Buksan ang pantanggal sa mga elemento"
+   },
+   "popupVersion": {
+      "description": "Example of use: Version 1.26.4",
+      "message": "Bersyon"
+   },
+   "relaxBlockingMode": {
+      "description": "Label for keyboard shortcut used to relax blocking mode",
+      "message": "Babaan ang lebel ng pagharang"
+   },
+   "rulesCommit": {
+      "description": "This will persist temporary rules",
+      "message": "Ilapat"
+   },
+   "rulesDefaultFileName": {
+      "description": "default file name to use",
+      "message": "mga-dynamikong-patakaran-ko-sa-ublock_{{datetime}}.txt"
+   },
+   "rulesEdit": {
+      "description": "Will enable manual-edit mode (textarea)",
+      "message": "Baguhin"
+   },
+   "rulesEditDiscard": {
+      "description": "Will discard manually-edited content and exit manual-edit mode",
+      "message": "Itapon"
+   },
+   "rulesEditSave": {
+      "description": "Will save manually-edited content and exit manual-edit mode",
+      "message": "I-save"
+   },
+   "rulesExport": {
+      "description": "Button in the 'My rules' pane",
+      "message": "I-export sa file"
+   },
+   "rulesFormatHint": {
+      "description": "English: dynamic rule syntax and full documentation.",
+      "message": "Format ng patakaran: \u003Ccode>pinagmulan patutunguhan uri aksyon\u003C/code> (\u003Ca href='https://github.com/gorhill/uBlock/wiki/Dynamic-filtering:-rule-syntax'>kumpletong dokumentasyon [sa Ingles]\u003C/a>)."
+   },
+   "rulesHint": {
+      "description": "English: List of your dynamic filtering rules.",
+      "message": "Listahan ng mga dynamikong patakaran mo sa pagfi-filter."
+   },
+   "rulesImport": {
+      "description": "",
+      "message": "Mag-import mula sa file…"
+   },
+   "rulesPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Mga patakaran ko"
+   },
+   "rulesPermanentHeader": {
+      "description": "header",
+      "message": "Mga permanenteng patakaran"
+   },
+   "rulesRevert": {
+      "description": "This will remove all temporary rules",
+      "message": "Ibalik"
+   },
+   "rulesSort": {
+      "description": "English: label for sort option.",
+      "message": "Pagsunud-sunurin:"
+   },
+   "rulesSortByDestination": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Patutunguhan"
+   },
+   "rulesSortBySource": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Pinagmulan"
+   },
+   "rulesSortByType": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Uri ng patakaran"
+   },
+   "rulesTemporaryHeader": {
+      "description": "header",
+      "message": "Mga panandaliang patakaran"
+   },
+   "settingPerSiteSwitchGroup": {
+      "description": "",
+      "message": "Default na ugali"
+   },
+   "settingPerSiteSwitchGroupSynopsis": {
+      "description": "",
+      "message": "Mas sinusunod ang mga per-site na ugali kaysa sa default na ugali"
+   },
+   "settingsAdvanced": {
+      "description": "Section for controlling advanced-user settings",
+      "message": "Advanced"
+   },
+   "settingsAdvancedSynopsis": {
+      "description": "Description of section controlling advanced-user settings",
+      "message": "Mga feature na angkop lang sa mga gumagamit na maraming alam"
+   },
+   "settingsAdvancedUserPrompt": {
+      "description": "Checkbox to let user access advanced, technical features",
+      "message": "Isa akong advanced user"
+   },
+   "settingsAdvancedUserSettings": {
+      "description": "For the tooltip of a link which gives access to advanced settings",
+      "message": "karagdagang mga setting"
+   },
+   "settingsAppearance": {
+      "description": "Section for controlling user interface appearance",
+      "message": "Hitsura"
+   },
+   "settingsCloudStorageEnabledPrompt": {
+      "description": "",
+      "message": "Paandarin ang suporta sa imbakan sa cloud"
+   },
+   "settingsCollapseBlockedPrompt": {
+      "description": "English: Hide placeholders of blocked elements",
+      "message": "Itago ang placeholder ng mga hinarang na mga elemento"
+   },
+   "settingsColorBlindPrompt": {
+      "description": "English: Color-blind friendly",
+      "message": "Para sa color-blind"
+   },
+   "settingsContextMenuPrompt": {
+      "description": "English: Make use of context menu where appropriate",
+      "message": "Gamitin ang menu sa konteksto kung naaangkop"
+   },
+   "settingsHyperlinkAuditingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Pigilan ang pag-audit sa hyperlink"
+   },
+   "settingsIconBadgePrompt": {
+      "description": "English: Show the number of blocked requests on the icon",
+      "message": "Ipakita kung ilan ang mga naharang na hiling sa icon"
+   },
+   "settingsLastBackupPrompt": {
+      "description": "English: Last backup:",
+      "message": "Huling pag-backup:"
+   },
+   "settingsLastRestorePrompt": {
+      "description": "English: Last restore:",
+      "message": "Huling pag-restore:"
+   },
+   "settingsNoCSPReportsPrompt": {
+      "description": "background information: https://github.com/gorhill/uBlock/issues/3150",
+      "message": "Harangin ang mga ulat ng CSP"
+   },
+   "settingsNoCosmeticFilteringPrompt": {
+      "description": "",
+      "message": "Ihinto ang kosmetikong pagfi-filter"
+   },
+   "settingsNoLargeMediaPrompt": {
+      "description": "",
+      "message": "Harangin ang mga elemento ng media na mas malaki sa {{input}} KB"
+   },
+   "settingsNoRemoteFontsPrompt": {
+      "description": "",
+      "message": "Harangin ang remote fonts"
+   },
+   "settingsNoScriptingPrompt": {
+      "description": "The default state for the per-site no-scripting switch",
+      "message": "Harangin ang JavaScript"
+   },
+   "settingsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Mga Setting"
+   },
+   "settingsPrefetchingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Pigilan ang browser na mag-preload ng mga pahinang iniisip nito na baka bisitahin mo (upang pigilan ang koneksyon sa mga hinarang na site)"
+   },
+   "settingsThemeAccent0Label": {
+      "description": "Label for checkbox to pick an accent color",
+      "message": "Pinasadyang kulay ng accent"
+   },
+   "settingsThemeLabel": {
+      "description": "Label for checkbox to enable a custom dark theme",
+      "message": "Tema"
+   },
+   "settingsTooltipsPrompt": {
+      "description": "A checkbox in the Settings pane",
+      "message": "Huwag magpakita ng mga tooltip"
+   },
+   "settingsUncloakCnamePrompt": {
+      "description": "background information: https://github.com/uBlockOrigin/uBlock-issues/issues/1513",
+      "message": "Ilantad ang totoong pagkakakilanlan ng mga kanonikal na pangalan (CNAME)"
+   },
+   "settingsWebRTCIPAddressHiddenPrompt": {
+      "description": "English: ",
+      "message": "Pigilan ang WebRTC na magkalat ng mga lokal na IP address"
+   },
+   "shortcutCapturePlaceholder": {
+      "description": "Placeholder string for input field used to capture a keyboard shortcut",
+      "message": "Magsulat ng shortcut"
+   },
+   "shortcutsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Mga Shortcut"
+   },
+   "showDashboardButton": {
+      "description": "Firefox/Fennec-specific: Show Dashboard",
+      "message": "Ipakita ang Dashboard"
+   },
+   "showNetworkLogButton": {
+      "description": "Firefox/Fennec-specific: Show Logger",
+      "message": "Ipakita ang Talaan"
+   },
+   "statsPageName": {
+      "description": "Title for the logger window",
+      "message": "uBlock₀ — Talaan"
+   },
+   "storageUsed": {
+      "description": " In Setting pane, renders as (example): Storage used: 13.2 MB",
+      "message": "Nagamit na imbakan: {{value}} {{unit}}"
+   },
+   "subscribeButton": {
+      "description": "For the button used to subscribe to a filter list",
+      "message": "Subaybayan"
+   },
+   "subscriberConfirm": {
+      "description": "No longer used",
+      "message": "Idagdag ang sumusunod na mga URL sa iyong listahan ng mga pinasadyang filter?\n\nPangalan: \"{{title}}\"\nURL: {{url}}"
+   },
+   "supportFindSpecificButton": {
+      "description": "A clickable link in the filter issue reporter section",
+      "message": "Maghanap ng mga magkahawig na ulat"
+   },
+   "supportOpenButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Buksan"
+   },
+   "supportPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Suporta"
+   },
+   "supportRedact": {
+      "description": "Text for 'Redact' button",
+      "message": "Itago"
+   },
+   "supportReportSpecificButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Gumawa ng bagong ulat"
+   },
+   "supportS1H": {
+      "description": "Header of 'Documentation' section in Support pane",
+      "message": "Dokumentasyon"
+   },
+   "supportS1P1": {
+      "description": "First paragraph of 'Documentation' section in Support pane",
+      "message": "Basahin ang dokumentasyon sa \u003Ccode>uBlock/wiki\u003C/code> upang matuto tungkol sa lahat ng mga feature ng uBlock Origin."
+   },
+   "supportS2H": {
+      "description": "Header of 'Questions and support' section in Support pane",
+      "message": "Mga tanong at suporta"
+   },
+   "supportS2P1": {
+      "description": "First paragraph of 'Questions and support' section in Support pane",
+      "message": "Makakapagtanong at sasagutin ka, o makakahingi ka ng higit pang tulong sa subreddit na \u003Ccode>/r/uBlockOrigin\u003C/code>."
+   },
+   "supportS3H": {
+      "description": "Header of 'Filter issues' section in Support pane",
+      "message": "Mga problema sa filter/may problema sa website"
+   },
+   "supportS3P1": {
+      "description": "First paragraph of 'Filter issues' section in Support pane",
+      "message": "Iulat ang mga problema sa filter sa iilang mga website sa \u003Cspan data-url=\"https://github.com/uBlockOrigin/uAssets/issues?q=is%3Aissue\">issue tracker ng \u003Ccode>uBlockOrigin/uAssets\u003C/code>\u003C/span>. \u003Cu>Kailangan mo ng account sa GitHub.\u003C/u>"
+   },
+   "supportS3P2": {
+      "description": "Second paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Mahalaga:\u003C/b> Upang maiwasan ang mga problema sa ilang mga website, iwasang gumamit ng iba pang mga katulad na pangharang sa content kasabay ng uBlock Origin."
+   },
+   "supportS3P3": {
+      "description": "Third paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Tip:\u003C/b> Siguraduhing updated ang listahan mo ng mga filter. Gamitin mo ang \u003Cspan data-url=\"logger-ui.html#_\">talaan\u003C/span> upang ayusin ang mga problemang naidudulot ng ilang mga filter."
+   },
+   "supportS4H": {
+      "description": "Header of 'Bug report' section in Support pane",
+      "message": "Mag-ulat ng problema"
+   },
+   "supportS4P1": {
+      "description": "First paragraph of 'Bug report' section in Support pane",
+      "message": "Iulat ang mga problema ng mismong uBlock Origin sa \u003Cspan data-url=\"https://github.com/uBlockOrigin/uBlock-issues/issues?q=is%3Aissue\">issue tracker ng \u003Ccode>uBlockOrigin/uBlock-issues\u003C/code>\u003C/span>. \u003Cu>Kailangan mo ng account sa GitHub.\u003C/u>"
+   },
+   "supportS5H": {
+      "description": "Header of 'Troubleshooting Information' section in Support pane",
+      "message": "Impormasyon para sa Pag-aayos ng Problema"
+   },
+   "supportS5P1": {
+      "description": "First paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "Nasa ibaba ang mga teknikal na impormasyon na maaaring makatulong sa mga volunteer na tumutulong masolusyonan ang problema mo."
+   },
+   "supportS5P2": {
+      "description": "Second paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "\u003Cb>Mahalaga:\u003C/b> Sa default, nakatago ang mga pribado o sensitibong impormasyon. Maaaring mas mahirap masolusyonan ang mga problema dahil sa pagtatago ng pribadong impormasyon."
+   },
+   "supportS6Checkbox1": {
+      "description": "A checkbox to use for NSFW sites",
+      "message": "Markahan bilang hindi dapat tinitignan sa pook-trabahuan (\u003Ca href=\"https://wikipedia.org/wiki/Not_safe_for_work\">“Not Safe For Work”\u003C/a>)"
+   },
+   "supportS6H": {
+      "description": "Header of 'Report a filter issue' section in Support pane",
+      "message": "Mag-ulat ng problema ng filter"
+   },
+   "supportS6P1S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Siguraduhing wala pang ibang nakakapag-ulat ng problema mo upang hindi bahain ng trabaho ang mga volunteer."
+   },
+   "supportS6P2S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Ang listahan ng pangsala ng kontent ay araw-araw binabago at dinadag-dagan. Siguruhin na ang iyong isyu ay hindi pa napauukulan sa mga pinakabagong update sa listahan ng pangsala.  "
+   },
+   "supportS6P2S2": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Kumpirmahin na nanatili ang isyu pagkatapos i-reload ang nagkaproblema na pahina ng web."
+   },
+   "supportS6Select1": {
+      "description": "Label for widget to select type of issue",
+      "message": "Ang web page…"
+   },
+   "supportS6Select1Option0": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "-- Pumili rito --"
+   },
+   "supportS6Select1Option1": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Nagpapakita ng mga ad o mga tira-tira ng ad"
+   },
+   "supportS6Select1Option2": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "May overlay o iba pang mga panggulo"
+   },
+   "supportS6Select1Option3": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Nade-detect ang uBlock Origin"
+   },
+   "supportS6Select1Option4": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "May mga problema sa pagkapribado"
+   },
+   "supportS6Select1Option5": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Nasisira kung umaandar ang uBlock Origin"
+   },
+   "supportS6Select1Option6": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Kung anu-anong mga tab o window ang binubuksan"
+   },
+   "supportS6URL": {
+      "description": "Label for the URL of the page",
+      "message": "Address ng web page:"
+   },
+   "supportUnredact": {
+      "description": "Text for 'Unredact' button",
+      "message": "Huwag itago"
+   },
+   "toggleCosmeticFiltering": {
+      "description": "Label for keyboard shortcut used to toggle cosmetic filtering",
+      "message": "Paandarin/patayin ang kosmetikong pagfi-filter"
+   },
+   "toggleJavascript": {
+      "description": "Label for keyboard shortcut used to toggle no-scripting switch",
+      "message": "Toggle JavaScript"
+   },
+   "unprocessedRequestTooltip": {
+      "description": "A warning which will appear in the popup panel if needed",
+      "message": "Hindi nakapagsala ng maayos nung binuksan ang browser. I-reload ang pahina upang masiguro ang tamang proseso ng pagsasala."
+   },
+   "whitelistApply": {
+      "description": "English: Apply changes",
+      "message": "Ilapat ang mga pagbabago"
+   },
+   "whitelistExport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "I-export"
+   },
+   "whitelistExportFilename": {
+      "description": "The default filename to use for import/export purpose",
+      "message": "mga-pinagkakatiwalaan-kong-site-sa-ublock_{{datetime}}.txt"
+   },
+   "whitelistImport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "I-import at idagdag"
+   },
+   "whitelistPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Mga pinagkakatiwalaang site"
+   },
+   "whitelistPrompt": {
+      "description": "A concise description of the 'Trusted sites' pane.",
+      "message": "Idinidikta nito kung sa aling mga webpage papatayin ang uBlock Origin. Isang entry kada linya."
+   }
+}

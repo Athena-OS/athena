@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Penetration Testing Kit - cross-browser extension for penetration testing" name="description" />
+    <meta content="Penetration Testing Kit, request builder, traffic recording, macro recording" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+    <title>OWASP Penetration Testing Kit - Settings</title>
+
+    <script src="../packages/browser-polyfill/browser-polyfill.min.js"></script>
+    <script src="../packages/jquery/jquery.min.js"></script>
+    <script src="../packages/jquery/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/semantic-ui/semantic.min.css" type="text/css" />
+    <script src="../packages/semantic-ui/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/default.css" type="text/css" />
+
+    <script src="assets/js/menu.js"></script>
+    <script type="module" src="assets/js/settings.js"></script>
+</head>
+
+<body>
+    <div id="content" style="padding-top:10px">
+
+        <div class="ui visible labeled icon left vertical sidebar menu">
+            <a class="item" forItem="main_form">
+                <i class="home icon"></i>
+                Main
+            </a>
+            <a class="item" forItem="proxy_form">
+                <i class="block layout icon"></i>
+                Tracking
+            </a>
+            <!-- <a class="item" forItem="integration_form">
+                <i class="object group outline icon"></i>
+                Integration
+            </a> -->
+            <a class="item" forItem="recorder_form">
+                <i class="film icon"></i>
+                Recorder
+            </a>
+            <a class="item" forItem="rattacker_form">
+                <i class="bug layout icon"></i>
+                <!-- <i class="film icon"></i> -->
+                R-Attacker
+            </a>
+            <a class="item" forItem="privacy_form">
+                <i class="id badge icon"></i>
+                Privacy
+            </a>
+            <!-- <a class="item" forItem="profile_form">
+                <i class="id cloud icon"></i>
+                PTK+
+            </a> -->
+        </div>
+        <div style="margin-left:116px; margin-right: 55px;">
+            <div class="ui five column width grid" id="settings_header">
+                <div class="row" style="background-color: #eeeeee; font-weight: 600;">
+                    <div class="six wide column">Description</div>
+                    <div class="four wide column">Default</div>
+                    <div class="two wide column">Value</div>
+                </div>
+            </div>
+            <div style="height:20px">
+                <p></p>
+                <p>
+                    </p<p>
+                </p>
+            </div>
+            <form class="ui small form" id="main_form">
+                <div class="ui  five column width grid">
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Enable debug log (verbose)</div>
+                        <div class="four wide column"><code><b>false</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="enable_logging">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="six wide column">Enable Websocket messaging debug</div>
+                        <div class="four wide column"><code><b>false</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="enable_websocket" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <form class="ui small form" id="proxy_form" style="display: none;">
+                <input type="hidden" name='enable' />
+                <div class="ui  five column width grid">
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Max number of requests per tab/frame</div>
+                        <div class="four wide column"><code><b>1000</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle text" style="min-width: 50px;">
+                                <input type="text" name="max_requests_per_tab">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Max number of tracking tabs</div>
+                        <div class="four wide column"><code><b>5</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle text" style="min-width: 50px;">
+                                <input type="text" name="max_tabs">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form class="ui small form" id="recorder_form" style="display: none;">
+                <input type="hidden" name='enable' />
+                <div class="ui  five column width grid">
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Set window size on recording/playback</div>
+                        <div class="four wide column"><code><b>true</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="set_window_size">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Recorder window height</div>
+                        <div class="four wide column"><code><b>768</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle text" style="min-width: 50px;">
+                                <input type="text" name="window_height">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Recorder window width</div>
+                        <div class="four wide column"><code><b>1024</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle text" style="min-width: 50px;">
+                                <input type="text" name="window_width">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Allow double click</div>
+                        <div class="four wide column"><code><b>false</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="double_click">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form class="ui small form" id="rattacker_form" style="display: none;">
+
+                <div class="ui  five column width grid">
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Enable external integration</div>
+                        <div class="four wide column"><code><b>false</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="enable_external_integration">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Max number of requests</div>
+                        <div class="four wide column"><code><b>1000</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle text" style="min-width: 50px;">
+                                <input type="text" name="max_requests">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Exclude types (comma separated)
+                            <br>See <a target="_blank"
+                                href="https://developer.chrome.com/docs/extensions/reference/webRequest/#type-ResourceType">supported
+                                types</a>
+                        </div>
+                        <div class="four wide column"><code><b>"stylesheet", "script", "image", "font"</b></code></div>
+                        <div class="five wide column">
+                            <div>
+                                <textarea rows="2" name="blacklist"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form class="ui small form" id="privacy_form" style="display: none;">
+                <div class="ui  five column width grid">
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Can we collect the
+                            following data that personally identifies you</div>
+                        <div class="four wide column"><code><b>false</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="enable_personal_data">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Can
+                            we manage cookies and storage, e.g. add, remove or modify information
+                            required for PTK to function</div>
+                        <div class="four wide column"><code><b>true</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="enable_cookie">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom: solid 1px #cecece;">
+                        <div class="six wide column">Can we collect the following anonymous data about your use of the
+                            PTK</div>
+                        <div class="four wide column"><code><b>false</b></code></div>
+                        <div class="two wide column">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="enable_anonymous_data">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form class="ui small form" id="profile_form" style="display: none;">
+                <input type="hidden" name='enable' />
+                <div class="ui  five column width grid">
+                    <div class="row">
+                        <div class="two wide column" style="padding-top: 8px;padding-left:16px">API key</div>
+                        <div class="eight wide column">
+                            <div class="ui toggle text">
+                                <input type="password" name="api_key">
+                            </div>
+                        </div>
+                        <!-- <div class="two wide column" style="padding: 2px;">
+                            <div class="ui small fluid button submit secondary test_apikey" style="width: 80px;">
+                                Test
+                            </div>
+                        </div> -->
+                        <div class="two wide column" style="padding: 2px;">
+                            <div class="ui small fluid button submit secondary save_apikey" style="width: 80px;">
+                                Save
+                            </div>
+                        </div>
+                        <div class="two wide column" style="padding: 2px;">
+                            <div class="ui small fluid button submit secondary clear_apikey" style="width: 80px;">
+                                Clear
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="height: 42vw;">
+                        <div class="sixteen wide column">
+                            <div class="ui positive message" id="api_success" style="display: none;">
+                                <div class="header">
+                                    API key success<br/><br/>
+                                </div>
+                                <div style="max-height: 30vw; overflow: scroll;scrollbar-width: none;" >
+                                    <table id="tbl_modules" class="ui celled table small responsive nowrap unstackable"
+                                        width="100%" >
+                                        <thead>
+                                            <tr>
+                                                <th>Module name</th>
+                                                <th>Number of attacks</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="ui negative message" id="api_error" style="display: none;">
+                                <div class="header">
+                                    API key error
+                                </div>
+                                <span id="api_response_error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider">
+                    </div>
+                    <div class="row" style="margin-top: -15px;">
+                        <div class="four wide column"></div>
+                        <div class="three wide column">
+                            <div class="ui toggle text">
+                                <div class="ui small fluid button submit secondary ptk_login" style="width: 120px;">
+                                    Login
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="three wide column">
+                            <div class="ui toggle text">
+                                <div class="ui small fluid button submit secondary ptk_register" style="width: 120px;">
+                                    Register
+                                </div>
+                            </div>
+                        </div>
+                        <div class="four wide column"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+        <!--proxy-->
+        <div class="ui attached tab segment  request" id="proxy"
+            style="display:none; background-image: url('./images/under_construction.png'); background-repeat: no-repeat;">
+            <form class="ui form small" id="proxy_form" style="max-height: 290px !important;">
+                <!--pac file-->
+                <h3 class="ui dividing header" style="margin-top:0px">Pac file</h3>
+                <div class="fields">
+                    <div class="three wide field">
+                        <select class="ui fluid dropdown" name="pac_protocol">
+                            <option value="http">http://</option>
+                            <option value="https">https://</option>
+                        </select>
+                    </div>
+                    <div class="twelve wide field">
+                        <div class="field">
+                            <input type="text" name="pac_path" placeholder="domain.com/proxy.pac">
+                        </div>
+                    </div>
+                </div>
+                <!--proxy servers-->
+                <h3 class="ui dividing header">Proxy servers</h3>
+                <div class="inline fields">
+                    <div class="twelve wide field">
+                        <label style="min-width: 60px">HTTP</label>
+                        <input type="text" name="http_url" placeholder="domain.com">
+                    </div>
+                    <div class="three wide field">
+                        <label>Port</label>
+                        <input type="text" name="http_port" placeholder="80">
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="twelve wide field">
+                        <label style="min-width: 60px">HTTPS</label>
+                        <input type="text" name="https_url" placeholder="domain.com">
+                    </div>
+                    <div class="three wide field">
+                        <label>Port</label>
+                        <input type="text" name="https_port" placeholder="443">
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="twelve wide field">
+                        <label style="min-width: 60px">SOCKS</label>
+                        <input type="text" name="socks_url" placeholder="domain.com">
+                    </div>
+                    <div class="three wide field">
+                        <label>Port</label>
+                        <input type="text" name="socks_port" placeholder="1080">
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="two wide field"></div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" value="socks4" name="socks_type" checked="" tabindex="0" class="hidden">
+                            <label>SOCKS4</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" value="socks5" name="socks_type" checked="" tabindex="0" class="hidden">
+                            <label>SOCKS5</label>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="ui dividing header">Authentication</h3>
+                <div class="inline fields">
+                    <div class="twelve wide field">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="username">
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="twelve wide field">
+                        <label>Password</label>
+                        <input type="text" name="password" placeholder="password">
+                    </div>
+                </div>
+                <h3 class="ui dividing header">Bypass list</h3>
+                <div class="fields">
+                    <div class="fifteen wide field">
+                        <label>Domains in bypass list will never use a proxy</label>
+                        <textarea name="bypass" placeholder=""></textarea>
+                    </div>
+                </div>
+                <h3 class="ui dividing header"></h3>
+            </form>
+        </div>
+        <!--headers-->
+        <div class="ui attached tab segment  request" id="headers"
+            style="display:none; background-image: url('./images/under_construction.png'); background-repeat: no-repeat;">
+            <form class="ui form small" id="headers_form" style="max-height: 290px !important;">
+                <!--request headers-->
+                <h3 class="ui dividing header" style="margin-top:0px">Request headers</h3>
+                <div class="inline fields">
+                    <div class="fifteen wide field">
+                        <label style="min-width: 100px">Protocol</label>
+                        <select class="ui fluid dropdown fullwidth" name="protocol">
+                            <option value="HTTP/1.1">HTTP/1.1</option>
+                            <option value="HTTP/1.0">HTTP/1.0</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="fifteen wide field ">
+                        <label style="min-width: 100px">User-Agent</label>
+                        <select class="ui search dropdown allowAdditions fullwidth" name="useragnet">
+                            <option
+                                value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36 OPR/38.0.2220.41">
+                                Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
+                                Chrome/67.0.3396.99 Safari/537.36 OPR/38.0.2220.41</option>>
+                        </select>
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="fifteen wide field fullwidth">
+                        <label style="min-width: 100px">Accept</label>
+                        <select class="ui search dropdown allowAdditions fullwidth" name="accept">
+                            <option value="*/*">*/*</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="fifteen wide field fullwidth">
+                        <label style="min-width: 100px">Accept-Charset</label>
+                        <select class="ui search dropdown allowAdditions fullwidth" name="acceptcharset">
+                            <option value="utf-8, iso-8859-1;q=0.5, *;q=0.1">utf-8, iso-8859-1;q=0.5, *;q=0.1
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="fifteen wide field fullwidth">
+                        <label style="min-width: 100px">Accept-Language</label>
+                        <select class="ui search dropdown allowAdditions fullwidth" name="acceptlanguage">
+                            <option value="en-US,en;q=0.5">en-US,en;q=0.5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="fifteen wide field fullwidth">
+                        <label style="min-width: 100px">Accept-Encoding</label>
+                        <select class="ui search dropdown allowAdditions fullwidth" name="acceptencoding">
+                            <option value="deflate, gzip;q=1.0, *;q=0.5">deflate, gzip;q=1.0, *;q=0.5</option>
+                        </select>
+                    </div>
+                </div>
+                <h3 class="ui dividing header"></h3>
+                <div class="fields">
+                    <div class="fifteen wide field">
+                        <label>Extra headers</label>
+                        <textarea name="extraheaders"
+                            placeholder="HeaderName: Header Value&#13;&#10;HeaderName: Header Value"></textarea>
+                    </div>
+                </div>
+                <h3 class="ui dividing header"></h3>
+                <div class="fields">
+                    <div class="fifteen wide field">
+                        <label>Cookie</label>
+                        <textarea name="cookie" placeholder="Cookie"></textarea>
+                    </div>
+                </div>
+                <h3 class="ui dividing header"></h3>
+            </form>
+        </div>
+    </div>
+    <div class="ui bottom fixed three item borderless menu " style="padding-top: 5px; padding-bottom: 5px; "
+        id="settings_footer">
+        <div class="twelve wide stretched column center aligned">
+            <button class="ui secondary button" id="settings_save">Save</button>
+            <button class="ui  button" id="settings_reset">Reset to default</button>
+        </div>
+    </div>
+    <div class="ui  bottom fixed inverted borderless menu modal" style="display:none;z-index: 1000;width:100%">
+        <div class="ui container" style="margin: 0px !important;">
+            <img src="assets/images/hacker_w1.png" id="ptkicon" style="margin-left: 16px;margin-top: 8px;">
+            <div class="ui black message" style="margin: 0px;">
+                <h4>All good</h4>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

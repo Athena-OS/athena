@@ -1,0 +1,322 @@
+@import 'default.css';
+@import 'theme.css';
+
+/* ----- General ----- */
+:root {
+  --nav-height: 2.5rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-height) + 0.5rem);
+}
+
+body {
+  /* Chrome sets font-size to 75% (16px x 75% = 12px) */
+  font-size: unset;
+}
+
+img {
+  vertical-align: text-bottom;
+}
+
+article {
+  padding: 2em;
+  background-color: var(--bg);
+}
+
+
+/* ----- h1-h5 ----- */
+h2 {
+  color: var(--header);
+  font-size: 2.5em;
+  border-bottom: 1px solid var(--border);
+  font-weight: normal;
+}
+
+h2:first-of-type {
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+:not(h2) + h3 {
+  margin-top: 1.5em;
+}
+
+:is(h1, h2, h3, h4, h5) span {
+  color: var(--dim);
+  font-size: 0.8em;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 0.5em;
+}
+/* ----- /h1-h5 ----- */
+
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+pre {
+  border-left: 3px solid #ccc;
+  padding: 0.5em 1em;
+}
+
+code {
+  padding: 0 0.3em;
+  background-color: var(--hover);
+  font-size: 1.1em;
+}
+
+blockquote {
+  color: var(--color);
+  padding: 1em 3.5em;
+  font-style: italic;
+  position: relative;
+  font-size: 0.9em;
+}
+
+blockquote::before,
+blockquote::after {
+  color: #ccc;
+  opacity: 0.6;
+  font-size: 4em;
+  position: absolute;
+  content: '❝';
+  top: 0;
+  left: 0.1em;
+}
+
+blockquote::after {
+  bottom: -0.5em;
+  right: 0.5em;
+}
+
+cite {
+  display: block;
+  margin-top: 1em;
+  color: #999;
+}
+
+cite::before {
+  content: '— source: ';
+}
+
+figure {
+  display: table;
+  text-align: center;
+  padding: 0;
+}
+
+figure img {
+  border-radius: 1em;
+  border: 4px solid var(--nav-hover);
+  width: 140px;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 0.9em;
+  padding-top: 0.5em;
+}
+
+dt {
+  /* color: var(--nav-bg); */
+  background-color: var(--alt-bg);
+  display: table;
+  padding: 0.2em 0.5em;
+}
+
+dd + dt {
+  margin-top: 0.5em;
+}
+
+dd dl dt {
+  background-color: unset;
+}
+
+dd > dl {
+  margin: 1em auto;
+}
+
+dt span,
+li span {
+  margin-left: 0.5em;
+  color: var(--dim);
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: normal;
+  font-size: 0.9em;
+}
+
+mark {
+  color: var(--header);
+  background-color: unset;
+}
+
+/* ----- About ----- */
+.about dt {
+  background-color: unset;
+  color: var(--h3);
+  font-weight: bold;
+  margin-bottom: 0.2em;
+  font-size: 1.1em;
+  border-bottom: 1px solid var(--border);
+  min-width: 15vw;
+}
+/* ----- /About ----- */
+
+dl.plain dt {
+  /* color: var(--color); */
+  background-color: unset;
+  font-weight: bold;
+}
+
+/* ----- Navigation ----- */
+nav {
+  background-color: var(--bg);
+  height: var(--nav-height);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 3px 6px #0004;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  align-items: center;
+}
+
+nav a {
+  color: var(--color);
+  padding: 0.5em 1em;
+  /* transition: 0.5s; */
+}
+
+nav a:hover {
+  background-color: var(--hover);
+}
+
+/* ----- /Navigation ----- */
+
+/* ----- Table ----- */
+table {
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  margin-bottom: 1em;
+  width: calc(100% - 2.5rem);
+  font-size: 0.9em;
+}
+
+caption {
+  padding: 0.5em;
+}
+
+tr:nth-child(2n) {
+  background-color: var(--alt-bg);
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+td {
+  padding: 0.5em;
+}
+
+thead th {
+  font-size: 1.2em;
+  padding: 0.5em;
+}
+
+tbody th {
+  min-width: 10em;
+}
+
+td pre,
+.code td,
+td.code {
+  font-family: monospace;
+  font-size: 1.2em;
+}
+/* ----- /Table ----- */
+
+/* ----- note, footnote, warning, experimental ----- */
+.note,
+.footnote,
+.warning {
+  border-left: 3px solid #17f;
+  padding: 0.3em 0.5em 0.3em 2em;
+  margin-top: 0.5em;
+  position: relative;
+}
+
+.note::before,
+.footnote::before,
+.warning::before {
+  content: 'ⓘ';
+  color: #17f;
+  position: absolute;
+  top: 0;
+  left: 0.5em;
+}
+
+.footnote {
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.warning {
+  border-left-color: #f90;
+}
+
+.warning::before {
+  content: '⚠️';
+}
+
+.experimental::after {
+  content: '';
+  background: url('../image/beaker.svg') no-repeat center / contain;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.5em;
+  vertical-align: text-bottom;
+}
+
+/* ----- Translate ----- */
+.translate {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  align-items: center;
+  gap: 0.5em;
+  padding: 1em 1em 0;
+  background-color: var(--bg);
+}
+
+.translate select {
+  width: auto;
+}
+
+.translate input[type="submit"] {
+  color: inherit;
+  background-color: var(--alt-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.3em;
+  padding: 0.2em 0.5em;
+}
+/* ----- /Translate ----- */

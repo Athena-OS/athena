@@ -1,0 +1,92 @@
+{
+    "request": {
+        "method": "POST",
+        "protocolVersion": "HTTP/1.1",
+        "target": "http://demo.testfire.net/doLogin?test=val",
+        "host": "demo.testfire.net",
+        "path": "/doLogin",
+        "headersSize": 1037,
+        "bodySize": 38,
+        "queryParams": [
+            {
+                "name": "test",
+                "value": "val"
+            }
+        ],
+        "headers": [
+            {
+                "name": "Upgrade-Insecure-Requests",
+                "value": "1"
+            },
+            {
+                "name": "Origin",
+                "value": "http://demo.testfire.net"
+            },
+            {
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+            },
+            {
+                "name": "User-Agent",
+                "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41"
+            },
+            {
+                "name": "Accept",
+                "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+            },
+            {
+                "name": "Referer",
+                "value": "http://demo.testfire.net/login.jsp"
+            },
+            {
+                "name": "Accept-Encoding",
+                "value": "gzip, deflate"
+            },
+            {
+                "name": "Accept-Language",
+                "value": "en-GB,en;q=0.9,en-US;q=0.8"
+            },
+            {
+                "name": "Cookie",
+                "value": "AltoroAccounts=\"ODAwMDAwfkNvcnBvcmF0ZX4tMS4wRTIzMHw4MDAwMDF+Q2hlY2tpbmd+MS4wRTIzMHw4MDAwMDJ+U2F2aW5nc34xLjBFNDF8ODAwMDAzfkNoZWNraW5nfjEuNjU4MzU0NDE3MDk3ODI0NUUyMXw4MDAwMDR+U2F2aW5nc34zMjMuMHw4MDAwMDV+Q2hlY2tpbmd+MzUuMHw4MDAwMDZ+U2F2aW5nc34xLjIzNDYyNzAwMkU5fDgwMDAwN35DaGVja2luZ34wLjB8NDUzOTA4MjAzOTM5NjI4OH5DcmVkaXQgQ2FyZH4tMS4wMDAwMDA2OTY5Njk2OTdFMzh8NDQ4NTk4MzM1NjI0MjIxN35DcmVkaXQgQ2FyZH4xMDAwMC45N3w=\"; JSESSIONID=203065498110AE5208C1AC6CE4E99CD6"
+            }
+        ],
+        "cookies": [
+            {
+                "name": "AltoroAccounts",
+                "value": "\"ODAwMDAwfkNvcnBvcmF0ZX4tMS4wRTIzMHw4MDAwMDF+Q2hlY2tpbmd+MS4wRTIzMHw4MDAwMDJ+U2F2aW5nc34xLjBFNDF8ODAwMDAzfkNoZWNraW5nfjEuNjU4MzU0NDE3MDk3ODI0NUUyMXw4MDAwMDR+U2F2aW5nc34zMjMuMHw4MDAwMDV+Q2hlY2tpbmd+MzUuMHw4MDAwMDZ+U2F2aW5nc34xLjIzNDYyNzAwMkU5fDgwMDAwN35DaGVja2luZ34wLjB8NDUzOTA4MjAzOTM5NjI4OH5DcmVkaXQgQ2FyZH4tMS4wMDAwMDA2OTY5Njk2OTdFMzh8NDQ4NTk4MzM1NjI0MjIxN35DcmVkaXQgQ2FyZH4xMDAwMC45N3w=\""
+            },
+            {
+                "name": "JSESSIONID",
+                "value": "203065498110AE5208C1AC6CE4E99CD6"
+            }
+        ],
+        "body": {
+            "contentType": "application/x-www-form-urlencoded",
+            "params": [
+                {
+                    "name": "btnSubmit",
+                    "value": "Login"
+                },
+                {
+                    "name": "passw",
+                    "value": "werwer"
+                },
+                {
+                    "name": "uid",
+                    "value": "erwer"
+                }
+            ]
+        },
+        "scheme": "http",
+        "follow_redirect": true,
+        "override_headers": true,
+        "raw": "POST http://demo.testfire.net/doLogin?test=val HTTP/1.1\\r\\nUpgrade-Insecure-Requests: 1\\r\\nOrigin: http://demo.testfire.net\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41\\r\\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\\r\\nReferer: http://demo.testfire.net/login.jsp\\r\\nAccept-Encoding: gzip, deflate\\r\\nAccept-Language: en-GB,en;q=0.9,en-US;q=0.8\\r\\nCookie: AltoroAccounts=\"ODAwMDAwfkNvcnBvcmF0ZX4tMS4wRTIzMHw4MDAwMDF+Q2hlY2tpbmd+MS4wRTIzMHw4MDAwMDJ+U2F2aW5nc34xLjBFNDF8ODAwMDAzfkNoZWNraW5nfjEuNjU4MzU0NDE3MDk3ODI0NUUyMXw4MDAwMDR+U2F2aW5nc34zMjMuMHw4MDAwMDV+Q2hlY2tpbmd+MzUuMHw4MDAwMDZ+U2F2aW5nc34xLjIzNDYyNzAwMkU5fDgwMDAwN35DaGVja2luZ34wLjB8NDUzOTA4MjAzOTM5NjI4OH5DcmVkaXQgQ2FyZH4tMS4wMDAwMDA2OTY5Njk2OTdFMzh8NDQ4NTk4MzM1NjI0MjIxN35DcmVkaXQgQ2FyZH4xMDAwMC45N3w=\"; JSESSIONID=203065498110AE5208C1AC6CE4E99CD6\\r\\n\\r\\nbtnSubmit=Login&passw=werwer&uid=erwer"
+    },
+    "response": {
+        "headers": [],
+        "statusLine": "",
+        "statusCode": "",
+        "body": ""
+    }
+}

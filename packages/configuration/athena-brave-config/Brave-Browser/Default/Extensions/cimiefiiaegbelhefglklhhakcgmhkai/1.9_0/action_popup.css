@@ -1,0 +1,74 @@
+body {
+    width: 24em;
+    /* prevent scroll bars*/
+    overflow: hidden;
+    margin: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+header {
+    background: #1d99f3;
+    padding: 2px;
+    color: #fff;
+    text-align: center;
+}
+
+section {
+    margin: 0 0.5em;
+}
+
+section > header {
+    background: #F0F0F0;
+    color: #757777;
+    margin: 0 -1em -0.5em -1em;
+}
+
+.message {
+    padding: 10px;
+}
+.message.with-icon::before {
+    content: '';
+    height: 48px;
+    display: block;
+    background: center no-repeat;
+}
+.message.with-icon.general::before {
+    background-image: url('icons/plasma.svg');
+}
+.message.with-icon.error::before {
+    background-image: url('icons/sad-face.svg');
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #232629;
+        color: #eff0f1;
+    }
+    .message.with-icon.general::before, .message.with-icon.error::before {
+        filter: invert(1);
+    }
+}
+
+/* Media controls blacklist */
+.mpris-blacklist-info {
+    padding: 0.5em 0;
+}
+.mpris-blacklist-info p {
+    padding: 0 0.5em;
+}
+.mpris-blacklist-info ul {
+    display: block;
+    padding: 0 0.5em;
+}
+.mpris-blacklist-info ul > li {
+    display: block;
+    margin-bottom: 0.5em;
+}
+.mpris-blacklist-info ul > li input[type=checkbox] {
+    position: relative;
+    vertical-align: middle;
+    bottom: 1px;
+}

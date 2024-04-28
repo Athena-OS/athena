@@ -1,0 +1,62 @@
+{
+   "applications": {
+      "gecko": {
+         "id": "plasma-browser-integration@kde.org",
+         "strict_min_version": "50.0"
+      }
+   },
+   "author": "Kai Uwe Broulik \u003Ckde@privat.broulik.de>",
+   "background": {
+      "persistent": false,
+      "scripts": [ "constants.js", "utils.js", "extension-utils.js", "extension-kdeconnect.js", "extension-mpris.js", "extension-downloads.js", "extension-tabsrunner.js", "extension-purpose.js", "extension-historyrunner.js", "extension.js" ]
+   },
+   "browser_action": {
+      "browser_style": true,
+      "default_popup": "action_popup.html",
+      "theme_icons": [ {
+         "dark": "icons/plasma-16.png",
+         "light": "icons/plasma-dark-16.png",
+         "size": 16
+      }, {
+         "dark": "icons/plasma-32.png",
+         "light": "icons/plasma-dark-32.png",
+         "size": 32
+      }, {
+         "dark": "icons/plasma-48.png",
+         "light": "icons/plasma-dark-48.png",
+         "size": 48
+      }, {
+         "dark": "icons/plasma-128.png",
+         "light": "icons/plasma-dark-128.png",
+         "size": 128
+      } ]
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "constants.js", "utils.js", "content-utils.js", "content-script.js" ],
+      "match_about_blank": true,
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en",
+   "description": "Provides better integration with the KDE Plasma desktop.",
+   "icons": {
+      "128": "icons/plasma-128.png",
+      "16": "icons/plasma-16.png",
+      "32": "icons/plasma-32.png",
+      "48": "icons/plasma-48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1Wz6JigIdPBxPJvYrnjuKM3X4YEaUHgyOW2TM1G1Maxook1HO8vLFGhBR7g3jEQ7Yw9PTa6ZAa8J/I9a/1EQz0Ssx2+m3R9SvJfdKSCrCth8nwMpB8V8I5EhiUoW57kM0v9r/18Buem5cBIo0EnSAVCbmNG95R5jtg62P4+LNGEwHk5L7RSblXUN2hhUwXty4A98EXD6T2Pnpu1m8nRF2B1t5AcspSMV5ECnL9x8kT5bup1gJo0FGTz6C+1huDNRaI3OY1YDWyvCVRFXlAhuFERTW6siMdghK++kYM43H7cvJMFYnVVuffD9WNRsUCI9V0SrqYbPre/2nEl+8VUXVwIDAQAB",
+   "manifest_version": 2,
+   "name": "Plasma Integration",
+   "optional_permissions": [ "history" ],
+   "options_ui": {
+      "chrome_style": true,
+      "page": "options.html"
+   },
+   "permissions": [ "nativeMessaging", "notifications", "storage", "downloads", "tabs", "\u003Call_urls>", "contextMenus" ],
+   "short_name": "Plasma",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.9",
+   "web_accessible_resources": [ "page-script.js" ]
+}

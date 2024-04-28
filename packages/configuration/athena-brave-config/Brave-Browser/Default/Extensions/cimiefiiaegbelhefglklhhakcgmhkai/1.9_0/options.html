@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title data-i18n="options_title"></title>
+    <link rel="stylesheet" href="options.css">
+    <script src="constants.js"></script>
+    <script src="i18n.js"></script>
+    <script src="utils.js"></script>
+    <script src="content-utils.js"></script>
+    <script src="options.js"></script>
+</head>
+
+<body>
+
+<ul class="tabbar">
+    <li><a href="#" data-tab-link="general" data-tab-active="true" data-i18n="options_tab_general">I18N</a></li>
+    <li><a href="#" data-tab-link="about" data-i18n="options_tab_about">I18N</a></li>
+</ul>
+
+<div class="tab active" data-tab-id="general">
+
+    <!-- same error messages as in action_popup.html -->
+    <div class="os-not-supported-info">
+        <h3 data-i18n="general_error_not_supported_os_title">I18N</h3>
+
+        <p data-i18n="general_error_not_supported_os">I18N</p>
+    </div>
+
+    <div class="startup-failure-info">
+        <h3 data-i18n="general_error_startup_failed_title">I18N</h3>
+
+        <p data-i18n="general_error_startup_failed">I18N</p>
+
+        <a data-i18n="general_error_startup_failed_wiki_link" href="https://community.kde.org/Plasma/Browser_Integration" target="_blank">I18N</a>
+    </div>
+
+    <div id="save-failure-info" class="hidden">
+        <p id="save-message"></p>
+    </div>
+
+    <ul id="extensions-selection">
+        <li>
+            <label>
+                <input type="checkbox" data-extension="mpris" data-settings-key="enabled"> <span data-i18n="options_plugin_mpris_title">I18N</span>
+            </label>
+            <p data-i18n="options_plugin_mpris_description">I18N</p>
+        </li>
+        <li class="dependent">
+            <label>
+                <input type="checkbox" data-extension="mprisMediaSessions" data-settings-key="enabled" data-depends-extension="mpris" data-depends-settings-key="enabled" data-depends-settings-value="TRUE"> <span data-i18n="options_plugin_mpris_media_sessions_title">I18N</span>
+            </label>
+            <p data-i18n="options_plugin_mpris_media_sessions_description">I18N</p>
+        </li>
+        <li>
+            <label>
+                <input type="checkbox" data-extension="kdeconnect" data-settings-key="enabled"> <span data-i18n="options_plugin_kdeconnect_title">I18N</span>
+            </label>
+            <p data-i18n="options_plugin_kdeconnect_description, https://kdeconnect.kde.org/" data-i18n-html="true">I18N</p>
+        </li>
+        <li>
+            <label>
+                <input type="checkbox" data-extension="downloads" data-settings-key="enabled"> <span data-i18n="options_plugin_downloads_title">I18N</span>
+            </label>
+            <p></p>
+        </li>
+        <li class="dependent" data-requires-extension="downloads" data-requires-extension-version-minimum="3">
+            <label>
+                <input type="checkbox" data-extension="downloads" data-settings-key="addToRecentDocuments" data-depends-extension="downloads" data-depends-settings-key="enabled" data-depends-settings-value="TRUE"> <span data-i18n="options_plugin_downloads_addToRecentDocuments">I18N</span>
+            </label>
+            <p></p>
+        </li>
+        <li class="dependent" data-requires-extension="downloads" data-requires-extension-version-minimum="2">
+            <label>
+                <input type="checkbox" data-extension="downloads" data-settings-key="saveOriginUrl" data-depends-extension="downloads" data-depends-settings-key="enabled" data-depends-settings-value="TRUE"> <span data-i18n="options_plugin_downloads_saveOriginUrl">I18N</span>
+            </label>
+            <p data-i18n="options_plugin_downloads_saveOriginUrl_description" data-i18n-html="true">I18N</p>
+        </li>
+        <li>
+            <label data-i18n="options_heading_krunner">I18N</label>
+        </li>
+        <li class="dependent">
+            <label>
+                <input type="checkbox" data-extension="tabsrunner" data-settings-key="enabled"> <span data-i18n="options_plugin_tabsrunner_title">I18N</span>
+            </label>
+            <p data-i18n="options_plugin_tabsrunner_description, open-krunner-settings, #" data-i18n-html="true">I18N</p>
+        </li>
+        <li class="dependent" data-requires-extension="historyrunner">
+            <label>
+                <input type="checkbox" data-extension="historyrunner" data-settings-key="enabled"> <span data-i18n="options_plugin_historyrunner_title">I18N</span>
+            </label>
+            <p id="historyrunner-description" data-i18n="options_plugin_historyrunner_description, request-permission-history, #" data-i18n-html="true">I18N</p>
+        </li>
+        <li data-requires-extension="purpose">
+            <label>
+                <input type="checkbox" data-extension="purpose" data-settings-key="enabled"> <span data-i18n="options_plugin_purpose_title">I18N</span>
+            </label>
+            <p data-i18n="options_plugin_purpose_description">I18N</p>
+        </li>
+        <li data-not-show-in="firefox">
+            <label>
+                <input type="checkbox" data-extension="breezeScrollBars" data-settings-key="enabled"> <span data-i18n="options_plugin_breezeScrollBars_title">I18N</span>
+            </label>
+            <p data-i18n="options_plugin_breezeScrollBars_description" data-i18n-html="true">I18N</p>
+        </li>
+    </ul>
+</div>
+
+<div class="tab" data-tab-id="about">
+
+    <p id="version-info" class="not-supported">
+        <span id="version-info-host" data-i18n="options_about_host_version">I18N</span><br>
+        <span id="version-info-extension" data-i18n="options_about_extension_version">I18N</span> (<a href="https://community.kde.org/Plasma/Browser_Integration/Changelog" target="_blank" data-i18n="options_about_changelog_link">I18N</a>)
+    </p>
+
+    <p>
+        <span data-i18n="options_about_copyright">I18N</span><br>
+        <span data-i18n="options_about_license, https://www.gnu.org/licenses/gpl-3.0.de.html" data-i18n-html="true">I18N</span><br>
+        <span id="translators-aboutdata">I18N</span>
+    </p>
+    <p data-i18n="options_about_created_by_kde, https://www.kde.org, https://community.kde.org/Plasma/Browser_Integration" data-i18n-html="true">I18N</p>
+    <p data-i18n="options_about_bugs, https://bugs.kde.org/buglist.cgi?product=plasma-browser-integration&resolution=---, https://bugs.kde.org/enter_bug.cgi?product=plasma-browser-integration" data-i18n-html="true">I18N</p>
+
+    <img class="konqi" src="icons/aboutkde.svg">
+
+    <p data-i18n="options_about_kde, https://www.gnu.org/philosophy/free-sw.html, https://community.kde.org/Get_Involved, https://www.kde.org/" data-i18n-html="true">I18N</p>
+    <p data-i18n="options_about_donate, https://www.kde.org/community/donations/?app=plasma-browser-integration" data-i18n-html="true">I18N</p>
+</div>
+
+</body>
+
+</html>
