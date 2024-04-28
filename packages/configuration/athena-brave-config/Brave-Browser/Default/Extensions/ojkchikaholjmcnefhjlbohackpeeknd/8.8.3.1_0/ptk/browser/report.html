@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Penetration Testing Kit - cross-browser extension for penetration testing" name="description" />
+    <meta content="Penetration Testing Kit, request builder, traffic recording, macro recording" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OWASP Penetration Testing Kit - Report</title>
+
+    <script src="../packages/browser-polyfill/browser-polyfill.min.js"></script>
+    <script src="../packages/jquery/jquery.min.js"></script>
+    <script src="../packages/jquery/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/semantic-ui/semantic.min.css" type="text/css" />
+    <script src="../packages/semantic-ui/semantic.min.js"></script>
+
+
+    <link rel="stylesheet" href="../packages/codemirror/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="../packages/codemirror/addon/fold/foldgutter.css" type="text/css" />
+    <script src="../packages/codemirror/codemirror.js"></script>
+    <script src="../packages/codemirror/mode/http/http.js"></script>
+    <script src="../packages/codemirror/mode/xml/xml.js"></script>
+    <script src="../packages/codemirror/mode/css/css.js"></script>
+    <script src="../packages/codemirror/mode/javascript/javascript.js"></script>
+    <script src="../packages/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="../packages/codemirror/addon/fold/foldcode.js"></script>
+    <script src="../packages/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="../packages/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/indent-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/markdown-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/comment-fold.js"></script>
+
+    <link rel="stylesheet" href="assets/css/default.css" type="text/css" />
+    <script src="assets/js/menu.js"></script>
+    <script type="module" src="assets/js/report.js"></script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px !important;
+            height: 10px !important;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cecece;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div>
+        <div class="ui secondary button" id="print" style="width: 120px;position: absolute;right: -1px;">
+            <i class="icon" title="Print" style="min-width: 30px;">Print</i>
+        </div>
+    </div> -->
+    <div class="ui message">
+        <div class="ui message top attached tabular menu dashboard" style="border:none">
+            <p id="dashboard_message_text" class="header short_message_text" style="min-height: 30px;">
+                &nbsp;</p>
+        </div>
+        <img src="assets/images/icon.png" style="position: absolute;right: 15px;top: 5px;width: 70px;height: 70px;"
+            title="Penetration Testing Kit">
+
+    </div>
+
+    <div id="main" style="padding: 10px 10px 10px 10px;margin: 0px;">
+
+        <div class="ui one column grid" style="padding: 20px;">
+            <!-- Tech stack -->
+
+            <div class="ui fluid card">
+                <div class="content ">
+                    <div class="ui small header"><i class="sticky note icon"></i>Technology stack</div>
+                    <div id="technologies">
+                        <div class="description">
+                            <table id="tbl_technologies" class="ui celled table responsive nowrap unstackable"
+                                width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Version</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div style="position:absolute; top:4px;right: 4px">
+                    <div class="ui active centered inline inverted loader technologies"></div>
+                </div>
+            </div>
+
+
+            <!--OWASP Headers-->
+
+            <div class="ui fluid card">
+                <div class="content">
+                    <div class="ui small header"><i class="th list icon"></i>OWASP Secure Headers </div>
+                    <div id="owasp_passive">
+                        <table id="tbl_owasp" class="ui celled table responsive nowrap unstackable" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Header Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div style="position:absolute; top:4px;right: 4px">
+                    <div class="ui active centered inline inverted loader owasp"></div>
+                </div>
+            </div>
+
+            <!--WAF/CDN-->
+
+            <div class="ui fluid card">
+                <div class="content">
+                    <div class="ui small header"><i class="th list icon"></i>WAF / CDN</div>
+                    <div>
+                        <table id="tbl_waf" class="ui celled table responsive nowrap unstackable" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Version</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div style="position:absolute; top:4px;right: 4px">
+                    <div class="ui active centered inline inverted loader waf"></div>
+                </div>
+            </div>
+
+
+            <!--Auth-->
+
+            <div class="ui fluid card">
+                <div class="content">
+                    <div class="ui small header"><i class="key icon"></i> Authentication and storage </div>
+                    <div class="ui segment" data-tab="cookie" id='cookieform'>
+                        <h4>Cookie</h4>
+                        <table id="tbl_cookie" class="ui celled table small responsive nowrap unstackable" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Domain</th>
+                                    <th>Name</th>
+                                    <th>Value</th>
+                                    <th>HttpOnly</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="ui segment" data-tab="localStorage" style="display: none;">
+                        <h4>Local Storage</h4>
+                        <pre style="overflow:scroll"><code id="localStorageText"></code></pre>
+                    </div>
+                    <div class="ui segment" data-tab="sessionStorage" style="display: none;">
+                        <h4>Session Storage</h4>
+                        <pre style="overflow:scroll"><code id="sessionStorageText">{ }</code></pre>
+
+                    </div>
+                    <div class="ui segment" data-tab="tokens" style="overflow-wrap: break-word;display: none;">
+                        <h4>Tokens</h4>
+                        <table id="tbl_tokens" class="ui celled table small responsive nowrap unstackable" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>In</th>
+                                    <th>Decoded</th>
+                                    <th>Token</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="ui segment" data-tab="headers" style="display: none;">
+                        <table id="tbl_headers" class="ui celled table small responsive nowrap unstackable"
+                            width="100%">
+                            <h4>Headers</h4>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <!-- <div style="position:absolute; top:4px;right: 4px">
+                            <div class="ui active centered inline inverted loader owasp"></div>
+                        </div> -->
+            </div>
+
+        </div>
+
+        <div class="ui one column grid" id="cve_report" style="padding: 20px;display: none;">
+            <div class="ui fluid card">
+                <div class="content " style=" overflow: scroll; ">
+                    <div class="ui small header"><i class="bug icon"></i>Known vulnerabilities (CVE) </div>
+                    <div id="cve" style="  margin-top: 5px;scrollbar-width: none;">
+                        <div class="container">
+                            <table id="tbl_cve" class="ui celled table  responsive nowrap unstackable" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Component</th>
+                                        <th>Version</th>
+                                        <th>CVE details</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div style="position:absolute; top:4px;right: 4px">
+                    <div class="ui active centered inline inverted loader cve"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="rattacker_report" style="padding: 10px 10px 10px 10px;margin: 0px;display: none;">
+        <div class="ui one column grid" style="padding: 20px;">
+            <div class="ui fluid card">
+                <div class="content ">
+                    <div class="ui small header">
+                        <i class="bug layout icon"></i>R-Attacker
+                    </div>
+                    <div class="" style=" min-height: 80px;padding-top:15px; padding-left: 40px; padding-right: 40px;">
+
+                        <div class="ui mini statistic left floated" style="margin-top: 5px;">
+                            <div class="value" id="attacks_count">
+                                0
+                            </div>
+                            <div class="label">
+                                Attacks
+                            </div>
+                        </div>
+                        <div class="ui mini statistic left floated" style="margin-top: 5px;">
+                            <div class="value" id="vulns_count">
+                                0
+                            </div>
+                            <div class="label">
+                                Findings
+                            </div>
+                        </div>
+                        <div class="ui mini statistic right floated" style="margin-top: 5px;">
+                            <div class="value" id="low_count">
+                                0
+                            </div>
+                            <div class="label"><i class="exclamation triangle yellow icon"></i>
+                                Low
+                            </div>
+                        </div>
+                        <div class="ui mini statistic right floated" style="margin-top: 5px;">
+                            <div class="value" id="medium_count">
+                                0
+                            </div>
+                            <div class="label"><i class="exclamation triangle orange icon"></i>
+                                Medium
+                            </div>
+                        </div>
+                        <div class="ui mini statistic right floated" style="margin-top: 5px;">
+                            <div class="value" id="high_count">
+                                0
+                            </div>
+                            <div class="label"><i class="exclamation triangle red icon"></i>
+                                High
+                            </div>
+                        </div>
+                    </div>
+                    <div style="  margin-top: 5px;scrollbar-width: none;">
+                        <form class="ui form controls">
+                            <div class="content" id="rattacker_content" style="padding:1px">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div style="position:absolute; top:4px;right: 4px">
+                    <div class="ui active centered inline inverted loader rattacker"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

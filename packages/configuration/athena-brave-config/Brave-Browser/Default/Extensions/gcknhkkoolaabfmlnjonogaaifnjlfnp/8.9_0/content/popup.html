@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Popup</title>
+    <link href="popup.css" rel="stylesheet">
+    <script type="module" src="popup.js"></script>
+  </head>
+  <body>
+    <article>
+      <section>
+        <h1 data-i18n="extensionName"><img src="../image/icon.svg" alt=""> </h1>
+
+        <div class="list">
+          <label class="pattern">
+            <span class="flag"><img src="../image/power.svg" alt=""></span>
+            <span class="title" data-i18n="proxyByPatterns"></span>
+            <input type="radio" name="server" value="pattern">
+          </label>
+
+          <label>
+            <span class="flag"><img class="off" src="../image/power.svg" alt=""></span>
+            <span class="title" data-i18n="disable"></span>
+            <input type="radio" name="server" value="disable" checked>
+          </label>
+        </div>
+
+        <details>
+          <summary data-i18n="more"></summary>
+          <div class="host">
+            <select class="local">
+              <option value="" disabled selected>&nbsp;</option>
+            </select>
+
+            <input type="text" id="filter" spellcheck="false" placeholder="filter">
+
+            <button type="button" class="local" data-i18n="quickAdd"></button>
+            <button type="button" class="local" data-i18n="excludeHost"></button>
+            <button type="button" class="firefox local" data-i18n="setTabProxy"></button>
+            <button type="button" class="firefox local" data-i18n="unsetTabProxy"></button>
+          </div>
+        </details>
+
+        <div class="popup-buttons">
+          <button type="button" data-i18n="options"></button>
+          <button type="button" data-i18n="location"></button>
+          <button type="button" data-i18n="ip"></button>
+          <button type="button" data-i18n="log"></button>
+        </div>
+
+
+        <!-- template -->
+        <template>
+          <label>
+            <span class="flag"></span>
+            <span class="title"></span>
+            <span class="port"></span>
+            <input type="radio" name="server">
+            <span class="data"></span>
+          </label>
+        </template>
+        <!-- /template -->
+      </section>
+    </article>
+  </body>
+</html>

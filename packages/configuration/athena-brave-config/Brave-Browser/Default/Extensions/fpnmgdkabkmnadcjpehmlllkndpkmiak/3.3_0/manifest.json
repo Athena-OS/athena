@@ -1,0 +1,42 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "scripts/utils.js", "scripts/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "16": "images/toolbar/toolbar-icon-archive16.png",
+         "24": "images/toolbar/toolbar-icon-archive24.png",
+         "32": "images/toolbar/toolbar-icon-archive32.png",
+         "64": "images/toolbar/toolbar-icon-archive64.png"
+      }
+   },
+   "content_scripts": [ {
+      "css": [ "css/wikipedia.css" ],
+      "js": [ "scripts/wikipedia.js" ],
+      "matches": [ "http://*.wikipedia.org/*", "https://*.wikipedia.org/*" ]
+   } ],
+   "description": "The Official Wayback Machine Extension - by the Internet Archive.",
+   "differential_fingerprint": "1.bdaf8c10d842d4528e6472641f6399db53124e193fcf82de9bf078dc16be9664",
+   "homepage_url": "https://archive.org/",
+   "icons": {
+      "1024": "images/app-icon/app-icon1024.png",
+      "128": "images/app-icon/app-icon128.png",
+      "16": "images/app-icon/mini-icon16.png",
+      "24": "images/app-icon/mini-icon24.png",
+      "256": "images/app-icon/app-icon256.png",
+      "32": "images/app-icon/mini-icon32.png",
+      "48": "images/app-icon/mini-icon48.png",
+      "512": "images/app-icon/app-icon512.png",
+      "64": "images/app-icon/app-icon64.png",
+      "96": "images/app-icon/app-icon96.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh3awwK/MTAQBqRH7kebeUmNpU3jtbL7Q9ekNXSGPBATuS5hojpiQUx2r4w0aRO1BIx7cZ2URyxt4AGFiV7FGuvw2uz/WR/S8rYI8XNFfBkRo350btJFD4LNRqxan5BLNCrp5DWAFSCAJbfN/VsoaE9n4NOPHHurSgqcuXjZMLA1o/s6VAZTQWekKiwSFwfx6BHppKcnhvADtrNLi+y30hPQ0OkDc/RsXIlvBcvdC8xJBGdhMJm6yaWrFzgDL1sARBxDkzvb1zbMbiEnY2UNaZ/3Fo0vs42jNDSqM0wKIgQg1qjNWwyXJ/0mXi9Q0QiTVU12P/uqx32zbzZE4wi2rHQIDAQAB",
+   "manifest_version": 2,
+   "name": "Wayback Machine",
+   "optional_permissions": [ "bookmarks" ],
+   "permissions": [ "activeTab", "cookies", "contextMenus", "notifications", "storage", "webRequest", "webRequestBlocking", "https://archive.org/*", "https://*.archive.org/*", "https://hypothes.is/*", "\u003Call_urls>" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.3",
+   "web_accessible_resources": [ "css/archive.css", "images/*" ]
+}

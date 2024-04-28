@@ -1,0 +1,1306 @@
+{
+   "1pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Застосувати зміни"
+   },
+   "1pEnableMyFiltersLabel": {
+      "description": "Label for the checkbox use to enable/disable 'My filters' list",
+      "message": "Увімкнути власні фільтри"
+   },
+   "1pExport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "Експортувати"
+   },
+   "1pExportFilename": {
+      "description": "English: my-ublock-static-filters_{{datetime}}.txt",
+      "message": "ublock-custom-filters_{{datetime}}.txt"
+   },
+   "1pImport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "Імпортувати та додати"
+   },
+   "1pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Власні фільтри"
+   },
+   "1pTrustMyFiltersLabel": {
+      "description": "Label for the checkbox use to trust the content of 'My filters' list",
+      "message": "Дозволити власні фільтри, які потребують довіри"
+   },
+   "1pTrustWarning": {
+      "description": "Warning against copy-pasting filters from random sources",
+      "message": "Не додавати фільтри з невідомих джерел."
+   },
+   "3pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Застосувати зміни"
+   },
+   "3pAutoUpdatePrompt1": {
+      "description": "A checkbox in the _3rd-party filters_ pane",
+      "message": "Автоматично оновити списки фільтрів."
+   },
+   "3pExternalListObsolete": {
+      "description": "used as a tooltip for the out-of-date icon beside a list",
+      "message": "Застарілий."
+   },
+   "3pExternalListsHint": {
+      "description": "Short information about how to use the textarea to import external filter lists by URL",
+      "message": "Одне посилання на рядок. Невірні посилання будуть проігноровані без попередження."
+   },
+   "3pGroupAds": {
+      "description": "Filter lists section name",
+      "message": "Реклама"
+   },
+   "3pGroupAnnoyances": {
+      "description": "Filter lists section name",
+      "message": "Надокучливості"
+   },
+   "3pGroupCookies": {
+      "description": "Filter lists section name",
+      "message": "Повідомлення про файли cookie"
+   },
+   "3pGroupCustom": {
+      "description": "Filter lists section name",
+      "message": "Користувацькі"
+   },
+   "3pGroupDefault": {
+      "description": "Filter lists section name",
+      "message": "Вбудовані"
+   },
+   "3pGroupMalware": {
+      "description": "Filter lists section name",
+      "message": "Домени шкідливих програм"
+   },
+   "3pGroupMultipurpose": {
+      "description": "Filter lists section name",
+      "message": "Універсальні"
+   },
+   "3pGroupPrivacy": {
+      "description": "Filter lists section name",
+      "message": "Конфіденційність"
+   },
+   "3pGroupRegions": {
+      "description": "Filter lists section name",
+      "message": "Регіони, мови"
+   },
+   "3pGroupSocial": {
+      "description": "Filter lists section name",
+      "message": "Віджети соціальних мереж"
+   },
+   "3pIgnoreGenericCosmeticFilters": {
+      "description": "This will cause uBO to ignore all generic cosmetic filters.",
+      "message": "Ігнорувати загальні косметичні фільтри"
+   },
+   "3pIgnoreGenericCosmeticFiltersInfo": {
+      "description": "Describes the purpose of the 'Ignore generic cosmetic filters' feature.",
+      "message": "Загальні косметичні фільтри — це ті косметичні фільтри, які призначені для застосування на всіх вебсайтах. Увімкнення цієї опції усуне навантаження на пам'ять і процесор, що додається до вебсторінок у результаті обробки загальних косметичних фільтрів.\n\nРадимо вмикати цю опцію на менш потужних пристроях."
+   },
+   "3pImport": {
+      "description": "The label for the checkbox used to import external filter lists",
+      "message": "Імпорт..."
+   },
+   "3pLastUpdate": {
+      "description": "used as a tooltip for the clock icon beside a list",
+      "message": "Останнє оновлення: {{ago}}\nКлацніть для примусового оновлення."
+   },
+   "3pListsOfBlockedHostsHeader": {
+      "description": "English: Lists of blocked hosts",
+      "message": "Перелік заблокованих хостів"
+   },
+   "3pListsOfBlockedHostsPerListStats": {
+      "description": "Appears aside each filter list in the _3rd-party filters_ pane",
+      "message": "використовується {{used}} з {{total}}"
+   },
+   "3pListsOfBlockedHostsPrompt": {
+      "description": "Appears at the top of the _3rd-party filters_ pane",
+      "message": "{{netFilterCount}} мережевих фільтрів ＋ {{cosmeticFilterCount}} косметичних фільтрів з:"
+   },
+   "3pNetworkError": {
+      "description": "used as a tooltip for error icon beside a list",
+      "message": "Оновлення не вдалося, у зв'язку з помилкою мережі."
+   },
+   "3pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Списки фільтрів"
+   },
+   "3pParseAllABPHideFiltersInfo": {
+      "description": "Describes the purpose of the 'Parse and enforce cosmetic filters' feature.",
+      "message": "Косметичні фільтри служать для приховування елементів на вебсторінці, які вважаються візуально неприємними та не можуть бути заблоковані мережевими механізмами фільтрації на основі запитів."
+   },
+   "3pParseAllABPHideFiltersPrompt1": {
+      "description": "English: Parse and enforce Adblock+ element hiding filters.",
+      "message": "Розбір та застосування фільтрів приховування елементів Adblock+."
+   },
+   "3pPurgeAll": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "Очистити всі кеші"
+   },
+   "3pSuspendUntilListsAreLoaded": {
+      "description": "A checkbox in the 'Filter lists' pane",
+      "message": "Призупинити мережеві операції доки всі списки фільтрів не завантажаться"
+   },
+   "3pUpdateNow": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "Оновити зараз"
+   },
+   "3pUpdating": {
+      "description": "used as a tooltip for the spinner icon beside a list",
+      "message": "Оновлюється..."
+   },
+   "3pViewContent": {
+      "description": "used as a tooltip for eye icon beside a list",
+      "message": "переглянути вміст"
+   },
+   "GB": {
+      "description": "short for 'gigabytes'",
+      "message": "ГБ"
+   },
+   "KB": {
+      "description": "short for 'kilobytes'",
+      "message": "КБ"
+   },
+   "MB": {
+      "description": "short for 'megabytes'",
+      "message": "МБ"
+   },
+   "aboutBackupDataButton": {
+      "description": "Text for button to create a backup of all settings",
+      "message": "Зберегти резервну копію у файл..."
+   },
+   "aboutBackupFilename": {
+      "description": "English: my-ublock-backup_{{datetime}}.txt",
+      "message": "ublock-backup_{{datetime}}.txt"
+   },
+   "aboutCDNs": {
+      "description": "Shown in the About pane",
+      "message": "Списки власних фільтрів uBO вільно розміщуються на таких \u003Ca href=\"https://wikipedia.org/wiki/Content_delivery_network\">CDN\u003C/a>:"
+   },
+   "aboutCDNsInfo": {
+      "description": "Shown in the About pane",
+      "message": "Випадково вибраний CDN застосовуватиметься, коли список фільтрів потрібно оновити"
+   },
+   "aboutChangelog": {
+      "description": "",
+      "message": "Журнал змін"
+   },
+   "aboutCode": {
+      "description": "English: Source code (GPLv3)",
+      "message": "Джерельний код (GPLv3)"
+   },
+   "aboutContributors": {
+      "description": "English: Contributors",
+      "message": "Учасники"
+   },
+   "aboutDependencies": {
+      "description": "Shown in the About pane",
+      "message": "Зовнішні залежності (сумісні з GPLv3):"
+   },
+   "aboutFilterLists": {
+      "description": "Link text to uBO's own filter lists repo",
+      "message": "Списки фільтрів"
+   },
+   "aboutPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Про програму"
+   },
+   "aboutPrivacyPolicy": {
+      "description": "Link to privacy policy on GitHub (English)",
+      "message": "Політика конфіденційності"
+   },
+   "aboutResetDataButton": {
+      "description": "English: Reset to default settings...",
+      "message": "Відновити початкові налаштування..."
+   },
+   "aboutResetDataConfirm": {
+      "description": "Message asking user to confirm reset",
+      "message": "Ваші налаштування буде видалено та µBlock буде перезапущено.\n\nПовернути µBlock до початкових налаштувань?"
+   },
+   "aboutRestoreDataButton": {
+      "description": "English: Restore from file...",
+      "message": "Відновити з файлу…"
+   },
+   "aboutRestoreDataConfirm": {
+      "description": "Message asking user to confirm restore",
+      "message": "Всі ваші налаштування будуть перезаписані з резервної копії від {{time}} та µBlock буде перезапущено.\n\nПерезаписати всі налаштування використовуючи резервну копію?"
+   },
+   "aboutRestoreDataError": {
+      "description": "Message to display when an error occurred during restore",
+      "message": "Дані помилкові або не можуть бути прочитані"
+   },
+   "aboutSourceCode": {
+      "description": "Link text to source code repo",
+      "message": "Вихідний код"
+   },
+   "aboutTranslations": {
+      "description": "Link text to translations repo",
+      "message": "Переклади"
+   },
+   "advancedSettingsPageName": {
+      "description": "Title for the advanced settings page",
+      "message": "Розширені налаштування"
+   },
+   "advancedSettingsWarning": {
+      "description": "A warning to users at the top of 'Advanced settings' page",
+      "message": "Увага! Змінюйте ці розширені налаштування на власний ризик."
+   },
+   "assetViewerPageName": {
+      "description": "Title for the asset viewer page",
+      "message": "uBlock₀ – Переглядач ресурсів"
+   },
+   "clickToLoad": {
+      "description": "Message used in frame placeholders",
+      "message": "Натисніть, щоб завантажити"
+   },
+   "cloudDeviceNamePrompt": {
+      "description": "used as a prompt for the user to provide a custom device name",
+      "message": "Назва цього пристрою:"
+   },
+   "cloudNoData": {
+      "description": "",
+      "message": "...\n..."
+   },
+   "cloudPull": {
+      "description": "tooltip",
+      "message": "Імпортувати із хмарного сховища"
+   },
+   "cloudPullAndMerge": {
+      "description": "tooltip",
+      "message": "Імпортувати з хмари та об'єднати з чинними налаштуваннями"
+   },
+   "cloudPush": {
+      "description": "tooltip",
+      "message": "Експортувати до хмарного сховища"
+   },
+   "contextMenuBlockElementInFrame": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Заблокувати елемент у фреймі"
+   },
+   "contextMenuSubscribeToList": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Підписатися на список фільтрів..."
+   },
+   "contextMenuTemporarilyAllowLargeMediaElements": {
+      "description": "A context menu entry, present when large media elements have been blocked on the current site",
+      "message": "Тимчасово дозволити великі медіа елементи"
+   },
+   "contextMenuViewSource": {
+      "description": "A context menu entry, to view the source code of the target resource",
+      "message": "Перегляд джерела..."
+   },
+   "dashboardName": {
+      "description": "English: uBlock₀ — Dashboard",
+      "message": "µBlock — Панель керування"
+   },
+   "dashboardUnsavedWarning": {
+      "description": "A warning in the dashboard when navigating away from unsaved changes",
+      "message": "Увага! Є незбережені зміни"
+   },
+   "dashboardUnsavedWarningIgnore": {
+      "description": "Label for button to ignore unsaved changes",
+      "message": "Ігнорувати"
+   },
+   "dashboardUnsavedWarningStay": {
+      "description": "Label for button to prevent navigating away from unsaved changes",
+      "message": "Залишитись"
+   },
+   "docblockedBack": {
+      "description": "English: Go back",
+      "message": "Повернутись назад"
+   },
+   "docblockedClose": {
+      "description": "English: Close this window",
+      "message": "Зачинити це вікно"
+   },
+   "docblockedDisable": {
+      "description": "Button text to navigate to the blocked page",
+      "message": "Продовжити"
+   },
+   "docblockedDisablePermanent": {
+      "description": "English: Permanently",
+      "message": "Завжди"
+   },
+   "docblockedDisableTemporary": {
+      "description": "English: Temporarily",
+      "message": "Тимчасово"
+   },
+   "docblockedDontWarn": {
+      "description": "Label for checkbox in document-blocked page",
+      "message": "Не нагадуйте мені про цей сайт"
+   },
+   "docblockedFoundIn": {
+      "description": "English: List of filter list names follows",
+      "message": "Знайдено в:"
+   },
+   "docblockedNoParamsPrompt": {
+      "description": "label to be used for the parameter-less URL: https://cloud.githubusercontent.com/assets/585534/9832014/bfb1b8f0-593b-11e5-8a27-fba472a5529a.png",
+      "message": "без параметрів"
+   },
+   "docblockedProceed": {
+      "description": "English: Disable strict blocking for {{hostname}} ...",
+      "message": "Вимкнути повне блокування для {{hostname}}"
+   },
+   "docblockedPrompt1": {
+      "description": "Used in the strict-blocking page",
+      "message": "uBlock запобіг завантаженню наступної сторінки:"
+   },
+   "docblockedPrompt2": {
+      "description": "Used in the strict-blocking page",
+      "message": "Через наступний фільтр"
+   },
+   "docblockedTitle": {
+      "description": "Used as a title for the document-blocked page",
+      "message": "Сторінка заблокована"
+   },
+   "dummy": {
+      "description": "so we dont need to deal with comma for last entry",
+      "message": "Цей запис має бути останнім"
+   },
+   "elapsedManyDaysAgo": {
+      "description": "English: {{value}} days ago",
+      "message": "{{value}} дні(в) тому"
+   },
+   "elapsedManyHoursAgo": {
+      "description": "English: {{value}} hours ago",
+      "message": "{{value}} годин(и) тому"
+   },
+   "elapsedManyMinutesAgo": {
+      "description": "English: {{value}} minutes ago",
+      "message": "{{value}} хвилин(и) тому"
+   },
+   "elapsedOneDayAgo": {
+      "description": "English: a day ago",
+      "message": "день тому"
+   },
+   "elapsedOneHourAgo": {
+      "description": "English: an hour ago",
+      "message": "годину тому"
+   },
+   "elapsedOneMinuteAgo": {
+      "description": "English: a minute ago",
+      "message": "хвилину тому"
+   },
+   "errorCantConnectTo": {
+      "description": "English: Network error: {{msg}}",
+      "message": "Помилка мережі: {{msg}}"
+   },
+   "extName": {
+      "description": "extension name.",
+      "message": "uBlock Origin"
+   },
+   "extShortDesc": {
+      "description": "this will be in the Chrome web store: must be 132 characters or less",
+      "message": "Ефективний блокувальник реклами таки з’явився. Не навантажує процесор та пам'ять."
+   },
+   "fennecMenuItemBlockingOff": {
+      "description": "Firefox-specific: appears as 'uBlock₀ (off)'",
+      "message": "Відключений"
+   },
+   "genericApplyChanges": {
+      "description": "for generic 'Apply changes' buttons",
+      "message": "Застосувати зміни"
+   },
+   "genericBytes": {
+      "description": "",
+      "message": "байтів"
+   },
+   "genericCopyToClipboard": {
+      "description": "Label for buttons used to copy something to the clipboard",
+      "message": "Скопіювати до буферу обміну"
+   },
+   "genericMergeViewScrollLock": {
+      "description": "Tooltip for the button used to lock scrolling between the views in the 'My rules' pane",
+      "message": "Перемкнути замкнуту прокрутку"
+   },
+   "genericRevert": {
+      "description": "for generic 'Revert' buttons",
+      "message": "Скасувати зміни"
+   },
+   "genericSelectAll": {
+      "description": "Label for buttons used to select all text in editor",
+      "message": "Вибрати все"
+   },
+   "genericSubmit": {
+      "description": "for generic 'Submit' buttons",
+      "message": "Надіслати"
+   },
+   "linterMainReport": {
+      "description": "Summary of number of errors as reported by the linter ",
+      "message": "Помилки: {{count}}"
+   },
+   "logAll": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Все"
+   },
+   "logBehindTheScene": {
+      "description": "Pretty name for behind-the-scene network requests",
+      "message": "За лаштунками"
+   },
+   "logFilterPrompt": {
+      "description": "Placeholder string for logger output filtering input field",
+      "message": "фільтр журналу записів"
+   },
+   "logRequestsHeaderDomain": {
+      "description": "English: Domain",
+      "message": "Домен"
+   },
+   "logRequestsHeaderFilter": {
+      "description": "English: Filter",
+      "message": "Фільтр"
+   },
+   "logRequestsHeaderType": {
+      "description": "English: Type",
+      "message": "Тип"
+   },
+   "logRequestsHeaderURL": {
+      "description": "English: URL",
+      "message": "Адреса"
+   },
+   "loggerClearTip": {
+      "description": "Tooltip for the eraser in the logger page; used to blank the content of the logger",
+      "message": "Очистити журнал"
+   },
+   "loggerCurrentTab": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Поточна вкладка"
+   },
+   "loggerDomInspectorTip": {
+      "description": "Tooltip for the DOM inspector button in the logger page",
+      "message": "Перемкнути інспектор DOM"
+   },
+   "loggerEntryDetailsContext": {
+      "description": "Label to identify a context field (typically a hostname)",
+      "message": "Контекст"
+   },
+   "loggerEntryDetailsFilter": {
+      "description": "Label to identify a filter field",
+      "message": "Фільтр"
+   },
+   "loggerEntryDetailsFilterList": {
+      "description": "Label to identify a filter list field",
+      "message": "Список фільтрів"
+   },
+   "loggerEntryDetailsHeader": {
+      "description": "Small header to identify the 'Details' pane for a specific logger entry",
+      "message": "Деталі"
+   },
+   "loggerEntryDetailsPartyness": {
+      "description": "Label to identify a field providing partyness information",
+      "message": "Членство"
+   },
+   "loggerEntryDetailsRootContext": {
+      "description": "Label to identify a root context field (typically a hostname)",
+      "message": "Кореневий контекст"
+   },
+   "loggerEntryDetailsRule": {
+      "description": "Label to identify a rule field",
+      "message": "Правило"
+   },
+   "loggerEntryDetailsType": {
+      "description": "Label to identify the type of an entry",
+      "message": "Тип"
+   },
+   "loggerEntryDetailsURL": {
+      "description": "Label to identify the URL of an entry",
+      "message": "URL-адреса"
+   },
+   "loggerExportEncodeMarkdown": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Markdown"
+   },
+   "loggerExportEncodePlain": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Простий"
+   },
+   "loggerExportFormatList": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Список"
+   },
+   "loggerExportFormatTable": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Таблиця"
+   },
+   "loggerInfoTip": {
+      "description": "Tooltip for the top-right info label in the logger page",
+      "message": "uBlock Origin wiki: журнал"
+   },
+   "loggerPauseTip": {
+      "description": "Tooltip for the pause button in the logger page",
+      "message": "Поставити журнал на паузу (ігнорувати всі вхідні дані)"
+   },
+   "loggerPopupPanelTip": {
+      "description": "Tooltip for the popup panel button in the logger page",
+      "message": "Перемкнути панель, що спливає"
+   },
+   "loggerReloadTip": {
+      "description": "Tooltip for the reload button in the logger page",
+      "message": "Перезавантажити вміст вкладки"
+   },
+   "loggerRowFiltererBuiltin1p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "основний"
+   },
+   "loggerRowFiltererBuiltin3p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "сторонній"
+   },
+   "loggerRowFiltererBuiltinAllowed": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "дозволений"
+   },
+   "loggerRowFiltererBuiltinBlocked": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "заблокований"
+   },
+   "loggerRowFiltererBuiltinEventful": {
+      "description": "A keyword in the built-in row filtering expression: all items corresponding to uBO doing something (blocked, allowed, redirected, etc.)",
+      "message": "насичений"
+   },
+   "loggerRowFiltererBuiltinModified": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "модифікований"
+   },
+   "loggerRowFiltererBuiltinNot": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "Ні"
+   },
+   "loggerRowFiltererBuiltinTip": {
+      "description": "Tooltip for the button to bring up logger output filtering options",
+      "message": "Опції фільтрування журналу"
+   },
+   "loggerRowFiltererButtonTip": {
+      "description": "Tooltip for the row filterer button in the logger page",
+      "message": "Перемкнути фільтрування журналу"
+   },
+   "loggerSettingDiscardPrompt": {
+      "description": "Logger setting: A sentence to describe the purpose of the settings below",
+      "message": "Записи журналу, що не відповідають всім трьом нижченаведеним умовам, будуть автоматично відхилені:"
+   },
+   "loggerSettingHideColumnContext": {
+      "description": "A label for the context column",
+      "message": "{{input}} контекст"
+   },
+   "loggerSettingHideColumnFilter": {
+      "description": "A label for the filter or rule column",
+      "message": "{{input}} фільтр/правило"
+   },
+   "loggerSettingHideColumnPartyness": {
+      "description": "A label for the partyness column",
+      "message": "{{input}} членство"
+   },
+   "loggerSettingHideColumnTime": {
+      "description": "A label for the time column",
+      "message": "{{input}} час"
+   },
+   "loggerSettingHideColumnsPrompt": {
+      "description": "Logger settings: a sentence to describe the purpose of the checkboxes below",
+      "message": "Приховати стовпці:"
+   },
+   "loggerSettingPerEntryLineCount": {
+      "description": "A logger setting",
+      "message": "Використовувати {{input}} рядків на елемент у вертикальному режимі"
+   },
+   "loggerSettingPerEntryMaxAge": {
+      "description": "A logger setting",
+      "message": "Зберегти записи за останні {{input}} хв"
+   },
+   "loggerSettingPerTabMaxEntries": {
+      "description": "A logger setting",
+      "message": "Зберегти щонайбільше {{input}} елементів у вкладці"
+   },
+   "loggerSettingPerTabMaxLoads": {
+      "description": "A logger setting",
+      "message": "Зберегти щонайбільше {{input}} завантажень сторінки у вкладці"
+   },
+   "loggerStaticFilteringFinderSentence1": {
+      "description": "Below this sentence, the filter list(s) in which the filter was found",
+      "message": "Статичний фільтр \u003Ccode>{{filter}}\u003C/code> знайден у:"
+   },
+   "loggerStaticFilteringFinderSentence2": {
+      "description": "Message to show when a filter cannot be found in any filter lists",
+      "message": "Статичний фільтр не знайдений в жодному списку увімкнених у цей момент фільтрів"
+   },
+   "loggerStaticFilteringHeader": {
+      "description": "Small header to identify the static filtering section",
+      "message": "Статичний фільтр"
+   },
+   "loggerStaticFilteringSentence": {
+      "description": "Used in the static filtering wizard",
+      "message": "{{action}} мережеві запити {{type}}, {{br}}посилання яких збігаються з {{url}} {{br}}та які {{origin}},{{br}}{{importance}} є відповідний фільтр-виняток."
+   },
+   "loggerStaticFilteringSentencePartAllow": {
+      "description": "Used in the static filtering wizard",
+      "message": "Дозволити"
+   },
+   "loggerStaticFilteringSentencePartAnyOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "мають будь-яке походження"
+   },
+   "loggerStaticFilteringSentencePartAnyType": {
+      "description": "Used in the static filtering wizard",
+      "message": "будь-якого типу"
+   },
+   "loggerStaticFilteringSentencePartBlock": {
+      "description": "Used in the static filtering wizard",
+      "message": "Блокувати"
+   },
+   "loggerStaticFilteringSentencePartImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "навіть якщо"
+   },
+   "loggerStaticFilteringSentencePartNotImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "крім випадків, коли"
+   },
+   "loggerStaticFilteringSentencePartOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "походять із „{{origin}}“"
+   },
+   "loggerStaticFilteringSentencePartType": {
+      "description": "Used in the static filtering wizard",
+      "message": "типу „{{type}}“"
+   },
+   "loggerURLFilteringContextLabel": {
+      "description": "Label for the context selector",
+      "message": "Контекст:"
+   },
+   "loggerURLFilteringHeader": {
+      "description": "Small header to identify the dynamic URL filtering section",
+      "message": "URL правило"
+   },
+   "loggerURLFilteringTypeLabel": {
+      "description": "Label for the type selector",
+      "message": "Тип:"
+   },
+   "loggerUnpauseTip": {
+      "description": "Tooltip for the play button in the logger page",
+      "message": "Увімкнути журнал"
+   },
+   "pickerContextMenuEntry": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Заблокувати елемент"
+   },
+   "pickerCosmeticFilters": {
+      "description": "English: Cosmetic filters",
+      "message": "Косметичні фільтри"
+   },
+   "pickerCosmeticFiltersHint": {
+      "description": "English: Click, Ctrl-click",
+      "message": "Клік, Ctrl-клік"
+   },
+   "pickerCreate": {
+      "description": "English: Create",
+      "message": "Створити"
+   },
+   "pickerNetFilters": {
+      "description": "English: header for a type of filter in the element picker dialog",
+      "message": "Мережні фільтри"
+   },
+   "pickerPick": {
+      "description": "English: Pick",
+      "message": "Вибрати"
+   },
+   "pickerPreview": {
+      "description": "Element picker preview mode: will cause the elements matching the current filter to be removed from the page",
+      "message": "Попередній перегляд"
+   },
+   "pickerQuit": {
+      "description": "English: Quit",
+      "message": "Вийти"
+   },
+   "popup1pScriptRulePrompt": {
+      "description": "",
+      "message": "Основні скрипти"
+   },
+   "popup3pAnyRulePrompt": {
+      "description": "",
+      "message": "сторонні"
+   },
+   "popup3pFrameFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "рамка"
+   },
+   "popup3pFrameRulePrompt": {
+      "description": "",
+      "message": "Сторонні фрейми"
+   },
+   "popup3pPassiveRulePrompt": {
+      "description": "",
+      "message": "Сторонні CSS/зображення"
+   },
+   "popup3pScriptFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "скрипт"
+   },
+   "popup3pScriptRulePrompt": {
+      "description": "",
+      "message": "Сторонні скрипти"
+   },
+   "popupAnyRulePrompt": {
+      "description": "",
+      "message": "всі"
+   },
+   "popupBlockedOnThisPagePrompt": {
+      "description": "English: on this page",
+      "message": "на цій сторінці"
+   },
+   "popupBlockedOnThisPage_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Заблоковано на цій сторінці"
+   },
+   "popupBlockedRequestPrompt": {
+      "description": "English: requests blocked",
+      "message": "запитів заблоковано"
+   },
+   "popupBlockedSinceInstallPrompt": {
+      "description": "English: since install",
+      "message": "від моменту встановлення"
+   },
+   "popupBlockedSinceInstall_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Заблоковано з моменту встановлення"
+   },
+   "popupBlockedStats": {
+      "description": "Example: 15 (13%)",
+      "message": "{{count}} або {{percent}}%"
+   },
+   "popupDomainsConnected_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Доменів під'єднано"
+   },
+   "popupHitDomainCount": {
+      "description": "appears in popup",
+      "message": "{{count}} з {{total}}"
+   },
+   "popupHitDomainCountPrompt": {
+      "description": "appears in popup",
+      "message": "доменів під’єднано"
+   },
+   "popupImageRulePrompt": {
+      "description": "",
+      "message": "зображення"
+   },
+   "popupInlineScriptRulePrompt": {
+      "description": "",
+      "message": "вбудовані сценарії"
+   },
+   "popupLessButton_v2": {
+      "description": "Label to be used to hide popup panel sections",
+      "message": "Менше"
+   },
+   "popupMoreButton_v2": {
+      "description": "Label to be used to show popup panel sections",
+      "message": "Більше"
+   },
+   "popupNoCosmeticFiltering_v2": {
+      "description": "Caption for the no-cosmetic-filtering per-site switch",
+      "message": "Косметичне фільтрування"
+   },
+   "popupNoLargeMedia_v2": {
+      "description": "Caption for the no-large-media per-site switch",
+      "message": "Великі медіаелементи"
+   },
+   "popupNoPopups_v2": {
+      "description": "Caption for the no-popups per-site switch",
+      "message": "Спливні вікна"
+   },
+   "popupNoRemoteFonts_v2": {
+      "description": "Caption for the no-remote-fonts per-site switch",
+      "message": "Віддалені шрифти"
+   },
+   "popupNoScripting_v2": {
+      "description": "Caption for the no-scripting per-site switch",
+      "message": "JavasScript"
+   },
+   "popupOr": {
+      "description": "English: or",
+      "message": "або"
+   },
+   "popupPowerSwitchInfo": {
+      "description": "English: Click: disable/enable uBlock₀ for this site.\n\nCtrl+click: disable uBlock₀ only on this page.",
+      "message": "Натиснення: вимикає/умикає uBlock₀ для поточного сайту.\n\nCtrl+натиснення: вимикає uBlock₀ тільки для цієї сторінки."
+   },
+   "popupPowerSwitchInfo1": {
+      "description": "Message to be read by screen readers",
+      "message": "Натисніть для вимкнення uBlock₀ для поточного сайту.\n\nНатисніть з Ctrl для вимкнення uBlock₀ лише для цієї сторінки."
+   },
+   "popupPowerSwitchInfo2": {
+      "description": "Message to be read by screen readers",
+      "message": "Натисніть, щоб увімкнути uBlock₀ для цього сайту."
+   },
+   "popupTipDashboard": {
+      "description": "English: Click to open the dashboard",
+      "message": "Перейти до панелі керування"
+   },
+   "popupTipGlobalRules": {
+      "description": "Tooltip when hovering the top-most cell of the global-rules column.",
+      "message": "Глобальні правила: цей стовпчик для правил, що застосовуються для всіх сайтів."
+   },
+   "popupTipLocalRules": {
+      "description": "Tooltip when hovering the top-most cell of the local-rules column.",
+      "message": "Локальні правила: цей стовпчик для правил, що застосовуються лише для цього сайту.\nЛокальні правила замінюють глобальні."
+   },
+   "popupTipLog": {
+      "description": "Tooltip used for the logger icon in the panel",
+      "message": "Перейти до журналу запитів"
+   },
+   "popupTipNoCosmeticFiltering": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Переключити косметичний фільтр для цього сайту"
+   },
+   "popupTipNoCosmeticFiltering1": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Натисніть для вимкнення косметичних фільтрів на цьому сайті"
+   },
+   "popupTipNoCosmeticFiltering2": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Натисніть для увімкнення косметичних фільтрів на цьому сайті"
+   },
+   "popupTipNoLargeMedia": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Увімк/Вимк блокування великих медіа елементів на цьому сайті"
+   },
+   "popupTipNoLargeMedia1": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Натисніть для блокування великих медіаелементів на цьому сайті"
+   },
+   "popupTipNoLargeMedia2": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Натисніть для скасування блокування великих медіаелементів на цьому сайті"
+   },
+   "popupTipNoPopups": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Увімкнути блокування всіх виринаючих вікон цього сайту"
+   },
+   "popupTipNoPopups1": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Натисніть, щоб заблокувати всі спливні вікна на цьому сайті"
+   },
+   "popupTipNoPopups2": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Натисніть для скасування блокування всіх спливних вікон на цьому сайті"
+   },
+   "popupTipNoRemoteFonts": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Перемкнути блокування віддалених шрифтів для цього сайту"
+   },
+   "popupTipNoRemoteFonts1": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Натисніть для блокування віддалених шрифтів на цьому сайті"
+   },
+   "popupTipNoRemoteFonts2": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Натисніть для скасування блокування віддалених шрифтів на цьому сайті"
+   },
+   "popupTipNoScripting1": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Натисніть, щоб повністю вимкнути JavaScript на цьому сайті"
+   },
+   "popupTipNoScripting2": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Натисніть, щоб скасувати вимкнення JavaScript на цьому сайті"
+   },
+   "popupTipPicker": {
+      "description": "English: Enter element picker mode",
+      "message": "Перейти у режим вибору елементів"
+   },
+   "popupTipReport": {
+      "description": "Tooltip used for the 'chat' icon in the panel",
+      "message": "Повідомити про помилку на цьому вебсайті"
+   },
+   "popupTipRevertRules": {
+      "description": "Tooltip when hovering over the eraser in the dynamic filtering pane.",
+      "message": "Натисніть, щоб відкинути ваші зміни."
+   },
+   "popupTipSaveRules": {
+      "description": "Tooltip when hovering over the padlock in the dynamic filtering pane.",
+      "message": "Натисніть, щоб зробити ваші зміни постійними."
+   },
+   "popupTipZapper": {
+      "description": "Tooltip for the element-zapper icon in the popup panel",
+      "message": "Перейти в режим блокування елементів"
+   },
+   "popupVersion": {
+      "description": "Example of use: Version 1.26.4",
+      "message": "Версія"
+   },
+   "relaxBlockingMode": {
+      "description": "Label for keyboard shortcut used to relax blocking mode",
+      "message": "Послаблений режим блокування"
+   },
+   "rulesCommit": {
+      "description": "This will persist temporary rules",
+      "message": "Затвердити"
+   },
+   "rulesDefaultFileName": {
+      "description": "default file name to use",
+      "message": "my-ublock-dynamic-rules_{{datetime}}.txt"
+   },
+   "rulesEdit": {
+      "description": "Will enable manual-edit mode (textarea)",
+      "message": "Редагувати"
+   },
+   "rulesEditDiscard": {
+      "description": "Will discard manually-edited content and exit manual-edit mode",
+      "message": "Відкинути"
+   },
+   "rulesEditSave": {
+      "description": "Will save manually-edited content and exit manual-edit mode",
+      "message": "Зберегти"
+   },
+   "rulesExport": {
+      "description": "Button in the 'My rules' pane",
+      "message": "Експорт до файлу..."
+   },
+   "rulesFormatHint": {
+      "description": "English: dynamic rule syntax and full documentation.",
+      "message": "Синтаксис правил: \u003Ccode>джерело призначення тип дія\u003C/code> (\u003Ca href='https://github.com/gorhill/uBlock/wiki/Dynamic-filtering:-rule-syntax'>повна документація\u003C/a>)."
+   },
+   "rulesHint": {
+      "description": "English: List of your dynamic filtering rules.",
+      "message": "Список правил динамічного фільтрування."
+   },
+   "rulesImport": {
+      "description": "",
+      "message": "Імпорт з файлу…"
+   },
+   "rulesPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Мої правила"
+   },
+   "rulesPermanentHeader": {
+      "description": "header",
+      "message": "Постійні правила"
+   },
+   "rulesRevert": {
+      "description": "This will remove all temporary rules",
+      "message": "Скасувати зміни"
+   },
+   "rulesSort": {
+      "description": "English: label for sort option.",
+      "message": "Сортування:"
+   },
+   "rulesSortByDestination": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Призначення"
+   },
+   "rulesSortBySource": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Джерело"
+   },
+   "rulesSortByType": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Тип правила"
+   },
+   "rulesTemporaryHeader": {
+      "description": "header",
+      "message": "Тимчасові правила"
+   },
+   "settingPerSiteSwitchGroup": {
+      "description": "",
+      "message": "Типові налаштування"
+   },
+   "settingPerSiteSwitchGroupSynopsis": {
+      "description": "",
+      "message": "Усталені налаштування можуть бути перевизначеними для кожного сайту окремо"
+   },
+   "settingsAdvanced": {
+      "description": "Section for controlling advanced-user settings",
+      "message": "Додатково"
+   },
+   "settingsAdvancedSynopsis": {
+      "description": "Description of section controlling advanced-user settings",
+      "message": "Функції, що потрібні лише технічним користувачам"
+   },
+   "settingsAdvancedUserPrompt": {
+      "description": "Checkbox to let user access advanced, technical features",
+      "message": "Я досвідчений користувач"
+   },
+   "settingsAdvancedUserSettings": {
+      "description": "For the tooltip of a link which gives access to advanced settings",
+      "message": "розширені налаштування"
+   },
+   "settingsAppearance": {
+      "description": "Section for controlling user interface appearance",
+      "message": "Вигляд"
+   },
+   "settingsCloudStorageEnabledPrompt": {
+      "description": "",
+      "message": "Увімкнути підтримку хмарного сховища"
+   },
+   "settingsCollapseBlockedPrompt": {
+      "description": "English: Hide placeholders of blocked elements",
+      "message": "Ховати заповнювачі заблокованих елементів"
+   },
+   "settingsColorBlindPrompt": {
+      "description": "English: Color-blind friendly",
+      "message": "Підтримка дальтонізму"
+   },
+   "settingsContextMenuPrompt": {
+      "description": "English: Make use of context menu where appropriate",
+      "message": "Використовувати контекстне меню там, де це можливо"
+   },
+   "settingsHyperlinkAuditingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Вимкнути перевірку гіперпосилань"
+   },
+   "settingsIconBadgePrompt": {
+      "description": "English: Show the number of blocked requests on the icon",
+      "message": "Показувати кількість заблокованих запитів на піктограмі"
+   },
+   "settingsLastBackupPrompt": {
+      "description": "English: Last backup:",
+      "message": "Остання резервна копія:"
+   },
+   "settingsLastRestorePrompt": {
+      "description": "English: Last restore:",
+      "message": "Востаннє відновлено:"
+   },
+   "settingsNoCSPReportsPrompt": {
+      "description": "background information: https://github.com/gorhill/uBlock/issues/3150",
+      "message": "Блокувати CSP-звіти"
+   },
+   "settingsNoCosmeticFilteringPrompt": {
+      "description": "",
+      "message": "Вимкнути косметичні фільтри"
+   },
+   "settingsNoLargeMediaPrompt": {
+      "description": "",
+      "message": "Блокувати медіа елементи розміром від {{input:number}} кБ"
+   },
+   "settingsNoRemoteFontsPrompt": {
+      "description": "",
+      "message": "Блокувати сторонні шрифти"
+   },
+   "settingsNoScriptingPrompt": {
+      "description": "The default state for the per-site no-scripting switch",
+      "message": "Вимкнути JavaScript"
+   },
+   "settingsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Налаштування"
+   },
+   "settingsPrefetchingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Вимкнути передзавантаження (щоб унеможливити будь-які з’єднання для заблокованих мережевих запитів)"
+   },
+   "settingsThemeAccent0Label": {
+      "description": "Label for checkbox to pick an accent color",
+      "message": "Акцент кольору користувача"
+   },
+   "settingsThemeLabel": {
+      "description": "Label for checkbox to enable a custom dark theme",
+      "message": "Тема"
+   },
+   "settingsTooltipsPrompt": {
+      "description": "A checkbox in the Settings pane",
+      "message": "Вимкнути підказки"
+   },
+   "settingsUncloakCnamePrompt": {
+      "description": "background information: https://github.com/uBlockOrigin/uBlock-issues/issues/1513",
+      "message": "Показати CNAME назви"
+   },
+   "settingsWebRTCIPAddressHiddenPrompt": {
+      "description": "English: ",
+      "message": "Унеможливити витік локальної IP-адреси через WebRTC"
+   },
+   "shortcutCapturePlaceholder": {
+      "description": "Placeholder string for input field used to capture a keyboard shortcut",
+      "message": "Уведіть комбінацію"
+   },
+   "shortcutsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Комбінації клавіш"
+   },
+   "showDashboardButton": {
+      "description": "Firefox/Fennec-specific: Show Dashboard",
+      "message": "Показати панель керування"
+   },
+   "showNetworkLogButton": {
+      "description": "Firefox/Fennec-specific: Show Logger",
+      "message": "Показати журнал мережевих запитів"
+   },
+   "statsPageName": {
+      "description": "Title for the logger window",
+      "message": "uBlock₀ — Журнал мережевих запитів"
+   },
+   "storageUsed": {
+      "description": " In Setting pane, renders as (example): Storage used: 13.2 MB",
+      "message": "Використано: {{value}} {{unit}}"
+   },
+   "subscribeButton": {
+      "description": "For the button used to subscribe to a filter list",
+      "message": "Підписатись"
+   },
+   "subscriberConfirm": {
+      "description": "No longer used",
+      "message": "µBlock: Додати це посилання до списку ваших фільтрів?\n\nНазва: \"{{title}}\"\nПосилання: {{url}}"
+   },
+   "supportFindSpecificButton": {
+      "description": "A clickable link in the filter issue reporter section",
+      "message": "Знайти подібні звіти"
+   },
+   "supportOpenButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Відкрити"
+   },
+   "supportPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Підтримка"
+   },
+   "supportRedact": {
+      "description": "Text for 'Redact' button",
+      "message": "Редагувати"
+   },
+   "supportReportSpecificButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Створити новий звіт"
+   },
+   "supportS1H": {
+      "description": "Header of 'Documentation' section in Support pane",
+      "message": "Документація"
+   },
+   "supportS1P1": {
+      "description": "First paragraph of 'Documentation' section in Support pane",
+      "message": "Прочитайте документацію на \u003Ccode>uBlock/вікі\u003C/code>, щоб дізнатися про всі функції uBlock Origin."
+   },
+   "supportS2H": {
+      "description": "Header of 'Questions and support' section in Support pane",
+      "message": "Запитання та підтримка"
+   },
+   "supportS2P1": {
+      "description": "First paragraph of 'Questions and support' section in Support pane",
+      "message": "Відповіді на запитання та інші види підтримки довідки надаються на \u003Ccode>/r/uBlockOrigin\u003C/code>."
+   },
+   "supportS3H": {
+      "description": "Header of 'Filter issues' section in Support pane",
+      "message": "Проблеми з фільтрами/сайт не працює"
+   },
+   "supportS3P1": {
+      "description": "First paragraph of 'Filter issues' section in Support pane",
+      "message": "Повідомити про проблеми фільтра на певних вебсайтах до \u003Cspan data-url=\"https://github.com/uBlockOrigin/uAssets/issues?q=is%3Aissue\">відстежувача проблем \u003Ccode>uBlockOrigin/uAssets\u003C/code>\u003C/span>. \u003Cu>Потрібен обліковий запис GitHub.\u003C/u>"
+   },
+   "supportS3P2": {
+      "description": "Second paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Важливо:\u003C/b> Уникайте використання інших блокувальників аналогічного призначення разом із uBlock Origin, оскільки це може спричинити проблеми з фільтрами на певних вебсайтах."
+   },
+   "supportS3P3": {
+      "description": "Third paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Поради:\u003C/b> Переконайтеся, що списки фільтрів оновлено. \u003Cspan data-url=\"logger-ui.html#_\">Журнал\u003C/span> — основний засіб визначення проблем пов'язаних з фільтром."
+   },
+   "supportS4H": {
+      "description": "Header of 'Bug report' section in Support pane",
+      "message": "Звіт про ваду"
+   },
+   "supportS4P1": {
+      "description": "First paragraph of 'Bug report' section in Support pane",
+      "message": "Повідомити про проблеми самого uBlock Origin \u003Cspan data-url=\"https://github.com/uBlockOrigin/uBlock-issues/issues?q=is%3Aissue\">відстежувач проблем \u003Ccode>uBlockOrigin/uBlock-issue\u003C/code>. \u003Cu>Потрібен обліковий запис GitHub.\u003C/u>"
+   },
+   "supportS5H": {
+      "description": "Header of 'Troubleshooting Information' section in Support pane",
+      "message": "Інформація про усунення несправностей"
+   },
+   "supportS5P1": {
+      "description": "First paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "Внизу наведено технічні дані, які можуть бути корисними, коли волонтери намагатимуться допомогти вам розв'язати проблему."
+   },
+   "supportS5P2": {
+      "description": "Second paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "\u003Cb>Важливо:\u003C/b> Потенційно приватні або конфіденційні дані типово редаговані. Редаговані дані можуть ускладнити розв'язання проблеми."
+   },
+   "supportS6Checkbox1": {
+      "description": "A checkbox to use for NSFW sites",
+      "message": "Позначити цю сторінку «NSFW» (\u003Ca href=\"https://uk.wikipedia.org/wiki/NSFW\">«Небезпечно для роботи»\u003C/a>)"
+   },
+   "supportS6H": {
+      "description": "Header of 'Report a filter issue' section in Support pane",
+      "message": "Повідомити про ваду фільтра"
+   },
+   "supportS6P1S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Щоб не обтяжувати волонтерів повторюваними звітами, переконайтеся, що про проблему ще не повідомлялося."
+   },
+   "supportS6P2S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Списки фільтрів оновлюються щоденно. Переконайтесь, що ваша проблема все ще не виправлена в найсвіжішому списку фільтрів"
+   },
+   "supportS6P2S2": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Переконайтесь, що проблема все ще присутня після перезавантаження проблемної сторінки"
+   },
+   "supportS6Select1": {
+      "description": "Label for widget to select type of issue",
+      "message": "Вебсторінка..."
+   },
+   "supportS6Select1Option0": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "-- Указати проблему --"
+   },
+   "supportS6Select1Option1": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "З'являється реклама або залишки оголошень"
+   },
+   "supportS6Select1Option2": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Накладання або інші прикрощі"
+   },
+   "supportS6Select1Option3": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Виявляє uBlock Origin"
+   },
+   "supportS6Select1Option4": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Пов'язані з приватністю проблеми"
+   },
+   "supportS6Select1Option5": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Щось не працює, якщо увімкнено uBlock Origin"
+   },
+   "supportS6Select1Option6": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Відкриває небажані вкладки або вікна"
+   },
+   "supportS6URL": {
+      "description": "Label for the URL of the page",
+      "message": "Адреса вебсторінки:"
+   },
+   "supportUnredact": {
+      "description": "Text for 'Unredact' button",
+      "message": "Скасувати редагування"
+   },
+   "toggleCosmeticFiltering": {
+      "description": "Label for keyboard shortcut used to toggle cosmetic filtering",
+      "message": "Увімкнути/вимкнути косметичні фільтри"
+   },
+   "toggleJavascript": {
+      "description": "Label for keyboard shortcut used to toggle no-scripting switch",
+      "message": "Перемкнути JavaScript"
+   },
+   "unprocessedRequestTooltip": {
+      "description": "A warning which will appear in the popup panel if needed",
+      "message": "Неможливо правильно фільтрувати під час запуску браузера.\nПерезапустіть сторінку для гарантії правильного фільтрування"
+   },
+   "whitelistApply": {
+      "description": "English: Apply changes",
+      "message": "Застосувати зміни"
+   },
+   "whitelistExport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "Експортувати"
+   },
+   "whitelistExportFilename": {
+      "description": "The default filename to use for import/export purpose",
+      "message": "my-ublock-whitelist_{{datetime}}.txt"
+   },
+   "whitelistImport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "Імпортувати та додати"
+   },
+   "whitelistPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Білий список"
+   },
+   "whitelistPrompt": {
+      "description": "A concise description of the 'Trusted sites' pane.",
+      "message": "Ваш список адрес сайтів, для яких µBlock буде неактивним. Додайте по одному запису на рядок. Невірні адреси будуть проігноровані без попереджень та закоментовані."
+   }
+}

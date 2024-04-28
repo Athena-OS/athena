@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="index.css">
+  <title>Cookie Editor</title>
+</head>
+<body vbox data-popup=true>
+  <table width=100% id=header>
+    <colgroup>
+      <col width="24">
+      <col>
+      <col>
+      <col width=100>
+      <col width="24">
+      <col width="100">
+      <col width=48>
+      <col width=24>
+      <col width=24>
+      <col width=24>
+      <col width=24>
+      <col width="0">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>-</th>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Domain</th>
+        <th title="Path">Path</th>
+        <th>Expires / Max-Age</th>
+        <th>Size</th>
+        <th title="HttpOnly">HttpOnly</th>
+        <th title="HostOnly">HostOnly</th>
+        <th title="Secure">Secure</th>
+        <th title="Session">Session</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+  </table>
+  <template id="cookie">
+    <tr class="cookie">
+      <td><input type="checkbox"></td>
+      <td data-id=name></td>
+      <td data-id=value></td>
+      <td data-id=domain></td>
+      <td data-id="path"></td>
+      <td data-id="expirationDate"></td>
+      <td data-id="size"></td>
+      <td data-id="httpOnly"></td>
+      <td data-id="hostOnly"></td>
+      <td data-id="secure"></td>
+      <td data-id="session"></td>
+      <td><input type="radio" name="single"></td>
+    </tr>
+  </template>
+  <template id="hostname">
+    <details>
+      <summary>
+        <b></b> (<span data-id=number></span>)
+        <input type="button" value="New / Import" data-cmd="create" title="Use Shift key to import JSON or TEXT format cookies"/>
+      </summary>
+      <table width=100% class="cookies">
+        <colgroup>
+          <col width="24">
+          <col>
+          <col>
+          <col width=100>
+          <col width="24">
+          <col width="100">
+          <col width=48>
+          <col width=24>
+          <col width=24>
+          <col width=24>
+          <col width=24>
+          <col width="0">
+        </colgroup>
+        <tbody></tbody>
+      </table>
+    </details>
+  </template>
+  <div id="cookies" flex="1"></div>
+
+  <form hbox id="editor" data-edited=false>
+    <div flex="3">
+      <table width=100%>
+        <colgroup>
+          <col width="120px">
+          <col>
+        </colgroup>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td><input type="text" autocomplete="off" id=name></td>
+          </tr>
+          <tr>
+            <td>Domain</td>
+            <td><input type="text" autocomplete="off" id=domain disabled="true"></td>
+          </tr>
+          <tr>
+            <td>Path</td>
+            <td><input type="text" autocomplete="off" id="path"></td>
+          </tr>
+          <tr>
+            <td rowspan="2">Expiration (ISO)</td>
+            <td>
+              <input id="date" type="date" required="true">
+            </td>
+          </tr>
+          <tr>
+            <td><input id="time" type="time" required="true" step="0.001"></td>
+          </tr>
+          <tr>
+            <td><label><input type="checkbox" id="hostOnly"> HostOnly</label></td>
+            <td><label><input type="checkbox" id="session"> Session</label></td>
+          </tr>
+          <tr>
+            <td><label><input type="checkbox" id="secure"> Secure</label></td>
+            <td><label><input type="checkbox" id="httpOnly"> HttpOnly</label></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div vbox flex="4">
+      <textarea flex="1" id="value" placeholder="cookie value" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+    </div>
+    <div id="toolbox">
+        <input type="button" value="Export" data-cmd="export" disabled="true" title="Use Shift key while clicking to export as Wget/Curl compatible format">
+        <div class="packed">
+          <input type="button" value="Select All" data-cmd="select-all">
+          <input type="button" value="None" data-cmd="select-none">
+        </div>
+        <input type="button" value="Reset" data-cmd="reset" disabled="true">
+        <input type="submit" value="Save" id="save" disabled="true">
+        <input type="button" value="Remove" data-cmd="remove" disabled="true">
+        <input type="button" value="Expand" data-cmd="expand">
+    </div>
+  </form>
+
+  <div id="loading"></div>
+  <div id="msg" hbox pack=center align=center></div>
+  <script src="cookies.js"></script>
+  <script src="resizable.js"></script>
+  <script src="table.js"></script>
+  <script src="editor.js"></script>
+  <script src="index.js"></script>
+  <script async src="keyboard.js"></script>
+</body>
+</html>

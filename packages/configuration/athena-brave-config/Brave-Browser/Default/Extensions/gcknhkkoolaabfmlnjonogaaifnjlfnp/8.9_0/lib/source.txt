@@ -1,0 +1,9 @@
+Chrome Only
+Used to migrate FoxyProxy v3 preferences (in migrate.js)
+
+Original aes.3.1.2.js
+https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js
+https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/crypto-js/CryptoJS%20v3.1.2.zip
+
+Minor fork of above original
+export {CryptoJS}; was added to the top, to be able to import as ES6 module

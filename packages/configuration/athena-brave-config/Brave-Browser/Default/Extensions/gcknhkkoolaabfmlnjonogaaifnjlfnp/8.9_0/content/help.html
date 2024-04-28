@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Help</title>
+    <link href="iframe.css" rel="stylesheet">
+  </head>
+  <body>
+
+  <nav>
+    <a href="#introduction">Introduction</a>
+    <a href="#how-to-use">How to Use</a>
+    <a href="#options">Options</a>
+    <a href="#proxies">Proxies</a>
+    <!-- <a href="#import">Import</a> -->
+    <!-- <a href="#pattern-tester">Pattern Tester</a> -->
+    <!-- <a href="#log">Log</a> -->
+    <a href="#enterprise-policy">Enterprise Policy</a>
+    <!-- <a href="#managed-storage">Managed Storage</a> -->
+    <a href="#support">Support</a>
+  </nav>
+
+  <header class="translate">
+    🌐
+    <form action="https://foxyproxy-github-io.translate.goog/browser-extension/src/content/help.html" target="_blank">
+      <input type="hidden" name="_x_tr_sl" value="en">
+      <input type="hidden" name="_x_tr_hl" value="en">
+      <input type="hidden" name="_x_tr_pto" value="wapp">
+      <select name="_x_tr_tl">
+        <option value="af">Afrikaans</option>
+        <option value="sq">Albanian</option>
+        <option value="am">Amharic</option>
+        <option value="ar">Arabic</option>
+        <option value="hy">Armenian</option>
+        <option value="as">Assamese</option>
+        <option value="ay">Aymara</option>
+        <option value="az">Azerbaijani</option>
+        <option value="bm">Bambara</option>
+        <option value="eu">Basque</option>
+        <option value="be">Belarusian</option>
+        <option value="bn">Bengali</option>
+        <option value="bho">Bhojpuri</option>
+        <option value="bs">Bosnian</option>
+        <option value="bg">Bulgarian</option>
+        <option value="ca">Catalan</option>
+        <option value="ceb">Cebuano</option>
+        <option value="ny">Chichewa</option>
+        <option value="zh-CN">Chinese (Simplified)</option>
+        <option value="zh-TW">Chinese (Traditional)</option>
+        <option value="co">Corsican</option>
+        <option value="hr">Croatian</option>
+        <option value="cs">Czech</option>
+        <option value="da">Danish</option>
+        <option value="dv">Dhivehi</option>
+        <option value="doi">Dogri</option>
+        <option value="nl">Dutch</option>
+        <option value="en" selected>English</option>
+        <option value="eo">Esperanto</option>
+        <option value="et">Estonian</option>
+        <option value="ee">Ewe</option>
+        <option value="tl">Filipino</option>
+        <option value="fi">Finnish</option>
+        <option value="fr">French</option>
+        <option value="fy">Frisian</option>
+        <option value="gl">Galician</option>
+        <option value="ka">Georgian</option>
+        <option value="de">German</option>
+        <option value="el">Greek</option>
+        <option value="gn">Guarani</option>
+        <option value="gu">Gujarati</option>
+        <option value="ht">Haitian Creole</option>
+        <option value="ha">Hausa</option>
+        <option value="haw">Hawaiian</option>
+        <option value="iw">Hebrew</option>
+        <option value="hi">Hindi</option>
+        <option value="hmn">Hmong</option>
+        <option value="hu">Hungarian</option>
+        <option value="is">Icelandic</option>
+        <option value="ig">Igbo</option>
+        <option value="ilo">Ilocano</option>
+        <option value="id">Indonesian</option>
+        <option value="ga">Irish</option>
+        <option value="it">Italian</option>
+        <option value="ja">Japanese</option>
+        <option value="jw">Javanese</option>
+        <option value="kn">Kannada</option>
+        <option value="kk">Kazakh</option>
+        <option value="km">Khmer</option>
+        <option value="rw">Kinyarwanda</option>
+        <option value="gom">Konkani</option>
+        <option value="ko">Korean</option>
+        <option value="kri">Krio</option>
+        <option value="ku">Kurdish (Kurmanji)</option>
+        <option value="ckb">Kurdish (Sorani)</option>
+        <option value="ky">Kyrgyz</option>
+        <option value="lo">Lao</option>
+        <option value="la">Latin</option>
+        <option value="lv">Latvian</option>
+        <option value="ln">Lingala</option>
+        <option value="lt">Lithuanian</option>
+        <option value="lg">Luganda</option>
+        <option value="lb">Luxembourgish</option>
+        <option value="mk">Macedonian</option>
+        <option value="mai">Maithili</option>
+        <option value="mg">Malagasy</option>
+        <option value="ms">Malay</option>
+        <option value="ml">Malayalam</option>
+        <option value="mt">Maltese</option>
+        <option value="mi">Maori</option>
+        <option value="mr">Marathi</option>
+        <option value="mni-Mtei">Meiteilon (Manipuri)</option>
+        <option value="lus">Mizo</option>
+        <option value="mn">Mongolian</option>
+        <option value="my">Myanmar (Burmese)</option>
+        <option value="ne">Nepali</option>
+        <option value="no">Norwegian</option>
+        <option value="or">Odia (Oriya)</option>
+        <option value="om">Oromo</option>
+        <option value="ps">Pashto</option>
+        <option value="fa">Persian</option>
+        <option value="pl">Polish</option>
+        <option value="pt">Portuguese</option>
+        <option value="pa">Punjabi</option>
+        <option value="qu">Quechua</option>
+        <option value="ro">Romanian</option>
+        <option value="ru">Russian</option>
+        <option value="sm">Samoan</option>
+        <option value="sa">Sanskrit</option>
+        <option value="gd">Scots Gaelic</option>
+        <option value="nso">Sepedi</option>
+        <option value="sr">Serbian</option>
+        <option value="st">Sesotho</option>
+        <option value="sn">Shona</option>
+        <option value="sd">Sindhi</option>
+        <option value="si">Sinhala</option>
+        <option value="sk">Slovak</option>
+        <option value="sl">Slovenian</option>
+        <option value="so">Somali</option>
+        <option value="es">Spanish</option>
+        <option value="su">Sundanese</option>
+        <option value="sw">Swahili</option>
+        <option value="sv">Swedish</option>
+        <option value="tg">Tajik</option>
+        <option value="ta">Tamil</option>
+        <option value="tt">Tatar</option>
+        <option value="te">Telugu</option>
+        <option value="th">Thai</option>
+        <option value="ti">Tigrinya</option>
+        <option value="ts">Tsonga</option>
+        <option value="tr">Turkish</option>
+        <option value="tk">Turkmen</option>
+        <option value="ak">Twi</option>
+        <option value="uk">Ukrainian</option>
+        <option value="ur">Urdu</option>
+        <option value="ug">Uyghur</option>
+        <option value="uz">Uzbek</option>
+        <option value="vi">Vietnamese</option>
+        <option value="cy">Welsh</option>
+        <option value="xh">Xhosa</option>
+        <option value="yi">Yiddish</option>
+        <option value="yo">Yoruba</option>
+        <option value="zu">Zulu</option>
+        <option value="es">Spanish</option>
+        <option value="tr">Turkish</option>
+        <option value="af">Afrikaans</option>
+        <option value="sq">Albanian</option>
+        <option value="am">Amharic</option>
+        <option value="ar">Arabic</option>
+        <option value="hy">Armenian</option>
+        <option value="as">Assamese</option>
+        <option value="ay">Aymara</option>
+        <option value="az">Azerbaijani</option>
+        <option value="bm">Bambara</option>
+        <option value="eu">Basque</option>
+        <option value="be">Belarusian</option>
+        <option value="bn">Bengali</option>
+        <option value="bho">Bhojpuri</option>
+        <option value="bs">Bosnian</option>
+        <option value="bg">Bulgarian</option>
+        <option value="ca">Catalan</option>
+        <option value="ceb">Cebuano</option>
+        <option value="ny">Chichewa</option>
+        <option value="zh-CN">Chinese (Simplified)</option>
+        <option value="zh-TW">Chinese (Traditional)</option>
+        <option value="co">Corsican</option>
+        <option value="hr">Croatian</option>
+        <option value="cs">Czech</option>
+        <option value="da">Danish</option>
+        <option value="dv">Dhivehi</option>
+        <option value="doi">Dogri</option>
+        <option value="nl">Dutch</option>
+        <option value="en">English</option>
+        <option value="eo">Esperanto</option>
+        <option value="et">Estonian</option>
+        <option value="ee">Ewe</option>
+        <option value="tl">Filipino</option>
+        <option value="fi">Finnish</option>
+        <option value="fr">French</option>
+        <option value="fy">Frisian</option>
+        <option value="gl">Galician</option>
+        <option value="ka">Georgian</option>
+        <option value="de">German</option>
+        <option value="el">Greek</option>
+        <option value="gn">Guarani</option>
+        <option value="gu">Gujarati</option>
+        <option value="ht">Haitian Creole</option>
+        <option value="ha">Hausa</option>
+        <option value="haw">Hawaiian</option>
+        <option value="iw">Hebrew</option>
+        <option value="hi">Hindi</option>
+        <option value="hmn">Hmong</option>
+        <option value="hu">Hungarian</option>
+        <option value="is">Icelandic</option>
+        <option value="ig">Igbo</option>
+        <option value="ilo">Ilocano</option>
+        <option value="id">Indonesian</option>
+        <option value="ga">Irish</option>
+        <option value="it">Italian</option>
+        <option value="ja">Japanese</option>
+        <option value="jw">Javanese</option>
+        <option value="kn">Kannada</option>
+        <option value="kk">Kazakh</option>
+        <option value="km">Khmer</option>
+        <option value="rw">Kinyarwanda</option>
+        <option value="gom">Konkani</option>
+        <option value="ko">Korean</option>
+        <option value="kri">Krio</option>
+        <option value="ku">Kurdish (Kurmanji)</option>
+        <option value="ckb">Kurdish (Sorani)</option>
+        <option value="ky">Kyrgyz</option>
+        <option value="lo">Lao</option>
+        <option value="la">Latin</option>
+        <option value="lv">Latvian</option>
+        <option value="ln">Lingala</option>
+        <option value="lt">Lithuanian</option>
+        <option value="lg">Luganda</option>
+        <option value="lb">Luxembourgish</option>
+        <option value="mk">Macedonian</option>
+        <option value="mai">Maithili</option>
+        <option value="mg">Malagasy</option>
+        <option value="ms">Malay</option>
+        <option value="ml">Malayalam</option>
+        <option value="mt">Maltese</option>
+        <option value="mi">Maori</option>
+        <option value="mr">Marathi</option>
+        <option value="mni-Mtei">Meiteilon (Manipuri)</option>
+        <option value="lus">Mizo</option>
+        <option value="mn">Mongolian</option>
+        <option value="my">Myanmar (Burmese)</option>
+        <option value="ne">Nepali</option>
+        <option value="no">Norwegian</option>
+        <option value="or">Odia (Oriya)</option>
+        <option value="om">Oromo</option>
+        <option value="ps">Pashto</option>
+        <option value="fa">Persian</option>
+        <option value="pl">Polish</option>
+        <option value="pt">Portuguese</option>
+        <option value="pa">Punjabi</option>
+        <option value="qu">Quechua</option>
+        <option value="ro">Romanian</option>
+        <option value="ru">Russian</option>
+        <option value="sm">Samoan</option>
+        <option value="sa">Sanskrit</option>
+        <option value="gd">Scots Gaelic</option>
+        <option value="nso">Sepedi</option>
+        <option value="sr">Serbian</option>
+        <option value="st">Sesotho</option>
+        <option value="sn">Shona</option>
+        <option value="sd">Sindhi</option>
+        <option value="si">Sinhala</option>
+        <option value="sk">Slovak</option>
+        <option value="sl">Slovenian</option>
+        <option value="so">Somali</option>
+        <option value="es">Spanish(recently used language)</option>
+        <option value="su">Sundanese</option>
+        <option value="sw">Swahili</option>
+        <option value="sv">Swedish</option>
+        <option value="tg">Tajik</option>
+        <option value="ta">Tamil</option>
+        <option value="tt">Tatar</option>
+        <option value="te">Telugu</option>
+        <option value="th">Thai</option>
+        <option value="ti">Tigrinya</option>
+        <option value="ts">Tsonga</option>
+        <option value="tr">Turkish(recently used language)</option>
+        <option value="tk">Turkmen</option>
+        <option value="ak">Twi</option>
+        <option value="uk">Ukrainian</option>
+        <option value="ur">Urdu</option>
+        <option value="ug">Uyghur</option>
+        <option value="uz">Uzbek</option>
+        <option value="vi">Vietnamese</option>
+        <option value="cy">Welsh</option>
+        <option value="xh">Xhosa</option>
+        <option value="yi">Yiddish</option>
+        <option value="yo">Yoruba</option>
+        <option value="zu">Zulu</option>
+      </select>
+      <input type="submit" value="Submit">
+    </form>
+  </header>
+
+  <article>
+    <section>
+
+    <h2 id="introduction">Introduction</h2>
+
+    <p>First released in 2006, FoxyProxy is the original proxy switching tool, used by millions daily!<br>
+      To support this free software, please <a href="https://www.paypal.me/ericjung2/5.99" target="_blank">donate</a> or <a href="https://getfoxyproxy.org/order/" target="_blank">buy VPN/Proxy Servers</a> in over 100 countries (including such remote places as <a href="https://wikipedia.org/wiki/Réunion" target="_blank">Reunion Island</a>).
+    </p>
+
+    <p>If you upgraded from a previous version, and your proxy settings are missing, please import them.</p>
+
+
+    <h3>Unified Code</h3>
+    <p>FoxyProxy 8.* code has been unified for Chrome & Firefox, and Standard & Basic versions.</p>
+    <p>Users can import/export settings between all above mentioned.</p>
+    <p class="warning">FoxyProxy uses user-agent to identify browser-specific code and altering the user-agent at browser level (not webpage level) can interfere with its operation.</p>
+
+    <!--
+      Inconsistency: incognito in proxy.settings
+      https://github.com/w3c/webextensions/issues/429
+      Error: proxy.settings requires private browsing permission.
+    -->
+
+    <h3>Private Browsing Permission</h3>
+    <dl class="warning plain">
+      <dt>Chrome</dt>
+      <dd>On Chrome, users must enable "Allow in Incognito", if proxying in incognito mode is required</dd>
+      <dd>How to: <a href="https://support.google.com/chrome/a/answer/13130396" target="_blank">Extensions in Incognito mode</a></dd>
+
+      <dt>Firefox</dt>
+      <dd>On Firefox, users must enable "Run in Private Windows", as it is required by Firefox for proxy settings</dd>
+      <dd>How to: <a href="https://support.mozilla.org/kb/extensions-private-browsing#w_enabling-or-disabling-extensions-in-private-windows" target="_blank">Enabling or disabling extensions in private windows</a></dd>
+
+    </dl>
+
+
+    <h3>Non-Destructive Editing</h3>
+    <p>Editing & importing are non-destructive. <b>Save</b> must be clicked to apply changes.</p>
+    <p>See also: <a href="https://github.com/foxyproxy/browser-extension/issues/25" target="_blank">Destructive vs Nondestructive Editing</a></p>
+
+    <h3>Proxy Authentication</h3>
+    <ul>
+      <li>HTTP/HTTPS proxy servers authentication <span>(Chrome/Firefox)</span></li>
+      <li>SOCKS5 proxy servers authentication <span>(Firefox only)</span></li>
+      <li>Port-specific authentication<br>There can be different user/pass for <code>example.com:3128</code> & <code>example.com:443</code></li>
+    </ul>
+
+    <h3>Proxying Order</h3>
+
+    <ul>
+      <li>localhost passthrough</li>
+      <li>Global Exclude</li>
+      <li>Tab Proxy <span>(Firefox only)</span></li>
+      <li>Incognito Proxy</li>
+      <li>Container Proxy <span>(Firefox only)</span></li>
+      <li>Individual Proxy or Proxy by Patterns</li>
+    </ul>
+
+    <h3>Proxy by Patterns Order</h3>
+    <ul>
+      <li>Active proxies are checked in order</li>
+      <li>If one of exclude patterns matches, then that proxy is skipped</li>
+      <li>If one of include patterns matches, then that proxy is used, otherwise the next proxy is checked</li>
+    </ul>
+
+    <h3>Share Preferences</h3>
+    <p>Unified code for FoxyProxy & FoxyProxy Basic, on both on Chrome & Firefox, enables users to share their preferences.</p>
+
+
+    <h3>Light/Dark Theme</h3>
+    <p>FoxyProxy's theme is based on the browser's default light/dark theme.</p>
+
+    <h3 class="experimental">Firefox on Android</h3>
+    <p>Support is experimental and based on user feedback.</p>
+
+    <h3>Show Hidden Elements</h3>
+    <p>Some elements on the Toolbar Popup and Options page are disabled or hidden in FoxyProxy Basic and/or on Chrome.<br>
+    You can toggle to view/enable them by clicking the FoxyProxy icon (on the top of the page).</p>
+
+
+
+    <h2 id="how-to-use">How to Use</h2>
+
+    <h3 id="toolbar-icon">Toolbar Icon</h3>
+    <ul>
+      <li>Grey icon indicates proxying is handled by another extension</li>
+      <li>Icons badge indicates selection</li>
+      <li>Mouse-over title displays selection details</li>
+    </ul>
+
+
+    <h4>Toolbar Popup</h4>
+
+    <p class="note">Changing options is disabled on managed storage.</p>
+
+    <dl>
+      <dt>Proxy by Patterns</dt>
+      <dd>Connections are proxied based on patterns</dd>
+      <dd>If there are no patterns that match the URL being loaded, connections are made without a proxy</dd>
+      <dd>Patterns are not applicable in remote PAC type (but apply to <a href="#store-locally">Store Locally</a>)</dd>
+
+      <dt>Disable or Direct</dt>
+      <dd>Normal proxying is set to system and handled by the browser</dd>
+
+      <dt>Individual Proxy</dt>
+      <dd>Connections are passed through the selected proxy (or PAC)</dd>
+
+      <dt>▶ More</dt>
+      <dd>Show or hide additional options</dd>
+      <dd>User choice is temporarily stored in localStorage (not available in Private/Incognito)</dd>
+
+      <dt>Search Filter</dt>
+      <dd>Proxy <i>Title</i>, <i>Hostname</i>, & <i>Port</i> are searched and display filtered based on the input value (case-insensitive)</dd>
+      <dd>Use <i>:port</i> to filter by port</dd>
+
+      <dt>Quick Add</dt>
+      <dd>Add current page's host pattern to the selected proxy's include</dd>
+      <dd>Only top 10 active proxies are listed</dd>
+
+      <dt>Exclude Host</dt>
+      <dd>Add host (with its protocol) to the Global Exclude</dd>
+
+      <dt>Set Tab Proxy <span>(Firefox only)</span></dt>
+      <dd>Tab Proxy is processed before normal proxy settings</dd>
+      <dd>Select a proxy for the current tab</dd>
+      <dd>Only top 10 active proxies are listed</dd>
+      <dd>FoxyProxy icon will show in the selected tab and mouse-over title displays selection details</dd>
+
+      <dt>Unset Tab Proxy <span>(Firefox only)</span></dt>
+      <dd>Unset proxy for the current tab</dd>
+
+      <dt>Options</dt>
+      <dd>Open the Options page</dd>
+
+      <dt>IP</dt>
+      <dd>Get IP from FoxyProxy servers</dd>
+
+      <dt>Location</dt>
+      <dd>Open FoxyProxy site in a new tab to show location as well as any WebRTC leaks</dd>
+    </dl>
+
+
+    <h3>Keyboard Shortcut <span>(not available on Android)</span></h3>
+
+    <p>You can change/set keyboard shortcuts.</p>
+
+    <dl class="plain">
+      <dt>Chrome</dt>
+      <dd>Go to: <code>chrome://extensions/shortcuts</code></dd>
+
+      <dt>Firefox</dt>
+      <dd>Click the menu button ☰, click <code>Add-ons and Themes</code> and select <code>Extensions</code>.</dd>
+      <dd>Click the <i>Tools</i> for all <i>add-ons</i> cogwheel.</dd>
+      <dd>Click <code>Manage Extension Shortcuts</code> in the menu.</dd>
+      <dd>You will see the shortcut options (if available) for your installed add-ons.</dd>
+      <dd>See also: <a href="https://support.mozilla.org/kb/manage-extension-shortcuts-firefox" target="_blank">Manage extension shortcuts in Firefox</a></dd>
+
+    </dl>
+
+
+    <h2 id="options">Options</h2>
+
+    <p>Some options are not available in Chrome, but have been left for when sharing preferences between Chrome & Firefox.</p>
+
+    <h3 id="enable-storage-sync">Enable Storage Sync</h3>
+    <p>Enable to sync storage if it is under 100KB. If the storage is over 100KB, there will be a notification and the Sync will be turned off automatically to avoid repeated errors.</p>
+    <p><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/storage/sync" target="_blank">storage.sync</a> is not supported on Firefox for Android.</p>
+    <ul>
+      <li>Sync is disabled on managed storage</li>
+      <li>At the moment, Firefox does not support sync to Firefox on Android</li>
+      <li>Mode & Sync option is not synced to give users choice on different machines</li>
+    </ul>
+
+
+    <blockquote>
+      <p>For Firefox a user must have Add-ons checked under the "Sync Settings" options in "about:preferences".</p>
+
+      <p>The main use case of this API is to store preferences about your extension and allow the user to sync them to
+        different profiles. You can store up to 100KB of data using this API. If you try to store more than this, the
+        call will fail with an error message. The API is provided without any guarantees about uptime or performance.
+      </p>
+
+      <cite><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/storage/sync"
+          target="_blank">storage.sync</a></cite>
+    </blockquote>
+
+    <h5>Storage quotas for sync data</h5>
+
+    <ul>
+      <li>Maximum total size 102,400 bytes (100KB)</li>
+      <li>Maximum item size 8,192 bytes (8KB)</li>
+      <li>Maximum number of items 512</li>
+    </ul>
+
+    <div class="note">
+      <p>There is a discussion to increase the storage sync quota to 1MB.</p>
+      <p>See also:</p>
+      <ul>
+        <li><a href="https://github.com/w3c/webextensions/issues/520" target="_blank">Increase maximum total size (QUOTA_BYTES) for storage.sync</a></li>
+        <li><a href="https://github.com/w3c/webextensions/issues/351" target="_blank">Discuss limits applied to storage.local and storage.sync API</a></li>
+        <li><a href="https://github.com/w3c/webextensions/issues/510">Proposal: Increase maximum item size in Storage sync quotas</a></li>
+      </ul>
+    </div>
+
+    <h3 id="auto-backup">Auto Backup</h3>
+    <p>Automatically backup settings to the browser configured downloads folder on save</p>
+
+
+    <h3 id="limit-webrtc">Limit WebRTC <span>(requires "privacy" permission)</span></h3>
+    <p>Toggle <a href="https://developer.mozilla.org/docs/Web/API/WebRTC_API" target="_blank">WebRTC</a> browser settings as it has been known to leak real IP</p>
+    <p>Toggle changes the browser preferences and does not require SAVE.</p>
+
+
+    <!-- <h3 id="show-pattern-proxy">Show Pattern Proxy <span>(Firefox only)</span></h3>
+    <p>Show per-tab proxies on the toolbar badge when in Proxy by Patterns mode</p> -->
+
+    <h3 id="container" class="experimental">Incognito/Container</h3>
+    <p>Set a proxy for Incognito (Private Mode) and/or Containers</p>
+    <p>Incognito proxy behaviour is slightly different in Chrome and Firefox.</p>
+
+    <ul>
+      <li>Only active proxies are listed</li>
+      <li>Set proxy will clear if it is deleted or deactivated</li>
+      <li>Patterns are not applicable in incognito/container settings</li>
+      <li>Incognito/Container are processed independently, therefore they function even with normal operation set to "Disable"</li>
+    </ul>
+
+    <dl class="plain">
+      <dt>Chrome</dt>
+      <dd>Only Incognito option is available</dd>
+      <dd>If incognito is not set, normal settings apply to both regular and incognito windows</dd>
+
+      <dt>Firefox</dt>
+      <dd>Incognito/Container are processed before standard proxy settings (and after Tab Proxy)</dd>
+      <dd>Generic names are used for containers since getting their details requires "contextualIdentities" permissions which would enable containers automatically for the user</dd>
+
+    </dl>
+
+
+    <h3 id="keyboard-shortcut">Keyboard Shortcut <span>(not available on Android)</span></h3>
+    <p>Preselect a proxy to associate with a keyboard shortcut action</p>
+    <ul>
+      <li>Only active proxies are listed</li>
+      <li>Set proxy will clear if it is deleted or deactivated</li>
+    </ul>
+
+
+    <h3 id="global-exclude">Global Exclude</h3>
+    <p>List of hosts that should not be proxied</p>
+
+    <ul>
+      <li>Connections to <code>localhost</code>, <code>127.0.0.1/8</code>, and <code>::1</code> are never proxied (by the browser)</li>
+      <li>The passthrough implementation is slightly different in Chrome and Firefox</li>
+      <li>Entries can be separated by comma (as in Firefox), or space, or new line</li>
+      <li>The tables shows if the process is handled by the browser or FoxyProxy</li>
+      <li>Supported formats are listed under passthrough in each section</li>
+      <li>Scheme is supported by FoxyProxy and Chrome, but not Firefox (PAC URL)</li>
+      <!-- <li>In Firefox, "*" is supported only at the beginning of domain filters (*.mozilla.org)</li> -->
+      <li>CIDR only applies to URLs that are IP literals and does not block hostnames that resolve to the IP address range (<code>10.0.0.0/8</code> is not "no proxy for intranet hostnames")</li>
+      <li>Only IPv4 CIDR is implemented by FoxyProxy</li>
+      <li>The literal string <code>&lt;local&gt;</code> matches simple hostnames (no dots)</li>
+      <li>A leading "." is interpreted as a "*."</li>
+      <li>host without a wildcard is the most compatible format</li>
+
+    </ul>
+
+    <table>
+      <caption>What is controlling the passthrough and what formats are supported?</caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th colspan="2">Chrome</th>
+          <th colspan="2">Firefox</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th></th>
+          <th>localhost & local network</th>
+          <th>passthrough (global exclude)</th>
+          <th>localhost & local network</th>
+          <th>passthrough (global exclude)</th>
+        </tr>
+        <tr>
+          <th>Proxy by Patterns</th>
+          <td>browser</td>
+          <td><mark>FoxyProxy</mark><br><i>scheme, host, wildcard, CIDR (IPv4)</i></td>
+          <td>n/a<br><s><mark>FoxyProxy</mark></s> <i>(8.0-8.3)</i></td>
+          <td><mark>FoxyProxy</mark><br><i>scheme, host, wildcard, CIDR (IPv4)</i></td>
+        </tr>
+        <tr>
+          <th>Single Proxy</th>
+          <td>browser</td>
+          <td>browser<br><i>scheme, host, wildcard, CIDR</i></td>
+          <td>n/a<br><s><mark>FoxyProxy</mark></s> <i>(8.0-8.3)</i></td>
+          <td><mark>FoxyProxy</mark><br><i>scheme, host, wildcard, CIDR (IPv4)</i></td>
+        </tr>
+        <tr>
+          <th>PAC URL</th>
+          <td>browser</td>
+          <td>❌
+            <a href="https://github.com/w3c/webextensions/issues/339" title="Inconsistency: Proxy Bypass list" target="_blank">ⓘ</a>
+            <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1495756" title="Issue 1495756: Support bypassList for PAC scripts in the chrome.proxy API" target="_blank">ⓘ</a>
+          </td>
+          <td>browser</td>
+          <td>browser<br><i>host, CIDR</i></td>
+        </tr>
+        <tr>
+          <th>Incognito</th>
+          <td>browser</td>
+          <td>browser<br><i>scheme, host, wildcard, CIDR</i></td>
+          <td>n/a<br><s><mark>FoxyProxy</mark></s> <i>(8.0-8.3)</i></td>
+          <td><mark>FoxyProxy</mark><br><i>scheme, host, wildcard, CIDR (IPv4)</i></td>
+        </tr>
+        <tr>
+          <th>Container</th>
+          <td>n/a</td>
+          <td>n/a</td>
+          <td>n/a<br><s><mark>FoxyProxy</mark></s> <i>(8.0-8.3)</i></td>
+          <td><mark>FoxyProxy</mark><br><i>scheme, host, wildcard, CIDR (IPv4)</i></td>
+        </tr>
+        <tr>
+          <th>Tab Proxy</th>
+          <td>n/a</td>
+          <td>n/a</td>
+          <td>n/a<br><s><mark>FoxyProxy</mark></s> <i>(8.0-8.3)</i></td>
+          <td><mark>FoxyProxy</mark><br><i>scheme, host, wildcard, CIDR (IPv4)</i></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <table>
+      <caption>Examples</caption>
+      <thead>
+        <tr>
+          <th>Pattern</th>
+          <th>match</th>
+          <th>no-match</th>
+        </tr>
+      </thead>
+      <tbody class="code">
+        <tr>
+          <td>example.com</td>
+          <td>example.com</td>
+          <td>www.example.com</td>
+        </tr>
+        <tr>
+          <td>.example.com<br>*.example.com</td>
+          <td>www.example.com</td>
+          <td>example.com</td>
+        </tr>
+
+        <tr>
+          <td>*example.com</td>
+          <td>example.com<br>www.example.com<br>xyzexample.com</td>
+          <td>google.com</td>
+        </tr>
+        <tr>
+          <td>.com</td>
+          <td>example.com<br>www.example.com</td>
+          <td>example.org</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+
+
+<!--
+  Example: .mozilla.org, .net.nz, 192.168.1.0/24
+  Connections to localhost, 127.0.0.1/8, and ::1 are never proxied.
+-->
+    <h5>See also</h5>
+    <ul>
+      <li><a href="https://developer.chrome.com/docs/extensions/reference/proxy/#bypass-list" target="_blank">Chrome Bypass list</a></li>
+      <li><a href="https://chromium.googlesource.com/chromium/src/+/HEAD/net/docs/proxy.md#Proxy-bypass-rules" target="_blank">Proxy bypass rules</a></li>
+      <li><a href="https://chromium.googlesource.com/chromium/src/+/HEAD/net/docs/proxy.md#Implicit-bypass-rules" target="_blank">Implicit bypass rules</a></li>
+
+      <li style="margin-top: 1em;"><a href="https://www-archive.mozilla.org/quality/networking/docs/aboutno_proxy_for" target="_blank">No Proxy for</a></li>
+      <li><a href="https://support.mozilla.org/kb/connection-settings-firefox" target="_blank">Connection settings in Firefox</a></li>
+      <li><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/proxy/settings" target="_blank">Firefox passthrough</a></li>
+
+
+      <!-- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1810738" target="_blank">Proxy override Host matching inconsistency with Chrome</a></li>       -->
+      <!-- <li><a href="https://searchfox.org/mozilla-central/source/browser/locales/browser/preferences/connection.ftl#64" target="_blank">Connections to localhost, 127.0.0.1/8, and ::1 are never proxied</a></li> -->
+      <!-- <li><a href="https://zzz.buzz/2019/12/12/proxy-localhost-and-loopback-in-chrome/" target="_blank">Proxy localhost and loopback addresses in Chrome</a></li> -->
+    </ul>
+
+
+    <h3>Delete Browser Data</h3>
+    <p>Delete cookies, indexedDB storage, DOM local storage</p>
+
+
+    <h3>Restore Defaults</h3>
+    <p>Restore all settings to default values</p>
+
+    <h3 id="import-export">Preferences: Import/Export</h3>
+    <p>You can import/export Preferences (for backup or share) from/to a local file on your computer.</p>
+    <p class="note">Import is non-destructive. Click <b>Save</b> to apply the changes.</p>
+
+    <h3 id="save">Save</h3>
+    <p>Please note that changes will not take effect until they are saved.</p>
+    <p class="note">Save is disabled on managed storage.</p>
+
+
+
+    <h2 id="proxies">Proxies</h2>
+
+    <p>FoxyProxy identifies proxies by their "hostname:post" or PAC URL.</p>
+
+    <p>In case more than one proxy with the same "hostname:post" is needed, one or more letters can be added to the port to separate them, and FoxyProxy will remove the letters later. <i>(v8.8)</i></p>
+
+<pre>
+127.0.0.1:9050
+127.0.0.1:9050a
+127.0.0.1:9050b
+127.0.0.1:9050c
+</pre>
+
+    <p class="warning">The augmented port method is only only available for SOCKS & HTTPS (not HTTP, due to the limitation of the Firefox API). <br>
+    For Unix Domain Sockets, where port is ignored, only numbers should be used.</p>
+
+    <p>Another solution is to prepend hostnames where possible e.g. <code>&lt;sometext&gt;.localhost</code> since they all resolve to <code>127.0.0.1</code> internally.</p>
+
+
+    <h3>Proxy</h3>
+
+    <dl>
+      <dt>Add</dt>
+      <dd>Add a new proxy entry</dd>
+
+      <dt>Search Filter</dt>
+      <dd>Proxy <i>Title</i>, <i>Hostname</i>, & <i>Port</i> are searched and display filtered based on the input value (case-insensitive)</dd>
+      <dd>Use <i>:port</i> to filter by port</dd>
+
+      <dt>Get Location <span>(optional)</span></dt>
+      <dd>Get location details for proxies from FoxyProxy Servers</dd>
+  </dl>
+
+    <h3>Individual Proxy</h3>
+    <p class="warning">If FoxyProxy is to set to use an Individual Proxy/PAC, editing proxy's hostname, port, or PAC URL, may result in a mismatch until it is set again.</p>
+
+    <dl>
+      <dt>Toggle Button</dt>
+      <dd>Toggle proxy active or inactive</dd>
+      <dd>Inactive proxies do not show in the toolbar popup select</dd>
+
+      <dt>⎘ Duplicate Proxy</dt>
+      <dd>Click to duplicate proxy and its patterns</dd>
+
+      <dt>Delete</dt>
+      <dd>Delete the proxy and its patterns</dd>
+
+      <dt>Up/Down Triangle</dt>
+      <dd>Move the proxy up or down</dd>
+
+      <dt>Title</dt>
+      <dd>Set the proxy title</dd>
+
+      <dt>Type</dt>
+      <dd>HTTP/HTTPS/SOCKS4/SOCKS5 to be used with hostname & port</dd>
+      <dd>PAC to be used with PAC URL</dd>
+
+      <dt>Country</dt>
+      <dd>Set the proxy country flag</dd>
+
+      <dt>City</dt>
+      <dd>Set the proxy city</dd>
+
+      <dt>Color</dt>
+      <dd>Set the proxy color</dd>
+
+      <dt>Hostname & Port</dt>
+      <dd>Required for HTTP/HTTPS/SOCKS type</dd>
+
+      <dt>Username & Password</dt>
+      <dd>To be used for HTTP/HTTPS/SOCKS types</dd>
+      <dd>If not set, authentication will be handled by the browser</dd>
+      <dd>Username & Password are port specific and different ones can be set for different ports</dd>
+
+      <dt>Proxy DNS <span>(Firefox only)</span></dt>
+      <dd>Option to pass DNS to the SOCKS proxy when using SOCKS</dd>
+      <dd class="note">See also:
+        <ul>
+          <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1741375" target="_blank">Proxy DNS by default when using SOCKS v5</a> (Firefox 123)</li>
+          <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1799411" target="_blank">DNS leaks with proxy extension</a></li>
+          <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1791243" target="_blank">Firefox queries DNS of Proxy destination</a></li>
+          <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1867562" target="_blank">Despite the fact that DNS over HTTPS is switched off on Privacy and Security bar in Settings it still leaks my DNS</a></li>
+        </ul>
+      </dd>
+
+      <dt>PAC URL <span>(not available on Android)</span></dt>
+      <dd>Required for PAC type</dd>
+      <dd>Proxy Auto-Configuration file (PAC) can be used to handle all proxying configurations</dd>
+      <dd>PAC is a configuration file, not a proxy server</dd>
+      <dd>Patterns are not applicable in PAC type</dd>
+      <dd>See also: <a href="https://developer.mozilla.org/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file" target="_blank">Proxy Auto-Configuration (PAC) file</a></dd>
+
+      <dt id="store-locally" class="experimental">Store Locally <span>(Chrome only)</span></dt>
+      <dd>Option to store PAC locally</dd>
+      <dd>Option should only be used for altering remote PAC rules</dd>
+      <dd>Storing large or many PACs locally is not recommended and can prevent browser sync</dd>
+      <dd>There are limits on the overall PAC length when set locally (could be 512kb)</dd>
+
+      <dd>Individual Proxy
+        <ul>
+          <li>All PACs will be set as remote PAC, regardless of the checkbox state</li>
+        </ul>
+      </dd>
+      <dd>Proxy by Patterns
+        <ul>
+          <li>Locally stored PACs will be processed in order, after processing other proxy patterns</li>
+        </ul>
+      </dd>
+
+
+      <dt>View</dt>
+      <dd>Click to fetch and display the remote PAC</dd>
+
+    </dl>
+
+    <h4 id="local-servers">Local Servers</h4>
+    <p>FoxyProxy can be used with local proxy servers:</p>
+
+    <ul>
+      <li>Go to Proxy tab ➤ Add a new proxy</li>
+      <li>Fill the details according to own preference e.g. Title: TOR</li>
+      <li>TOR ➤ Type: SOCKS, Hostname: 127.0.0.1, Port: 9050</li>
+      <li>Psiphon ➤ Type: SOCKS, Hostname: 127.0.0.1, Port: 60351</li>
+      <li>Privoxy ➤ Type: HTTPS, Hostname: 127.0.0.1, Port: 8118</li>
+      <li>Add patterns to limit to some URLs only</li>
+    </ul>
+
+    <h3 id="patterns">Patterns</h3>
+
+    <p>Add patterns to be used in "Proxy by Patterns"</p>
+    <p>Duplicate patterns will be removed.</p>
+
+    <dl>
+      <dt>📥 Import</dt>
+      <dd>Import patterns that were exported</dd>
+
+      <dt>📤 Export</dt>
+      <dd>Export patterns to import later</dd>
+
+      <dt>Quick Add</dt>
+      <dd>Add ready-made patterns</dd>
+      <dd><code>Plain Host</code> matches hostnames that contain no dots, e.g. <code>http://intranet/</code></dd>
+
+      <dt>Include/Exclude</dt>
+      <dd>Select to include or exclude URL that matches the pattern</dd>
+
+      <dt>Type</dt>
+      <dd>Select Wildcard or Regular Expression</dd>
+
+      <dt>Title</dt>
+      <dd>Set the pattern title</dd>
+
+      <dt>Pattern</dt>
+      <dd>Set the pattern</dd>
+
+      <dt>Enable</dt>
+      <dd>Enable/disable the pattern</dd>
+      <dd>Selectors only show enabled patterns</dd>
+
+      <dt>Delete</dt>
+      <dd>Delete the pattern</dd>
+    </dl>
+
+
+
+    <h3>Pattern Guide</h3>
+
+    <ul>
+      <li>Patterns can be Wildcard (<a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_scripts#globs" target="_blank">globs</a>) or <a href="https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_expressions" target="_blank">Regular Expression</a></li>
+      <li>Patterns can be full or partial match which means it can match the entire URL or only part of it</li>
+      <li>Include <code>://...</code> to ensure it matches the host</li>
+      <li>In practice, including URL pathname with host is rarely necessary</li>
+    </ul>
+
+    <dl>
+      <dt>Wildcard</dt>
+      <dd>A glob is just a string that may contain wildcards</dd>
+      <dd>There are two types of wildcard, and you can combine them in the same glob:
+        <ol>
+          <li><code>*</code> matches zero or more characters</li>
+          <li><code>?</code> matches exactly one character</li>
+        </ol>
+      </dd>
+<!--
+      <dd>Wildcard <code>*</code> is translated to regular expression <code>.*</code> which means 0 or more characters</dd>
+      <dd>Character <code>?</code> is translated to regular expression <code>.</code> which means a single character</dd> -->
+      <dd>Leading or trailing <code>*</code> is not necessary</dd>
+
+      <dt>Regular Expression</dt>
+      <dd>Regular expressions are created using <code>new RegExp()</code> so there is no need to escape forward slashes</dd>
+      <dd>There is no need to double escape special characters (already happens when saved to storage)</dd>
+    </dl>
+
+
+
+    <table>
+      <caption>Examples</caption>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Pattern</th>
+          <th>match</th>
+          <th>no-match</th>
+        </tr>
+      </thead>
+      <tbody class="code">
+        <tr>
+          <th>Wildcard</th>
+          <td>example<br>example*<br>*example<br>*example*</td>
+          <td>http://help.example.com/<br>https://example.com/<br>https://google.com/ref=examplelist</td>
+          <td>https://google.com/</td>
+        </tr>
+        <tr>
+          <th>Wildcard</th>
+          <td>example.com</td>
+          <td>https://example.com/<br>http://help.example.com/<br>https://google.com/ref=help.example.com</td>
+          <td>https://google.com/</td>
+        </tr>
+
+        <tr>
+          <th>Wildcard</th>
+          <td>.example.com<br>*.example.com</td>
+          <td>http://help.example.com/<br>https://google.com/ref=help.example.com</td>
+          <td>https://example.com/</td>
+        </tr>
+
+        <tr>
+          <th>Wildcard</th>
+          <td>://*.example.com<br>*://*.example.com</td>
+          <td>http://help.example.com/<br>https://help.example.com/</td>
+          <td>https://example.com/<br>https://google.com/ref=help.example.com</td>
+        </tr>
+
+        <tr>
+          <th>Wildcard</th>
+          <td>https://exam???.<br>https://exam???.*</td>
+          <td>https://example.com/<br>https://example.org/<br>https://example.com/</td>
+          <td>https://exam.com/<br>http://example.com/</td>
+        </tr>
+
+        <tr>
+          <th>Reg Exp</th>
+          <td>^https://(www|mail)\.google\.com/</td>
+          <td>https://www.google.com/<br>https://mail.google.com/</td>
+          <td>https://google.com/</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+    <h3 id="bulk-edit">Bulk Edit</h3>
+    <p>Bulk edit examples for the advanced users</p>
+    <ul>
+      <li>Go to the Options ➢ Proxies</li>
+      <li>Open Developer Tools (F12) or (Ctrl+Shift+I)</li>
+      <li>Go to the Console tab</li>
+      <li>Paste the following Code (edit as required)</li>
+      <li>Hit Enter</li>
+      <li>Click SAVE to apply changes</li>
+    </ul>
+
+
+    <table>
+      <caption>Examples</caption>
+      <tbody class="code">
+        <tr>
+          <th>Change all types</th>
+          <td>document.querySelectorAll('[data-id="type"]').forEach(i =&gt; i.value = 'https')</td>
+        </tr>
+
+        <tr>
+          <th>Change all ports</th>
+          <td>document.querySelectorAll('[data-id="port"]').forEach(i =&gt; i.value = '443')</td>
+        </tr>
+
+        <tr>
+          <th>Change all titles</th>
+          <td>document.querySelectorAll('[data-id="title"]').forEach(i =&gt; i.value += '-set')</td>
+        </tr>
+
+        <tr>
+          <th>Change all usernames</th>
+          <td>document.querySelectorAll('[data-id="username"]').forEach(i =&gt; i.value = 'user')</td>
+        </tr>
+
+        <tr>
+          <th>Change all passwords</th>
+          <td>document.querySelectorAll('[data-id="password"]').forEach(i =&gt; i.value = 'pass')</td>
+        </tr>
+
+        <tr>
+          <th>Open all proxies</th>
+          <td>document.querySelectorAll('details.proxy').forEach(i =&gt; i.open = true)</td>
+        </tr>
+
+        <tr>
+          <th>Close all proxies</th>
+          <td>document.querySelectorAll('details.proxy').forEach(i =&gt; i.open = false)</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+    <h3 id="import">Import</h3>
+
+    <dl>
+      <dt>FoxyProxy Account</dt>
+      <dd>Import proxies from <a href="https://getfoxyproxy.org/order/" target="_blank">FoxyProxy</a> account</dd>
+      <!-- <dd>Select how they are imported e.g. as domain:port or ip:port; and as HTTPS or HTTP</dd> -->
+      <dd>Imported content will be added to the existing proxies</dd>
+
+      <dt>Import from URL</dt>
+      <dd>Import preferences (as valid JSON) from a remote URL</dd>
+      <dd>Imported content will be added to the existing proxies</dd>
+
+
+      <dt>Proxy List</dt>
+      <dd>Imported content will be added to the existing proxies</dd>
+      <dd>
+        <dl>
+          <dt>Simple</dt>
+          <dd>
+<pre>1.2.3.4:1080
+example.com:443
+example.com:3128:user:pass</pre>
+          </dd>
+
+
+          <dt>Extended</dt>
+          <dd>All applicable parameters can be passed as search parameters <i>(case-insensitive) (v8.0+)</i><br>
+            e.g. <i>active, title, color, type (http, https , socks4, socks5, pac), username, password, cc, city</i></dd>
+          <dd>
+<pre>http://1.2.3.4:1080
+https://example.com:443
+http://user:pass@1.2.3.4?color=663300
+socks5://100.10.11.12:1080?title=China&cc=CN&city=Beijing
+https://user:password@78.205.12.1:21?color=ff00bc&title=work%20proxy
+
+https://example.com:443?active=false&title=Work&username=abcd&password=1234&cc=US&city=Miami
+http://pac-url.com/etc?type=pac&title=Work PAC&color=663300</pre>
+          </dd>
+        </dl>
+      </dd>
+      <!-- <dd>More Information: <a href="https://github.com/foxyproxy/firefox-extension/wiki/Import-Proxy-List" target="_blank">Import Proxy List</a></dd> -->
+
+
+      <dt>Import from older versions</dt>
+      <dd>Import older settings JSON (e.g. <i>FoxyProxy_YYYY-MM-DD.json</i>)</dd>
+      <dd>Old <i>foxyproxy.xml</i> format can be imported in FoxyProxy v7.5.1 and then exported as JSON</dd>
+    </dl>
+
+
+
+
+    <h3 id="pattern-tester">Pattern Tester</h3>
+    <ol>
+      <li>Enter URL to test</li>
+      <li>Select the pattern type</li>
+      <li>Enter pattern details</li>
+      <li>Click <b>Test</b> when ready</li>
+      <li>Result will be match ✅ or fail ❌</li>
+    </ol>
+
+    <h3 id="log">Log <span>(Firefox mainly)</span> <span class="experimental">(limited on Chrome v8.9)</span></h3>
+    <ul>
+      <li>Live Log displays the web requests in reversed order (new one on top)</li>
+      <li>It will continue to display while the Options page is open and will stop logging as soon as the page is closed</li>
+      <li>Log data is not stored</li>
+      <!-- <li>Not available on chrome since in Chrome <a href="https://developer.chrome.com/docs/extensions/reference/webRequest/#event-onBeforeRequest" target="_blank">webRequest.onBeforeRequest</a> API does not provide <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/onBeforeRequest" target="_blank">proxyInfo</a></li> -->
+      <li>Patterns will show if FoxyProxy was in Proxy by Patterns mode when the log page is loaded (refresh if necessary)</li>
+
+      <li>Limited logging on chrome since Chrome <a href="https://developer.chrome.com/docs/extensions/reference/webRequest/#event-onBeforeRequest" target="_blank">webRequest.onBeforeRequest</a> API does not provide <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/onBeforeRequest" target="_blank">proxyInfo</a> (and some others)
+      <ul>
+        <li>No Incognito or Container data on Chrome</li>
+        <li>No proxy data on Chrome</li>
+      </ul>
+      </li>
+
+    </ul>
+
+
+
+    <h2 id="enterprise-policy" class="experimental">Enterprise Policy <span>(v8.2)</span></h2>
+    <p>FoxyProxy supports enterprise policy and managed storage, and they can be configured to set FoxyProxy options.</p>
+    <p><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/storage/managed" target="_blank">storage.managed</a> is not supported on Firefox for Android.</p>
+
+    <ul>
+      <li>FoxyProxy checks for enterprise policy and managed storage at start-up, and when background script is reloaded in MV3</li>
+      <li>If managed data is found:
+        <ul>
+          <li>Managed data will be used</li>
+          <li>Toolbar popup & Options page work normally but changes will not apply</li>
+          <li>Managed data can set all, or some of the options (the rest will be set to their default values)</li>
+          <li>Managed data format is the same as FoxyProxy export format</li>
+          <li>The easiest way to create a managed data JSON is to set all values in FoxyProxy and export options</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h5>Default Options <span>(v8.9)</span></h5>
+<pre>
+{
+  "mode": "disable",          // mandatory: current option, necessary to enable
+  "sync": false,              // optional:  not necessary as it will be disabled on managed storage
+  "autoBackup": false,        // optional:  not necessary as save is disabled on managed storage
+  "passthrough": "",          // optional:  Global Exclude
+  "theme": "",                // optional:  set the theme
+  "container": {},            // optional:  Incognito/Container settings
+  "commands": {},             // optional:  keyboard shortcut settings
+  "data": []                  // mandatory: array of proxies and their patterns
+}
+</pre>
+
+
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Chrome</th>
+          <th>Firefox</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>View policy</th>
+          <td>chrome://policy/</td>
+          <td>about:policies</td>
+        </tr>
+
+        <tr>
+          <th>FoxyProxy ID</th>
+          <td>gcknhkkoolaabfmlnjonogaaifnjlfnp</td>
+          <td>foxyproxy@eric.h.jung</td>
+        </tr>
+        <tr>
+          <th>FoxyProxy Basic ID</th>
+          <td>dookpfaalaaappcdneeahomimbllocnb</td>
+          <td>foxyproxy-basic@eric.h.jung</td>
+        </tr>
+
+        <tr>
+          <th>FoxyProxy beta ID</th>
+          <td>Copy the ID from chrome://extensions</td>
+          <td>foxyproxy@eric.h.jung</td>
+        </tr>
+
+        <tr>
+          <th>policies.json</th>
+          <td>
+<pre>
+{
+
+  "3rdparty": {
+    "extensions": {
+      "gcknhkkoolaabfmlnjonogaaifnjlfnp": {<mark style="font-size: 1.1em;">
+        "mode": "pattern",
+        "data": []</mark>
+      }
+    }
+  }
+
+}
+</pre>
+          </td>
+          <td>
+<pre>
+{
+  "policies": {
+    "3rdparty": {
+      "Extensions": {
+        "foxyproxy@eric.h.jung": {<mark style="font-size: 1.1em;">
+          "mode": "pattern",
+          "data": []</mark>
+        }
+      }
+    }
+  }
+}
+</pre>
+          </td>
+        </tr>
+
+        <tr>
+          <th>Location: Linux</th>
+          <td>
+            ◦ Chrome: <code>/etc/opt/chrome/policies/managed</code> <br>
+            ◦ Chromium: <code>/etc/chromium/policies</code></td>
+          <td>
+            ◦ System-wide: <code>/etc/firefox/policies</code><br>
+            ◦ Specific Firefox: <code>firefox/distribution</code></td>
+        </tr>
+
+        <tr>
+          <th>See also</th>
+          <td>
+            ◦ <a href="https://support.google.com/chrome/a/answer/9027408" target="_blank">Set policies</a><br>
+            ◦ <a href="https://www.chromium.org/administrators/configuring-policy-for-extensions" target="_blank">Configuring Apps and Extensions by Policy</a><br>
+            ◦ <a href="https://chromium.googlesource.com/chromium/src/+/HEAD/docs/enterprise/policies.md" target="_blank">Enterprise policies</a>
+          </td>
+          <td>
+            ◦ <a href="https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/" target="_blank">How to add policy support</a><br>
+            ◦ <a href="https://mozilla.github.io/policy-templates/" target="_blank">policy-templates</a>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+
+      <h3 id="managed-storage" class="experimental">Managed Storage</h3>
+
+      <p>A <code>storage.managed</code> object that represents the managed storage area. Items in managed storage are set by the domain administrator or other native applications installed on the user's computer and are read-only for the extension.</p>
+      <p>Native manifests are specially formatted JSON files that are provisioned on the user's computer by some means outside the extension installation process. For example, a native manifest might be provisioned by a device administrator or by a native application installer</p>
+
+<pre>
+{
+  "name": "foxyproxy@eric.h.jung",
+  "type": "storage",
+  "data": {<mark style="font-size: 1.1em;">
+    "mode": "disable",
+    "sync": false,
+    "passthrough": "",
+    "container": {},
+    "commands": {},
+    "data": []</mark>
+  }
+}
+</pre>
+
+
+    <h5>See also</h5>
+    <ul>
+      <li><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/storage/managed" target="_blank">storage.managed</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_manifests#managed_storage_manifests" target="_blank">Managed storage manifests</a></li>
+    </ul>
+
+
+
+    <h2 id="support">Support</h2>
+    <ul>
+      <li>GitHub Community <a href="https://github.com/foxyproxy/browser-extension" target="_blank">Support</a></li>
+      <li><a href="https://github.com/foxyproxy/browser-extension" target="_blank">Source Code</a></li>
+      <li><a href="https://support.getfoxyproxy.org/" target="_blank">Open a Support Ticket</a> <i>(no registration required)</i></li>
+      <li><a href="mailto:support@getfoxyproxy.org">Email Support</a></li>
+    </ul>
+
+    </section>
+  </article>
+</body>
+
+</html>

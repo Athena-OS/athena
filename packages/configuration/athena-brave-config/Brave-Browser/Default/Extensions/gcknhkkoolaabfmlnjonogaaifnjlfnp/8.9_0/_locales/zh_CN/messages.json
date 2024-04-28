@@ -1,0 +1,347 @@
+{
+   "about": {
+      "message": "关于"
+   },
+   "active": {
+      "message": "已启用"
+   },
+   "activeNote": {
+      "message": "FoxyProxy 将忽略此页面的所有选项，除非设为"
+   },
+   "add": {
+      "message": "添加"
+   },
+   "addBlacklist": {
+      "message": "添加黑名单模式可以防止代理用在本地主机和内部网/私密 IP 地址上"
+   },
+   "addBlacklistTip": {
+      "message": "把本地主机、127.0.0.1、192.168.*.*、172.16.*.* 和 10.*.*.* 添加到黑名单模式"
+   },
+   "addProxy": {
+      "message": "添加代理"
+   },
+   "addWhitelist": {
+      "message": "添加匹配全部 URLs 的白名单模式"
+   },
+   "addWhitelistTip": {
+      "message": "添加白名单模式 *"
+   },
+   "authError": {
+      "message": "$1 拒绝连接\n请检查代理用户名/密码"
+   },
+   "back": {
+      "message": "返回"
+   },
+   "black": {
+      "message": "黑名单"
+   },
+   "blackPatterns": {
+      "message": "黑名单模式"
+   },
+   "cancel": {
+      "message": "取消"
+   },
+   "clear": {
+      "message": "清除"
+   },
+   "clickTest": {
+      "message": "准备好后点击“测试”"
+   },
+   "color": {
+      "message": "颜色"
+   },
+   "confirmDelete": {
+      "message": "你确定要删除吗？"
+   },
+   "confirmTransferToLocal": {
+      "message": "是否将已同步的设置传输到你的本地配置文件？\n将合并已有的数据。"
+   },
+   "confirmTransferToSync": {
+      "message": "是否将本地设置传输到你的同步配置文件？\n将合并已有的数据。"
+   },
+   "delete": {
+      "message": "删除"
+   },
+   "deleteAll": {
+      "message": "全部删除"
+   },
+   "deleteAllmessage": {
+      "message": "已删除所有数据"
+   },
+   "deleteBrowserData": {
+      "message": "删除浏览器数据"
+   },
+   "deleteBrowserDataDescription": {
+      "message": "缓存、cookies、indexedDB 存储、DOM 本地存储、插件数据、service worker 数据。"
+   },
+   "deleteBrowserDataNotDescription": {
+      "message": "已保存的密码、浏览和表单历史、下载历史、webSQL 和服务器绑定证书。"
+   },
+   "deleteNot": {
+      "message": "不要删除"
+   },
+   "disabled": {
+      "message": "已禁用"
+   },
+   "done": {
+      "message": "完成！"
+   },
+   "down": {
+      "message": "下移"
+   },
+   "edit": {
+      "message": "编辑"
+   },
+   "editPatterns": {
+      "message": "编辑模式"
+   },
+   "editPatternsFor": {
+      "message": "编辑 $1 的模式"
+   },
+   "editProxy": {
+      "message": "编辑代理 $1"
+   },
+   "enterUrl": {
+      "message": "输入要测试的 URL"
+   },
+   "enterUrlNote": {
+      "message": "（已忽略路径和查询参数）"
+   },
+   "erroNoSettings": {
+      "message": "未找到设置。请重新安装 FoxyProxy。"
+   },
+   "error": {
+      "message": "错误"
+   },
+   "errorEmpty": {
+      "message": "字段不能为空。"
+   },
+   "errorFetch": {
+      "message": "操作出现错误"
+   },
+   "errorPattern": {
+      "message": "请输入一项模式"
+   },
+   "errorProtocol": {
+      "message": "协议不匹配。"
+   },
+   "errorSlash": {
+      "message": "通配符模式不能有斜线 /。因为 Firefox 的限制你无法匹配 URL 路径。"
+   },
+   "errorWas": {
+      "message": "存在错误。请重试。"
+   },
+   "export": {
+      "message": "导出"
+   },
+   "exportPatterns": {
+      "message": "导出模式"
+   },
+   "extensionDescription": {
+      "message": "易于使用，适用于任何人的高级代理管理工具"
+   },
+   "extensionName": {
+      "message": "FoxyProxy"
+   },
+   "extensionNameBasic": {
+      "message": "FoxyProxy 基础版"
+   },
+   "forAll": {
+      "message": "对全部 URLs 使用"
+   },
+   "help": {
+      "message": "帮助"
+   },
+   "import": {
+      "message": "导入"
+   },
+   "importBW": {
+      "message": "已导入 $1 项白名单和 $2 项黑名单模式。"
+   },
+   "importEnd": {
+      "message": "设置已成功导入"
+   },
+   "importEndSlash": {
+      "message": "导入已完成。由于 Firefox 缺陷，已不再支持于模式里使用斜线。请复查你的模式并移除所有斜线。"
+   },
+   "importPatterns": {
+      "message": "导入模式"
+   },
+   "imported": {
+      "message": "已导入"
+   },
+   "importedPattern": {
+      "message": "此模式来自自旧版本的 FoxyProxy，且在导入过程中更改。下面为未更改的原模式："
+   },
+   "ip": {
+      "message": "代理 IP 地址或 DNS 名称"
+   },
+   "log": {
+      "message": "日志"
+   },
+   "logSize": {
+      "message": "日志大小"
+   },
+   "matchPattern": {
+      "message": "匹配模式"
+   },
+   "matchedURLs": {
+      "message": "与模式匹配的 URLs"
+   },
+   "modeDisabled": {
+      "message": "关闭（使用 Firefox 设置）"
+   },
+   "modePatterns": {
+      "message": "按模式和顺序使用启用的代理"
+   },
+   "myIP": {
+      "message": "查询我的 IP"
+   },
+   "name": {
+      "message": "名称"
+   },
+   "newBlack": {
+      "message": "新增黑名单"
+   },
+   "newWhite": {
+      "message": "新增白名单"
+   },
+   "noLocal": {
+      "message": "不用于本地主机和内部网/私密 IP 地址"
+   },
+   "noMatch": {
+      "message": "无匹配"
+   },
+   "noProxies": {
+      "message": "你没有设置任何代理。"
+   },
+   "none": {
+      "message": "无"
+   },
+   "notApplicable": {
+      "message": "不适用"
+   },
+   "off": {
+      "message": "关闭"
+   },
+   "ok": {
+      "message": "确定"
+   },
+   "on": {
+      "message": "开启"
+   },
+   "options": {
+      "message": "选项"
+   },
+   "optionsPage": {
+      "message": "FoxyProxy 选项"
+   },
+   "password": {
+      "message": "密码（可选）"
+   },
+   "pattern": {
+      "message": "模式"
+   },
+   "patternCheatSheet": {
+      "message": "模式速查表"
+   },
+   "patternDetail": {
+      "message": "输入模式详细信息。"
+   },
+   "patternHelp": {
+      "message": "模式帮助"
+   },
+   "patternMatch": {
+      "message": "模式与 URL 匹配！"
+   },
+   "patternNotMatch": {
+      "message": "模式与 URL 不匹配。"
+   },
+   "patternNote": {
+      "message": "（无路径，无查询参数）"
+   },
+   "patternShortcuts": {
+      "message": "模式快捷选项"
+   },
+   "patternTester": {
+      "message": "模式测试器"
+   },
+   "patternsChanged": {
+      "message": "有些模式已做更改因为它们包含斜线。不再支持于模式里使用斜线。"
+   },
+   "port": {
+      "message": "端口"
+   },
+   "protocol": {
+      "message": "协议"
+   },
+   "proxyAddress": {
+      "message": "代理地址"
+   },
+   "proxyTitle": {
+      "message": "代理标题"
+   },
+   "proxyType": {
+      "message": "代理类型"
+   },
+   "refresh": {
+      "message": "刷新"
+   },
+   "save": {
+      "message": "保存"
+   },
+   "saveAdd": {
+      "message": "保存并添加另一个"
+   },
+   "saveEditPattern": {
+      "message": "保存并编辑模式"
+   },
+   "syncSettings": {
+      "message": "同步设置"
+   },
+   "syncSettingsHelp": {
+      "message": "开启以使用 Firefox 同步（将在你所有的 Firefox 浏览器间同步设置）。关闭则只在本地保存设置。注意你可以有两套不同的设置，一套同步的和一套本地的。"
+   },
+   "test": {
+      "message": "测试"
+   },
+   "timestamp": {
+      "message": "时间戳"
+   },
+   "title": {
+      "message": "标题或描述（可选）"
+   },
+   "togglePW": {
+      "message": "显示密码"
+   },
+   "type": {
+      "message": "类型"
+   },
+   "unmatchedURLs": {
+      "message": "与模式不匹配的 URLs"
+   },
+   "up": {
+      "message": "上移"
+   },
+   "url": {
+      "message": "URL"
+   },
+   "userPassError": {
+      "message": "请输入用户名和密码。"
+   },
+   "username": {
+      "message": "用户名（可选）"
+   },
+   "welcome": {
+      "message": "欢迎"
+   },
+   "white": {
+      "message": "白名单"
+   },
+   "whiteBlack": {
+      "message": "白/黑名单"
+   },
+   "whitePatterns": {
+      "message": "白名单模式"
+   }
+}

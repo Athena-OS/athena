@@ -1,0 +1,77 @@
+{
+  "name": "Wappalyzer - Technology profiler",
+  "short_name": "Wappalyzer",
+  "author": "Wappalyzer",
+  "homepage_url": "https://www.wappalyzer.com/",
+  "description": "Identify web technologies",
+  "version": "6.10.66",
+  "default_locale": "en",
+  "manifest_version": 2,
+  "icons": {
+    "16": "images/icon_16.png",
+    "19": "images/icon_19.png",
+    "32": "images/icon_32.png",
+    "38": "images/icon_38.png",
+    "64": "images/icon_64.png",
+    "128": "images/icon_128.png",
+    "256": "images/icon_256.png",
+    "512": "images/icon_512.png",
+    "1024": "images/icon_1024.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/icon_16.png",
+      "19": "images/icon_19.png",
+      "32": "images/icon_32.png",
+      "38": "images/icon_38.png",
+      "64": "images/icon_64.png",
+      "128": "images/icon_128.png",
+      "256": "images/icon_256.png",
+      "512": "images/icon_512.png",
+      "1024": "images/icon_1024.png"
+    },
+    "default_title": "Wappalyzer",
+    "default_popup": "html/popup.html"
+  },
+  "background": {
+    "page": "html/background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    "js/js.js",
+    "js/dom.js"
+  ],
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+  "permissions": [
+    "cookies",
+    "storage",
+    "tabs",
+    "webRequest",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "optional_permissions": [
+    "downloads"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "wappalyzer@crunchlabz.com",
+      "strict_min_version": "42.0"
+    }
+  }
+}

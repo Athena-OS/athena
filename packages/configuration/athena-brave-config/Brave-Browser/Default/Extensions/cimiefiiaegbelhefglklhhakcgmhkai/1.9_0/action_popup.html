@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="action_popup.css">
+    <script src="i18n.js"></script>
+    <script src="constants.js"></script>
+    <script src="utils.js"></script>
+    <script src="content-utils.js"></script>
+    <script src="action_popup.js"></script>
+</head>
+
+<body>
+
+<header>
+    <span data-i18n="browseraction_title">I18N</span>
+</header>
+
+<main>
+
+    <!-- same error messages as in options.html -->
+    <div id="unsupported_os_error" class="message error with-icon hidden">
+        <h3 data-i18n="general_error_not_supported_os_title">I18N</h3>
+
+        <p data-i18n="general_error_not_supported_os">I18N</p>
+    </div>
+
+    <div id="startup_error" class="message error with-icon hidden">
+        <h3 data-i18n="general_error_startup_failed_title">I18N</h3>
+
+        <p data-i18n="general_error_startup_failed">I18N</p>
+
+        <h4 id="startup_error_text" class="hidden"></h4>
+
+        <a data-i18n="general_error_startup_failed_wiki_link" href="https://community.kde.org/Plasma/Browser_Integration" target="_blank">I18N</a>
+    </div>
+
+    <div id="runtime_error" class="message error with-icon hidden">
+        <h3 data-i18n="general_error_host_disconnected_title">I18N</h3>
+
+        <p id="runtime_error_text" data-i18n="general_error_unknown">I18N</p>
+    </div>
+
+    <div id="main" class="hidden">
+
+        <div id="dummy-main" class="message general with-icon"></div>
+
+        <section class="mpris-blacklist-info hidden">
+            <header data-i18n="browseraction_mpris_title">I18N</header>
+            <p data-i18n="browseraction_mpris_enable_on">I18N</p>
+            <ul class="mpris-blacklist-origins"></ul>
+        </section>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

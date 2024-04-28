@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "checkForDNTPolicy": {
+            "title": "Check if third-parties comply with EFF's DNT policy",
+            "description": "If set to false then do not query third-party domains for declarations of compliance with EFF's Do Not Track policy.",
+            "type": "boolean"
+        },
+        "disabledSites": {
+            "title": "Websites to disable Privacy Badger on",
+            "description": "This is a list of website domains where Privacy Badger will be disabled. This means that Privacy Badger will not block anything or send DNT/GPC signals to anything when you visit a website on this list. This is NOT a list of tracker domains for Privacy Badger to always allow to load.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "learnLocally": {
+            "title": "Learn to block new trackers from your browsing",
+            "description": "Enabling learning may make you more identifiable to websites. Please see https://www.eff.org/badger-evolution for more information.",
+            "type": "boolean"
+        },
+        "learnInIncognito": {
+            "title": "Learn in Private/Incognito windows",
+            "description": "Enabling learning in Private/Incognito windows may leave traces of your private browsing history on your computer. By default, Privacy Badger will block trackers it already knows about in Private/Incognito windows, but it won't learn about new trackers. You might want to enable this option if a lot of your browsing happens in Private/Incognito windows.",
+            "type": "boolean"
+        },
+        "sendDNTSignal": {
+            "title": "Send GPC/DNT signals",
+            "description": "Toggles global sending of Global Privacy Control and Do Not Track signals.",
+            "type": "boolean"
+        },
+        "showCounter": {
+            "title": "Show count of blocked items",
+            "description": "Toggles showing the counter over Privacy Badger's icon in the browser toolbar.",
+            "type": "boolean"
+        },
+        "showIntroPage": {
+            "title": "Show intro page",
+            "description": "If set to false then do not open the new user intro page upon install.",
+            "type": "boolean"
+        },
+        "socialWidgetReplacementEnabled": {
+            "title": "Replace social widgets",
+            "description": "Toggles social widget replacement.",
+            "type": "boolean"
+        }
+    }
+}

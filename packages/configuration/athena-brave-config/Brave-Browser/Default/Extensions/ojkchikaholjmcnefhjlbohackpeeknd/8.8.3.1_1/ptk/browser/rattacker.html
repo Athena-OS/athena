@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Penetration Testing Kit - cross-browser extension for penetration testing" name="description" />
+    <meta content="Penetration Testing Kit, request builder, traffic recording, macro recording" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+    <title>OWASP Penetration Testing Kit - R-Attacker</title>
+
+    <script src="../packages/browser-polyfill/browser-polyfill.min.js"></script>
+    <script src="../packages/jquery/jquery.min.js"></script>
+    <script src="../packages/jquery/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/semantic-ui/semantic.min.css" type="text/css" />
+    <script src="../packages/semantic-ui/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/codemirror/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="../packages/codemirror/addon/fold/foldgutter.css" type="text/css" />
+    <script src="../packages/codemirror/codemirror.js"></script>
+    <script src="../packages/codemirror/mode/http/http.js"></script>
+    <script src="../packages/codemirror/addon/fold/foldcode.js"></script>
+    <script src="../packages/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="../packages/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/indent-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/markdown-fold.js"></script>
+    <script src="../packages/codemirror/addon/fold/comment-fold.js"></script>
+
+    <link rel="stylesheet" href="assets/css/default.css" type="text/css" />
+    <script src="assets/js/menu.js"></script>
+
+    <script type="module" src="assets/js/rattacker.js"></script>
+
+    <style>
+        .CodeMirror-code {
+            padding-top: 35px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="mainMenuWrapper">
+        <div class="ui segment clearing info_tab">
+            <div style="padding-top: 5px; padding-right: 4px;">
+                <div class="ui small button generate_report" style="display: none;margin-left: -11px;">Generate
+                    report</div>
+                <!-- <div class="ui small secondary button save_report" style="display: none; position: relative">Save
+                    report<i class="right floated cloud upload icon" style="padding-left: 8px;"></i>
+                    <div style="position:absolute; top:0px;right: 0px">
+                        <div class="ui  centered inline inverted loader"></div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="ui small secondary button exchange" style="display: none; position: relative">
+                    Import/Export<i class="right floated exchange icon" style="padding-left: 8px;"></i>
+                    <div style="position:absolute; top:0px;right: 0px">
+                        <div class="ui  centered inline inverted loader"></div>
+                    </div>
+                </div> -->
+
+                <div class="ui mini message scan_info" style="display: none">
+                    <div class="ui header">Scanning <span id="scanning_url"></span></div>
+                </div>
+                <!-- <div class="ui mini right floated icon button " ><i class="settings rattacker large icon"
+                    title="Settings"></i></div> -->
+                <div class="ui mini right floated icon button"><i class="trash all alternate large icon reset"
+                        title="Reset"></i>
+                </div>
+                <!-- <div class="ui mini right floated icon button cloud_download_scans"><i
+                        class="cloud download alternate large icon" title="Download from cloud"></i>
+                </div> -->
+                <div class="ui mini right floated icon button import_export"><i
+                        class="exchange alternate large icon" title="Import/Export"></i>
+                </div>
+
+                <div class="ui secondary small right floated button run_scan_runtime" id="run_scan_bg_control">Scan in
+                    runtime</div>
+                <div class="ui secondary small right floated button stop_scan_runtime" id="stop_scan_bg_control"
+                    style="display:none">Stop runtime scan</div>
+            </div>
+        </div>
+
+    </div>
+    <div id="pagecontent" style="padding-top:80px;">
+        <div id="main">
+            <table class="ui tiny table" style="padding: 0px;margin: 0px;border: none;">
+                <tbody>
+                    <tr>
+                        <td style="min-width:50px; vertical-align: text-top; padding: 0px;">
+                            <div class="eight wide field" style="padding-right: 1px;">
+                                <div class="field rattacker"
+                                    style="scrollbar-width: none;height: 100% !important;min-height: 85vh; position: relative;">
+                                    <div class="field"
+                                        style="border:none;scrollbar-width: none;position: absolute;height: 100%;width: 100%;">
+                                        <div class="ui items styled accordion" id="request_info"
+                                            style="width: 100%; overflow: scroll;position:absolute; margin: 0px;scrollbar-width: none;">
+                                        </div>
+                                        <div style="position:absolute; top:0px;right: 0px">
+                                            <div class="ui centered inline active inverted loader" id="init_loader">
+                                            </div>
+                                        </div>
+                                        <div style="height: 100%;display:none" id="welcome_message">
+                                            <div class="ui large message" style="height:100%">
+                                                <div class="ui blue  message"
+                                                    style="margin-top: -13px;margin-left: -20px;margin-right: -20px;height: 63px;">
+                                                    <div class="header">Try PTK+ to get Pro attacks</div>
+                                                    <div class="content">
+                                                        More attacks and cloud storage -
+                                                        <a href="https://app.ptk-plus.io/"
+                                                            target="_blank">https://app.ptk-plus.io/</a>
+                                                    </div>
+                                                </div>
+                                                <div class="header">How to scan an application:</div>
+                                                <div class="content">
+                                                    <ul>
+                                                        <li>Click the "Scan in runtime" button and confirm it's starting
+                                                        </li>
+                                                        <li>Start browsing the application you are scanning, eg click on
+                                                            different
+                                                            links, submit forms, etc</li>
+                                                        <li>Once completed open R-Attacker and stop the scan</li>
+                                                        <li>Check the result</li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="header">Default attacks </div>
+                                                <div class="content" style="margin-top: 8px;">
+                                                    <table id="tbl_modules"
+                                                        class="ui celled table small responsive nowrap unstackable"
+                                                        width="100%">
+                                                        <thead>
+                                                            <tr style="display: none;">
+                                                                <th></th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <div style="height: 60px; width: 100%; position: absolute; bottom:0px; overflow: scroll;display:none;scrollbar-width: none;"
+                                            id="progress_message">
+                                            <div class="ui small message" style="height:100%">
+                                                <div class="header">
+                                                    Scan progress
+                                                </div>
+                                                <p>Attack running: <span id="progress_attack_name"> </span></p>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width:50%;margin: 0px; padding: 0px 0px 0px 2px;border: none;vertical-align: top;">
+                            <div class="eight wide field" style="padding-left: 1px;">
+                                <div class="field rattacker"
+                                    style="scrollbar-width: none;height: 100% !important;min-height: 85vh;">
+                                    <div class="ui tiny message"
+                                        style="position: sticky;top: 0px;z-index: 1; min-height: 80px;padding-top:15px">
+                                        <div class="ui small icon buttons"
+                                            style="position: absolute;top: 0px;left: 0px;">
+                                            <div class="ui active button" id="filter_all"><i class="icon"
+                                                    title="All attacks" style="min-width: 70px;">All attacks</i></div>
+                                            <div class="ui button" id="filter_vuln"><i class="icon"
+                                                    title="Vulnerabilities only"
+                                                    style="min-width: 70px;">Vulnerabilities</i>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="ui mini statistic left floated" style="margin-top: 5px;">
+                                            <div class="value" id="attacks_count">
+                                                0
+                                            </div>
+                                            <div class="label">
+                                                Attacks
+                                            </div>
+                                        </div>
+                                        <div class="ui mini statistic left floated" style="margin-top: 5px;">
+                                            <div class="value" id="vulns_count">
+                                                0
+                                            </div>
+                                            <div class="label">
+                                                Findings
+                                            </div>
+                                        </div>
+                                        <div class="ui mini statistic right floated" style="margin-top: 5px;">
+                                            <div class="value" id="low_count">
+                                                0
+                                            </div>
+                                            <div class="label"><i class="exclamation triangle yellow icon"></i>
+                                                Low
+                                            </div>
+                                        </div>
+                                        <div class="ui mini statistic right floated" style="margin-top: 5px;">
+                                            <div class="value" id="medium_count">
+                                                0
+                                            </div>
+                                            <div class="label"><i class="exclamation triangle orange icon"></i>
+                                                Medium
+                                            </div>
+                                        </div>
+                                        <div class="ui mini statistic right floated" style="margin-top: 5px;">
+                                            <div class="value" id="high_count">
+                                                0
+                                            </div>
+                                            <div class="label"><i class="exclamation triangle red icon"></i>
+                                                High
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui items" id="attacks_info"
+                                        style="width: 100%; overflow: scroll;position:absolute; margin: 0px;scrollbar-width: none;">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+    <!-- Attack details and showHtml support -->
+    <div id="attack_details_dialog_wrapper"></div>
+
+    <div class="ui mini modal error" id="result_dialog">
+        <div class="header" id="result_header"></div>
+        <div class="content">
+            <span id="result_message"></span>
+        </div>
+        <div class="actions">
+            <div class="ui approve button">Close</div>
+        </div>
+    </div>
+
+    <div id="download_scans" class="ui fullscreen modal coupled first" style="display: none; height: 83%">
+        <i class="close icon"></i>
+        <div class="ui small header">Scans:</div>
+        <div class="content" style="min-height: 400px; overflow: scroll;height: 90%;scrollbar-width: none;">
+            <div class="ui negative message" id="download_scans_error"
+                style="height: 100px;overflow: scroll;display: none;scrollbar-width: none;">
+                <div class="header">
+                    Error
+                </div>
+                <p id="download_error"></p>
+                <p>Check you API key. Open <i class="question circle outline large icon"></i>Settings -> <i
+                        class="cloud large icon"></i>PTK+ and make sure you have provided a valid key</p>
+            </div>
+            <form class="ui tiny form controls" id="scan_list">
+
+                <table id="tbl_scans" class="ui celled table small responsive nowrap unstackable" width="100%"
+                    style="margin-bottom: 104px;">
+                    <thead>
+                        <tr>
+                            <th>Domain</th>
+                            <th>Scan ID</th>
+                            <th>Scan date</th>
+                            <th>Download</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div id="delete_scan_dlg" class="ui mini modal coupled second" style="display: none;">
+        <i class="close icon"></i>
+        <div class="ui header">Confirm delete</div>
+        <div class="content">
+            <span id="scan_delete_message"></span>
+            <form class="ui tiny form controls" id="scan_delete_form">
+                <input type="text" id="scan_hostname" placeholder="Type scan hostname">
+            </form>
+        </div>
+
+        <div class="actions">
+            <div class="ui approve button secondary confirm_scan_delete">Delete scan</div>
+        </div>
+    </div>
+
+    <div id="run_scan_dlg" class="ui tiny modal coupled second" style="display: none;">
+        <i class="close icon"></i>
+        <div class="header">Confirm scan run</div>
+
+        <div class="content">
+            <div class="ui message" style="margin: -20px -20px 0px -20px;">
+                <p>You are about running attacks on <span id="scan_host" style="font-weight: 600;"></span></p>
+            </div>
+            <p>Domains to scan (comma separated): <br />
+                <i>Example: <br /> domain.com, api.domain.com, subdomain.domain.com, www.domain.com</i>
+                <br />
+                <b>OR</b>
+                <br />
+                <i>*.domain.com - to scan all subdomains</i>
+            </p>
+            <textarea id="scan_domains" style="width: 100%; min-height: 100px;"></textarea>
+        </div>
+        <div class="actions">
+            <div class="ui cancel button">Cancel</div>
+            <div class="ui approve button secondary confirm_scan_run">Run scan</div>
+        </div>
+    </div>
+
+
+
+    <div id="import_export_dlg" class="ui fullscreen modal coupled second" style="display: none;">
+        <i class="close icon"></i>
+        <div class="ui header">Import/Export</div>
+        <div class="content">
+            <div class="ui  button secondary export_scan_btn" >Export</div>
+        </div>
+        <div class="ui horizontal divider">
+            Or
+          </div>
+        <div class="content">
+
+            <form class="ui tiny form controls" id="scan_delete_form">
+                <textarea id="import_scan_json" style="width: 100%; min-height: 100px;"></textarea>
+            </form>
+            <div class="ui  button secondary import_scan_text_btn">Import from text</div>
+            <div class="ui right floated button secondary import_scan_file_btn">Import from file</div>
+            <input id="import_scan_file_input" type="file" hidden/>
+        </div>
+    </div>
+
+</body>
+
+</html>

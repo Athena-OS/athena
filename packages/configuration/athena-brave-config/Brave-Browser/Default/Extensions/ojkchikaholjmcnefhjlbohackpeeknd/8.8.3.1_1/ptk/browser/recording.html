@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Penetration Testing Kit - cross-browser extension for penetration testing" name="description" />
+    <meta content="Penetration Testing Kit, request builder, traffic recording, macro recording" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+    <title>OWASP Penetration Testing Kit - Recording</title>
+
+    <script src="../packages/browser-polyfill/browser-polyfill.min.js"></script>
+    <script src="../packages/jquery/jquery.min.js"></script>
+    <script src="../packages/jquery/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/semantic-ui/semantic.min.css" type="text/css" />
+    <script src="../packages/semantic-ui/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/default.css" type="text/css" />
+    <script src="assets/js/menu.js"></script>
+    <script type="module" src="assets/js/recording.js"></script>
+</head>
+
+<body>
+    <div id="mainMenuWrapper">
+        <div class="ui segment clearing info_tab" style="padding-left: 0px;">
+            <div class="ui small menu" style="height: 46px;width: 100%;border-radius: 0.25em;">
+                <div class="item active" data-tab="macro">
+                    <div class="ui  button macro">Macro</div>
+                </div>
+                <div class="item" data-tab="traffic">
+                    <div class="ui  button traffic">Traffic</div>
+                </div>
+                <div class="menu" style="width: 100%;">
+                    <div class="item" style="width: 100%;">
+                        <div class="ui icon left corner labeled input">
+                            <input type="text" name="url" placeholder="http://domain.com OR http://127.0.0.1"
+                                style="padding-bottom: 10px;padding-left: 30px !important;" class="parent_url">
+                            <div class="ui left corner label">
+                                <i class="search icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pagecontent" style="padding: 0px;">
+        <form class="ui form controls">
+
+            <div class="ui bottom attached tab segment" data-tab="macro"
+                style="height: 100%;overflow: scroll; padding:41px 0px 0px 0px;scrollbar-width: none;">
+                <iframe src="macro.html" style="height: 100%; width: 100%; border:none" id="macro_frame"></iframe>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="traffic"
+                style="height: 100%;overflow: scroll;padding:41px 0px 0px 0px;scrollbar-width: none;">
+                <iframe style="height: 100%; width: 100%; border:none;" id="traffic_frame"></iframe>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

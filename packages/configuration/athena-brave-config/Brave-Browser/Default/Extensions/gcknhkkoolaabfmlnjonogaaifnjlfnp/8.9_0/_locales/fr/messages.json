@@ -1,0 +1,395 @@
+{
+   "about": {
+      "message": "A propos"
+   },
+   "active": {
+      "message": "Activer"
+   },
+   "activeNote": {
+      "message": "FoxyProxy ignore tous sur cette page à moins d'être explicitement configuré pour"
+   },
+   "add": {
+      "message": "Ajouter"
+   },
+   "addBlacklist": {
+      "message": "Ajouter des modèles d'exclusions pour empêcher ce proxy d'être utiliser pour localhost et des adresses IP privées ou d'intranet"
+   },
+   "addBlacklistTip": {
+      "message": "Ajouter des modèles d'exclusions pour localhost, 127.0.0.1, 192.168.*.*, 172.16.*.*, & 10.*.*.*"
+   },
+   "addProxy": {
+      "message": "Ajouter un Proxy"
+   },
+   "addWhitelist": {
+      "message": "Ajouter un modèle d'inclusion qui correspond à toutes les urls"
+   },
+   "addWhitelistTip": {
+      "message": "Ajouter un modèle d'inclusion *"
+   },
+   "authError": {
+      "message": "$1 refuse la connection\nVérifiez les identifiants du proxy"
+   },
+   "back": {
+      "message": "Retour"
+   },
+   "black": {
+      "message": "Exclusion"
+   },
+   "blackPatterns": {
+      "message": "Modèle d'exclusion"
+   },
+   "cancel": {
+      "message": "Annuler"
+   },
+   "clear": {
+      "message": "Effacer"
+   },
+   "clickTest": {
+      "message": "Cliquez sur 'Test' lorsque vous êtes prêt"
+   },
+   "color": {
+      "message": "Couleur"
+   },
+   "complete": {
+      "message": "complet"
+   },
+   "completeFormat": {
+      "message": "Dans ce format, vous pouvez spécifier tous les paramètres du proxy. Mais seulement le protocole et le nom du serveur sont requis."
+   },
+   "confirmDelete": {
+      "message": "Etes-vous sûr de vouloir supprimer ?"
+   },
+   "confirmOverwrite": {
+      "message": "Etes-vous sûr de vouloir ecraser les proxys existants ?"
+   },
+   "confirmTransferToLocal": {
+      "message": "Voulez-vous appliquez les paramètres synchronisés au profil local ?\nLes données existantes seront fusionnées."
+   },
+   "confirmTransferToSync": {
+      "message": "Voulez-vous appliquez les paramètres locaux au profil synchronisé ?\nLes données existantes seront fusionnées."
+   },
+   "delete": {
+      "message": "Supprimer"
+   },
+   "deleteAll": {
+      "message": "Tous supprimer"
+   },
+   "deleteAllmessage": {
+      "message": "Toutes les données ont été supprimées"
+   },
+   "deleteBrowserData": {
+      "message": "Supprimer les données du navigateur"
+   },
+   "deleteBrowserDataDescription": {
+      "message": "Cache, cookies, base de donnée indexée, cache local du DOM, données du plugin, données du service."
+   },
+   "deleteBrowserDataNotDescription": {
+      "message": "Mot de passe sauvegardés, historique et formulaire du navigateur, historique de téléchargement, webSQL, et certificats de serveur."
+   },
+   "deleteNot": {
+      "message": "Ne Pas Supprimer"
+   },
+   "disabled": {
+      "message": "Désactiver"
+   },
+   "done": {
+      "message": "Fait !"
+   },
+   "down": {
+      "message": "descendre"
+   },
+   "edit": {
+      "message": "Modifier"
+   },
+   "editPatterns": {
+      "message": "Editer les Modèles"
+   },
+   "editPatternsFor": {
+      "message": "Editer les Modèles de $1"
+   },
+   "editProxy": {
+      "message": "Modifier le Proxy $1"
+   },
+   "enterUrl": {
+      "message": "Entrer l'URL à tester"
+   },
+   "enterUrlNote": {
+      "message": "(les chemins d'URL et les paramètres sont ignorés)"
+   },
+   "erroNoSettings": {
+      "message": "Aucun paramètre n'a été trouvé. Essayez de réinstaller FoxyProxy."
+   },
+   "error": {
+      "message": "Erreur"
+   },
+   "errorEmpty": {
+      "message": "Le champ ne peut pas être vide."
+   },
+   "errorFetch": {
+      "message": "Une erreur est survenue durant l'opération"
+   },
+   "errorPattern": {
+      "message": "Merci d'entrer un modèle"
+   },
+   "errorProtocol": {
+      "message": "Le protocole ne correspond pas."
+   },
+   "errorSlash": {
+      "message": "Pas de barre oblique dans des modèles génériques. Vous ne pouvez pas associer d'URL à cause des restrictions de Firefox."
+   },
+   "errorWas": {
+      "message": "Une erreur est survenue. Merci de réessayer."
+   },
+   "examples": {
+      "message": "Exemples"
+   },
+   "export": {
+      "message": "Exporter les paramètres"
+   },
+   "exportPatterns": {
+      "message": "Exporter les Modèles"
+   },
+   "extensionDescription": {
+      "message": "Gestionnaire de proxy avancé facile d'utilisation"
+   },
+   "extensionName": {
+      "message": "FoxyProxy"
+   },
+   "extensionNameBasic": {
+      "message": "FoxyProxy Basique"
+   },
+   "forAll": {
+      "message": "pour toutes les URLs"
+   },
+   "formats": {
+      "message": "Formats"
+   },
+   "help": {
+      "message": "Aide"
+   },
+   "import": {
+      "message": "Importer les paramètres"
+   },
+   "importBW": {
+      "message": "$1 modèle(s) d'inclusions et $2 modèle(s) d'exclusions ont été importés."
+   },
+   "importEnd": {
+      "message": "Les paramètres ont été correctement importés"
+   },
+   "importEndSlash": {
+      "message": "Import fini. Les barres obliques ne sont plus supportées dans les modèles à cause d'un bug de Firefox. Merci de revoir votre modèle et de supprimer les éventuelles barres obliques."
+   },
+   "importPatterns": {
+      "message": "Importer les Modèles"
+   },
+   "importProxyList": {
+      "message": "Importer la liste des Proxy"
+   },
+   "importSucceeded": {
+      "message": "$1 proxys interprétés et stockés."
+   },
+   "imported": {
+      "message": "Importé"
+   },
+   "importedPattern": {
+      "message": "Ce modèle a été importé à partir d'une ancienne version de FoxyProxy et a été modifié lors de l'import. Voici le modèle original non modifié:"
+   },
+   "importsSkipped": {
+      "message": "$1 lignes ignorées car elles ne pouvaient pas être interprétées:\n\n$2"
+   },
+   "ip": {
+      "message": "Adresse IP du Proxy ou nom du DNS"
+   },
+   "ipPort": {
+      "message": "ip:port"
+   },
+   "ipPortUsernamePassword": {
+      "message": "ip:port:login:mot de passe"
+   },
+   "log": {
+      "message": "Journal"
+   },
+   "logSize": {
+      "message": "Taille du Journal"
+   },
+   "matchPattern": {
+      "message": "Modèle de correspondance"
+   },
+   "matchedURLs": {
+      "message": "URLs qui correspondent aux Modèles"
+   },
+   "modeDisabled": {
+      "message": "Désactiver (Utiliser les paramètres de firefox)"
+   },
+   "modePatterns": {
+      "message": "Utiliser les proxys activés par modèle et ordre"
+   },
+   "myIP": {
+      "message": "Quel est mon IP ?"
+   },
+   "name": {
+      "message": "Nom"
+   },
+   "newBlack": {
+      "message": "Nouveau Modèle d'Exclusion"
+   },
+   "newWhite": {
+      "message": "Nouveau Modèle d'Inclusion"
+   },
+   "noLocal": {
+      "message": "Ne pas utiliser pour localhost et des adresses IP privées ou d'intranet"
+   },
+   "noMatch": {
+      "message": "Pas de Correspondance"
+   },
+   "noProxies": {
+      "message": "Vous n'avez aucun paramètres de proxy."
+   },
+   "none": {
+      "message": "Aucun"
+   },
+   "notApplicable": {
+      "message": "s/o"
+   },
+   "off": {
+      "message": "Desactiver"
+   },
+   "ok": {
+      "message": "Accepter"
+   },
+   "on": {
+      "message": "Activer"
+   },
+   "options": {
+      "message": "Options"
+   },
+   "optionsPage": {
+      "message": "Options FoxyProxy"
+   },
+   "overwritProxiesHelp1": {
+      "message": "Cochez pour supprimer tous les proxys existants et les remplacer par ceux de la liste."
+   },
+   "overwritProxiesHelp2": {
+      "message": "Décocher pour ajouter les proxys de la liste à ceux déjà existant."
+   },
+   "overwriteProxies": {
+      "message": "Ecraser les proxys existants"
+   },
+   "password": {
+      "message": "Mot de passe (optionnel)"
+   },
+   "pasteList": {
+      "message": "Coller une liste de proxy ci-dessous."
+   },
+   "pattern": {
+      "message": "Modèles"
+   },
+   "patternCheatSheet": {
+      "message": "Aide-Mémoire pour les Modèles"
+   },
+   "patternDetail": {
+      "message": "Entrer les informations du modèle."
+   },
+   "patternHelp": {
+      "message": "Aide Modèle"
+   },
+   "patternMatch": {
+      "message": "Ce modèle correspond à l'URL!"
+   },
+   "patternNotMatch": {
+      "message": "Ce modèle ne correspond pas à l'URL."
+   },
+   "patternNote": {
+      "message": "(pas de chemins d'URL, pas de paramètres de requêtes)"
+   },
+   "patternShortcuts": {
+      "message": "Raccourcis de Modèle"
+   },
+   "patternTester": {
+      "message": "Testeur de Modèles"
+   },
+   "patternsChanged": {
+      "message": "Certains modèles ont été changés car ils contenaient des barres obliques. Elles ne sont plus supportées."
+   },
+   "port": {
+      "message": "Port"
+   },
+   "protocol": {
+      "message": "Protocole"
+   },
+   "proxyAddress": {
+      "message": "Adresse du Proxy"
+   },
+   "proxyTitle": {
+      "message": "Nom du Proxy"
+   },
+   "proxyType": {
+      "message": "Type de Proxy"
+   },
+   "refresh": {
+      "message": "Rafraîchir"
+   },
+   "save": {
+      "message": "Sauvegarder"
+   },
+   "saveAdd": {
+      "message": "Sauvegarder et Ajouter un autre"
+   },
+   "saveEditPattern": {
+      "message": "Sauvegarder et Modifier les Modèles"
+   },
+   "simple": {
+      "message": "simple"
+   },
+   "simpleFormat": {
+      "message": "l'adresse ip ou nom du serveur et le port sont requis. login:mot de passe sont optionnels."
+   },
+   "syncSettings": {
+      "message": "Synchroniser les Paramètres"
+   },
+   "syncSettingsHelp": {
+      "message": "Activer pour utiliser Firefox Sync (les paramètres sont synchronisés entre tous vos navigateurs Firefox). Desactiver pour sauvegarder les paramètres localement. A noter que deux profils de paramètres peuvent coexister, un synchronisé et un local"
+   },
+   "test": {
+      "message": "Tester"
+   },
+   "timestamp": {
+      "message": "Date"
+   },
+   "title": {
+      "message": "Nom ou Description (optionnel)"
+   },
+   "togglePW": {
+      "message": "Afficher/Masquer le mot de passe"
+   },
+   "type": {
+      "message": "Type"
+   },
+   "unmatchedURLs": {
+      "message": "URLs qui ne correspondent pas aux Modèles"
+   },
+   "up": {
+      "message": "remonter"
+   },
+   "url": {
+      "message": "URL"
+   },
+   "userPassError": {
+      "message": "Merci d'entrer votre nom d'utilisateur et mot de passe."
+   },
+   "username": {
+      "message": "Nom d'utilisateur (optionnel)"
+   },
+   "welcome": {
+      "message": "Bienvenu"
+   },
+   "white": {
+      "message": "Inclusion"
+   },
+   "whiteBlack": {
+      "message": "Inclusion/Exclusion"
+   },
+   "whitePatterns": {
+      "message": "Modèle d'inclusion"
+   }
+}
