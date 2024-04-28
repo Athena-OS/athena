@@ -4,7 +4,7 @@ FROM docker.io/athenaos/base-devel:latest
 ENV PUSER=builder
 ENV PUID=1000
 
-RUN pacman -Syyu --noconfirm pacman-contrib sudo git rate-mirrors rsync sshpass
+RUN pacman -Syyu --noconfirm pacman-contrib sudo git rate-mirrors rsync sshpass moreutils
 
 RUN useradd -ms /bin/bash $PUSER
 RUN usermod -aG lp,rfkill,sys,wheel -u "$PUID" $PUSER && echo "$PUSER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$PUSER
@@ -22,4 +22,4 @@ USER $PUSER:$PUSER
 WORKDIR /build/packages
 
 # Define the entry point
-ENTRYPOINT ["/build/packages/hephaestus"]
+ENTRYPOINT ["/build/packages/hephaestus | ts '[%Y-%m-%d %H:%M:%S]'"]
