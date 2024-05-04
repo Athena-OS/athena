@@ -1,6 +1,6 @@
 pkgname=athena-welcome
 pkgver=11.bcc8c46
-pkgrel=1
+pkgrel=2
 pkgdesc="Welcome App for Athena."
 arch=('any')
 license=("GPL3")
@@ -33,7 +33,8 @@ package() {
 
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/usr/bin/env bash
-exec python /usr/share/$pkgname/athena-welcome.py "\$@"
+cd /usr/share/athena-welcome
+exec python athena-welcome.py "\$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/$pkgname"
