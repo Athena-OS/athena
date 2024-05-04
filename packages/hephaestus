@@ -53,7 +53,7 @@ find_pkgbuild_dirs() {
             while IFS= read -r -d '' pkgbuild_path; do
                 # Print the package name and PKGBUILD path
                 pkgbuild_paths+=("$pkgbuild_path")
-            done < <(find "$search_dir" -type d -name "$pkg_name" -exec find {} -maxdepth 1 -type f -name PKGBUILD -print0 \;)
+            done < <(find "$search_dir" -type d -name "$pkg_name" -exec find {} -type f -name PKGBUILD -print0 \;)
         done
     else
         # Use find to locate PKGBUILD files in subdirectories
@@ -92,7 +92,7 @@ build_package() {
         pkgfile+=("${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
     done
 
-    if [ ! -f "$out_dir/$pkgfile" ]; then
+    if [ ! -f "$out_dir/$pkgfile" ] || [[ "$overwrite" ]]; then
         if [ -f "build.sh" ]; then
             # Error handling to prevent running interruption
             ./build.sh || {
@@ -152,7 +152,7 @@ echo "The Athena OS CI/CD Builder"
 echo
 
 # Parse command-line options
-while getopts "ac:dhrsx" opt; do
+while getopts "ac:dhrswx" opt; do
     case $opt in
         a)
             all=true
@@ -170,7 +170,7 @@ while getopts "ac:dhrsx" opt; do
             db=true
             ;;
         h)
-            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-x] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-w] [-x] [package1 package2 ...]"
             echo
             echo "Options:"
             echo "-a     Build all packages."
@@ -179,6 +179,7 @@ while getopts "ac:dhrsx" opt; do
             echo "-h     Print this Help."
             echo "-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
             echo "-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
+            echo "-w     Overwrite existing packages in the output directory."
             echo "-x     Search for the fastest mirrors."
             echo
             exit 0
@@ -198,6 +199,9 @@ while getopts "ac:dhrsx" opt; do
             ;;
         s)
             sign=true
+            ;;
+        w)
+            overwrite=true
             ;;
         x)
             mirr=true
