@@ -58,8 +58,14 @@ fi
 # Print the result array
 for path in "${result[@]}"; do
     echo "Found PKGBUILD: $path"
-    # Update package version
-    update_package_version "$(dirname $path)" "$src_dir"
+    # Check if git source
+    if grep -q "echo \$(git rev-list --count HEAD)\.\$(git rev-parse --short HEAD)" $path || \
+       grep -q "git describe --long --tags" $path; then
+        # Update package version
+        update_package_version "$(dirname $path)" "$src_dir"
+    else
+        echo "$path no git source."
+    fi
     echo
 done
 
