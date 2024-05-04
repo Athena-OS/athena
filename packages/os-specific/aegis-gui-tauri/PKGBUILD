@@ -1,5 +1,5 @@
 pkgname=aegis-gui-tauri
-pkgver=86.283cb70
+pkgver=128.42c95c8
 pkgrel=1
 pkgdesc="Tauri-based GUI front-end for Aegis."
 arch=('x86_64' 'aarch64')
