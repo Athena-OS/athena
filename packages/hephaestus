@@ -53,7 +53,7 @@ find_pkgbuild_dirs() {
             while IFS= read -r -d '' pkgbuild_path; do
                 # Print the package name and PKGBUILD path
                 pkgbuild_paths+=("$pkgbuild_path")
-            done < <(find "$search_dir" -type d -name "$pkg_name" -exec find {} -maxdepth 1 -type f -name PKGBUILD -print0 \;)
+            done < <(find "$search_dir" -type d -name "$pkg_name" -exec find {} -type f -name PKGBUILD -print0 \;)
         done
     else
         # Use find to locate PKGBUILD files in subdirectories
