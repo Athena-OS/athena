@@ -10,7 +10,7 @@ pkgdesc='Python Wrapper for Google V8 Engine.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/buffer/pyv8'
 license=('Apache')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'python-setuptools')
 source=("git+https://github.com/buffer/$_pkgname.git")
 sha512sums=('SKIP')
 
