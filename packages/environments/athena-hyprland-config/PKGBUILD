@@ -1,6 +1,6 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=854.b936bb9b
+pkgver=865.f4251b71
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
@@ -66,8 +66,8 @@ package() {
   #install -Dm 644 $srcdir/keybinds.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 644 $srcdir/dconf-desktop.ini "$pkgdir/usr/share/$pkgname/"
 
-  echo -ne "\n #Hyprland init script\nexec-once = hyprland-init" >> "$pkgdir/etc/skel/.config/hypr/execs.conf"
-  echo -ne "\n #Set wallpaper\nexec = swww img \$HOME/.config/hypr/wallpaper" >> "$pkgdir/etc/skel/.config/hypr/execs.conf"
+  echo -ne "\n #Hyprland init script\nexec-once = hyprland-init" >> "$pkgdir/etc/skel/.config/hypr/hyprland/execs.conf"
+  echo -ne "\n #Set wallpaper\nexec = swww img \$HOME/.config/hypr/wallpaper" >> "$pkgdir/etc/skel/.config/hypr/hyprland/execs.conf"
   sed -i '/clipboard-copy/d' "$pkgdir/etc/skel/.config/foot/foot.ini"
   sed -i '/clipboard-paste/d' "$pkgdir/etc/skel/.config/foot/foot.ini"
 
