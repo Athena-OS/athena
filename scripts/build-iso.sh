@@ -34,7 +34,7 @@ echo
 	isoLabel='athena-'$athenaVersion'-x86_64.iso'
 
 	# setting of the general parameters
-	archisoRequiredVersion="archiso 75-1"
+	archisoRequiredVersion="archiso 77-1"
 	buildFolder=$HOME"/athena-build"
 	outFolder=$HOME"/Athena-Out"
         # outFolder="/mnt/hgfs/VirtualShare/Athena-Out"
