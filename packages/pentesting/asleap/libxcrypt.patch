@@ -1,0 +1,34 @@
+diff -Naur asleap-2.2/Makefile asleap-2.2-new/Makefile
+--- asleap-2.2/Makefile	2007-07-13 20:00:58.000000000 -0500
++++ asleap-2.2-new/Makefile	2020-12-27 03:33:49.819887649 -0500
+@@ -6,12 +6,14 @@
+ # <dragorn> heh
+ # <dragorn> i think thats all anyone does
+ # <dragorn> make is a twisted beast
++# <bryanjhv> pull https://github.com/joswr1ght/asleap/commit/4576d14
+ ##################################
+-LDLIBS		= -lpcap -lcrypt
+-CFLAGS		= -pipe -Wall -D_LINUX -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -I../../..
+-CFLAGS		+= -D_OPENSSL_MD4
++LDLIBS		= -lpcap -lxcrypt
++CFLAGS		= -pipe -Wall -D_LINUX -D_OPENSSL_MD4
+ LDLIBS		+= -lcrypto
+-CFLAGS		+= -g3 -ggdb -g
++CFLAGS		+= -g3 #-ggdb -g
++LDLIBS		+= -L"../deb/lib"
++CFLAGS		+= -I"../deb/usr/include"
+ PROGOBJ		= asleap.o genkeys.o utils.o common.o sha1.o
+ PROG		= asleap genkeys
+ 
+diff -Naur asleap-2.2/utils.c asleap-2.2-new/utils.c
+--- asleap-2.2/utils.c	2007-07-13 20:00:58.000000000 -0500
++++ asleap-2.2-new/utils.c	2020-12-27 03:26:18.439970818 -0500
+@@ -27,7 +27,7 @@
+ #include <stdarg.h>
+ #include <string.h>
+ #include <stdint.h>
+-#include <crypt.h>
++#include <xcrypt.h>
+ #include <unistd.h>
+ #include <ctype.h>
+ #include <netinet/in.h>		/* for ntohs() */
