@@ -1,6 +1,6 @@
 pkgname=athena-blue-base
 pkgver=6.f0741ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Blue colorbase resources."
 arch=('any')
 license=("GPL3")
@@ -21,6 +21,7 @@ package() {
   install -dm 755 "$pkgdir/usr/share/athena-blue-base"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
   install -Dm 644 "arch-ascii.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "nix-behind.png" "$pkgdir/usr/share/backgrounds/athena/"
 
   cp -a "icons/apps" "$pkgdir/usr/share/athena-blue-base/"
   cp -a "icons/categories" "$pkgdir/usr/share/athena-blue-base/"
