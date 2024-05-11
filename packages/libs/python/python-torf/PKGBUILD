@@ -2,31 +2,46 @@
 # See COPYING for license details.
 
 pkgname=python-torf
-_pkgname=torf
-pkgver=4.2.2
-_pyver=3.12
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=4.2.6
+pkgrel=1
 pkgdesc='Python 3 module for creating and parsing torrent files and magnet URIs.'
 arch=('any')
 url='https://pypi.org/project/torf/#files'
 license=('MIT')
 depends=('python' 'python-flatbencode')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('602a53f5c835e1c14cdadbeba094ec8e144e5ce9c51a0039ffd3153e686675f2d441bb0d476ae610e02134417ae338ccfd6b7777cfb2bc21e908cdf1d1db5897')
+makedepends=('python-build' 'python-pip')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
+        "exclude-tests.patch")
+sha512sums=('f70db58b360d3c78c0b8cf18ef28bcc2a9aed71bd4ec8b45f7cd95c0bc48a7c1946bd1274d72b02f9abb9e8cd8a8bcdb4e58d655bfe218c3f8e24616155f185d'
+            '24189bd898095c1975224d1b5482bc6cc28575a032ce0c1eca1bf9ecd4e062b861c4ee4f2ae200b3f97aebd90dc0d5ed9116cc6a698cb00608c6e6f9bba731a5')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+
+  # https://github.com/rndusr/torf/pull/43
+  patch -p1 < ../exclude-tests.patch
+}
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --outdir="$startdir/dist"
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-
-  chmod 644 \
-    "$pkgdir/usr/lib/python$_pyver/site-packages/torf-4.2.2-py$_pyver.egg-info/"*
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $_pkgname
 }
-

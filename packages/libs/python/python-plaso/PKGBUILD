@@ -2,9 +2,9 @@
 # See COPYING for license details.
 
 pkgname=python-plaso
-_pkgname=plaso
-pkgver=20201007
-pkgrel=3
+_pkgname=${pkgname#python-}
+pkgver=20240308
+pkgrel=1
 pkgdesc='Super timeline all the things.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/log2timeline/plaso'
@@ -29,9 +29,8 @@ depends=('python' 'python-artifacts' 'python-bencode.py' 'python-biplist'
          'python-pyzmq' 'python-requests' 'python-six' 'python-urllib3'
          'python-xlsxwriter' 'python-yara' 'python-cryptography')
 makedepends=('python-setuptools')
-conflicts=('python2-plaso')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('edc92eade8e263de36261b8a628bbb47b63cf3405bfb1592f0c1253a4500d93dadd1665018cc33794effbfe1ae9a00ee379612f8ab7d2d763868563ca6145555')
+sha512sums=('1b25d0e024f0e3541d2e56918093bcb55317d51c09a1f06ae1d179bceba5b2e254b81d0138dabd35fd1740a99f4a5928067e881b9e49172a036c450a3a8ab3bf')
 
 build() {
   cd "$_pkgname-$pkgver"

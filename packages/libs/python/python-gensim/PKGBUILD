@@ -1,45 +1,27 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-gensim
-pkgname=('python2-gensim' 'python-gensim')
-_pkgname=gensim
+pkgname=python-gensim
+_pkgname=${pkgname#python-}
 pkgver=4.3.2
 pkgrel=1
 pkgdesc='Python framework for fast Vector Space Modelling.'
 arch=('any')
 url='https://pypi.org/project/gensim/#files'
 license=('LGPL')
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=('python' 'python-numpy' 'python-scipy' 'python-smart-open')
+makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('0d357835d8c631dc61f60c9c0073a95fde81aa915ce3df7c68a1a1b0bb21d6e2267a4608ed867662e06cd6731157ebd80712fea6bfddf25a4191682afa5a11d0')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
 
-package_python2-gensim() {
-  depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-smart-open')
-
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-}
-
-package_python-gensim() {
-  depends=('python' 'python-numpy' 'python-scipy' 'python-smart-open')
-
+package() {
   cd "$_pkgname-$pkgver"
 
   python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build

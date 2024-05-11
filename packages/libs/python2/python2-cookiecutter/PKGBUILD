@@ -1,0 +1,32 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-cookiecutter
+_pkgname=${pkgname#python2-}
+pkgver=1.7.3
+pkgrel=1
+pkgdesc='A command-line utility that creates projects from cookiecutters (project templates).'
+arch=('any')
+url='https://pypi.org/project/cookiecutter/#files'
+license=('BSD')
+depends=('python2-future' 'python2-jinja' 'python2-yaml' 'python2-binaryornot'
+           'python2-click' 'python2-poyo' 'python2-requests' 'python2-six'
+           'python2-jinja-time' 'python2-whichcraft')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('231cff1fc51c8159918728a3ca3f21607c9fb236ebf55e2fe2d620345e14451b175e56c3714a7b4c5736cc5e93f47d732691e789184e4140a7889a9e2f9a89a8')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+
+  grep -iRl 'python' * | xargs \
+    sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+
+  mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}2"
+}

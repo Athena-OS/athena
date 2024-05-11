@@ -1,11 +1,12 @@
 pkgname=athena-config
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="System configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-theme-tweak' 'terminus-font')
 source=("$pkgname.tar.gz")
+sha512sums=('48e1d35cadbfdb9d3c45c4203e974906140b331743d7b6f7ecf7846165beed7acbef89de9db491bec923fdda516effb7d38bb882ff8dbd2e1431eb4c08113935')
 
 package() {
   install -dm 755 "${pkgdir}/usr/bin"
@@ -40,5 +41,3 @@ package() {
   cp -rf "${srcdir}"/usr/share/icons/htb-toolkit/* "${pkgdir}/usr/share/icons/htb-toolkit/"
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
-
-sha512sums=('48e1d35cadbfdb9d3c45c4203e974906140b331743d7b6f7ecf7846165beed7acbef89de9db491bec923fdda516effb7d38bb882ff8dbd2e1431eb4c08113935')

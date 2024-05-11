@@ -45,4 +45,3 @@ package_python-sha3() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
-

@@ -1,0 +1,29 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-dateparser
+_pkgname=${pkgname#python2-}
+pkgver=0.7.6
+pkgrel=1
+pkgdesc='Date parsing library designed to parse dates from HTML pages.'
+url='https://pypi.org/project/dateparser/#files'
+arch=('any')
+license=('BSD')
+depends=('python2' 'python2-pytz' 'python2-tzlocal' 'python2-dateutil'
+           'python2-regex')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('802990426f6d6be69ebb8becfb875f5d90a42db8ca0e6d6c89eeb52da431f479dd81d8e9094d0d91c45d5097c18e16eddbd9e16d77b2a0319490574435d1b81a')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
+    --skip-build
+}

@@ -1,0 +1,13 @@
+diff '--color=auto' -Naur a/setup.py b/setup.py
+--- a/setup.py	2024-05-11 23:09:09.430911409 +0200
++++ b/setup.py	2024-05-11 23:09:30.681203942 +0200
+@@ -137,6 +137,6 @@
+           "bdist_rpm": BdistRPMCommand,
+           "sdist": SDistCommand},
+       install_requires=[
+-          "python-dateutil > 2",
+-          "pytz >= 2011k",
+-          "six >= 1.4.0"])
++          "python-dateutil",
++          "pytz",
++          "six"])

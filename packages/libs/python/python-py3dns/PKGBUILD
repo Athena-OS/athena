@@ -2,29 +2,37 @@
 # See COPYING for license details.
 
 pkgname=python-py3dns
-_pkgname=py3dns
-pkgver=4.0.0
+_pkgname=${pkgname#python-}
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='A module for looking up DNS entries in Python applications.'
 arch=('any')
 url='https://pypi.org/project/py3dns/'
 license=('Python')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-pip')
 source=("https://files.pythonhosted.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('02096f1a8a2d4e853e21590a0e3b23f2847b0ce1a0f01597a3c6af6546742a059387b7ed0b02ed4dc46274d32cb9db80608328f5f277cdf353569c049dffc73c')
+sha512sums=('2ca82088bb24d9d6f4c5220b84df4f7d2faac0030f9f127008a4aa023d11f5824b13a9f01d8b27fede136ead16de0f1e8a9e653362dbaed6eefc31fa9ac355e1')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --outdir="$startdir/dist"
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $_pkgname
 }
-

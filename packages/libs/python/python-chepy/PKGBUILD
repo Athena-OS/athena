@@ -2,8 +2,8 @@
 # See COPYING for license details.
 
 pkgname=python-chepy
-_pkgname=chepy
-pkgver=6.3.0
+_pkgname=${pkgname#python-}
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='Chepy is python lib/cli equivalent of the awesome CyberChef tool.'
 arch=('any')
@@ -11,23 +11,23 @@ url='https://pypi.org/project/chepy/#files'
 license=('GPL3')
 depends=('python' 'python-colorama' 'python-crccheck' 'python-decorator'
          'python-emoji' 'exrex' 'python-fire' 'python-hashid' 'python-hexdump'
-         'python-jsonpath-rw' 'python-jsonpickle' 'python-parsel'
-         'python-phpserialize' 'python-pillow' 'python-prompt_toolkit'
-         'python-pycipher' 'python-pycryptodome' 'python-pydash' 'python-pyjwt'
-         'python-pyopenssl' 'python-pyperclip' 'python-editor' 'python-pyaml'
-         'python-regex' 'python-typing_extensions' 'python-ujson'
+         'python-jsonpath-rw' 'python-jsonpickle' 'python-lz4' 'python-msgpack'
+         'python-parsel' 'python-passlib' 'python-phpserialize' 'python-pillow' 
+         'python-prompt_toolkit' 'python-pycipher' 'python-pycryptodome' 'python-pydash' 
+         'python-pyjwt' 'python-pyopenssl' 'python-pyperclip' 'python-editor'
+         'python-pyaml' 'python-regex' 'python-typing_extensions' 'python-ujson'
          'python-base58' 'python-docstring-parser' 'python-termcolor'
          'python-lazy-import')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('d157532793304c16db9df23a9e2096575cf935ede90f6b6a971c1ee1e4136d717c413a5c1cdedacd31d3f2f80bb757cc1cf9b997f97c97f4bab4fa76da0f9ebb')
+sha512sums=('fcb1681a0021cd633f54b754c46d628a47d2d9344bc1d897e1e269d25cfa6672480f1386c9e09872472264c9257e77dae86b7454199c1e23d2ce1e3adf38897c')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   sed -i '8s/.*/fire/' requirements.txt
-  sed -i '16s/.*/prompt_toolkit/' requirements.txt
+  sed -i '12s/.*/prompt_toolkit/' requirements.txt
 }
 
 build() {

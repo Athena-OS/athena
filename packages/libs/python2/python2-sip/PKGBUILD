@@ -4,15 +4,15 @@
 pkgbase=python2-sip
 pkgname=('python2-sip' 'python2-sip-pyqt5')
 _pkgname=sip
-pkgver=4.19.24
-pkgrel=2
+pkgver=4.19.25
+pkgrel=1
 pkgdesc='Python SIP bindings for C/C++ libraries.'
 url='https://www.riverbankcomputing.com/software/sip/intro'
 arch=('x86_64' 'aarch64')
 license=('custom:unknown')
 makedepends=('python2')
 source=("https://www.riverbankcomputing.com/static/Downloads/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('c9acf8c66da6ff24ffaeed254c11deabbc587cea0eb50164f2016199af30b85980f96a2d754ae5e7fe080f9076673b1abc82e2a6a41ff2ac442fb2b326fca1c0')
+sha512sums=('60fb4133c68869bf0993144978b4847d94a0f9c7b477f64a346ea133cfe35bc11820204ab327dcf9a929b6f65a26d16cc7efbce65e49967c3347b39376e57001')
 
 prepare() {
   mkdir -p build{,-pyqt5}

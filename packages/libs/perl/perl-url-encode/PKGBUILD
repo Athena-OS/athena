@@ -2,7 +2,7 @@
 # See COPYING for license details.
 
 pkgname=perl-url-encode
-_dist=URL-Encode
+_pkgname=URL-Encode
 pkgver=0.03
 pkgrel=9
 pkgdesc='Encoding and decoding of application/x-www-form-urlencoded encoding.'
@@ -14,11 +14,11 @@ checkdepends=()
 makedepends=('perl-test-simple>=0.88' 'perl-extutils-makemaker>=6.59')
 provides=('perl-url-encode-pp=0.03')
 options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/${_dist}-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/${_pkgname}-$pkgver.tar.gz")
 sha512sums=('1f47b9ca9470f0f51f4b3e806f32ef0044d10ab2723944ba93eb740278155fcb77471208b833f7d77ff829cc5879211f592a3ae6ba3ccd6a4ee38d866bb38197')
 
 build() (
-  cd "$_dist-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 
@@ -30,7 +30,7 @@ build() (
 )
 
 package() (
-  cd "$_dist-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 

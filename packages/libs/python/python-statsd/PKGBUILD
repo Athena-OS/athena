@@ -1,47 +1,39 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-statsd
-pkgname=('python2-statsd' 'python-statsd')
-_pkgname=statsd
+pkgname=python-statsd
+_pkgname=${pkgname#python-}
 pkgver=4.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc='A Python client for statsd.'
 arch=('any')
 url='https://pypi.org/project/statsd/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-pip')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('1a9aa4ba810aa75b3235e6357b820d8987ffe4ed55709929a9a53c6ced587525217e55754600f9c5596ea1e5fd26a0ea15b643199aa39e920d95120e22fc2ae0')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
-
-  python setup.py build
-}
-
-package_python2-statsd() {
-  depends=('python2' 'python2-mock' 'python2-nose' 'python2-flake8')
-
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-}
-
-package_python-statsd() {
-  depends=('python' 'python-mock' 'python-nose' 'flake8')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --outdir="$startdir/dist"
 }
 
+package() {
+  cd "$_pkgname-$pkgver"
+
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $_pkgname
+}
