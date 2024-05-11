@@ -2,19 +2,20 @@
 # See COPYING for license details.
 
 pkgname=perl-cpan-meta
+_pkgname=CPAN-Meta
 pkgver=2.150010
 pkgrel=8
 pkgdesc='The distribution metadata for a CPAN dist.'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'perl-cpan-meta-requirements' 'perl-parse-cpan-meta>=1.4403')
-url='http://search.cpan.org/dist/CPAN-Meta'
-source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/CPAN-Meta-$pkgver.tar.gz")
+depends=('perl' 'perl-cpan-meta-requirements')
+url='https://metacpan.org/dist/CPAN-Meta'
+source=("https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/$_pkgname-$pkgver.tar.gz")
 sha512sums=('b5513c411de33e10da6751460e373a67c6c0245a98409fc525383feb1f9b913e9fcd23e6cc2e0faa93eab3ecb932e3ea31788d46e490ef67151c8842a096d700')
 
 prepare_environment() {
-  cd "CPAN-Meta-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
     PERL_AUTOINSTALL=--skipdeps                            \

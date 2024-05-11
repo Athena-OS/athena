@@ -3,27 +3,27 @@
 
 pkgname=python-hammertime-http
 _pkgname=HammerTime-http
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='An HTTP client library aiming to perform a large number of requests on a server as fast as it can take them, but without distrupting operations significantly.'
 url='https://pypi.org/project/HammerTime-http/#files'
 arch=('any')
 license=('GPL2')
 depends=('python' 'python-aiohttp' 'python-easyinject' 'python-aiodns'
-         'python-simhash' 'python-forkedsimhash-py')
+         'python-simhash')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/HammerTime-http-$pkgver.tar.gz"
         'setup.py.patch'
         'requires.txt.patch')
-sha512sums=('662f3d857be8ebc8c2d52c3a6085542ed52cb22dbd2219547f7890c10418fdba21a0a80e1bbeec9882add3da2e54453e389a16de35dcaeff701fdd87af081f43')
-            '5d729f59895ec6b63a17a914f50.9.17e99cf6cc3661d0377d595c81df7ca269b27f74f7c2b348816d87d0e0dd9b734dea91959e900c0.9.1bde9343560a58fb4bca'
-            '5849a59d0cee9b98fa08588fb05eb983917b59eb82594375e78acd5d3f4163275af632df6fac0944b8d56e88c26a19ebf933acfa08f693c08de57cc67f3b75b2')
+sha512sums=('84f0fcd1ff8cf89f2993141f60f4588844ac51d14eeb862fb6ccb059e7d23c85a3730ff6fd9e562e0e901a680d4acf623e17e9f5c5b5412be110560689c47bda'
+            '45b549a5d83c67ff7c24113ab779bde439dbb6253756ed99f32608dbf8da78bcc6d508c48f5fe2ea1a6b5433a5726e2da303103608a2a0e479b3e69e0cab9a81'
+            'bf628355b5c0d22d65d4fa9674c3700fcfeb1f3562d94ec2a55f7c5100c410b8829354fccb04e03b43df13915ca698edfae8a9affa4ebbffecea87dbb7986fb9')
 
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  patch -p0 < ../setup.py.patch
-  patch -p2 < ../requires.txt.patch
+  patch -p1 < ../setup.py.patch
+  patch -p1 < ../requires.txt.patch
 }
 
 build() {

@@ -1,18 +1,14 @@
---- src/HammerTime-http-0.8/HammerTime_http.egg-info/requires.txt	2021-03-17 20:22:00.000000000 +0100
-+++ requires.txt	2022-09-03 08:40:51.063333142 +0200
-@@ -1,10 +1,10 @@
--aiohttp<4.0.0,>=3.7.3
--easyinject==0.3
+diff '--color=auto' -Naur a/HammerTime_http.egg-info/requires.txt b/HammerTime_http.egg-info/requires.txt
+--- a/HammerTime_http.egg-info/requires.txt	2024-05-11 18:21:07.044362655 +0200
++++ b/HammerTime_http.egg-info/requires.txt	2024-05-11 18:21:32.611399477 +0200
+@@ -1,5 +1,5 @@
 -aiodns<3.0.0,>=1.1.1
+-aiohttp<4.0.0,>=3.7.3
+-easyinject<0.4,>=0.3
+-marshmallow-autoschema<0.5.0,>=0.4.0
+-marshmallow-har<1.3.0,>=1.2.0
++aiodns
 +aiohttp
 +easyinject
-+aiodns
- 
- [simhash]
--simhash==2.0.0
-+simhash
- 
- [simhash-py]
--forkedsimhash-py==0.4.2
-+forkedsimhash-py
- six
++marshmallow-autoschema
++marshmallow-har

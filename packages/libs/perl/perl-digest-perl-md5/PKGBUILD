@@ -7,11 +7,11 @@ pkgver=1.9
 pkgrel=9
 pkgdesc='Perl implementation of Ron Rivests MD5 Algorithm.'
 arch=('any')
-url='http://search.cpan.org/dist/Digest-Perl-MD5'
+url='https://search.cpan.org/dist/Digest-Perl-MD5'
 license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/D/DE/DELTA/$_pkgname-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/D/DE/DELTA/$_pkgname-$pkgver.tar.gz")
 sha512sums=('015a1f046b85b5b89c1b44073d60116d483332cd667cb7230222df9651b7da837a532991e91848ff0b65f171b8870c2c4bda651da4ca54ea75d062ba6a55b525')
 
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
 }
 
 build() {
-  cd  "$_pkgnmae-$pkgver"
+  cd  "$_pkgname-$pkgver"
 
   make
 }

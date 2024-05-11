@@ -2,7 +2,7 @@
 # See COPYING for license details.
 
 pkgname=python-top2vec
-_pkgname=top2vec
+_pkgname=${pkgname#python-}
 pkgver=1.0.29
 pkgrel=1
 pkgdesc='Learns jointly embedded topic, document and word vectors.'

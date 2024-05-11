@@ -3,15 +3,15 @@
 
 pkgname=perl-net-tftp
 _pkgname=Crypt-Curve25519
-pkgver=0.06
-pkgrel=3
+pkgver=0.07
+pkgrel=1
 pkgdesc='Generate shared secret using elliptic-curve Diffie-Hellman function.'
 url='https://metacpan.org/pod/Crypt::Curve25519'
 arch=('x86_64' 'aarch64')
 license=('PerlArtistic')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/A/AJ/AJGB/$_pkgname-$pkgver.tar.gz")
-sha512sums=('e5d351c36c9f60e1b55f45bf9fa871fddf949bd5c0a20b4d065e1eb2d4e24ba43807289591eda854fca28b5909fd6af1b0fc9ede63efbeeaf6e011e7382a4e1d')
+source=("https://cpan.metacpan.org/authors/id/K/KA/KARASIK/$_pkgname-$pkgver.tar.gz")
+sha512sums=('8b7107c3d96239974836f99d8e6d0603b8006ec1b3c80a8364b82259d9f79938d77b0b5bac8c1e2b14147bc2c86e39e27b79cfe0f316dfd4e9518aab313e5103')
 
 prepare() {
   cd "$_pkgname-$pkgver"

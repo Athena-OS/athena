@@ -4,20 +4,20 @@
 pkgbase=python-pytorctl
 pkgname=('python2-pytorctl' 'python-pytorctl')
 _pkgname=pytorctl
-pkgver=2013.10.16.4.gc8fcb25
-pkgrel=8
+pkgver=c8fcb25
+pkgrel=1
 pkgdesc='A Python Tor controller with extensions to support path building and various constraints on node and path selection, as well as statistics gathering.'
 arch=('any')
-url='http://fscked.org/projects/torctl'
+url='https://gitlab.torproject.org/tpo/network-health/pytorctl/'
 license=('custom:unknown')
 makedepends=('git' 'python2-setuptools' 'python-setuptools')
 optdepends=('python2-elixir: SQL Support')
 conflicts=('pytorctl')
 provides=('pytorctl')
-source=("git+http://git.torproject.org/$_pkgname.git"
+source=("git+https://gitlab.torproject.org/tpo/network-health/$_pkgname.git"
         'setup.py')
 sha512sums=('SKIP'
-            'bfa1696c63935fa49d8f5aad9d8d2735e882cddb9565e2d9f59d063aab55bbf2112df46a99aaefd9c9a22432fbfff4b9f2376f5394d348c6b18015a53126f10e')
+            '78ba127cfd4f8964236acc41e48e97f1cf7d66c47300fee72e794a74686b66bbde0ce8f252710d4aa4f43a0519d0912e270839ef227179011d2b1abe01f58e4b')
 
 pkgver() {
   cd $_pkgname
