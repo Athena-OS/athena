@@ -20,6 +20,12 @@ pkgver() {
 }
 
 prepare() {
+  cd $pkgbase
+
+  ./version.sh
+
+  cd ..
+  
   cp -a $pkgbase "$pkgbase-2"
 }
 
@@ -54,4 +60,3 @@ package_python-exscript() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
-

@@ -1,0 +1,27 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python2-crochet
+_pkgname=${pkgname#python2-}
+pkgver=1.12.0
+pkgrel=1
+pkgdesc='Use Twisted anywhere! - An MIT-licensed library that makes it easier to use Twisted from regular blocking code.'
+url='https://pypi.org/project/crochet/'
+license=('MIT')
+arch=('any')
+depends=('python2' 'python2-twistedx' 'python2-wrapt')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('bdd7e68bb4f478c29d993047ed484dfbbfd2a5c6cd33eb8f31c2b7cefdb69321efb09c741338beb1cca10480371ded821682d1116b9e520c2676d4ba388c5b7b')
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}

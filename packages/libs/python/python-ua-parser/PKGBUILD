@@ -55,4 +55,3 @@ package_python-ua-parser() {
   find "$pkgdir" -type f -name '*.py' | xargs sed -i \
     's|#!/usr/bin/env python|#!/usr/bin/env python|'
 }
-

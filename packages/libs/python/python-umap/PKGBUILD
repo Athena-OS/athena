@@ -2,7 +2,7 @@
 # See COPYING for license details.
 
 pkgname=python-umap
-_pkgname=umap
+_pkgname=${pkgname#python-}
 pkgver=0.1.1
 pkgrel=1
 pkgdesc='UNIST synthesis MAP solution.'
@@ -36,4 +36,3 @@ package() {
     --find-links="file://$startdir/dist" \
     $_pkgname
 }
-

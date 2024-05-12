@@ -1,27 +1,27 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgname=python-helpers
-_pkgname=${pkgname#python-}
-pkgver=0.2.0
+pkgname=python2-helpers
+_pkgname=${pkgname#python2-}
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Improved developer experience, accumulated.'
 arch=('any')
 url='https://pypi.org/project/helpers/#files'
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
+depends=('python2')
+makedepends=('python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('833ae0dd18d73b4bf4a214b797ce8287f0403b66e413ef0b524440779b4488d95bbc6e0cf070156da88a8f9d64aeb1b57db49a5ac88606a0aeea26b5d6202e6a')
+sha512sums=('2e35ea947abeb9e151b68265c41901f40d4badc6f56c5c7da8aaecde040d15bacf6a0d1218342246d78c439d5fb5bd38e6c3bcd2bc717c7d9ec5e7e6413b0a61')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }

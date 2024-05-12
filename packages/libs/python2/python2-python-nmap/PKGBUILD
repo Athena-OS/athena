@@ -1,27 +1,27 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgname=python-python-nmap
-_pkgname=${pkgname#python-}
-pkgver=0.7.1
+pkgname=python2-python-nmap
+_pkgname=${pkgname#python2-}
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Python class to use nmap and access scan results from python3.'
 arch=('any')
 url='https://pypi.org/project/python-nmap/#files'
 license=('GPL3')
-depends=('python' 'nmap')
-makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+depends=('python2' 'nmap')
+makedepends=('python2-setuptools' 'python2-pip' 'python2-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('3a1d3b7120527d56148ddf3589bf8c4b749bb549e93c65a973d3edacb492656d0060d82606f88c5d1342dabdce00b8957bf09e01a5ce42f3a670ff3778d9e0ea')
+sha512sums=('8de9ba6d0a4cecce09e82765b8a9ac77fb4368298d5a5f9ce07b7737a90def795f1ad00885fc73ec720bea2a592230e86aaca8cacd884c9299f64ad934bcee18')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
+  python2 setup.py build
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
