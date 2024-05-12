@@ -102,7 +102,7 @@ build_package() {
         else
             updpkgsums
             # Error handling to prevent running interruption
-            makepkg -f -src --noconfirm || {
+            makepkg -f -src $NODEPS --noconfirm || {
                 >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
                 return 1
             }
@@ -152,7 +152,7 @@ echo "The Athena OS CI/CD Builder"
 echo
 
 # Parse command-line options
-while getopts "ac:dhrswx" opt; do
+while getopts "ac:dhrsuwx" opt; do
     case $opt in
         a)
             all=true
@@ -167,18 +167,19 @@ while getopts "ac:dhrswx" opt; do
             fi
             ;;
         d)
-            db=true
+            NODEPS="-d"
             ;;
         h)
-            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-w] [-x] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-u] [-w] [-x] [package1 package2 ...]"
             echo
             echo "Options:"
             echo "-a     Build all packages."
             echo "-c     Set number of cores for building (maximum $(nproc))."
-            echo "-d     Update the package repository database."
+            echo "-d     Skip all dependency checks."
             echo "-h     Print this Help."
             echo "-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
             echo "-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
+            echo "-u     Update the package repository database."
             echo "-w     Overwrite existing packages in the output directory."
             echo "-x     Search for the fastest mirrors."
             echo
@@ -199,6 +200,9 @@ while getopts "ac:dhrswx" opt; do
             ;;
         s)
             sign=true
+            ;;
+        u)
+            db=true
             ;;
         w)
             overwrite=true
