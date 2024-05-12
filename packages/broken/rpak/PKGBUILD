@@ -5,7 +5,7 @@ pkgname=rpak
 pkgver=1.0
 pkgrel=4
 pkgdesc='A collection of tools that can be useful for doing attacks on routing protocols.'
-url='http://ntsecurity.nu/toolbox/promisdetect/'
+url='https://vidstromlabs.com/freetools/promiscdetect/'
 groups=('athena' 'athena-windows' 'athena-networking'
         'athena-sniffer' 'athena-spoof')
 license=('custom:unknown')
@@ -18,4 +18,3 @@ package() {
 
   install -Dm 644 -t "$pkgdir/usr/share/windows/$pkgname/" *
 }
-
