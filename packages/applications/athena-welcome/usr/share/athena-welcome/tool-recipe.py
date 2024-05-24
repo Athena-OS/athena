@@ -5,7 +5,6 @@ from gi.repository import Gtk
 
 # list of tuples for each variable, containing the environment variable name, its path, and the security category
 variable_list = [
-    ("armcord", "Cross-platform, all-in-one voice and text chat application."),
     ("asciinema", "Record and share your terminal sessions."),
     ("athena-cyber-hub", "Running vulnerable labs and Cyber Security platforms."),
     ("athena-theme-tweak", "Switch to different Athena themes."),
@@ -29,6 +28,7 @@ variable_list = [
     ("git", "Fast, scalable, distributed revision control system."),
     ("gnome-extensions", "Gnome Extension manager."),
     ("gnome-tweaks", "Configure looks and functionality of your desktop."),
+    ("goofcord", "Cross-platform, all-in-one voice and text chat application."),
     ("gparted", "GNOME Partition Editor for creating, reorganizing, and deleting disk partitions."),
     ("htb-tookit", "Play Hack The Box directly on your system."),
     ("la", "An lsd -a alias"),
