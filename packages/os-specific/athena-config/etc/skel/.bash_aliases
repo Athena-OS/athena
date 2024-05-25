@@ -79,6 +79,8 @@ alias spotify='spotify --no-zygote'
 # Alias's to user support
 alias tb='nc termbin.com 9999'
 alias journalctl-upload='sudo journalctl | tb'
+alias config-logs='cat /tmp/config.json | grep -Ev "password|rootpass" | tb'
+alias install-logs='cat /tmp/aegis.log | tb'
 
 #keyboard
 alias give-me-azerty-be="sudo localectl set-x11-keymap be"
