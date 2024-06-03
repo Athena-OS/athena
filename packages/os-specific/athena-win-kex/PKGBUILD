@@ -19,7 +19,8 @@ pkgver() {
 package() {
   cd $pkgname
 
-  install -dm 755 "$pkgdir/etc"
+  install -dm 755 "$pkgdir/etc/profile.d"
+  install -dm 755 "$pkgdir/etc/sudoers.d"
   install -dm 755 "$pkgdir/usr/lib"
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/man/man1"
@@ -28,9 +29,9 @@ package() {
   install -Dm 644 docs/man/kex.1.gz "$pkgdir/usr/share/man/man1/kex.1.gz"
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 755 usr/bin/kex "${pkgdir}/usr/bin/"
-
-  cp -rf etc/* "${pkgdir}/etc/"
-  cp -rf usr/lib/win-kex "${pkgdir}/usr/lib/"
+  install -Dm 755 usr/bin/kex "$pkgdir/usr/bin/"
+  install -Dm 644 etc/profile.d/win-kex.sh "$pkgdir/etc/profile.d/"
+  install -Dm 644 etc/sudoers.d/athena-win-kex "$pkgdir/etc/sudoers.d/"
+  
+  cp -rf usr/lib/win-kex "$pkgdir/usr/lib/"
 }
-
