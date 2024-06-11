@@ -1,10 +1,10 @@
 pkgname=athena-gnome-base
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME base configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('eog' 'gnome-characters' 'gnome-control-center' 'gnome-keyring' 'gnome-menus' 'gnome-session' 'gnome-shell-extensions' 'gnome-shell-performance' 'gnome-system-monitor' 'gnome-themes-extra' 'gnome-tweaks' 'nautilus' 'noto-fonts-emoji' 'polkit-gnome' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'xdg-user-dirs')
+depends=('eog' 'gnome-characters' 'gnome-control-center' 'gnome-keyring' 'gnome-menus' 'gnome-session' 'gnome-shell-extensions' 'gnome-shell' 'gnome-system-monitor' 'gnome-themes-extra' 'gnome-tweaks' 'nautilus' 'noto-fonts-emoji' 'polkit-gnome' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'xdg-user-dirs')
 source=("gnome-applications.menu"
         "gnome-init.desktop"
         "gnome-init")
