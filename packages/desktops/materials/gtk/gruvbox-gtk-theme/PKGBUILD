@@ -16,12 +16,12 @@ pkgver() {
 }
 
 package() {
-  cd $_pkgname
+  cd $_pkgname/themes
   
   install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/icons"
 
-  cp -a themes/Gruvbox-Dark-B "$pkgdir/usr/share/themes/"
-  cp -a themes/Gruvbox-Dark-BL "$pkgdir/usr/share/themes/"
-  cp -a icons/Gruvbox-Dark "$pkgdir/usr/share/icons/"
+  ./install.sh -l --tweaks macos -d "$pkgdir/usr/share/themes"
+
+  cp -a ../icons/Gruvbox-Dark "$pkgdir/usr/share/icons/"
 }
