@@ -1,0 +1,1306 @@
+{
+   "1pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Taikyti pakeitimus"
+   },
+   "1pEnableMyFiltersLabel": {
+      "description": "Label for the checkbox use to enable/disable 'My filters' list",
+      "message": "Enable my custom filters"
+   },
+   "1pExport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "Eksportuoti"
+   },
+   "1pExportFilename": {
+      "description": "English: my-ublock-static-filters_{{datetime}}.txt",
+      "message": "mano-ublock-statiniai-filtrai_{{datetime}}.txt"
+   },
+   "1pImport": {
+      "description": "Button in the 'My filters' pane",
+      "message": "Importuoti ir papildyti"
+   },
+   "1pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Mano filtrai"
+   },
+   "1pTrustMyFiltersLabel": {
+      "description": "Label for the checkbox use to trust the content of 'My filters' list",
+      "message": "Allow custom filters requiring trust"
+   },
+   "1pTrustWarning": {
+      "description": "Warning against copy-pasting filters from random sources",
+      "message": "Do not add filters from untrusted sources."
+   },
+   "3pApplyChanges": {
+      "description": "English: Apply changes",
+      "message": "Taikyti pakeitimus"
+   },
+   "3pAutoUpdatePrompt1": {
+      "description": "A checkbox in the _3rd-party filters_ pane",
+      "message": "Automatiškai atnaujinti filtrų sąrašus."
+   },
+   "3pExternalListObsolete": {
+      "description": "used as a tooltip for the out-of-date icon beside a list",
+      "message": "Pasenęs."
+   },
+   "3pExternalListsHint": {
+      "description": "Short information about how to use the textarea to import external filter lists by URL",
+      "message": "Vienas URL eilutėje. Neteisingi URL bus tyliai ignoruoti."
+   },
+   "3pGroupAds": {
+      "description": "Filter lists section name",
+      "message": "Reklamos"
+   },
+   "3pGroupAnnoyances": {
+      "description": "Filter lists section name",
+      "message": "Erzinimas"
+   },
+   "3pGroupCookies": {
+      "description": "Filter lists section name",
+      "message": "Cookie notices"
+   },
+   "3pGroupCustom": {
+      "description": "Filter lists section name",
+      "message": "Adaptuoti"
+   },
+   "3pGroupDefault": {
+      "description": "Filter lists section name",
+      "message": "Įtaisyti"
+   },
+   "3pGroupMalware": {
+      "description": "Filter lists section name",
+      "message": "Kenksmingos sritys"
+   },
+   "3pGroupMultipurpose": {
+      "description": "Filter lists section name",
+      "message": "Univarsalūs"
+   },
+   "3pGroupPrivacy": {
+      "description": "Filter lists section name",
+      "message": "Privatumas"
+   },
+   "3pGroupRegions": {
+      "description": "Filter lists section name",
+      "message": "Regionai, kalbos"
+   },
+   "3pGroupSocial": {
+      "description": "Filter lists section name",
+      "message": "Social widgets"
+   },
+   "3pIgnoreGenericCosmeticFilters": {
+      "description": "This will cause uBO to ignore all generic cosmetic filters.",
+      "message": "Ignoruoti daugybinius kosmetinius filtrus."
+   },
+   "3pIgnoreGenericCosmeticFiltersInfo": {
+      "description": "Describes the purpose of the 'Ignore generic cosmetic filters' feature.",
+      "message": "\u003Cp>Daugybiniai kosmetiniai filtrai yra tokie kosmetiniai filtrai, kurie taikomi visoms svetainėms.\u003Cp>Nors uBlock₀ juos apdoroja efektyviai, daugybiniai kosmetiniai filtrai vis tiek gali prisidėti prie pamatuojamo atminties ir procesoriaus panaudojimo kai kuriose svetainėse, ypač didelėse ir ilgai gyvuojančiose.\u003Cp>Šio nustatymo įjungimas sumažins atminties ir procesoriaus naudojimą, kurį sukelia svetainės dėl daugybinių kosmetinių filtrų apdorojimo, bei sumažins bendrą uBlock₀ atminties naudojimą.\u003Cp>Rekomenduojama įjungti šį nustatymą mažiau galinguose įrenginiuose."
+   },
+   "3pImport": {
+      "description": "The label for the checkbox used to import external filter lists",
+      "message": "Importuoti..."
+   },
+   "3pLastUpdate": {
+      "description": "used as a tooltip for the clock icon beside a list",
+      "message": "Paskutinis atnaujinimas: {{ago}}.\nIeškoti atnaujinimo."
+   },
+   "3pListsOfBlockedHostsHeader": {
+      "description": "English: Lists of blocked hosts",
+      "message": "Blokuotų serverių sąrašas"
+   },
+   "3pListsOfBlockedHostsPerListStats": {
+      "description": "Appears aside each filter list in the _3rd-party filters_ pane",
+      "message": "naudojama {{used}} iš {{total}}"
+   },
+   "3pListsOfBlockedHostsPrompt": {
+      "description": "Appears at the top of the _3rd-party filters_ pane",
+      "message": "Tinklo filtrų ({{netFilterCount}})  ＋ kosmetinių filtrų ({{cosmeticFilterCount}}) iš:"
+   },
+   "3pNetworkError": {
+      "description": "used as a tooltip for error icon beside a list",
+      "message": "Tinklo klaida sutrukdė atnaujinti resursą."
+   },
+   "3pPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Filtrų sąrašai"
+   },
+   "3pParseAllABPHideFiltersInfo": {
+      "description": "Describes the purpose of the 'Parse and enforce cosmetic filters' feature.",
+      "message": "\u003Cp>Ši nuostata įjungia \u003Ca href=\"https://adblockplus.org/en/faq_internal#elemhide\">Su Adblock Plus suderinamų „elementų slėpimo“ filtrų\u003C/a> analizę ir taikymą. Šie filtrai iš esmės yra kosmetiniai, jie naudojami tinklalapio elementams, kurie yra laikomi vaizdiniais nepatogumais ir kurių negalima užblokuoti tinklo užklausomis paremtais filtrais, paslėpti.\u003C/p>\u003Cp>Šios nuostatos įjungimas padidina uBlock₀ atminties naudojimą.\u003C/p>"
+   },
+   "3pParseAllABPHideFiltersPrompt1": {
+      "description": "English: Parse and enforce Adblock+ element hiding filters.",
+      "message": "Analizuoti ir taikyti kosmetinius filtrus."
+   },
+   "3pPurgeAll": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "Valyti visus podėlius"
+   },
+   "3pSuspendUntilListsAreLoaded": {
+      "description": "A checkbox in the 'Filter lists' pane",
+      "message": "Suspend network activity until all filter lists are loaded"
+   },
+   "3pUpdateNow": {
+      "description": "A button in the in the _3rd-party filters_ pane",
+      "message": "Atnaujinti dabar"
+   },
+   "3pUpdating": {
+      "description": "used as a tooltip for the spinner icon beside a list",
+      "message": "Atnaujinama..."
+   },
+   "3pViewContent": {
+      "description": "used as a tooltip for eye icon beside a list",
+      "message": "peržiūrėti turinį"
+   },
+   "GB": {
+      "description": "short for 'gigabytes'",
+      "message": "GB"
+   },
+   "KB": {
+      "description": "short for 'kilobytes'",
+      "message": "KB"
+   },
+   "MB": {
+      "description": "short for 'megabytes'",
+      "message": "MB"
+   },
+   "aboutBackupDataButton": {
+      "description": "Text for button to create a backup of all settings",
+      "message": "Padaryti atsarginę kopiją į failą"
+   },
+   "aboutBackupFilename": {
+      "description": "English: my-ublock-backup_{{datetime}}.txt",
+      "message": "mano-ublock-atsarginė_kopija_{{datetime}}.txt"
+   },
+   "aboutCDNs": {
+      "description": "Shown in the About pane",
+      "message": "uBO's own filter lists are freely hosted on the following \u003Ca href=\"https://wikipedia.org/wiki/Content_delivery_network\">CDNs\u003C/a>:"
+   },
+   "aboutCDNsInfo": {
+      "description": "Shown in the About pane",
+      "message": "A randomly picked CDN is used when a filter list needs to be updated."
+   },
+   "aboutChangelog": {
+      "description": "",
+      "message": "Pakeitimų žurnalas"
+   },
+   "aboutCode": {
+      "description": "English: Source code (GPLv3)",
+      "message": "Pirminis tekstas (GPLv3)"
+   },
+   "aboutContributors": {
+      "description": "English: Contributors",
+      "message": "Talkininkai"
+   },
+   "aboutDependencies": {
+      "description": "Shown in the About pane",
+      "message": "Išorinės priklausomybės (suderinamos su „GPLv3“):"
+   },
+   "aboutFilterLists": {
+      "description": "Link text to uBO's own filter lists repo",
+      "message": "Filtrų sąrašai"
+   },
+   "aboutPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Apie"
+   },
+   "aboutPrivacyPolicy": {
+      "description": "Link to privacy policy on GitHub (English)",
+      "message": "Privatumo politika"
+   },
+   "aboutResetDataButton": {
+      "description": "English: Reset to default settings...",
+      "message": "Atkurti numatytuosius nustatymus..."
+   },
+   "aboutResetDataConfirm": {
+      "description": "Message asking user to confirm reset",
+      "message": "Visi jūsų nustatymai bus pašalinti, o uBlock₀ bus perleistas.\n\nAtkurti uBlock₀ pradinius nustatymus?"
+   },
+   "aboutRestoreDataButton": {
+      "description": "English: Restore from file...",
+      "message": "Atkurti iš failo..."
+   },
+   "aboutRestoreDataConfirm": {
+      "description": "Message asking user to confirm restore",
+      "message": "Visi jūsų nustatymai bus perrašyti naudojant duomenis iš {{time}} atsarginės kopijos, o uBlock₀ bus perleistas.\n\nPerrašyti visus nustatymus naudojant atsarginės kopijos duomenis?"
+   },
+   "aboutRestoreDataError": {
+      "description": "Message to display when an error occurred during restore",
+      "message": "Nepavyko nuskaityti duomenų arba jie neteisingi"
+   },
+   "aboutSourceCode": {
+      "description": "Link text to source code repo",
+      "message": "Programinis kodas"
+   },
+   "aboutTranslations": {
+      "description": "Link text to translations repo",
+      "message": "Vertimai"
+   },
+   "advancedSettingsPageName": {
+      "description": "Title for the advanced settings page",
+      "message": "Sudėtingesni nustatymai"
+   },
+   "advancedSettingsWarning": {
+      "description": "A warning to users at the top of 'Advanced settings' page",
+      "message": "Įspėjimas! Keiskite šiuos sudėtingesnius nustatymus savo rizika."
+   },
+   "assetViewerPageName": {
+      "description": "Title for the asset viewer page",
+      "message": "uBlock₀ — resursų žiūryklė"
+   },
+   "clickToLoad": {
+      "description": "Message used in frame placeholders",
+      "message": "Click to load"
+   },
+   "cloudDeviceNamePrompt": {
+      "description": "used as a prompt for the user to provide a custom device name",
+      "message": "Šio įrenginio vardas:"
+   },
+   "cloudNoData": {
+      "description": "",
+      "message": "…\n…"
+   },
+   "cloudPull": {
+      "description": "tooltip",
+      "message": "Importuoti iš nuotolinės saugyklos"
+   },
+   "cloudPullAndMerge": {
+      "description": "tooltip",
+      "message": "Importuoti iš nuotolinės saugyklos ir sulieti su dabartiniais nustatymais"
+   },
+   "cloudPush": {
+      "description": "tooltip",
+      "message": "Eksportuoti į nuotolinę saugyklą"
+   },
+   "contextMenuBlockElementInFrame": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Block element in frame…"
+   },
+   "contextMenuSubscribeToList": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Subscribe to filter list…"
+   },
+   "contextMenuTemporarilyAllowLargeMediaElements": {
+      "description": "A context menu entry, present when large media elements have been blocked on the current site",
+      "message": "Laikinai leisti didelius medijos elementus"
+   },
+   "contextMenuViewSource": {
+      "description": "A context menu entry, to view the source code of the target resource",
+      "message": "View source code…"
+   },
+   "dashboardName": {
+      "description": "English: uBlock₀ — Dashboard",
+      "message": "uBlock₀ — Prietaisų skydas"
+   },
+   "dashboardUnsavedWarning": {
+      "description": "A warning in the dashboard when navigating away from unsaved changes",
+      "message": "Dėmesio! Turite neišsaugotų pakeitimų"
+   },
+   "dashboardUnsavedWarningIgnore": {
+      "description": "Label for button to ignore unsaved changes",
+      "message": "Ignoruoti"
+   },
+   "dashboardUnsavedWarningStay": {
+      "description": "Label for button to prevent navigating away from unsaved changes",
+      "message": "Pasilikti"
+   },
+   "docblockedBack": {
+      "description": "English: Go back",
+      "message": "Grįžti"
+   },
+   "docblockedClose": {
+      "description": "English: Close this window",
+      "message": "Užverti langą"
+   },
+   "docblockedDisable": {
+      "description": "Button text to navigate to the blocked page",
+      "message": "Tęsti"
+   },
+   "docblockedDisablePermanent": {
+      "description": "English: Permanently",
+      "message": "Negrįžtamai"
+   },
+   "docblockedDisableTemporary": {
+      "description": "English: Temporarily",
+      "message": "Laikinai"
+   },
+   "docblockedDontWarn": {
+      "description": "Label for checkbox in document-blocked page",
+      "message": "Don't warn me again about this site"
+   },
+   "docblockedFoundIn": {
+      "description": "English: List of filter list names follows",
+      "message": "Rasta:"
+   },
+   "docblockedNoParamsPrompt": {
+      "description": "label to be used for the parameter-less URL: https://cloud.githubusercontent.com/assets/585534/9832014/bfb1b8f0-593b-11e5-8a27-fba472a5529a.png",
+      "message": "be parametrų"
+   },
+   "docblockedProceed": {
+      "description": "English: Disable strict blocking for {{hostname}} ...",
+      "message": "Išjungti griežtą {{hostname}} blokavimą"
+   },
+   "docblockedPrompt1": {
+      "description": "Used in the strict-blocking page",
+      "message": "uBlock Origin neleido įkelti šio puslapio:"
+   },
+   "docblockedPrompt2": {
+      "description": "Used in the strict-blocking page",
+      "message": "Dėl šio filtro"
+   },
+   "docblockedTitle": {
+      "description": "Used as a title for the document-blocked page",
+      "message": "Puslapis užblokuotas"
+   },
+   "dummy": {
+      "description": "so we dont need to deal with comma for last entry",
+      "message": "This entry must be the last one"
+   },
+   "elapsedManyDaysAgo": {
+      "description": "English: {{value}} days ago",
+      "message": "prieš {{value}} d."
+   },
+   "elapsedManyHoursAgo": {
+      "description": "English: {{value}} hours ago",
+      "message": "prieš {{value}} val."
+   },
+   "elapsedManyMinutesAgo": {
+      "description": "English: {{value}} minutes ago",
+      "message": "prieš {{value}} min."
+   },
+   "elapsedOneDayAgo": {
+      "description": "English: a day ago",
+      "message": "prieš dieną"
+   },
+   "elapsedOneHourAgo": {
+      "description": "English: an hour ago",
+      "message": "prieš valandą"
+   },
+   "elapsedOneMinuteAgo": {
+      "description": "English: a minute ago",
+      "message": "prieš minutę"
+   },
+   "errorCantConnectTo": {
+      "description": "English: Network error: {{msg}}",
+      "message": "Tinklo klaida: {{msg}}"
+   },
+   "extName": {
+      "description": "extension name.",
+      "message": "uBlock Origin"
+   },
+   "extShortDesc": {
+      "description": "this will be in the Chrome web store: must be 132 characters or less",
+      "message": "Pagaliau, efektyvus blokatorius, neapkraunantis nei procesoriaus, nei darbinės atminties."
+   },
+   "fennecMenuItemBlockingOff": {
+      "description": "Firefox-specific: appears as 'uBlock₀ (off)'",
+      "message": "išjungta"
+   },
+   "genericApplyChanges": {
+      "description": "for generic 'Apply changes' buttons",
+      "message": "Taikyti pakeitimus"
+   },
+   "genericBytes": {
+      "description": "",
+      "message": "baitai"
+   },
+   "genericCopyToClipboard": {
+      "description": "Label for buttons used to copy something to the clipboard",
+      "message": "Kopijuoti į iškarpinę"
+   },
+   "genericMergeViewScrollLock": {
+      "description": "Tooltip for the button used to lock scrolling between the views in the 'My rules' pane",
+      "message": "Toggle locked scrolling"
+   },
+   "genericRevert": {
+      "description": "for generic 'Revert' buttons",
+      "message": "Atstatyti"
+   },
+   "genericSelectAll": {
+      "description": "Label for buttons used to select all text in editor",
+      "message": "Žymėti viską"
+   },
+   "genericSubmit": {
+      "description": "for generic 'Submit' buttons",
+      "message": "Pateikti"
+   },
+   "linterMainReport": {
+      "description": "Summary of number of errors as reported by the linter ",
+      "message": "Klaidos: {{count}}"
+   },
+   "logAll": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Visos"
+   },
+   "logBehindTheScene": {
+      "description": "Pretty name for behind-the-scene network requests",
+      "message": "Užkulisiai"
+   },
+   "logFilterPrompt": {
+      "description": "Placeholder string for logger output filtering input field",
+      "message": "filtruoti žurnalo įrašus"
+   },
+   "logRequestsHeaderDomain": {
+      "description": "English: Domain",
+      "message": "Sritis"
+   },
+   "logRequestsHeaderFilter": {
+      "description": "English: Filter",
+      "message": "Filtras"
+   },
+   "logRequestsHeaderType": {
+      "description": "English: Type",
+      "message": "Tipas"
+   },
+   "logRequestsHeaderURL": {
+      "description": "English: URL",
+      "message": "URL"
+   },
+   "loggerClearTip": {
+      "description": "Tooltip for the eraser in the logger page; used to blank the content of the logger",
+      "message": "Valyti žurnalą"
+   },
+   "loggerCurrentTab": {
+      "description": "Appears in the logger's tab selector",
+      "message": "Dabartinė kortelė"
+   },
+   "loggerDomInspectorTip": {
+      "description": "Tooltip for the DOM inspector button in the logger page",
+      "message": "Įjungti / išjungti DOM tyriklį"
+   },
+   "loggerEntryDetailsContext": {
+      "description": "Label to identify a context field (typically a hostname)",
+      "message": "Kontekstas"
+   },
+   "loggerEntryDetailsFilter": {
+      "description": "Label to identify a filter field",
+      "message": "Filtras"
+   },
+   "loggerEntryDetailsFilterList": {
+      "description": "Label to identify a filter list field",
+      "message": "Filtrų sąrašas"
+   },
+   "loggerEntryDetailsHeader": {
+      "description": "Small header to identify the 'Details' pane for a specific logger entry",
+      "message": "Išsamiau"
+   },
+   "loggerEntryDetailsPartyness": {
+      "description": "Label to identify a field providing partyness information",
+      "message": "Partyness"
+   },
+   "loggerEntryDetailsRootContext": {
+      "description": "Label to identify a root context field (typically a hostname)",
+      "message": "Šakninis kontekstas"
+   },
+   "loggerEntryDetailsRule": {
+      "description": "Label to identify a rule field",
+      "message": "Taisyklė"
+   },
+   "loggerEntryDetailsType": {
+      "description": "Label to identify the type of an entry",
+      "message": "Tipas"
+   },
+   "loggerEntryDetailsURL": {
+      "description": "Label to identify the URL of an entry",
+      "message": "URL"
+   },
+   "loggerExportEncodeMarkdown": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Markdown"
+   },
+   "loggerExportEncodePlain": {
+      "description": "Label for radio-button to pick export text format",
+      "message": "Neformatuotas"
+   },
+   "loggerExportFormatList": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Sąrašas"
+   },
+   "loggerExportFormatTable": {
+      "description": "Label for radio-button to pick export format",
+      "message": "Lentelė"
+   },
+   "loggerInfoTip": {
+      "description": "Tooltip for the top-right info label in the logger page",
+      "message": "„uBlock Origin“ viki: žurnalas"
+   },
+   "loggerPauseTip": {
+      "description": "Tooltip for the pause button in the logger page",
+      "message": "Pristabdyti žurnalą (atmesti visus gaunamus duomenis)"
+   },
+   "loggerPopupPanelTip": {
+      "description": "Tooltip for the popup panel button in the logger page",
+      "message": "Įjungti/išjungti iššokantį langą"
+   },
+   "loggerReloadTip": {
+      "description": "Tooltip for the reload button in the logger page",
+      "message": "Įkelti kortelės turinį iš naujo"
+   },
+   "loggerRowFiltererBuiltin1p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "1-oji šalis"
+   },
+   "loggerRowFiltererBuiltin3p": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "3-ioji šalis"
+   },
+   "loggerRowFiltererBuiltinAllowed": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "leidžiama"
+   },
+   "loggerRowFiltererBuiltinBlocked": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "užblokuota"
+   },
+   "loggerRowFiltererBuiltinEventful": {
+      "description": "A keyword in the built-in row filtering expression: all items corresponding to uBO doing something (blocked, allowed, redirected, etc.)",
+      "message": "eventful"
+   },
+   "loggerRowFiltererBuiltinModified": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "modifikuota"
+   },
+   "loggerRowFiltererBuiltinNot": {
+      "description": "A keyword in the built-in row filtering expression",
+      "message": "Ne"
+   },
+   "loggerRowFiltererBuiltinTip": {
+      "description": "Tooltip for the button to bring up logger output filtering options",
+      "message": "Žurnalo filtravimo nuostatos"
+   },
+   "loggerRowFiltererButtonTip": {
+      "description": "Tooltip for the row filterer button in the logger page",
+      "message": "Įjungti / išjungti žurnalo filtravimą"
+   },
+   "loggerSettingDiscardPrompt": {
+      "description": "Logger setting: A sentence to describe the purpose of the settings below",
+      "message": "Loggerio įrašai, kurie neatitinka visų trijų žemiau esančių sąlygų bus automatiškai panaikinami"
+   },
+   "loggerSettingHideColumnContext": {
+      "description": "A label for the context column",
+      "message": "{{input}} Context"
+   },
+   "loggerSettingHideColumnFilter": {
+      "description": "A label for the filter or rule column",
+      "message": "{{input}} Filter/rule"
+   },
+   "loggerSettingHideColumnPartyness": {
+      "description": "A label for the partyness column",
+      "message": "{{input}} Partyness"
+   },
+   "loggerSettingHideColumnTime": {
+      "description": "A label for the time column",
+      "message": "{{input}} Time"
+   },
+   "loggerSettingHideColumnsPrompt": {
+      "description": "Logger settings: a sentence to describe the purpose of the checkboxes below",
+      "message": "Hide columns:"
+   },
+   "loggerSettingPerEntryLineCount": {
+      "description": "A logger setting",
+      "message": "Use {{input}} lines per entry in vertically expanded mode"
+   },
+   "loggerSettingPerEntryMaxAge": {
+      "description": "A logger setting",
+      "message": "Išsaugoti įrašus ne senesnius kaip {{input}} min."
+   },
+   "loggerSettingPerTabMaxEntries": {
+      "description": "A logger setting",
+      "message": "Preserve at most {{input}} entries per tab"
+   },
+   "loggerSettingPerTabMaxLoads": {
+      "description": "A logger setting",
+      "message": "Preserve at most {{input}} page loads per tab"
+   },
+   "loggerStaticFilteringFinderSentence1": {
+      "description": "Below this sentence, the filter list(s) in which the filter was found",
+      "message": "Statinis filtras \u003Ccode>{{filter}}\u003C/code> rastas:"
+   },
+   "loggerStaticFilteringFinderSentence2": {
+      "description": "Message to show when a filter cannot be found in any filter lists",
+      "message": "Statinis filtras \u003Ccode>{{filter}}\u003C/code> nerastas jokiame dabar įjungtame filtrų sąraše"
+   },
+   "loggerStaticFilteringHeader": {
+      "description": "Small header to identify the static filtering section",
+      "message": "Statinis filtravimas"
+   },
+   "loggerStaticFilteringSentence": {
+      "description": "Used in the static filtering wizard",
+      "message": "{{action}} {{type}} tinklo užklausas, {{br}}kur URL adresas atitinka {{url}} {{br}}ir kurios kyla {{origin}},{{br}}{{importance}} yra atitinkantis išimties filtras."
+   },
+   "loggerStaticFilteringSentencePartAllow": {
+      "description": "Used in the static filtering wizard",
+      "message": "Leisti"
+   },
+   "loggerStaticFilteringSentencePartAnyOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "bet kur"
+   },
+   "loggerStaticFilteringSentencePartAnyType": {
+      "description": "Used in the static filtering wizard",
+      "message": "bet kokio tipo"
+   },
+   "loggerStaticFilteringSentencePartBlock": {
+      "description": "Used in the static filtering wizard",
+      "message": "Blokuoti"
+   },
+   "loggerStaticFilteringSentencePartImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "net jei"
+   },
+   "loggerStaticFilteringSentencePartNotImportant": {
+      "description": "Used in the static filtering wizard",
+      "message": "išskyrus kai"
+   },
+   "loggerStaticFilteringSentencePartOrigin": {
+      "description": "Used in the static filtering wizard",
+      "message": "iš „{{origin}}“"
+   },
+   "loggerStaticFilteringSentencePartType": {
+      "description": "Used in the static filtering wizard",
+      "message": "„{{type}}“ tipo"
+   },
+   "loggerURLFilteringContextLabel": {
+      "description": "Label for the context selector",
+      "message": "Kontekstas:"
+   },
+   "loggerURLFilteringHeader": {
+      "description": "Small header to identify the dynamic URL filtering section",
+      "message": "URL taisyklė"
+   },
+   "loggerURLFilteringTypeLabel": {
+      "description": "Label for the type selector",
+      "message": "Tipas:"
+   },
+   "loggerUnpauseTip": {
+      "description": "Tooltip for the play button in the logger page",
+      "message": "Tęsti žurnalą"
+   },
+   "pickerContextMenuEntry": {
+      "description": "An entry in the browser's contextual menu",
+      "message": "Blokuoti elementą"
+   },
+   "pickerCosmeticFilters": {
+      "description": "English: Cosmetic filters",
+      "message": "Kosmetiniai filtrai"
+   },
+   "pickerCosmeticFiltersHint": {
+      "description": "English: Click, Ctrl-click",
+      "message": "Spustelėjimas, Vald-spustelėjimas"
+   },
+   "pickerCreate": {
+      "description": "English: Create",
+      "message": "Sukurti"
+   },
+   "pickerNetFilters": {
+      "description": "English: header for a type of filter in the element picker dialog",
+      "message": "Tinklo filtrai"
+   },
+   "pickerPick": {
+      "description": "English: Pick",
+      "message": "Parinkti"
+   },
+   "pickerPreview": {
+      "description": "Element picker preview mode: will cause the elements matching the current filter to be removed from the page",
+      "message": "Peržiūra"
+   },
+   "pickerQuit": {
+      "description": "English: Quit",
+      "message": "Baigti"
+   },
+   "popup1pScriptRulePrompt": {
+      "description": "",
+      "message": "1-os šalies scenarijai"
+   },
+   "popup3pAnyRulePrompt": {
+      "description": "",
+      "message": "trečios šalies"
+   },
+   "popup3pFrameFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "frame"
+   },
+   "popup3pFrameRulePrompt": {
+      "description": "",
+      "message": "3-ios šalies rėmeliai"
+   },
+   "popup3pPassiveRulePrompt": {
+      "description": "",
+      "message": "3-ios šalies CSS/paveikslai"
+   },
+   "popup3pScriptFilter": {
+      "description": "Appears as an option to filter out firewall rows",
+      "message": "Skriptas"
+   },
+   "popup3pScriptRulePrompt": {
+      "description": "",
+      "message": "3-ios šalies scenarijai"
+   },
+   "popupAnyRulePrompt": {
+      "description": "",
+      "message": "visi"
+   },
+   "popupBlockedOnThisPagePrompt": {
+      "description": "English: on this page",
+      "message": "šiame puslapyje"
+   },
+   "popupBlockedOnThisPage_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Blokuojama šiame puslapyje"
+   },
+   "popupBlockedRequestPrompt": {
+      "description": "English: requests blocked",
+      "message": "blokuotos užklausos"
+   },
+   "popupBlockedSinceInstallPrompt": {
+      "description": "English: since install",
+      "message": "nuo įdiegimo"
+   },
+   "popupBlockedSinceInstall_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Užblokuota nuo įdiegimo"
+   },
+   "popupBlockedStats": {
+      "description": "Example: 15 (13%)",
+      "message": "{{count}} arba {{percent}} %"
+   },
+   "popupDomainsConnected_v2": {
+      "description": "For the new mobile-friendly popup design",
+      "message": "Prijungti domenai"
+   },
+   "popupHitDomainCount": {
+      "description": "appears in popup",
+      "message": "{{count}} iš {{total}}"
+   },
+   "popupHitDomainCountPrompt": {
+      "description": "appears in popup",
+      "message": "jungtasi prie sričių"
+   },
+   "popupImageRulePrompt": {
+      "description": "",
+      "message": "vaizdai"
+   },
+   "popupInlineScriptRulePrompt": {
+      "description": "",
+      "message": "įterptieji scenarijai"
+   },
+   "popupLessButton_v2": {
+      "description": "Label to be used to hide popup panel sections",
+      "message": "Mažiau"
+   },
+   "popupMoreButton_v2": {
+      "description": "Label to be used to show popup panel sections",
+      "message": "Daugiau"
+   },
+   "popupNoCosmeticFiltering_v2": {
+      "description": "Caption for the no-cosmetic-filtering per-site switch",
+      "message": "Kosmetinis filtravimas"
+   },
+   "popupNoLargeMedia_v2": {
+      "description": "Caption for the no-large-media per-site switch",
+      "message": "Dideli medijos elementai"
+   },
+   "popupNoPopups_v2": {
+      "description": "Caption for the no-popups per-site switch",
+      "message": "Iškylantysis langas"
+   },
+   "popupNoRemoteFonts_v2": {
+      "description": "Caption for the no-remote-fonts per-site switch",
+      "message": "Nuotoliniai šriftai"
+   },
+   "popupNoScripting_v2": {
+      "description": "Caption for the no-scripting per-site switch",
+      "message": "JavaScript"
+   },
+   "popupOr": {
+      "description": "English: or",
+      "message": "arba"
+   },
+   "popupPowerSwitchInfo": {
+      "description": "English: Click: disable/enable uBlock₀ for this site.\n\nCtrl+click: disable uBlock₀ only on this page.",
+      "message": "Spustelėjimas: įjungti/išjungti uBlock₀ šiam puslapiui.\n\nVald+spustelėjimas: išjungti uBlock₀ tik šiam puslapiui."
+   },
+   "popupPowerSwitchInfo1": {
+      "description": "Message to be read by screen readers",
+      "message": "Spustelėkite, kad išjungtumėte uBlock₀ šiai svetainei.\n\nVald+spustelėkite, kad išjungtumėte uBlock₀ tik šiam puslapiui."
+   },
+   "popupPowerSwitchInfo2": {
+      "description": "Message to be read by screen readers",
+      "message": "Spustelėkite, kad įjungtumėte uBlock₀ šiai svetainei."
+   },
+   "popupTipDashboard": {
+      "description": "English: Click to open the dashboard",
+      "message": "Atverti prietaisų skydą"
+   },
+   "popupTipGlobalRules": {
+      "description": "Tooltip when hovering the top-most cell of the global-rules column.",
+      "message": "Globalios taisyklės: ši skiltis skirta visiems puslapiams taikomoms taisyklėms."
+   },
+   "popupTipLocalRules": {
+      "description": "Tooltip when hovering the top-most cell of the local-rules column.",
+      "message": "Vietinės taisyklės: ši skiltis skirta dabartiniam puslapiui taikomoms taisyklėms.\nVietinės taisyklės nustelbia globalias."
+   },
+   "popupTipLog": {
+      "description": "Tooltip used for the logger icon in the panel",
+      "message": "Atverti žurnalą"
+   },
+   "popupTipNoCosmeticFiltering": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Perjungti kosmetinį filtravimą šiame puslapyje"
+   },
+   "popupTipNoCosmeticFiltering1": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Spustelėkite kosmetinių filtrų išjungimui šioje svetainėje"
+   },
+   "popupTipNoCosmeticFiltering2": {
+      "description": "Tooltip for the no-cosmetic-filtering per-site switch",
+      "message": "Spustelėkite kosmetinių filtrų įjungimui šioje svetainėje"
+   },
+   "popupTipNoLargeMedia": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Perjungti didelių medijos elementų blokavimą šiame puslapyje"
+   },
+   "popupTipNoLargeMedia1": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Spustelėkite didelių medijos elementų blokavimui šioje svetainėje"
+   },
+   "popupTipNoLargeMedia2": {
+      "description": "Tooltip for the no-large-media per-site switch",
+      "message": "Spustelėkite didelių medijos elementų neblokavimui šioje svetainėje"
+   },
+   "popupTipNoPopups": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Perjungti visų iškylančiųjų langų blokavimą šiame puslapyje"
+   },
+   "popupTipNoPopups1": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Spustelėkite visų iškylančių langų blokavimui šioje svetainėje"
+   },
+   "popupTipNoPopups2": {
+      "description": "Tooltip for the no-popups per-site switch",
+      "message": "Spustelėkite visų iškylančių langų neblokavimui šioje svetainėje"
+   },
+   "popupTipNoRemoteFonts": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Perjungti nuotolinių šriftų blokavimą šiame puslapyje"
+   },
+   "popupTipNoRemoteFonts1": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Spustelėkite nutolusių šriftų blokavimui šioje svetainėje"
+   },
+   "popupTipNoRemoteFonts2": {
+      "description": "Tooltip for the no-remote-fonts per-site switch",
+      "message": "Spustelėkite nutolusių šriftų neblokavimui šioje svetainėje"
+   },
+   "popupTipNoScripting1": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Spustelėkite JavaScript išjungimui šioje svetainėje"
+   },
+   "popupTipNoScripting2": {
+      "description": "Tooltip for the no-scripting per-site switch",
+      "message": "Spustelėkite JavaScript įjungimui šioje svetainėje"
+   },
+   "popupTipPicker": {
+      "description": "English: Enter element picker mode",
+      "message": "Atverti elementų parinkimo veikseną"
+   },
+   "popupTipReport": {
+      "description": "Tooltip used for the 'chat' icon in the panel",
+      "message": "Pranešti apie problemą šioje svetainėje"
+   },
+   "popupTipRevertRules": {
+      "description": "Tooltip when hovering over the eraser in the dynamic filtering pane.",
+      "message": "Spauskite pakeitimams atstatyti."
+   },
+   "popupTipSaveRules": {
+      "description": "Tooltip when hovering over the padlock in the dynamic filtering pane.",
+      "message": "Spauskite pakeitimams padaryti pastoviais."
+   },
+   "popupTipZapper": {
+      "description": "Tooltip for the element-zapper icon in the popup panel",
+      "message": "Atverti elementų trynimo veikseną"
+   },
+   "popupVersion": {
+      "description": "Example of use: Version 1.26.4",
+      "message": "Versija"
+   },
+   "relaxBlockingMode": {
+      "description": "Label for keyboard shortcut used to relax blocking mode",
+      "message": "Relax blocking mode"
+   },
+   "rulesCommit": {
+      "description": "This will persist temporary rules",
+      "message": "Pritaikyti"
+   },
+   "rulesDefaultFileName": {
+      "description": "default file name to use",
+      "message": "mano-ublock-dinaminės-taisyklės_{{datetime}}.txt"
+   },
+   "rulesEdit": {
+      "description": "Will enable manual-edit mode (textarea)",
+      "message": "Redaguoti"
+   },
+   "rulesEditDiscard": {
+      "description": "Will discard manually-edited content and exit manual-edit mode",
+      "message": "Atmesti"
+   },
+   "rulesEditSave": {
+      "description": "Will save manually-edited content and exit manual-edit mode",
+      "message": "Įrašyti"
+   },
+   "rulesExport": {
+      "description": "Button in the 'My rules' pane",
+      "message": "Eksportuoti į failą"
+   },
+   "rulesFormatHint": {
+      "description": "English: dynamic rule syntax and full documentation.",
+      "message": "Taisyklės sintaksė: \u003Ccode>šaltinis paskirtis tipas veiksmas\u003C/code> (\u003Ca href='https://github.com/gorhill/uBlock/wiki/Dynamic-filtering:-rule-syntax'>dokumentacija\u003C/a>)."
+   },
+   "rulesHint": {
+      "description": "English: List of your dynamic filtering rules.",
+      "message": "Dinaminių filtravimo taisyklių sąrašas."
+   },
+   "rulesImport": {
+      "description": "",
+      "message": "Importuoti iš failo..."
+   },
+   "rulesPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Mano taisyklės"
+   },
+   "rulesPermanentHeader": {
+      "description": "header",
+      "message": "Pastovios taisyklės"
+   },
+   "rulesRevert": {
+      "description": "This will remove all temporary rules",
+      "message": "Atstatyti"
+   },
+   "rulesSort": {
+      "description": "English: label for sort option.",
+      "message": "Rikiuoti pagal:"
+   },
+   "rulesSortByDestination": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Tikslas"
+   },
+   "rulesSortBySource": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Šaltinis"
+   },
+   "rulesSortByType": {
+      "description": "English: a sort option for list of rules.",
+      "message": "Taisyklės tipas"
+   },
+   "rulesTemporaryHeader": {
+      "description": "header",
+      "message": "Laikinos taisyklės"
+   },
+   "settingPerSiteSwitchGroup": {
+      "description": "",
+      "message": "Numatytoji elgsena"
+   },
+   "settingPerSiteSwitchGroupSynopsis": {
+      "description": "",
+      "message": "Šios numatytosios elgsenos gali būti nustelbtos kiekvienam puslapiui atskirai"
+   },
+   "settingsAdvanced": {
+      "description": "Section for controlling advanced-user settings",
+      "message": "Papildomi nustatymai"
+   },
+   "settingsAdvancedSynopsis": {
+      "description": "Description of section controlling advanced-user settings",
+      "message": "Features suitable only for technical users"
+   },
+   "settingsAdvancedUserPrompt": {
+      "description": "Checkbox to let user access advanced, technical features",
+      "message": "Aš esu patyręs naudotojas (\u003Ca href='https://github.com/gorhill/uBlock/wiki/Advanced-user-features'>privaloma perskaityti\u003C/a>)"
+   },
+   "settingsAdvancedUserSettings": {
+      "description": "For the tooltip of a link which gives access to advanced settings",
+      "message": "sudėtingesni nustatymai"
+   },
+   "settingsAppearance": {
+      "description": "Section for controlling user interface appearance",
+      "message": "Išvaizda"
+   },
+   "settingsCloudStorageEnabledPrompt": {
+      "description": "",
+      "message": "Įjungti nuotolinės saugyklos palaikymą"
+   },
+   "settingsCollapseBlockedPrompt": {
+      "description": "English: Hide placeholders of blocked elements",
+      "message": "Slėpti blokuotų elementų rezervuotą vietą"
+   },
+   "settingsColorBlindPrompt": {
+      "description": "English: Color-blind friendly",
+      "message": "Draugiškas neskiriantiems spalvų"
+   },
+   "settingsContextMenuPrompt": {
+      "description": "English: Make use of context menu where appropriate",
+      "message": "Kur tinka, naudoti kontekstinį meniu"
+   },
+   "settingsHyperlinkAuditingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Išjungti saitų auditą"
+   },
+   "settingsIconBadgePrompt": {
+      "description": "English: Show the number of blocked requests on the icon",
+      "message": "Rodyti blokuotų užklausų skaičių piktogramoje"
+   },
+   "settingsLastBackupPrompt": {
+      "description": "English: Last backup:",
+      "message": "Paskutinė atsarginė kopija:"
+   },
+   "settingsLastRestorePrompt": {
+      "description": "English: Last restore:",
+      "message": "Paskutinis atkūrimas:"
+   },
+   "settingsNoCSPReportsPrompt": {
+      "description": "background information: https://github.com/gorhill/uBlock/issues/3150",
+      "message": "Blokuoti CSP ataskaitas"
+   },
+   "settingsNoCosmeticFilteringPrompt": {
+      "description": "",
+      "message": "Išjungti kosmetinius filtrus"
+   },
+   "settingsNoLargeMediaPrompt": {
+      "description": "",
+      "message": "Blokuoti medijos elementus didesnius nei {{input}} kB"
+   },
+   "settingsNoRemoteFontsPrompt": {
+      "description": "",
+      "message": "Blokuoti nuotolinius šriftus"
+   },
+   "settingsNoScriptingPrompt": {
+      "description": "The default state for the per-site no-scripting switch",
+      "message": "Išjungti JavaScript"
+   },
+   "settingsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Nustatymai"
+   },
+   "settingsPrefetchingDisabledPrompt": {
+      "description": "English: ",
+      "message": "Išjungti išankstinį gavimą (visiems blokuotų tinklo užklausų prisijungimams išvengti)"
+   },
+   "settingsThemeAccent0Label": {
+      "description": "Label for checkbox to pick an accent color",
+      "message": "Custom accent color"
+   },
+   "settingsThemeLabel": {
+      "description": "Label for checkbox to enable a custom dark theme",
+      "message": "Tema"
+   },
+   "settingsTooltipsPrompt": {
+      "description": "A checkbox in the Settings pane",
+      "message": "Išjungti paaiškinimus"
+   },
+   "settingsUncloakCnamePrompt": {
+      "description": "background information: https://github.com/uBlockOrigin/uBlock-issues/issues/1513",
+      "message": "Uncloak canonical names"
+   },
+   "settingsWebRTCIPAddressHiddenPrompt": {
+      "description": "English: ",
+      "message": "Neleisti WebRTC atskleisti vietinio IP adreso"
+   },
+   "shortcutCapturePlaceholder": {
+      "description": "Placeholder string for input field used to capture a keyboard shortcut",
+      "message": "Įveskite nuorodą"
+   },
+   "shortcutsPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Nuorodos"
+   },
+   "showDashboardButton": {
+      "description": "Firefox/Fennec-specific: Show Dashboard",
+      "message": "Rodyti prietaisų skydą"
+   },
+   "showNetworkLogButton": {
+      "description": "Firefox/Fennec-specific: Show Logger",
+      "message": "Rodyti žurnalą"
+   },
+   "statsPageName": {
+      "description": "Title for the logger window",
+      "message": "uBlock₀ — Žurnalas"
+   },
+   "storageUsed": {
+      "description": " In Setting pane, renders as (example): Storage used: 13.2 MB",
+      "message": "Storage used: {{value}} {{unit}}"
+   },
+   "subscribeButton": {
+      "description": "For the button used to subscribe to a filter list",
+      "message": "Prenumeruoti"
+   },
+   "subscriberConfirm": {
+      "description": "No longer used",
+      "message": "uBlock₀: Pridėti šį URL į jūsų adaptuotų filtrų sąrašą?\n\nPavadinimas: „{{title}}“\nURL: {{url}}"
+   },
+   "supportFindSpecificButton": {
+      "description": "A clickable link in the filter issue reporter section",
+      "message": "Rasti panašias ataskaitas"
+   },
+   "supportOpenButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Atidaryti"
+   },
+   "supportPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Pagalba"
+   },
+   "supportRedact": {
+      "description": "Text for 'Redact' button",
+      "message": "Redact"
+   },
+   "supportReportSpecificButton": {
+      "description": "Text for button which open an external webpage in Support pane",
+      "message": "Sukurti naują ataskaitą"
+   },
+   "supportS1H": {
+      "description": "Header of 'Documentation' section in Support pane",
+      "message": "Dokumentacija"
+   },
+   "supportS1P1": {
+      "description": "First paragraph of 'Documentation' section in Support pane",
+      "message": "Read the documentation at \u003Ccode>uBlock/wiki\u003C/code> to learn about all of uBlock Origin's features."
+   },
+   "supportS2H": {
+      "description": "Header of 'Questions and support' section in Support pane",
+      "message": "Klausimai ir pagalba"
+   },
+   "supportS2P1": {
+      "description": "First paragraph of 'Questions and support' section in Support pane",
+      "message": "Answers to questions and other kinds of help support is provided on the subreddit \u003Ccode>/r/uBlockOrigin\u003C/code>."
+   },
+   "supportS3H": {
+      "description": "Header of 'Filter issues' section in Support pane",
+      "message": "Filter issues/website is broken"
+   },
+   "supportS3P1": {
+      "description": "First paragraph of 'Filter issues' section in Support pane",
+      "message": "Report filter issues with specific websites to the \u003Cspan data-url=\"https://github.com/uBlockOrigin/uAssets/issues?q=is%3Aissue\">\u003Ccode>uBlockOrigin/uAssets\u003C/code> issue tracker\u003C/span>. \u003Cu>Requires a GitHub account.\u003C/u>"
+   },
+   "supportS3P2": {
+      "description": "Second paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Important:\u003C/b> Avoid using other similarly-purposed blockers along with uBlock Origin, as this may cause filter issues on specific websites."
+   },
+   "supportS3P3": {
+      "description": "Third paragraph of 'Filter issues' section in Support pane",
+      "message": "\u003Cb>Tips:\u003C/b> Be sure your filter lists are up to date. \u003Cspan data-url=\"logger-ui.html#_\">The logger\u003C/span> is the primary tool to diagnose filter-related issues."
+   },
+   "supportS4H": {
+      "description": "Header of 'Bug report' section in Support pane",
+      "message": "Bug report"
+   },
+   "supportS4P1": {
+      "description": "First paragraph of 'Bug report' section in Support pane",
+      "message": "Report issues with uBlock Origin itself to the \u003Cspan data-url=\"https://github.com/uBlockOrigin/uBlock-issues/issues?q=is%3Aissue\">\u003Ccode>uBlockOrigin/uBlock-issue\u003C/code> issue tracker\u003C/span>. \u003Cu>Requires a GitHub account.\u003C/u>"
+   },
+   "supportS5H": {
+      "description": "Header of 'Troubleshooting Information' section in Support pane",
+      "message": "Troubleshooting Information"
+   },
+   "supportS5P1": {
+      "description": "First paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "Below is technical information that might be useful when volunteers are trying to help you solve a problem."
+   },
+   "supportS5P2": {
+      "description": "Second paragraph of 'Troubleshooting Information' section in Support pane",
+      "message": "\u003Cb>Important:\u003C/b> Potentially private or sensitive information is redacted by default. Redacted information may make it more difficult to solve a problem."
+   },
+   "supportS6Checkbox1": {
+      "description": "A checkbox to use for NSFW sites",
+      "message": "Label the web page as “NSFW” (\u003Ca href=\"https://wikipedia.org/wiki/Not_safe_for_work\">“Not Safe For Work”\u003C/a>)"
+   },
+   "supportS6H": {
+      "description": "Header of 'Report a filter issue' section in Support pane",
+      "message": "Report a filter issue"
+   },
+   "supportS6P1S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "To avoid burdening volunteers with duplicate reports, please verify that the issue has not already been reported."
+   },
+   "supportS6P2S1": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Filter lists are updated daily. Be sure your issue has not already been addressed in the most recent filter lists."
+   },
+   "supportS6P2S2": {
+      "description": "A paragraph in the filter issue reporter section",
+      "message": "Verify that the issue still exists after reloading the problematic webpage."
+   },
+   "supportS6Select1": {
+      "description": "Label for widget to select type of issue",
+      "message": "The web page…"
+   },
+   "supportS6Select1Option0": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "-- Pick an entry --"
+   },
+   "supportS6Select1Option1": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Shows ads or ad leftovers"
+   },
+   "supportS6Select1Option2": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Has overlays or other nuisances"
+   },
+   "supportS6Select1Option3": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Detects uBlock Origin"
+   },
+   "supportS6Select1Option4": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Has privacy-related issues"
+   },
+   "supportS6Select1Option5": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Malfunctions when uBlock Origin is enabled"
+   },
+   "supportS6Select1Option6": {
+      "description": "An entry in the widget used to select the type of issue",
+      "message": "Opens unwanted tabs or windows"
+   },
+   "supportS6URL": {
+      "description": "Label for the URL of the page",
+      "message": "Address of the web page:"
+   },
+   "supportUnredact": {
+      "description": "Text for 'Unredact' button",
+      "message": "Unredact"
+   },
+   "toggleCosmeticFiltering": {
+      "description": "Label for keyboard shortcut used to toggle cosmetic filtering",
+      "message": "Toggle cosmetic filtering"
+   },
+   "toggleJavascript": {
+      "description": "Label for keyboard shortcut used to toggle no-scripting switch",
+      "message": "Toggle JavaScript"
+   },
+   "unprocessedRequestTooltip": {
+      "description": "A warning which will appear in the popup panel if needed",
+      "message": "Could not filter properly at browser launch. Reload the page to ensure proper filtering."
+   },
+   "whitelistApply": {
+      "description": "English: Apply changes",
+      "message": "Taikyti pakeitimus"
+   },
+   "whitelistExport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "Eksportuoti"
+   },
+   "whitelistExportFilename": {
+      "description": "The default filename to use for import/export purpose",
+      "message": "mano-ublock-išimtys_{{datetime}}.txt"
+   },
+   "whitelistImport": {
+      "description": "Button in the 'Trusted sites' pane",
+      "message": "Importuoti ir papildyti"
+   },
+   "whitelistPageName": {
+      "description": "appears as tab name in dashboard",
+      "message": "Išimtys"
+   },
+   "whitelistPrompt": {
+      "description": "A concise description of the 'Trusted sites' pane.",
+      "message": "Baltojo sąrašo direktyvos nurodo, kurioms svetainėms uBlock Origin turėtų būti išjungtas. Vienas įrašas eilutėje. Neteisingos direktyvos bus tyliai ignoruotos ir užkomentuotos."
+   }
+}

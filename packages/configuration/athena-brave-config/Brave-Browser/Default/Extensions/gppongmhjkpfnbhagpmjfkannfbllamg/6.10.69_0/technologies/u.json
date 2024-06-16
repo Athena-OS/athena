@@ -1,0 +1,1200 @@
+{
+  "U-KOMI": {
+    "cats": [
+      90
+    ],
+    "description": "U-KOMI is a user generated content review marketing tool.",
+    "icon": "U-KOMI.svg",
+    "js": {
+      "GetUkomiSliderItemInfo": "",
+      "ukomiInstaLikeStep01": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://u-komi.com/en/"
+  },
+  "UIKit": {
+    "cats": [
+      66
+    ],
+    "description": "UIKit is the framework used for developing iOS applications.",
+    "html": "<[^>]+class=\"[^\"]*(?:uk-container|uk-section)",
+    "icon": "UIKit.svg",
+    "scriptSrc": "uikit.*\\.js",
+    "website": "https://getuikit.com"
+  },
+  "UK Mail": {
+    "cats": [
+      99
+    ],
+    "description": "UK Mail is a postal service company operating in the United Kingdom.",
+    "icon": "UK Mail.png",
+    "requiresCategory": 6,
+    "text": [
+      "\\bUK Mail\\b"
+    ],
+    "website": "https://www.ukmail.com"
+  },
+  "UKFast": {
+    "cats": [
+      88,
+      62
+    ],
+    "description": "UKFast is a business-to-business internet hosting company based in Manchester, UK.",
+    "dns": {
+      "SOA": "\\.ukfast\\.net"
+    },
+    "icon": "UKFast.png",
+    "pricing": [
+      "recurring",
+      "payg"
+    ],
+    "website": "https://www.ukfast.co.uk"
+  },
+  "UMI.CMS": {
+    "cats": [
+      1
+    ],
+    "headers": {
+      "X-Generated-By": "UMI\\.CMS"
+    },
+    "icon": "UMI.CMS.png",
+    "implies": "PHP",
+    "website": "https://www.umi-cms.ru"
+  },
+  "UNIX": {
+    "cats": [
+      28
+    ],
+    "description": "Unix is a family of multitasking, multiuser computer operating systems.",
+    "headers": {
+      "Server": "Unix"
+    },
+    "icon": "UNIX.png",
+    "website": "https://unix.org"
+  },
+  "UPS": {
+    "cats": [
+      99
+    ],
+    "description": "UPS is an American multinational shipping & receiving and supply chain management company.",
+    "icon": "UPS.svg",
+    "requiresCategory": 6,
+    "text": [
+      "\\b(?<!-)UPS\\b"
+    ],
+    "website": "https://www.ups.com"
+  },
+  "USPS": {
+    "cats": [
+      99
+    ],
+    "description": "The United States Postal Service (USPS) is an independent agency of the executive branch of the United States federal government responsible for providing postal service in the United States.",
+    "icon": "USPS.svg",
+    "requiresCategory": 6,
+    "text": [
+      "\\bUSPS\\b",
+      "\\bUnited States Postal Service\\b"
+    ],
+    "website": "https://www.usps.com"
+  },
+  "USWDS": {
+    "cats": [
+      66
+    ],
+    "description": "USWDS is a design system for the federal government.",
+    "icon": "USWDS.svg",
+    "js": {
+      "uswdsPresent": ""
+    },
+    "oss": true,
+    "scriptSrc": "\\buswds\\b",
+    "website": "https://designsystem.digital.gov"
+  },
+  "Ubercart": {
+    "cats": [
+      6
+    ],
+    "icon": "Ubercart.png",
+    "implies": "Drupal",
+    "scriptSrc": "uc_cart/uc_cart_block\\.js",
+    "website": "https://www.ubercart.org"
+  },
+  "Ubiliz": {
+    "cats": [
+      5,
+      6
+    ],
+    "description": "Ubiliz is a gift voucher ecommerce solution.",
+    "icon": "Ubiliz.svg",
+    "js": {
+      "ubilizSettings": ""
+    },
+    "pricing": [
+      "freemium",
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.ubiliz.com"
+  },
+  "Ubuntu": {
+    "cats": [
+      28
+    ],
+    "cpe": "cpe:2.3:o:canonical:ubuntu_linux:*:*:*:*:*:*:*:*",
+    "description": "Ubuntu is a free and open-source operating system on Linux for the enterprise server, desktop, cloud, and IoT.",
+    "headers": {
+      "Server": "Ubuntu",
+      "X-Powered-By": "Ubuntu"
+    },
+    "icon": "Ubuntu.svg",
+    "website": "https://www.ubuntu.com/server"
+  },
+  "Ucommerce": {
+    "cats": [
+      6
+    ],
+    "description": "Ucommerce is an ecommerce platform for enterprise-level online businesses.",
+    "icon": "Ucommerce.svg",
+    "js": {
+      "uCommerce": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "uCommerce\\.facets\\.js",
+    "website": "https://ucommerce.net"
+  },
+  "Ueeshop": {
+    "cats": [
+      6
+    ],
+    "description": "Ueeshop is a ecommerce platform from China.",
+    "icon": "Ueeshop.png",
+    "js": {
+      "ueeshop_config": ""
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.ueeshop.com"
+  },
+  "Ultimate": {
+    "cats": [
+      52,
+      53
+    ],
+    "description": "Ultimate is a platform for automating customer service using conversational and generative AI technology.",
+    "icon": "Ultimate.png",
+    "js": {
+      "ultimateAiLogin": "",
+      "ultimateAiUpdateUser": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "website": "https://www.ultimate.ai"
+  },
+  "Ultimate Addons for Elementor": {
+    "cats": [
+      87
+    ],
+    "description": "Ultimate Addons for Elementor is a plugin that adds new widgets and modules to the Elementor page builder for WordPress, providing additional design options and functionality.",
+    "dom": {
+      "link[href*='/wp-content/plugins/ultimate-elementor/']": {
+        "attributes": {
+          "href": "/wp-content/plugins/ultimate-elementor/.+\\.css(?:\\?ver=(\\d+(?:\\.\\d+)+))?\\;version:\\1"
+        }
+      }
+    },
+    "icon": "Ultimate Addons for Elementor.svg",
+    "implies": "Elementor",
+    "js": {
+      "uael_particles_script.particles_url": "/wp-content/plugins/ultimate-elementor/"
+    },
+    "pricing": [
+      "onetime",
+      "low",
+      "recurring"
+    ],
+    "requires": "WordPress",
+    "website": "https://ultimateelementor.com"
+  },
+  "Ultimate Bulletin Board": {
+    "cats": [
+      2
+    ],
+    "description": "Ultimate Bulletin Board is an internet forum software designed for online communities, offering features such as user registration, thread organisation, moderation tools, search functionality, and customisable design options to facilitate discussions and community engagement.",
+    "implies": "PHP",
+    "meta": {
+      "generator": "^UBB\\.threads\\s([\\d\\.]+)$\\;version:\\1"
+    },
+    "pricing": [
+      "onetime"
+    ],
+    "website": "https://www.ubbcentral.com"
+  },
+  "Ultimate GDPR & CCPA": {
+    "cats": [
+      67,
+      87
+    ],
+    "description": "Ultimate GDPR & CCPA is a compliance toolkit for WordPress by createIT",
+    "icon": "Ultimate GDPR & CCPA.png",
+    "js": {
+      "ct_ultimate_gdpr_cookie": ""
+    },
+    "pricing": [
+      "low"
+    ],
+    "requires": "WordPress",
+    "website": "https://www.createit.com/gdpr"
+  },
+  "UltimatelySocial": {
+    "cats": [
+      87
+    ],
+    "description": "Ultimately Social (Share Buttons & Sharing Icons) is a plugin that allows you to place fancy social media icons and buttons on your WordPress website.",
+    "icon": "UltimatelySocial.png",
+    "pricing": [
+      "freemium",
+      "onetime"
+    ],
+    "requires": "WordPress",
+    "scriptSrc": "/wp-content/plugins/ultimate-social-media-icons/",
+    "website": "https://www.ultimatelysocial.com"
+  },
+  "UltraCart": {
+    "cats": [
+      6
+    ],
+    "html": "<form [^>]*action=\"[^\"]*\\/cgi-bin\\/UCEditor\\?(?:[^\"]*&)?merchantId=[^\"]",
+    "icon": "UltraCart.png",
+    "js": {
+      "ucCatalog": ""
+    },
+    "scriptSrc": "cgi-bin\\/UCJavaScript\\?",
+    "url": "/cgi-bin/UCEditor\\?",
+    "website": "https://ultracart.com"
+  },
+  "Umami": {
+    "cats": [
+      10
+    ],
+    "description": "Umami is a self-hosted web analytics solution. It's goal is to provide a friendlier, privacy-focused alternative to Google Analytics and a free, open-sourced alternative to paid solutions.",
+    "icon": "umami.svg",
+    "js": {
+      "umami": ""
+    },
+    "oss": true,
+    "scriptSrc": "umami\\.js",
+    "website": "https://umami.is/"
+  },
+  "Umbraco": {
+    "cats": [
+      1
+    ],
+    "cookies": {
+      "merchello": "\\;version:7"
+    },
+    "description": "Umbraco is an open-source Microsoft ASP.NET based content management system.",
+    "dom": [
+      "script[src*='/UmbracoForms/']",
+      "a[data-udi^='umb://']",
+      "form[action^='/umbraco/Surface/']",
+      "a[href^='/umbraco/Surface/']",
+      "fieldset.umbraco-forms-fieldset"
+    ],
+    "headers": {
+      "X-Umbraco-Version": "^(.+)$\\;version:\\1"
+    },
+    "icon": "Umbraco.svg",
+    "implies": "Microsoft ASP.NET",
+    "js": {
+      "ITEM_INFO_SERVICE": "",
+      "UC_IMAGE_SERVICE": "",
+      "UC_ITEM_INFO_SERVICE": "",
+      "UC_SETTINGS": "",
+      "Umbraco": ""
+    },
+    "meta": {
+      "generator": "umbraco"
+    },
+    "oss": true,
+    "pricing": [
+      "freemium",
+      "recurring",
+      "low"
+    ],
+    "saas": true,
+    "scripts": "/Umbraco/Api/",
+    "url": "/umbraco/login\\.aspx(?:$|\\?)",
+    "website": "https://umbraco.com/",
+    "xhr": "/umbraco/api/"
+  },
+  "UmiJs": {
+    "cats": [
+      12
+    ],
+    "description": "UmiJs is a scalable, enterprise-class frontend application framework that supports both configuration and conventional routing while maintaining functional completeness, such as dynamic routing, nested routing, and permission routing.",
+    "icon": "UmiJs.png",
+    "implies": "Node.js",
+    "js": {
+      "g_umi.version": "([\\d\\.]+)\\;version:\\1"
+    },
+    "oss": true,
+    "scriptSrc": "/umi(\\.[\\w\\d]{8})?\\.js",
+    "website": "https://umijs.org"
+  },
+  "Umso": {
+    "cats": [
+      51
+    ],
+    "description": "Umso is a website builder for Startups.",
+    "dom": "link[href*='.umso.co/'], img[src*='.umso.co/'], video[poster*='.umso.co/']",
+    "icon": "Umso.svg",
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scripts": "isPriorBlockingEnabled\\;confidence:75",
+    "website": "https://www.umso.com"
+  },
+  "Unas": {
+    "cats": [
+      6
+    ],
+    "cookies": {
+      "UnasID": "",
+      "UnasServiceProxyID": ""
+    },
+    "description": "Unas is an all-in-one ecommerce platform from Hungary.",
+    "icon": "Unas.svg",
+    "js": {
+      "UNAS.shop": "",
+      "unas_shop_url": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://unas.hu"
+  },
+  "Unbounce": {
+    "cats": [
+      20,
+      51
+    ],
+    "description": "Unbounce is a tool to build landing pages.",
+    "headers": {
+      "X-Unbounce-PageId": ""
+    },
+    "icon": "Unbounce.png",
+    "scriptSrc": "ubembed\\.com",
+    "website": "https://unbounce.com"
+  },
+  "Unbox": {
+    "cats": [
+      6
+    ],
+    "description": "Unbox is an ecommerce platform for D2C brands.",
+    "dom": "link[imagesrcset*='unbox-customer-images-production'], img[srcset*='unbox-customer-images-production']",
+    "icon": "unbox.svg",
+    "js": {
+      "__NEXT_DATA__.props.pageProps.shop.storeTemplateUrl": "unbox-store-production"
+    },
+    "pricing": [
+      "low",
+      "recurring",
+      "freemium"
+    ],
+    "requires": "Next.js",
+    "saas": true,
+    "website": "https://unbox.com.br"
+  },
+  "Unbxd": {
+    "cats": [
+      76,
+      29
+    ],
+    "description": "Unbxd is an ecommerce product discovery platform that applies artificial intelligence and advanced data sciences to connect shoppers to the products they are most likely to buy.",
+    "icon": "Unbxd.svg",
+    "js": {
+      "Unbxd.version": "^([\\d\\.]+)$\\;version:\\1"
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": [
+      "\\.cloudfront\\.net/unbxdAnalytics\\.js",
+      "unbxd\\.s\\d\\.amazonaws\\.com"
+    ],
+    "website": "https://unbxd.com"
+  },
+  "Underscore.js": {
+    "cats": [
+      59
+    ],
+    "description": "Underscore.js is a JavaScript library which provides utility functions for common programming tasks. It is comparable to features provided by Prototype.js and the Ruby language, but opts for a functional programming design instead of extending object prototypes.",
+    "excludes": "Lodash",
+    "icon": "Underscore.js.png",
+    "js": {
+      "_.VERSION": "^(.+)$\\;confidence:0\\;version:\\1",
+      "_.restArguments": ""
+    },
+    "scriptSrc": "underscore.*\\.js(?:\\?ver=([\\d.]+))?\\;version:\\1",
+    "website": "https://underscorejs.org"
+  },
+  "Understrap": {
+    "cats": [
+      80
+    ],
+    "description": "Understrap is a renowned WordPress starter theme framework that combined Underscores and Bootstrap.",
+    "icon": "Understrap.png",
+    "implies": [
+      "Bootstrap",
+      "Underscore.js"
+    ],
+    "pricing": [
+      "freemium"
+    ],
+    "requires": "WordPress",
+    "scriptSrc": "wp-content/themes/understrap(?:[masterchild-]+)?(?:[masterchild-]+)?/",
+    "website": "https://understrap.com"
+  },
+  "UniFi OS": {
+    "cats": [
+      28
+    ],
+    "description": "UniFi OS is the operating system for UniFi products, which provides a user interface.",
+    "icon": "UniFi_OS.png",
+    "js": {
+      "unifiConstant.VERSION": "^([\\d+\\.]+)$\\;version:\\1"
+    },
+    "requires": "AngularJS",
+    "website": "https://www.ui.com/"
+  },
+  "Uniconsent": {
+    "cats": [
+      67
+    ],
+    "description": "Uniconsent is a Consent Management Platform.",
+    "icon": "Uniconsent.svg",
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "cmp\\.uniconsent\\.mgr\\.consensu\\.org/",
+    "website": "https://www.uniconsent.com/"
+  },
+  "Unicorn Platform": {
+    "cats": [
+      1,
+      51
+    ],
+    "description": "Unicorn Platform is a drag and drop website and blog builder for startups, mobile apps, and SaaS.",
+    "icon": "Unicorn Platform.svg",
+    "js": {
+      "unicornplatform": ""
+    },
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://unicornplatform.com"
+  },
+  "UnoCSS": {
+    "cats": [
+      66
+    ],
+    "css": "--un-(?:rotate|translate|space-x|text-opacity|border-opacity)",
+    "description": "UnoCSS is instant on-demand Atomic CSS engine.",
+    "dom": {
+      "style[data-unocss]": {
+        "attributes": {
+          "data-unocss": "([\\d\\.]+)\\;version:\\1"
+        }
+      }
+    },
+    "icon": "UnoCSS.svg",
+    "oss": true,
+    "website": "https://uno.antfu.me/"
+  },
+  "Unpkg": {
+    "cats": [
+      31
+    ],
+    "description": "Unpkg is a content delivery network for everything on npm.",
+    "dom": "link[href*='unpkg.com']",
+    "icon": "Unpkg.png",
+    "oss": true,
+    "scriptSrc": "unpkg\\.com/",
+    "website": "https://unpkg.com"
+  },
+  "Unpoly": {
+    "cats": [
+      12
+    ],
+    "description": "Unpoly is an unobtrusive Javascript framework for applications that render on the server.",
+    "icon": "Unpoly.svg",
+    "js": {
+      "up.CompilerPass": "\\;confidence:25",
+      "up.framework": "\\;confidence:26",
+      "up.version": "([\\d\\.]+)\\;version:\\1\\;confidence:0"
+    },
+    "oss": true,
+    "scriptSrc": "/unpoly@([\\d\\.]+)/unpoly\\.min\\.js\\;version:\\1",
+    "website": "https://unpoly.com"
+  },
+  "Unruly": {
+    "cats": [
+      36
+    ],
+    "description": "Unruly is a video advertising platform.",
+    "dom": "link[href*='.unrulymedia.com']",
+    "icon": "Unruly.svg",
+    "js": {
+      "unruly.native": ""
+    },
+    "pricing": [
+      "payg"
+    ],
+    "saas": true,
+    "website": "https://unruly.co"
+  },
+  "UpSellit": {
+    "cats": [
+      98
+    ],
+    "description": "UpSellit is a performance based lead and cart abandonment recovery solutions.",
+    "icon": "UpSellit.png",
+    "js": {
+      "usi_analytics": "\\;confidence:25",
+      "usi_app": "\\;confidence:25",
+      "usi_commons": "\\;confidence:25",
+      "usi_cookies": "\\;confidence:25"
+    },
+    "pricing": [
+      "poa",
+      "mid"
+    ],
+    "saas": true,
+    "scriptSrc": "www\\.upsellit\\.com/",
+    "website": "https://us.upsellit.com"
+  },
+  "UpSolution Zephyr": {
+    "cats": [
+      80
+    ],
+    "description": "Zephyr is a WordPress theme developed by UpSolution, a software development company based in Ukraine that specialises in creating themes and plugins for WordPress.",
+    "icon": "UpSolution.png",
+    "pricing": [
+      "onetime"
+    ],
+    "requires": "WordPress",
+    "scriptSrc": "/wp-content/themes/Zephyr/.+us\\.theme\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?\\;version:\\1",
+    "website": "https://zephyr.us-themes.com"
+  },
+  "Upfluence": {
+    "cats": [
+      71
+    ],
+    "description": "Upfluence is the all-in-one affiliate and influencer marketing platform for ecommerce and direct-to-consumer brands.",
+    "icon": "Upfluence.svg",
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.upfluence\\.co/",
+    "website": "https://www.upfluence.com"
+  },
+  "Upgates": {
+    "cats": [
+      6
+    ],
+    "description": "Upgates is a subscription-based ecommerce software used to build eshops.",
+    "icon": "Upgates.svg",
+    "js": {
+      "upgates": ""
+    },
+    "meta": {
+      "web_author": "^UPgates$"
+    },
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.upgates.com"
+  },
+  "Uploadcare": {
+    "cats": [
+      31
+    ],
+    "description": "Uploadcare is a complete file handling platform for online business. Receive files from you users via File Uploader or File Upload API, implement image optimization and transformations with Image CDN API, and get HIPAA-compliant storage.",
+    "dom": "img[src*='.ucarecdn.com/'], link[href*='ucarecdn.com'], img[data-src*='.ucarecdn.com/']",
+    "icon": "Uploadcare.svg",
+    "js": {
+      "uploadcare.version": "^([\\d\\.]+)$\\;version:\\1"
+    },
+    "pricing": [
+      "freemium",
+      "payg"
+    ],
+    "website": "https://uploadcare.com"
+  },
+  "Upptime": {
+    "cats": [
+      13
+    ],
+    "description": "Upptime is the open-source uptime monitor and status page, powered entirely by GitHub Actions, Issues, and Pages.",
+    "dom": {
+      "p > a[href*='upptime.js.org']": {
+        "text": "^Upptime$"
+      }
+    },
+    "icon": "Upptime.svg",
+    "oss": true,
+    "website": "https://upptime.js.org"
+  },
+  "Upsales": {
+    "cats": [
+      32,
+      53
+    ],
+    "description": "Upsales is an enterprise CRM and marketing automation tool.",
+    "icon": "Upsales.svg",
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "img\\.upsales\\.com/",
+    "website": "https://www.upsales.com"
+  },
+  "Upserve": {
+    "cats": [
+      93
+    ],
+    "description": "Upserve is a restaurant management solution featuring an Android or iOS-based point-of-sale system, online ordering, contactless payments, automated inventory management, sales analytics, and more.",
+    "dom": "a[href*='app.upserve.com/']",
+    "icon": "Upserve.svg",
+    "pricing": [
+      "payg"
+    ],
+    "saas": true,
+    "scriptSrc": "app\\.upserve\\.com/",
+    "website": "https://onlineordering.upserve.com"
+  },
+  "UptimeRobot": {
+    "cats": [
+      13
+    ],
+    "description": "UptimeRobot is a web-based software that is designed to monitor the sites frequently to check whether any site is down owing to server problem or any bug in coding.",
+    "dom": {
+      "a[href*='uptimerobot.com']": {
+        "attributes": {
+          "href": "(?:\\.|//)uptimerobot\\.com/"
+        }
+      }
+    },
+    "headers": {
+      "content-security-policy": "\\.uptimerobot\\.com"
+    },
+    "icon": "UptimeRobot.svg",
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.uptimerobot\\.com/",
+    "website": "https://uptimerobot.com"
+  },
+  "Uptrends": {
+    "cats": [
+      78,
+      13
+    ],
+    "description": "Uptrends is a website and web performance monitoring solution.",
+    "icon": "Uptrends.svg",
+    "js": {
+      "UTBOOMR.version": "([\\d\\.]+)\\;version:\\1"
+    },
+    "pricing": [
+      "payg"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.uptrendsdata\\.com/",
+    "website": "https://www.uptrends.com"
+  },
+  "Upvoty": {
+    "cats": [
+      47
+    ],
+    "dom": {
+      "div.upvotyContainer": {
+        "text": ""
+      }
+    },
+    "icon": "upvoty.png",
+    "implies": "PHP",
+    "js": {
+      "upvoty": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://upvoty.com"
+  },
+  "UsableNet": {
+    "cats": [
+      68
+    ],
+    "description": "UsableNet is a technology for web accessibility and digital transformation, providing end-to-end services.",
+    "dom": "iframe[src*='.usablenet.com/pt/']",
+    "icon": "UsableNet.png",
+    "js": {
+      "enableUsableNetAssistive": ""
+    },
+    "pricing": [
+      "poa",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.usablenet\\.com/pt/",
+    "website": "https://usablenet.com"
+  },
+  "Uscreen": {
+    "cats": [
+      14
+    ],
+    "description": "Uscreen is a CMS to monetize VOD and live content. They provide site hosting, video hosting, and a payment gateway for selling video based content.",
+    "dom": {
+      ".powered-by-uscreen": {
+        "text": ""
+      }
+    },
+    "icon": "Uscreen.svg",
+    "js": {
+      "analyticsHost": "stats\\.uscreen\\.io"
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://uscreen.tv/"
+  },
+  "User Accessibility": {
+    "cats": [
+      68
+    ],
+    "description": "User Accessibility is a solution incorporating automated site scanning and machine learning for future updates, while utilising JS to conform to WECAG standards for improved website and application accessibility.",
+    "icon": "User Accessibility.svg",
+    "pricing": [
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "//system\\.user-a\\.co\\.il/",
+    "website": "https://user-a.co.il"
+  },
+  "UserLike": {
+    "cats": [
+      52
+    ],
+    "description": "Userlike is a cloud-based live chat solution that can be integrated with existing websites.",
+    "icon": "UserLike.svg",
+    "js": {
+      "__USERLIKE_MOUNT_GUARD__": "",
+      "userlike": "",
+      "userlikeInit": ""
+    },
+    "pricing": [
+      "freemium",
+      "payg"
+    ],
+    "saas": true,
+    "scriptSrc": [
+      "userlike\\.min\\.js",
+      "userlikelib\\.min\\.js",
+      "//userlike-cdn-widgets\\.",
+      "api\\.userlike\\.com"
+    ],
+    "website": "https://userlike.com"
+  },
+  "UserReport": {
+    "cats": [
+      13,
+      73
+    ],
+    "description": "UserReport is an online survey and feedback management platform.",
+    "dom": "a[href*='feedback.userreport.com/'][target='_blank']",
+    "icon": "UserReport.svg",
+    "pricing": [
+      "freemium",
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.userreport\\.com/",
+    "website": "https://www.userreport.com"
+  },
+  "UserRules": {
+    "cats": [
+      13
+    ],
+    "icon": "UserRules.png",
+    "js": {
+      "_usrp": ""
+    },
+    "website": "https://www.userrules.com"
+  },
+  "UserVoice": {
+    "cats": [
+      13,
+      73
+    ],
+    "description": "UserVoice is a management to collect and analyse feedback from customers.",
+    "icon": "UserVoice.svg",
+    "js": {
+      "UserVoice": ""
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.uservoice\\.com/",
+    "website": "https://uservoice.com"
+  },
+  "UserWay": {
+    "cats": [
+      68
+    ],
+    "description": "UserWay is a web accessibility overlay for websites that claims to improve compliance with accessibility standards.",
+    "icon": "UserWay.svg",
+    "scriptSrc": "cdn\\.userway\\.org/widget.*\\.js",
+    "website": "https://userway.org/"
+  },
+  "UserZoom": {
+    "cats": [
+      74,
+      10
+    ],
+    "description": "UserZoom is a cloud-based user experience solution.",
+    "icon": "UserZoom.svg",
+    "pricing": [
+      "poa",
+      "high",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.userzoom\\.com/",
+    "website": "https://www.userzoom.com"
+  },
+  "Userback": {
+    "cats": [
+      73,
+      13
+    ],
+    "description": "Userback is a platform offering visual feedback and bug tracking solutions for websites and web applications, allowing users to provide feedback through screenshots and annotations.",
+    "icon": "Userback.svg",
+    "js": {
+      "Userback.access_token": ""
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://userback.io"
+  },
+  "Userbase": {
+    "cats": [
+      69
+    ],
+    "description": "Userbase is a tool facilitating login integration and user data persistence for static websites.",
+    "icon": "Userbase.svg",
+    "js": {
+      "userbase": ""
+    },
+    "oss": true,
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://userbase.com"
+  },
+  "Usercentrics": {
+    "cats": [
+      67
+    ],
+    "description": "Usercentrics is a SaaS enterprise solution for Consent Management (CMP) that helps enterprise customers to obtain, manage and document the user consent.",
+    "dom": "link[href*='app.usercentrics.eu'], script[data-usercentrics]",
+    "icon": "Usercentrics.svg",
+    "js": {
+      "usercentrics.appVersion": "([\\d.]+)\\;version:\\1"
+    },
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.usercentrics\\.eu/.+\\.js",
+    "website": "https://usercentrics.com"
+  },
+  "Userflow": {
+    "cats": [
+      58
+    ],
+    "description": "Userflow is a user onboarding software for building product tours and onboarding checklists, tailored to your app and your users.",
+    "icon": "Userflow.svg",
+    "js": {
+      "USERFLOWJS_QUEUE": "",
+      "userflow.endAllFlows": "\\;confidence:50",
+      "userflow.endChecklist": "\\;confidence:50"
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.userflow\\.com/",
+    "website": "https://userflow.com"
+  },
+  "Userpilot": {
+    "cats": [
+      58,
+      97
+    ],
+    "description": "Userpilot is a cloud-based product experience platform designed for customer success and product teams to onboard users and increase product adoption through behavior-triggered experiences.",
+    "icon": "Userpilot.svg",
+    "js": {
+      "userpilot.triggerById": "",
+      "userpilotInitiatorSDK": "",
+      "userpilotPako": ""
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://userpilot.com"
+  },
+  "Ushahidi": {
+    "cats": [
+      1,
+      35
+    ],
+    "cookies": {
+      "ushahidi": ""
+    },
+    "description": "Ushahidi is a tool that collects crowdsourced data and targeted survey responses from multiple data sources.",
+    "icon": "Ushahidi.png",
+    "implies": [
+      "PHP",
+      "MySQL",
+      "OpenLayers"
+    ],
+    "js": {
+      "Ushahidi": ""
+    },
+    "scriptSrc": "/js/ushahidi\\.js$",
+    "website": "https://www.ushahidi.com"
+  },
+  "Usizy": {
+    "cats": [
+      76
+    ],
+    "description": "Usizy is the top size recommendation and prediction solution for ecommerce using machine learning, big data, and isomoprhic algorythms.",
+    "icon": "Usizy.svg",
+    "js": {
+      "uSizyUniversal": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "static\\.usizy\\.es/",
+    "website": "https://usizy.com"
+  },
+  "Uvicorn": {
+    "cats": [
+      22
+    ],
+    "cpe": "cpe:2.3:a:encode:uvicorn:*:*:*:*:*:*:*:*",
+    "description": "Uvicorn is an ASGI server implementation for Python web applications, commonly used with frameworks like FastAPI to enable asynchronous and high-performance handling of web requests.",
+    "headers": {
+      "Server": "uvicorn"
+    },
+    "icon": "uvicorn.png",
+    "implies": "Python",
+    "oss": true,
+    "website": "https://www.uvicorn.org"
+  },
+  "Uvodo": {
+    "cats": [
+      6
+    ],
+    "description": "Uvodo is an ecommerce platform built with React, PHP, and MySQL, offering local and global payment integration, robust selling tools, and no additional expenses.",
+    "icon": "Uvodo.svg",
+    "implies": [
+      "MySQL",
+      "PHP",
+      "React"
+    ],
+    "pricing": [
+      "freemium",
+      "recurring",
+      "low"
+    ],
+    "saas": true,
+    "scriptSrc": "cdn\\.uvo\\.do/",
+    "website": "https://uvodo.com"
+  },
+  "Uzerly": {
+    "cats": [
+      77
+    ],
+    "description": "Uzerly is a technology-focused company specializing in retargeting.",
+    "headers": {
+      "content-security-policy": "\\.u(?:s|z)erly\\.net"
+    },
+    "icon": "Uzerly.png",
+    "pricing": [
+      "poa",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.userly\\.net/",
+    "website": "https://uzerly.fr"
+  },
+  "uKnowva": {
+    "cats": [
+      50,
+      101
+    ],
+    "description": "uKnowva is a mobile-enabled HRMS software.",
+    "headers": {
+      "X-Content-Encoded-By": "uKnowva ([\\d.]+)\\;version:\\1"
+    },
+    "html": "<a[^>]+>Powered by uKnowva</a>",
+    "icon": "uKnowva.png",
+    "implies": "PHP",
+    "meta": {
+      "generator": "uKnowva (?: ([\\d.]+))?\\;version:\\1"
+    },
+    "scriptSrc": "/media/conv/js/jquery\\.js",
+    "website": "https://uknowva.com"
+  },
+  "uLogin": {
+    "cats": [
+      69
+    ],
+    "description": "uLogin is a tool that enables its users to get unified access to various Internet services.",
+    "icon": "uLogin.png",
+    "js": {
+      "uLogin.version": "^([\\d\\.]+)$\\;version:\\1"
+    },
+    "pricing": [
+      "freemium"
+    ],
+    "saas": true,
+    "website": "https://ulogin.ru"
+  },
+  "uMarketingSuite": {
+    "cats": [
+      10,
+      76
+    ],
+    "description": "uMarketingSuite is a set of diverse features that together form a full marketing suite for the Umbraco platform.",
+    "icon": "uMarketingSuite.svg",
+    "implies": "Umbraco",
+    "js": {
+      "uMarketingSuite": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "website": "https://www.umarketingsuite.com"
+  },
+  "uPlot": {
+    "cats": [
+      25
+    ],
+    "description": "uPlot is a small, fast chart for time series, lines, areas, ohlc and bars.",
+    "icon": "uPlot.png",
+    "js": {
+      "uPlot": ""
+    },
+    "oss": true,
+    "website": "https://leeoniya.github.io/uPlot"
+  },
+  "uPortal": {
+    "cats": [
+      21
+    ],
+    "description": "uPortal is an open source enterprise portal framework built by and for higher education institutions.",
+    "icon": "uPortal.png",
+    "implies": "Java",
+    "js": {
+      "uportal": ""
+    },
+    "meta": {
+      "description": " uPortal "
+    },
+    "oss": true,
+    "website": "https://www.apereo.org/projects/uportal"
+  },
+  "uRemediate": {
+    "cats": [
+      68
+    ],
+    "description": "uRemediate provides web accessibility testing tools and accessibility overlays.",
+    "icon": "User1st.png",
+    "scriptSrc": "fecdn\\.user1st\\.info/Loader/head",
+    "website": "https://www.user1st.com/uremediate/"
+  },
+  "user.com": {
+    "cats": [
+      10
+    ],
+    "html": "<div[^>]+/id=\"ue_widget\"",
+    "icon": "user.com.svg",
+    "js": {
+      "UserEngage": ""
+    },
+    "website": "https://user.com"
+  },
+  "utterances": {
+    "cats": [
+      15
+    ],
+    "description": "Utterances is a lightweight comments widget built on GitHub issues.",
+    "dom": "iframe[src*='utteranc.es']",
+    "icon": "utterances.svg",
+    "oss": true,
+    "website": "https://utteranc.es/",
+    "xhr": "\\.utteranc\\.es"
+  }
+}

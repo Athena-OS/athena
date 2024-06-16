@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com/url\\?.+&q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com/url\\?q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com/url\\?.+&url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com/url\\?url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.cat/url\\?.+&q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.cat/url\\?q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.cat/url\\?.+&url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.cat/url\\?url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com\\.../url\\?.+&q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com\\.../url\\?q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com\\.../url\\?.+&url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.com\\.../url\\?url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.../url\\?.+&q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.../url\\?q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.../url\\?.+&url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.../url\\?url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.co\\.../url\\?.+&q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.co\\.../url\\?q=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.co\\.../url\\?.+&url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.google\\.co\\.../url\\?url=(https?://[^&%]+)(?:&.*|$)",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  }
+]

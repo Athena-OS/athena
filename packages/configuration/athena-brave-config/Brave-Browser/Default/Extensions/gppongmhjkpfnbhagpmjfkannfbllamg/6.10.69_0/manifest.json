@@ -1,0 +1,61 @@
+{
+   "action": {
+      "default_icon": {
+         "1024": "images/icon_1024.png",
+         "128": "images/icon_128.png",
+         "16": "images/icon_16.png",
+         "19": "images/icon_19.png",
+         "256": "images/icon_256.png",
+         "32": "images/icon_32.png",
+         "38": "images/icon_38.png",
+         "512": "images/icon_512.png",
+         "64": "images/icon_64.png"
+      },
+      "default_popup": "html/popup.html",
+      "default_title": "Wappalyzer"
+   },
+   "author": "Wappalyzer",
+   "background": {
+      "service_worker": "js/background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "js/content.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_idle"
+   } ],
+   "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+   },
+   "default_locale": "en",
+   "description": "Identify web technologies",
+   "differential_fingerprint": "1.0a1eddd6f5b8ce405e9a1cad81031160a851594de9509d5553e6106ddf85ce03",
+   "homepage_url": "https://www.wappalyzer.com/",
+   "host_permissions": [ "http://*/*", "https://*/*" ],
+   "icons": {
+      "1024": "images/icon_1024.png",
+      "128": "images/icon_128.png",
+      "16": "images/icon_16.png",
+      "19": "images/icon_19.png",
+      "256": "images/icon_256.png",
+      "32": "images/icon_32.png",
+      "38": "images/icon_38.png",
+      "512": "images/icon_512.png",
+      "64": "images/icon_64.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTx6NfXtZyfrF1kTv+h0o1P0yovMsOKjocLmo+8eCQmrGS4FayUspVq/UtL0zbKnK3xXW1kfGVkOAy5TfZ6fUMoHWF7NyXEsvD+jQ6HLDOkHq/VDcN6i5hJhmYORwdFNhBAmYZY0ORd65AR2wHlxJoCRuyz25Ys/rxMaQad/zHHwIDAQAB",
+   "manifest_version": 3,
+   "name": "Wappalyzer - Technology profiler",
+   "optional_permissions": [ "downloads" ],
+   "options_page": "html/options.html",
+   "permissions": [ "cookies", "storage", "tabs", "webRequest" ],
+   "short_name": "Wappalyzer",
+   "storage": {
+      "managed_schema": "schema.json"
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "6.10.69",
+   "web_accessible_resources": [ {
+      "matches": [ "http://*/*", "https://*/*" ],
+      "resources": [ "js/js.js", "js/dom.js" ]
+   } ]
+}
