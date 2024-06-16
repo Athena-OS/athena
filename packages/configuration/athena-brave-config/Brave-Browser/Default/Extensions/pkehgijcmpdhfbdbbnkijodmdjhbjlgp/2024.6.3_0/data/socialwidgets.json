@@ -1,0 +1,485 @@
+{
+    "Aparat Player": {
+        "domain": "www.aparat.com",
+        "buttonSelectors": [
+            "iframe[src^='https://www.aparat.com/embed/']",
+            "iframe[src^='https://www.aparat.com/video/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.aparat.com"
+            ],
+            "type": 3
+        }
+    },
+    "Apple Music": {
+        "domains": [
+            "embed.music.apple.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://embed.music.apple.com/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "embed.music.apple.com"
+            ],
+            "type": 3
+        }
+    },
+    "Bilibili Player": {
+        "domain": "player.bilibili.com",
+        "buttonSelectors": [
+            "iframe[src^='//player.bilibili.com/player.html']",
+            "iframe[src^='https://player.bilibili.com/player.html']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "player.bilibili.com"
+            ],
+            "type": 3
+        }
+    },
+    "BitChute": {
+        "domains": [
+            "www.bitchute.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://www.bitchute.com/embed/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.bitchute.com"
+            ],
+            "type": 3
+        }
+    },
+    "Captivate Player": {
+        "domain": "player.captivate.fm",
+        "buttonSelectors": [
+            "iframe[src^='https://player.captivate.fm/']",
+            "iframe[src^='//player.captivate.fm/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "player.captivate.fm"
+            ],
+            "type": 3
+        }
+    },
+    "Coub Player": {
+        "domain": "coub.com",
+        "buttonSelectors": [
+            "iframe[src^='//coub.com/embed/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "coub.com"
+            ],
+            "type": 3
+        }
+    },
+    "Dailymotion Player": {
+        "domain": "www.dailymotion.com",
+        "buttonSelectors": [
+            "iframe[src^='http://www.dailymotion.com/embed/video/']",
+            "iframe[src^='https://www.dailymotion.com/embed/video/']",
+            "iframe[src^='//www.dailymotion.com/embed/video/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.dailymotion.com"
+            ],
+            "type": 3
+        }
+    },
+    "Discord": {
+        "domains": [
+            "discord.com",
+            "discordapp.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://discord.com/widget?']",
+            "iframe[src^='https://discordapp.com/widget?']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "discord.com",
+                "discordapp.com"
+            ],
+            "type": 3
+        }
+    },
+    "Disqus": {
+        "domains": [
+            "disqus.com",
+            "*.disqus.com"
+        ],
+        "buttonSelectors": [
+            "div#disqus_thread"
+        ],
+        "scriptSelectors": [
+            "script[src*='.disqus.com/embed.js']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "*.disqus.com",
+                "disqus.com"
+            ],
+            "type": 4
+        }
+    },
+    "Facebook Like": {
+        "domain": "www.facebook.com",
+        "buttonSelectors": [
+            "fb\\:like",
+            "iframe[src*='://www.facebook.com/plugins/like.php']",
+            "iframe[src*='://www.facebook.com/v2.0/plugins/like.php']",
+            ".fb-like"
+        ],
+        "replacementButton": {
+            "details": "https://www.facebook.com/plugins/like.php?href=",
+            "unblockDomains": [
+                "www.facebook.com"
+            ],
+            "imagePath": "FacebookLike.svg",
+            "type": 1
+        }
+    },
+    "Facebook Page": {
+        "domain": "www.facebook.com",
+        "buttonSelectors": [
+            "iframe[src^='https://www.facebook.com/plugins/page.php?']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.facebook.com"
+            ],
+            "type": 3
+        }
+    },
+    "Facebook Post": {
+        "domain": "www.facebook.com",
+        "buttonSelectors": [
+            "iframe[src^='https://www.facebook.com/plugins/post.php?']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.facebook.com"
+            ],
+            "type": 3
+        }
+    },
+    "Facebook Share": {
+        "domain": "www.facebook.com",
+        "buttonSelectors": [
+            "fb\\:share_button",
+            "iframe[src*='://www.facebook.com/plugins/share_button.php']",
+            "iframe[src*='://www.facebook.com/v2.0/plugins/share_button.php']",
+            ".fb-share-button"
+        ],
+        "replacementButton": {
+            "details": "https://www.facebook.com/plugins/share_button.php?href=",
+            "unblockDomains": [
+                "www.facebook.com"
+            ],
+            "imagePath": "FacebookShare.svg",
+            "type": 1
+        }
+    },
+    "Facebook Video": {
+        "domain": "www.facebook.com",
+        "buttonSelectors": [
+            "iframe[src^='https://www.facebook.com/plugins/video.php?']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.facebook.com"
+            ],
+            "type": 3
+        }
+    },
+    "Google Maps": {
+        "domains": [
+            "maps.google.com",
+            "www.google.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://maps.google.com/maps/']",
+            "iframe[src^='https://maps.google.com/maps?']",
+            "iframe[src^='https://www.google.com/maps/']"
+        ],
+        "noDirectLink": true,
+        "replacementButton": {
+            "unblockDomains": [
+                "maps.google.com",
+                "www.google.com"
+            ],
+            "type": 3
+        }
+    },
+    "Google reCAPTCHA": {
+        "domains": [
+            "google.com",
+            "www.google.com",
+            "recaptcha.net",
+            "www.recaptcha.net"
+        ],
+        "buttonSelectors": [
+            "div.g-recaptcha",
+            "div#g-recaptcha",
+            "fieldset#g-recaptcha"
+        ],
+        "scriptSelectors": [
+            "script[src^='//google.com/recaptcha/api.js']",
+            "script[src^='https://google.com/recaptcha/api.js']",
+            "script[src^='https://www.google.com/recaptcha/api.js']",
+            "script[src^='//recaptcha.net/recaptcha/api.js']",
+            "script[src^='https://recaptcha.net/recaptcha/api.js']",
+            "script[src^='https://www.recaptcha.net/recaptcha/api.js']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "google.com",
+                "www.google.com",
+                "recaptcha.net",
+                "www.recaptcha.net"
+            ],
+            "type": 4
+        }
+    },
+    "iHeart Player": {
+        "domain": "www.iheart.com",
+        "buttonSelectors": [
+            "iframe[src^='https://www.iheart.com/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.iheart.com"
+            ],
+            "type": 3
+        }
+    },
+    "LinkedIn": {
+        "domain": "platform.linkedin.com",
+        "buttonSelectors": [
+            "script[type='in/share']"
+        ],
+        "replacementButton": {
+            "details": "http://www.linkedin.com/shareArticle?mini=true&url=",
+            "imagePath": "LinkedIn.svg",
+            "type": 0
+        }
+    },
+    "OK Video Player": {
+        "domain": "ok.ru",
+        "buttonSelectors": [
+            "iframe[src^='https://ok.ru/videoembed/']",
+            "iframe[src^='//ok.ru/videoembed/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "ok.ru"
+            ],
+            "type": 3
+        }
+    },
+    "Pinterest Image": {
+        "domain": "assets.pinterest.com",
+        "buttonSelectors": [
+            "iframe[src^='https://assets.pinterest.com/ext/embed.html']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "assets.pinterest.com"
+            ],
+            "type": 3
+        }
+    },
+    "Qualtrics": {
+        "domains": [
+            "*.qualtrics.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src*='.qualtrics.com/jfe/form/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "*.qualtrics.com"
+            ],
+            "type": 3
+        }
+    },
+    "Rumble Video Player": {
+        "domain": "rumble.com",
+        "buttonSelectors": [
+            "iframe[src^='https://rumble.com/embed/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "rumble.com"
+            ],
+            "type": 3
+        }
+    },
+    "Rutube Player": {
+        "domains": [
+            "rutube.ru",
+            "www.rutube.ru"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://rutube.ru/pl/']",
+            "iframe[src^='https://rutube.ru/embed/']",
+            "iframe[src^='https://rutube.ru/play/embed/']",
+            "iframe[src^='https://www.rutube.ru/play/embed/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "rutube.ru",
+                "www.rutube.ru"
+            ],
+            "type": 3
+        }
+    },
+    "SoundCloud": {
+        "domain": "w.soundcloud.com",
+        "buttonSelectors": [
+            "iframe[src^='https://w.soundcloud.com/player']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "w.soundcloud.com"
+            ],
+            "type": 3
+        }
+    },
+    "Spotify Player": {
+        "domains": [
+            "embed.spotify.com",
+            "open.spotify.com",
+            "podcasters.spotify.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://embed.spotify.com/']",
+            "iframe[src^='https://open.spotify.com/embed']",
+            "iframe[src^='https://podcasters.spotify.com/pod/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "embed.spotify.com",
+                "embed-standalone.spotify.com",
+                "open.spotify.com",
+                "podcasters.spotify.com"
+            ],
+            "type": 3
+        }
+    },
+    "Streamable Player": {
+        "domain": "streamable.com",
+        "buttonSelectors": [
+            "iframe[src^='https://streamable.com/']",
+            "iframe[src^='//streamable.com/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "streamable.com"
+            ],
+            "type": 3
+        }
+    },
+    "TikTok": {
+        "domains": [
+            "www.tiktok.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://www.tiktok.com/embed/']",
+            "iframe[src^='//www.tiktok.com/embed/']",
+            "blockquote[cite^='https://www.tiktok.com/@']"
+        ],
+        "scriptSelectors": [
+            "script[src^='https://www.tiktok.com/embed.js']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "www.tiktok.com",
+                "*.tiktokcdn-us.com"
+            ],
+            "type": 3
+        }
+    },
+    "Twitch Player": {
+        "domain": "player.twitch.tv",
+        "buttonSelectors": [
+            "iframe[src^='https://player.twitch.tv/']",
+            "iframe[src^='//player.twitch.tv/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "player.twitch.tv"
+            ],
+            "type": 3
+        }
+    },
+    "Vimeo": {
+        "domains": [
+            "player.vimeo.com",
+            "vimeo.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='https://player.vimeo.com/video/']:not([src*='background=1'])",
+            "iframe[src^='//player.vimeo.com/video/']:not([src*='background=1'])",
+            "iframe[src^='https://vimeo.com/showcase/']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "player.vimeo.com",
+                "vimeo.com"
+            ],
+            "type": 3
+        }
+    },
+    "X (Twitter)": {
+        "domain": "platform.twitter.com",
+        "buttonSelectors": [
+            "blockquote[class*='twitter-tweet']",
+            "blockquote[class*='twitter-video']",
+            "iframe[src^='https://platform.twitter.com/embed/Tweet.html']"
+        ],
+        "scriptSelectors": [
+            "script[src='https://platform.twitter.com/widgets.js']",
+            "script[src='//platform.twitter.com/widgets.js']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "platform.twitter.com",
+                "syndication.twitter.com",
+                "twitter.com"
+            ],
+            "type": 3
+        }
+    },
+    "YouTube": {
+        "domains": [
+            "youtube.com",
+            "www.youtube.com",
+            "www.youtube-nocookie.com"
+        ],
+        "buttonSelectors": [
+            "iframe[src^='//youtube.com/embed']",
+            "iframe[src^='//www.youtube.com/embed']",
+            "iframe[src^='http://www.youtube.com/embed']",
+            "iframe[src^='https://www.youtube.com/embed']",
+            "iframe[src^='https://youtube.com/embed']",
+            "iframe[src^='https://www.youtube.com/v/']",
+            "iframe[src^='//www.youtube-nocookie.com/embed']",
+            "iframe[src^='https://www.youtube-nocookie.com/embed']"
+        ],
+        "replacementButton": {
+            "unblockDomains": [
+                "youtube.com",
+                "www.youtube.com",
+                "www.youtube-nocookie.com"
+            ],
+            "type": 3
+        }
+    }
+}

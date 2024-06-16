@@ -1,0 +1,111 @@
+! Title: uBlock filters – Quick fixes
+! Expires: 12 hours
+! Last modified: Tue, 21 May 2024 09:37:39 +0000
+! Diff-Path: %diffpath%#ublock-quick-fixes
+! Diff-Expires: 317 minutes
+! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
+! *** uAssets:filters/quick-fixes.txt ***
+*$script,redirect-rule=noopjs,domain=dropgalaxy.*|financemonk.net
+*$xhr,redirect-rule=nooptext,domain=dropgalaxy.*|financemonk.net
+*$frame,redirect-rule=noopframe,domain=dropgalaxy.*|financemonk.net
+*$image,redirect-rule=32x32.png,domain=dropgalaxy.*|financemonk.net
+@@*$ghide,domain=dropgalaxy.*|financemonk.net
+||d1rp4yowwe587e.cloudfront.net^$script,domain=dropgalaxy.*|financemonk.net,important
+||imasdk.googleapis.com/js/sdkloader/ima3.js$script,redirect-rule=google-ima.js,domain=dropgalaxy.*|financemonk.net
+||pocpoc.io^$domain=dropgalaxy.*|financemonk.net
+||mobileoffers-ep-download.com^$domain=dropgalaxy.*|financemonk.net
+@@||histats.com/js.js$script,domain=dropgalaxy.*|financemonk.net
+@@||popads.net/js/adblock.js$script,domain=dropgalaxy.*|financemonk.net
+@@||cdn.jsdelivr.net/gh/prebid/*$script,domain=dropgalaxy.*|financemonk.net
+@@||fundingchoicesmessages.google.com^$script,domain=dropgalaxy.*|financemonk.net
+@@||googlesyndication.com^$frame,image,domain=dropgalaxy.*|financemonk.net
+@@||s10.histats.com/js15_as.js$script,domain=dropgalaxy.*|financemonk.net
+@@*$script,xhr,from=dropgalaxy.*|financemonk.net,to=googlesyndication.com|doubleclick.net|rsc.cdn77.org|vlitag.com|adoto.net|a2zapk.com|login.popmonetizer.com
+dropgalaxy.*,financemonk.net##+js(nowoif)
+dropgalaxy.*,financemonk.net##+js(trusted-set, document.visibilityState, visible)
+dropgalaxy.*,financemonk.net##+js(set, supportedBrowsers, )
+dropgalaxy.*,financemonk.net##html.i-amphtml-inabox
+dropgalaxy.*,financemonk.net##[id^="TR-"][tr-id][style*="z-index: 9999"]
+! aternos anti adb
+@@||hb.vntsm.com/v3/live/ad-manager-bundle.min.js$script,domain=aternos.org
+@@||hb.vntsm.com/ab/live/fatum/ad-manager-bundle.min.js$script,domain=aternos.org
+aternos.org##.header-center:style(margin-top:-5000px !important;)
+aternos.org##.sidebar:style(width: 1.745px !important; padding: 1px !important)
+aternos.org##.ad-dfp:style(min-height: 0.1485mm !important; height: 0.1485mm !important;)
+aternos.org###placement-takeover
+! pixsera
+imgjbxzjv.shop,imgjmgfgm.shop,picxnkjkhdf.sbs,imgxxbdf.sbs,imgnngr.sbs,imgjjtr.sbs,imgqbbds.sbs,imgbvdf.sbs,imgqnnnebrf.sbs,imgebrf.sbs##+js(aopr, console.clear)
+imgjbxzjv.shop,imgjmgfgm.shop,picxnkjkhdf.sbs,imgxxbdf.sbs,imgnngr.sbs,imgjjtr.sbs,imgqbbds.sbs,imgbvdf.sbs,imgqnnnebrf.sbs,imgebrf.sbs##+js(nano-sib, timer)
+imgjbxzjv.shop,imgjmgfgm.shop,picxnkjkhdf.sbs,imgxxbdf.sbs,imgnngr.sbs,imgjjtr.sbs,imgqbbds.sbs,imgbvdf.sbs,imgqnnnebrf.sbs,imgebrf.sbs##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgjbxzjv.shop,imgjmgfgm.shop,picxnkjkhdf.sbs,imgxxbdf.sbs,imgnngr.sbs,imgjjtr.sbs,imgqbbds.sbs,imgbvdf.sbs,imgqnnnebrf.sbs,imgebrf.sbs##div[style="width:100%;height:110px"]
+imgjbxzjv.shop,imgjmgfgm.shop,picxnkjkhdf.sbs,imgxxbdf.sbs,imgnngr.sbs,imgjjtr.sbs,imgqbbds.sbs,imgbvdf.sbs,imgqnnnebrf.sbs,imgebrf.sbs##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgjbxzjv.shop,imgjmgfgm.shop,picxnkjkhdf.sbs,imgxxbdf.sbs,imgnngr.sbs,imgjjtr.sbs,imgqbbds.sbs,imgbvdf.sbs,imgqnnnebrf.sbs,imgebrf.sbs##div[class][style="display: block;"]
+!#if !env_mv3
+!#if !cap_html_filtering
+!#if env_firefox
+youtube.com##+js(json-prune, playerResponse.adPlacements playerResponse.playerAds playerResponse.adSlots adPlacements playerAds adSlots legacyImportant)
+!#endif
+!#endif
+!#endif
+||googlevideo.com/videoplayback*&ctier=L&*%2Cctier%2C$xhr,3p,domain=m.youtube.com|music.youtube.com|www.youtube.com
+!m.youtube.com,music.youtube.com,www.youtube.com##+js(trusted-rpnt, script, /^(\(function serverContract\(\))/s, '/*start*/(function(){const wrapper=(target,thisArg,args)=>{let content=Reflect.apply(target,thisArg,args);if(content.includes("ssapPrerollEnabled")){const modifiedContent=content.replace(/\n.\n.playerConfig\.ssapConfig\.ssapPrerollEnabled.{2}(?:tru|fals)e/,"");return modifiedContent;}return content;};const handler={apply:wrapper};window.atob=new Proxy(window.atob,handler);document.currentScript.textContent=document.currentScript.textContent.replace(/\/\*start\*\/(.*)\/\*end\*\//g,"");}());/*end*/$1')
+m.youtube.com,music.youtube.com,www.youtube.com##+js(set, ytInitialPlayerResponse.playerConfig.ssapConfig, undefined)
+m.youtube.com,music.youtube.com,www.youtube.com##+js(set, ytInitialPlayerResponse.streamingData.serverAbrStreamingUrl, undefined)
+m.youtube.com,music.youtube.com,www.youtube.com##+js(json-prune, playerResponse.playerConfig.ssapConfig playerResponse.streamingData.serverAbrStreamingUrl playerConfig.ssapConfig streamingData.serverAbrStreamingUrl)
+m.youtube.com,music.youtube.com,www.youtube.com##+js(trusted-rpnt, script, /^(\(function serverContract\(\))/s, /*start*/(function(){const wrapper=(target\,thisArg\,args)=>{let result=Reflect.apply(target\,thisArg\,args);try{const decoded=atob(result);if(decoded.includes("ssapPrerollEnabled")){const modifiedContent=decoded.replace(/\n.\n.playerConfig\.ssapConfig\.ssapPrerollEnabled.{2}(?:tru|fals)e/\,"");const encodeToBase64=btoa(modifiedContent);return encodeToBase64;}}catch(e){}return result;};const handler={apply:wrapper};window.Array.prototype.join=new Proxy(window.Array.prototype.join\,handler);document.currentScript.textContent=document.currentScript.textContent.replace(/\/\*start\*\/(.*)\/\*end\*\//g\,"");})();/*end*/$1)
+! VOE sites
+||imasdk.googleapis.com/js/sdkloader/ima3.js$script,3p,redirect=google-ima.js,domain=sethniceletter.com,important
+sethniceletter.com##+js(nowoif)
+sethniceletter.com##+js(set, console.clear, undefined)
+! ytlarge detection
+@@||ytlarge.com^$ghide
+@@||googlesyndication.com^$script,xhr,domain=ytlarge.com
+@@||fundingchoicesmessages.google.com^$script,xhr,domain=ytlarge.com
+@@||g.doubleclick.net/pagead/ads?$frame,domain=ytlarge.com
+||googleads.g.doubleclick.net/pagead/ads$frame,removeparam=/^(?:correlator|f[cr-w]|p[e-sv]|u_|ga_|url|dt|adk)/,domain=ytlarge.com
+@@*$script,frame,1p,domain=ytlarge.com
+.com/ad/$~image,third-party,domain=~mediaplex.com|~warpwire.com|~wsj.com,badfilter
+.com/adz/$badfilter
+@@*$script,domain=ytlarge.com,denyallow=googletagmanager.com|googlesyndication.com|topcreativeformat.com
+! next-episode .net
+!next-episode.net##+js(rmnt, script, '/[\s\S]{0,}head[\s\S]{1900,}/')
+!next-episode.net##+js(rpnt, script, '/.then[\s\S]{0,}?;/g')
+!next-episode.net##+js(rmnt, script, '/\d+\+\d|64|\+\+|\+1|adbl|ablk|[\s\S]{0,}(\.\.|function)[\s\S]{1800,}|document\[/i')
+@@||pagead2.googlesyndication.com^$script,domain=next-episode.net
+download.megaup.net##+js(rpnt, script, ['name']!='id', ['name']!= true && false && ['name']!='id', condition, attribute)
+raenonx.cc##body > div[class] > style:first-child + .w-full:has(> .button-clickable-bg-opaque > .transform-smooth > svg)
+raenonx.cc##.w-full:has(> style + div > style + div .adsbygoogle)
+raenonx.cc##[id^="headlessui-"] [role="dialog"]:has(.w-full > .w-full > .markdown > p > a[href="https://pks.raenonx.cc/en/docs/view/help/disable-adblock"])
+raenonx.cc##.w-full > div[class*="min-h-"]:has(> style + div > .markdown > p > a[href*="adblock"])
+raenonx.cc##.size-full > .w-full > .flex-col > style + div:has-text(/blocker|ブロッカー/)
+raenonx.cc##html[style*="hidden"]:style(overflow: visible !important;)
+@@*$xhr,3p,method=head,domain=raenonx.cc
+@@||googlesyndication.com/|$xhr,domain=raenonx.cc
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xhr,domain=raenonx.cc
+! in-jpn.com anti-adb
+oninet.ne.jp,xth.jp##[id]:has(> ins.adsbygoogle):style(height: 100px !important; position: absolute !important; left: -4000px !important;)
+oninet.ne.jp##table:style(visibility: visible !important;)
+oninet.ne.jp##^script[defer]:has-text(.clientHeight <)
+!#if cap_html_filtering
+in-jpn.com,xth.jp##^script:has-text(フィルタリングを無効)
+||in-jpn.com^$script,replace=/w_mode==1/1/
+||in-jpn.com^$script,replace=/function myFunc[\s\S\n]+?doSakigake\(\);[\s\S\n]+?\}//
+!#endif
+in-jpn.com,oninet.ne.jp,xth.jp##+js(set, myFunc, noopFunc)
+rollingstone.com#@#+js(aopr, googletag)
+/AC_OETags.js$badfilter
+||livedoor.blogimg.jp/kee0501-kinsoku/$domain=kinsoku.blog.jp,badfilter
+||livedoor.blogimg.jp/kee0501-ihphds0p/$domain=kinsoku.blog.jp,badfilter
+avherald.com#@#+js(rmnt, script, '"v4ac1eiZr0"')
+||fewcents.co/scripts/paywall-$3p
+/^https:\/\/www\.sparkasse(?:-[a-z]{6,}){1,2}\.[a-z]{2,4}\//$doc,domain=~edu|~gov|~sparkasse.de,badfilter
+||sparkasse-freising-moosburg.de^$all,to=~sparkasse.de,badfilter
+x.com,twitter.com#@##layers > div[class] > div[class]:has(> div[class] > div[data-testid="BottomBar"])
+*$media,domain=deezer.com|~widget.deezer.com,redirect=noopmp3-0.1s,badfilter
+twitter.com,twitter3e4tixl4xyajtrzo62zg5vztmjuricljdp2c5kshju4avyoid.onion,x.com#@#[data-testid="trend"]:has-text(/Promoted|Gesponsert|Promocionado|Patrocinat|Sponsorisé|Sponsorizzato|Promowane|Promovido|Реклама|Uitgelicht|Sponsorlu|Promotert|Promoveret|Sponsrad|Mainostettu|Sponzorováno|Promovat|Ajánlott|Προωθημένο|Dipromosikan|Được quảng bá|推廣|推广|推薦|推荐|広告|프로모션|ประชาสัมพันธ์|प्रचारित|বিজ্ঞাপিত|تشہیر شدہ|مُروَّج|تبلیغی|מקודם/):upward(1)
+@@||cxense.com/cx.cce.js$domain=shueisha.co.jp
+@@||googletagmanager.com/gtm.js$domain=sportiva.shueisha.co.jp
+kotobank.jp##+js(nostif, return, 7400)
+/affiliate.js$badfilter
+||html-load.com/loader.min.js$script,domain=ndtvprofit.com
+||peraichi.com^$doc,badfilter

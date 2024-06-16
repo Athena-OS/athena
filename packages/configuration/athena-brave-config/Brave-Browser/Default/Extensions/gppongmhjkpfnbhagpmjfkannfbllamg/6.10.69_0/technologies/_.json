@@ -1,0 +1,287 @@
+{
+  "1C-Bitrix": {
+    "cats": [
+      1,
+      6
+    ],
+    "cookies": {
+      "BITRIX_SM_GUEST_ID": "",
+      "BITRIX_SM_LAST_IP": "",
+      "BITRIX_SM_SALE_UID": ""
+    },
+    "description": "1C-Bitrix is a system of web project management, universal software for the creation, support and successful development of corporate websites and online stores.",
+    "headers": {
+      "Set-Cookie": "BITRIX_",
+      "X-Powered-CMS": "Bitrix Site Manager"
+    },
+    "icon": "1C-Bitrix.svg",
+    "implies": "PHP",
+    "pricing": [
+      "onetime",
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "bitrix(?:\\.info/|/js/main/core)",
+    "website": "https://www.1c-bitrix.ru"
+  },
+  "24nettbutikk": {
+    "cats": [
+      6
+    ],
+    "cookies": {
+      " _gat_24nb": "\\;confidence:50",
+      "24nb": "\\;confidence:50"
+    },
+    "description": "24nettbutikk is an ecommerce platform from Norway.",
+    "icon": "24nettbutikk.svg",
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "requires": "Cart Functionality",
+    "saas": true,
+    "website": "https://www.24nettbutikk.no"
+  },
+  "2B Advice": {
+    "cats": [
+      67
+    ],
+    "description": "2B Advice provides a plug-in to manage GDPR cookie consent.",
+    "icon": "2badvice.png",
+    "js": {
+      "BBCookieControler": ""
+    },
+    "saas": true,
+    "scriptSrc": "2badvice-cdn\\.azureedge\\.net",
+    "website": "https://www.2b-advice.com/en/data-privacy-software/cookie-consent-plugin/"
+  },
+  "2ClickShop": {
+    "cats": [
+      6
+    ],
+    "description": "2ClickShop is an ecommerce platform integrated with ERP systems, catering to both B2B and B2C transactions.",
+    "icon": "2ClickShop.svg",
+    "meta": {
+      "author": "^Trol Intermedia / 2ClickShop$"
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://2click.pl"
+  },
+  "30namaPlayer": {
+    "cats": [
+      14
+    ],
+    "description": "30namaPlayer is a modified version of Video.js to work with videos on HTML using javascript.",
+    "dom": "section[class*='player30nama']",
+    "icon": "30namaPlayer.png",
+    "website": "https://30nama.com/"
+  },
+  "33Across": {
+    "cats": [
+      36
+    ],
+    "description": "33Across is a technology company focused on solving the challenge of consumer attention for automated advertising.",
+    "dom": "iframe[src*='.33across.com'], link[href*='.33across.com'], link[href*='.tynt.com']",
+    "icon": "33Across.png",
+    "js": {
+      "Tynt": ""
+    },
+    "saas": true,
+    "scriptSrc": [
+      "\\.33across\\.com/",
+      "\\.tynt\\.com/"
+    ],
+    "website": "https://www.33across.com",
+    "xhr": "\\.33across\\.com"
+  },
+  "34SP.com": {
+    "cats": [
+      88
+    ],
+    "description": "34SP.com specialises in website hosting, discount domain names, low cost VPS servers and dedicated servers.",
+    "dns": {
+      "SOA": "ns(?:\\d+)?\\.34sp\\.com"
+    },
+    "icon": "34SP.com.svg",
+    "pricing": [
+      "recurring",
+      "low"
+    ],
+    "website": "https://www.34sp.com"
+  },
+  "4-Tell": {
+    "cats": [
+      76
+    ],
+    "cookies": {
+      "4Tell": "",
+      "4TellCart": "",
+      "4TellSession": ""
+    },
+    "description": "4-Tell is an ecommerce software company for retailers with AI-powered personalisation and recommendations products.",
+    "icon": "4-Tell.png",
+    "js": {
+      "_4TellBoost": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "4tellcdn\\.azureedge\\.net",
+    "website": "https://4-tell.com"
+  },
+  "42stores": {
+    "cats": [
+      6
+    ],
+    "description": "42stores is a French SaaS ecommerce solution that was established in 2008. It offers a range of features such as monitoring, customer support, and regular updates. The platform is known for its flexibility and modularity, making it possible to integrate with various ERP systems.",
+    "headers": {
+      "Powered-By": "^42stores$"
+    },
+    "icon": "42stores.svg",
+    "pricing": [
+      "poa",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.42stores.com"
+  },
+  "4Partners": {
+    "cats": [
+      99
+    ],
+    "description": "4Partners is an international dropshipping service that allows you to launch a ready-made online store.",
+    "icon": "4Partners.svg",
+    "pricing": [
+      "poa"
+    ],
+    "website": "https://4partners.io/en/"
+  },
+  "4Partners CMS": {
+    "cats": [
+      6
+    ],
+    "description": "4Partners CMS is a cloud-based solution designed for ecommerce shops.",
+    "icon": "4Partners.svg",
+    "implies": [
+      "PHP",
+      "4Partners",
+      "Nginx"
+    ],
+    "meta": {
+      "author": "^4CMS$"
+    },
+    "pricing": [
+      "poa"
+    ],
+    "website": "https://4partners.io/en/4p-cms"
+  },
+  "51.LA": {
+    "cats": [
+      10
+    ],
+    "description": "51.LA is a Chinese based website visitor counter.",
+    "icon": "51.LA.png",
+    "js": {
+      "LA.config.ck": ""
+    },
+    "pricing": [
+      "freemium",
+      "recurring",
+      "payg"
+    ],
+    "saas": true,
+    "website": "https://www.51.la"
+  },
+  "5centsCDN": {
+    "cats": [
+      31
+    ],
+    "description": "5centsCDN is a content delivery networks service provider.",
+    "dom": "link[href*='.5centscdn.com/']",
+    "headers": {
+      "x-cdn": "^5centsCDN$"
+    },
+    "icon": "5centsCDN.svg",
+    "pricing": [
+      "recurring",
+      "low"
+    ],
+    "scriptSrc": "\\.5centscdn\\.com/",
+    "website": "https://www.5centscdn.net"
+  },
+  "6sense": {
+    "cats": [
+      32,
+      76
+    ],
+    "description": "6sense is a B2B predictive intelligence platform for marketing and sales.",
+    "headers": {
+      "Content-Security-Policy": "\\.6sc\\.co/"
+    },
+    "icon": "6sense.svg",
+    "pricing": [
+      "poa",
+      "high",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.6sc\\.co/",
+    "website": "https://6sense.com"
+  },
+  "8base": {
+    "cats": [
+      3,
+      62
+    ],
+    "description": "8base is a low-code development platform for building and running enterprise-grade digital products including SaaS solutions, marketplaces and other go-to-market applications.",
+    "icon": "8base.svg",
+    "pricing": [
+      "low",
+      "freemium",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://8base.com",
+    "xhr": "api\\.8base\\.com"
+  },
+  "<model-viewer>": {
+    "cats": [
+      105
+    ],
+    "description": "<model-viewer> is an open-source web component developed by Google and maintained through GitHub. <model-viewer> aims at putting 3D content on the web easily with a few lines of HTML code. This was first introduced with Chrome 72 in July 2019 and enables users to view 3D in the browser and mobile devices.",
+    "dom": "model-viewer",
+    "icon": "model-viewer.svg",
+    "oss": true,
+    "scriptSrc": "/model-viewer/dist/model-viewer\\.min\\.js",
+    "website": "https://modelviewer.dev"
+  },
+  "@sulu/web": {
+    "cats": [
+      59
+    ],
+    "icon": "Sulu.svg",
+    "js": {
+      "web.startComponents": ""
+    },
+    "website": "https://github.com/sulu/web-js"
+  },
+  "_hyperscript ": {
+    "cats": [
+      59
+    ],
+    "description": "_​hyperscript is a scripting language for adding interactivity to the front-end.",
+    "icon": "_hyperscript.png",
+    "js": {
+      "_hyperscript": ""
+    },
+    "oss": true,
+    "scriptSrc": "//unpkg\\.com/hyperscript\\.org@([\\d\\.]+)\\;version:\\1",
+    "website": "https://hyperscript.org"
+  }
+}

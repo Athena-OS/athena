@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Penetration Testing Kit - cross-browser extension for penetration testing" name="description" />
+    <meta content="Penetration Testing Kit, request builder, traffic recording, macro recording" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+    <title>OWASP Penetration Testing Kit - Dashboard</title>
+
+    <script src="../packages/browser-polyfill/browser-polyfill.min.js"></script>
+    <script src="../packages/jquery/jquery.min.js"></script>
+    <script src="../packages/jquery/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="../packages/semantic-ui/semantic.min.css" type="text/css" />
+    <script src="../packages/semantic-ui/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/default.css" type="text/css" />
+    <script src="assets/js/menu.js"></script>
+    <script type="module" src="assets/js/index.js"></script>
+
+</head>
+
+<body>
+    <!-- <div class="ui left mini vertical inverted  sidebar menu slide along visible">
+        <a class="item">
+            <img src="assets/images/hacker_w1.png" id="ptkicon" title="OWASP Penetration Testing Kit">
+          Home
+        </a>
+        <a class="item" href="session.html" data-history="session">Cookies</a>
+        <a class="item" href="sca.html" data-history="sca">SCA</>
+            <a class="item" href="proxy.html" data-history="proxy">Proxy</a>
+            <a class="item" href="rbuilder.html" data-history="rbuilder">R-Builder</a>
+            <a class="item" href="rattacker.html" data-history="rattacker">R-Attacker</a>
+            <a class="item" href="jwt.html" data-history="jwt">JWT Inspector</a>
+            <a class="item" href="decoder.html" data-history="decoder">Decoder</a>
+            
+
+            <a class="item" href="recording.html" data-history="recording">Macro</a>
+
+            <div class="ui top left pointing dropdown item" >Tools<i class="dropdown icon"></i>
+                <div class="menu" style="width: 120px;top: 25px;">
+                
+                
+                <a class="item" href="swagger-editor.html" data-history="swagger-editor">Swagger</a>
+
+                <a class="item" href="portscanner.html" data-history="portscanner">Port Scanner</a>
+                </div>
+            </div>
+      </div> -->
+
+
+    <div id="mainMenuWrapper">
+        <div class="ui segment clearing info_tab">
+            <div id="dashboard_message_text" class="ui left floated header short_message_text"
+                style="width: calc(100vw - 240px);"></div>
+            <div class="ui right floated header buttons" style="width: 200px">
+                <button id="generate_report" class="ui black button right floated disabled"
+                    style="min-width: 150px;">Generate report</button>
+            </div>
+        </div>
+    </div>
+    <div id="pagecontent"  style="padding-top:80px;">
+        <div id="main" class="ui segment" style="padding: 4px 0px 40px 0px;margin: 0px;border:none">
+
+            <div class="ui two column grid" style="height: 45vh;">
+
+                <!-- Tech stack -->
+                <div class="column" style="padding-right: 4px;">
+                    <div class="ui fluid card" style="min-height: 245px; height: 40vh; overflow: hidden;">
+                        <div class="content ">
+                            <div class="ui small header"><i class="sticky note icon"></i>Technology stack</div>
+                            <div id="technologies"
+                                style="height: 300px; overflow: scroll; margin-top: 5px;scrollbar-width: none;">
+                                <div class="container">
+                                    <table id="tbl_technologies"
+                                        class="ui celled table small responsive nowrap unstackable" width="100%"
+                                        style="margin-bottom: 104px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Version</th>
+                                                <th>CVE</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="position:absolute; top:4px;right: 4px">
+                            <div class="ui active centered inline inverted loader technologies"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column" style="padding-left: 4px;">
+                    <div class="ui fluid card" style="min-height: 245px; height: 40vh; overflow: hidden;">
+                        <div class="content">
+                            <div class="ui small header"><i class="th list icon"></i> OWASP Secure Headers </div>
+                            <div id="owasp_passive"
+                                style="height: 300px; overflow: scroll; margin-top: 5px; scrollbar-width: none;">
+                                <table id="tbl_owasp" class="ui celled table small responsive nowrap unstackable"
+                                    width="100%" style="margin-bottom: 104px;">
+                                    <thead>
+                                        <tr>
+                                            <th>Header Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="position:absolute; top:4px;right: 4px">
+                            <div class="ui active centered inline inverted loader owasp"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---->
+            <div class="ui two column grid" style="height:45vh; margin-top: 0px; padding-top:0px">
+
+                <!-- Tech stack -->
+                <div class="column" style="padding-right: 4px;">
+                    <div id="waf_wrapper" class="ui fluid card"
+                        style="min-height: 245px; height: 40vh; overflow: hidden;">
+                        <div class="content">
+                            <div class="ui small header"><i class="user secret icon"></i>WAF / CDN</div>
+                            <div id="waf"
+                                style="height: 300px; overflow: scroll; margin-top: 5px;scrollbar-width: none;">
+                                <div class="container">
+                                    <table id="tbl_waf" class="ui celled table small responsive nowrap unstackable"
+                                        width="100%" style="margin-bottom: 104px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="position:absolute; top:4px;right: 4px">
+                            <div class="ui active centered inline inverted loader waf"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column" style="padding-left: 4px;">
+                    <div class="ui fluid card" style="min-height: 245px; height: 40vh; overflow: hidden;">
+                        <div class="content">
+             
+                            <div class="ui small header"><i class="key icon"></i> Storage / Authentication</div>
+                            <div id="storage"
+                                style="height: 300px; overflow: scroll; margin-top: 5px; scrollbar-width: none;">
+                                <table id="tbl_storage" class="ui celled table small responsive nowrap unstackable"
+                                    width="100%" style="margin-bottom: 104px;">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div id="jwt_btn" style="position: absolute;top: 0px;right: 0px;margin-top:0px; display: none"><h2 class="ui primary small button">
+                                <i class="icons">
+                                  <i class="eye icon"></i>
+                                </i>
+                                JWT
+                              </h2></div>
+                        </div>
+                        <div style="position:absolute; top:4px;right: 4px">
+                            <div class="ui active centered inline inverted loader storage"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer_menu"></div>
+
+</body>
+
+<div id="storage_auth" class="ui fullscreen modal" style="display: none; height: 83%">
+    <i class="close icon"></i>
+    <div class="ui small header">Storage and authentication information:</div>
+    <div class="content" id="dialogStorageAuth" style="min-height: 400px; overflow: scroll;height:90%">
+        <form class="ui tiny form controls" id="request_form">
+            <div class="ui top attached pointing secondary menu" style="margin-left: -1px;">
+                <a class="active item" data-tab="cookie">Cookie</a>
+                <a class="item" data-tab="localStorage" style="display: none">Local storage</a>
+                <a class="item" data-tab="sessionStorage" style="display: none">Session storage</a>
+                <a class="item" data-tab="tokens" style="display: none">Tokens</a>
+                <a class="item" data-tab="headers" style="display: none">Headers</a>
+            </div>
+            <div class="ui bottom attached active tab segment" data-tab="cookie" style="height: 100%;overflow: scroll;"
+                id='cookieform'>
+                <table id="tbl_cookie" class="ui celled table small responsive nowrap unstackable" width="100%"
+                    style="margin-bottom: 104px;">
+                    <thead>
+                        <tr>
+                            <th>Domain</th>
+                            <th>Name</th>
+                            <th>Value</th>
+                            <th>HttpOnly</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="localStorage" style="height: 100%;overflow: scroll;">
+                <pre style="overflow:scroll"><code id="localStorageText"></code></pre>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="sessionStorage"
+                style="height: 100%;overflow: scroll;">
+                <pre style="overflow:scroll"><code id="sessionStorageText"></code></pre>
+
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="tokens" style="height: 100%;overflow: scroll;">
+                <table id="tbl_tokens" class="ui celled table small responsive nowrap unstackable" width="100%"
+                    style="margin-bottom: 104px;">
+                    <thead>
+                        <tr>
+                            <th>In</th>
+                            <th>Decoded</th>
+                            <th>Token</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="headers" style="height: 100%;overflow: scroll;">
+                <table id="tbl_headers" class="ui celled table small responsive nowrap unstackable" width="100%"
+                    style="margin-bottom: 104px;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>

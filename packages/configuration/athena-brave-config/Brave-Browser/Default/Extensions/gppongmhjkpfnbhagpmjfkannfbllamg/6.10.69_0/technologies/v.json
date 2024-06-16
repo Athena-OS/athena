@@ -1,0 +1,1582 @@
+{
+  "V2Board": {
+    "cats": [
+      64
+    ],
+    "description": "V2Board is a multi-agent protocol management system with an interface for managing multiple proxy protocols.",
+    "dom": "link[href*='/theme/v2board/assets/']",
+    "icon": "V2Board.png",
+    "oss": true,
+    "website": "https://v2board.com"
+  },
+  "VAPTCHA": {
+    "cats": [
+      16
+    ],
+    "description": "VAPTCHA is the abbreviation of (Variation Analysis based Public Turing Test to Tell Computers and Humans Apart), also known as gesture verification code, is a human-machine verification solution based on artificial intelligence and big data.",
+    "icon": "VAPTCHA.svg",
+    "js": {
+      "vaptcha": ""
+    },
+    "pricing": [
+      "poa",
+      "freemium"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.vaptcha\\.com/v([\\d\\.]+)\\.js\\;version:\\1",
+    "website": "https://en.vaptcha.com"
+  },
+  "VDX.tv": {
+    "cats": [
+      36
+    ],
+    "description": "VDX.tv (formerly Exponential) is a global advertising technology company that is transforming the way brands connect with relevant audiences in today's converging video landscape.",
+    "dom": "link[href*='.tribalfusion.com'], link[href*='.exponential.com']",
+    "icon": "VDX.tv.png",
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": [
+      "\\.tribalfusion\\.com/",
+      "\\.exponential\\.com"
+    ],
+    "website": "https://vdx.tv"
+  },
+  "VIVVO": {
+    "cats": [
+      1
+    ],
+    "cookies": {
+      "VivvoSessionId": ""
+    },
+    "icon": "VIVVO.png",
+    "js": {
+      "vivvo": ""
+    },
+    "website": "https://vivvo.net"
+  },
+  "VK Pixel": {
+    "cats": [
+      10
+    ],
+    "description": "VK is a Russian online social media and social networking service.",
+    "dom": "img[src*='vk.com/rtrg?p=VK-RTRG-']",
+    "icon": "vk.svg",
+    "scriptSrc": "vk\\.com/js/api/openapi\\.js",
+    "website": "https://vk.com/"
+  },
+  "VKUI": {
+    "cats": [
+      66
+    ],
+    "description": "VKUI is a set of React components with which you can create interfaces that are visually indistinguishable from our iOS and Android applications.",
+    "dom": "html.vkui",
+    "icon": "vk.svg",
+    "oss": true,
+    "website": "https://vkcom.github.io/VKUI"
+  },
+  "VP-ASP": {
+    "cats": [
+      6
+    ],
+    "html": "<a[^>]+>Powered By VP-ASP Shopping Cart</a>",
+    "icon": "VP-ASP.png",
+    "implies": "Microsoft ASP.NET",
+    "scriptSrc": "vs350\\.js",
+    "website": "https://www.vpasp.com"
+  },
+  "VTEX": {
+    "cats": [
+      6
+    ],
+    "cookies": {
+      "VtexFingerPrint": "",
+      "VtexStoreVersion": "",
+      "VtexWorkspace": "",
+      "vtex_session": ""
+    },
+    "description": "VTEX is an ecommerce software that manages multiple online stores.",
+    "dom": "link[href*='.vteximg.com.br'], source[srcset*='.vteximg.com.br']",
+    "headers": {
+      "Server": "^VTEX IO$",
+      "powered": "vtex"
+    },
+    "icon": "VTEX.svg",
+    "js": {
+      "vtex": ""
+    },
+    "pricing": [
+      "payg"
+    ],
+    "saas": true,
+    "website": "https://vtex.com/"
+  },
+  "VWO": {
+    "cats": [
+      10,
+      74
+    ],
+    "description": "VWO is a website testing and conversion optimisation platform.",
+    "icon": "VWO.svg",
+    "js": {
+      "VWO": "",
+      "__vwo": "",
+      "_vwo_code": "",
+      "_vwo_settings_timer": ""
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": [
+      "dev\\.visualwebsiteoptimizer\\.com/",
+      "/visual-website-optimizer/([\\d\\.])\\;version:\\1"
+    ],
+    "website": "https://vwo.com"
+  },
+  "VWO Engage": {
+    "cats": [
+      32
+    ],
+    "description": "VWO Engage is a part of the VWO Platform, which is a web-based push notification platform used by SaaS and B2B marketers, online content publishers, and ecommerce store owners.",
+    "icon": "VWO.svg",
+    "js": {
+      "_pushcrewDebuggingQueue": ""
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "cdn\\.pushcrew\\.\\w+",
+    "website": "https://vwo.com/engage"
+  },
+  "Vaadin": {
+    "cats": [
+      18
+    ],
+    "description": "Vaadin is an open-source framework for building user interfaces and single-page applications using Java and TypeScript.",
+    "icon": "Vaadin.svg",
+    "implies": "Java",
+    "js": {
+      "vaadin": ""
+    },
+    "scriptSrc": "vaadinBootstrap\\.js(?:\\?v=([\\d.]+))?\\;version:\\1",
+    "website": "https://vaadin.com"
+  },
+  "ValueCommerce": {
+    "cats": [
+      71
+    ],
+    "description": "ValueCommerce is a pay-per-performance advertising affiliate marketing network.",
+    "dom": {
+      "a[href*='ap.valuecommerce.com']": {
+        "attributes": {
+          "href": ""
+        }
+      },
+      "img[src*='ap.valuecommerce.com'],img[data-src*='ap.valuecommerce.com']": {
+        "attributes": {
+          "src": ""
+        }
+      }
+    },
+    "icon": "ValueCommerce.png",
+    "scriptSrc": "\\.valuecommerce\\.com",
+    "website": "https://www.valuecommerce.co.jp"
+  },
+  "Vanco Payment Solutions": {
+    "cats": [
+      111,
+      41
+    ],
+    "description": "Vanco Payment Solutions provides credit card processing to nonprofits.",
+    "dom": "a[href*='.eservicepayments.com/']",
+    "icon": "Vanco.svg",
+    "pricing": [
+      "payg",
+      "recurring",
+      "low"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.eservicepayments\\.com/",
+    "website": "https://www.vancopayments.com"
+  },
+  "Vanilla": {
+    "cats": [
+      2
+    ],
+    "description": "Vanilla is a both a cloud-based (SaaS) open-source community forum software.",
+    "headers": {
+      "X-Powered-By": "Vanilla"
+    },
+    "html": "<body id=\"(?:DiscussionsPage|vanilla)",
+    "icon": "Vanilla.png",
+    "implies": "PHP",
+    "website": "https://vanillaforums.org"
+  },
+  "Vant": {
+    "cats": [
+      66
+    ],
+    "description": "Vant is a lightweight, customisable Vue UI library for mobile web apps.",
+    "dom": {
+      "link[href*='/npm/vant']": {
+        "attributes": {
+          "href": "cdn\\.jsdelivr\\.net/npm/vant@([\\d\\.]+)/\\;version:\\1"
+        }
+      },
+      "link[href*='/vant-']": {
+        "attributes": {
+          "href": "/vant-[\\w\\d]{8}\\.js"
+        }
+      }
+    },
+    "icon": "Vant.png",
+    "implies": "TypeScript",
+    "js": {
+      "vant.version": "([\\d\\.]+)\\;version:\\1"
+    },
+    "oss": true,
+    "requires": "Vue.js",
+    "website": "https://github.com/youzan/vant"
+  },
+  "Vanta": {
+    "cats": [
+      16
+    ],
+    "description": "Vanta is a compliance automation platform for SOC 2, HIPAA, ISO 27001, PCI, and GDPR.",
+    "icon": "Vanta.svg",
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "static\\.vanta\\.com/",
+    "website": "https://www.vanta.com"
+  },
+  "Varbase": {
+    "cats": [
+      1
+    ],
+    "cpe": "cpe:2.3:a:vardot:varbase:*:*:*:*:*:*:*:*",
+    "dom": "meta[content='Varbase'],div[class*='varbase_'],div[class*='_varbase'],div[class*='varbase-'],div[class*='block-varbase'],div[class*='blockvarbase']",
+    "icon": "varbase.png",
+    "implies": "Drupal",
+    "js": {
+      "drupalSettings.ajaxPageState.libraries": ".+varbase_.+"
+    },
+    "oss": true,
+    "website": "https://www.vardot.com/solutions/varbase"
+  },
+  "Variance": {
+    "cats": [
+      25
+    ],
+    "description": "Variance is a provider of custom charting data graphics tools for web platforms, utilizing HTML and CSS.",
+    "dom": "link[href*='variancecharts.com/'], script#variance-js",
+    "pricing": [
+      "freemium"
+    ],
+    "saas": true,
+    "website": "https://variancecharts.com"
+  },
+  "Variti": {
+    "cats": [
+      16
+    ],
+    "description": "Variti is a network security solutions firm that blocks bad bots, protects users from various automated abuse, attacks and fraud techniques.",
+    "headers": {
+      "X-VARITI-CCR": ""
+    },
+    "icon": "Variti.png",
+    "pricing": [
+      "poa"
+    ],
+    "website": "https://variti.io"
+  },
+  "Varnish": {
+    "cats": [
+      23
+    ],
+    "cpe": "cpe:2.3:a:varnish-software:varnish_cache:*:*:*:*:*:*:*:*",
+    "description": "Varnish is a reverse caching proxy.",
+    "headers": {
+      "Via": "varnish(?: \\(Varnish/([\\d.]+)\\))?\\;version:\\1",
+      "X-Varnish": "",
+      "X-Varnish-Action": "",
+      "X-Varnish-Age": "",
+      "X-Varnish-Cache": "",
+      "X-Varnish-Hostname": ""
+    },
+    "icon": "Varnish.svg",
+    "website": "https://www.varnish-cache.org"
+  },
+  "Ve Global": {
+    "cats": [
+      10
+    ],
+    "description": "Ve Global, formerly known as Ve Interactive, is a global technology company that provides ecommerce businesses with a managed-service of proprietary marketing software and digital advertising solutions.",
+    "icon": "Ve Global.png",
+    "js": {
+      "veTagData.appsServicesUrl": "\\.veinteractive\\.com"
+    },
+    "website": "https://ve.com"
+  },
+  "Vectary": {
+    "cats": [
+      105
+    ],
+    "description": "Vectary is fully-featured 3D modeling tool with photorealistic real-time rendering, augmented reality, interactions and animations.",
+    "dom": "iframe[src*='app.vectary.com/']",
+    "icon": "vectary.svg",
+    "pricing": [
+      "low",
+      "freemium",
+      "recurring"
+    ],
+    "website": "https://www.vectary.com"
+  },
+  "Vendio": {
+    "cats": [
+      6
+    ],
+    "description": "Vendio is an ecommerce software facilitating selling across platforms like eBay, Amazon, and Etsy.",
+    "icon": "Vendio.svg",
+    "pricing": [
+      "freemium",
+      "mid",
+      "recurring",
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "stores\\.vendio\\.com",
+    "website": "https://www.vendio.com"
+  },
+  "Vendre": {
+    "cats": [
+      6
+    ],
+    "description": "Vendre is a module-based ecommerce system where you choose which functions your organisation needs.",
+    "icon": "Vendre.svg",
+    "js": {
+      "VendreMap.maps_loaded": "",
+      "vendre_config": ""
+    },
+    "pricing": [
+      "poa",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://vendre.io"
+  },
+  "Venly": {
+    "cats": [
+      19
+    ],
+    "description": "Venly is a blockchain technology provider creating products to help companies succeed in Web3.",
+    "icon": "Venly.svg",
+    "js": {
+      "VenlyConnect": ""
+    },
+    "meta": {
+      "application-name": "^Venly$"
+    },
+    "pricing": [
+      "freemium",
+      "mid",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.venly.io"
+  },
+  "Venmo": {
+    "cats": [
+      41
+    ],
+    "description": "Venmo is a mobile payment service owned by PayPal. Venmo account holders can transfer funds to others via a mobile phone app.",
+    "dom": "[aria-labelledby='pi-venmo'], [data-venmo-supported='true']",
+    "icon": "Venmo.svg",
+    "website": "https://venmo.com"
+  },
+  "VentraIP": {
+    "cats": [
+      88
+    ],
+    "description": "VentraIP is the largest privately owned web host and domain name registrar in Australia.",
+    "dns": {
+      "NS": "\\.(?:nameserver|hostingplatform)\\.net\\.au",
+      "SOA": "\\.(?:nameserver|hostingplatform)\\.net\\.au"
+    },
+    "icon": "VentraIP.svg",
+    "pricing": [
+      "recurring",
+      "payg"
+    ],
+    "website": "https://ventraip.com.au"
+  },
+  "VentryShield": {
+    "cats": [
+      16
+    ],
+    "cookies": {
+      "ventryshield_pre": ""
+    },
+    "description": "VentryShield offers DDoS Protected VPS and Web Hosting.",
+    "headers": {
+      "x-ventryshield-cache-status": "no-cache",
+      "x-ventryshield-sid": ""
+    },
+    "icon": "ventry_shield.png",
+    "website": "https://ventryshield.net"
+  },
+  "Veoxa": {
+    "cats": [
+      36
+    ],
+    "html": "<img [^>]*src=\"[^\"]+tracking\\.veoxa\\.com",
+    "icon": "Veoxa.png",
+    "js": {
+      "VuVeoxaContent": ""
+    },
+    "scriptSrc": "tracking\\.veoxa\\.com",
+    "website": "https://veoxa.com"
+  },
+  "Vepaar": {
+    "cats": [
+      53
+    ],
+    "description": "Vepaar is a software solution designed to help boost online businesses, providing features such as WhatsApp CRM, an online store, and a WhatsApp poll.",
+    "icon": "Vepaar.svg",
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "analytics\\.vepaar\\.com/",
+    "website": "https://vepaar.com"
+  },
+  "Vercel": {
+    "cats": [
+      62
+    ],
+    "description": "Vercel is a cloud platform for static frontends and serverless functions.",
+    "dns": {
+      "SOA": "\\.vercel-dns\\.com"
+    },
+    "headers": {
+      "server": "^now|Vercel$",
+      "x-now-trace": "",
+      "x-vercel-cache": "",
+      "x-vercel-id": ""
+    },
+    "icon": "vercel.svg",
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring",
+      "poa"
+    ],
+    "website": "https://vercel.com"
+  },
+  "Vercel Analytics": {
+    "cats": [
+      10
+    ],
+    "icon": "vercel.svg",
+    "js": {
+      "va": ""
+    },
+    "requires": [
+      "Vercel"
+    ],
+    "scriptSrc": [
+      "/va/script\\.js",
+      "/_vercel/insights/script\\.js"
+    ],
+    "website": "https://vercel.com/analytics"
+  },
+  "Vergic": {
+    "cats": [
+      52
+    ],
+    "description": "Vergic is a platform facilitating real-time online engagement between site owners, customer service agents, and individual customers, prospects, or visitors.",
+    "icon": "Vergic.svg",
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "us-content\\.vergic\\.com/",
+    "website": "https://www.vergic.com"
+  },
+  "Verifone 2Checkout": {
+    "cats": [
+      41
+    ],
+    "description": "Verifone is an American multinational corporation headquartered in Coral Springs, Florida, that provides technology for electronic payment transactions and value-added services at the point-of-sale.",
+    "dom": {
+      "#order__processedby": {
+        "text": "2Checkout"
+      },
+      "link[href*='.2checkout.com']": {
+        "exists": ""
+      }
+    },
+    "icon": "Verifone.svg",
+    "pricing": [
+      "payg"
+    ],
+    "saas": true,
+    "scripts": "2checkout\\.com",
+    "website": "https://www.2checkout.com"
+  },
+  "VerifyPass": {
+    "cats": [
+      5,
+      76
+    ],
+    "description": "VerifyPass is a company which provide secure identity proofing, authentication, and group affiliation verification for teachers and students.",
+    "icon": "VerifyPass.png",
+    "js": {
+      "verifypass_api_instantiator": "",
+      "verifypass_is_loaded": "",
+      "verifypass_popup": ""
+    },
+    "pricing": [
+      "payg",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": [
+      "cdn\\.id\\.services",
+      "cdn\\.verifypass\\.com"
+    ],
+    "website": "https://verifypass.com"
+  },
+  "Verizon Media": {
+    "cats": [
+      36
+    ],
+    "description": "Verizon Media is a tech and media company with global assets for advertisers, consumers and media companies.",
+    "dom": {
+      "img[src*='pixel.advertising.com']": {
+        "attributes": {
+          "src": ""
+        }
+      }
+    },
+    "icon": "Verizon Media.svg",
+    "scriptSrc": [
+      "\\.advertising\\.com",
+      "\\.vidible\\.tv/"
+    ],
+    "website": "https://www.verizonmedia.com"
+  },
+  "Verloop": {
+    "cats": [
+      52
+    ],
+    "description": "Verloop is provider of conversational AI platform for customer support automation.",
+    "icon": "Verloop.png",
+    "js": {
+      "Verloop": ""
+    },
+    "saas": true,
+    "website": "https://verloop.io/"
+  },
+  "VerticalScope": {
+    "cats": [
+      36
+    ],
+    "description": "VerticalScope is a Canadian-based technology company that owns and operates a network of online communities and discussion forums focused on a variety of interests and hobbies, such as cars, pets, sports, and technology. VerticalScope generates revenue primarily through advertising, including banner ads, sponsored content, and affiliate marketing.",
+    "dom": {
+      "footer > div": {
+        "text": "VerticalScope Inc\\."
+      }
+    },
+    "icon": "VerticalScope.svg",
+    "pricing": [
+      "payg"
+    ],
+    "website": "https://www.verticalscope.com"
+  },
+  "Very Good Security": {
+    "cats": [
+      16
+    ],
+    "description": "Very Good Security (VGS) is a data security and compliance platform that enables developers to securely handle sensitive data by encrypting, tokenising, and transmitting it through an intermediary service.",
+    "headers": {
+      "Content-Security-Policy": "\\.verygoodvault\\.com"
+    },
+    "icon": "Very Good Security.svg",
+    "js": {
+      "VGSCollect": ""
+    },
+    "pricing": [
+      "payg",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "js\\.verygoodvault\\.com/",
+    "website": "https://www.verygoodsecurity.com"
+  },
+  "Vev": {
+    "cats": [
+      51
+    ],
+    "description": "Vev is a cloud-based design and publishing platform that enables users to create interactive digital content without coding, using a drag-and-drop interface and built-in templates and integrations.",
+    "icon": "Vev.svg",
+    "js": {
+      "vev.App.compare": "",
+      "vev.DEFAULT_APP_STATE": ""
+    },
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.vev\\.design/",
+    "website": "https://www.vev.design"
+  },
+  "ViaBill": {
+    "cats": [
+      91
+    ],
+    "description": "ViaBill is a cloud-based payment management solution designed to help small to midsize retailers and webshops.",
+    "icon": "ViaBill.svg",
+    "js": {
+      "viabillOptions.state.subscriptions": "",
+      "viabillPricetagInternal.conf.productsByLocale": ""
+    },
+    "pricing": [
+      "payg"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.viabill\\.com/",
+    "website": "https://viabill.com"
+  },
+  "Viafoura": {
+    "cats": [
+      86
+    ],
+    "description": "Viafoura is an audience engagement and social monetisation platform.",
+    "icon": "viafoura.svg",
+    "js": {
+      "dfm_viafoura_options": "",
+      "viafoura.bootstrap": "",
+      "viafoura.core": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "website": "https://viafoura.com"
+  },
+  "Vidazoo": {
+    "cats": [
+      36
+    ],
+    "description": "Vidazoo is a video content and yield management platform.",
+    "icon": "Vidazoo.svg",
+    "js": {
+      "__vidazooPlayer__": "",
+      "vidazoo": "",
+      "vidazoo.version": "(.+)\\;version:\\1"
+    },
+    "pricing": [
+      "high",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.vidazoo\\.com",
+    "website": "https://www.vidazoo.com"
+  },
+  "Video Greet": {
+    "cats": [
+      100
+    ],
+    "description": "Video Greet lets your customers add a video message to gifts with QR codes.",
+    "icon": "Video Greet.png",
+    "js": {
+      "__vg.video_greet_button_src": ""
+    },
+    "pricing": [
+      "freemium"
+    ],
+    "requires": "Shopify",
+    "website": "https://apps.shopify.com/videogreet-gift-messages"
+  },
+  "VideoJS": {
+    "cats": [
+      14
+    ],
+    "css": [
+      "\\.video-js\\;confidence:25",
+      "\\.vjs-big-play-button\\;confidence:75"
+    ],
+    "description": "Video.js is a JavaScript and CSS library that makes it easier to work with and build on HTML5 video.",
+    "dom": "div.video-js",
+    "icon": "VideoJS.svg",
+    "js": {
+      "VideoJS": "",
+      "videojs": "",
+      "videojs.VERSION": "^(.+)$\\;version:\\1"
+    },
+    "scriptSrc": [
+      "zencdn\\.net/c/video\\.js",
+      "cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/video\\.js\\/([\\d\\.]+)\\/\\;version:\\1"
+    ],
+    "website": "https://videojs.com"
+  },
+  "Vigbo": {
+    "cats": [
+      1
+    ],
+    "cookies": {
+      "_gphw_mode": ""
+    },
+    "html": "<link[^>]* href=[^>]+(?:\\.vigbo\\.com|\\.gophotoweb\\.com)",
+    "icon": "vigbo.png",
+    "scriptSrc": "(?:\\.vigbo\\.com|\\.gophotoweb\\.com)",
+    "website": "https://vigbo.com"
+  },
+  "Vigil": {
+    "cats": [
+      13
+    ],
+    "description": "Vigil is a microservices status page. Monitors a distributed infrastructure and sends alerts (Slack, SMS, etc.).",
+    "dom": {
+      "p > a[href*='github.com/valeriansaliou/vigil']": {
+        "text": "^Vigil$"
+      }
+    },
+    "icon": "default.svg",
+    "implies": [
+      "Rust",
+      "Docker"
+    ],
+    "oss": true,
+    "website": "https://github.com/valeriansaliou/vigil"
+  },
+  "Vignette": {
+    "cats": [
+      1
+    ],
+    "html": "<[^>]+=\"vgn-?ext",
+    "icon": "Vignette.png",
+    "website": "https://www.vignette.com"
+  },
+  "Vimeo": {
+    "cats": [
+      14
+    ],
+    "description": "Vimeo is a video hosting, sharing and services platform. Vimeo operation an ad-free basis by providing subscription plans.",
+    "dom": "iframe[src*='vimeo.com'],embed[src*='vimeo.com']",
+    "icon": "Vimeo.svg",
+    "js": {
+      "Vimeo.Player": "",
+      "VimeoPlayer": ""
+    },
+    "saas": true,
+    "website": "https://vimeo.com"
+  },
+  "Vimeo OTT": {
+    "cats": [
+      14
+    ],
+    "description": "Vimeo OTT allows brands and creators to launch their own white-label video subscription channels, where subscribers can access video content for free, as a rental, or for purchase.",
+    "icon": "Vimeo.svg",
+    "implies": "Vimeo",
+    "js": {
+      "VHX.config": "",
+      "_vhx": ""
+    },
+    "pricing": [
+      "recurring",
+      "mid"
+    ],
+    "saas": true,
+    "website": "https://vimeo.com/ott",
+    "xhr": "api\\.vhx\\.tv"
+  },
+  "Viqeo": {
+    "cats": [
+      14
+    ],
+    "description": "Viqeo is a short video platform to make media and ecommerce more visual and interesting.",
+    "icon": "Viqeo.svg",
+    "js": {
+      "VIQEO": ""
+    },
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://viqeo.tv"
+  },
+  "Viral Loops": {
+    "cats": [
+      94
+    ],
+    "description": "Viral Loops is a viral and referral marketing platform to launch ranking competitions, sweepstakes, pre-launch and referral programs.",
+    "dom": "link[href*='wp-content/plugins/viral-loops-wp-integration/assets/']",
+    "icon": "Viral Loops.svg",
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "app\\.viral-loops\\.com/",
+    "website": "https://viral-loops.com"
+  },
+  "Virgool": {
+    "cats": [
+      11
+    ],
+    "headers": {
+      "X-Powered-By": "^Virgool$"
+    },
+    "icon": "Virgool.svg",
+    "url": "^https?://(?:www\\.)?virgool\\.io",
+    "website": "https://virgool.io"
+  },
+  "Virtooal": {
+    "cats": [
+      105
+    ],
+    "description": "Virtooal allows shoppers to try on and combine decorative cosmetics, sunglasses, contact lenses, jewellery and fashion accessories using models, their own photo or a live webcam feed.",
+    "icon": "Virtooal.svg",
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "requiresCategory": 6,
+    "saas": true,
+    "scriptSrc": "\\.virtooal\\.com/",
+    "website": "https://try.virtooal.com"
+  },
+  "Virtuagym": {
+    "cats": [
+      53
+    ],
+    "description": "Virtuagym is a cloud-based membership management and coaching platform designed for personal trainers and fitness businesses of all sizes.",
+    "dom": "a[href*='.virtuagym.com'][target='_blank'], iframe[src*='.virtuagym.com/']",
+    "icon": "Virtuagym.svg",
+    "js": {
+      "VGTutorial": "",
+      "open_vg_custom_modal": "",
+      "trigger_vg_neutral_message": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "website": "https://business.virtuagym.com"
+  },
+  "Virtual Chat": {
+    "cats": [
+      52
+    ],
+    "description": "Virtual Chat is a live-chat service for web sites.",
+    "icon": "Virtual Chat.png",
+    "saas": true,
+    "scriptSrc": "virtual-chat\\.co\\.il/",
+    "website": "https://www.virtual-chat.co.il"
+  },
+  "VirtualSpirits": {
+    "cats": [
+      52
+    ],
+    "description": "VirtualSpirits is a chatbot and live-chat service for websites.",
+    "icon": "VirtualSpirits.png",
+    "js": {
+      "vspiritbutton": "",
+      "vspirits_chat_client": "",
+      "vspiritsizeheight": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.virtualspirits.com"
+  },
+  "VirtueMart": {
+    "cats": [
+      6
+    ],
+    "html": "<div id=\"vmMainPage",
+    "icon": "VirtueMart.png",
+    "implies": "Joomla",
+    "website": "https://virtuemart.net"
+  },
+  "Virtuoso": {
+    "cats": [
+      34
+    ],
+    "headers": {
+      "Server": "Virtuoso/?([0-9.]+)?\\;version:\\1"
+    },
+    "meta": {
+      "Copyright": "^Copyright &copy; \\d{4} OpenLink Software",
+      "Keywords": "^OpenLink Virtuoso Sparql"
+    },
+    "url": "/sparql",
+    "website": "https://virtuoso.openlinksw.com/"
+  },
+  "Virtuous": {
+    "cats": [
+      111
+    ],
+    "description": "Virtuous is the responsive fundraising software platform.",
+    "icon": "Virtuous.svg",
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.virtuoussoftware\\.com/",
+    "website": "https://virtuous.org"
+  },
+  "Virtusize": {
+    "cats": [
+      76
+    ],
+    "description": "Virtusize is a personalisation service that provides size and product recommendations specific to a user's size and trend preferences.",
+    "icon": "Virtusize.svg",
+    "pricing": [
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.virtusize\\.jp/",
+    "website": "https://www.virtusize.com"
+  },
+  "Visa": {
+    "cats": [
+      41
+    ],
+    "dom": "[aria-labelledby='pi-visa']",
+    "icon": "Visa.svg",
+    "js": {
+      "visaApi": "",
+      "visaImage": "",
+      "visaSrc": ""
+    },
+    "website": "https://www.visa.com"
+  },
+  "Visa Checkout": {
+    "cats": [
+      41
+    ],
+    "description": "Visa facilitates electronic funds transfers throughout the world, most commonly through Visa-branded credit cards, debit cards and prepaid cards.",
+    "icon": "Visa.svg",
+    "scriptSrc": "secure\\.checkout\\.visa\\.com",
+    "website": "https://checkout.visa.com"
+  },
+  "Visely": {
+    "cats": [
+      100,
+      76
+    ],
+    "description": "Visely is a Shopify app which personalise product recommendations for Shopify sites.",
+    "icon": "Visely.svg",
+    "js": {
+      "Visely.RecommendationsApi": "",
+      "ViselyCartProductIds": "",
+      "ViselyPage": ""
+    },
+    "pricing": [
+      "mid",
+      "recurring"
+    ],
+    "requires": "Shopify",
+    "saas": true,
+    "website": "https://visely.io"
+  },
+  "Visual Composer": {
+    "cats": [
+      51
+    ],
+    "description": "Visual Composer is an all-in-one web design tool for anyone who uses WordPress.",
+    "icon": "visualcomposer.svg",
+    "implies": [
+      "WordPress",
+      "PHP"
+    ],
+    "meta": {
+      "generator": "Powered by Visual Composer Website Builder"
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "website": "https://visualcomposer.com"
+  },
+  "Visual Portfolio": {
+    "cats": [
+      87
+    ],
+    "description": "Visual Portfolio is a plugin with a robust set of features, designed to help you create galleries that effectively display your creative projects.",
+    "icon": "Visual Portfolio.svg",
+    "js": {
+      "VPData.screenSizes": "",
+      "VPData.version": "([\\d\\.]+)\\;version:\\1"
+    },
+    "pricing": [
+      "onetime"
+    ],
+    "requires": "WordPress",
+    "website": "https://visualportfolio.co"
+  },
+  "Visual Quiz Builder": {
+    "cats": [
+      100
+    ],
+    "description": "Visual Quiz Builder is a Shopify app built by AskWhai.",
+    "icon": "Visual Quiz Builder.png",
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "requires": "Shopify",
+    "saas": true,
+    "scriptSrc": "//whai-cdn\\.nyc\\d\\.cdn\\.digitaloceanspaces\\.com/",
+    "website": "https://apps.shopify.com/product-recommendation-quiz"
+  },
+  "Visualsoft": {
+    "cats": [
+      6
+    ],
+    "cookies": {
+      "vscommerce": ""
+    },
+    "description": "Visualsoft is an ecommerce agency that delivers web design, development and marketing services to online retailers.",
+    "icon": "Visualsoft.svg",
+    "meta": {
+      "vs_status_checker_version": "\\d+",
+      "vsvatprices": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.visualsoft.co.uk/"
+  },
+  "Visx": {
+    "cats": [
+      25
+    ],
+    "description": "Visx is a collection of React-based data visualisation tools developed by Airbnb.",
+    "dom": {
+      "g.visx-group,g.vx-group": {
+        "attributes": {
+          "class": "(?:v(?:is)?x)-group"
+        }
+      }
+    },
+    "icon": "Visx.svg",
+    "oss": true,
+    "requires": "React",
+    "website": "https://airbnb.io/visx/"
+  },
+  "Vitals": {
+    "cats": [
+      100,
+      32
+    ],
+    "description": "Vitals is an all-in-one Shopify marketing software.",
+    "icon": "Vitals.svg",
+    "js": {
+      "VITALS": "",
+      "vitals_app_cache_keys_v1": "",
+      "vitals_country_code": "",
+      "vitals_product_data": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "requires": "Shopify",
+    "saas": true,
+    "scriptSrc": "//appsolve\\.io/",
+    "website": "https://vitals.co"
+  },
+  "Vite": {
+    "cats": [
+      19
+    ],
+    "description": "Vite is a rapid development tool for modern web projects.",
+    "dom": "script#vite-legacy-polyfill, script#vite-legacy-entry, link[href*='vite.svg'][rel='icon']",
+    "icon": "vite.svg",
+    "js": {
+      "__vite_is_modern_browser": ""
+    },
+    "oss": true,
+    "website": "https://vitejs.dev"
+  },
+  "VitePress": {
+    "cats": [
+      57
+    ],
+    "description": "VitePress is a Vite & Vue Powered Static Site Generator.",
+    "icon": "vite.svg",
+    "implies": [
+      "Vue.js",
+      "Vite"
+    ],
+    "js": {
+      "__VP_HASH_MAP__": ""
+    },
+    "oss": true,
+    "website": "https://vitepress.vuejs.org/"
+  },
+  "Vitrin.me": {
+    "cats": [
+      51
+    ],
+    "description": "Vitrin.me is a no-code platform that lets anyone build web apps without writing any code.",
+    "icon": "Vitrin.me.svg",
+    "implies": [
+      "Python",
+      "Django",
+      "React",
+      "Next.js"
+    ],
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.vitrin\\.me/",
+    "website": "https://vitrin.me"
+  },
+  "Vivenu": {
+    "cats": [
+      6
+    ],
+    "description": "Vivenu is a ticketing platform.",
+    "dom": "title#vivenuId",
+    "icon": "Vivenu.svg",
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "website": "https://vivenu.com"
+  },
+  "Vizury": {
+    "cats": [
+      32
+    ],
+    "description": "Vizury is a ecommerce marketing platform.",
+    "icon": "Vizury.png",
+    "js": {
+      "safariVizury": "",
+      "vizury_data": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.vizury\\.com",
+    "website": "https://www.vizury.com"
+  },
+  "Vnda": {
+    "cats": [
+      6
+    ],
+    "description": "Vnda is a omnichannel ecommerce platform.",
+    "icon": "Vnda.svg",
+    "implies": [
+      "Node.js",
+      "Amazon Web Services"
+    ],
+    "js": {
+      "Vnda.loadCartPopup": "",
+      "vnda.checkout": ""
+    },
+    "meta": {
+      "image": "cdn\\.vnda\\.com\\.br/"
+    },
+    "pricing": [
+      "poa",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.vnda.com.br"
+  },
+  "Vntana": {
+    "cats": [
+      105
+    ],
+    "description": "Vntana (stylised as VNTANA) is an American social augmented reality company.",
+    "dom": "iframe[src*='embed.vntana.com/'], iframe[nitro-lazy-src*='embed.vntana.com/']",
+    "icon": "Vntana.png",
+    "pricing": [
+      "freemium",
+      "poa"
+    ],
+    "saas": true,
+    "website": "https://www.vntana.com"
+  },
+  "Volusion": {
+    "cats": [
+      6
+    ],
+    "description": "Volusion is a cloud-based, hosted ecommerce solution.",
+    "html": [
+      "<link [^>]*href=\"[^\"]*/vspfiles/\\;version:1",
+      "<body [^>]*data-vn-page-name\\;version:2"
+    ],
+    "icon": "Volusion.svg",
+    "js": {
+      "volusion": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "/volusion\\.js(?:\\?([\\d.]*))?\\;version:\\1",
+    "website": "https://www.volusion.com"
+  },
+  "Vonage Video API": {
+    "cats": [
+      103
+    ],
+    "description": "Vonage Video API platform makes it easy to embed real-time, high-quality interactive video, messaging, screen-sharing, and more into web and mobile apps.",
+    "icon": "Vonage.svg",
+    "pricing": [
+      "recurring",
+      "payg"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.opentok\\.com/",
+    "website": "https://www.vonage.com/communications-apis/video/"
+  },
+  "Voog": {
+    "cats": [
+      51
+    ],
+    "description": "Voog is a user-friendly website building platform.",
+    "icon": "Voog.svg",
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.voog\\.com/",
+    "website": "https://www.voog.com"
+  },
+  "Vop": {
+    "cats": [
+      6
+    ],
+    "description": "Vop is a service facilitating the integration of ecommerce into social content.",
+    "icon": "Vop.svg",
+    "pricing": [
+      "freemium",
+      "poa"
+    ],
+    "saas": true,
+    "scriptSrc": "cdn\\.getvop\\.com/",
+    "website": "https://getvop.com"
+  },
+  "Voracio": {
+    "cats": [
+      6
+    ],
+    "cookies": {
+      "voracio_csrf_token": "",
+      "voracio_sessionid": ""
+    },
+    "description": "Voracio is a cloud SaaS ecommerce platform powered by Microsoft .NET and built on the Microsoft Azure cloud framework.",
+    "icon": "Voracio.svg",
+    "js": {
+      "voracio": ""
+    },
+    "pricing": [
+      "poa"
+    ],
+    "saas": true,
+    "website": "https://www.voracio.co.uk"
+  },
+  "Vouchley": {
+    "cats": [
+      90
+    ],
+    "description": "Vouchley is a review platform designed for freelancers, allowing them to receive and showcase client reviews to build credibility and attract more business.",
+    "dom": "iframe[src*='.reputize.org/widgets/']",
+    "icon": "Vouchley.svg",
+    "website": "https://www.vouchley.com"
+  },
+  "Vox Media": {
+    "cats": [
+      1
+    ],
+    "description": "Vox Media is a digital platform that operates news and opinion websites.",
+    "icon": "VoxMedia.svg",
+    "js": {
+      "VoxMediaFontLoader": ""
+    },
+    "saas": true,
+    "scriptSrc": "\\.voxmedia\\.com/",
+    "website": "https://corp.voxmedia.com"
+  },
+  "Vtiger": {
+    "cats": [
+      53
+    ],
+    "cpe": "cpe:2.3:a:vtiger:vtiger_crm:*:*:*:*:*:*:*:*",
+    "description": "Vtiger is a cloud-based suite of marketing, sales and help desk offerings, which can be deployed separately or as an integrated, all-in-one ecosystem.",
+    "icon": "Vtiger.svg",
+    "js": {
+      "Vtiger": "",
+      "Vtiger_Base_Js": "",
+      "Vtiger_Helper_Js": ""
+    },
+    "pricing": [
+      "payg",
+      "recurring"
+    ],
+    "saas": true,
+    "website": "https://www.vtiger.com"
+  },
+  "VuFind": {
+    "cats": [
+      29
+    ],
+    "description": "VuFind is a library resource portal designed and developed by Villanova University library.",
+    "icon": "VuFind.png",
+    "js": {
+      "VuFind.defaultSearchBackend": ""
+    },
+    "meta": {
+      "generator": "^VuFind\\s([\\d\\.]+)$\\;version:\\1"
+    },
+    "oss": true,
+    "website": "https://vufind.org"
+  },
+  "Vue Storefront": {
+    "cats": [
+      108
+    ],
+    "description": "Vue Storefront is a frontend platform for headless ecommerce.",
+    "icon": "vue-storefront.svg",
+    "implies": "Vue.js",
+    "meta": {
+      "generator": "^Vue Storefront ([0-9.]+)?$\\;version:\\1"
+    },
+    "scriptSrc": [
+      "vsf-layout\\;version:1"
+    ],
+    "website": "https://www.vuestorefront.io/"
+  },
+  "Vue.ai": {
+    "cats": [
+      76
+    ],
+    "description": "Vue.ai is an AI-powered experience management suite which combines the power of product, customer and business intelligence using computer vision and NLP.",
+    "icon": "Vue.ai.svg",
+    "js": {
+      "getVueUrlSegments": "",
+      "vuex": ""
+    },
+    "saas": true,
+    "scriptSrc": [
+      "vuex\\.vue\\.ai",
+      "vue_ai\\.js"
+    ],
+    "website": "https://vue.ai"
+  },
+  "Vue.js": {
+    "cats": [
+      12
+    ],
+    "css": "\\.vue-notification-group",
+    "description": "Vue.js is an open-source model–view–viewmodel JavaScript framework for building user interfaces and single-page applications.",
+    "dom": ".vue-app, link[href*='docsify/themes/vue.css']",
+    "html": "<(?!svg)[^>]+\\sdata-v(?:ue)?-",
+    "icon": "vue.svg",
+    "js": {
+      "Vue": "",
+      "Vue.version": "^(.+)$\\;version:\\1",
+      "VueRoot": "",
+      "__VUE_HOT_MAP__": "",
+      "__VUE__": "",
+      "vueDLL": ""
+    },
+    "scriptSrc": [
+      "vue[.-]([\\d.]*\\d)[^/]*\\.js\\;version:\\1",
+      "(?:/([\\d.]+))?/vue(?:\\.min)?\\.js\\;version:\\1"
+    ],
+    "website": "https://vuejs.org"
+  },
+  "Vue2-animate": {
+    "cats": [
+      19
+    ],
+    "description": "Vue2-animate is a Vue.js port of Animate.css.",
+    "dom": "link[href*='/vue2-animate.min.css']",
+    "icon": "vue.svg",
+    "implies": [
+      "Vue.js",
+      "Sass",
+      "Animate.css"
+    ],
+    "oss": true,
+    "website": "https://github.com/asika32764/vue2-animate"
+  },
+  "VuePress": {
+    "cats": [
+      57
+    ],
+    "description": "VuePress is a static site generator with a Vue-powered theming system, and a default theme for writing technical documentation.",
+    "icon": "VuePress.svg",
+    "implies": "Vue.js",
+    "js": {
+      "__VUEPRESS__.version": "([\\d\\.]+)\\;version:\\1"
+    },
+    "meta": {
+      "generator": "^VuePress(?: ([0-9.]+)(-[a-z]+.[0-9]+)?)?$\\;version:\\1"
+    },
+    "oss": true,
+    "website": "https://vuepress.vuejs.org/"
+  },
+  "Vuetify": {
+    "cats": [
+      66
+    ],
+    "css": "\\.v-application \\.d-block",
+    "description": "Vuetify is a reusable semantic component framework for Vue.js that aims to provide clean, semantic and reusable components.",
+    "dom": "style#vuetify-theme-stylesheet",
+    "icon": "Vuetify.svg",
+    "implies": "Vue.js",
+    "oss": true,
+    "website": "https://vuetifyjs.com"
+  },
+  "Vuex": {
+    "cats": [
+      59
+    ],
+    "description": "Vuex is a state management pattern + library for Vue.js applications.",
+    "icon": "vue.svg",
+    "implies": "Vue.js",
+    "js": {
+      "Vuex.version": "(.*)\\;version:\\1"
+    },
+    "oss": true,
+    "website": "https://vuex.vuejs.org/"
+  },
+  "Vultr": {
+    "cats": [
+      62
+    ],
+    "description": "Vultr is a cloud computing service provider.",
+    "dns": {
+      "NS": "\\.vultr\\.com"
+    },
+    "icon": "Vultr.svg",
+    "website": "https://www.vultr.com"
+  },
+  "Vuukle": {
+    "cats": [
+      15
+    ],
+    "description": "Vuukle is an audience engagement and commenting platform.",
+    "icon": "vuukle.svg",
+    "js": {
+      "VUUKLE_CONFIG": ""
+    },
+    "website": "https://vuukle.com"
+  },
+  "v4Guard Checkpoint": {
+    "cats": [
+      16
+    ],
+    "description": "Checkpoint is a product of v4Guard that verifies website users and prevents fraudulent access to sensitive areas, by checking for any use of anonymisation services with a captcha-like widget.",
+    "dom": "iframe[src*='.v4guard.io/checkpoint/']",
+    "icon": "v4Guard.svg",
+    "pricing": [
+      "poa",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": "\\.v4guard\\.io/checkpoint",
+    "website": "https://v4guard.io"
+  },
+  "vBulletin": {
+    "cats": [
+      2
+    ],
+    "cookies": {
+      "bblastactivity": "",
+      "bblastvisit": "",
+      "bbsessionhash": ""
+    },
+    "cpe": "cpe:2.3:a:vbulletin:vbulletin:*:*:*:*:*:*:*:*",
+    "description": "vBulletin is tool that is used to create and manage online forums or discussion boards. It is written in PHP and uses a MySQL database server.",
+    "html": "<div id=\"copyright\">Powered by vBulletin",
+    "icon": "vBulletin.png",
+    "implies": "PHP",
+    "js": {
+      "vBulletin": ""
+    },
+    "meta": {
+      "generator": "vBulletin ?([\\d.]+)?\\;version:\\1"
+    },
+    "website": "https://www.vbulletin.com"
+  },
+  "vcita": {
+    "cats": [
+      53,
+      72
+    ],
+    "description": "vcita is an all-in-one customer service and business management software designed for service providers.",
+    "dom": "iframe[src*='www.vcita.com/widgets/']",
+    "icon": "vcita.svg",
+    "js": {
+      "LiveSite.btCheckout": "",
+      "Vcita": ""
+    },
+    "pricing": [
+      "low",
+      "recurring"
+    ],
+    "saas": true,
+    "scriptSrc": [
+      "www\\.vcita\\.com/widgets/",
+      "widgets\\.vcdnita\\.com/"
+    ],
+    "website": "https://www.vcita.com"
+  },
+  "vibecommerce": {
+    "cats": [
+      6
+    ],
+    "excludes": "PrestaShop",
+    "icon": "vibecommerce.png",
+    "implies": "PHP",
+    "meta": {
+      "designer": "vibecommerce",
+      "generator": "vibecommerce"
+    },
+    "website": "https://vibecommerce.com.br"
+  },
+  "vxe-table": {
+    "cats": [
+      59
+    ],
+    "description": "vxe-table is a Vue.js based PC form component, support add, delete, change, virtual scroll, lazy load, shortcut menu, data validation, tree structure, print export, form rendering, data paging, virtual list, modal window, custom template, renderer, flexible configuration items, extension interface.",
+    "dom": "div[class*='vxe-table']",
+    "icon": "vxe-table.png",
+    "oss": true,
+    "requires": "Vue.js",
+    "website": "https://vxetable.cn"
+  }
+}
