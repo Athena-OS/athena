@@ -1,6 +1,6 @@
 pkgname=nightfox-gtk-theme
 _pkgname=Nightfox-GTK-Theme
-pkgver=19.a8b01a28
+pkgver=27.ef4e6e1f
 pkgrel=1
 pkgdesc="A GTK theme based on the Nightfox colour palette."
 arch=('any')
@@ -16,12 +16,12 @@ pkgver() {
 }
 
 package() {
-  cd $_pkgname
+  cd $_pkgname/themes
 
   install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/icons"
 
-  cp -a themes/Nightfox-Dusk-B "$pkgdir/usr/share/themes/"
-  cp -a themes/Nightfox-Dusk-BL "$pkgdir/usr/share/themes/"
-  cp -a Icons/Duskfox "$pkgdir/usr/share/icons/"
+  ./install.sh -l --tweaks macos -d "$pkgdir/usr/share/themes"
+
+  cp -a ../icons/Duskfox "$pkgdir/usr/share/icons/"
 }
