@@ -106,8 +106,23 @@ elif [ "$chosen_theme" == "SweetDark" ]; then
     topbarmaterialscheme="amaryllis"
     topbariconscheme="dark"
     musicbarscheme="#FE3DAF"
+elif [ "$chosen_theme" == "Temple" ]; then
+    theme_name="Tokyonight-Dark"
+    gnome_shell="Tokyonight-Dark"
+    color_scheme="prefer-dark"
+    icon_theme="FairyWren_Dark"
+    cursor_theme="oreo_blue_cursors"
+    background_theme="/usr/share/backgrounds/athena/temple.png"
+    picture_options="stretched"
+    vscode_theme="Tokyo Night Storm"
+    kitty_theme="Tokyo_Night_Storm.conf"
+    tmux_theme="sky"
+    topbarcolorscheme="ripples"
+    topbarmaterialscheme="default"
+    topbariconscheme="dark"
+    musicbarscheme="#6FE7FB"
 else
-    echo "Please choose between the following themes: AkameGaKill, Cyborg, Everblush, Graphite, HackTheBox, SamuraiGirl, SweetDark, XXE"
+    echo "Please choose between the following themes: AkameGaKill, Cyborg, Graphite, HackTheBox, SamuraiGirl, SweetDark, Temple"
     exit 1
 fi
 
