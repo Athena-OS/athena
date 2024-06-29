@@ -48,8 +48,19 @@ class colors:
         cyan='\033[46m'
         lightgrey='\033[47m'
 
+def package_installed(package):
+    try:
+        subprocess.run(['pacman', '-Qq', package], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+def theme_switcher(theme):
+    subprocess.run(['theme-switcher', theme])
+
 def arg_parse():
     parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument("-a", "--auto", action='store_true', help="detect the installed theme and apply its configuration")
     parser.add_argument("-b", "--browser", action='store_true', help="set the current browser logo in Red Team menu")
     parser.add_argument("-c", "--colored", action='store_true', help="let's give some random colored output")
     parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "foot", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
@@ -67,6 +78,7 @@ def help():
 
    print("List of arguments:\n")
    
+   print("-a, --auto                    detect the installed theme and apply its configuration")
    print("-b, --browser                 set the current browser logo in Red Team menu")
    print("-c, --colored                 let's give some random colored output")
    print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|urxvt|xterm]")
@@ -115,6 +127,21 @@ browser_map = {
     "Mullvad": "athena-mullvad-config"
 }
 
+theme_map = {
+    "AkameGaKill": "athena-akame-theme",
+    "Cyborg": "athena-cyborg-theme",
+    "Graphite": "athena-graphite-theme",
+    "HackTheBox": "athena-htb-theme",
+    "SamuraiGirl": "athena-samurai-theme",
+    "SweetDark": "athena-sweetdark-theme",
+    "Temple": "athena-temple-theme"
+}
+
+if args.auto:
+    for theme, package in theme_map.items():
+        if package_installed(package):
+            theme_switcher(theme)
+
 if args.browser:
     print("Detecting the primary installed browser...")
     for i in browser_map:
@@ -139,16 +166,6 @@ if args.browser:
     subprocess.call("rm -rf "+home+"/.tmp.txt", shell=True)
     print("Done.")
     exit()
-
-theme_map = {
-    "AkameGaKill": "athena-akame-theme",
-    "Cyborg": "athena-cyborg-theme",
-    "Graphite": "athena-graphite-theme",
-    "HackTheBox": "athena-htb-theme",
-    "SamuraiGirl": "athena-samurai-theme",
-    "SweetDark": "athena-sweetdark-theme"
-    "Temple": "athena-temple-theme"
-}
 
 if args.list:
     print("Theme List:")
