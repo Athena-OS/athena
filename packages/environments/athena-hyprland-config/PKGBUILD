@@ -1,7 +1,7 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=865.f4251b71
-pkgrel=2
+pkgver=1691.9c4aa27d
+pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
@@ -25,7 +25,7 @@ source=("git+https://github.com/end-4/$_pkgname"
         "hyprland-init"
         "dconf-desktop.ini")
 sha512sums=('SKIP'
-            '6139cdeeb6224d873fb7fcad488d3a7b9b3d700889e45ccb90edf63fd514bba11410d96bc893de2df7761234401216a282b3e504312ad2d11f98fb0baa9e0a81'
+            '0aabe757840ddf04b1d270bf356652b8a3307f5e1916b6a25302f35e8b6c1dbf0d9c1f77cef6b5ae33810988ed72c89c2d7428d4acff50d8e526be5245c9d1eb'
             '9bac9b64d5cc90605e1aa3fa7a73f7d81d0f2c3d8f30aeb68c51ef9558ef5a82b4aba60c9917babd374a9325e4b5521107e3fcd73e29ad0878882ecf7d5840cf')
 
 pkgver() {
