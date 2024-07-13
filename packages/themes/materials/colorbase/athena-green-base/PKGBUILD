@@ -1,5 +1,5 @@
 pkgname=athena-green-base
-pkgver=6.8fab352
+pkgver=7.2d74a76
 pkgrel=1
 pkgdesc="Green colorbase resources."
 arch=('any')
@@ -18,15 +18,8 @@ pkgver() {
 package() {
   cd athena-green-base
 
-  install -dm 755 "$pkgdir/usr/share/icons"
-  install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/athena-green-base"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-
-  cp -a HackTheBox-GTK-Theme/HackTheBox-B "$pkgdir/usr/share/themes/"
-  cp -a HackTheBox-GTK-Theme/HackTheBox-BL "$pkgdir/usr/share/themes/"
-  cp -a HackTheBox-GTK-Theme/HackTheBox-BBL "$pkgdir/usr/share/themes/"
-  cp -a HackTheBox "$pkgdir/usr/share/icons/"
   install -Dm 644 "hackthebox.png" "$pkgdir/usr/share/backgrounds/athena/"
 
   cp -a "icons/apps" "$pkgdir/usr/share/athena-green-base/"

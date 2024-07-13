@@ -1,6 +1,6 @@
 pkgname=matrix-gtk-theme
 _pkgname=Matrix-GTK-Theme
-pkgver=3.2c77b1e0
+pkgver=4.81356345
 pkgrel=1
 pkgdesc="A GTK theme based on the Matrix colour palette."
 arch=('any')
@@ -23,5 +23,5 @@ package() {
 
   ./install.sh -l --tweaks macos -d "$pkgdir/usr/share/themes"
 
-  cp -a ../icons/Matrix-Dark "$pkgdir/usr/share/icons/"
+  cp -a ../icons/Matrix-Dark ../icons/Matrix-Light ../icons/Matrix-Sweet "$pkgdir/usr/share/icons/"
 }
