@@ -1,10 +1,10 @@
 pkgname=athena-htb-theme
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hack The Box theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('athena-green-base' 'afterglow-recolored-green')
+depends=('athena-green-base' 'afterglow-recolored-green' 'matrix-gtk-theme')
 install='htb-theme.install'
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Box.conf")
 sha512sums=('2bced57ecad432cefd060d4f617802a20fb154c4db236b0d9ee070152589ca7c2d9dfaeaaaf7048c5881bb4bb26cc8bbfff7e5f5ea502dbac8f8599135808fe1')
