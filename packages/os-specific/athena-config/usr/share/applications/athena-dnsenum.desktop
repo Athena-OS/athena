@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=dnsenum
+Comment=Multithread script to enumerate information on a domain and to discover non-contiguous IP blocks
+Encoding=UTF-8
+Exec=shell-rocket -b dnsenum -x '-h'
+Icon=athena-dnsenum
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-01-dns-analysis;
+X-Athena-Package=dnsenum

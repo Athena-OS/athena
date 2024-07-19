@@ -1,13 +1,12 @@
 pkgname=athena-gnome-config
 pkgver=2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="GNOME configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-gnome-base' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-arc-menu-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
 conflicts=('athena-gnome-material-shell-config')
 source=("$pkgname.tar.gz")
-sha512sums=('7a3b46983e5652568c9bb91684ed075484e42718967c4c99b8bef5d98d40bd8aea06da29247464d5b2045ef4de96b7b8cc1a57fc8cf6e25d9422c18876a43a98')
 
 package() {
   mkdir -p "${pkgdir}/etc"
@@ -16,3 +15,4 @@ package() {
 
   cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
 }
+sha256sums=('adf4659c0aea223d8b7d6637e2246cb68405bab92cf041b690c4342443440971')

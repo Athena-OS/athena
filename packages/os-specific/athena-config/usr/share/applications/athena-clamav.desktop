@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=clamav
+Encoding=UTF-8
+Exec=shell-rocket -b clamscan -p clamav -x '-h'
+Icon=athena-clamav
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=002-protect;
+X-Athena-Package=clamav

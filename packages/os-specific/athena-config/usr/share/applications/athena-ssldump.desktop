@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ssldump
+Comment=Dump SSL traffic on a network
+Encoding=UTF-8
+Exec=shell-rocket -b ssldump -x '-h'
+Icon=athena-ssldump
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-13-ssl-analysis;
+X-Athena-Package=ssldump

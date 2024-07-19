@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=nbtscan
+Comment=Scan networks for NetBIOS name information
+Encoding=UTF-8
+Exec=shell-rocket -b nbtscan -x '-h'
+Icon=athena-nbtscan
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=01-10-smb-analysis;
+X-Athena-Package=nbtscan
