@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=hashid
+Comment=Identify the different types of hashes used to encrypt data
+Encoding=UTF-8
+Exec=shell-rocket -b hashid -p python-hashid -x '-h'
+Icon=athena-hashid
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=05-02-offline-attacks;
+X-Athena-Package=python-hashid

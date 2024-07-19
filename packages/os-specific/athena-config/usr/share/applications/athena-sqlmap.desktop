@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=sqlmap
+Comment=Automatic SQL injection tool
+Encoding=UTF-8
+Exec=shell-rocket -b sqlmap -x '--wizard'
+Icon=athena-sqlmap
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-webapp-analysis;04-database-assessment;08-exploitation-tools;
+X-Athena-Package=sqlmap

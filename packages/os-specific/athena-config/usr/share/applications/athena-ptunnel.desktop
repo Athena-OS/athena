@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ptunnel
+Comment=Tunnel TCP connections over ICMP echo request/reply packets.
+Encoding=UTF-8
+Exec=shell-rocket -b ptunnel -x '-h'
+Icon=athena-ptunnel
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=10-02-tunneling;
+X-Athena-Package=ptunnel
