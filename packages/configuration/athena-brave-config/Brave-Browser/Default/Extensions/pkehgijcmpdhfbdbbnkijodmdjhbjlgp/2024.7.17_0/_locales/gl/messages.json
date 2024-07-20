@@ -1,0 +1,771 @@
+{
+    "name": {
+        "message": "Privacy Badger",
+        "description": ""
+    },
+    "description": {
+        "message": "Privacy Badger aprende automáticamente a bloquear os rastrexadores que non se ven.",
+        "description": ""
+    },
+    "canvas_fingerprinting": {
+        "message": "impresión dixital canvas",
+        "description": ""
+    },
+    "popup_help_button": {
+        "message": "Axuda",
+        "description": ""
+    },
+    "popup_share_button": {
+        "message": "Compartir",
+        "description": ""
+    },
+    "popup_options_button": {
+        "message": "Opcións",
+        "description": ""
+    },
+    "popup_special_page_header": {
+        "message": "Nada que facer aquí",
+        "description": ""
+    },
+    "popup_special_page_paragraph": {
+        "message": "Privacy Badger non funciona en páxinas especiais como esta. Inténtao navegand noutras páxinas.",
+        "description": ""
+    },
+    "popup_disabled_site_header": {
+        "message": "Privacy Badger está desactivado neste sitio",
+        "description": ""
+    },
+    "popup_disable_for_site": {
+        "message": "Desactivar neste sitio",
+        "description": ""
+    },
+    "popup_enable_for_site": {
+        "message": "Activar para este sitio web",
+        "description": ""
+    },
+    "report_broken_site": {
+        "message": "Informar de sitio estragado",
+        "description": ""
+    },
+    "version": {
+        "message": "versión $VERSION_STRING$",
+        "description": "",
+        "placeholders": {
+            "version_string": {
+                "content": "$1",
+                "example": "2018.8.1"
+            }
+        }
+    },
+    "popup_instructions": {
+        "message": "$COUNT$ potenciais $LINK_START$rastrexadores$LINK_END$ bloqueados",
+        "description": "",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "15"
+            },
+            "link_start": {
+                "content": "$2",
+                "example": "<a href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+            },
+            "link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "popup_instructions_no_trackers": {
+        "message": "Non se bloquearon $LINK_START$rastrexadores$LINK_END$",
+        "description": "",
+        "placeholders": {
+            "link_start": {
+                "content": "$1",
+                "example": "<a href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+            },
+            "link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "popup_blocked": {
+        "message": "Non hai recursos de terceiras partes nesta web. Aleluia!!!",
+        "description": ""
+    },
+    "tooltip_block": {
+        "message": "Mover o interruptor á esquerda para bloquear o dominio",
+        "description": ""
+    },
+    "tooltip_cookieblock": {
+        "message": "Centra o interruptor para bloquear os rastros",
+        "description": ""
+    },
+    "tooltip_allow": {
+        "message": "Mover interruptor á dereita para permitir o dominio",
+        "description": ""
+    },
+    "badger_status_block": {
+        "message": "Bloqueado $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_cookieblock": {
+        "message": "Rastros de $DOMAIN$ bloqueados",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_blocked_scripts": {
+        "message": "Rastros bloqueados e scripts de impresión dixital de $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_allow": {
+        "message": "Permitido $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_noaction": {
+        "message": "Sen rastrexo para $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "dnt_tooltip": {
+        "message": "Este dominio promete que non te rastrexa",
+        "description": ""
+    },
+    "domain_slider_block_tooltip": {
+        "message": "Bloquear completamente",
+        "description": ""
+    },
+    "domain_slider_cookieblock_tooltip": {
+        "message": "Bloquear rastros",
+        "description": ""
+    },
+    "domain_slider_allow_tooltip": {
+        "message": "Permitir",
+        "description": ""
+    },
+    "breakage_warning_tooltip": {
+        "message": "Sábese que bloquear este dominio fai fallar as webs",
+        "description": ""
+    },
+    "google_signin_tooltip": {
+        "message": "Para activar o acceso a sitios web usando a túa conta de Google, move o interruptor á dereita e recarga a páxina",
+        "description": ""
+    },
+    "feed_the_badger_title": {
+        "message": "Preme para devolverlle o control deste dominio a Privacy Badger",
+        "description": ""
+    },
+    "not_yet_blocked_header": {
+        "message": "Badger aínda non tomou decisión acerca de bloquear estes dominios",
+        "description": ""
+    },
+    "non_tracker": {
+        "message": "Os dominios de aquí abaixo non semellan estar rastrexándote",
+        "description": ""
+    },
+    "non_tracker_tip": {
+        "message": "Actualmente Privacy Badger só comproba se terceiras partes están a utilizar rastros, almacenamento local HTML5, ou impresión dixital utilizando canvas para seguir o teu navegador. Algún de estos dominios podería estar utilizando métodos que Privacy Badger non pode detectar.",
+        "description": ""
+    },
+    "report_input_label": {
+        "message": "Briefly describe the problem:",
+        "description": ""
+    },
+    "error_input": {
+        "message": "Que fallou?",
+        "description": ""
+    },
+    "report_terms": {
+        "message": "Enviarás automáticamente a seguinte información á EFF: a páxina que estás visitando, versión do navegador, versión de Privacy Badger e o estado dos interruptores nesta páxina.",
+        "description": ""
+    },
+    "report_button": {
+        "message": "Send report",
+        "description": ""
+    },
+    "report_cancel": {
+        "message": "Desbotar",
+        "description": ""
+    },
+    "report_close": {
+        "message": "Pechar",
+        "description": ""
+    },
+    "report_success": {
+        "message": "Grazas! Chegaremos ata o fin.",
+        "description": ""
+    },
+    "report_fail": {
+        "message": "Vaites! Algo fallou.",
+        "description": ""
+    },
+    "share_title": {
+        "message": "Dillo ás túas amizades",
+        "description": ""
+    },
+    "share_tracker_header": {
+        "message": "Privacy Badger bloqueou $COUNT$ potenciais rastrexadores en $DOMAIN$:",
+        "description": "",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "15"
+            },
+            "domain": {
+                "content": "$2",
+                "example": "example.com"
+            }
+        }
+    },
+    "share_base_message": {
+        "message": "Privacy Badger (privacybadger.org) é un complemento para navegadores que bloquea automaticamente os rastrexadores que non se ven. A Electronic Frontier Foundation desenvolve Privacy Badger, unha organización sen ánimo de lucro que loita polos teus dereitos en internet.",
+        "description": ""
+    },
+    "copy_button_initial": {
+        "message": "Copiar ao portapapeis",
+        "description": ""
+    },
+    "copy_button_copied": {
+        "message": "Copiado",
+        "description": ""
+    },
+    "popup_info_firstparty_protections": {
+        "message": "Está activa a protección contra rastrexo nas ligazóns",
+        "description": ""
+    },
+    "popup_info_firstparty_description": {
+        "message": "Algunhas páxinas web $LINK_START$usan ligazóns de rastrexo para seguirte$LINK_END$ cando premes nunha ligazón para saír desta web. Privacy Badger elimina o rastrexo das ligazóns nesta web.",
+        "description": "",
+        "placeholders": {
+            "link_start": {
+                "content": "<a href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+            },
+            "link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "popup_info_youtube": {
+        "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger.",
+        "description": ""
+    },
+    "extension_error_text": {
+        "message": "Por favor, <a href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>infórmanos</a> acerca do seguinte erro:",
+        "description": ""
+    },
+    "firstRun_title": {
+        "message": "Grazas por instalar Privacy Badger!",
+        "description": ""
+    },
+    "intro_by_eff": {
+        "message": "Un proxecto da Electronic Frontier Foundation",
+        "description": ""
+    },
+    "intro_welcome": {
+        "message": "Privacy Badger aprende automáticamente a bloquear rastrexadores que non se ven. Toma un minuto para ver como o fai.",
+        "description": ""
+    },
+    "intro_next_button": {
+        "message": "Coñece Privacy Badger",
+        "description": ""
+    },
+    "intro_learns": {
+        "message": "Aprende automaticamente",
+        "description": ""
+    },
+    "intro_learns_paragraph": {
+        "message": "Privacy Badger non ten listas de bloqueo, se non que aprende a descubrir rastrexadores a partir do seu propio comportamento mentras ti navegas.",
+        "description": ""
+    },
+    "intro_beyond_ads": {
+        "message": "Detecta rastrexadores trampulleiros",
+        "description": ""
+    },
+    "intro_beyond_ads_paragraph": {
+        "message": "O rastrexo non visible realízase de varios xeitos; a publicidade é só a punta do iceberg. Privacy Badger envía a marca <a href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control</a> para omitir o compartir e vender os teus datos, e a marca <a href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track</a> para dicirlle ás empresas que non te rastrexen. Se ignoran o teu desexo, Privacy Badger aprenderá a bloquealas — fosen de publicidade ou rastrexadores de outro tipo.",
+        "description": ""
+    },
+    "intro_not_an_adblocker": {
+        "message": "Non son un bloqueador de publicidade, son diferente",
+        "description": ""
+    },
+    "intro_not_an_adblocker_paragraph": {
+        "message": "Privacy Badger comeza a bloquear unha vez ve o mesmo rastrexador en tres sitios web diferentes. Tres puntos e nin un máis!",
+        "description": ""
+    },
+    "next_section": {
+        "message": "seguinte sección",
+        "description": ""
+    },
+    "intro_disable_button": {
+        "message": "Se cres que Privacy Badger está estragando unha páxina (ex. non reproduce un vídeo), podes premer o botón 'Desactivar' e apagar Privacy Badger para esa web.",
+        "description": ""
+    },
+    "intro_report_button": {
+        "message": "Non esquezas premer en 'Informar de sitio estragado'. Respectamos a túa privacidade e non enviamos informe automáticamente.",
+        "description": ""
+    },
+    "intro_privacy_note": {
+        "message": "Privacy Badger NUNCA vai compartir datos acerca da túa navegación a non ser que ti así o elixas.",
+        "description": ""
+    },
+    "intro_donate_heading": {
+        "message": "A Privacidade é un deporte de equipo!",
+        "description": ""
+    },
+    "intro_donate1": {
+        "message": "Ao usar Privacy Badger estás uníndote á <a href='https://www.eff.org/' target='_blank'>Electronic Frontier Foundation</a> e a millóns doutras persoas que loitan pola privacidade. Somos unha organización sen ánimo de lucro que loita polos teus dereitos en internet. Grazas por unirte!",
+        "description": ""
+    },
+    "donate_to_eff": {
+        "message": "Doar á EFF",
+        "description": ""
+    },
+    "intro_donate_subheading": {
+        "message": "Axúdanos cunha doazón e comparte o teu apoio ás nosas ferramentas",
+        "description": ""
+    },
+    "intro_link_policy": {
+        "message": "Política de Privacidade",
+        "description": ""
+    },
+    "intro_pin_nudge": {
+        "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+        "description": "",
+        "placeholders": {
+            "start_span_tag": {
+                "content": "<span id='pin-nudge-cta'>"
+            },
+            "disable_for_site": {
+                "content": "$1",
+                "example": "Disable for this site"
+            },
+            "end_span_tag": {
+                "content": "</span>"
+            }
+        }
+    },
+    "intro_pin_instructions": {
+        "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger.",
+        "description": ""
+    },
+    "share_button_title_facebook": {
+        "message": "Compartir en Facebook",
+        "description": ""
+    },
+    "share_button_title_twitter": {
+        "message": "Compartir en Twitter",
+        "description": ""
+    },
+    "share_button_title_mastodon": {
+        "message": "Compartir en Mastodon",
+        "description": ""
+    },
+    "options_title": {
+        "message": "Opcións de Privacy Badger",
+        "description": ""
+    },
+    "options_general_settings": {
+        "message": "Axustes xerais",
+        "description": ""
+    },
+    "show_counter_checkbox": {
+        "message": "Mostra a conta de rastrexadores",
+        "description": ""
+    },
+    "options_enable_dnt_checkbox": {
+        "message": "Enviarlle aos sitios web as marcas \"<a href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control</a>\" e \"<a href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track</a>\"",
+        "description": ""
+    },
+    "options_dnt_policy_setting": {
+        "message": "Comproba se <a target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>dominios de terceiras partes</a> cumpren coa <a target='_blank' href='https://www.eff.org/dnt-policy'>política Do Not Track de EFF</a>",
+        "description": ""
+    },
+    "options_privacy_settings": {
+        "message": "Privacidade",
+        "description": ""
+    },
+    "options_disable_hyperlink_auditing": {
+        "message": "Evita que os sitios web coñezan as ligazóns nas que premes (\"hyperlink auditing\")",
+        "description": ""
+    },
+    "options_disable_network_prediction": {
+        "message": "Desactivar obtención previa",
+        "description": ""
+    },
+    "options_disable_google_nav_error_service": {
+        "message": "Desactiva o envío a Google das webs que visitas. Esto desactiva a suxestión de páxinas semellantes cando non atopa unha páxina.",
+        "description": ""
+    },
+    "options_disable_floc": {
+        "message": "Disable Google's \"Privacy Sandbox\" ad tracking",
+        "description": ""
+    },
+    "options_advanced_settings": {
+        "message": "Avanzadas",
+        "description": ""
+    },
+    "options_learn_setting": {
+        "message": "Aprende a bloquear novos rastrexadores a través da túa navegación",
+        "description": ""
+    },
+    "local_learning_warning": {
+        "message": "Activando a aprendizaxe poderíate facer máis identificable para as webs",
+        "description": ""
+    },
+    "options_show_nontracking_domains_checkbox": {
+        "message": "Mostrar dominios que non semellan estar rastrexándote",
+        "description": ""
+    },
+    "options_incognito_setting": {
+        "message": "Aprender en ventás privadas/incógnito",
+        "description": ""
+    },
+    "options_incognito_warning": {
+        "message": "Activando a aprendizaxe en ventás privadas/incógnito podería deixar trazas da túa navegación privada na computadora. Por omisión, Privacy Badger bloqueará rastrexadores xa coñecidos en ventás privadas/incógnito, pero non aprenderá acerca novos rastrexadores. Poderías querer activar esta función se moita da túa navegación se realiza en ventás privadas/incógnito.",
+        "description": ""
+    },
+    "disabled_sites": {
+        "message": "Webs desactivadas",
+        "description": ""
+    },
+    "disabled_for_these_domains": {
+        "message": "<p>Privacy Badger está desactivado nas seguintes webs. Isto significa que Privacy Badger non vai bloquear nada cando visites as webs aquí relacionadas, e non enviará as marcas de Do Not Track e Global Privacy Control.</p><p>Se cres que Privacy Badger está estragando unha páxina web, ou se quixeses permitir a unha web en particular que comparta ou venda os teus datos, podes escribir aquí o dominio da páxina e premer no botón \"Engadir dominio\".</p>",
+        "description": ""
+    },
+    "allowlist_domain_input_placeholder": {
+        "message": "ex. www.exemplo.com, *.exemplo.net, exemplo.org",
+        "description": ""
+    },
+    "add_domain_button": {
+        "message": "Engadir dominio",
+        "description": ""
+    },
+    "remove_button": {
+        "message": "Eliminar o seleccionado",
+        "description": ""
+    },
+    "invalid_domain": {
+        "message": "Escribe un dominio ou URL válidos",
+        "description": ""
+    },
+    "options_widget_replacement_tab": {
+        "message": "Widget de substitución",
+        "description": ""
+    },
+    "options_widget_replacement_desc": {
+        "message": "Ao bloquear botóns das webs sociais ou outros widgets potencialmente útiles (vídeo, audio, comentarios), Privacy Badger pode substituílos cun indicador que convida a premer para desactivalo.",
+        "description": ""
+    },
+    "options_social_widgets_checkbox": {
+        "message": "Activar substitución de widget",
+        "description": ""
+    },
+    "options_widget_exceptions_header": {
+        "message": "Excepcións do widget",
+        "description": ""
+    },
+    "options_hide_social_widgets": {
+        "message": "Non substituír os seguintes widgets:",
+        "description": ""
+    },
+    "options_widget_site_exceptions_header": {
+        "message": "Excepcións de webs",
+        "description": ""
+    },
+    "options_widget_site_exceptions_label": {
+        "message": "Permitir sempre os widgets destas webs:",
+        "description": ""
+    },
+    "options_domain_list_tab": {
+        "message": "Dominios de rastrexo",
+        "description": ""
+    },
+    "options_domain_list_trackers": {
+        "message": "Ata o momento Privacy Badger decidiu bloquear $COUNT$ potenciais $TRACKER_LINK_START$dominios que rastrexan$TRACKER_LINK_END$",
+        "description": "",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "900"
+            },
+            "tracker_link_start": {
+                "content": "$2",
+                "example": "<a href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+            },
+            "tracker_link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "options_domain_list_no_trackers": {
+        "message": "Privacy Badger aínda non detectou ningún <a target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>dominio de rastrexo</a>. Continúa navegando!",
+        "description": ""
+    },
+    "what_is_a_tracker": {
+        "message": "Que é un rastrexador?",
+        "description": ""
+    },
+    "options_domain_search": {
+        "message": "Busca dominios:",
+        "description": ""
+    },
+    "options_domain_search_tooltip": {
+        "message": "Para excluír dominios, engade o termo de busca con \"-\". Por exemplo, \".co -.com\" mostrará tanto .co como  co.uk pero non os dominios .com",
+        "description": ""
+    },
+    "options_domain_type_filter": {
+        "message": "Filtrar por tipo:",
+        "description": ""
+    },
+    "options_domain_filter_all": {
+        "message": "todo",
+        "description": ""
+    },
+    "options_domain_filter_user": {
+        "message": "con control da usuaria",
+        "description": ""
+    },
+    "options_domain_filter_dnt": {
+        "message": "que cumpren coa política DNT de EFF",
+        "description": ""
+    },
+    "options_domain_status_filter": {
+        "message": "Filtro por estado:",
+        "description": ""
+    },
+    "options_domain_filter_block": {
+        "message": "bloqueado",
+        "description": ""
+    },
+    "options_domain_filter_cookieblock": {
+        "message": "parcialmente bloqueados",
+        "description": ""
+    },
+    "options_domain_filter_allow": {
+        "message": "permitidos",
+        "description": ""
+    },
+    "options_show_not_yet_blocked": {
+        "message": "Mostrar dominios sobre os que Badger aínda non tomou decisión",
+        "description": ""
+    },
+    "options_hide_in_seed": {
+        "message": "Hide domains present in the latest pre-trained list",
+        "description": ""
+    },
+    "options_domain_list_sites": {
+        "message": "Viuse que $DOMAIN$ facía rastrexo nestas webs:",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "options_remove_origin_confirm": {
+        "message": "Está seguro de que quere eliminar este dominio de Privacy Badger?",
+        "description": ""
+    },
+    "data_settings": {
+        "message": "Xestionar datos",
+        "description": ""
+    },
+    "manage_data_intro": {
+        "message": "Ao importar a configuración:<ul><li>Sobrescribe os axustes xerais</li><li>Combina as listas das webs desactivadas</li><li>Combina a información acerca dos rastrexadores que Privacy Badger detectou</li><li>Sobrescribe os axustes do interruptor</li></ul>",
+        "description": ""
+    },
+    "export_user_data": {
+        "message": "Exportar datos de usuaria",
+        "description": ""
+    },
+    "download": {
+        "message": "Descargar",
+        "description": ""
+    },
+    "import_user_data": {
+        "message": "Importar datos",
+        "description": ""
+    },
+    "import": {
+        "message": "Importar",
+        "description": ""
+    },
+    "import_select_file": {
+        "message": "Escolle o ficheiro a importar.",
+        "description": ""
+    },
+    "invalid_json": {
+        "message": "Ficheiro JSON non válido.",
+        "description": ""
+    },
+    "import_successful": {
+        "message": "Lista de rastrexadores e axustes actualizados correctamente!",
+        "description": ""
+    },
+    "sync_intro": {
+        "message": "Sincr. na Nube:<ul><li>Require a sincronización de Firefox/Chrome</li><li>Ao subilos sobrescribe calquera dato de Privacy Badger que alí exista</li><li>A descarga combina as listas de webs de sitios nos que desactivaches a Badger</li></ul>",
+        "description": ""
+    },
+    "upload_cloud": {
+        "message": "Exportar á nube as webs desactivadas",
+        "description": ""
+    },
+    "upload": {
+        "message": "Subir",
+        "description": ""
+    },
+    "download_cloud": {
+        "message": "Importar desde a nube as webs desactivadas",
+        "description": ""
+    },
+    "download_cloud_success": {
+        "message": "Datos da nube importados correctamente.",
+        "description": ""
+    },
+    "download_cloud_failure": {
+        "message": "Non se puideron descargar os datos desde a nube.",
+        "description": ""
+    },
+    "upload_cloud_success": {
+        "message": "Datos subidos correctamente á nube",
+        "description": ""
+    },
+    "upload_cloud_failure": {
+        "message": "Non se puideron subir os datos á nube",
+        "description": ""
+    },
+    "download_cloud_no_data": {
+        "message": "Non hai datos na nube que descargar.",
+        "description": ""
+    },
+    "reset_data": {
+        "message": "Restablecer dominios de rastrexo",
+        "description": ""
+    },
+    "reset": {
+        "message": "Restablecer",
+        "description": ""
+    },
+    "reset_data_confirm": {
+        "message": "Ao restablecer os dominios de rastrexo vas a:\n\n • Eliminar todos os datos acerca dos rastrexadores que Privacy Badger aprendeu a coñecer no teu navegador\n • Restablecer a lista de dominios de rastrexo cos valores da lista preestablecida (visita www.eff.org/badger-pretraining para saber máis)",
+        "description": ""
+    },
+    "remove_all_data": {
+        "message": "Eliminar todos os dominios de rastrexo",
+        "description": ""
+    },
+    "remove_all": {
+        "message": "Eliminar todo",
+        "description": ""
+    },
+    "remove_all_data_confirm": {
+        "message": "Ao eliminar todos os dominios de rastrexo vas:\n\n • Eliminar todo o coñecemento que Privacy Badger ten sobre os rastrexadores\n • Facer que Privacy Badger non bloquee nada ata que teña ocasión de volver a aprender a partir da túa navegación",
+        "description": ""
+    },
+    "intro_text1": {
+        "message": "Agora xa tes a protección de Privacy Badger.",
+        "description": ""
+    },
+    "intro_text2": {
+        "message": "Para saber como funciona Privacy Badger, preme aquí embaixo para un titorial rápido.",
+        "description": ""
+    },
+    "first_run_text": {
+        "message": "Aprende cómo Privacy Badger protexe a túa privacidade",
+        "description": ""
+    },
+    "learning_prompt_text1": {
+        "message": "Privacy Badger por omisión xa non aprenderá da túa navegación.",
+        "description": ""
+    },
+    "learning_prompt_text2": {
+        "message": "Preme aquí abaixo para saber máis.",
+        "description": ""
+    },
+    "learning_prompt_button": {
+        "message": "Aprende como está a cambiar Privacy Badger",
+        "description": ""
+    },
+    "deprecated_setting": {
+        "message": "O seguinte axuste xa non se usa e vai ser eliminado en futuras versións de Privacy Badger:",
+        "description": ""
+    },
+    "learn_more_link": {
+        "message": "Visita $LINK$ para saber máis.",
+        "description": "",
+        "placeholders": {
+            "link": {
+                "content": "$1",
+                "example": "<a href='https://example.com'>example.com</a>"
+            }
+        }
+    },
+    "acknowledgement_action": {
+        "message": "Entendo",
+        "description": ""
+    },
+    "social_tooltip_pb_has_replaced": {
+        "message": "Privacy Badger substituíu o botón de $BUTTON$",
+        "description": "",
+        "placeholders": {
+            "button": {
+                "content": "$1",
+                "example": "Facebook Like"
+            }
+        }
+    },
+    "widget_placeholder_pb_has_replaced": {
+        "message": "Privacy Badger substituíu $START_ANCHOR_TAG$este $WIDGET$ widget$END_ANCHOR_TAG$",
+        "description": "",
+        "placeholders": {
+            "widget": {
+                "content": "$1",
+                "example": "Google reCAPTCHA"
+            },
+            "start_anchor_tag": {
+                "content": "$2",
+                "example": "<a href='https://vimeo.com/76979871'>"
+            },
+            "end_anchor_tag": {
+                "content": "$3",
+                "example": "</a>"
+            }
+        }
+    },
+    "allow_once": {
+        "message": "Permitir unha vez",
+        "description": ""
+    },
+    "allow_on_site": {
+        "message": "Permitir sempre nesta web",
+        "description": ""
+    }
+}

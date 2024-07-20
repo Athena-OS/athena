@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "मै समझता/समझती हुँ"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "डोमेन जोड़ें"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "इस साइट पर हमेशा अनुमति दें"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "एक बार अनुमति दें"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "उदाहरण www.example.com, *.example.net, example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "$DOMAIN$ को अनुमति दी",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "ब्लॉक किया $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Blocked cookies and fingerprinting scripts from $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "$DOMAIN$ से कुकीज़ रोकी गईं",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "$DOMAIN$ के लिए कोई ट्रैकिंग नहीं",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "इस डोमेन को अवरोधित करना वेबसाइटों को तोड़ने के लिए जाना जाता है"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "canvas fingerprinting"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "कॉपी किया गया"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "क्लिपबोर्ड पर कॉपी करें"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "डेटा प्रबंधन"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "निम्नलिखित सेटिंग को बहिष्कृत कर दिया गया है और भविष्य के प्राइवेसी बैजर अपडेट में हटा दिया जाएगा:"
+   },
+   "description": {
+      "description": "",
+      "message": "प्राइवेसी बैजर स्वचालित रूप से अदृश्य ट्रैकर्स को अवरोधित करना सीखता है।"
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>प्राइवेसी बैजर बैजर निम्न साइटों पर अक्षम है। इसका मतलब यह है कि जब आप यहां सूचीबद्ध साइटों पर जाते हैं तो प्राइवेसी बैजर बैजर कुछ भी अवरुद्ध नहीं करेगा,और यह Do Not Track या Global Privacy Control signals नहीं भेजेगा।\u003C/p>\u003Cp>अगर आपको लगता है कि प्राइवेसी बैजर किसी पेज को तोड़ रहा है, या आप किसी विशेष साइट को अपना डेटा साझा करने या बेचने की अनुमति देना चाहते हैं, तो आप नीचे बॉक्स में उस पेज का डोमेन टाइप कर सकते हैं और \"डोमेन जोड़ें\" बटन पर क्लिक कर सकते हैं।\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "अक्षम साइटें"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "यह डोमेन आपको ट्रैक नहीं करने का वादा करता है"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "अनुमति दें"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "पूरी तरह से अवरोधित करे"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "कुकीज़ अवरोधित करें"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "इलेक्ट्रॉनिक फ्रंटियर फाउंडेशन (EFF) को दान करें"
+   },
+   "download": {
+      "description": "",
+      "message": "डाउनलोड करे"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "क्लाउड से अक्षम साइटों को आयात करें"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "क्लाउड डेटा डाउनलोड नहीं किया जा सका."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "डाउनलोड करने के लिए कोई क्लाउड डेटा नहीं है।"
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "क्लाउड डेटा सफलतापूर्वक आयात किया गया।"
+   },
+   "error_input": {
+      "description": "",
+      "message": "क्या गलत है?"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "उपयोगकर्ता डेटा निर्यात करें"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "कृपया निम्न त्रुटि के बारे में \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>हमें बताएं\u003C/a>:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "प्राइवेसी बैजर को इस डोमेन का नियंत्रण लौटाने के लिए क्लिक करें"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "प्राइवेसी बैजर इंस्टॉल करने के लिए धन्यवाद!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "जानें कि प्राइवेसी बैजर आपकी निजता की सुरक्षा कैसे करता है"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "अपने Google खाते से वेबसाइटों में लॉगिंग सक्षम करने के लिए, इस स्लाइडर को दाईं ओर ले जाएँ, और पृष्ठ को पुनः लोड करें"
+   },
+   "import": {
+      "description": "",
+      "message": "आयात"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "कृपया आयात करने के लिए एक फ़ाइल का चयन करें।"
+   },
+   "import_successful": {
+      "description": "",
+      "message": "ट्रैकर सूची और सेटिंग सफलतापूर्वक अपडेट की गईं!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "उपयोगकर्ता डेटा आयात करें"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": " गुप्त ट्रैकर्स को पकड़ता है"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "अदृश्य ट्रैकिंग हर तरह से होती है; विज्ञापन केवल हिमशैल का दृश्यमान सिरा है। प्राइवेसी बैजर \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control signal\u003C/a> भेजता है, आपको डेटा शेयरिंग और बिक्री से बाहर करने के लिए, और कंपनियों को आपको ट्रैक न करने के लिए \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track signal\u003C/a> भेजता है । अगर वे आपकी इच्छाओं को नज़रअंदाज़ करते हैं, तो प्राइवेसी बैजर उन्हें ब्लॉक करना सीख जाएगा—चाहे वे विज्ञापनदाता हों या अन्य प्रकार के ट्रैकर्स।"
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "इलेक्ट्रॉनिक फ्रंटियर फाउंडेशन (EFF) की एक परियोजना"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "अगर आपको लगता है कि प्राइवेसी बैजर पेज तोड़ रहा है (उदाहरण के लिए कोई वीडियो नहीं चलता है), तो आप उस साइट के लिए प्राइवेसी बैजर को बंद करने के लिए 'अक्षम करें' बटन पर क्लिक कर सकते हैं।"
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "जब आप प्राइवेसी बैजर का उपयोग करते हैं तो आप \u003Ca href='https://www.eff.org/' target='_blank'>इलेक्ट्रॉनिक फ्रंटियर फाउंडेशन (EFF)\u003C/a> और लाखों अन्य उपयोगकर्ताओं के साथ निजता की लड़ाई में शामिल हो जाते हैं। हम ऑनलाइन आपके अधिकारों के लिए लड़ने वाली एक गैर-लाभकारी संस्था हैं। हमसे जुड़ने के लिए धन्यवाद!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "निजता एक टीम स्पोर्ट है!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "हमारे टूल के लिए दान और अपना समर्थन साझा करके हमारी सहायता करें"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "स्वतः सीखता है"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "क्या ब्लॉक करना है इसकी सूची रखने के बजाय, प्राइवेसी बैजर ट्रैकर्स को उनके व्यवहार के आधार पर स्वचालित रूप से खोजता है।"
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "निजता नीति"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "टूर पर जाएं"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "एड ब्लॉकर नहीं, मैं अलग हूं"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "प्राइवेसी बैजर तीन अलग-अलग वेबसाइटों पर एक ही ट्रैकर को देखते ही ब्लॉक करना शुरू कर देता है। तीन स्ट्राइक और यह बाहर!"
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "प्राइवेसी बैजर आपके ब्राउज़िंग के बारे में डेटा तब तक साझा नहीं करेगा जब तक कि आप इसे साझा करना नहीं चुनते।"
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "कृपया 'टूटी साइट की सूचना दें' पर क्लिक करना न भूलें। हम आपकी निजता का सम्मान करते हैं इसलिए हम स्वचालित रिपोर्ट नहीं भेजते हैं।"
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "अब आप प्राइवेसी बैजर द्वारा सुरक्षित हैं।"
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "यह जानने के लिए कि प्राइवेसी बैजर कैसे काम करता है, ट्यूटोरियल के लिए नीचे क्लिक करें।"
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "प्राइवेसी बैजर स्वचालित रूप से अदृश्य ट्रैकर्स को ब्लॉक करना सीखता है। एक मिनट निकालकर देखें कि कैसे।"
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "कृपया कोई मान्य डोमेन या URL जोड़ें"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "अमान्य JSON फ़ाइल।"
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "अधिक जानने के लिए $LINK$ पर जाएँ",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "जानें कि प्राइवेसी बैजर कैसे बदल रहा है"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "प्राइवेसी बैजर अब डिफ़ॉल्ट रूप से आपकी ब्राउज़िंग से नहीं सीखेगा।"
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "अधिक जानने के लिए नीचे क्लिक करें।"
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "सीखने को सक्षम करने से आप वेबसाइटों के लिए और अधिक पहचाने जाने योग्य बन सकते हैं"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "उपयोगकर्ता डेटा आयात करना:\u003Cul>\u003Cli>सामान्य सेटिंग्स को ओवरराइट करता है\u003C/li>\u003Cli>अक्षम साइटों की सूचियों को संयोजित करता है\u003C/li>\u003Cli>प्राइवेसी बैजर ने क्या ट्रैकर्स को देखा है, इसके बारे में जानकारी को जोड़ती है\u003C/li>\u003Cli>स्लाइडर अनुकूलन को ओवरराइट करता है\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "अगला खंड"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "ऐसा लगता है कि नीचे दिए गए डोमेन आपको ट्रैक नहीं कर रहे हैं"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "वर्तमान में प्राइवेसी बैजर केवल यह जांचता है कि तृतीय पक्ष आपके ब्राउज़िंग को ट्रैक करने के लिए कुकीज़, HTML5 लोकल स्टोरेज, या कैनवास फ़िंगरप्रिंटिंग का उपयोग कर रहे हैं या नहीं। इनमें से कुछ डोमेन ट्रैकिंग विधियों का उपयोग कर रहे होंगे जिनका प्राइवेसी बैजर पता नहीं लगा सकता है।"
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "आपके बैजर ने अभी तक यह निर्णय नहीं लिया है कि इन डोमेन को अवरुद्ध किया जाना चाहिए या नहीं"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "उन्नत"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "आप जिन वेब पतों पर जाते हैं उन्हें Google को भेजना निष्क्रिय करें। जब कोई पृष्ठ नहीं मिल पाता है तो यह समान पृष्ठों के सुझावों को अक्षम कर देता है।"
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "साइटों को ट्रैक करने से रोकें कि आप किन लिंक पर क्लिक करते हैं (\"hyperlink auditing\")"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "प्रीफेचिंग निष्क्रिय करें"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "जांचें कि क्या \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>तृतीय पक्ष डोमेन\u003C/a> \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>EFF की Do Not Track नीति\u003C/a> का अनुपालन करते हैं"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "सभी"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "अनुमत"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "अवरोधित"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "आंशिक-अवरोधित"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "EFF की DNT नीति के अनुरूप"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "उपयोगकर्ता-नियंत्रित"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "प्राइवेसी बैजर को अभी तक कोई \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>ट्रैकिंग डोमेन\u003C/a> नहीं मिला है। ब्राउज़ करते रहें!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "$DOMAIN$ was seen tracking on the following sites:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "ट्रैकिंग डोमेन"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "प्राइवेसी बैजर ने अब तक $COUNT$ संभावित $TRACKER_LINK_START$ट्रैकिंग डोमेन$TRACKER_LINK_END$ को ब्लॉक करने का फैसला किया है",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "डोमेन खोजें:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "डोमेन बहिष्कृत करने के लिए, अपने खोज शब्द के आगे \"-\" लगाएं। उदाहरण के लिए, \"co -.com\" .co और .co.uk दिखाएगा लेकिन .com डोमेन नहीं दिखाएगा।"
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "स्थिति के अनुसार फ़िल्टर करें:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "प्रकार से फ़िल्टर करें:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "वेबसाइटों को \"\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a>\" और \"\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a>\" signals भेजें"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "सामान्य सेटिंग्स"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Hide domains present in the latest pre-trained list"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "निम्नलिखित विजेट्स को न बदलें:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Private/Incognito विंडो में सीखें"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Private/Incognito विंडो में सीखने को सक्षम करने से आपके कंप्यूटर पर आपके निजी ब्राउज़िंग इतिहास के निशान रह सकते हैं। डिफ़ॉल्ट रूप से, प्राइवेसी बैजर उन ट्रैकर्स को ब्लॉक कर देगा जिनके बारे में वह पहले से ही Private/Incognito विंडो में जानता है, लेकिन यह नए ट्रैकर्स के बारे में नहीं सीखेगा। यदि आपकी अधिकांश ब्राउज़िंग Private/Incognito विंडो में होती है, तो हो सकता है कि आप इस विकल्प को सक्षम करना चाहें।."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "अपने ब्राउज़िंग से नए ट्रैकर्स को ब्लॉक करना सीखें"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "निजता"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "क्या आप सुनिश्चित हैं कि आप इस डोमेन को प्राइवेसी बैजर से हटाना चाहते हैं?"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "वे डोमेन दिखाएं जो आपको ट्रैक करते प्रतीत नहीं हो रहे हैं"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "वे डोमेन दिखाएं जिन्हें आपके बैजर ने अभी तक ब्लॉक करने का निर्णय नहीं लिया है"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "विजेट प्रतिस्थापन सक्षम करें"
+   },
+   "options_title": {
+      "description": "",
+      "message": "प्राइवेसी बैजर के विकल्प"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "विजेट अपवाद"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "सोशल बटन और अन्य संभावित उपयोगी (वीडियो, ऑडियो, टिप्पणियां) विजेट को अवरुद्ध करते समय, प्राइवेसी बैजर उन्हें क्लिक-टू-एक्टिवेट प्लेसहोल्डर्स से बदल सकता है।"
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "विजेट प्रतिस्थापन"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "साइट अपवाद"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "इन साइटों पर विजेट्स को हमेशा अनुमति दें:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "इस पृष्ठ पर कोई तृतीय पक्ष संसाधन नहीं हैं। निजता के लिए हुरेय!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "इस साइट के लिए अक्षम करें"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "इस साइट पर प्राइवेसी बैजर अक्षम है"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "इस साइट के लिए सक्रिय करें"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "सहायता"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "कुछ वेबसाइटें $LINK_START$आपका पीछा करने के लिए लिंक ट्रैकिंग का उपयोग करती है$LINK_END$ जब भी आप वेबसाइट छोड़ने के लिए किसी लिंक पर क्लिक करते हैं. प्राइवेसी बैजर इस वेबसाइट पर ऐसे लिंक्स से ट्रैकिंग हटा देता है।",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "लिंक ट्रैकिंग सुरक्षा सक्रिय"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "$COUNT$ संभावित $LINK_START$ट्रैकर्स$LINK_END$ रोके गए",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "कोई $LINK_START$ट्रैकर्स$LINK_END$ नहीं रोके गए",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "विकल्प"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "साझा करें"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "इस पेज पर करने के लिए कुछ नहीं है"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "प्राइवेसी बैजर इस तरह के विशेष पृष्ठों पर काम नहीं करता। कहीं और ब्राउज़ करने का प्रयास करें।"
+   },
+   "remove_all": {
+      "description": "",
+      "message": "सभी हटाएं"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "सभी ट्रैकिंग डोमेन हटाएं"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "सभी ट्रैकिंग डोमेन को हटाने से:\n\n  • प्राइवेसी बैजर ट्रैकर्स के बारे में जो कुछ भी जानता है, उसे हटा दिया जायेगा \n  • प्राइवेसी बैजर तब तक कुछ भी ब्लॉक नहीं कर पायेगा, जब तक कि उसे आपके ब्राउजिंग से फिर से सीखने का मौका न मिल जाए"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "चयनित हटाएं"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "टूटी साइट की सूचना दें"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "रद्द करें"
+   },
+   "report_close": {
+      "description": "",
+      "message": "बंद करे"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "उफ़। कुछ गलत हो गया।"
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "धन्यवाद! हम इसकी तह तक जाएंगे।"
+   },
+   "report_terms": {
+      "description": "",
+      "message": "यह EFF को स्वचालित रूप से निम्न जानकारी भेजेगा: वह पृष्ठ जिस पर आप वर्तमान में जा रहे हैं, आपका ब्राउज़र संस्करण, प्राइवेसी बैजर का संस्करण, और इस पृष्ठ पर सभी स्लाइडर्स की स्थिति।"
+   },
+   "reset": {
+      "description": "",
+      "message": "रीसेट"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "ट्रैकिंग डोमेन रीसेट करें"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "ट्रैकिंग डोमेन रीसेट करने से:\n\n  • ट्रैकर्स के बारे में सभी डेटा को हटा दिया जायेगा जो प्राइवेसी बैजर ने आपके ब्राउजिंग से सीखा है \n  • ट्रैकिंग डोमेन सूची को नवीनतम पूर्व-प्रशिक्षित सूची में पुनर्स्थापित कर दिया जायेगा (अधिक जानकारी  के लिए www.eff.org/badger-pretraining पर जाएं)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "प्राइवेसी बैजर (privacybadger.org) एक ब्राउज़र एक्सटेंशन है जो स्वचालित रूप से अदृश्य ट्रैकर्स को ब्लॉक करना सीखता है। प्राइवेसी बैजर इलेक्ट्रॉनिक फ्रंटियर फाउंडेशन (EFF) द्वारा बनाया गया है, जो एक गैर-लाभकारी संस्था है जो ऑनलाइन आपके अधिकारों के लिए लड़ती है।"
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "फेसबुक पर सांझा करें"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Share on Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "ट्विटर पर साझा करें"
+   },
+   "share_title": {
+      "description": "",
+      "message": "अपने मित्रों को बताएँ"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "प्राइवेसी बैजर ने $DOMAIN$ पर $COUNT$ संभावित ट्रैकर्स को ब्लॉक कर दिया:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "ट्रैकर्स की संख्या दिखाएं"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "प्राइवेसी बैजर ने इस $BUTTON$ बटन को बदल दिया है",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Cloud sync:\u003Cul>\u003Cli>Firefox/Chrome Sync की आवश्यकता पड़ती है \u003C/li>\u003Cli>अपलोड क्लाउड में मौजूद किसी भी मौजूदा प्राइवेसी बैजर डेटा को ओवरराइट कर देता है\u003C/li>\u003Cli>डाउनलोड उन साइटों की सूची जोड़ता है जहां आपका बैजर अक्षम है\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "डोमेन को अनुमति देने के लिए स्लाइडर को दाईं ओर ले जाएं"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "डोमेन ब्लॉक करने के लिए स्लाइडर को बाईं ओर ले जाएं"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "कुकीज़ को ब्लॉक करने के लिए स्लाइडर को बीच में रखें"
+   },
+   "upload": {
+      "description": "",
+      "message": "अपलोड"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "अक्षम साइटों को क्लाउड पर निर्यात करें"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "डेटा क्लाउड पर अपलोड नहीं किया जा सका"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "डेटा सफलतापूर्वक क्लाउड पर अपलोड किया गया"
+   },
+   "version": {
+      "description": "",
+      "message": "संस्करण $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "ट्रैकर क्या है?"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "प्राइवेसी बैजर ने $START_ANCHOR_TAG$इस $WIDGET$ विजेट$END_ANCHOR_TAG$ को बदल दिया है",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

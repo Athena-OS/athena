@@ -1,0 +1,2778 @@
+{
+   "appDescription": {
+      "description": "The description of the extension, displayed in the web store.",
+      "message": "I-customize ang kulay ng accent, layout, istilo, background at mga bookmark sa nightTab."
+   },
+   "appName": {
+      "description": "The name of the extension, displayed in the web store.",
+      "message": "nightTab"
+   },
+   "appShortName": {
+      "description": "The name of the extension, displayed in the web store.",
+      "message": "nightTab"
+   },
+   "bookmarkAddCancelText": {
+      "description": "Button to cancel adding a bookmark.",
+      "message": "Kanselahin"
+   },
+   "bookmarkAddHeading": {
+      "description": "Heading for bookmark add modal.",
+      "message": "Magdagdag ng bagong Bookmark"
+   },
+   "bookmarkAddSuccessText": {
+      "description": "Button to confirm adding a bookmark.",
+      "message": "Idagdag"
+   },
+   "bookmarkEditCancelText": {
+      "description": "Button to cancel editing a bookmark.",
+      "message": "Kanselahin"
+   },
+   "bookmarkEditHeadingName": {
+      "description": "Heading with a name for bookmark edit modal.",
+      "message": "I-edit"
+   },
+   "bookmarkEditHeadingUnnamed": {
+      "description": "Heading without a name for bookmark edit modal.",
+      "message": "I-edit ang hindi pinangalanang bookmark"
+   },
+   "bookmarkEditSuccessText": {
+      "description": "Button to confirm editing a bookmark.",
+      "message": "I-save"
+   },
+   "bookmarkFormAccentByCustomDescription": {
+      "description": "Description for bookmark tile to use a custom accent.",
+      "message": "I-override ang Theme Accent."
+   },
+   "bookmarkFormAccentByCustomLabel": {
+      "description": "Label for bookmark tile to use a custom accent.",
+      "message": "Custom na Accent"
+   },
+   "bookmarkFormAccentByThemeDescription": {
+      "description": "Description for bookmark tile to use the theme accent.",
+      "message": "Gamitin ang Accent na tinukoy ng Tema."
+   },
+   "bookmarkFormAccentByThemeLabel": {
+      "description": "Label for bookmark tile to use the theme accent.",
+      "message": "Accent ng Tema"
+   },
+   "bookmarkFormAccentColor": {
+      "description": "Label for bookmark tile accent.",
+      "message": "Accent"
+   },
+   "bookmarkFormBackgroundImageHelperPara1": {
+      "description": "Helper text for bookmark tile background image URL.",
+      "message": "Sinusuportahan lamang ng larawan sa background ang isang direktang URL sa isang file ng larawan."
+   },
+   "bookmarkFormBackgroundImageLabel": {
+      "description": "Label for bookmark tile background image URL.",
+      "message": "URL ng larawan sa background"
+   },
+   "bookmarkFormBackgroundImagePlaceholder": {
+      "description": "Placeholder for bookmark tile background image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "bookmarkFormBackgroundOpacity": {
+      "description": "Range for bookmark tile background opacity.",
+      "message": "Opacity"
+   },
+   "bookmarkFormBackgroundShowDescription": {
+      "description": "Description for bookmark tile background.",
+      "message": "Magpakita ng Background ng Larawan o video sa Bookmark tile na ito."
+   },
+   "bookmarkFormBackgroundShowLabel": {
+      "description": "Label for bookmark tile background.",
+      "message": "Ipakita ang background"
+   },
+   "bookmarkFormBackgroundTypeImage": {
+      "description": "Radio for bookmark tile image background.",
+      "message": "Imahe"
+   },
+   "bookmarkFormBackgroundTypeVideo": {
+      "description": "Radio for bookmark tile video background.",
+      "message": "Video"
+   },
+   "bookmarkFormBackgroundVideoHelperPara1": {
+      "description": "Helper text for bookmark tile background video URL.",
+      "message": "Sinusuportahan lamang ng background na video ang isang direktang URL sa isang video file. Sinusuportahan ang MP4 at WebM na format."
+   },
+   "bookmarkFormBackgroundVideoHelperPara2": {
+      "description": "Helper text for bookmark tile background video URL.",
+      "message": "Hindi magagamit ang mga URL ng pahina sa YouTube."
+   },
+   "bookmarkFormBackgroundVideoLabel": {
+      "description": "Label for bookmark tile background video URL.",
+      "message": "URL ng background ng video"
+   },
+   "bookmarkFormBackgroundVideoPlaceholder": {
+      "description": "Placeholder for bookmark tile background video URL.",
+      "message": "https://www.example.com/video.mp4"
+   },
+   "bookmarkFormBorder": {
+      "description": "Range for bookmark tile border.",
+      "message": "Border"
+   },
+   "bookmarkFormColorByCustomDescription": {
+      "description": "Description for bookmark tile to use a custom colour.",
+      "message": "I-override ang kulay ng Tema."
+   },
+   "bookmarkFormColorByCustomLabel": {
+      "description": "Label for bookmark tile to use a custom colour.",
+      "message": "Pasadyang kulay"
+   },
+   "bookmarkFormColorByThemeDescription": {
+      "description": "Description for bookmark tile to use the theme colour.",
+      "message": "Gamitin ang Kulay na tinukoy ng Tema."
+   },
+   "bookmarkFormColorByThemeLabel": {
+      "description": "Label for bookmark tile to use the theme colour.",
+      "message": "Kulay ng tema"
+   },
+   "bookmarkFormColorColor": {
+      "description": "Label for bookmark tile colour.",
+      "message": "Kulay"
+   },
+   "bookmarkFormColorOpacity": {
+      "description": "Range for bookmark tile opacity.",
+      "message": "Opacity"
+   },
+   "bookmarkFormDisplayAlignmentBottomCenter": {
+      "description": "Radio to align bookmark tile display bottom centre.",
+      "message": "Ibabang Gitna"
+   },
+   "bookmarkFormDisplayAlignmentBottomLeft": {
+      "description": "Radio to align bookmark tile display bottom left.",
+      "message": "Babang kaliwa"
+   },
+   "bookmarkFormDisplayAlignmentBottomRight": {
+      "description": "Radio to align bookmark tile display bottom right.",
+      "message": "Kanan sa ibaba"
+   },
+   "bookmarkFormDisplayAlignmentCenterCenter": {
+      "description": "Radio to align bookmark tile display centre centre.",
+      "message": "Center Center"
+   },
+   "bookmarkFormDisplayAlignmentCenterLeft": {
+      "description": "Radio to align bookmark tile display centre left.",
+      "message": "Gitnang Kaliwa"
+   },
+   "bookmarkFormDisplayAlignmentCenterRight": {
+      "description": "Radio to align bookmark tile display centre right.",
+      "message": "Gitnang Kanan"
+   },
+   "bookmarkFormDisplayAlignmentLabel": {
+      "description": "Label for bookmark tile display alignment.",
+      "message": "Pag-align ng Visual Element at Pangalan"
+   },
+   "bookmarkFormDisplayAlignmentTopCenter": {
+      "description": "Radio to align bookmark tile display top centre.",
+      "message": "Nangungunang Center"
+   },
+   "bookmarkFormDisplayAlignmentTopLeft": {
+      "description": "Radio to align bookmark tile display top left.",
+      "message": "Kaliwa sa itaas"
+   },
+   "bookmarkFormDisplayAlignmentTopRight": {
+      "description": "Radio to align bookmark tile display top right.",
+      "message": "Kanan sa itaas"
+   },
+   "bookmarkFormDisplayDirectionHorizontalDescription": {
+      "description": "Description for bookmark tile display horizontal direction.",
+      "message": "Ayusin ang Visual Element at Pangalan nang magkatabi."
+   },
+   "bookmarkFormDisplayDirectionHorizontalLabel": {
+      "description": "Label for bookmark tile display horizontal direction.",
+      "message": "Pahalang"
+   },
+   "bookmarkFormDisplayDirectionVerticalDescription": {
+      "description": "Description for bookmark tile display vertical direction.",
+      "message": "I-stack ang Visual Element at Pangalanan ang isa sa itaas ng isa."
+   },
+   "bookmarkFormDisplayDirectionVerticalLabel": {
+      "description": "Label for bookmark tile display vertical direction.",
+      "message": "Patayo"
+   },
+   "bookmarkFormDisplayGutter": {
+      "description": "Range for bookmark tile gutter space between visual and name.",
+      "message": "Kanal"
+   },
+   "bookmarkFormDisplayNameShow": {
+      "description": "Checkbox to show bookmark tile name.",
+      "message": "Ipakita ang Pangalan"
+   },
+   "bookmarkFormDisplayNameSize": {
+      "description": "Range for bookmark tile name size.",
+      "message": "Laki ng pangalan"
+   },
+   "bookmarkFormDisplayNameTextLabel": {
+      "description": "Label for bookmark tile name.",
+      "message": "Pangalan ng bookmark"
+   },
+   "bookmarkFormDisplayNameTextPlaceholder": {
+      "description": "Placeholder for bookmark tile name.",
+      "message": "Halimbawa"
+   },
+   "bookmarkFormDisplayOrderNameVisualDescription": {
+      "description": "Description for bookmark tile display name then visual order.",
+      "message": "Ilagay ang Pangalan bago ang Visual Element."
+   },
+   "bookmarkFormDisplayOrderNameVisualLabel": {
+      "description": "Label for bookmark tile display name then visual order.",
+      "message": "Pangalanan pagkatapos ay visual na elemento"
+   },
+   "bookmarkFormDisplayOrderVisualNameDescription": {
+      "description": "Description for bookmark tile display visual then name order.",
+      "message": "Ilagay ang Visual Element bago ang Pangalan."
+   },
+   "bookmarkFormDisplayOrderVisualNameLabel": {
+      "description": "Label for bookmark tile display visual then name order.",
+      "message": "Visual na elemento pagkatapos ay pangalanan"
+   },
+   "bookmarkFormDisplayRotate": {
+      "description": "Range for bookmark tile visual rotation.",
+      "message": "Iikot"
+   },
+   "bookmarkFormDisplayTranslateLabel": {
+      "description": "Label for bookmark tile visual translation.",
+      "message": "Ayusin ang posisyon ng Visual Element"
+   },
+   "bookmarkFormDisplayTranslateX": {
+      "description": "Range for bookmark tile visual translation along the x axis.",
+      "message": "Pahalang"
+   },
+   "bookmarkFormDisplayTranslateY": {
+      "description": "Range for bookmark tile visual translation along the y axis.",
+      "message": "Patayo"
+   },
+   "bookmarkFormDisplayVisualIconRemove": {
+      "description": "Button to remove the bookmark tile visual icon.",
+      "message": "Alisin ang icon"
+   },
+   "bookmarkFormDisplayVisualIconTextLabel": {
+      "description": "Label for bookmark tile visual icon.",
+      "message": "Icon ng bookmark"
+   },
+   "bookmarkFormDisplayVisualIconTextPlaceholder": {
+      "description": "Placeholder for bookmark tile visual icon.",
+      "message": "Mga Brand o Icon ng FontAwesome"
+   },
+   "bookmarkFormDisplayVisualImageUrlLabel": {
+      "description": "Label for bookmark tile visual image URL.",
+      "message": "I-bookmark ang larawan"
+   },
+   "bookmarkFormDisplayVisualImageUrlPlaceholder": {
+      "description": "Placeholder for bookmark tile visual image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "bookmarkFormDisplayVisualLetterTextLabel": {
+      "description": "Label for bookmark tile visual text.",
+      "message": "I-bookmark ang liham"
+   },
+   "bookmarkFormDisplayVisualLetterTextPlaceholder": {
+      "description": "Placeholder for bookmark tile visual text.",
+      "message": "E"
+   },
+   "bookmarkFormDisplayVisualShadowHelperPara1": {
+      "description": "Helper text for bookmark tile visual shadow.",
+      "message": "Nalalapat lang ang visual shadow sa isang Letter o Icon."
+   },
+   "bookmarkFormDisplayVisualShadowSize": {
+      "description": "Range for bookmark tile visual shadow.",
+      "message": "Biswal na anino"
+   },
+   "bookmarkFormDisplayVisualShowDescription": {
+      "description": "Description to show bookmark tile visual.",
+      "message": "Ipakita ang mga Letra, Icon o isang Imahe sa Bookmark hexagon na ito."
+   },
+   "bookmarkFormDisplayVisualShowLabel": {
+      "description": "Checkbox to show bookmark tile visual.",
+      "message": "Ipakita ang Visual Element"
+   },
+   "bookmarkFormDisplayVisualSize": {
+      "description": "Range for bookmark tile visual size.",
+      "message": "Visual na laki"
+   },
+   "bookmarkFormDisplayVisualTypeIcon": {
+      "description": "Radio for bookmark tile visual icon.",
+      "message": "Icon"
+   },
+   "bookmarkFormDisplayVisualTypeImage": {
+      "description": "Radio for bookmark tile visual image.",
+      "message": "Imahe"
+   },
+   "bookmarkFormDisplayVisualTypeLetter": {
+      "description": "Radio for bookmark tile visual letter.",
+      "message": "Sulat"
+   },
+   "bookmarkFormGroupDestinationExisting": {
+      "description": "Radio for bookmark position in existing bookmark group.",
+      "message": "Umiiral na Grupo"
+   },
+   "bookmarkFormGroupDestinationNew": {
+      "description": "Radio for bookmark position in new bookmark group.",
+      "message": "Bagong grupo"
+   },
+   "bookmarkFormGroupNameLabel": {
+      "description": "Label for bookmark group name.",
+      "message": "URL"
+   },
+   "bookmarkFormGroupNamePlaceholder": {
+      "description": "Placeholder for bookmark group name.",
+      "message": "Halimbawang pangkat"
+   },
+   "bookmarkFormGroupPositionGroup": {
+      "description": "Select for bookmark group position.",
+      "message": "Grupo"
+   },
+   "bookmarkFormGroupPositionItem": {
+      "description": "Select for bookmark position in a group.",
+      "message": "Posisyon"
+   },
+   "bookmarkFormGroupRandom": {
+      "description": "Button for random group name.",
+      "message": "Random na pangalan ng Grupo"
+   },
+   "bookmarkFormPropagateLayoutDescriptionPara1": {
+      "description": "Helper text to share current bookmark layout settings to all other bookmarks.",
+      "message": "Kapag na-save, ilapat ang Layout sa itaas sa lahat ng iba pang mga Bookmark."
+   },
+   "bookmarkFormPropagateLayoutDescriptionPara2": {
+      "description": "Helper text to share current bookmark layout settings to all other bookmarks.",
+      "message": "Tanging ang laki ng Visual at Pangalan, Alignment, Order, Position at Gutter ang ilalapat sa lahat."
+   },
+   "bookmarkFormPropagateLayoutLabel": {
+      "description": "Checkbox to share current bookmark layout settings to all other bookmarks.",
+      "message": "Ilapat ang Layout sa iba pang mga Bookmark"
+   },
+   "bookmarkFormPropagateThemeDescriptionPara1": {
+      "description": "Helper text to share current bookmark theme settings to all other bookmarks.",
+      "message": "Kapag na-save, ilapat ang Tema sa itaas sa lahat ng iba pang mga Bookmark."
+   },
+   "bookmarkFormPropagateThemeDescriptionPara2": {
+      "description": "Helper text to share current bookmark theme settings to all other bookmarks.",
+      "message": "Ang Kulay, Accent, Opacity, Border at Visual shadow lang ang ilalapat sa lahat."
+   },
+   "bookmarkFormPropagateThemeLabel": {
+      "description": "Checkbox to share current bookmark theme settings to all other bookmarks.",
+      "message": "Ilapat ang Tema sa iba pang mga Bookmark"
+   },
+   "bookmarkFormPropagateVisualDescriptionPara1": {
+      "description": "Helper text to share current bookmark visual settings to all other bookmarks.",
+      "message": "Hindi ibabahagi ang Letter, Icon, Image at Name text."
+   },
+   "bookmarkFormPropagateVisualDescriptionPara2": {
+      "description": "Helper text to share current bookmark visual settings to all other bookmarks.",
+      "message": "Kapaki-pakinabang para sa pagtatago ng Mga Visual na Elemento o Pangalan sa lahat ng Mga Bookmark."
+   },
+   "bookmarkFormPropagateVisualLabel": {
+      "description": "Checkbox to share current bookmark visual settings to all other bookmarks.",
+      "message": "Ilapat ang \"Ipakita ang Visual Element\" at \"Ipakita ang Pangalan\" sa iba pang mga Bookmark"
+   },
+   "bookmarkFormSectionAddressDescription": {
+      "description": "Description for bookmark form address page.",
+      "message": "Tiyaking gamitin ang buong URL at isama ang \"https://...\""
+   },
+   "bookmarkFormSectionAddressHeading": {
+      "description": "Heading for bookmark form address page.",
+      "message": "Address"
+   },
+   "bookmarkFormSectionLayoutDescription": {
+      "description": "Description for bookmark form layout page.",
+      "message": "Baguhin ang posisyon, sukat at oryentasyon ng Visual Element at Pangalan."
+   },
+   "bookmarkFormSectionLayoutHeading": {
+      "description": "Heading for bookmark form layout page.",
+      "message": "Layout"
+   },
+   "bookmarkFormSectionPositionDescription": {
+      "description": "Description for bookmark form position page.",
+      "message": "Ang Grupo kung saan ilalagay ang Bookmark na ito."
+   },
+   "bookmarkFormSectionPositionHeading": {
+      "description": "Heading for bookmark form position page.",
+      "message": "Posisyon"
+   },
+   "bookmarkFormSectionThemeDescription": {
+      "description": "Description for bookmark form theme page.",
+      "message": "I-override ang Tema at kulay ng Accent."
+   },
+   "bookmarkFormSectionThemeHeading": {
+      "description": "Heading for bookmark form theme page.",
+      "message": "Tema"
+   },
+   "bookmarkFormSectionVisualDescription": {
+      "description": "Description for bookmark form visual page.",
+      "message": "Display Letter, Icon, Image at isang Pangalan sa Bookmark tile na ito."
+   },
+   "bookmarkFormSectionVisualHeading": {
+      "description": "Heading for bookmark form visual page.",
+      "message": "Visual at Pangalan"
+   },
+   "bookmarkFormShapeTallDescription": {
+      "description": "Description for bookmark tile tall shape.",
+      "message": "I-bookmark ang tile na sumasaklaw sa dalawang hanay."
+   },
+   "bookmarkFormShapeTallLabel": {
+      "description": "Label for bookmark tile tall shape.",
+      "message": "Matangkad na tile"
+   },
+   "bookmarkFormShapeWideDescription": {
+      "description": "Description for bookmark tile wide shape.",
+      "message": "I-bookmark ang tile na sumasaklaw sa dalawang column."
+   },
+   "bookmarkFormShapeWideLabel": {
+      "description": "Label for bookmark tile wide shape.",
+      "message": "Malapad na tile"
+   },
+   "bookmarkFormTabAddress": {
+      "description": "Label for bookmark form address tab.",
+      "message": "Address"
+   },
+   "bookmarkFormTabLayout": {
+      "description": "Label for bookmark form layout tab.",
+      "message": "Layout"
+   },
+   "bookmarkFormTabPosition": {
+      "description": "Label for bookmark form position tab.",
+      "message": "Posisyon"
+   },
+   "bookmarkFormTabTheme": {
+      "description": "Label for bookmark form theme tab.",
+      "message": "Tema"
+   },
+   "bookmarkFormTabVisual": {
+      "description": "Label for bookmark form visual tab.",
+      "message": "Visual at Pangalan"
+   },
+   "bookmarkFormUrlLabel": {
+      "description": "Label for bookmark url.",
+      "message": "URL"
+   },
+   "bookmarkFormUrlPlaceholder": {
+      "description": "Placeholder for bookmark url.",
+      "message": "https://www.example.com/"
+   },
+   "bookmarkPreviewFull": {
+      "description": "Paragraph for bookmark full size preview.",
+      "message": "Silipin"
+   },
+   "bookmarkPreviewHalf": {
+      "description": "Paragraph for bookmark half size preview.",
+      "message": "Preview (50% scale)"
+   },
+   "bookmarkRemoveCancelText": {
+      "description": "Button to cancel removing a bookmark.",
+      "message": "Kanselahin"
+   },
+   "bookmarkRemoveContent": {
+      "description": "Paragraph for bookmark remove modal.",
+      "message": "Sigurado ka bang gusto mong alisin ang Bookmark na ito? Hindi na ito maaaring bawiin."
+   },
+   "bookmarkRemoveHeadingName": {
+      "description": "Heading with a name for bookmark remove modal.",
+      "message": "Alisin"
+   },
+   "bookmarkRemoveHeadingUnnamed": {
+      "description": "Heading without a name for bookmark remove modal.",
+      "message": "Alisin ang hindi pinangalanang bookmark"
+   },
+   "bookmarkRemoveSuccessText": {
+      "description": "Button to confirm removing a bookmark.",
+      "message": "Alisin"
+   },
+   "bookmarkTileControlEdit": {
+      "description": "Button for bookmark tile edit control.",
+      "message": "I-edit ang bookmark na ito"
+   },
+   "bookmarkTileControlLeft": {
+      "description": "Button for bookmark tile move left control.",
+      "message": "Ilipat ang bookmark na ito pakaliwa"
+   },
+   "bookmarkTileControlRemove": {
+      "description": "Button for bookmark tile remove control.",
+      "message": "Alisin ang bookmark na ito"
+   },
+   "bookmarkTileControlRight": {
+      "description": "Button for bookmark tile move right control.",
+      "message": "Ilipat pakanan ang bookmark na ito"
+   },
+   "bookmarkTileControlSort": {
+      "description": "Button for bookmark tile drag to sort control.",
+      "message": "I-drag ang bookmark upang muling ayusin"
+   },
+   "controlColorMixerMoreControls": {
+      "description": "Button to show more colour controls.",
+      "message": "Higit pang mga kontrol"
+   },
+   "controlColorMixerSliderB": {
+      "description": "Label for colour control blue.",
+      "message": "Bughaw"
+   },
+   "controlColorMixerSliderG": {
+      "description": "Label for colour control green.",
+      "message": "Berde"
+   },
+   "controlColorMixerSliderH": {
+      "description": "Label for colour control hue.",
+      "message": "Hue"
+   },
+   "controlColorMixerSliderL": {
+      "description": "Label for colour control lightness.",
+      "message": "Kagaanan"
+   },
+   "controlColorMixerSliderR": {
+      "description": "Label for colour control red.",
+      "message": "Pula"
+   },
+   "controlColorMixerSliderS": {
+      "description": "Label for colour control saturation.",
+      "message": "Saturation"
+   },
+   "controlColorRandom": {
+      "description": "Button for random colour.",
+      "message": "Random na kulay"
+   },
+   "controlColorTextPlaceholder": {
+      "description": "Placeholder for hex colour code.",
+      "message": "Hex code"
+   },
+   "controlGeneralReset": {
+      "description": "Button for reset button control.",
+      "message": "I-reset sa default"
+   },
+   "dataClearAllCancelText": {
+      "description": "Button to cancel clear all data.",
+      "message": "Kanselahin"
+   },
+   "dataClearAllContentPara1": {
+      "description": "Paragraph for clear all data modal.",
+      "message": "Sigurado ka bang gusto mong i-clear ang lahat ng {appName} Bookmark at Settings? {appName} sa default na estado."
+   },
+   "dataClearAllContentPara2": {
+      "description": "Paragraph for clear all data modal.",
+      "message": "Hindi na ito maaaring bawiin."
+   },
+   "dataClearAllHeading": {
+      "description": "Heading for clear all data modal.",
+      "message": "I-clear ang lahat ng data ng {appName}"
+   },
+   "dataClearAllSuccessText": {
+      "description": "Button to confirm clear all data.",
+      "message": "I-clear ang lahat ng data"
+   },
+   "dataClearPartialCancelText": {
+      "description": "Button to cancel clear partial data.",
+      "message": "Kanselahin"
+   },
+   "dataClearPartialContentPara1": {
+      "description": "Paragraph for clear partial data modal.",
+      "message": "Sigurado ka bang gusto mong i-clear ang lahat ng Setting ng {appName} {appName} sa default na estado ngunit mananatili ang iyong Mga Bookmark at Grupo."
+   },
+   "dataClearPartialContentPara2": {
+      "description": "Paragraph for clear partial data modal.",
+      "message": "Hindi na ito maaaring bawiin."
+   },
+   "dataClearPartialHeading": {
+      "description": "Heading for clear partial data modal.",
+      "message": "I-clear ang {appName} maliban sa mga bookmark?"
+   },
+   "dataClearPartialSuccessText": {
+      "description": "Button to confirm clear partial data.",
+      "message": "I-clear ang lahat maliban sa mga bookmark"
+   },
+   "dataExportBackup": {
+      "description": "String for backup data file name.",
+      "message": "backup"
+   },
+   "dataFeedbackEmpty": {
+      "description": "Paragraph for validation when backup data is empty.",
+      "message": "Walang napiling i-import."
+   },
+   "dataFeedbackFailNotAppJson": {
+      "description": "Paragraph for when backup data is not valid JSON from this project.",
+      "message": "Hindi ang tamang uri ng JSON file. Tiyaking nagmula ang napiling file sa {appName} ."
+   },
+   "dataFeedbackFailNotClipboardJson": {
+      "description": "Paragraph for when backup data in clipboard is not valid JSON.",
+      "message": "Hindi ang tamang uri ng data. Tiyaking nagtataglay ang clipboard ng data mula sa {appName} o isang backup na JSON file {appName}"
+   },
+   "dataFeedbackFailNotJson": {
+      "description": "Paragraph for when backup data is not valid JSON.",
+      "message": "Hindi isang JSON file. Tiyaking nagmula ang napiling file sa {appName} ."
+   },
+   "dataFeedbackSuccess": {
+      "description": "Paragraph for when backup data is valid.",
+      "message": "Tagumpay! Ibinabalik ang {appName} Bookmark at Setting."
+   },
+   "dataFormBookmarkIncludeDescriptionPara1": {
+      "description": "Description for restoring backup data bookmarks.",
+      "message": "Kabilang dito ang lahat ng Mga Grupo at Mga Bookmark"
+   },
+   "dataFormBookmarkIncludeDescriptionPara2": {
+      "description": "Description for restoring backup data bookmarks.",
+      "message": "Papanatilihin ng mga bookmark ang anumang custom na Kulay, Accent at Border kapag na-import."
+   },
+   "dataFormBookmarkIncludeLabel": {
+      "description": "Heading for restoring backup data bookmarks.",
+      "message": "Mga bookmark"
+   },
+   "dataFormBookmarkTypeAppend": {
+      "description": "Radio to append to existing bookmarks when restoring from backup data.",
+      "message": "Idagdag sa mga kasalukuyang bookmark"
+   },
+   "dataFormBookmarkTypeRestore": {
+      "description": "Radio to replace existing bookmarks when restoring from backup data.",
+      "message": "Palitan ang mga kasalukuyang bookmark"
+   },
+   "dataFormDescription": {
+      "description": "Description for restoring from backup data.",
+      "message": "Maaari mong ibalik ang lahat o bahagi ng isang backup na file. Ibabalik ang sumusunod na data:"
+   },
+   "dataFormSetupIncludeDescription": {
+      "description": "Description to restore setting date from backup data.",
+      "message": "Kabilang dito ang laki at posisyon ng Layout, laki ng lugar ng header, laki ng lugar ng Bookmark at iba pang mga setting ng user."
+   },
+   "dataFormSetupIncludeLabel": {
+      "description": "Label to restore setting date from backup data.",
+      "message": "Mga setting"
+   },
+   "dataFormThemeIncludeDescription": {
+      "description": "Description to restore theme date from backup data.",
+      "message": "Kabilang dito ang Kulay, Accent, Font, Background at anumang naka-save na Custom na Tema."
+   },
+   "dataFormThemeIncludeLabel": {
+      "description": "Label to restore theme date from backup data.",
+      "message": "Tema"
+   },
+   "dataRestoreCancelText": {
+      "description": "Button to cancel restoring from backup data.",
+      "message": "Kanselahin"
+   },
+   "dataRestoreHeading": {
+      "description": "Heading for restore backup data modal.",
+      "message": "Nire-restore mula sa backup {appName}"
+   },
+   "dataRestoreSuccessText": {
+      "description": "Button to confirm restoring from backup data.",
+      "message": "Angkat"
+   },
+   "groupAddCancelText": {
+      "description": "Button to cancel adding a bookmark group.",
+      "message": "Kanselahin"
+   },
+   "groupAddHeading": {
+      "description": "Heading for bookmark group add modal.",
+      "message": "Magdagdag ng bagong Grupo"
+   },
+   "groupAddSuccessText": {
+      "description": "Button to confirm adding a bookmark group.",
+      "message": "Idagdag"
+   },
+   "groupAreaControlCollapse": {
+      "description": "Button for bookmark group control to collapse bookmark group.",
+      "message": "I-collapse ang grupong ito"
+   },
+   "groupAreaControlDown": {
+      "description": "Button for bookmark group move down control.",
+      "message": "Ibaba ang grupong ito"
+   },
+   "groupAreaControlEdit": {
+      "description": "Button for bookmark group edit control.",
+      "message": "I-edit ang grupong ito"
+   },
+   "groupAreaControlOpenAll": {
+      "description": "Button for bookmark group control to open all bookmarks.",
+      "message": "Buksan ang lahat ng mga bookmark sa pangkat na ito"
+   },
+   "groupAreaControlRemove": {
+      "description": "Button for bookmark group remove control.",
+      "message": "Alisin ang grupong ito"
+   },
+   "groupAreaControlSort": {
+      "description": "Button for bookmark group drag to sort control.",
+      "message": "I-drag ang pangkat upang muling ayusin"
+   },
+   "groupAreaControlUp": {
+      "description": "Button for bookmark group move up control.",
+      "message": "Itaas ang pangkat na ito"
+   },
+   "groupEditCancelText": {
+      "description": "Button to cancel editing a bookmark group.",
+      "message": "Kanselahin"
+   },
+   "groupEditHeadingName": {
+      "description": "Heading with a name for bookmark group edit modal.",
+      "message": "I-edit"
+   },
+   "groupEditHeadingUnnamed": {
+      "description": "Heading without a name for bookmark group edit modal.",
+      "message": "I-edit ang hindi pinangalanang pangkat"
+   },
+   "groupEditSuccessText": {
+      "description": "Button to confirm editing a bookmark group.",
+      "message": "I-save"
+   },
+   "groupFormCollapseShowDescription": {
+      "description": "Description to show bookmark group toolbar collapse button.",
+      "message": "Ipapakita o itatago ng button na I-collapse ang Mga Bookmark sa Pangkat na ito."
+   },
+   "groupFormCollapseShowLabel": {
+      "description": "Label to show bookmark group toolbar collapse button.",
+      "message": "Ipakita ang Pagbagsak"
+   },
+   "groupFormDestination": {
+      "description": "Select for bookmark group position.",
+      "message": "Posisyon"
+   },
+   "groupFormNameRandom": {
+      "description": "Button for random bookmark group name.",
+      "message": "Random na pangalan ng Grupo"
+   },
+   "groupFormNameShow": {
+      "description": "Checkbox to show bookmark group name.",
+      "message": "Ipakita ang pangalan ng Grupo"
+   },
+   "groupFormNameTextLabel": {
+      "description": "Label for bookmark group name.",
+      "message": "Pangalan ng grupo"
+   },
+   "groupFormNameTextPlaceholder": {
+      "description": "Placeholder for bookmark group name.",
+      "message": "Halimbawang pangkat"
+   },
+   "groupFormOpenAllShowDescription": {
+      "description": "Description to show bookmark group toolbar open all button.",
+      "message": "Lilitaw ang Open all button kung mayroong kahit isang Bookmark sa Group na ito."
+   },
+   "groupFormOpenAllShowLabel": {
+      "description": "Label to show bookmark group toolbar open all button.",
+      "message": "Ipakita ang Buksan lahat"
+   },
+   "groupFormSectionNameDescription": {
+      "description": "Description for bookmark group form name.",
+      "message": "Magpakita ng Pangalan sa itaas ng Pangkat na ito."
+   },
+   "groupFormSectionNameHeading": {
+      "description": "Heading for bookmark group form name.",
+      "message": "Pangalan"
+   },
+   "groupFormSectionOrderingDescription": {
+      "description": "Description for bookmark group form order.",
+      "message": "Ang posisyon ng Grupo na ito."
+   },
+   "groupFormSectionOrderingHeading": {
+      "description": "Heading for bookmark group form order.",
+      "message": "Pag-order"
+   },
+   "groupFormSectionToolbarDescription": {
+      "description": "Description for bookmark group form toolbar.",
+      "message": "Ipakita ang mga kontrol upang buksan ang lahat o ipakita/itago ang Mga Bookmark sa Pangkat na ito."
+   },
+   "groupFormSectionToolbarHeading": {
+      "description": "Heading for bookmark group form toolbar.",
+      "message": "Toolbar"
+   },
+   "groupRemoveCancelText": {
+      "description": "Button to cancel removing a bookmark group.",
+      "message": "Kanselahin"
+   },
+   "groupRemoveContent": {
+      "description": "Paragraph for bookmark group remove modal.",
+      "message": "Sigurado ka bang gusto mong alisin ang Pangkat na ito at lahat ng Bookmark sa loob? Hindi na ito maaaring bawiin."
+   },
+   "groupRemoveHeadingName": {
+      "description": "Heading with a name for bookmark group remove modal.",
+      "message": "Alisin"
+   },
+   "groupRemoveHeadingUnnamed": {
+      "description": "Heading without a name for bookmark group remove modal.",
+      "message": "Alisin ang hindi pinangalanang pangkat"
+   },
+   "groupRemoveSuccessText": {
+      "description": "Button to confirm removing a bookmark group.",
+      "message": "Alisin"
+   },
+   "menuContentAppLink1": {
+      "description": "Link to the community on Reddit.",
+      "message": "Natagpuan sa Reddit/r/{appName}."
+   },
+   "menuContentAppLink2": {
+      "description": "Link to project on GitHub.",
+      "message": "Natagpuan sa GitHub."
+   },
+   "menuContentAppLink3": {
+      "description": "Link to project project licence.",
+      "message": "GNU General Public License v3.0."
+   },
+   "menuContentAppPara1": {
+      "description": "Paragraph on where to share with the community.",
+      "message": "Ibahagi ang iyong setup sa komunidad."
+   },
+   "menuContentAppPara2": {
+      "description": "Paragraph on this project being open source.",
+      "message": "Ang proyektong ito ay open source."
+   },
+   "menuContentBookmarkGeneralHoverScaleShow": {
+      "description": "Checkbox for scale bookmark on hover.",
+      "message": "Lumago sa Bookmark hover"
+   },
+   "menuContentBookmarkGeneralLineShow": {
+      "description": "Checkbox for show bookmark line.",
+      "message": "Ipakita ang linya ng Bookmark"
+   },
+   "menuContentBookmarkGeneralNewTab": {
+      "description": "Checkbox for open bookmark in a new tab.",
+      "message": "Buksan ang Mga Bookmark sa isang bagong tab"
+   },
+   "menuContentBookmarkGeneralShadowShowDescription": {
+      "description": "Description to show bookmark shadow.",
+      "message": "Maaaring hindi makita ang mga epekto kung ang Theme Shadow ay nakatakda sa 0."
+   },
+   "menuContentBookmarkGeneralShadowShowLabel": {
+      "description": "label for show bookmark shadow.",
+      "message": "Ipakita ang anino sa Bookmark hover"
+   },
+   "menuContentBookmarkGeneralShow": {
+      "description": "Checkbox for show bookmark.",
+      "message": "Ipakita ang Mga Bookmark"
+   },
+   "menuContentBookmarkGeneralSize": {
+      "description": "Range for bookmark size.",
+      "message": "Laki ng bookmark"
+   },
+   "menuContentBookmarkGeneralUrlShow": {
+      "description": "Checkbox for show bookmark url on hover.",
+      "message": "Ipakita ang URL sa Bookmark hover"
+   },
+   "menuContentBookmarkOrientationBottom": {
+      "description": "Radio for bookmark bottom orientation.",
+      "message": "Ibaba"
+   },
+   "menuContentBookmarkOrientationHelperPara1": {
+      "description": "Helper text for bookmark orientation.",
+      "message": "Ipakita ang URL at Mga Kontrol sa itaas o ibaba ng isang Bookmark Tile."
+   },
+   "menuContentBookmarkOrientationTop": {
+      "description": "Radio for bookmark top orientation.",
+      "message": "Nangunguna"
+   },
+   "menuContentBookmarkSortIcon": {
+      "description": "Button to sort bookmarks by Icon.",
+      "message": "Sa pamamagitan ng icon"
+   },
+   "menuContentBookmarkSortLetter": {
+      "description": "Button to sort bookmarks by letter.",
+      "message": "Sa pamamagitan ng sulat"
+   },
+   "menuContentBookmarkSortName": {
+      "description": "Button to sort bookmarks by name.",
+      "message": "Sa pamamagitan ng pangalan"
+   },
+   "menuContentBookmarkStyleBlockDescription": {
+      "description": "Description for bookmark block style.",
+      "message": "Mga tile sa Bookmark na hugis parisukat."
+   },
+   "menuContentBookmarkStyleBlockLabel": {
+      "description": "Label for bookmark block style.",
+      "message": "I-block"
+   },
+   "menuContentBookmarkStyleListDescription": {
+      "description": "Description for bookmark list style.",
+      "message": "Maikli at malawak na mga tile sa Bookmark."
+   },
+   "menuContentBookmarkStyleListLabel": {
+      "description": "Label for bookmark list style.",
+      "message": "Listahan"
+   },
+   "menuContentCoffeeButton": {
+      "description": "Link to buy me a coffee to support the project.",
+      "message": "Bilhan mo ako ng kape"
+   },
+   "menuContentCoffeePara": {
+      "description": "Paragraph to explain the project is free.",
+      "message": "{appName} ay libre, ang pagpapahalaga ay tinatanggap sa anyo ng kape!"
+   },
+   "menuContentDataBackupClipboard": {
+      "description": "Button to copy backup data to clipboard.",
+      "message": "Kopyahin sa clipboard"
+   },
+   "menuContentDataBackupFile": {
+      "description": "Button to export backup data file.",
+      "message": "I-export ang data"
+   },
+   "menuContentDataBackupHelperPara1": {
+      "description": "Helper text for data backup.",
+      "message": "Mag-download ng backup ng iyong {appName} Bookmark at Setting."
+   },
+   "menuContentDataBackupHelperPara2": {
+      "description": "Helper text for data backup.",
+      "message": "Maaaring ma-import ang file na ito sa ibang pagkakataon dito o sa ibang device."
+   },
+   "menuContentDataClearAlertLink": {
+      "description": "Link for backup data.",
+      "message": "I-backup ang iyong data"
+   },
+   "menuContentDataClearAlertPara": {
+      "description": "Alert for clear all data.",
+      "message": "Mawawalan ka ng Mga Bookmark sa pamamagitan ng pag-clear sa lahat ng data."
+   },
+   "menuContentDataClearAll": {
+      "description": "Button to clear all data.",
+      "message": "I-clear ang lahat ng data"
+   },
+   "menuContentDataClearHelperPara1": {
+      "description": "Helper text for clear all data.",
+      "message": "I-clear ang lahat ng data para i-reset ang {appName} sa default na estado."
+   },
+   "menuContentDataClearHelperPara2": {
+      "description": "Helper text for clear all data.",
+      "message": "Bilang kahalili, posibleng i-wipe ang lahat ng setting ngunit panatilihin ang kasalukuyang Mga Bookmark at Grupo."
+   },
+   "menuContentDataClearPartial": {
+      "description": "Button to clear partial data.",
+      "message": "I-clear ang lahat maliban sa mga bookmark"
+   },
+   "menuContentDataRestoreClipboard": {
+      "description": "Button for clipboard backup data import.",
+      "message": "Mag-import mula sa clipboard"
+   },
+   "menuContentDataRestoreDrop": {
+      "description": "Label for backup data file drop area.",
+      "message": "O mag-drop ng {appName} backup file dito."
+   },
+   "menuContentDataRestoreFile": {
+      "description": "Input for backup data file import.",
+      "message": "Mag-import mula sa file"
+   },
+   "menuContentDataRestoreHelperPara1": {
+      "description": "Helper text for backup data import.",
+      "message": "I-restore ang dati nang na-export na {appName} backup."
+   },
+   "menuContentGroupAlignmentJustifyCenter": {
+      "description": "Label to justify group items centre.",
+      "message": "Gitna"
+   },
+   "menuContentGroupAlignmentJustifyLabel": {
+      "description": "Label to justify group items.",
+      "message": "Pag-align ng lugar ng mga detalye ng pangkat"
+   },
+   "menuContentGroupAlignmentJustifyLeft": {
+      "description": "Label to justify group items left.",
+      "message": "Kaliwa"
+   },
+   "menuContentGroupAlignmentJustifyRight": {
+      "description": "Label to justify group items right.",
+      "message": "Tama"
+   },
+   "menuContentGroupAlignmentOrderBodyHeaderDescription": {
+      "description": "Helper text for bookmarks then group details order.",
+      "message": "I-order ang Bookmark area na lumabas bago ang Group detail area."
+   },
+   "menuContentGroupAlignmentOrderBodyHeaderLabel": {
+      "description": "Radio for bookmarks then group details order.",
+      "message": "Mga bookmark pagkatapos ay Mga detalye ng pangkat"
+   },
+   "menuContentGroupAlignmentOrderHeaderBodyDescription": {
+      "description": "Helper text for group details then bookmarks order.",
+      "message": "I-order ang lugar ng detalye ng Grupo na lumitaw bago ang lugar ng Mga Bookmark."
+   },
+   "menuContentGroupAlignmentOrderHeaderBodyLabel": {
+      "description": "Radio for group details then bookmarks order.",
+      "message": "Mga detalye ng pangkat pagkatapos ay Mga Bookmark"
+   },
+   "menuContentGroupAlignmentOrderLabel": {
+      "description": "Label for group order.",
+      "message": "Pagkakasunod-sunod ng mga detalye ng pangkat"
+   },
+   "menuContentGroupCollapseHide": {
+      "description": "Button to collapse all groups.",
+      "message": "I-collapse ang lahat ng grupo"
+   },
+   "menuContentGroupCollapseShow": {
+      "description": "Button to open all groups.",
+      "message": "Buksan ang lahat ng mga grupo"
+   },
+   "menuContentGroupNameHelperPara1": {
+      "description": "Helper text for show and hide all group names.",
+      "message": "Ang Mga Pangalan ng Grupo ay maaari ding baguhin sa pamamagitan ng pag-edit ng mga indibidwal na Grupo."
+   },
+   "menuContentGroupNameHide": {
+      "description": "Button to hide all group names.",
+      "message": "Itago lahat"
+   },
+   "menuContentGroupNameShow": {
+      "description": "Button to show all group names.",
+      "message": "Ipakita lahat"
+   },
+   "menuContentGroupNameSize": {
+      "description": "Range for group name size.",
+      "message": "Laki ng pangalan"
+   },
+   "menuContentGroupToolbarCollapseHelperPara1": {
+      "description": "Helper text for group toolbar collapse control.",
+      "message": "Ang pindutan ng pagbagsak ng toolbar ng grupo ay maaari ding baguhin sa pamamagitan ng pag-edit ng mga indibidwal na Grupo."
+   },
+   "menuContentGroupToolbarCollapseHide": {
+      "description": "Button to hide all group toolbar collapse control.",
+      "message": "Itago lahat"
+   },
+   "menuContentGroupToolbarCollapseLabel": {
+      "description": "Label for group toolbar collapse control.",
+      "message": "Kontrol ng Group Collapse"
+   },
+   "menuContentGroupToolbarCollapseShow": {
+      "description": "Button to show all group toolbar collapse control.",
+      "message": "Ipakita lahat"
+   },
+   "menuContentGroupToolbarOpenAllHelperPara1": {
+      "description": "Helper text for the bookmark group toolbar open all control.",
+      "message": "Group toolbar open all button ay maaari ding baguhin sa pamamagitan ng pag-edit ng indibidwal na Groups."
+   },
+   "menuContentGroupToolbarOpenAllHide": {
+      "description": "Button to hide all bookmark group toolbar open all control.",
+      "message": "Itago lahat"
+   },
+   "menuContentGroupToolbarOpenAllLabel": {
+      "description": "Label for the bookmark group toolbar open all control.",
+      "message": "Pangkat Buksan ang lahat ng kontrol"
+   },
+   "menuContentGroupToolbarOpenAllShow": {
+      "description": "Button to show all group toolbar open all control.",
+      "message": "Ipakita lahat"
+   },
+   "menuContentGroupToolbarSize": {
+      "description": "Range for group toolbar size.",
+      "message": "Laki ng toolbar ng pangkat"
+   },
+   "menuContentHeaderAlignmentHelperPara1": {
+      "description": "Helper text to justify header items.",
+      "message": "Maaaring hindi makita ang mga epekto kung ang laki ng Search box ay nakatakda sa Awtomatiko at lumalaki upang punan ang magagamit na espasyo."
+   },
+   "menuContentHeaderAlignmentJustifyCenter": {
+      "description": "Label to justify header items centre.",
+      "message": "Gitna"
+   },
+   "menuContentHeaderAlignmentJustifyLabel": {
+      "description": "Label to justify header items.",
+      "message": "Pag-align ng item sa header"
+   },
+   "menuContentHeaderAlignmentJustifyLeft": {
+      "description": "Label to justify header items left.",
+      "message": "Kaliwa"
+   },
+   "menuContentHeaderAlignmentJustifyRight": {
+      "description": "Label to justify header items right.",
+      "message": "Tama"
+   },
+   "menuContentHeaderClockHour24": {
+      "description": "Checkbox for 24 hour clock.",
+      "message": "24 na oras"
+   },
+   "menuContentHeaderClockHourDisplayNumber": {
+      "description": "Radio for clock hour as numbers.",
+      "message": "Bilang bilang"
+   },
+   "menuContentHeaderClockHourDisplayWord": {
+      "description": "Radio for clock hour as words.",
+      "message": "Isang espada"
+   },
+   "menuContentHeaderClockHourShow": {
+      "description": "Checkbox for clock hour.",
+      "message": "Mga oras ng palabas"
+   },
+   "menuContentHeaderClockMeridiem": {
+      "description": "Checkbox for meridiem clock.",
+      "message": "AM / PM"
+   },
+   "menuContentHeaderClockMinuteDisplayNumber": {
+      "description": "Radio for clock minutes as numbers.",
+      "message": "Bilang bilang"
+   },
+   "menuContentHeaderClockMinuteDisplayWord": {
+      "description": "Radio for clock minutes as words.",
+      "message": "Isang espada"
+   },
+   "menuContentHeaderClockMinuteShow": {
+      "description": "Checkbox for clock minutes.",
+      "message": "Ipakita ang mga minuto"
+   },
+   "menuContentHeaderClockNewLineDescription": {
+      "description": "Description for forcing clock onto a new line.",
+      "message": "Puwersa sa isang bagong linya at hiwalay sa iba pang item sa Header."
+   },
+   "menuContentHeaderClockNewLineLabel": {
+      "description": "Checkbox to force clock onto a new line.",
+      "message": "Bagong linya"
+   },
+   "menuContentHeaderClockSecondDisplayNumber": {
+      "description": "Radio for clock seconds as numbers.",
+      "message": "Bilang bilang"
+   },
+   "menuContentHeaderClockSecondDisplayWord": {
+      "description": "Radio for clock seconds as words.",
+      "message": "Isang espada"
+   },
+   "menuContentHeaderClockSecondShow": {
+      "description": "Checkbox for clock seconds.",
+      "message": "Ipakita ang mga segundo"
+   },
+   "menuContentHeaderClockSeparatorLabel": {
+      "description": "Label for clock separator.",
+      "message": "Karakter ng separator"
+   },
+   "menuContentHeaderClockSeparatorPlaceholder": {
+      "description": "Placeholder for clock separator.",
+      "message": ":"
+   },
+   "menuContentHeaderClockSeparatorShow": {
+      "description": "Checkbox for clock separator.",
+      "message": "Ipakita ang separator"
+   },
+   "menuContentHeaderClockSize": {
+      "description": "Range for clock size.",
+      "message": "Sukat"
+   },
+   "menuContentHeaderDateDateDisplayNumber": {
+      "description": "Radio for date as numbers.",
+      "message": "Bilang bilang"
+   },
+   "menuContentHeaderDateDateDisplayOrdinal": {
+      "description": "Checkbox for ordinal date number.",
+      "message": "Ordinal na mga numero"
+   },
+   "menuContentHeaderDateDateDisplayWord": {
+      "description": "Radio for dates as words.",
+      "message": "Isang espada"
+   },
+   "menuContentHeaderDateDateShow": {
+      "description": "Checkbox for date.",
+      "message": "Ipakita ang Petsa"
+   },
+   "menuContentHeaderDateDayDisplayLengthLabel": {
+      "description": "Label for length of day of the week.",
+      "message": "Haba ng salita"
+   },
+   "menuContentHeaderDateDayDisplayLengthLong": {
+      "description": "Radio for a long length day of the week.",
+      "message": "Mahaba"
+   },
+   "menuContentHeaderDateDayDisplayLengthShort": {
+      "description": "Radio for short length day of the week.",
+      "message": "Maikli"
+   },
+   "menuContentHeaderDateDayDisplayNumber": {
+      "description": "Radio for day as numbers.",
+      "message": "Bilang bilang"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartLabel": {
+      "description": "Label for the start of the week.",
+      "message": "Simula ng linggo"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartMonday": {
+      "description": "Radio for Monday as the start of the week.",
+      "message": "Lunes"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartSunday": {
+      "description": "Radio for Sunday as the start of the week.",
+      "message": "Linggo"
+   },
+   "menuContentHeaderDateDayDisplayWord": {
+      "description": "Radio for day as words.",
+      "message": "Isang espada"
+   },
+   "menuContentHeaderDateDayShow": {
+      "description": "Checkbox for day.",
+      "message": "Araw ng Palabas"
+   },
+   "menuContentHeaderDateFormatDateMonth": {
+      "description": "Radio for date then month format.",
+      "message": "Petsa / Buwan"
+   },
+   "menuContentHeaderDateFormatLabel": {
+      "description": "Label for date format.",
+      "message": "Format"
+   },
+   "menuContentHeaderDateFormatMonthDate": {
+      "description": "Radio for month then date format.",
+      "message": "Buwan / Petsa"
+   },
+   "menuContentHeaderDateMonthDisplayLengthLabel": {
+      "description": "Label for length of month of the year.",
+      "message": "Haba ng salita"
+   },
+   "menuContentHeaderDateMonthDisplayLengthLong": {
+      "description": "Radio for a long length month of the year.",
+      "message": "Mahaba"
+   },
+   "menuContentHeaderDateMonthDisplayLengthShort": {
+      "description": "Radio for a short length month of the year.",
+      "message": "Maikli"
+   },
+   "menuContentHeaderDateMonthDisplayNumber": {
+      "description": "Radio for month as numbers.",
+      "message": "Bilang bilang"
+   },
+   "menuContentHeaderDateMonthDisplayOrdinal": {
+      "description": "Checkbox for ordinal month number.",
+      "message": "Ordinal na mga numero"
+   },
+   "menuContentHeaderDateMonthDisplayWord": {
+      "description": "Radio for month as words.",
+      "message": "Isang espada"
+   },
+   "menuContentHeaderDateMonthShow": {
+      "description": "Checkbox for month.",
+      "message": "Buwan ng Palabas"
+   },
+   "menuContentHeaderDateNewLineDescription": {
+      "description": "Description for forcing date onto a new line.",
+      "message": "Puwersa sa isang bagong linya at hiwalay sa iba pang item sa Header."
+   },
+   "menuContentHeaderDateNewLineLabel": {
+      "description": "Checkbox to force date onto a new line.",
+      "message": "Bagong linya"
+   },
+   "menuContentHeaderDateSeparatorLabel": {
+      "description": "Checkbox for date separator.",
+      "message": "Karakter ng separator"
+   },
+   "menuContentHeaderDateSeparatorPlaceholder": {
+      "description": "Placeholder for date separator.",
+      "message": "/"
+   },
+   "menuContentHeaderDateSeparatorShow": {
+      "description": "Checkbox for date separator.",
+      "message": "Ipakita ang separator"
+   },
+   "menuContentHeaderDateSize": {
+      "description": "Range for date size.",
+      "message": "Sukat"
+   },
+   "menuContentHeaderDateYearDisplayNumber": {
+      "description": "Radio for year as numbers.",
+      "message": "Bilang bilang"
+   },
+   "menuContentHeaderDateYearDisplayWord": {
+      "description": "Radio for year as words.",
+      "message": "Isang espada"
+   },
+   "menuContentHeaderDateYearShow": {
+      "description": "Checkbox for year.",
+      "message": "Show Year"
+   },
+   "menuContentHeaderGreetingCustomLabel": {
+      "description": "Label for custom header greeting.",
+      "message": "Pasadyang teksto ng pagbati"
+   },
+   "menuContentHeaderGreetingCustomPlaceholder": {
+      "description": "Placeholder for custom header greeting.",
+      "message": "Kamusta"
+   },
+   "menuContentHeaderGreetingNameLabel": {
+      "description": "Input for header greeting name.",
+      "message": "Pangalan"
+   },
+   "menuContentHeaderGreetingNamePlaceholder": {
+      "description": "Placeholder for header greeting name.",
+      "message": "Nickname, alias o superhero name"
+   },
+   "menuContentHeaderGreetingNewLineDescription": {
+      "description": "Description for forcing header greeting onto a new line.",
+      "message": "Puwersa sa isang bagong linya at hiwalay sa iba pang item sa Header."
+   },
+   "menuContentHeaderGreetingNewLineLabel": {
+      "description": "Checkbox to force header greeting onto a new line.",
+      "message": "Bagong linya"
+   },
+   "menuContentHeaderGreetingShow": {
+      "description": "Checkbox to show header greeting.",
+      "message": "Ipakita ang Pagbati"
+   },
+   "menuContentHeaderGreetingSize": {
+      "description": "Range for header greeting size.",
+      "message": "Sukat"
+   },
+   "menuContentHeaderGreetingTypeCustomDescriptionPara1": {
+      "description": "Description for custom header greeting.",
+      "message": "Gamitin ang iyong sariling pagbati."
+   },
+   "menuContentHeaderGreetingTypeCustomDescriptionPara2": {
+      "description": "Description for custom header greeting.",
+      "message": "Default sa \"Good morning...\" kung iwanang blangko."
+   },
+   "menuContentHeaderGreetingTypeCustomLabel": {
+      "description": "Radio for custom header greeting.",
+      "message": "Custom"
+   },
+   "menuContentHeaderGreetingTypeGood": {
+      "description": "Radio for \"Good morning\" header greeting.",
+      "message": "\"Good morning...\""
+   },
+   "menuContentHeaderGreetingTypeHello": {
+      "description": "Radio for \"Hello\" header greeting.",
+      "message": "\"Hello...\""
+   },
+   "menuContentHeaderGreetingTypeHi": {
+      "description": "Radio for \"Hi\" header greeting.",
+      "message": "\"Hi...\""
+   },
+   "menuContentHeaderGreetingTypeLabel": {
+      "description": "Label for header greeting.",
+      "message": "Salita"
+   },
+   "menuContentHeaderGreetingTypeNoneDescription": {
+      "description": "Description for no header greeting.",
+      "message": "Kapaki-pakinabang para sa pagpapakita lamang ng pangalan."
+   },
+   "menuContentHeaderGreetingTypeNoneLabel": {
+      "description": "Radio for no header greeting.",
+      "message": "wala"
+   },
+   "menuContentHeaderSearchEngineCustomNameLabel": {
+      "description": "Label for custom search name.",
+      "message": "Pangalan"
+   },
+   "menuContentHeaderSearchEngineCustomNamePlaceholder": {
+      "description": "Placeholder for custom search name.",
+      "message": "Pangalan ng search engine"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameHelperPara1": {
+      "description": "Helper text for custom search name.",
+      "message": "Itinatakda ang katangian ng pangalan sa field ng pag-input sa Paghahanap."
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameHelperPara2": {
+      "description": "Helper text for custom search name.",
+      "message": "Tinutukoy nito ang pangalang ipinasa sa search engine kapag nagsusumite. Kung hindi sigurado iwanang blangko."
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameLabel": {
+      "description": "Label for custom search name.",
+      "message": "Katangian ng pangalan"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNamePlaceholder": {
+      "description": "Placeholder for custom search name.",
+      "message": "q"
+   },
+   "menuContentHeaderSearchEngineCustomUrlHelperPara1": {
+      "description": "Helper text for custom search URL.",
+      "message": "Maglagay ng web address na may mga parameter sa paghahanap, hal: \"https://vimeo.com/search?q=\""
+   },
+   "menuContentHeaderSearchEngineCustomUrlHelperPara2": {
+      "description": "Helper text for custom search URL.",
+      "message": "{appName} ang termino para sa paghahanap na inilagay sa box para sa Paghahanap sa dulo ng URL sa itaas."
+   },
+   "menuContentHeaderSearchEngineCustomUrlLabel": {
+      "description": "Label for custom search URL.",
+      "message": "URL"
+   },
+   "menuContentHeaderSearchEngineCustomUrlPlaceholder": {
+      "description": "Placeholder for custom search URL.",
+      "message": "https://"
+   },
+   "menuContentHeaderSearchEngineSelectedCustom": {
+      "description": "Select option for custom search.",
+      "message": "Custom"
+   },
+   "menuContentHeaderSearchEngineSelectedLabel": {
+      "description": "Label for custom search.",
+      "message": "Search engine"
+   },
+   "menuContentHeaderSearchEngineTextJustifyCenter": {
+      "description": "Radio to justify the search text centre.",
+      "message": "Gitna"
+   },
+   "menuContentHeaderSearchEngineTextJustifyLabel": {
+      "description": "Label to justify search text.",
+      "message": "Search text alignment"
+   },
+   "menuContentHeaderSearchEngineTextJustifyLeft": {
+      "description": "Radio to justify the search text left.",
+      "message": "Kaliwa"
+   },
+   "menuContentHeaderSearchEngineTextJustifyRight": {
+      "description": "Radio to justify the search text right.",
+      "message": "Tama"
+   },
+   "menuContentHeaderSearchNewLineDescription": {
+      "description": "Description for forcing search onto a new line.",
+      "message": "Puwersa sa isang bagong linya at hiwalay sa iba pang item sa Header."
+   },
+   "menuContentHeaderSearchNewLineLabel": {
+      "description": "Checkbox to force search onto a new line.",
+      "message": "Bagong linya"
+   },
+   "menuContentHeaderSearchNewTab": {
+      "description": "Checkbox for opening search results in a new tab.",
+      "message": "Buksan ang mga resulta ng Paghahanap sa isang bagong tab"
+   },
+   "menuContentHeaderSearchShow": {
+      "description": "Checkbox for search.",
+      "message": "Ipakita ang Paghahanap"
+   },
+   "menuContentHeaderSearchSize": {
+      "description": "Range for search size.",
+      "message": "Sukat"
+   },
+   "menuContentHeaderSearchWidthAutoDescription": {
+      "description": "Description for auto search width.",
+      "message": "Ang box para sa paghahanap ay lalago upang maging pinakaangkop sa magagamit na espasyo."
+   },
+   "menuContentHeaderSearchWidthAutoLabel": {
+      "description": "Radio for auto search width.",
+      "message": "Auto lapad"
+   },
+   "menuContentHeaderSearchWidthCustomDescription": {
+      "description": "Description for custom search width.",
+      "message": "Tukuyin kung gaano kalawak dapat ang Search box sa loob ng Header Area."
+   },
+   "menuContentHeaderSearchWidthCustomLabel": {
+      "description": "Radio for custom search width.",
+      "message": "Custom na lapad"
+   },
+   "menuContentHeaderSearchWidthLabel": {
+      "description": "Label for search width.",
+      "message": "Lapad ng kahon ng paghahanap"
+   },
+   "menuContentHeaderSearchWidthSize": {
+      "description": "Range for search width.",
+      "message": "Lapad"
+   },
+   "menuContentHeaderTransitionalNewLineDescription": {
+      "description": "Description for forcing transitional text onto a new line.",
+      "message": "Puwersa sa isang bagong linya at hiwalay sa iba pang item sa Header."
+   },
+   "menuContentHeaderTransitionalNewLineLabel": {
+      "description": "Checkbox to force transitional text onto a new line.",
+      "message": "Bagong linya"
+   },
+   "menuContentHeaderTransitionalShowHelperPara1": {
+      "description": "Helper text for header transitional text.",
+      "message": "Available lang kapag ipinakita ang Petsa o Oras."
+   },
+   "menuContentHeaderTransitionalShowLabel": {
+      "description": "Checkbox to show header transitional text.",
+      "message": "Ipakita ang mga salitang Transisyonal"
+   },
+   "menuContentHeaderTransitionalSize": {
+      "description": "Range for transitional text size.",
+      "message": "Sukat"
+   },
+   "menuContentHeaderTransitionalTypeIts": {
+      "description": "Radio for \"It's \" transitional text.",
+      "message": "\"It's\""
+   },
+   "menuContentHeaderTransitionalTypeLabel": {
+      "description": "Label for transitional text type.",
+      "message": "Salita"
+   },
+   "menuContentHeaderTransitionalTypeTimeAndDate": {
+      "description": "Radio for \"The time and date is\" transitional text.",
+      "message": "\"The time and date is\""
+   },
+   "menuContentLanguageAlertLink": {
+      "description": "Link to help translate the project.",
+      "message": "Tumulong sa pagsasalin ng {appName}"
+   },
+   "menuContentLanguageAlertPara": {
+      "description": "Alert for language select.",
+      "message": "Nakahanap ng pagsasalin na hindi tama?"
+   },
+   "menuContentLanguageSelect": {
+      "description": "Select for language.",
+      "message": "Wika"
+   },
+   "menuContentLanguageSystem": {
+      "description": "Option to use the system defined language.",
+      "message": "Gumamit ng wika ng system"
+   },
+   "menuContentLayoutAlignmentBottomCenter": {
+      "description": "Radio for layout alignment bottom centre.",
+      "message": "Ibabang Gitna"
+   },
+   "menuContentLayoutAlignmentBottomLeft": {
+      "description": "Radio for layout alignment bottom left.",
+      "message": "Babang kaliwa"
+   },
+   "menuContentLayoutAlignmentBottomRight": {
+      "description": "Radio for layout alignment bottom right.",
+      "message": "Kanan sa ibaba"
+   },
+   "menuContentLayoutAlignmentCenterCenter": {
+      "description": "Radio for layout alignment centre centre.",
+      "message": "Center Center"
+   },
+   "menuContentLayoutAlignmentCenterLeft": {
+      "description": "Radio for layout alignment centre left.",
+      "message": "Gitnang Kaliwa"
+   },
+   "menuContentLayoutAlignmentCenterRight": {
+      "description": "Radio for layout alignment centre right.",
+      "message": "Gitnang Kanan"
+   },
+   "menuContentLayoutAlignmentLabel": {
+      "description": "Label for layout alignment.",
+      "message": "Pag-align ng lugar"
+   },
+   "menuContentLayoutAlignmentTopCenter": {
+      "description": "Radio for layout alignment top centre.",
+      "message": "Nangungunang Center"
+   },
+   "menuContentLayoutAlignmentTopLeft": {
+      "description": "Radio for layout alignment top left.",
+      "message": "Kaliwa sa itaas"
+   },
+   "menuContentLayoutAlignmentTopRight": {
+      "description": "Radio for layout alignment top right.",
+      "message": "Kanan sa itaas"
+   },
+   "menuContentLayoutAreaBookmarkJustifyCenter": {
+      "description": "Radio to justify the bookmark area centre.",
+      "message": "Gitna"
+   },
+   "menuContentLayoutAreaBookmarkJustifyHelper1Para1": {
+      "description": "Helper text for bookmark area justify.",
+      "message": "Maaaring hindi makita ang mga epekto kung ang Bookmark Area ay buong lapad."
+   },
+   "menuContentLayoutAreaBookmarkJustifyHelper2Para1": {
+      "description": "Helper text for bookmark area justify.",
+      "message": "Available lang kapag Vertical ang Layout Direction at ipinapakita ang mga item sa Header."
+   },
+   "menuContentLayoutAreaBookmarkJustifyLabel": {
+      "description": "Label for justify bookmark area.",
+      "message": "Pag-align ng lugar ng bookmark"
+   },
+   "menuContentLayoutAreaBookmarkJustifyLeft": {
+      "description": "Radio to justify the bookmark area left.",
+      "message": "Kaliwa"
+   },
+   "menuContentLayoutAreaBookmarkJustifyRight": {
+      "description": "Radio to justify the bookmark area right.",
+      "message": "Tama"
+   },
+   "menuContentLayoutAreaBookmarkWidth": {
+      "description": "Label for width of the bookmark area.",
+      "message": "Lapad ng lugar ng bookmark"
+   },
+   "menuContentLayoutAreaHeaderJustifyCenter": {
+      "description": "Radio to justify the header area centre.",
+      "message": "Gitna"
+   },
+   "menuContentLayoutAreaHeaderJustifyHelper1Para1": {
+      "description": "Helper text for header area justify.",
+      "message": "Maaaring hindi makita ang mga epekto kung ang Header Area ay buong lapad."
+   },
+   "menuContentLayoutAreaHeaderJustifyHelper2Para1": {
+      "description": "Helper text for header area justify.",
+      "message": "Available lang kapag Vertical ang Layout Direction at ipinapakita ang mga item sa Header."
+   },
+   "menuContentLayoutAreaHeaderJustifyLabel": {
+      "description": "Label for header area justify.",
+      "message": "Pag-align ng lugar ng header"
+   },
+   "menuContentLayoutAreaHeaderJustifyLeft": {
+      "description": "Radio to justify the header area left.",
+      "message": "Kaliwa"
+   },
+   "menuContentLayoutAreaHeaderJustifyRight": {
+      "description": "Radio to justify the header area right.",
+      "message": "Tama"
+   },
+   "menuContentLayoutAreaHeaderWidth": {
+      "description": "Label for header area width.",
+      "message": "Lapad ng lugar ng header"
+   },
+   "menuContentLayoutAreaWidth": {
+      "description": "Range for layout area width.",
+      "message": "Layout area lapad"
+   },
+   "menuContentLayoutDirectionHorizontalDescription": {
+      "description": "Helper text for layout direction horizontal.",
+      "message": "Isalansan ang Header at Mga Bookmark sa isang hilera nang magkatabi."
+   },
+   "menuContentLayoutDirectionHorizontalLabel": {
+      "description": "Radio for layout direction horizontal.",
+      "message": "Ihanay nang pahalang"
+   },
+   "menuContentLayoutDirectionVerticalDescription": {
+      "description": "Helper text for layout direction vertical.",
+      "message": "I-stack ang Header at Mga Bookmark sa isang column sa itaas ng isa."
+   },
+   "menuContentLayoutDirectionVerticalLabel": {
+      "description": "Radio for layout direction vertical.",
+      "message": "I-align patayo"
+   },
+   "menuContentLayoutGutter": {
+      "description": "Range for layout gutter.",
+      "message": "Space sa pagitan ng Header at Bookmark na mga item"
+   },
+   "menuContentLayoutOrderBookmarkHeaderDescription": {
+      "description": "Helper text for layout order bookmarks then header.",
+      "message": "I-order ang lugar ng Bookmark na lumitaw bago ang lugar ng Header."
+   },
+   "menuContentLayoutOrderBookmarkHeaderLabel": {
+      "description": "Radio for layout order bookmarks then header.",
+      "message": "Mga bookmark pagkatapos ay Header"
+   },
+   "menuContentLayoutOrderHeaderBookmarkDescription": {
+      "description": "Helper text for layout order header then bookmarks.",
+      "message": "I-order ang lugar ng Header na lumitaw bago ang lugar ng Mga Bookmark."
+   },
+   "menuContentLayoutOrderHeaderBookmarkLabel": {
+      "description": "Radio for layout order header then bookmarks.",
+      "message": "Header pagkatapos Bookmarks"
+   },
+   "menuContentLayoutPadding": {
+      "description": "Range for layout padding.",
+      "message": "Space sa paligid ng Header at Bookmark Area"
+   },
+   "menuContentLayoutPageFaviconHelperPara1": {
+      "description": "Input for favicon URL.",
+      "message": "Hindi sinusuportahan ng lahat ng browser."
+   },
+   "menuContentLayoutPageFaviconLabel": {
+      "description": "Label for favicon URL.",
+      "message": "URL ng Favicon"
+   },
+   "menuContentLayoutPageFaviconPlaceholder": {
+      "description": "Placeholder for favicon URL.",
+      "message": "https://www.example.com/favicon.svg"
+   },
+   "menuContentLayoutPageOverscrollActive": {
+      "description": "Checkbox for layout page overscroll.",
+      "message": "Mag-scroll lampas sa dulo"
+   },
+   "menuContentLayoutPageOverscrollUnblurDescriptionPara1": {
+      "description": "Helper text for background image or video unblur on overscroll.",
+      "message": "Maaalis ang blur sa background na larawan o video kapag nag-scroll sa ibaba ng page."
+   },
+   "menuContentLayoutPageOverscrollUnblurDescriptionPara2": {
+      "description": "Helper text for background image or video unblur on overscroll.",
+      "message": "Matatagpuan ang blur ng larawan o video sa ilalim ng Background ng Tema."
+   },
+   "menuContentLayoutPageOverscrollUnblurLabel": {
+      "description": "Label for background image or video unblur on overscroll.",
+      "message": "I-unblur ang background na larawan o video"
+   },
+   "menuContentLayoutPageScrollbarAuto": {
+      "description": "Radio for page scrollbar auto.",
+      "message": "Auto"
+   },
+   "menuContentLayoutPageScrollbarHelperPara1": {
+      "description": "Helper text for page scrollbar.",
+      "message": "Hindi sinusuportahan ng lahat ng browser."
+   },
+   "menuContentLayoutPageScrollbarLabel": {
+      "description": "Label for page scrollbar.",
+      "message": "Scroll bar"
+   },
+   "menuContentLayoutPageScrollbarNone": {
+      "description": "Radio for page scrollbar none.",
+      "message": "Nakatago"
+   },
+   "menuContentLayoutPageScrollbarThin": {
+      "description": "Radio for page scrollbar thin.",
+      "message": "Manipis"
+   },
+   "menuContentLayoutPageTitleLabel": {
+      "description": "Label for page title.",
+      "message": "Pamagat"
+   },
+   "menuContentLayoutPageTitlePlaceholder": {
+      "description": "Input for page title.",
+      "message": "Bagong tab"
+   },
+   "menuContentLayoutScalingSize": {
+      "description": "Label for layout scaling.",
+      "message": "Pandaigdigang laki"
+   },
+   "menuContentSupportLink1": {
+      "description": "Link to open an issue.",
+      "message": "Magsumite ng Isyu."
+   },
+   "menuContentSupportLink2": {
+      "description": "Link to the project wiki.",
+      "message": "Suriin ang Wiki."
+   },
+   "menuContentSupportPageApplyToAll": {
+      "description": "Support link to project wiki.",
+      "message": "Paglalapat ng mga setting ng bookmark sa lahat"
+   },
+   "menuContentSupportPageBackgroundImageVideo": {
+      "description": "Support link to project wiki.",
+      "message": "Pagtatakda ng background na video o larawan"
+   },
+   "menuContentSupportPageBrowser": {
+      "description": "Support link to project wiki.",
+      "message": "Suporta sa browser"
+   },
+   "menuContentSupportPageCookies": {
+      "description": "Support link to project wiki.",
+      "message": "Cookies at cache"
+   },
+   "menuContentSupportPageData": {
+      "description": "Support link to project wiki.",
+      "message": "Pag-backup at pagpapanumbalik ng data"
+   },
+   "menuContentSupportPageFirefox": {
+      "description": "Support link to project wiki.",
+      "message": "Itinatakda ang {appName} bilang iyong homepage ng Firefox"
+   },
+   "menuContentSupportPageLocalBackgroundImage": {
+      "description": "Support link to project wiki.",
+      "message": "Lokal na larawan sa background"
+   },
+   "menuContentSupportPagePrivacy": {
+      "description": "Support link to project wiki.",
+      "message": "Paggalang sa iyong privacy"
+   },
+   "menuContentSupportPageProtectedUrl": {
+      "description": "Support link to project wiki.",
+      "message": "Mga protektadong URL"
+   },
+   "menuContentSupportPageRecovering": {
+      "description": "Support link to project wiki.",
+      "message": "Pagbawi ng mga setting at bookmark"
+   },
+   "menuContentSupportPageResetting": {
+      "description": "Support link to project wiki.",
+      "message": "Nire-reset kapag binubuksan ang browser"
+   },
+   "menuContentSupportPara": {
+      "description": "Paragraph to get more support or provide feedback.",
+      "message": "Para sa higit pang suporta o feedback:"
+   },
+   "menuContentThemeAccentColor": {
+      "description": "Label for accent colour.",
+      "message": "Kulay ng accent"
+   },
+   "menuContentThemeAccentCycleActive": {
+      "description": "Checkbox for cycled accent colour.",
+      "message": "Auto change Accent hue"
+   },
+   "menuContentThemeAccentCycleAlert": {
+      "description": "Alert for cycled accent colour.",
+      "message": "Mag-ingat dahil ang mabilis na pagbabago ng Accent hue ay maaaring magdulot ng mga isyu sa performance."
+   },
+   "menuContentThemeAccentCycleHelperPara1": {
+      "description": "Helper text for cycled accent colour.",
+      "message": "Auto change Accent hue ay hindi gagana kapag ang Accent color ay gray o black."
+   },
+   "menuContentThemeAccentCycleSpeed": {
+      "description": "Range for cycled accent colour speed.",
+      "message": "Baguhin ang pagkaantala"
+   },
+   "menuContentThemeAccentCycleStep": {
+      "description": "Range for cycled accent colour steps.",
+      "message": "Baguhin ang mga hakbang"
+   },
+   "menuContentThemeAccentPresetColorAqua": {
+      "description": "Label for aqua preset accent colour.",
+      "message": "Aqua"
+   },
+   "menuContentThemeAccentPresetColorBlue": {
+      "description": "Label for blue preset accent colour.",
+      "message": "Bughaw"
+   },
+   "menuContentThemeAccentPresetColorCyan": {
+      "description": "Label for cyan preset accent colour.",
+      "message": "Cyan"
+   },
+   "menuContentThemeAccentPresetColorFuchsia": {
+      "description": "Label for fuchsia preset accent colour.",
+      "message": "Fuchsia"
+   },
+   "menuContentThemeAccentPresetColorGreen": {
+      "description": "Label for green preset accent colour.",
+      "message": "Berde"
+   },
+   "menuContentThemeAccentPresetColorGrey": {
+      "description": "Label for grey preset accent colour.",
+      "message": "Kulay-abo"
+   },
+   "menuContentThemeAccentPresetColorLime": {
+      "description": "Label for lime preset accent colour.",
+      "message": "kalamansi"
+   },
+   "menuContentThemeAccentPresetColorMagenta": {
+      "description": "Label for magenta preset accent colour.",
+      "message": "Magenta"
+   },
+   "menuContentThemeAccentPresetColorOrange": {
+      "description": "Label for orange preset accent colour.",
+      "message": "Kahel"
+   },
+   "menuContentThemeAccentPresetColorPurple": {
+      "description": "Label for purple preset accent colour.",
+      "message": "Lila"
+   },
+   "menuContentThemeAccentPresetColorRed": {
+      "description": "Label for red preset accent colour.",
+      "message": "Pula"
+   },
+   "menuContentThemeAccentPresetColorTeal": {
+      "description": "Label for teal preset accent colour.",
+      "message": "Teal"
+   },
+   "menuContentThemeAccentPresetColorYellow": {
+      "description": "Label for yellow preset accent colour.",
+      "message": "Dilaw"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel1": {
+      "description": "Label for preset accent colour dark level 1.",
+      "message": "Madilim"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel2": {
+      "description": "Label for preset accent colour dark level 2.",
+      "message": "Sobrang dilim"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel3": {
+      "description": "Label for preset accent colour dark level 3.",
+      "message": "Super sobrang dilim"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel1": {
+      "description": "Label for preset accent colour light level 1.",
+      "message": "Liwanag"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel2": {
+      "description": "Label for preset accent colour light level 2.",
+      "message": "Dagdag liwanag"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel3": {
+      "description": "Label for preset accent colour light level 3.",
+      "message": "Sobrang liwanag"
+   },
+   "menuContentThemeAccentRandomActive": {
+      "description": "Checkbox for random accent colour on load or refresh.",
+      "message": "Random na kulay ng Accent sa pag-load/pag-refresh"
+   },
+   "menuContentThemeAccentRandomRandomise": {
+      "description": "Button to randomise accent colour now.",
+      "message": "Randomize ngayon"
+   },
+   "menuContentThemeAccentRandomStyleAny": {
+      "description": "Radio for any random accent colour on load or refresh.",
+      "message": "Anuman"
+   },
+   "menuContentThemeAccentRandomStyleDark": {
+      "description": "Radio for dark random accent colour on load or refresh.",
+      "message": "Madilim"
+   },
+   "menuContentThemeAccentRandomStyleLight": {
+      "description": "Radio for light random accent colour on load or refresh.",
+      "message": "Liwanag"
+   },
+   "menuContentThemeAccentRandomStylePastel": {
+      "description": "Radio for pastel random accent colour on load or refresh.",
+      "message": "Pastel"
+   },
+   "menuContentThemeAccentRandomStyleSaturated": {
+      "description": "Radio for saturated random accent colour on load or refresh.",
+      "message": "Busog"
+   },
+   "menuContentThemeBackgroundColor": {
+      "description": "Label for background colour.",
+      "message": "Kulay ng background"
+   },
+   "menuContentThemeBackgroundGradientAngle": {
+      "description": "Label for background gradient angle.",
+      "message": "Anggulo ng gradient ng background"
+   },
+   "menuContentThemeBackgroundGradientLeft": {
+      "description": "Range for background gradient angle left.",
+      "message": "Pagsisimula ng gradient ng background"
+   },
+   "menuContentThemeBackgroundGradientRight": {
+      "description": "Range for background gradient angle right.",
+      "message": "pagtatapos ng gradient ng background"
+   },
+   "menuContentThemeBackgroundImageAccent": {
+      "description": "Range background image accent.",
+      "message": "Accent"
+   },
+   "menuContentThemeBackgroundImageAlertPara1": {
+      "description": "Alert for image background.",
+      "message": "Hindi na magagamit ang mga lokal na larawan. Ang mga larawan ay dapat na naka-host sa isang lugar online."
+   },
+   "menuContentThemeBackgroundImageAlertPara2": {
+      "description": "Alert for image background.",
+      "message": "Bakit ito nagbago?"
+   },
+   "menuContentThemeBackgroundImageBlur": {
+      "description": "Range background image blur.",
+      "message": "Malabo"
+   },
+   "menuContentThemeBackgroundImageGrayscale": {
+      "description": "Range background image grayscale.",
+      "message": "Grayscale"
+   },
+   "menuContentThemeBackgroundImageOpacity": {
+      "description": "Range background image opacity.",
+      "message": "Opacity"
+   },
+   "menuContentThemeBackgroundImageScale": {
+      "description": "Range background image scale.",
+      "message": "Iskala"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara1": {
+      "description": "Helper text for background image.",
+      "message": "Magdagdag ng higit sa isang URL na pinaghihiwalay ng mga puwang o sa mga bagong linya para sa isang random na larawan sa background sa pag-load."
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara2": {
+      "description": "Helper text for background image.",
+      "message": "Maaaring gamitin ang Unsplash para sa mga random na larawan, hal:"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara3": {
+      "description": "Helper text for background image.",
+      "message": "https://source.unsplash.com/random/1920x1080/?gabi,araw,langit"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara4": {
+      "description": "Helper text for background image.",
+      "message": "Baguhin ang mga parameter pagkatapos ng .../random/ para sa higit pang mga opsyon. Maaaring mag-iba ang mga oras ng paglo-load."
+   },
+   "menuContentThemeBackgroundImageUrlLabel": {
+      "description": "Input for background image URL.",
+      "message": "URL"
+   },
+   "menuContentThemeBackgroundImageUrlPlaceholder": {
+      "description": "Placeholder for background image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "menuContentThemeBackgroundImageVignetteOpacity": {
+      "description": "Range for image vignette opacity.",
+      "message": "Vignette"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeLabel": {
+      "description": "Label for image vignette.",
+      "message": "Lilim sa simula at pagtatapos"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeLeft": {
+      "description": "Range for image vignette left.",
+      "message": "Lilim na dulo"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeRight": {
+      "description": "Range for image vignette right.",
+      "message": "Pagsisimula ng shade"
+   },
+   "menuContentThemeBackgroundTypeAccentDescription": {
+      "description": "Description for background type accent.",
+      "message": "Gamitin ang kulay ng Accent para sa Background."
+   },
+   "menuContentThemeBackgroundTypeAccentLabel": {
+      "description": "Radio for background type accent.",
+      "message": "Background sa pamamagitan ng Accent"
+   },
+   "menuContentThemeBackgroundTypeColor": {
+      "description": "Radio for background type colour.",
+      "message": "Pasadyang kulay"
+   },
+   "menuContentThemeBackgroundTypeGradient": {
+      "description": "Radio for background type gradient.",
+      "message": "Gradient"
+   },
+   "menuContentThemeBackgroundTypeImage": {
+      "description": "Radio for background type image.",
+      "message": "Imahe"
+   },
+   "menuContentThemeBackgroundTypeThemeDescription": {
+      "description": "Description for background type theme.",
+      "message": "Gamitin ang kulay ng Background na tinukoy ng Tema."
+   },
+   "menuContentThemeBackgroundTypeThemeLabel": {
+      "description": "Radio for background type theme.",
+      "message": "Background ayon sa Tema"
+   },
+   "menuContentThemeBackgroundTypeVideo": {
+      "description": "Radio for background type video.",
+      "message": "Video"
+   },
+   "menuContentThemeBackgroundVideoAccent": {
+      "description": "Range background video accent.",
+      "message": "Accent"
+   },
+   "menuContentThemeBackgroundVideoAlertPara1": {
+      "description": "Alert for video background.",
+      "message": "Hindi magagamit ang mga URL ng pahina sa YouTube."
+   },
+   "menuContentThemeBackgroundVideoAlertPara2": {
+      "description": "Alert for video background.",
+      "message": "Paano mag-link sa isang video file."
+   },
+   "menuContentThemeBackgroundVideoBlur": {
+      "description": "Range background video blur.",
+      "message": "Malabo"
+   },
+   "menuContentThemeBackgroundVideoGrayscale": {
+      "description": "Range background video grayscale.",
+      "message": "Grayscale"
+   },
+   "menuContentThemeBackgroundVideoOpacity": {
+      "description": "Range background video opacity.",
+      "message": "Opacity"
+   },
+   "menuContentThemeBackgroundVideoScale": {
+      "description": "Range background video scale.",
+      "message": "Iskala"
+   },
+   "menuContentThemeBackgroundVideoUrlHelperPara1": {
+      "description": "Helper text for background video.",
+      "message": "Sinusuportahan lamang ng background na video ang isang direktang URL sa isang video file. Sinusuportahan ang MP4 at WebM na format."
+   },
+   "menuContentThemeBackgroundVideoUrlHelperPara2": {
+      "description": "Helper text for background video.",
+      "message": "Magdagdag ng higit sa isang URL na pinaghihiwalay ng mga puwang o sa mga bagong linya para sa isang random na background na video sa pag-load."
+   },
+   "menuContentThemeBackgroundVideoUrlLabel": {
+      "description": "Input for background video URL.",
+      "message": "URL"
+   },
+   "menuContentThemeBackgroundVideoUrlPlaceholder": {
+      "description": "Placeholder for background video URL.",
+      "message": "https://www.example.com/video.mp4"
+   },
+   "menuContentThemeBackgroundVideoVignetteOpacity": {
+      "description": "Range for video vignette opacity.",
+      "message": "Vignette"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeLabel": {
+      "description": "Label for video vignette.",
+      "message": "Lilim sa simula at pagtatapos"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeLeft": {
+      "description": "Range for video vignette left.",
+      "message": "Lilim na dulo"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeRight": {
+      "description": "Range for video vignette right.",
+      "message": "Pagsisimula ng shade"
+   },
+   "menuContentThemeBookmarkColorByCustomDescription": {
+      "description": "Description for colour bookmark area background.",
+      "message": "Gumamit ng custom na kulay sa likod ng Bookmark area."
+   },
+   "menuContentThemeBookmarkColorByCustomLabel": {
+      "description": "Radio for colour bookmark area background.",
+      "message": "Pasadyang kulay"
+   },
+   "menuContentThemeBookmarkColorByTransparentDescription": {
+      "description": "Description for transparent bookmark area background.",
+      "message": "Walang kulay ng background sa likod ng lugar ng Bookmark."
+   },
+   "menuContentThemeBookmarkColorByTransparentLabel": {
+      "description": "Radio for transparent bookmark area background.",
+      "message": "Transparent"
+   },
+   "menuContentThemeBookmarkColorColor": {
+      "description": "Label for bookmark area background colour.",
+      "message": "Kulay ng background ng bookmark"
+   },
+   "menuContentThemeBookmarkColorLabel": {
+      "description": "Label for bookmark area colour.",
+      "message": "Kulay ng background ng bookmark"
+   },
+   "menuContentThemeBookmarkColorOpacity": {
+      "description": "Range for bookmark area background opacity.",
+      "message": "Opacity ng background"
+   },
+   "menuContentThemeBookmarkItemBorderHelperPara1": {
+      "description": "Helper text for bookmark border.",
+      "message": "Ang hangganan ng bookmark ay maaari ding baguhin kapag nag-e-edit ng mga indibidwal na Bookmark."
+   },
+   "menuContentThemeBookmarkItemBorderHelperPara2": {
+      "description": "Helper text for bookmark border.",
+      "message": "Ang kulay ng Border ay tinutukoy ng Accent na maaari ding baguhin kapag nag-e-edit ng mga indibidwal na Bookmark."
+   },
+   "menuContentThemeBookmarkItemBorderLabel": {
+      "description": "Label for bookmark item border.",
+      "message": "I-bookmark ang hangganan"
+   },
+   "menuContentThemeBookmarkItemRainbowAdd": {
+      "description": "Button to add a unique accent colour to each bookmark.",
+      "message": "Magdagdag ng natatanging accent sa bawat Bookmark"
+   },
+   "menuContentThemeBookmarkItemRainbowHelperPara1": {
+      "description": "Helper text for unique accent colours for each bookmark.",
+      "message": "Maaari ding baguhin ang custom na Accent ng bookmark kapag nag-e-edit ng mga indibidwal na Bookmark."
+   },
+   "menuContentThemeBookmarkItemRainbowRemove": {
+      "description": "Button to remove a unique accent colour to each bookmark.",
+      "message": "Alisin ang lahat ng accent override"
+   },
+   "menuContentThemeColorContrastHelperPara1": {
+      "description": "Helper text for primary colour contrast.",
+      "message": "Ilipat ang mga kontrol ng Contrast range nang magkakalapit para sa isang naka-mute na hitsura."
+   },
+   "menuContentThemeColorContrastHelperPara2": {
+      "description": "Helper text for primary colour contrast.",
+      "message": "Ilipat ang mga kontrol ng Contrast range nang malayo sa isa't isa para sa isang matalas na matingkad na hitsura."
+   },
+   "menuContentThemeColorContrastLabel": {
+      "description": "Label for primary colour contrast.",
+      "message": "Contrast range"
+   },
+   "menuContentThemeColorContrastLeft": {
+      "description": "Range for primary colour contrast left side.",
+      "message": "Contrast simula"
+   },
+   "menuContentThemeColorContrastRight": {
+      "description": "Range for primary colour contrast right side.",
+      "message": "Contrast na dulo"
+   },
+   "menuContentThemeColorRangePrimaryH": {
+      "description": "Range for primary colour hue.",
+      "message": "Pangunahing kulay"
+   },
+   "menuContentThemeColorRangePrimaryS": {
+      "description": "Range for primary colour saturation.",
+      "message": "Saturation"
+   },
+   "menuContentThemeColorShadeHelperPara1": {
+      "description": "Helper text for primary colour.",
+      "message": "Ang mga background, Bookmark at Modals ay gumagamit ng mga shade mula sa kaliwa."
+   },
+   "menuContentThemeColorShadeHelperPara2": {
+      "description": "Helper text for primary colour.",
+      "message": "Gumagamit ang mga elemento ng text at form ng mga shade mula sa kanan."
+   },
+   "menuContentThemeColorShadeHelperPara3": {
+      "description": "Helper text for primary colour.",
+      "message": "Para sa isang light look lumipat sa Light Style at pagkatapos ay pumili ng Pangunahing kulay. At vice versa para sa isang madilim na hitsura."
+   },
+   "menuContentThemeFontDisplayNameHelperLink": {
+      "description": "Link to google fonts.",
+      "message": "Maghanap ng Google Font"
+   },
+   "menuContentThemeFontDisplayNameHelperPara1": {
+      "description": "Helper text for display font name.",
+      "message": "Gumamit ng Google Font upang i-customize ang Orasan, Petsa, mga pangalan ng Grupo at Mga Bookmark na Sulat."
+   },
+   "menuContentThemeFontDisplayNameHelperPara2": {
+      "description": "Helper text for display font name.",
+      "message": "Magdagdag ng pangalan ng font kung paano ito lumalabas sa Google Fonts, kasama ang malalaking titik at espasyo, hal: ilagay ang \"Fredoka One\" o \"Kanit\"."
+   },
+   "menuContentThemeFontDisplayNameHelperPara3": {
+      "description": "Helper text for display font name.",
+      "message": "I-clear ang field para magamit ang default na font na \"Fjalla One\"."
+   },
+   "menuContentThemeFontDisplayNameLabel": {
+      "description": "Input for display font name.",
+      "message": "Display font"
+   },
+   "menuContentThemeFontDisplayNamePlaceholder": {
+      "description": "Placeholder for display font name.",
+      "message": "Pangalan ng font ng Google"
+   },
+   "menuContentThemeFontDisplayStyleItalic": {
+      "description": "Radio for italic display font style.",
+      "message": "Italic"
+   },
+   "menuContentThemeFontDisplayStyleNormal": {
+      "description": "Radio for normal display font style.",
+      "message": "Normal"
+   },
+   "menuContentThemeFontDisplayWeightBold": {
+      "description": "Button for bold weight display font.",
+      "message": "Matapang"
+   },
+   "menuContentThemeFontDisplayWeightHelperPara1": {
+      "description": "Helper text for display font weight.",
+      "message": "Hindi lahat ng mga font ay sumusuporta sa lahat ng mga timbang. Sumangguni sa pahina ng Google Font upang makita kung alin ang available."
+   },
+   "menuContentThemeFontDisplayWeightLabel": {
+      "description": "Label for display font weight.",
+      "message": "Timbang ng font"
+   },
+   "menuContentThemeFontDisplayWeightLight": {
+      "description": "Button for light weight display font.",
+      "message": "Liwanag"
+   },
+   "menuContentThemeFontDisplayWeightRegular": {
+      "description": "Button for regular weight display font.",
+      "message": "Regular"
+   },
+   "menuContentThemeFontUiNameHelperLink": {
+      "description": "Link to google fonts.",
+      "message": "Maghanap ng Google Font"
+   },
+   "menuContentThemeFontUiNameHelperPara1": {
+      "description": "Helper text for UI font name.",
+      "message": "Gumamit ng Google Font upang i-customize ang pangalan ng Bookmark, URL at mga elemento ng form."
+   },
+   "menuContentThemeFontUiNameHelperPara2": {
+      "description": "Helper text for UI font name.",
+      "message": "Magdagdag ng pangalan ng font kung paano ito lumalabas sa Google Fonts, kabilang ang malalaking titik at espasyo, hal: ilagay ang \"Roboto\", \"Source Sans Pro\" o \"Noto Sans\"."
+   },
+   "menuContentThemeFontUiNameHelperPara3": {
+      "description": "Helper text for UI font name.",
+      "message": "I-clear ang field para magamit ang default na font na \"Open Sans\"."
+   },
+   "menuContentThemeFontUiNameLabel": {
+      "description": "Input for UI font name.",
+      "message": "Font ng interface ng gumagamit"
+   },
+   "menuContentThemeFontUiNamePlaceholder": {
+      "description": "Placeholder for UI font name.",
+      "message": "Pangalan ng font ng Google"
+   },
+   "menuContentThemeFontUiStyleItalic": {
+      "description": "Radio for italic UI font style.",
+      "message": "Italic"
+   },
+   "menuContentThemeFontUiStyleNormal": {
+      "description": "Radio for normal UI font style.",
+      "message": "Normal"
+   },
+   "menuContentThemeFontUiWeightBold": {
+      "description": "Button for bold weight UI font.",
+      "message": "Matapang"
+   },
+   "menuContentThemeFontUiWeightHelperPara1": {
+      "description": "Helper text for UI font weight.",
+      "message": "Hindi lahat ng mga font ay sumusuporta sa lahat ng mga timbang. Sumangguni sa pahina ng Google Font upang makita kung alin ang available."
+   },
+   "menuContentThemeFontUiWeightLabel": {
+      "description": "Label for UI font weight.",
+      "message": "Timbang ng font"
+   },
+   "menuContentThemeFontUiWeightLight": {
+      "description": "Button for light weight UI font.",
+      "message": "Liwanag"
+   },
+   "menuContentThemeFontUiWeightRegular": {
+      "description": "Button for regular weight UI font.",
+      "message": "Regular"
+   },
+   "menuContentThemeHeaderColorByCustomDescription": {
+      "description": "Description for colour header area background.",
+      "message": "Gumamit ng custom na kulay sa likod ng lugar ng Header."
+   },
+   "menuContentThemeHeaderColorByCustomLabel": {
+      "description": "Radio for colour header area background.",
+      "message": "Pasadyang kulay"
+   },
+   "menuContentThemeHeaderColorByTransparentDescription": {
+      "description": "Description for transparent header area background.",
+      "message": "Walang kulay ng background sa likod ng lugar ng Header."
+   },
+   "menuContentThemeHeaderColorByTransparentLabel": {
+      "description": "Radio for transparent header area background.",
+      "message": "Transparent"
+   },
+   "menuContentThemeHeaderColorColor": {
+      "description": "Label for header area background colour.",
+      "message": "Kulay ng background ng header"
+   },
+   "menuContentThemeHeaderColorLabel": {
+      "description": "Label for header area colour.",
+      "message": "Kulay ng background ng header"
+   },
+   "menuContentThemeHeaderColorOpacity": {
+      "description": "Range for header area background opacity.",
+      "message": "Opacity ng background"
+   },
+   "menuContentThemeLayoutColorBlurHelperPara1": {
+      "description": "Description for layout background blur.",
+      "message": "Hindi sinusuportahan ng lahat ng browser."
+   },
+   "menuContentThemeLayoutColorBlurLabel": {
+      "description": "Range for layout background blur.",
+      "message": "Malabo ang background"
+   },
+   "menuContentThemeLayoutColorByCustomDescription": {
+      "description": "Description for colour layout area background.",
+      "message": "Gumamit ng custom na kulay sa likod ng Layout."
+   },
+   "menuContentThemeLayoutColorByCustomLabel": {
+      "description": "Radio for colour layout area background.",
+      "message": "Pasadyang kulay"
+   },
+   "menuContentThemeLayoutColorByTransparentDescription": {
+      "description": "Description for transparent layout area background.",
+      "message": "Walang kulay ng background sa likod ng Layout."
+   },
+   "menuContentThemeLayoutColorByTransparentLabel": {
+      "description": "Radio for transparent layout area background.",
+      "message": "Transparent"
+   },
+   "menuContentThemeLayoutColorColor": {
+      "description": "Label for layout area background colour.",
+      "message": "Kulay ng background ng layout"
+   },
+   "menuContentThemeLayoutColorLabel": {
+      "description": "Label for layout area colour.",
+      "message": "Kulay ng background ng layout"
+   },
+   "menuContentThemeLayoutColorOpacity": {
+      "description": "Range for layout area background opacity.",
+      "message": "Opacity ng background"
+   },
+   "menuContentThemeLayoutDivider": {
+      "description": "Label for layout divider.",
+      "message": "Divider sa pagitan ng Header at Bookmark area"
+   },
+   "menuContentThemeOpacityBookmark": {
+      "description": "Range for bookmark opacity.",
+      "message": "Bookmark"
+   },
+   "menuContentThemeOpacityGeneralHelperPara1": {
+      "description": "Helper text for all opacity.",
+      "message": "Baguhin ang opacity ng Search bar, Bookmarks, Group controls at Toolbar."
+   },
+   "menuContentThemeOpacityGeneralHelperPara2": {
+      "description": "Helper text for all opacity.",
+      "message": "Ang opacity ay maaari ding baguhin kapag nag-e-edit ng mga indibidwal na Bookmark."
+   },
+   "menuContentThemeOpacityGeneralLabel": {
+      "description": "Range for all opacity.",
+      "message": "Lahat ng opacity"
+   },
+   "menuContentThemeOpacityGroupToolbar": {
+      "description": "Range for group toolbar opacity.",
+      "message": "Toolbar ng pangkat"
+   },
+   "menuContentThemeOpacitySearch": {
+      "description": "Range for search opacity.",
+      "message": "Box para sa paghahanap"
+   },
+   "menuContentThemeOpacityToolbar": {
+      "description": "Range for toolbar opacity.",
+      "message": "Toolbar"
+   },
+   "menuContentThemePresetHelperPara1": {
+      "description": "Helper text for preset theme.",
+      "message": "Papalitan ng paglalapat ng Preset ang kasalukuyang Kulay, Accent, Font, Estilo, Radius, Shadow, Shade at Background."
+   },
+   "menuContentThemeRadius": {
+      "description": "Range for radius.",
+      "message": "Corner radius"
+   },
+   "menuContentThemeSavedEdit": {
+      "description": "Button to enter edit mode for saved themes.",
+      "message": "I-edit ang mga naka-save na tema"
+   },
+   "menuContentThemeSavedHelperPara1": {
+      "description": "Helper text for saved themes.",
+      "message": "Ang pag-save ng Tema ay magtatala ng kasalukuyang Kulay, Accent, Font, Estilo, Opacity, Radius, Shadow, Shade at Background."
+   },
+   "menuContentThemeSavedSave": {
+      "description": "Button to save the current theme setup.",
+      "message": "I-save ang kasalukuyang tema"
+   },
+   "menuContentThemeShadeBlurHelperPara1": {
+      "description": "Helper text for shade blur.",
+      "message": "Hindi sinusuportahan ng lahat ng browser."
+   },
+   "menuContentThemeShadeBlurLabel": {
+      "description": "Range for shade blur.",
+      "message": "Malabo ang lilim"
+   },
+   "menuContentThemeShadeOpacity": {
+      "description": "Range for shade opacity.",
+      "message": "Opacity ng shade"
+   },
+   "menuContentThemeShadow": {
+      "description": "Range for shadow.",
+      "message": "Laki ng anino"
+   },
+   "menuContentThemeStyleAutomaticDescription": {
+      "description": "Description for automatic light or dark mode.",
+      "message": "Sundin ang system Light o Dark mode."
+   },
+   "menuContentThemeStyleAutomaticLabel": {
+      "description": "Radio for automatic light or dark mode.",
+      "message": "Awtomatiko"
+   },
+   "menuContentThemeStyleDarkLabel": {
+      "description": "Radio for dark mode.",
+      "message": "Dark mode"
+   },
+   "menuContentThemeStyleLightLabel": {
+      "description": "Radio for light mode.",
+      "message": "Light mode"
+   },
+   "menuContentToolbarControlsAccent": {
+      "description": "Checkbox to show bookmark group toolbar accent control.",
+      "message": "Ipakita ang kontrol ng Accent"
+   },
+   "menuContentToolbarControlsAdd": {
+      "description": "Checkbox to show bookmark group toolbar add control.",
+      "message": "Ipakita ang Add control"
+   },
+   "menuContentToolbarControlsEdit": {
+      "description": "Checkbox to show bookmark group toolbar edit control.",
+      "message": "Ipakita ang kontrol sa Pag-edit"
+   },
+   "menuContentToolbarLocationCorner": {
+      "description": "Radio for bookmark group toolbar in a corner.",
+      "message": "Sa isang sulok"
+   },
+   "menuContentToolbarLocationHeader": {
+      "description": "Radio for bookmark group toolbar in header.",
+      "message": "Sa Header"
+   },
+   "menuContentToolbarLocationHelperPara1": {
+      "description": "Helper text for toolbar location.",
+      "message": "Iposisyon ang Toolbar sa loob ng Header o sa isang sulok ng window."
+   },
+   "menuContentToolbarLocationNewLineDescription": {
+      "description": "Description to force the bookmark group toolbar onto a new line.",
+      "message": "Puwersa sa isang bagong linya at hiwalay sa iba pang item sa Header."
+   },
+   "menuContentToolbarLocationNewLineHelperPara1": {
+      "description": "Helper text for the bookmark group toolbar on a new line.",
+      "message": "Available lang kapag nakaposisyon ang Toolbar sa loob ng Header."
+   },
+   "menuContentToolbarLocationNewLineLabel": {
+      "description": "Checkbox to force the bookmark group toolbar onto a new line.",
+      "message": "Bagong linya"
+   },
+   "menuContentToolbarPositionBottomLeft": {
+      "description": "Radio for bookmark group toolbar positioned in the bottom left corner.",
+      "message": "Babang kaliwa"
+   },
+   "menuContentToolbarPositionBottomRight": {
+      "description": "Radio for bookmark group toolbar positioned in the bottom right corner.",
+      "message": "Kanan sa ibaba"
+   },
+   "menuContentToolbarPositionHelper1Para1": {
+      "description": "Helper text for bookmark group toolbar corner location.",
+      "message": "Iposisyon ang Toolbar sa isa sa apat na sulok ng window."
+   },
+   "menuContentToolbarPositionHelper2Para1": {
+      "description": "Helper text for bookmark group toolbar corner location.",
+      "message": "Available lang kapag nakaposisyon ang Toolbar sa isang sulok."
+   },
+   "menuContentToolbarPositionLabel": {
+      "description": "Label for toolbar corner location.",
+      "message": "Posisyon ng toolbar"
+   },
+   "menuContentToolbarPositionTopLeft": {
+      "description": "Radio for bookmark group toolbar positioned in the top left corner.",
+      "message": "Kaliwa sa itaas"
+   },
+   "menuContentToolbarPositionTopRight": {
+      "description": "Radio for bookmark group toolbar positioned in the top right corner.",
+      "message": "Kanan sa itaas"
+   },
+   "menuContentToolbarSize": {
+      "description": "Range for bookmark group toolbar size.",
+      "message": "Laki ng toolbar"
+   },
+   "menuNavAppLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "{appName}"
+   },
+   "menuNavBookmarkLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Bookmark"
+   },
+   "menuNavBookmarkSubNavGeneral": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Heneral"
+   },
+   "menuNavBookmarkSubNavOrientation": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Oryentasyon"
+   },
+   "menuNavBookmarkSubNavSort": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pagbukud-bukurin"
+   },
+   "menuNavBookmarkSubNavStyle": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Estilo"
+   },
+   "menuNavCoffeeLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "kape"
+   },
+   "menuNavDataLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Data"
+   },
+   "menuNavDataSubNavBackup": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Backup"
+   },
+   "menuNavDataSubNavClear": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Malinaw"
+   },
+   "menuNavDataSubNavRestore": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Ibalik"
+   },
+   "menuNavDebugLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "I-debug"
+   },
+   "menuNavDebugSubNavBookmark": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Bookmark"
+   },
+   "menuNavDebugSubNavButton": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pindutan"
+   },
+   "menuNavDebugSubNavIcon": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Icon"
+   },
+   "menuNavDebugSubNavInput": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Input"
+   },
+   "menuNavGroupLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Grupo"
+   },
+   "menuNavGroupSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pag-align"
+   },
+   "menuNavGroupSubNavCollapse": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pagbagsak"
+   },
+   "menuNavGroupSubNavName": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pangalan"
+   },
+   "menuNavGroupSubNavToolbar": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Toolbar"
+   },
+   "menuNavHeaderLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Header"
+   },
+   "menuNavHeaderSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pag-align"
+   },
+   "menuNavHeaderSubNavClock": {
+      "description": "Label for the settings menu navigation.",
+      "message": "orasan"
+   },
+   "menuNavHeaderSubNavDate": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Petsa"
+   },
+   "menuNavHeaderSubNavGreeting": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pagbati"
+   },
+   "menuNavHeaderSubNavSearch": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Maghanap"
+   },
+   "menuNavHeaderSubNavTransitional": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Mga salitang transisyonal"
+   },
+   "menuNavLanguageLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Wika"
+   },
+   "menuNavLayoutLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Layout"
+   },
+   "menuNavLayoutSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Paghahanay"
+   },
+   "menuNavLayoutSubNavArea": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Lugar"
+   },
+   "menuNavLayoutSubNavGutter": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Kanal"
+   },
+   "menuNavLayoutSubNavPadding": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Padding"
+   },
+   "menuNavLayoutSubNavPage": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pahina"
+   },
+   "menuNavLayoutSubNavScaling": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Pagsusukat"
+   },
+   "menuNavSupportLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Suporta"
+   },
+   "menuNavThemeLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Tema"
+   },
+   "menuNavThemeSubNavAccent": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Accent"
+   },
+   "menuNavThemeSubNavBackground": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Background"
+   },
+   "menuNavThemeSubNavBookmark": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Bookmark"
+   },
+   "menuNavThemeSubNavColor": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Kulay"
+   },
+   "menuNavThemeSubNavFont": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Font"
+   },
+   "menuNavThemeSubNavHeader": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Header"
+   },
+   "menuNavThemeSubNavLayout": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Layout"
+   },
+   "menuNavThemeSubNavOpacity": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Opacity"
+   },
+   "menuNavThemeSubNavPreset": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Preset"
+   },
+   "menuNavThemeSubNavRadius": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Radius"
+   },
+   "menuNavThemeSubNavSaved": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Nai-save"
+   },
+   "menuNavThemeSubNavShade": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Lilim"
+   },
+   "menuNavThemeSubNavShadow": {
+      "description": "Label for the settings menu navigation.",
+      "message": "anino"
+   },
+   "menuNavThemeSubNavStyle": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Estilo"
+   },
+   "menuNavToolbarLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Toolbar"
+   },
+   "menuNavToolbarSubNavControls": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Mga kontrol"
+   },
+   "menuNavToolbarSubNavLocation": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Lokasyon"
+   },
+   "menuNavToolbarSubNavPosition": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Posisyon"
+   },
+   "menuNavToolbarSubNavSize": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Sukat"
+   },
+   "themeCustomAddCancelText": {
+      "description": "Button to cancel adding a saved custom theme.",
+      "message": "Kanselahin"
+   },
+   "themeCustomAddHeading": {
+      "description": "Heading for saved custom theme add modal.",
+      "message": "I-save ang kasalukuyang tema"
+   },
+   "themeCustomAddSuccessText": {
+      "description": "Button to confirm adding a saved custom theme.",
+      "message": "I-save"
+   },
+   "themeCustomEditCancelText": {
+      "description": "Button to cancel editing a saved custom theme.",
+      "message": "Kanselahin"
+   },
+   "themeCustomEditHeadingName": {
+      "description": "Heading with a name for saved custom theme edit modal.",
+      "message": "I-edit"
+   },
+   "themeCustomEditHeadingUnnamed": {
+      "description": "Heading without a name for saved custom theme edit modal.",
+      "message": "I-edit ang hindi pinangalanang custom na tema"
+   },
+   "themeCustomEditSuccessText": {
+      "description": "Button to confirm editing a saved custom theme.",
+      "message": "Alisin"
+   },
+   "themeCustomFormNameLabel": {
+      "description": "Label for saved custom theme name.",
+      "message": "Pangalan"
+   },
+   "themeCustomFormNamePlaceholder": {
+      "description": "Placeholder for saved custom theme name.",
+      "message": "Halimbawang tema"
+   },
+   "themeCustomFormRandom": {
+      "description": "Button for random saved custom theme name.",
+      "message": "Random na pangalan ng tema"
+   },
+   "themeCustomRemoveCancelText": {
+      "description": "Button to cancel removing a saved custom theme.",
+      "message": "Kanselahin"
+   },
+   "themeCustomRemoveContent": {
+      "description": "Paragraph for saved custom theme remove modal.",
+      "message": "Sigurado ka bang gusto mong alisin ang naka-save na custom na tema? Hindi na ito maaaring bawiin."
+   },
+   "themeCustomRemoveHeadingName": {
+      "description": "Heading with a name for saved custom theme remove modal.",
+      "message": "Alisin"
+   },
+   "themeCustomRemoveHeadingUnnamed": {
+      "description": "Heading without a name for saved custom theme remove modal.",
+      "message": "Alisin ang hindi pinangalanang custom na tema"
+   },
+   "themeCustomRemoveSuccessText": {
+      "description": "Button to confirm removing a saved custom theme.",
+      "message": "I-save"
+   },
+   "themeCustomTileControlEdit": {
+      "description": "Button to edit saved custom theme.",
+      "message": "I-edit itong naka-save na custom na tema"
+   },
+   "themeCustomTileControlRemove": {
+      "description": "Button to remove saved custom theme.",
+      "message": "Alisin ang naka-save na custom na tema na ito"
+   },
+   "toolbarAccent": {
+      "description": "Button for toolbar accent control.",
+      "message": "Kulay ng accent"
+   },
+   "toolbarAddBookmark": {
+      "description": "Button for toolbar control to add a new bookmark group.",
+      "message": "Bagong Bookmark"
+   },
+   "toolbarAddGroup": {
+      "description": "Button for toolbar control to add a new bookmark.",
+      "message": "Bagong grupo"
+   },
+   "toolbarAddLabel": {
+      "description": "Button for toolbar control to add.",
+      "message": "Idagdag"
+   },
+   "toolbarEdit": {
+      "description": "Button for toolbar to toggle edit mode.",
+      "message": "I-edit ang mga pangkat at bookmark"
+   },
+   "toolbarSetting": {
+      "description": "Button for toolbar to open settings menu.",
+      "message": "Buksan ang menu ng mga setting"
+   }
+}

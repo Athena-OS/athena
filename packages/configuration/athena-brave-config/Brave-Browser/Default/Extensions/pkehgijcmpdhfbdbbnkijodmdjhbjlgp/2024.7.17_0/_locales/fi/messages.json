@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "Ymmärrän"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "Lisää verkkotunnus"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "Salli aina tällä sivustolla"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "Salli tämän kerran"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "esim. www.esimerkki.fi, *.esimerkki.net, esimerkki.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "$DOMAIN$ sallittu",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "$DOMAIN$ estetty",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Evästeet ja leimausskriptit estetty verkkotunnukselta $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "Evästeet estetty verkkotunnukselta $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "Ei seurantaa verkkotunnukselta $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "Tämän verkkotunnuksen estämisen tiedetään rikkovan sivustoja"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "canvas-leimaus"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "Kopioitu"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "Kopioi leikepöydälle"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "Tietojen hallinta"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "Seuraava asetus on vanhentunut ja tullaan poistamaan tulevien Privacy Badgerin päivityksien yhteydessä:"
+   },
+   "description": {
+      "description": "",
+      "message": "Privacy Badger oppii automaattisesti estämään näkymättömät seurannat."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>Privacy Badger ohittaa seuraavat sivustot, eli Privacy Badger ei estä mitään käyttäessäsi näitä sivustoja, eikä se lähetä \"Do Not Track\" tai \"Global Privacy Control\" -signaaleja.\u003C/p>\u003Cp>Jos epäilet Privacy Badgerin rikkovan verkkosivun tai haluat sallia tietyn sivuston jakaa tai myydä tietojasi, kirjoita sivuston verkkotunnus alla olevaan ja paina \"Lisää verkkotunnus\" -painiketta.\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "Ohitettavat sivustot"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "Tämä verkkotunnus lupaa, ettei se seuraa sinua"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "Salli"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "Estä kokonaan"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "Estä evästeet"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "Lahjoita EFF:lle"
+   },
+   "download": {
+      "description": "",
+      "message": "Lataa"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "Tuo ohitettavat sivustot pilvestä"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "Tietoja ei voitu ladata pilvestä."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "Pilvestä ei löytynyt ladattavia tietoja."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "Tietojen tuonti pilvestä onnistui."
+   },
+   "error_input": {
+      "description": "",
+      "message": "Mikä on pielessä?"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "Vie käyttäjätiedot"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "\u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>Kerro meille\u003C/a> seuraavasta virheestä:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "Palauta tämä verkkotunnus Privacy Badgerin hallintaan painamalla tästä"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "Kiitos, että asensit Privacy Badgerin!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "Lue, miten Privacy Badger suojelee yksityisyyttäsi"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "Kirjautuaksesi verkkosivuille Google-tililläsi, siirrä tämä liukuvalitsin oikealle ja päivitä sivu"
+   },
+   "import": {
+      "description": "",
+      "message": "Tuo"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "Valitse tuotava tiedosto."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "Seurantalistan ja asetusten päivitys onnistui!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "Tuo käyttäjätiedot"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "Nappaa katalat seurannat"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "Näkymätöntä seurantaa tapahtuu monin tavoin ja mainokset ovat vain pinnalla näkyvä jäävuoren huippu. Privacy Badger lähettää \"\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a>\" -signaaleita, jolla palveluille ilmoitetaan, ettet halua tietojasi jaettavan ja myytävän, sekä \"\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a>\" -signaaleita, jolla ilmoitetaan, ettet halua palveluiden seuraavan sinua. Mikäli pyyntöjäsi ei noudateta, Privacy Badger oppii estämään ne — ovatpa ne sitten mainostajia, seurantoja tai jotakin muuta."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "Electronic Frontier Foundationin projekti"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "Jos epäilet Privacy Badgerin rikkovan verkkosivun (esim. video ei toistu), voit painaa \"Poista käytöstä\" -painiketta kytkeäksesi Privacy Badgerin pois käytöstä kyseisellä sivustolla."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "Käyttämällä Privacy Badgeria liityt \u003Ca href='https://www.eff.org/' target='_blank'>Electronic Frontier Foundationin\u003C/a> ja miljoonien muiden käyttäjien joukkoon taistelussa yksityisyyden puolesta. Olemme voittoa tavoittelematon järjestö, joka taistelee verkko-oikeuksiesi puolesta. Kiitos kun liityit mukaan!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "Yksityisyys on tiimipeliä!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "Auta meitä lahjoittamalla ja antamalla tukesi työkaluillemme"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "Oppii automaattisesti"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "Estolistaan käyttöön pohjautuvan eston sijaan Privacy Badger tunnistaa seurannat automaattisesti niiden toiminnan perusteella."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "Tietosuojakäytäntö"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "Esittelykierros"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "En ole mainosten estäjä, olen erilainen"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "Privacy Badger käynnistää eston havaittuaan saman seurannan kolmella eri sivustolla. Kolmesta poikki!"
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "Privacy Badger ei koskaan jaa tietoa nettiselaamisestasi, ellet itse halua."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "Älä unohda painaa \"Ilmoita rikkoutuneesta sivustosta\". Kunnioitamme tietosuojaasi, joten emme lähetä ilmoituksia automaattisesti."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "Privacy Badger suojelee nyt sinua."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "Lukeaksesi miten Privacy Badger toimii, paina alta avataksesi tiiviin pikaoppaan."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "Privacy Badger oppii automaattisesti estämään näkymättömät seurannat. Käytä hetki nähdäksesi miten."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "Lisää kelvollinen verkkotunnus tai URL"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "JSON-tiedosto ei kelpaa."
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "Lue lisää osoitteesta $LINK$.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "Lue miten Privacy Badger muuttuu"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "Privacy Badger ei enää oletusarvoisesti opi selauksestasi."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "Lue lisää painamalla alta."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "Oppimisen käyttöönotto voi tehdä sinusta tunnistettavamman sivustoille"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "Käyttäjätietojen tuonti:\u003Cul>\u003Cli>Korvaa yleiset asetukset\u003C/li>\u003Cli>Yhdistää ohitettavien sivustojen listat\u003C/li>\u003Cli>Yhdistää tiedot Privacy Badgerin havaitsemista seurannoista\u003C/li>\u003Cli>Korvaa liukuvalitsinten muutokset\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "seuraava osio"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "Alla olevat verkkotunnukset eivät näytä seuraavan sinua"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "Tällä hetkellä Privacy Badger tarkistaa vain käyttävätkö kolmannet osapuolet selaamisesi seurantaan evästeitä, HTML5:n paikallistallennusta vaiko canvas-elementtiin perustuvia leimaustietoja. Jotkin näistä verkkotunnuksista saattavat käyttää seurantamenetelmiä, joita Privacy Badger ei tunnista."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "Badgerisi ei ole vielä päättänyt, estetäänkö nämä verkkotunnukset"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "Lisäasetukset"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "Älä käytä avaamiesi verkkotunnusten lähetytä Googlelle. Tämä poistaa käytöstä samantyylisen sisällön ehdotukset silloin, kun sivua ei löydy."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "Estä sivustoja seuraamasta mitä linkkejä painat (ns. \"hyperlink auditing\")"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "Älä käytä linkkien esihakua"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "Tarkista, että \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>kolmansien osapuolien verkkotunnukset\u003C/a> noudattavat \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>EFF:n \"Do Not Track\" -käytäntöä\u003C/a>"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "kaikki"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "sallittu"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "estetty"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "osittain estetty"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "EFF:n DNT-käytäntöä noudattava"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "käyttäjän hallitsema"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "Privacy Badger ei ole vielä havainnut yhtään \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>seurantaverkkotunnusta\u003C/a>. Jatka selausta!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "Verkkotunnuksesta $DOMAIN$ havaittiin seurantaa sivustoilla:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "Seurantaosoitteet"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "Privacy Badger on tähän mennessä päättänyt estää $COUNT$ mahdollisesti $TRACKER_LINK_START$seurantaan käytettävää verkkotunnusta$TRACKER_LINK_END$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "Etsi verkkotunnuksia:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "Rajoittaaksesi hakua, lisää hakutermisi eteen \"-\". Esimerkiksi \".co -.com\" näyttää .co- ja .co.uk-verkkotunnukset, muttei .com-verkkotunnuksia."
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "Suodata tilan mukaan:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "Suodata tyypin mukaan:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "Lähetä sivustoille \"\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a>\" ja \"\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a>\" -signaalit"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "Yleiset"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Piilota viimeisimmällä esikoulutuslistalla olevat verkkotunnukset"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "Älä korvaa seuraavia widgettejä:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Opi yksityisessä selauksessa"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Oppimisen käyttö myös yksityisessä selausikkunoissa saattaa jättää tietokoneellesi jälkiä yksityisestä selaushistoriastasi. Oletusarvoisesti Privacy Badger estää jo entuudestaan tuntemansa seurannat yksityisessä selaustilassa, muttei opettele uusia. Tämä valinta voi olla hyödyllinen, jos selaat verkkoa paljon yksityisessä selaustilassa."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "Opi estämään uusia seurantoja selauksesi perusteella"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "Tietosuoja"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "Haluatko varmasti poistaa tämän verkkotunnuksen Privacy Badgerista?"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "Näytä verkkotunnukset, jotka eivät näytä seuraavan sinua"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "Näytä verkkotunnukset, joita Badgerisi ei ole vielä päättänyt estää"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "Käytä widgettien korvausta"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Privacy Badgerin asetukset"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "Widget-poikkeukset"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "Kun estetään sosiaalisen median painikkeita ja muita mahdollisesti hyödyllisiä elementtejä, kuten videoita, ääniä ja kommentteja, voi Privacy Badger korvata ne paikkamerkeillä, joita painamalla ne voidaan aktivoida."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "Widgettien korvaus"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "Sivustopoikkeukset"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "Salli widgetit aina seuraavilla sivustoilla:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "Tällä sivulla ei ole kolmansien osapuolten resursseja. Eläköön yksityisyys!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "Poista käytöstä tällä sivustolla"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "Privacy Badger on poistettu käytöstä tällä sivustolla"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "Ota käyttöön tällä sivustolla"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "Ohje"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "Jotkin verkkosivustot $LINK_START$seuraavat mitä linkkejä painat$LINK_END$ poistuessasi sivustolta ja seuraavat siten toimintaasi. Privacy Badger poistaa tällaisen linkkiseurannan tältä sivustolta.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "Linkkien seurantasuojaus on käytössä"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "$COUNT$ mahdollista $LINK_START$seurantaa$LINK_END$ estetty",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "Yhtään $LINK_START$seurantaa$LINK_END$ ei ole estetty",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "Asetukset"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "Jaa"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "Tällä sivulla ei ole mitään tehtavää"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "Privacy Badger ei toimi tämänkaltaisilla erikoissivuilla. Kokeile avata muita sivuja."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "Poista kaikki"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "Poista seurantaverkkotunnukset"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "Kaikkien seurantaverkkotunnusten poisto:\n  • Poistaa kaikki Privacy Badgerin tiedossa olevien seurantojen tiedot\n  • Aiheuttaa sen, ettei Privacy Badger estä mitään, kunnes se oppii ja sopeutuu selaukseesi uudelleen"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "Poista valitut"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "Ilmoita rikkoutuneesta sivustosta"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "Peruuta"
+   },
+   "report_close": {
+      "description": "",
+      "message": "Sulje"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "Hups. Jotakin meni pieleen."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "Kiitos! Selvitämme asian perin pohjin."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "Seuraavat tiedot lähetetään EFF:lle automaattisesti: sivu, jolla olet nyt, selaimesi versio, Privacy Badgerin versio sekä kaikkien liukuvalitsinten tila tämän sivun osalta."
+   },
+   "reset": {
+      "description": "",
+      "message": "Palauta"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "Palauta seurantaverkkotunnukset"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "Seurantaverkkotunnusten palautus:\n  • Poistaa kaikki tiedot, jotka Privacy Badger on selauksesi pohjalta seurannoista oppinut\n  • Palauttaa seurantaverkkotunnusten listaksi uusimman esikoulutetun listan (lue lisää osoitteesta www.eff.org/badger-pretraining)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "Privacy Badger (privacybadger.org) on selainlaajennus, joka oppii estämään näkymättömät seurannat automaattisesti. Privacy Badgerin on kehittänyt Electronic Frontier Foundation, joka on verkko-oikeuksiesi puolesta taisteleva, voittoa tavoittelematon järjestö."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "Jaa Facebookissa"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Jaa Mastodonissa"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "Jaa Twitterissä"
+   },
+   "share_title": {
+      "description": "",
+      "message": "Kerro kavereillesi"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "Privacy Badger esti $COUNT$ mahdollista seurantaa verkkotunnuksella $DOMAIN$:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "Näytä seurantojen määrä"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger on korvannut tämän \"$BUTTON$\" -painikkeen",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Pilvisynkronointi:\u003Cul>\u003Cli>Vaatii Firefoxin tai Chromen synkronoinnin käyttöä\u003C/li>\u003Cli>Pilvitallennus korvaa aiemmin tallennetut Privacy Badgerin tiedot\u003C/li>\u003Cli>Tiedonlataus pilvestä yhdistää ohitettavien sivustojen listat\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "Verkkotunnus sallitaan, kun liukuvalitsin on oikealla"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "Verkkotunnus estetään, kun liukuvalitsin on vasemmalla"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "Evästeet estetään, kun liukuvalitsin on keskellä"
+   },
+   "upload": {
+      "description": "",
+      "message": "Tallenna pilveen"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "Vie ohitettavat sivustot pilveen"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "Tietoja ei voitu tallentaa pilveen."
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "Tiedot tallennettiin pilveen."
+   },
+   "version": {
+      "description": "",
+      "message": "versio $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "Mikä on seuranta?"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger on korvannut $START_ANCHOR_TAG$tämän \"$WIDGET$\" -widgetin$END_ANCHOR_TAG$",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

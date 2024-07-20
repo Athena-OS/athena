@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "Ho entenc"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "Afegeix domini"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "Permet sempre en aquest lloc"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "Permetre-ho un cop"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "p. ex. www.example.com, *.example.net, example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "Permès $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "S'ha blocat $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Blocked cookies and fingerprinting scripts from $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "S'han blocat les galetes de $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "El domini $DOMAIN$ no fa seguiments",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "Blocking this domain is known to break websites"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "canvas fingerprinting"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "Copiat"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "Copia-ho al porta-retalls"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "Gestió de dades"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "The following setting has been deprecated and will be removed in a future Privacy Badger update:"
+   },
+   "description": {
+      "description": "",
+      "message": "El Privacy Badger aprèn automàticament a blocar rastrejadors invisibles."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>Privacy Badger is disabled on the following sites. This means that Privacy Badger will not block anything when you visit the sites listed here, and it will not send the Do Not Track or Global Privacy Control signals.\u003C/p>\u003Cp>If you think Privacy Badger is breaking a page, or you would like to allow a particular site to share or sell your data, you can type that page's domain in the box below and click the \"Add domain\" button.\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "Llocs deshabilitats"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "Aquest domini promet no seguir-vos"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "Allow"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "Block entirely"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "Block cookies"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "Feu un donatiu a EFF"
+   },
+   "download": {
+      "description": "",
+      "message": "Descarregar"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "Importa els llocs deshabilitats del núvol"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "Les dades del núvol no s'han pogut descarregar."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "Al núvol no hi ha dades per descarregar."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "Les dades del núvol s'han importat correctament."
+   },
+   "error_input": {
+      "description": "",
+      "message": "Què ha fallat?"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "Exporta les dades d'usuari"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "Si us plau, \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>expliqueu-nos\u003C/a> alguna cosa sobre el següent error:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "Click to return control of this domain to Privacy Badger"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "Gràcies per instal·lar el Privacy Badger!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "Apreneu com Privacy Badger protegeix la vostra privacitat"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "To enable logging into websites with your Google account, move this slider right, and reload the page"
+   },
+   "import": {
+      "description": "",
+      "message": "Importar"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "Si us plau, seleccioneu l'arxiu a importar"
+   },
+   "import_successful": {
+      "description": "",
+      "message": "La llista i la configuració del rastrejador s'ha actualitzat correctament!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "Importa dades d'usuari"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "Captura rastrejadors furtius"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "Invisible tracking happens in all sorts of ways; ads are just the visible tip of the iceberg. Privacy Badger sends the \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control signal\u003C/a>, to opt you out of data sharing and selling, and the \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track signal\u003C/a> to tell companies not to track you. If they ignore your wishes, Privacy Badger will learn to block them—whether they are advertisers or trackers of other kinds."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "Un projecte de l'Electronic Frontier Foundation"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "Si penseu que el Privacy Badger ha espatllat una pàgina (un vídeo que no es veu, per exemple), podeu clicar el botó 'Deshabilita' perquè el Privacy Badger no controli el lloc."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "Quan utilitzeu el Privacy Badger, us uniu a l'\u003Ca href='https://www.eff.org/' target='_blank'>Electronic Frontier Foundation\u003C/a> i milions de persones en la lluita per la privacitat. Som una entitat sense ànim de lucre lluitant pels vostres drets en línia. Gràcies per unir-vos a nosaltres!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "La privacitat és un esport d'equip!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "Ajudeu-nos fent un donatiu i compartint el vostre suport per les nostres eines"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "Learns automatically"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "Instead of keeping lists of what to block, Privacy Badger automatically discovers trackers based on their behavior."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "Política de privacitat"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "Feu la visita guiada"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "No bloco anuncis, sóc diferent"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "Privacy Badger comença a blocar un cop veu el mateix rastrejador en tres llocs web diferents. Tres strikes i eliminat! Com al beisbol."
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "El Privacy Badger MAI compartirà dades sobre la vostra navegació, excepte si decidiu compartir-les."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "Please don't forget to click on 'Report broken site'. We respect your privacy so we don't send automatic reports."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "Ara el Privacy Badger ja us protegeix."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "Per saber com treballa el Privacy Badger, cliqueu aquí baix i seguiu la guia ràpida."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "Privacy Badger aprèn automàticament a blocar rastrejadors invisibles. Deixeu-nos un minut per ensenyar-vos com."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "Si us plau, afegiu un domini vàlid o un URL"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "Arxiu JSON no vàlid"
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "Visiteu $LINK$ per saber-ne més.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "Learn how Privacy Badger is changing"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "Privacy Badger will no longer learn from your browsing by default."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "Click below to learn more."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "Enabling learning may make you more identifiable to websites"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "Si importeu les dades d'usuari: \u003Cul>\u003Cli>Sobreescriureu la configuració general\u003C/li>\u003Cli>Fusionareu les llistes de llocs deshabilitats\u003C/li>\u003Cli>Fusionareu la informació sobre els rastrejadors que Privacy Badger ha vist\u003C/li>\u003Cli>Sobreescriureu la personalització dels lliscadors\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "següent secció"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "Els dominis de sota, aparentment, no us segueixen."
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "Ara mateix, Privacy Badger només comprova si terceres parts estan utilitzant galetes, emmagatzematge local d'HTML5 o el marcat del llenç per fer seguiments del vostre navegador. Alguns d'aquests dominis poden utilitzar mètodes de seguiment que Privacy Badger no pot detectar."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "Your Badger hasn't decided yet if these domains should get blocked"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "Advanced"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "Disable sending web addresses you visit to Google. This disables suggestions for similar pages when a page can't be found."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "Prevent sites from tracking which links you click (\"hyperlink auditing\")"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "Disable prefetching"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "Comproveu si els \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>dominis de terceres parts\u003C/a> compleixen amb la \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>política d'EFF de no seguiment\u003C/a>"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "tot"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "permès"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "blocat"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "blocat parcialment"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "compliant with EFF's DNT policy"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "controlat per l'usuari"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "El Privacy Badger encara no ha detectat cap \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>domini de seguiment\u003C/a>. Seguiu navegant!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "$DOMAIN$ was seen tracking on the following sites:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "Dominis de seguiment"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "Privacy Badger has decided to block $COUNT$ potential $TRACKER_LINK_START$tracking domains$TRACKER_LINK_END$ so far",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "Cerca de dominis:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "Per excloure dominis, utilitzeu el caràcter \"-\". Per exemple, si cerqueu \".co -.com\" us mostrarà els dominis .co i .co.uk, però no us mostrarà el domini .com"
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "Filtrar per estat:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "Filtra per tipus:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "Send websites the \"\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a>\" and \"\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a>\" signals"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "Configuració general"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Hide domains present in the latest pre-trained list"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "No reemplaçar els ginys següents:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Aprendre en finestres Privades/Incògnit"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Habilitant l'aprenentatge en finestres Privades/Incògnit, podeu deixar traces a l'historial privat de navegació del vostre ordinador. Per defecte, Privacy Badger blocarà els rastrejadors coneguts a les finestres Privades/Incògnit, però no aprendrà sobre nous rastrejadors. Cal que habiliteu aquesta opció si la majoria de la vostra navegació la feu en finestres Privades/Incògnit"
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "Learn to block new trackers from your browsing"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "Privacy"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "Segur que voleu treure aquest domini de Privacy Badger?"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "Mostra els dominis que, aparentment, no us segueixen"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "Show domains your Badger hasn't decided yet to block"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "Habilita el reemplaçament de ginys"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Opcions de Privacy Badger"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "Widget Exceptions"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "Quan es bloquegen els botons de les xarxes socials i altres ginys (vídeo, àudio, comentaris) habituals, el Privacy Badger pot reemplaçar-los per espais reservats activables amb un clic."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "Reemplaçament de ginys"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "Site Exceptions"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "Always allow widgets on these sites:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "There are no third party resources on this page. Hooray for privacy!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "Deshabiliteu en aquest lloc"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "En aquest lloc, el Privacy Badger està deshabilitat"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "Habilita per aquest lloc"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "Ajuda"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "Some websites $LINK_START$use link tracking to follow you$LINK_END$ whenever you click a link to leave the website. Privacy Badger removes tracking from such links on this website.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "Link tracking protection active"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "$COUNT$ potential $LINK_START$trackers$LINK_END$ blocked",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "No $LINK_START$trackers$LINK_END$ blocked",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "Opcions"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "Compartiu"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "En aquesta pàgina no hi ha res a fer"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "Privacy Badger no funciona en pàgines especials com aquesta. Proveu de navegar per altres llocs."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "Eliminar-ho tot"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "Eliminar tots els dominis de seguiment"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "Eliminant tots els dominis de seguiment:\n\n  • Esborrareu tot el que Privacy Badger sap sobre els rastrejadors\n  • Provocareu que Privacy Badger no bloqui res fins que hagi tornat a aprendre amb la vostra navegació"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "Treu els seleccionats"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "Report broken site"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "Cancel·la"
+   },
+   "report_close": {
+      "description": "",
+      "message": "Tanca"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "Ai! Alguna cosa no ha anat bé."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "Gràcies! Arribarem al fons d'això."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "This will automatically send the following information to EFF: the page you're currently visiting, your browser version, the version of Privacy Badger, and the state of all of the sliders on this page."
+   },
+   "reset": {
+      "description": "",
+      "message": "Restablir"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "Restablir els dominis de seguiment"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "Restablint els dominis de seguiment:\n\n  • Esborrareu totes les dades que el Privacy Badger hagi après sobre rastrejadors durant la vostra navegació\n  • Restaurareu la llista de dominis de seguiment a la llista d'abans de començar a aprendre (visiteu www.eff.org/badger-pretraining per saber-ne més)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "El Privacy Badger (privacybadger.org) és una extensió del navegador que aprèn automàticament a blocar rastrejadors invisibles. El Privacy Badger l'ha creat l'Electronic Frontier Foundation, una entitat sense ànim de lucre que lluita pels vostres drets en línia."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "Compartiu-ho a Facebook"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Share on Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "Compartiu-lo a Twitter"
+   },
+   "share_title": {
+      "description": "",
+      "message": "Expliqueu-ho a les vostres amistats"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "Privacy Badger blocked $COUNT$ potential trackers on $DOMAIN$:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "Mostra el comptador de rastrejadors"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "El Privacy Badger ha substituït aquest botó de $BUTTON$",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Sincronització al núvol: \u003Cul>\u003Cli>Requereix Firefox/Chrome Sync\u003C/li>\u003Cli>La càrrega sobreescriu qualsevol dada del Privacy Badger existent al núvol\u003C/li>\u003Cli>La descàrrega fusiona les llistes dels llocs que heu deshabilitat al teixó (Badger)\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "Moveu el lliscador a la dreta per permetre un domini"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "Moveu el lliscador a l'esquerra per blocar el domini"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "Centreu el lliscador per blocar les galetes"
+   },
+   "upload": {
+      "description": "",
+      "message": "Carrega"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "Exporta els llocs deshabilitats al núvol"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "Les dades no s'han pogut carregar al núvol"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "S'han carregat les dades al núvol correctament"
+   },
+   "version": {
+      "description": "",
+      "message": "versió $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "Què és un rastrejador?"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger has replaced $START_ANCHOR_TAG$this $WIDGET$ widget$END_ANCHOR_TAG$",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "Понятно"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "Добавить домен"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "Всегда разрешать на этом сайте"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "Разрешить однократно"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "например: www.example.com, *.example.net, example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "Разрешен $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "Заблокирован $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Заблокированы куки-файлы и скрипты для сбора цифровых отпечатков от $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "Заблокированы куки-файлы от $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "Нет отслеживающей активности на $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "Блокирование этого домена вызывает неполадки на веб-сайтах"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "метод canvas fingerprinting"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "Скопировано"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "Скопировать в буфер обмена"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "Управление данными"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "Следующая настройка была устаревшей и будет удалена в одном из будущих обновлений Privacy Badger:"
+   },
+   "description": {
+      "description": "",
+      "message": "Privacy Badger автоматически учится блокировать невидимые трекеры."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>Privacy Badger отключён для данных сайтов. Это означает, что Privacy Badger не будет ничего блокировать на сайтах, находящихся в данном списке. Privacy Badger также не будет отправлять этим сайтам сигналы Do Not Track и Global Privacy Control.\u003C/p>\u003Cp>Если вы считаете, что Privacy Badger вызывает неполадки на странице, или вы хотите позволить какой-то сайте разпростровлять или продавать ваши данные, вы можете напечатать домен данной страницы в поле ниже и нажать кнопку «Добавить домен».\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "Отключённые сайты"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "Этот домен обещает не отслеживать вас"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "Разрешить"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "Заблокировать полностью"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "Заблокировать куки-файлы"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "Пожертвовать EFF"
+   },
+   "download": {
+      "description": "",
+      "message": "Cкачать"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "Импорт отключённых сайтов из облака"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "Данные не могут быть загружены из облака."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "В облаке нет данных для загрузки."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "Данные успешно импортированы из облака."
+   },
+   "error_input": {
+      "description": "",
+      "message": "Что случилось?"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "Экспорт пользовательских данных"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "Пожалуйста, \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>сообщите нам\u003C/a> о возникшей проблеме:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "Щелкните, чтобы вернуть этот домен под контроль Privacy Badger"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "Спасибо вам за то, что установили Privacy Badger!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "Узнайте, как Privacy Badger защищает вашу приватность"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "Чтобы разрешить вход на веб-сайты с помощью вашей учетной записи Google (Google Sign-In), передвиньте этот переключатель вправо и перезагрузите страницу"
+   },
+   "import": {
+      "description": "",
+      "message": "Импортировать"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "Пожалуйста, выберите файл для импорта."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "Список трекеров и настройки успешно обновлены!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "Импорт пользовательских данных"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "Ловит скользкие трекеры"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "Невидимое отслеживание осуществляется многими способами; реклама — лишь видимая вершина айсберга. Privacy Badger отправляет \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>сигнал Global Privacy Control\u003C/a>, чтобы отказаться от разпростровления и продажи ваших данных, и отправляет \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>сигнал Do Not Track\u003C/a> компаниям, говоря им не отслеживать вас. Если они игнорируют ваши желания, Privacy Badger научится блокировать их — будь то рекламодатели, или другие трекеры."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "Проект Electronic Frontier Foundation"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "Если вы думаете, что Privacy Badger портит веб-страницу (например, не воспроизводится видео), вы можете нажать кнопку «Отключить», чтобы выключить Privacy Badger для этого сайта."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "Когда вы используете Privacy Badger, вы присоединяетесь к \u003Ca href='https://www.eff.org/' target='_blank'>Electronic Frontier Foundation\u003C/a> и миллионам других пользователей в борьбе за приватность. Мы — некоммерческая организация, борющаяся на ваши права в Интернете. Спасибо, что присоединились к нам!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "Приватность — это командная работа!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "Помогите нам пожертвованиями и вашей поддержкой нашево программного обеспечения"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "Обучается автоматически"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "Вместо составления списков блокировки, Privacy Badger автоматически обнаруживает трекеры на основе их поведения."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "Политика конфиденциальности"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "Пройти тур"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "Не блокировщик рекламы, я другой"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "Privacy Badger начинает блокировать трекер после того, как обнаруживает его на трёх разных веб-сайтах. Три удара — и все!"
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "Чтобы закрепить иконку Privacy Badger, щелкните иконку головоломки на панели браузера. Затем щелкните иконку булавки рядом с надписью Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "Сначала $START_SPAN_TAG$прикрепите Privacy Badger к панели браузера$END_SPAN_TAG$, чтобы получить доступ к кнопке «$DISABLE_FOR_SITE$».",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "Privacy Badger НИКОГДА не будет делиться данными о вашей активности в Интернете, пока вы сами того не захотите."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "Пожалуйста, не забывайте нажимать на кнопку «Сообщить о неполадках на сайте». Мы уважаем вашу приватность, поэтому не отправляем отчёты автоматически."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "Теперь вы под защитой Privacy Badger."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "Щелкните ниже, чтобы узнать, как работает Privacy Badger."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "Privacy Badger автоматически учится блокировать невидимые трекеры. Уделите минуту вашего времени, чтобы увидеть как."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "Пожалуйста, добавьте действительный домен или URL"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "Неверный файл JSON."
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "Посетите $LINK$, чтобы узнать больше.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "Узнайте, как Privacy Badger развивается"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "Privacy Badger по умолчанию больше не будет обучаться по мере вашего пользования Интернетом."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "Щелкните ниже, чтобы узнать больше."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "Включение обучения может помочь веб-сайтам идентифицировать вас"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "Импорт пользовательских данных:\u003Cul>\u003Cli>Перезапишет общие настройки\u003C/li>\u003Cli>Объединит списки отключённых сайтов\u003C/li>\u003Cli>Объединит информацию о том, какие трекеры Privacy Badger встретил\u003C/li>\u003Cli>Перезапишет настройки переключателей\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "следующий раздел"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "У приведенных ниже доменов отслеживающая активность не обнаружена"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "На данный момент Privacy Badger проверяет только, если сторонные домены используют куки-файлы, локальное хранилище HTML5 или метод canvas fingerprinting для отслеживания вашей сетевой активности. Некоторые домены могут использовать методы отслеживания, которые Privacy Badger не может обнаружить."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "Ваш Badger еще не решил, нужно ли заблокировать этих домен"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "Дополнительные"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Отключить механизм рекламного отслеживания «Privacy Sandbox» от Google"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "Отключить отправление адресов посещаемых веб-страниц в Google (это отключит предложение вариантов когда страница не найдена)"
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "Запретить сайтам следить, на какие ссылки вы нажимаете («аудит гиперссылок»)"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "Отключить предзагрузку"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "Проверять, соблюдают ли \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>сторонние домены\u003C/a> \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>политику EFF «Do Not Track»\u003C/a>"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "все"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "разрешенные"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "заблокированные"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "частично заблокированные"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "соблюдающие политику EFF «DNT»"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "измененные пользователем"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "Privacy Badger не обнаружил ни одного \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>домена с трекерами\u003C/a>. Продолжайте просмотр Интернета."
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "Обнаружена отслеживающая активность у $DOMAIN$ на данных сайтах:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "Трекеры"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "Privacy Badger решил заблокировать $COUNT$ потенциальных $TRACKER_LINK_START$доменов с трекерами$TRACKER_LINK_END$ на данный момент",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "Поиск доменов:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "Для исключения доменов, добавьте «-» перед поисковым запросом. Например, «.co -.com» выведет .co и .co.uk, но не домены .com."
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "Фильтр по статусу:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "Фильтр по типу:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "Отправлять сайтам сигналы «\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a>» и «\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a>»"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "Общие настройки"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Скрыть домены, находящиеся в последнем стандартном списке"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "Не заменят следующих виджетов:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Обучение в приватных/инкогнито окнах"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Включенное обучение в приватных/инкогнито окнах может оставить следы из приватной истории браузера на вашем компьютере. По умолчанию Privacy Badger блокирует уже известные ему трекеры в приватных/инкогнито окнах, но не обучается поиску новых трекеров. Вы можете захотеть включить эту опцию, если часто используете приватные/инкогнито окна."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "Обучение блокировки новых трекеров по мере вашего пользования Интернетом"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "Приватность"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "Вы уверены, что хотите удалить этот домен из Privacy Badger?"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "Отображать домены у которых отслеживающая активность не обнаружена"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "Отображать домены, которые ваш Badger еще не решил заблокировать"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "Включить замену виджетов"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Настройки Privacy Badger"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "Исключенные виджеты"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "При блокирование кнопок социальных сетей и других потенциально полезных виджетов (видео, аудио, комментарии), Privacy Badger можеt заменить их специальными элементами."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "Замена виджетов"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "Исключенные сайты"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "Всегда разрешать виджеты на следующих сайтах:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "На этой странице нет сторонних веб-ресурсов. Приватность соблюдена."
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "Отключить на этом сайте"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "Privacy Badger отключён на этом сайте"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "Включить на этом сайте"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "Помощь"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "Некоторые веб-сайты $LINK_START$используют слежения ссылок$LINK_END$, чтобы следить за вами при переходе по ссылке на другой веб-сайт. Privacy Badger удаляет слежения из таких ссылок на этом сайте.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "Защита от отслеживания ссылок активна"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Реклама не заблокирована? YouTube не работает? Вероятно, дело не в Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "Заблокировано $COUNT$ потенциальных $LINK_START$трекеров$LINK_END$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "$LINK_START$Трекеров$LINK_END$ заблокированных нет",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "Настройки"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "Поделиться"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "Нечего делать на этой странице"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "Privacy Badger не работает на специальных страницах, как эта. Попробуйте где-нибудь еще."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "Удалить все"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "Удалить все домены с трекерами"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "Удаление всех доменов с трекерами:\n\n  • удалит все трекеры, известные Privacy Badger\n  • приведет к тому, что Privacy Badger не будет ничего блокировать до включения режима обучения во время пользования Интернетом"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "Удалить выбранные элементы"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "Сообщить о неполадках на сайте"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Отправить отчёт"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "Отмена"
+   },
+   "report_close": {
+      "description": "",
+      "message": "Закрыть"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "Ой, что-то пошло не так."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Кратко опишите проблему:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "Спасибо! Мы внимательно изучим эту проблему."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "Это действие автоматически отправит в EFF следующую информацию: адрес страници, на которой вы находитесь в данный момент, версию вашего браузера, версию Privacy Badger и состояние всех переключателей на этой страницe."
+   },
+   "reset": {
+      "description": "",
+      "message": "Сбросить"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "Сбросить домены с трекерами"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "Сброс доменов с трекерами:\n\n  • удалит все данные о трекерах, полученные Privacy Badger в процессе вашего пользования Интернетом\n  • восстановит список доменов с трекерами до последней стандартной версии (для получения более подробной информации посетите www.eff.org/badger-pretraining)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "Privacy Badger (privacybadger.org) — это расширение для браузера, которое автоматически учится блокировать невидимые трекеры. Privacy Badger разработан некоммерческой организацией Electronic Frontier Foundation, которая борется на ваши права в Интернете."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "Поделиться в Facebook"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Поделиться в Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "Поделиться в Twitter"
+   },
+   "share_title": {
+      "description": "",
+      "message": "Расскажите друзьям"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "Privacy Badger заблокировал $COUNT$ потенциальных трекеров на $DOMAIN$:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "Отображать счетчик трекеров"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger заменил кнопку $BUTTON$",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Облачная синхронизация:\u003Cul>\u003Cli>Требуется Firefox/Chrome Sync\u003C/li>\u003Cli>При загрузке все находящиеся в облаке данные Privacy Badger перезаписываются\u003C/li>\u003Cli>При скачивании списки сайтов с отключённым Privacy Badger объединяются\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "Передвиньте переключатель вправо, чтобы разблокировать домен"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "Передвиньте переключатель влево, чтобы заблокировать домен"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "Передвиньте переключатель в центр, чтобы заблокировать куки-файлы"
+   },
+   "upload": {
+      "description": "",
+      "message": "Загрузить"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "Экспорт отключённых сайтов в облако"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "Данные не могут быть загружены в облако"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "Данные успешно загружены в облако"
+   },
+   "version": {
+      "description": "",
+      "message": "версия $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "Что такое трекер?"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger заменил $START_ANCHOR_TAG$виджет $WIDGET$ $END_ANCHOR_TAG$",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

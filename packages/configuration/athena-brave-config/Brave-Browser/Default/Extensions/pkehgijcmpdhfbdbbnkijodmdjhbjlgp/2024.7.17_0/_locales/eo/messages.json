@@ -1,0 +1,771 @@
+{
+    "name": {
+        "message": "Privata Melo",
+        "description": ""
+    },
+    "description": {
+        "message": "Privata Melo aŭtomate lernas bloki nevideblajn spurilojn.",
+        "description": ""
+    },
+    "canvas_fingerprinting": {
+        "message": "fingrospurado per elemento «canvas»",
+        "description": ""
+    },
+    "popup_help_button": {
+        "message": "Helpo",
+        "description": ""
+    },
+    "popup_share_button": {
+        "message": "Diskonigi",
+        "description": ""
+    },
+    "popup_options_button": {
+        "message": "Agordoj",
+        "description": ""
+    },
+    "popup_special_page_header": {
+        "message": "Estas nenio por fari sur tiu ĉi paĝo",
+        "description": ""
+    },
+    "popup_special_page_paragraph": {
+        "message": "Privata Melo ne funkcias sur specialaj paĝoj kiel tiu ĉi. Provu malfermi alian paĝon.",
+        "description": ""
+    },
+    "popup_disabled_site_header": {
+        "message": "Privata Melo estas malaktivigita por tiu ĉi retejo",
+        "description": ""
+    },
+    "popup_disable_for_site": {
+        "message": "Malaktivigi por tiu ĉi retejo",
+        "description": ""
+    },
+    "popup_enable_for_site": {
+        "message": "Aktivigi por tiu ĉi retejo",
+        "description": ""
+    },
+    "report_broken_site": {
+        "message": "Raporti probleman retejon",
+        "description": ""
+    },
+    "version": {
+        "message": "versio $VERSION_STRING$",
+        "description": "",
+        "placeholders": {
+            "version_string": {
+                "content": "$1",
+                "example": "2018.8.1"
+            }
+        }
+    },
+    "popup_instructions": {
+        "message": "Blokitaj eblaj $LINK_START$spuriloj$LINK_END$: $COUNT$",
+        "description": "",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "15"
+            },
+            "link_start": {
+                "content": "$2",
+                "example": "<a href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+            },
+            "link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "popup_instructions_no_trackers": {
+        "message": "Neniu blokita $LINK_START$spurilo$LINK_END$",
+        "description": "",
+        "placeholders": {
+            "link_start": {
+                "content": "$1",
+                "example": "<a href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+            },
+            "link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "popup_blocked": {
+        "message": "Estas neniu ekstera rimedo sur tiu ĉi retpaĝo. Vivu la privateco!",
+        "description": ""
+    },
+    "tooltip_block": {
+        "message": "Movu la ŝovilon maldekstren por bloki nomregnon.",
+        "description": ""
+    },
+    "tooltip_cookieblock": {
+        "message": "Centrigu la ŝovilon por bloki kuketojn.",
+        "description": ""
+    },
+    "tooltip_allow": {
+        "message": "Movu la ŝovilon dekstren por permesi nomregnon.",
+        "description": ""
+    },
+    "badger_status_block": {
+        "message": "Blokita $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_cookieblock": {
+        "message": "Blokitaj kuketoj el $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_blocked_scripts": {
+        "message": "Blokitaj kuketoj kaj fingrospurantaj skriptoj el $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_allow": {
+        "message": "Permesata $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "badger_status_noaction": {
+        "message": "Ne spuras por $DOMAIN$",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "dnt_tooltip": {
+        "message": "Tiu ĉi nomregno promesas al vi ne spuri.",
+        "description": ""
+    },
+    "domain_slider_block_tooltip": {
+        "message": "Bloki tute",
+        "description": ""
+    },
+    "domain_slider_cookieblock_tooltip": {
+        "message": "Bloki kuketojn",
+        "description": ""
+    },
+    "domain_slider_allow_tooltip": {
+        "message": "Permesi",
+        "description": ""
+    },
+    "breakage_warning_tooltip": {
+        "message": "Per bloki tiun ĉi nomregnon, retejoj povus misfunkcii",
+        "description": ""
+    },
+    "google_signin_tooltip": {
+        "message": "Por povi ensaluti al retejoj per via konto Google, movu tiun ĉi ŝovilon dekstren kaj reŝargu la retpaĝon",
+        "description": ""
+    },
+    "feed_the_badger_title": {
+        "message": "Alklaku por permesi al Privata Melo decidi kiel trakti tiun ĉi nomregnon",
+        "description": ""
+    },
+    "not_yet_blocked_header": {
+        "message": "Via Melĉjo ankoraŭ ne decidiĝis ĉu tiuj ĉi nomregnoj estu blokitaj",
+        "description": ""
+    },
+    "non_tracker": {
+        "message": "La subaj nomregnoj verŝajne ne spuras vin",
+        "description": ""
+    },
+    "non_tracker_tip": {
+        "message": "Nune Privata Melo nur kontrolas ĉu eksteraj liverantoj uzas kuketojn, lokan konservejon HTML5 aŭ fingrospuradon per elemento «canvas» por spuri vian retumadon. Iuj de tiuj nomregnoj povas uzi aliajn spurajn rimedojn, kiujn Privata Melo ne povas malkovri.",
+        "description": ""
+    },
+    "report_input_label": {
+        "message": "Koncize priskribu la eraron:",
+        "description": ""
+    },
+    "error_input": {
+        "message": "Kio malfunkcias?",
+        "description": ""
+    },
+    "report_terms": {
+        "message": "Tio ĉi aŭtomate sendos la jenajn datumojn al EFF: la nune vizitatan retpaĝon, version de via retumilo, version de Privata Melo kaj staton de ĉiuj ŝovilojn por tiu ĉi retpaĝo.",
+        "description": ""
+    },
+    "report_button": {
+        "message": "Sendi raporton",
+        "description": ""
+    },
+    "report_cancel": {
+        "message": "Nuligi",
+        "description": ""
+    },
+    "report_close": {
+        "message": "Fermi",
+        "description": ""
+    },
+    "report_success": {
+        "message": "Dankon! Ni okupiĝos pri tio.",
+        "description": ""
+    },
+    "report_fail": {
+        "message": "Ho ne! Eraro okazis.",
+        "description": ""
+    },
+    "share_title": {
+        "message": "Sciigu amikojn",
+        "description": ""
+    },
+    "share_tracker_header": {
+        "message": "Privata Melo blokis $COUNT$ eblajn spurilojn ĉe $DOMAIN$:",
+        "description": "",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "15"
+            },
+            "domain": {
+                "content": "$2",
+                "example": "example.com"
+            }
+        }
+    },
+    "share_base_message": {
+        "message": "Privata Melo (privacybadger.org) estas retumila etendaĵo, kiu aŭtomate lernas kiel bloki nevideblajn spurilojn. Privata Melo estas farita de Electronic Frontier Foundation, ne-profit-cela fondaĵo, kiu batalas por viaj rajtoj en la interreto.",
+        "description": ""
+    },
+    "copy_button_initial": {
+        "message": "Kopii al tondejo",
+        "description": ""
+    },
+    "copy_button_copied": {
+        "message": "Kopiita",
+        "description": ""
+    },
+    "popup_info_firstparty_protections": {
+        "message": "Aktiva protekto kontraŭ ligila spurado",
+        "description": ""
+    },
+    "popup_info_firstparty_description": {
+        "message": "Iuj retejoj $LINK_START$uzas ligilan spuradon$LINK_END$ por spuri kiam vi alklakas eliran ligilon. Privata Melo forigas spuradon de tiaj ligiloj ĉe tiu ĉi retejo.",
+        "description": "",
+        "placeholders": {
+            "link_start": {
+                "content": "<a href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+            },
+            "link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "popup_info_youtube": {
+        "message": "Ĉu reklamoj ne estas blokataj? Ĉu YouTube ne funkcias? Probable ne pro Privata Melo.",
+        "description": ""
+    },
+    "extension_error_text": {
+        "message": "Bonvolu <a href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>informi nin</a> pri la jena eraro:",
+        "description": ""
+    },
+    "firstRun_title": {
+        "message": "Dankon al vi pro instali Privatan Melon!",
+        "description": ""
+    },
+    "intro_by_eff": {
+        "message": "Projekto de Electronic Frontier Foundation",
+        "description": ""
+    },
+    "intro_welcome": {
+        "message": "Privata Melo aŭtomate lernas bloki nevideblajn spurilojn. Jen konciza klarigo kiel.",
+        "description": ""
+    },
+    "intro_next_button": {
+        "message": "Enkonduko",
+        "description": ""
+    },
+    "intro_learns": {
+        "message": "Aŭtomate lernas",
+        "description": ""
+    },
+    "intro_learns_paragraph": {
+        "message": "Anstataŭ prizorgi liston de blokataj elementoj, Privata Melo aŭtomate malkovras spurilojn surbaze de ilia sinteno.",
+        "description": ""
+    },
+    "intro_beyond_ads": {
+        "message": "Kaptas trompajn spurilojn",
+        "description": ""
+    },
+    "intro_beyond_ads_paragraph": {
+        "message": "Nevidebla spurado okazas plurmaniere; reklamoj estas nur videbla parteto de tutaĵo. Privata Melo sendas la <a href='https://globalprivacycontrol.org/' target='_blank'>signalon Global Privacy Control</a> por peti pri ne kunhavigi kaj vendi viajn datumojn, kaj la <a href='https://www.eff.org/issues/do-not-track' target='_blank'>signalon “Ne Spuri Min” (DNT)</a> por peti firmaojn pri ne spuri vin. Se ili ignoros vian peton, Privata Melo lernos pri bloki ilin – ĉu ili estas reklamoj aŭ spuriloj aŭ aliaj aĉaĵoj.",
+        "description": ""
+    },
+    "intro_not_an_adblocker": {
+        "message": "Malsama ol reklam-spuriloj",
+        "description": ""
+    },
+    "intro_not_an_adblocker_paragraph": {
+        "message": "Privata Melo komencas bloki kiam ĝi rimarkas la saman spurilon ĉe tri diversaj retejoj. Tri aperoj kaj ĝi malaperas!",
+        "description": ""
+    },
+    "next_section": {
+        "message": "antaŭen",
+        "description": ""
+    },
+    "intro_disable_button": {
+        "message": "Se viaopinie Privata Melo difektas retpaĝon (ekzemple filmeto ne ludas), vi povas alklaki la butonon “malaktivigi” por malaktivigi Privatan Melon por tiu retejo.",
+        "description": ""
+    },
+    "intro_report_button": {
+        "message": "Bonvolu ne forgesi alklaki “Raporti probleman retejon”. Ni estimas vian privatecon, do ni ne sendas aŭtomatajn raportojn.",
+        "description": ""
+    },
+    "intro_privacy_note": {
+        "message": "Privata Melo NENIAM diskonigos datumojn pri via retumado escepte se vi decidos alie.",
+        "description": ""
+    },
+    "intro_donate_heading": {
+        "message": "Privateco estas kunlaboro!",
+        "description": ""
+    },
+    "intro_donate1": {
+        "message": "Kiam vi uzas Privatan Melon vi aniĝas al la <a href='https://www.eff.org/' target='_blank'>Ret-Lima Fondaĵo (EFF)</a> kune kun milionoj da aliaj retanoj en la batalo por privateco. Ni estas ne-profit-cela fondaĵo, kiu batalas por viaj rajtoj en la interreto. Dankon por kuniĝi al ni!",
+        "description": ""
+    },
+    "donate_to_eff": {
+        "message": "Donaci al EFF",
+        "description": ""
+    },
+    "intro_donate_subheading": {
+        "message": "Helpu nin per donaci kaj oferi helpon al niaj iloj",
+        "description": ""
+    },
+    "intro_link_policy": {
+        "message": "Privateca politiko",
+        "description": ""
+    },
+    "intro_pin_nudge": {
+        "message": "Unue $START_SPAN_TAG$alpinglu Privatan Melon al via ilarstrio$END_SPAN_TAG$ por rapide aliri la butonon “$DISABLE_FOR_SITE$”.",
+        "description": "",
+        "placeholders": {
+            "start_span_tag": {
+                "content": "<span id='pin-nudge-cta'>"
+            },
+            "disable_for_site": {
+                "content": "$1",
+                "example": "Disable for this site"
+            },
+            "end_span_tag": {
+                "content": "</span>"
+            }
+        }
+    },
+    "intro_pin_instructions": {
+        "message": "Por alpingli bildsimbolon de Privata Melo, alklaku la bildsimbolon de puzlero sur la retumila ilaro. Sekve alklaku la bildsimbolon de prempinglo sekve de Privata Melo.",
+        "description": ""
+    },
+    "share_button_title_facebook": {
+        "message": "Kunhavigi per Facebook",
+        "description": ""
+    },
+    "share_button_title_twitter": {
+        "message": "Kunhavigi per Twitter",
+        "description": ""
+    },
+    "share_button_title_mastodon": {
+        "message": "Kunhavigi per Mastodon",
+        "description": ""
+    },
+    "options_title": {
+        "message": "Agordoj pri Privata Melo",
+        "description": ""
+    },
+    "options_general_settings": {
+        "message": "Ĝeneralaj agordoj",
+        "description": ""
+    },
+    "show_counter_checkbox": {
+        "message": "Montri nombron de spuriloj",
+        "description": ""
+    },
+    "options_enable_dnt_checkbox": {
+        "message": "Sendi al retejoj la signalojn “<a href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control</a>” kaj “<a href='https://www.eff.org/issues/do-not-track' target='_blank'>Ne Spuri Min</a>” (DNT)",
+        "description": ""
+    },
+    "options_dnt_policy_setting": {
+        "message": "Kontroli ĉu <a target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>eksteraj domajnoj</a> kongruas kun la <a target='_blank' href='https://www.eff.org/dnt-policy'>politiko pri nespurado de EFF</a>",
+        "description": ""
+    },
+    "options_privacy_settings": {
+        "message": "Privateco",
+        "description": ""
+    },
+    "options_disable_hyperlink_auditing": {
+        "message": "Preventi retejojn de spuri ligilojn, kiujn vi alklakas («hyperlink auditing»)",
+        "description": ""
+    },
+    "options_disable_network_prediction": {
+        "message": "Malaktivigi antaŭlegon",
+        "description": ""
+    },
+    "options_disable_google_nav_error_service": {
+        "message": "Malaktivigi sendi adresojn de vizitataj retejoj al Google. Tio ĉi malaktivigas sugestojn pri similaj retejoj, kiam la paĝo ne povas esti malfermita.",
+        "description": ""
+    },
+    "options_disable_floc": {
+        "message": "Malaktivigi reklam-spurilon de Google «Privacy Sandbox»",
+        "description": ""
+    },
+    "options_advanced_settings": {
+        "message": "Spertulaj",
+        "description": ""
+    },
+    "options_learn_setting": {
+        "message": "Lerni bloki novajn spurilojn surbaze de via retumado",
+        "description": ""
+    },
+    "local_learning_warning": {
+        "message": "Aktivigo de lernado dum retumado povas igi vin pli identigebla al retejoj",
+        "description": ""
+    },
+    "options_show_nontracking_domains_checkbox": {
+        "message": "Montri nomregnojn, kiuj verŝajne ne spuras vin",
+        "description": ""
+    },
+    "options_incognito_setting": {
+        "message": "Lerni en privataj fenestroj",
+        "description": ""
+    },
+    "options_incognito_warning": {
+        "message": "Aktivigo de lernado en privataj fenestroj povas resti spurojn de historio de via privata retumado en via komputilo. Implicite Privata Melo blokos jam-konatajn spurilojn en privataj langetoj, tamen ne lernos pri novaj spuriloj. Vi povas aktivigi tiun ĉi agordon, se vi multe retumas en privataj fenestroj.",
+        "description": ""
+    },
+    "disabled_sites": {
+        "message": "Neblokataj retejoj",
+        "description": ""
+    },
+    "disabled_for_these_domains": {
+        "message": "<p>Privata Melo estas malaktivigita por la subaj nomregnoj. Tio ĉi signifas, ke Privata Melo blokos nenion, kiam vi vizitos la jenajn retejojn kaj ne sendos al ili la signalojn “Global Privacy Control” kaj “Ne Spuri Min” (DNT).</p><p>Se viaopinie Privata Melo difektas iun retpaĝon aŭ volas permesi al ĝi kunhavigi aŭ vendi viajn datumojn, vi povas enigu ĝian nomregnon en la kampon sube kaj alklaku “aldoni nomregnon”.</p>",
+        "description": ""
+    },
+    "allowlist_domain_input_placeholder": {
+        "message": "ekz. www.example.com, *.example.net, example.org",
+        "description": ""
+    },
+    "add_domain_button": {
+        "message": "Aldoni nomregnon",
+        "description": ""
+    },
+    "remove_button": {
+        "message": "Forigi elektitajn",
+        "description": ""
+    },
+    "invalid_domain": {
+        "message": "Bonvolu aldoni ĝustan nomregnon aŭ URL-n",
+        "description": ""
+    },
+    "options_widget_replacement_tab": {
+        "message": "Anstataŭigi ret‑aplikaĵetojn",
+        "description": ""
+    },
+    "options_widget_replacement_desc": {
+        "message": "Privata Melo povas bloki butonojn de sociaj retejoj kaj aliajn virtuale uzeblajn aplikaĵetojn (filmetojn, aŭdaĵojn, komentojn), tiu ĉi eblaĵo anstataŭigas ilin per alklakeblaj (ne aŭtomate montriĝantaj) butonoj.",
+        "description": ""
+    },
+    "options_social_widgets_checkbox": {
+        "message": "Aktivigi anstataŭigon de ret‑aplikaĵetoj",
+        "description": ""
+    },
+    "options_widget_exceptions_header": {
+        "message": "Esceptoj: ret‑aplikaĵetoj",
+        "description": ""
+    },
+    "options_hide_social_widgets": {
+        "message": "Ne anstataŭigi la jenajn ret‑aplikaĵetojn:",
+        "description": ""
+    },
+    "options_widget_site_exceptions_header": {
+        "message": "Esceptoj: retejoj",
+        "description": ""
+    },
+    "options_widget_site_exceptions_label": {
+        "message": "Ĉiam permesi ret‑aplikaĵetojn en tiuj ĉi retejoj:",
+        "description": ""
+    },
+    "options_domain_list_tab": {
+        "message": "Spurantaj nomregnoj",
+        "description": ""
+    },
+    "options_domain_list_trackers": {
+        "message": "Privata Melo decidiĝis bloki $COUNT$ eblajn $TRACKER_LINK_START$spurantajn nomregnojn$TRACKER_LINK_END$ ĝis nun",
+        "description": "",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "900"
+            },
+            "tracker_link_start": {
+                "content": "$2",
+                "example": "<a href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+            },
+            "tracker_link_end": {
+                "content": "</a>"
+            }
+        }
+    },
+    "options_domain_list_no_trackers": {
+        "message": "Privata Melo ne malkovris iun ajn <a target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>spurantan nomregnon</a> ĝis nun. Pluigu retumi!",
+        "description": ""
+    },
+    "what_is_a_tracker": {
+        "message": "Kio estas spurilo?",
+        "description": ""
+    },
+    "options_domain_search": {
+        "message": "Serĉi nomregnon:",
+        "description": ""
+    },
+    "options_domain_search_tooltip": {
+        "message": "Por escepti nomregnojn, antaŭskribu vian serĉon per “-”. Ekzemplo: “co -.com” montros domajnojn .co kaj .co.uk sed ne .com.",
+        "description": ""
+    },
+    "options_domain_type_filter": {
+        "message": "Filtri laŭ speco:",
+        "description": ""
+    },
+    "options_domain_filter_all": {
+        "message": "ĉiuj",
+        "description": ""
+    },
+    "options_domain_filter_user": {
+        "message": "uzant-kontrolitaj",
+        "description": ""
+    },
+    "options_domain_filter_dnt": {
+        "message": "kongrua kun la politiko pri nespurado de EFF",
+        "description": ""
+    },
+    "options_domain_status_filter": {
+        "message": "Filtri laŭ stato:",
+        "description": ""
+    },
+    "options_domain_filter_block": {
+        "message": "blokitaj",
+        "description": ""
+    },
+    "options_domain_filter_cookieblock": {
+        "message": "parte-blokitaj",
+        "description": ""
+    },
+    "options_domain_filter_allow": {
+        "message": "permesitaj",
+        "description": ""
+    },
+    "options_show_not_yet_blocked": {
+        "message": "Montri nomregnojn, pri kiuj Privata Melo ne decidiĝis ĉu bloki ilin",
+        "description": ""
+    },
+    "options_hide_in_seed": {
+        "message": "Kaŝi nomregnojn ampleksatajn en la plej aktuala antaŭlernita listo",
+        "description": ""
+    },
+    "options_domain_list_sites": {
+        "message": "$DOMAIN$ estis observita en la jenaj retejoj:",
+        "description": "",
+        "placeholders": {
+            "domain": {
+                "content": "$1",
+                "example": "example.com"
+            }
+        }
+    },
+    "options_remove_origin_confirm": {
+        "message": "Ĉu vi certas pri forigi tiun ĉi nomregnon el Privata Melo?",
+        "description": ""
+    },
+    "data_settings": {
+        "message": "Administri datumojn",
+        "description": ""
+    },
+    "manage_data_intro": {
+        "message": "Enporti datumojn de uzantoj por:\n<ul>\n<li>anstataŭigi ĝeneralajn agordojn</li>\n<li>kombini listojn de neblokataj retejoj</li>\n<li>kombini informojn pri observitaj spuriloj</li>\n<li>anstataŭigi agordojn de ŝovilo</li></ul>",
+        "description": ""
+    },
+    "export_user_data": {
+        "message": "Elporti datumojn de uzanto",
+        "description": ""
+    },
+    "download": {
+        "message": "Elŝuti",
+        "description": ""
+    },
+    "import_user_data": {
+        "message": "Enporti datumojn de uzanto",
+        "description": ""
+    },
+    "import": {
+        "message": "Enporti",
+        "description": ""
+    },
+    "import_select_file": {
+        "message": "Bonvolu elekti dosieron por enporti.",
+        "description": ""
+    },
+    "invalid_json": {
+        "message": "Malĝusta dosiero JSON.",
+        "description": ""
+    },
+    "import_successful": {
+        "message": "Sukcese enportis spuril-liston kaj agordojn!",
+        "description": ""
+    },
+    "sync_intro": {
+        "message": "Samtempigo en servilo:\n<ul>\n<li>postulas Firefox Spegulado/Chrome Sync</li>\n<li>alŝuto anstataŭigas ĉiujn ekzistajn datumojn de Privata Melo en la servilo</li>\n<li>elŝuto kunigas listojn de retejoj kun malaktiva Privata Melo</li>\n</ul>",
+        "description": ""
+    },
+    "upload_cloud": {
+        "message": "Elporti neblokatajn retejojn al servilo",
+        "description": ""
+    },
+    "upload": {
+        "message": "Alŝuti",
+        "description": ""
+    },
+    "download_cloud": {
+        "message": "Enporti neblokatajn retejojn el servilo",
+        "description": ""
+    },
+    "download_cloud_success": {
+        "message": "Sukcese enportis datumojn.",
+        "description": ""
+    },
+    "download_cloud_failure": {
+        "message": "Ne povas elŝuti datumojn el servilo.",
+        "description": ""
+    },
+    "upload_cloud_success": {
+        "message": "Sukcese alŝutis datumojn",
+        "description": ""
+    },
+    "upload_cloud_failure": {
+        "message": "Ne povas alŝuti datumojn al servilo",
+        "description": ""
+    },
+    "download_cloud_no_data": {
+        "message": "Neniuj datumoj en la servilo por elŝuti.",
+        "description": ""
+    },
+    "reset_data": {
+        "message": "Rekomencigi spurantajn nomregnojn",
+        "description": ""
+    },
+    "reset": {
+        "message": "Rekomencigi",
+        "description": ""
+    },
+    "reset_data_confirm": {
+        "message": "Rekomencigu spurantajn nomregnojn por:\n\n • forviŝi ĉiujn datumojn pri spurilojn, kiujn Privata Melo lernis dum retumado\n • restarigi la liston de spurantaj nomregnoj al la plej aktuala antaŭlernita versio (legu www.eff.org/badger-pretraining por pli da informoj)",
+        "description": ""
+    },
+    "remove_all_data": {
+        "message": "Forigi ĉiujn spurantajn nomregnojn",
+        "description": ""
+    },
+    "remove_all": {
+        "message": "Forigi ĉiujn",
+        "description": ""
+    },
+    "remove_all_data_confirm": {
+        "message": "Forigu ĉiujn spurantajn nomregnojn por:\n\n • forigi ĉion, kion Privata Melo scias pri spuriloj\n • igi Privatan Melon ne bloki ion ajn ĝis ĝi relernos surbaze de via retumado",
+        "description": ""
+    },
+    "intro_text1": {
+        "message": "Vi nun estas protektata de Privata Melo.",
+        "description": ""
+    },
+    "intro_text2": {
+        "message": "Por lerni kiel Privata Melo funkcias, alklaku sube por koncizan gvidilon.",
+        "description": ""
+    },
+    "first_run_text": {
+        "message": "Sciiĝi pri kiel Privata Melo protektas vian privatecon",
+        "description": ""
+    },
+    "learning_prompt_text1": {
+        "message": "Privata Melo de nun implicite ne lernos surbaze de via retumado.",
+        "description": ""
+    },
+    "learning_prompt_text2": {
+        "message": "Alklaku suben por pli da informo.",
+        "description": ""
+    },
+    "learning_prompt_button": {
+        "message": "Sciiĝi pri kiel Privata Malo ŝanĝiĝas",
+        "description": ""
+    },
+    "deprecated_setting": {
+        "message": "La jena agordo estas kaduka kaj estos forigita en la venonta ĝisdatigo de Privata Melo:",
+        "description": ""
+    },
+    "learn_more_link": {
+        "message": "Legu $LINK$ por pli da informoj.",
+        "description": "",
+        "placeholders": {
+            "link": {
+                "content": "$1",
+                "example": "<a href='https://example.com'>example.com</a>"
+            }
+        }
+    },
+    "acknowledgement_action": {
+        "message": "Mi konscias",
+        "description": ""
+    },
+    "social_tooltip_pb_has_replaced": {
+        "message": "Privata Melo anstataŭigis tiun ĉi butonon de $BUTTON$",
+        "description": "",
+        "placeholders": {
+            "button": {
+                "content": "$1",
+                "example": "Facebook Like"
+            }
+        }
+    },
+    "widget_placeholder_pb_has_replaced": {
+        "message": "Privata Melo anstataŭigis $START_ANCHOR_TAG$tiun ĉi ret‑aplikaĵeton $WIDGET$ $END_ANCHOR_TAG$",
+        "description": "",
+        "placeholders": {
+            "widget": {
+                "content": "$1",
+                "example": "Google reCAPTCHA"
+            },
+            "start_anchor_tag": {
+                "content": "$2",
+                "example": "<a href='https://vimeo.com/76979871'>"
+            },
+            "end_anchor_tag": {
+                "content": "$3",
+                "example": "</a>"
+            }
+        }
+    },
+    "allow_once": {
+        "message": "Permesi unufoje",
+        "description": ""
+    },
+    "allow_on_site": {
+        "message": "Ĉiam permesi en tiu ĉi retejo",
+        "description": ""
+    }
+}
