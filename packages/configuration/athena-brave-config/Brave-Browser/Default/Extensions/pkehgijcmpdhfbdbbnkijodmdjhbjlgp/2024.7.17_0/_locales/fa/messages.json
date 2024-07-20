@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "متوجه هستم"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "افزودن دامنه"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "همیشه روی این پایگاه مجاز کن"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "یک‌بار مجاز کن"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "مثلاً www.example.com‏، ‎*.‎example.net‏،‌ example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "$DOMAIN$ مجاز است",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "$DOMAIN$ مسدود شد",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Blocked cookies and fingerprinting scripts from $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "کلوچک‌های متعلق به$DOMAIN$ مسدود شد",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "هیچ ردیابی برای $DOMAIN$ وجود ندارد",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "می‌دانیم که مسدود کردن این دامنه وبگاه‌ها را خراب می‌کند"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "انگشت‌نگاری روی بوم"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "رونوشت شد"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "رونوشت به تخته‌گیره"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "مدیریت داده"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "تنظیم زیر منسوخ شده‌اند و در به‌روزرسانی آتی پرایوسی بجر حذف خواهد شد:"
+   },
+   "description": {
+      "description": "",
+      "message": "پرایوسی بجر به صورت خودکار یاد می‌گیرد تا ردیاب‌های مخفی را مسدود کند."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>پرایوسی بجر بر روی پایگاه‌های زیر از کار افتاده است. این به این معناست که پرایوسی بجر، هنگامی که پایگاه‌هایی که این‌جا فهرست شده‌اند را بازدید می‌کنید، هیچ‌چیزی را مسدود نخواهد کرد، و نشانک ردیابی نکن یا واپایش حریم خصوصی جهانی را هم نخواهد فرستاد.\u003C/p>\u003Cp>اگر فکر می‌کنید پرایوسی بجر این صفحه را خراب می‌کند، یا می‌خواهید پایگاهی خاص را مجاز به اشتراک‌گذاری و فروش داده‌هایتان کنید، می‌توانید دامنهٔ آن صفحه را در جعبهٔ زیر بنویسید و روی دکمهٔ «افزودن دامنه» کلیک کنید.\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "پایگاه‌های از کار افتاده"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "این دامنه اطمینان می‌دهد که شما را ردیابی نخواهد کرد"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "مجاز کردن"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "مسدودیت کامل"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "مسدودیت کلوچک‌ها"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "کمک مالی به EFF"
+   },
+   "download": {
+      "description": "",
+      "message": "بارگیری"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "درون‌ریزی پایگاه‌های از کار افتاده از ابرواره"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "دادهٔ ابری بارگیری نشد."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "هیچ دادهٔ ابری‌ای برای بارگیری وجود ندارد."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "دادهٔ ابری با موفقیت درون‌ریزی شد."
+   },
+   "error_input": {
+      "description": "",
+      "message": "مشکل چیست؟"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "برون‌ریزی دادهٔ کاربری"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "لطفاً دربارهٔ خطای زیر \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>به ما بگویید\u003C/a>:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "برای بازگرداندن واپایش این دامنه به پرایوسی بجر، کلیک کنید"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "بابت نصب پرایوسی بجر از شما ممنونیم!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "درباره این‌که پرایوسی بجر چگونه از حریم خصوصی شما محافظت می‌کند مطالعه کنید"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "برای به کار انداختن ورود به وبگاه‌ها با حساب گوگل‌تان، این لغزنده را به راست جابه‌جا و صفحه را بازخوانی کنید"
+   },
+   "import": {
+      "description": "",
+      "message": "درون‌ریزی"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "لطفا یک پرونده را برای درون‌ریزی انتخاب کنید."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "لیست ردیاب و تنظیمات با موفقیت آپدیت شد!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "درون‌ریزی دادهٔ کاربری"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "ردیاب‌های موذی را می‌گیرد"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "ردیابیِ نامرئی تمام حالت‌های ممکن را شامل می‌شود؛ تبلیغات فقط قلهٔ قابل مشاهدهٔ این کوه یخی هستند. پرایوسی بجر \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>نشانک واپایش حریم خصوصی جهانی\u003C/a> را برای کنار گذاشتن شما از اشتراک و فروش داده، و \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>نشانک ردیابی نکن\u003C/a> را برای گفتن این که شرکت‌ها شما را ردیابی نکنند، می‌فرستد. اگر آن‌ها خواسته‌های شما را رد کنند، پرایوسی بجر یاد می‌گیرد که آن‌ها را مسدود کند—چه آن‌ها تبلیغ‌کننده باشند و چه هر نوعی از ردیاب‌ها."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "پروژه‌ای از بنیاد مرز الکترونی"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "اگر فکر می‌کنید پرایوسی بجر باعث از کار افتادن وبگاهی شده است (مثلاً، یک ویدیو پخش نمی‌شود)، می‌توانید روی دکمهٔ «از کار انداختن» کلیک کنید تا پرایوسی بجر برای آن پایگاه خاموش شود."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "هنگام استفاده از پرایوسی بجر شما به \u003Ca href='https://www.eff.org/' target='_blank'>بنیاد مرز الکترونی\u003C/a> و میلیون‌ها کاربر دیگر در مبارزه برای حریم خصوصی می‌پیوندید. ما یک بنیاد غیرانتفاعی هستیم که برای حقوق برخط شما می‌جنگیم. ممنون از این‌که به ما پیوستید!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "حریم خصوصی یک ورزش گروهی است!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "با کمک مالی و حمایت از ابزار هایمان می‌توانید به ما کمک کنید"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "به‌طور خودکار می‌آموزد"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "پرایوسی بجر به‌جای نگه داشتن فهرستی از چیزهایی که باید مسدود کند، به‌طور خودکار ردیاب‌ها را بر پایهٔ رفتارشان کشف می‌کند."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "خط مشی حریم خصوصی"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "انجام سفر"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "تبلیغ‌مسدودکن نیستم، من فرق دارم"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "زمانی که پرایوسی بجر یک ردیاب را در سه وبگاه مختلف ببیند، شروع به مسدود کردن آن می‌کند. سه برخود و تمام!"
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "پرایوسی بجر هرگز داده‌ای دربارهٔ وبگردی شما به اشتراک نمی‌گذارد، مگر این‌که بخواهید آن را به اشتراک بگذارید."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "فراموش نکنید تا روی «گزارش پایگاه خراب شده» کلیک کنید. ما به حریم خصوصی شما احترام می‌گذاریم برای همین به‌صورت خودکار گزارش نمی‌فرستیم."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "شما هم‌اکنون توسط پرایوسی بجر محافظت می شوید."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "برای یادگیری بیش‌تر دربارهٔ عملکرد پرایوسی بجر، روی قسمت پایین کلیک کنید."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "پرایوسی بجر به صورت خودکار یاد می‌گیرد تا ردیاب‌های مخفی را مسدود کند. برای این‌که بفهمید چگونه این کار را انجام می‌دهد، یک دقیقه وقت بگذارید."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "لطفا یک دامنه یا URL معتبر اضافه کنید"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "پروندهٔ JSON نامعتبر."
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "برای اطلاعات بیشتر به $LINK$ بروید.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "بیاموزید پرایوسی بجر چگونه تغییر می‌کند"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "پرایوسی بجر دیگر به‌صورت پیش‌فرض از وبگردی شما یاد نمی‌گیرد."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "این زیر کلیک کنید تا بیش‌تر بیاموزید."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "به کار انداختن یادگیری ممکن است شما را برای وبگاه‌ها قابل تشخیص‌تر کند"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "درون‌ریزی دادهٔ کاربری:\u003Cul>\u003Cli>بازنویسی تنظیمات کلی\u003C/li>\u003Cli>ترکیب فهرست پایگاه‌های از کار افتاده\u003C/li>\u003Cli>ترکیب اطلاعات دربارهٔ ردیاب‌هایی که پرایوسی بجر با آن‌ها برخورد داشته است\u003C/li>\u003Cli>بازنویسی شخصی‌سازی‌های لغزنده\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "پرایوسی بجر"
+   },
+   "next_section": {
+      "description": "",
+      "message": "بخش بعدی"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "دامنه‌های زیر به‌نظر شما را ردیابی نمی‌کنند"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "هم‌اکنون پرایوسی بجر فقط بررسی می‌کند آیا اشخاص ثالث از کلوچک‌ها، مخزن محلی HTML5، انگشت‌نگاری روی بوم برای ردیابی وبگردی شما استفاده می‌کنند یا نه. بعضی از این دامنه‌ها ممکن است از روش‌های ردیابی‌ای استفاده کنند که پرایوسی بجر قابلیت شناسایی آن‌ها را ندارد."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "بجر شما تاکنون تصمیمی برای مسدود کردن این دامنه‌ها نگرفته است"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "پیش‌رفته"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "از کار انداختن ارسال نشانی‌های وبی که بازدید می‌کنید به گوگل. این پیشنهادهای صفحات مشابه را وقتی که صفحه یافت نشد،‌ از کار می‌اندازد."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "جلوگیری از ردیابی پیوندهایی که شما روی‌شان کلیک می‌کنید توسط پایگاه‌ها («hyperlink auditing»)"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "از کار انداختن پیش‌واکشی"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "بررسی کن آیا \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>دامنه‌های شخص ثالث\u003C/a> با \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>خط مشی ردیابی نکن EFF\u003C/a> تطابق دارند"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "همه"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "مجاز"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "مسدود شده"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "تاحدودی مسدود شده"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "سازگار با خط مشی ردیابی نکن EFF"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "واپایش شده توسط کاربر"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "پرایوسی بجر هنوز نتوانسته هیچ \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>دامنهٔ ردیابی\u003C/a> را پیدا کند. به وبگردی خود ادامه دهید!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "دیده شده است که $DOMAIN$ در پایگاه‌های زیر ردیابی می‌کند: ",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "دامنه‌های ردیاب"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "پرایوسی بجر تاکنون تصمیم گرفته است $COUNT$ $TRACKER_LINK_START$دامنهٔ ردیاب$TRACKER_LINK_END$ بالقوه را مسدود کند",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "جست‌وجوی دامنه‌ها:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "برای استثنا کردن دامنه‌ها، به ابتدای شرط جست‌وجوی خود «-» اضافه کنید. مثلاً، «‎.co -.com» دامنه های co. و co.uk. را نمایش می‌دهد اما دامنه‌های com. را نمایش نمی‌دهد."
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "فیلتر بر اساس وضعیت:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "فیلتر بر اساس نوع:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "فرستادن نشانک‌های «\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>واپایش حریم خصوصی جهانی\u003C/a>» و «\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>ردیابی نکن\u003C/a>» به وبگاه‌ها"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "تنظیمات کلی"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Hide domains present in the latest pre-trained list"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "ابزارک‌های زیر را جایگزین نکن:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "یادگیری در پنجره‌های خصوصی/ناشناس"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "به کار انداختن یادگیری در پنجره‌های خصوصی/ناشناس ممکن است ردی از تاریخچهٔ وبگردی خصوصی شما روی رایانه‌تان به جا بگذارد. به‌صورت پیش‌فرض، پرایوسی بجر ردیاب‌هایی که در پنجره‌های خصوصی/ناشناس می‌شناسد را مسدود خواهد کرد، اما دربارهٔ ردیاب‌های جدید اطلاعی کسب نخواهد کرد. اگر بیش‌تر وقت خود را در پنجره‌های خصوصی/ناشناس می‌گذرانید شاید بهتر باشد که این گزینه را به کار بیندازید."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "یادگیری مسدود کردن ردیاب‌های جدید از وبگردی شما"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "حریم خصوصی"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "آیا مطمئن هستید که می‌خواهید این دامنه را از پرایوسی بجر حذف کنید؟"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "دامنه‌هایی که شما را ردیابی نمی‌کنند را نمایش بده"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "نمایش دامنه‌هایی که گورکن شما تاکنون تصمیمی برای مسدود کردن‌شان نگرفته است"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "به کار انداختن جایگزینی ابزارک"
+   },
+   "options_title": {
+      "description": "",
+      "message": "گزینه‌های پرایوسی بجر"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "استثنائات ابزارک"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "هنگامی که دکمه‌های اجتماعی و دیگر ابزارک‌های بالقوهٔ کاربردی (ویدیو،‌ صدا، نظرات) مسدود می‌شوند، پرایوسی بجر می‌تواند آن‌ها را با فضاپرکن «کلیک برای به کار انداختن» جایگزین کند."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "جایگزینی ابزارک"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "استثنائات پایگاه"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "ابزارک‌ها را همیشه در این پایگاه مجاز کن:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "هیچ منبع شخص ثالثی در این صفحه وجود ندارد. ایول برای حریم خصوصی!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "از کار انداختن برای این پایگاه"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "پرایوسی بجر روی این پایگاه از کار افتاده است"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "به کار انداختن برای این پایگاه"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "راهنما"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "بعضی وبگاه‌ها $LINK_START$از ردیابی برای دنبال کردن شما$LINK_END$ در هر جایی که روی پیوندی برای خروج از یک وبگاه کلیک می‌کنید، استفاده می‌کنند. پرایوسی بجر بعضی از ردیابی‌ها از چنین پیوندهایی را روی این وبگاه حذف می‌کند.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "حفاظت از ردیابی پیوند فعال است"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "$COUNT$ $LINK_START$ردیاب$LINK_END$ بالقوه مسدود شده است",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "هیچ $LINK_START$ردیابی$LINK_END$ مسدود نشده است",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "گزینه‌ها"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "به اشتراک بگذارید"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "در این صفحه کاری برای انجام وجود ندارد"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "پرایوسی بجر روی صفحات خاصی مثل این کار نمی‌کند. سعی کنید جای دیگری وبگردی کنید."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "حذف همه"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "حذف همهٔ دامنه‌های ردیاب"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "حذف تمام دامنه‌های ردیاب باعث می‌شود:\n\n• حذف تمام چیزهایی که پرایوسی بجر دربارهٔ ردیاب‌ها می‌داند\n• باعث می‌شود پرایوسی بجر تا زمانی که شانس یادگیری دوباره از وبگردی شما را پیدا کند، هیچ‌چیزی را مسدود نکند"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "حذف گزینه (های) انتخاب شده"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "گزارش پایگاه خراب شده"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "لغو"
+   },
+   "report_close": {
+      "description": "",
+      "message": "بستن"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "اوه. خطایی رخ داد."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "ممنون! پیگیری خواهیم کرد."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "این به‌طور خودکار اطلاعات زیر را به EFF می‌فرستد: صفحه‌ای که هم‌اکنون از آن بازدید می‌کنید،‌ نگارش مرورگرتان، نگارش پرایوسی بجر، و وضعیت تمام لغزنده‌ها در این صفحه."
+   },
+   "reset": {
+      "description": "",
+      "message": "بازنشانی"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "بازنشانی دامنه‌های ردیاب"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "بازنشانی دامنه‌های ردیاب باعث می شود:\n\n• حذف تمام داده‌های مربوط به ردیاب‌هایی که پرایوسی بجر از وبگردی شما آموخته است\n• بازیابی فهرست دامنهٔ ردیاب به آخرین فهرست از پیش‌پرورش شده (برای اطلاعات بیش‌تر به www.eff.org/badger-pretraining بروید)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "پرایوسی بجر (privacybadger.org) یک افزونهٔ مرورگر است که به صورت خودکار می‌آموزد تا ردیاب‌های مخفی را مسدود کند. پرایوسی بجر توسط بنیاد مرز الکترونی، یک بنیاد غیرانتفاعی که برای حقوق برخط شما می‌جنگد، ساخته شده است."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "اشتراک‌گذاری بر روی فیسبوک"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Share on Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "اشتراک‌گذاری بر روی توییتر"
+   },
+   "share_title": {
+      "description": "",
+      "message": "به دوستان‌تان اطلاع دهید"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "پرایوسی بجر $COUNT$ ردیاب بالقوه را در $DOMAIN$ مسدود کرده است:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "نمایش تعداد ردیاب‌ها"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "است کرده جایگزین را $BUTTON$ دکمهٔ بجر پرایوسی",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "همگام‌سازی ابری: \u003Cul>\u003Cli>به همگام‌سازی فایرفاکس/کروم نیاز دارد\u003C/li>\u003Cli>بارگذاری باعث دوباره‌نویسی دادهٔ پرایوسی بجر در ابرواره می‌شود\u003C/li>\u003Cli>بارگیری، فهرست پایگاه‌هایی که پرایوسی بجر برای آن‌ها از کار افتاده است را ترکیب می‌کند\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "برای مجاز کردن یک دامنه، لغزنده را به سمت راست حرکت دهید"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "برای مسدود کردن یک دامنه، لغزنده را به سمت چپ حرکت دهید"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "برای مسدود کردن کلوچک‌ها لغزنده را در وسط قرار بدهید"
+   },
+   "upload": {
+      "description": "",
+      "message": "بارگذاری"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "برون‌ریزی پایگاه‌های از کار افتاده به ابرواره"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "بارگذاری داده روی ابرواره موفقیت‌آمیز نبود"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "داده با موفقیت روی ابرواره بارگذاری شد"
+   },
+   "version": {
+      "description": "",
+      "message": "نگارش $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "ردیاب چیست؟"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "پرایوسی بجر $START_ANCHOR_TAG$ابزارک $WIDGET$ $END_ANCHOR_TAG$ را جایگزین کرده است",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

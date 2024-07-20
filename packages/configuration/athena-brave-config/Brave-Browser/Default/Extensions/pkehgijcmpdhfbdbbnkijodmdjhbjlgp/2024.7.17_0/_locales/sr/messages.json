@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "Razumem"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "Dodaj domen"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "Uvek dozvoli na ovom sajtu"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "Dozvoli jednom"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "npr. www.example.com, *.example.net, example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "Dozvoljeno $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "Blokirano $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Blokirani kolačići i fingerprinting skripte sa $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "Blokirani kolačići sa $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "Bez praćenja za $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "Poznato je da će blokiranje ovog domena pokvariti sajtove"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "canvas fingerprinting metoda"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "Iskopirano"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "Kopiraj u klipbord"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "Upravljaj podacima"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "Sledeća podešavanja su zastarela i biće uklonjen u narednim verzijama:"
+   },
+   "description": {
+      "description": "",
+      "message": "Privacy Badger automatski uči da blokira nevidljive trekere."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>Privacy Badger je isključen na sledećim sajtovima. To znači da Privacy badger neće blokirati ništa kada posetite sajtove navedene ovde, a takođe neće slati ni \"Do Not Track\" ili \"Global Policy Control\" signale.\u003C/p>\u003Cp>Ako mislite da Privacy Badger kvari stranicu, ili biste želeli da određeni sajt prikuplja, deli ili prodaje vaše podatke, možete uneti domen te stranice u polje ispod i kliknuti na dugme \"Dodaj domen\".\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "Onemogućeni sajtovi"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "Ovaj domen obećava da vas ne prati"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "Dozvoli"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "Blokiraj u potpunosti"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "Blokiraj kolačiće"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "Donirajte EFF-u"
+   },
+   "download": {
+      "description": "",
+      "message": "Preuzmi"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "Uvezi onemogućene sajtove iz klauda"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "Klaud podaci nisu uspešno preuzeti"
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "Nema klaud podataka za preuzimanje."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "Klaud podaci su uspešno uvezeni."
+   },
+   "error_input": {
+      "description": "",
+      "message": "Šta nije u redu?"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "Izvezi korisničke podatke"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "Molimo vas \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>prijavite nam\u003C/a> ovu grešku:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "Kliknite kako biste vratili kontrolu nad ovim domenom Privacy Badger-u"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "Hvala što ste instalirali Privacy Badger!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "Naučite kako Privacy Badger štiti vašu privatnost"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "Da biste omogućili prijavljivanje na veb sajtove korišćenjem Google naloga, pomerite ovaj klizač udesno i ponovo učitajte stranicu"
+   },
+   "import": {
+      "description": "",
+      "message": "Uvezi"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "Izaberite datoteku za uvoz."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "Lista trekera i podešavanja je uspešno ažurirana!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "Uvezi korisničke podatke"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "Hvata podmukle trekere"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "Nevidljivo praćenje se dešava na najrazličitije načine: reklame su samo vidljivi vrh ledenog brega. Privacy Badger šalje \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control signal\u003C/a> kako bi odustao od deljenja i prodaje podataka, kao i \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track signal\u003C/a> kako bi rekao kompanijama da vas ne prate. Ako budu ignorisali vaše želje Privacy Badger će naučiti da ih blokira - bilo da su oglašivači ili drugi vidovi trekera."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "Projekat Fondacije za elektronske granice"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "Ako mnislite da Privacy Badger utiče na funkcionalnost stranice (video ne može da se pusti, npr), možete kliknuti na dugme \"Onemogući\" kako biste isključili Privacy Badger na toj stranici."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "Kada koristite Privacy Badger pridružujete se \u003Ca href='https://www.eff.org/' target='_blank'>Fondaciji za elektronske granice\u003C/a> i milionima drugih korisnika u borbi za privatnost. Mi smo neprofitna organizacija koja se bori za vaša onlajn prava. Hvala što ste nam se pridružili!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "Privatnost je timski sport!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "Pomozite nam donacijom i deljenjem podrške našim alatima"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "Uči automatski"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "Umesto da ima spisak stavki za blokiranje Privacy Badger automatski otkriva trekere prema njihovom ponašanju."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "Politika privatnosti"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "Krenite u obilazak"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "Nisam adbloker, ja sam drugačiji"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "Privacy Badger kreće sa blokiranjem kada vidi iste trekere na tri ražličita sajta."
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "Privacy Badger NIKADA neće podeliti podatke o vašem pregledanju osim ukoliko ne pristanete da ih podelite."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "Molimo vas da ne zaboravite da kliknete na \"Prijavi pokvaren sajt\". Poštujemo vašu privatnost i ne šaljemo automatske izveštaje."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "Privacy Badger vas sada štiti."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "Da biste saznali kako Privacy Badger radi, kliknite ispod za kratko uputstvo."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "Privacy Badger automatski uči da blokira nevidljive trekere. Izdvojite minut da vidite kako."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "Molimo vas da dodate validan domen ili URL"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "Nevažeća JSON datoteka."
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "Posetite $LINK$ da biste saznali više.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "Saznajte kako se Privacy Badger menja"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "Privacy Badger više neće podrazumevano učiti iz vašeg pregledanja."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "Kliknite ispod kako biste saznali više."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "Omogućavanje učenja vas može učiniti lakše prepoznatljivim veb sajtovima"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "Uvoz korisničkih podataka će:\u003Cul>\u003Cli>Zameniti opšta podešavanja\u003C/li>\u003Cli>Kombinovati listu onemogućenih sajtova\u003C/li>\u003Cli>Kombinovati informacije o trekerima koje je Privacy Badger uočio\u003C/li>\u003Cli>Zameniti podešavanja klizača\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "sledeća sekcija"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "Domeni ispod vas izgleda ne prate"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "Trenutno Privacy Badger proverava samo da li treće strane koriste kolačiće, HTML5 lokalno skladište ili metod canvas fingerprinting za praćenje vašeg pregledanja. Neki od ovih domena mogu koristiti metode praćenja koje Privacy Badger ne može otkriti."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "Vaš Badger nije još odlučio da li ovi domeni trebaju da budu blokirani"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "Napredna podešavanja"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "Onemogući slanje veb adresa koje posećujete Guglu. Ovo onemogućava predloge za slične stranice kada stranica ne može biti nađena."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "Onemogući sajtovima da prate koje na koje veze klikćete (revizija hiperlinkova)"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "Onemogući prefetching"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "Proveri da li se \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>domeni trećih lica\u003C/a> pridržavaju \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>EFF Do Not Track polise\u003C/a>"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "sve"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "dozvoljeno"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "blokirano"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "delimično blokirano"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "u skladu sa DNT politikom EFF-a"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "kontrolisano od strane korisnika"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "Privacy Badger još uvek nije otkrio ni jedan \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>domen koji prati\u003C/a>. Nastavite sa pregledanjem!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "$DOMAIN$ je primećen da prati na sledećim sajtovima:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "Domeni koji prate"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "Privacy Badger je odlučio da blokira $COUNT$ potencijalnih $TRACKER_LINK_START$domena koji prate$TRACKER_LINK_END$ do sada",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "Pretraži domene:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "Da biste izuzeli domen, dodajte \"-\" ispred termina za pretragu. Na primer, \".co -.com\" ce prikjazati .co i .co.rs, ali ne i .com domene."
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "Filtriraj po statusu:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "Filtriraj po tipu"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "Šalji \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a> i \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a> signale sajtovima"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "Opšta podešavanja"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Hide domains present in the latest pre-trained list"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "Nemoj zameniti sledeće vidžete:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Učenje u privatnim/inkognito prozorima"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Uključivanje učenja u privatnom/incognito prozoru može ostaviti tragove privatnog pregledanja na vašem računaru. Podrazumevano će Privacy Badger u privatnim prozoima blokirati trekere za koje već zna, ali neće učiti o novim. Možda želite da uključite ovu opciju ako se većina vašeg pregledanja odvija u privatnim/inkognito prozorima."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "Učenje blokiranja novih trekera kroz vaše pregledanje"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "Privatnost"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "Da li ste sigurni da želite da uklonite ovaj domen iz Privacy Badger-a?"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "Prikaži domene koji vas potencijalno ne prate"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "Prikaži domene koje vaš Badger još nije odlučio da blokira"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "Omogući zamenu vidžeta"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Privacy Badger - Opcije"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "Vidžeti izuzeci"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "Pri blokiranju dugmića socijalnih mreža, kao i drugih potencijalno korisnih vidžeta (video, audio, komentari), Privacy Badger ih može zameniti rezervisanim poljem koje se aktivira klikom."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "Zamena vidžeta"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "Sajtovi izuzeci"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "Uvek dozvoli vidžete na ovim sajtovima:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "Nema resursa treće strane na ovoj stranici. Ura za privatnost!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "Onemogući na ovom web sajtu"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "Privacy Badger je onemogućen na ovom web sajtu"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "Omogući na ovom web sajtu"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "Pomoć"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "Neki veb sajtovi $LINK_START$koriste praćenje veza da vas prate$LINK_END$ kad god kliknete na vezu da napustite veb sajt. Privacy Badger uklanja praćenje iz takvih linkova na ovom veb sajtu.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "Zaštita od praćenja linkova je aktivna"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "$COUNT$ potencijalnih $LINK_START$trekera$LINK_END$ je blokirano",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "Nema blokiranih $LINK_START$trekera$LINK_END$",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "Podešavanja"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "Podeli"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "Ništa nije potrebno na ovoj stranici"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "Privacy Badger ne radi na specijalnim stranicama poput ove. Pokušajte posetiti neku drugu stranicu."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "Ukloni sve"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "Ukloni sve domene koji prate"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "Uklanjanje svih domena koji prate će:\n\n  • Obrisati sve što Privacy Badger zna o trekerima\n  • Izazvati da Privacy Badger ne blokira ništa dok ponovo ne nauči kroz vaše pregledanje"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "Ukloni odabrano"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "Prijavi pokvaren sajt"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "Otkaži"
+   },
+   "report_close": {
+      "description": "",
+      "message": "Zatvori"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "Ups, nešto je pošlo naopako."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "Hvala, pažljivo ćemo proučiti problem."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "Ovo će automatski poslati sledeće informacije EFF-u: stranicu koju trenutno pregledate, verziju vašeg pretraživača, verziju Privacy Badger-a i stanje svih klizača na ovoj stranici."
+   },
+   "reset": {
+      "description": "",
+      "message": "Resetuj"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "Resetuj domene koji prate"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "Resetovanje domena koji prate će:\n\n• Obrisati sve podatke koje je Privacy Badger naučio iz vašeg pregledanja\n• Vratiti listu domena koji prate na poslednju unapred istreniranu listu (posetite www.eff.org/badger-pretraining da biste saznali više)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "Privacy Badger (privacybadger.org) je ekstenzija za internet pregledač koji automatski uči da blokira nevidljive trekere. Privacy Badger je napravljen od strane Fondacije za elektronske granice, neprofitne organizacije koja se bori za vaša onlajn prava."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "Podeli na Fejsbuku"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Share on Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "Podeli na Tviteru"
+   },
+   "share_title": {
+      "description": "",
+      "message": "Kaži svojim prijateljima"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "Privacy Badger je blokirao $COUNT$ potencijalnih trekera na $DOMAIN$:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "Prikaži broj trekera"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger je zamenio ovo $BUTTON$ dugme",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Klau sinhronizacija:\u003Cul>\u003Cli>Zahteva Firefox/Chrome sinhronizaciju\u003C/li>\u003Cli>Slanje podataka će obrisati postojeće Privacy Badger podatke u klaudu\u003C/li>\u003Cli>Preuzimanje kombinuje listu sajtova gde je vaš Privacy Badger isključen\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "Pomerite klizač udesno za dozvoljavanje domena"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "Pomerite klizač ulevo za blokiranje domena"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "Centrirajte klizač za blokiranje kolačića"
+   },
+   "upload": {
+      "description": "",
+      "message": "Pošalji"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "Izvezi onemogućene sajtove u klaud"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "Podaci se ne mogu poslati u klaud"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "Podaci su uspešno poslati u klaud"
+   },
+   "version": {
+      "description": "",
+      "message": "verzija $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "Šta je treker?"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger je zamenio $START_ANCHOR_TAG$ovaj $WIDGET$ vidžet$END_ANCHOR_TAG$",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

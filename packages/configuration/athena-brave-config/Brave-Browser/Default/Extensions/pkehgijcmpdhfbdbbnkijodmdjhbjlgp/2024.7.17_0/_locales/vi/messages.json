@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "Tôi hiểu"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "Thêm tên miền"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "Luôn cho phép trên trang web này"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "Cho phép một lần"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "Ví dụ. www.example.com, *.example.net, example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "Đã cho phép $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "Đã chặn $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Chặn cookie và chặn thu thập định danh người dùng từ $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "Đã chặn cookies từ $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "Không có theo dõi nào với $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "Chặn tên miền này sẽ làm hỏng trang web"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "định danh web"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "Đã sao chép"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "Sao chép vào clipboard"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "Quản lý dữ liệu"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "Cài đặt sau không được dùng nữa và sẽ bị xóa trong các bản cập nhật Privacy Badger tiếp theo:"
+   },
+   "description": {
+      "description": "",
+      "message": "Privacy Badger tự động học cách chặn các máy theo dõi mà chạy ngầm."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>Privacy Badger bị vô hiệu hóa trên các trang web sau. Điều này có nghĩa là Privacy Badger sẽ không chặn bất kỳ thứ gì khi bạn truy cập các trang web được liệt kê ở đây và sẽ không gửi tín hiệu Không theo dõi hoặc Kiểm soát quyền riêng tư toàn cầu.\u003C/p>\u003Cp>Nếu bạn cho rằng Privacy Badger đang làm hỏng một trang hoặc bạn muốn cho phép một trang cụ thể nào đó được phép chia sẻ hoặc bán dữ liệu của bạn, bạn có thể nhập tên miền của trang đó vào hộp bên dưới và nhấp vào nút \"Thêm tên miền\".\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "Trang web bị vô hiệu hóa"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "Tên miền hứa sẽ không theo dõi bạn"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "Cho phép"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "Chặn hoàn toàn"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "Chặn cookies"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "Đóng góp cho EFF"
+   },
+   "download": {
+      "description": "",
+      "message": "Tải xuống"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "Nhập các trang web bị vô hiệu hóa từ cloud"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "Không thể tải xuống dữ liệu trên cloud."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "Không có dữ liệu trên cloud để tải xuống."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "Dữ liệu trên cloud đã được nhập thành công."
+   },
+   "error_input": {
+      "description": "",
+      "message": "Sai gì?"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "Xuất dữ liệu người dùng"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "Vui lòng \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>cho chúng tôi\u003C/a> biết về lỗi sau:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "Ấn để trả lại quyền kiểm soát tên miền này cho Privacy Badger"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "Cảm ơn bạn đã cài đặt Privacy Badger!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "Tìm hiểu cách Privacy Badger bảo vệ quyền riêng tư của bạn"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "Để cho phép đăng nhập vào các trang web bằng tài khoản Google của bạn, hãy di chuyển thanh trượt này sang phải và tải lại trang"
+   },
+   "import": {
+      "description": "",
+      "message": "Nhập"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "Vui lòng chọn một tệp để nhập."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "Đã cập nhật thành công danh sách theo dõi và cài đặt!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "Nhập dữ liệu người dùng"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "Phát hiện trình theo dõi lén"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "Theo dõi ngầm xảy ra theo mọi cách; quảng cáo chỉ là phần nổi của tảng băng chìm. Privacy Badger gửi \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>tín hiệu Kiểm soát quyền riêng tư toàn cầu\u003C/a> để giúp bạn chọn không tham gia chia sẻ và bán dữ liệu, đồng thời gửi \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>tín hiệu Không theo dõi\u003C/a> để yêu cầu các công ty không theo dõi bạn. Nếu họ phớt lờ mong muốn của bạn, Privacy Badger sẽ học cách chặn họ—cho dù họ là nhà quảng cáo hay loại theo dõi nào đó."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "Một dự án của Electronic Frontier Foundation"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "Nếu bạn cho rằng Privacy Badger đang làm hỏng một trang (ví dụ: một video không phát), bạn có thể nhấp vào nút 'Vô hiệu hóa cho trang web này' để tắt Privacy Badger cho trang web đó."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "Khi bạn sử dụng Privacy Badger, bạn tham gia \u003Ca href='https://www.eff.org/' target='_blank'>Electronic Frontier Foundation\u003C/a> và hàng triệu người dùng khác trong cuộc đấu tranh dành quyền riêng tư. Chúng tôi là một tổ chức phi lợi nhuận đấu tranh cho quyền của bạn trực tuyến. Cảm ơn vì đã tham gia cùng chúng tôi!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "Quyền riêng tư là một môn thể thao đồng đội!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "Giúp chúng tôi bằng cách ủng hộ và chia sẻ sự hỗ trợ của bạn cho các công cụ của chúng tôi"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "Học tự động"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "Thay vì giữ danh sách những thứ cần chặn, Privacy Badger tự động phát hiện ra những trình theo dõi dựa trên hành vi của chúng."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "Chính sách bảo mật"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "Đi tham quan"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "Không phải là trình chặn quảng cáo, tôi khác biệt"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "Privacy Badger bắt đầu chặn khi thấy cùng một chương trình theo dõi trên ba trang web khác nhau."
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "Privacy Badger sẽ KHÔNG BAO GIỜ chia sẻ dữ liệu về trình duyệt của bạn trừ khi bạn chọn chia sẻ dữ liệu đó."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "Xin đừng quên nhấp vào 'Báo cáo trang web bị hỏng'. Chúng tôi tôn trọng quyền riêng tư của bạn nên chúng tôi không gửi báo cáo tự động."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "Bạn hiện được bảo vệ bởi Privacy Badger."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "Để tìm hiểu cách hoạt động của Privacy Badger, nhấp vào bên dưới để xem hướng dẫn nhanh."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "Privacy Badger tự động học cách chặn các trình theo dõi chạy ngầm. Hãy dành một phút để xem cách thực hiện."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "Vui lòng thêm miền hoặc URL hợp lệ"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "Tệp JSON không hợp lệ."
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "Truy cập $LINK$ để tìm hiểu thêm.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "Tìm hiểu cách Privacy Badger đang thay đổi"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "Theo mặc định, Privacy Badger sẽ không còn học từ trình duyệt của bạn nữa."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "Nhấp vào bên dưới để tìm hiểu thêm."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "Kích hoạt tính năng học tập có thể khiến bạn dễ nhận dạng hơn trên các trang web"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "Nhập dữ liệu người dùng:\u003Cul>\u003Cli>Ghi đè cài đặt chung\u003C/li>\u003Cli>Kết hợp danh sách các trang web bị vô hiệu hóa\u003C/li>\u003Cli>Kết hợp thông tin về những gì tiến trình theo dõi Privacy Badger đã xem\u003C/li>\u003Cli>Ghi đè các giá trị đã thay đổi trên thanh trượt\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "phần tiếp theo"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "Các tên miền phía dưới có vẻ không theo dõi bạn"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "Hiện tại, Privacy Badger chỉ kiểm tra xem các bên thứ ba có đang sử dụng cookie, bộ nhớ cục bộ HTML5 hoặc định danh web để theo dõi hoạt động duyệt web của bạn hay không. Một số tên miền này có thể đang sử dụng các phương pháp theo dõi mà Privacy Badger không thể phát hiện."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "Badger của bạn vẫn chưa quyết định liệu những miền này có bị chặn hay không"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "Trình độ cao"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "Tắt gửi địa chỉ trang web bạn truy cập tới Google. Thao tác này sẽ tắt đề xuất cho các trang tương tự khi không tìm thấy trang."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "Chặn các trang web theo dõi liên kết bạn nhấp vào (\"kiểm tra siêu liên kết\")"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "Vô hiệu hóa việc tảo ra bộ nhớ cache"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "Kiểm tra xem liệu \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>tên miền của bên thứ ba\u003C/a> có tuân thủ \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>chính sách Không theo dõi của EFF không\u003C/a>"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "tất cả"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "đã cho phép"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "đã chặn"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "bị chặn một phần"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "tuân thủ chính sách Không theo dõi của EFF"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "do người dùng kiểm soát"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "Privacy Badger chưa phát hiện bất kỳ \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>tên miền theo dõi\u003C/a> nào. Tiếp tục duyệt!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "$DOMAIN$ đã tìm thấy theo dõi trên các trang web sau:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "Theo dõi tên miền"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "Privacy Badger đã quyết định chặn $COUNT$ $TRACKER_LINK_START$các miền theo dõi$TRACKER_LINK_END$ khả nghi cho đến nay",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "Tìm kiếm tên miền:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "Để loại trừ các tên miền, hãy thêm \"-\" vào trước cụm từ tìm kiếm của bạn. Ví dụ: \".co -.com\" sẽ hiển thị các miền .co và .co.uk nhưng không hiển thị các miền .com."
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "Lọc theo trạng thái:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "Lọc theo loại:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "Gửi đến các trang web thông tin \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>\"Kiểm soát quyền riêng tư toàn cầu\"\u003C/a> và \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>\"Không theo dõi\"\u003C/a>"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "Cài đặt chung"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Hide domains present in the latest pre-trained list"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "Không thay thế các tiện ích sau:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Học trong cửa sổ Riêng tư/Ẩn danh"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Kích hoạt việc học tập trong cửa sổ Riêng tư/Ẩn danh có thể để lại dấu vết lịch sử trang web cá nhân trên máy tính của bạn. Theo mặc định, Privacy Badger sẽ chặn các tiến trình theo dõi mà nó đã biết trong cửa sổ Riêng tư/Ẩn danh, nhưng nó sẽ không tìm hiểu về các tiến trình theo dõi mới. Bạn có thể muốn bật tùy chọn này nếu nhiều lích sử hoạt động trang web của bạn diễn ra trong cửa sổ Riêng tư/Ẩn danh."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "Tìm hiểu cách chặn tiến trình theo dõi mới khỏi trình duyệt của bạn"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "Sự riêng tư"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "Bạn có chắc chắn muốn xóa tên miền này khỏi Privacy Badger không?"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "Hiển thị các tên miền có vẻ không theo dõi bạn"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "Hiển thị các tên miền mà Badger của bạn chưa quyết định chặn"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "Bật tính năng thay thế tiện ích"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Tùy chọn Privacy Badger"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "Tiện ích riêng"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "Khi chặn các nút mạng xã hội và các tiện ích hữu ích khác (video, âm thanh, nhận xét), Privacy Badger có thể thay thế chúng bằng các biểu tượng nhấn để kích hoạt."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "Thay thế tiện ích"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "Trang web riêng"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "Luôn cho phép các tiện ích trên những trang web này:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "Không có dấu hiệu bên thứ 3 ở trang này. Tận hưởng sự riêng tư!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "Vô hiệu hóa cho trang web này"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "Privacy Badger bị vô hiệu hóa trên trang web này"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "Kích hoạt cho trang web này"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "Giúp"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "Một số trang web $LINK_START$sử dụng theo dõi liên kết để theo dõi bạn$LINK_END$ bất cứ khi nào bạn nhấp vào một liên kết để rời khỏi trang web. Privacy Badger xóa theo dõi khỏi các liên kết như vậy trên trang web này.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "Bảo vệ theo dõi liên kết hoạt động"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "$COUNT$ khả năng $LINK_START$theo dõi$LINK_END$ bị chặn",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "Không $LINK_START$theo dõi$LINK_END$ bị chặn",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "Tùy chọn"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "Chia sẻ"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "Không có gì để làm trên trang này"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "Privacy Badger không hoạt động trên các trang đặc biệt như trang này. Hãy thử một số trang khác."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "Bỏ hết"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "Xóa tất cả các miền theo dõi"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "Việc xóa tất cả các miền theo dõi sẽ:\n\n• Xóa mọi thứ mà Privacy Badger biết về các tiến trình theo dõi\n• Làm cho Privacy Badger không thể chặn bất kỳ thứ gì cho đến khi nó có cơ hội để học lại từ trình duyệt của bạn"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "Bỏ đã chọn"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "Báo cáo trang web bị hỏng"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "Hủy bỏ"
+   },
+   "report_close": {
+      "description": "",
+      "message": "Đóng"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "Ối. Đã xảy ra sự cố."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "Cảm ơn! Chúng ta sẽ đi đến cuối cùng."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "Thao tác này sẽ tự động gửi thông tin sau tới EFF: trang bạn hiện đang truy cập, phiên bản trình duyệt của bạn, phiên bản Privacy Badger và trạng thái của tất cả các thanh trượt trên trang này."
+   },
+   "reset": {
+      "description": "",
+      "message": "Khởi động lại"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "Đặt lại tên miền theo dõi"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "Việc đặt lại miền theo dõi sẽ:\n\n• Xóa tất cả dữ liệu về các tiến trình theo dõi mà Privacy Badger đã học được từ trình duyệt của bạn\n• Khôi phục danh sách tên miền theo dõi sang danh sách khởi tạo mới nhất (truy cập www.eff.org/badger-pretraining để tìm hiểu thêm)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "Privacy Badger (privacybadger.org) là một tiện ích mở rộng của trình duyệt tự động học cách chặn các chương trình theo dõi ngầm. Privacy Badger được tạo bởi Electronic Frontier Foundation, một tổ chức phi lợi nhuận đấu tranh cho các quyền của bạn trên mạng."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "Chia sẻ trên Facebook"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Chia sẻ trên Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "Chia sẻ trên Twitter"
+   },
+   "share_title": {
+      "description": "",
+      "message": "Nói với bạn của bạn"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "Privacy Badger chặn $COUNT$ chương trình theo dõi khả nghi ở $DOMAIN$:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "Hiển thị số lượng người theo dõi"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger đã thay thế $BUTTON$ nút này",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Đồng bộ hóa trên cloud:\u003Cul>\u003Cli>Yêu cầu đồng bộ Firefox/Chrome\u003C/li>\u003Cli>Tải lên sẽ ghi đè mọi dữ liệu Privacy Badger hiện có trên cloud\u003C/li>\u003Cli>Tải xuống tất cả danh sách các trang web mà Badger của bạn bị vô hiệu hóa\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "Di chuyển thanh trượt sang bên phải để cho phép tên miền"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "Di chuyển thanh trượt sang bên trái để chặn tên miền"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "Chỉnh thanh trượt ở giữa để chặn cookie"
+   },
+   "upload": {
+      "description": "",
+      "message": "Tải lên"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "Xuất các trang web bị vô hiệu hóa sang cloud"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "Không thể tải dữ liệu lên cloud"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "Dữ liệu được tải lên cloud thành công"
+   },
+   "version": {
+      "description": "",
+      "message": "phiên bản $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "Tiến trình theo dõi là gì?"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger đã thay thế $START_ANCHOR_TAG$tiện ích $WIDGET$ này$END_ANCHOR_TAG$",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

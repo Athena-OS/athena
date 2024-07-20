@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "Я розумію"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "Додати домен"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "Завжди дозволяти на цьому сайті"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "Дозволити один раз"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "наприклад, www.example.com, *.example.net, example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "Дозволено $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "Заблоковано $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Заблоковані куки та скрипти зчитування цифрового відбитка з $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "Заблоковано куки з $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "Немає стеження для $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "Блокування цього домену пошкоджує вебсайти"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "зчитування відбитка canvas"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "Скопійовано"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "Копіювати в буфер обміну"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "Керувати даними"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "Зазначені налаштування застаріли та будуть вилучені в майбутніх оновленнях Privacy Badger."
+   },
+   "description": {
+      "description": "",
+      "message": "Privacy Badger автоматично навчається блокувати невидимі елементи стеження."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>Privacy Badger вимкнений для зазначених нижче сайтів. Це означає, що при відвідуванні перелічених тут сайтів Privacy Badger нічого не блокуватиме, а також не відправлятиме сигнали \"Не стежити\" (Do Not Track) чи \"Глобальний контроль приватності\" (Global Privacy Control).\u003C/p>\u003Cp>Якщо ви вважаєте, що Privacy Badger пошкоджує сторінку, або бажаєте дозволити певному сайту ділитися та продавати ваші дані, ви можете ввести домени таких сторінок в полі внизу та натиснути кнопку \"Додати домен\".\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "Вимкнені сайти"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "Цей домен обіцяє не стежити за вами"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "Дозволити"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "Блокувати повністю"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "Блокувати куки"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "Зробити внесок для EFF"
+   },
+   "download": {
+      "description": "",
+      "message": "Завантажити"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "Імпорт вимкнених сайтів з хмарного сховища"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "Не вдалося завантажити дані з хмарного сховища."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "Хмарне сховище не містить даних для завантаження."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "Дані успішно імпортовано з хмарного сховища."
+   },
+   "error_input": {
+      "description": "",
+      "message": "Що не так?"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "Експорт користувацьких даних"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "Будь ласка, \u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>розкажіть нам\u003C/a> про наступну помилку:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "Натисніть для повернення контролю над цим доменом до Privacy Badger"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "Дякуємо за встановлення Privacy Badger!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "Дізнайтеся, як Privacy Badger захищає вашу приватність"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "Для можливості входу на вебсайтах за допомогою облікового запису Google перемкніть цей перемикач праворуч і перезавантажте сторінку"
+   },
+   "import": {
+      "description": "",
+      "message": "Імпорт"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "Оберіть файл для імпорту."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "Список елементів стеження й налаштування успішно оновлено!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "Імпорт користувацьких даних"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "Перехоплює підступне стеження"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "Невидиме стеження відбувається різними способами; реклама — це лише вершина айсбергу. Privacy Badger надсилає \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>сигнал Глобального контролю приватності (Global Privacy Control)\u003C/a>, щоб дати вам можливість відмовитися від обміну та продажу даних, а також \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>сигнал Не стежити (Do Not Track)\u003C/a>, щоб повідомити компанії не стежити за вами. Якщо вони ігнорують ваше бажання, Privacy Badger навчатиметься їх блокувати — чи то рекламодавці, чи інші елементи стеження."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "Проект Electronic Frontier Foundation"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "Якщо ви вважаєте, що Privacy Badger пошкодив сторінку (наприклад, не відтворюється відео), ви можете вимкнути його на цій сторінці, натиснувши \"Вимкнути Privacy Badger для цього сайту\"."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "Використовуючи Privacy Badger, ви долучаєтесь до спільноти \u003Ca href='https://www.eff.org/' target='_blank'>Electronic Frontier Foundation\u003C/a> разом з мільйонами інших користувачів, які відстоюють приватність. Ми є некомерційною організацією, яка відстоює ваші права онлайн. Дякуємо, що приєдналися до нас!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "Приватність - це командна гра!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "Допоможіть нам, зробивши внесок і виявивши свою підтримку наших засобів"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "Навчається автоматично"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "Замість використання списків блокування, Privacy Badger автоматично виявляє елементи стеження на основі їх поведінки."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "Політика приватності"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "Переглянути знайомство"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "Дещо інше, ніж звичайні засоби для блокування реклами"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "Privacy Badger починає блокування, як тільки він бачить, що один і той самий елемент стеження з'являється на трьох різних вебсайтах. Три попадання і він заблокований!"
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "Privacy Badger НІКОЛИ нікому не передає ваші дані доки ви самі не захочете зробите це."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "Обов'язково натисніть \"Повідомити про пошкоджений сайт\". Ми поважаємо вашу приватність, тому не надсилаємо автоматичні звіти."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "Тепер вас захищає Privacy Badger."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "Щоб дізнатися, як працює Privacy Badger, натисніть внизу для швидкого ознайомлення."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "Privacy Badger автоматично навчається блокувати невидимі елементи стеження. Витратьте хвилинку, щоб поглянути як."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "Будь ласка, додайте дійсний домен чи URL-адресу"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "Неправильний файл JSON."
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "Відвідайте $LINK$, щоб дізнатися більше.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "Дізнатися, як розвивається Privacy Badger"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "Privacy Badger відтепер типово не навчатиметься під час перегляду."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "Натисніть внизу, щоб дізнатися більше."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "Увімкнення навчання може дозволити вебсайтам легше ідентифікувати вас"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "Імпорт даних користувача:\u003Cul>\u003Cli>Перезаписуються загальні налаштування\u003C/li>\u003Cli>Об'єднуються списки вимкнених сайтів\u003C/li>\u003Cli>Об'єднується інформація про виявлені елементи стеження Privacy Badger\u003C/li>\u003Cli>Перезаписуються налаштування перемикачів\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "наступний розділ"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "Домени, що не стежать за вами"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "В даний момент Privacy Badger лише перевіряє, чи сторонні елементи не використовують куки, локальне сховище HTML5, або відбиток canvas для стеження за вашим переглядом. Деякі з цих доменів можуть використовувати способи стеження, які Privacy Badger не в змозі виявити."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "Badger ще не вирішив, чи слід блокувати ці домени"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "Розширені"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "Вимкнути надсилання відвідуваних веб адрес в Google. Ця дія вимикає пропозиції для схожих сторінок, коли сторінку не вдається знайти."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "Не дозволяти сайтам стежити, на які посилання ви натискаєте (\"аудит гіперпосилань\")"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "Вимкнути попереднє завантаження"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "Перевіряти, чи \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>сторонні домени\u003C/a> підтримують \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>політику EFF щодо відмови від стеження\u003C/a>"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "всі"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "дозволені"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "заблоковані"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "частково заблоковані"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "сумісність з політикою DNT від EFF"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "контрольовані користувачем"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "Privacy Badger досі не виявив жодного \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>домену стеження\u003C/a>. Продовжуйте перегляд!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "Виявлено стеження $DOMAIN$ на таких вебсайтах:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "Домени стеження"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "Privacy Badger наразі вирішив заблокувати $COUNT$ потенційних $TRACKER_LINK_START$доменів стеження$TRACKER_LINK_END$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "Пошук доменів:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "Щоб виключити домени, поставте на початку свого пошукового запиту \"-\". Наприклад, \".co -.com\" буде показувати домени .co та .co.uk але не .com."
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "Фільтр за статусом:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "Фільтр за типом:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "Передавати вебсайтам сигнали \"\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Глобальний контроль приватності (Global Privacy Control)\u003C/a>\" та \"\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Не стежити (Do Not Track)\u003C/a>\""
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "Загальні налаштування"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Hide domains present in the latest pre-trained list"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "Не замінювати такі віджети:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Навчання у приватних/анонімних вікнах"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Увімкнення навчання у приватних/анонімних вікнах може залишати сліди історії перегляду на комп'ютері. Типово, Privacy Badger буде блокувати відомі йому елементи стеження в приватних/анонімних вікнах, але не буде вивчати нові. Ймовірно, ви захочете увімкнути цю функцію, якщо багато часу проводите у приватному/анонімному перегляді."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "Навчатися блокувати нові елементи стеження під час перегляду"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "Приватність"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "Ви справді хочете вилучити цей домен з Privacy Badger?"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "Показувати домени, що не стежать за вами"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "Показати домени, які Badger ще не вирішив блокувати"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "Увімкнути заміну віджетів"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Налаштування Privacy Badger"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "Винятки віджетів"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "При блокуванні кнопок соціальних мереж та інших потенційно корисних віджетів (відео, аудіо, коментарі), Privacy Badger може замінювати їх спеціальними елементами з можливістю вибіркової активації."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "Заміна віджетів"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "Винятки сайтів"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "Завжди дозволяти віджети на цих сайтах:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "На цій сторінці немає сторонніх ресурсів. Приватність на найвищому рівні!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "Вимкнути для цього сайту"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "Privacy Badger вимкнений на цьому сайті"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "Увімкнути для цього сайту"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "Допомога"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "Деякі вебсайти $LINK_START$використовують стеження посилань, щоб стежити за вами$LINK_END$ при переході за такими посиланнями. Privacy Badger вилучає стеження з таких посилань на цьому вебсайті.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "Захист від стеження посилань активний"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "Заблоковано $COUNT$ потенційних $LINK_START$елементів стеження$LINK_END$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "Немає заблокованих $LINK_START$елементів стеження$LINK_END$",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "Налаштування"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "Поширити"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "Немає чого робити на цій сторінці"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "Privacy Badger не працює на таких сторінках, як ця. Спробуйте переглянути інші сторінки."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "Вилучити все"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "Вилучити всі домени стеження"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "Вилучення всіх доменів стеження спричинить:\n\n  • Вилучення всіх даних, відомих Privacy Badger про стеження\n  • Privacy Badger не буде блокувати нічого, доки не виявить стеження під час роботи браузера"
+   },
+   "remove_button": {
+      "description": "",
+      "message": "Вилучити обрані"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "Повідомити про пошкоджений сайт"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "Скасувати"
+   },
+   "report_close": {
+      "description": "",
+      "message": "Закрити"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "Ой. Щось пішло не так."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "Дякуємо! Ми доберемося до причини виникнення проблеми."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "Ця дія призведе до автоматичного надсилання такої інформації до EFF: відвідувана сторінка, версія браузера, версія Privacy Badger, а також положення всіх перемикачів для цієї сторінки."
+   },
+   "reset": {
+      "description": "",
+      "message": "Відновити"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "Відновити домени стеження"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "Відновлення доменів стеження спричинить:\n\n  • Вилучення всіх даних про елементи стеження, які Privacy Badger виявив за час користування браузером\n  • Відновлення списку доменів стеження до останньої стандартної версії (для докладних відомостей відвідайте www.eff.org/badger-pretraining)"
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "Privacy Badger (privacybadger.org) - це розширення для браузера, що автоматично навчається блокувати невидимі елементи стеження. Privacy Badger розроблено некомерційною організацією Electronic Frontier Foundation, яка відстоює ваші права онлайн."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "Поширити на Facebook"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Share on Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "Поширити у Twitter"
+   },
+   "share_title": {
+      "description": "",
+      "message": "Розповісти друзям"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "Privacy Badger заблокував $COUNT$ потенційних елементів стеження на $DOMAIN$:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "Показувати лічильник стеження"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger змінив цю кнопку $BUTTON$",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Синхронізація:\u003Cul>\u003Cli>Необхідний обліковий запис Firefox/Chrome\u003C/li>\u003Cli>Вивантаження перезаписує наявні дані в хмарному сховищі\u003C/li>\u003Cli>Завантаження об'єднує списки сайтів, на яких Privacy Badger вимкнений\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "Змініть положення перемикача вправо, щоб дозволити домен"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "Змініть положення перемикача вліво, щоб заблокувати домен"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "Встановіть перемикач посередині, щоб заблокувати куки"
+   },
+   "upload": {
+      "description": "",
+      "message": "Вивантажити"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "Експорт вимкнених сайтів у хмарне сховище"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "Не вдалося вивантажити дані в хмарне сховище"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "Дані успішно вивантажено в хмарне сховище"
+   },
+   "version": {
+      "description": "",
+      "message": "версія $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "Що таке стеження?"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "Privacy Badger замінив $START_ANCHOR_TAG$цей віджет $WIDGET$ $END_ANCHOR_TAG$",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

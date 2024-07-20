@@ -1,0 +1,2778 @@
+{
+   "appDescription": {
+      "description": "The description of the extension, displayed in the web store.",
+      "message": "A neutral new tab page accented with a chosen color. Customize the layout, style, background and bookmarks in nightTab."
+   },
+   "appName": {
+      "description": "The name of the extension, displayed in the web store.",
+      "message": "nightTab"
+   },
+   "appShortName": {
+      "description": "The name of the extension, displayed in the web store.",
+      "message": "nightTab"
+   },
+   "bookmarkAddCancelText": {
+      "description": "Button to cancel adding a bookmark.",
+      "message": "Cancel"
+   },
+   "bookmarkAddHeading": {
+      "description": "Heading for bookmark add modal.",
+      "message": "Add a new Bookmark"
+   },
+   "bookmarkAddSuccessText": {
+      "description": "Button to confirm adding a bookmark.",
+      "message": "Add"
+   },
+   "bookmarkEditCancelText": {
+      "description": "Button to cancel editing a bookmark.",
+      "message": "Cancel"
+   },
+   "bookmarkEditHeadingName": {
+      "description": "Heading with a name for bookmark edit modal.",
+      "message": "Edit"
+   },
+   "bookmarkEditHeadingUnnamed": {
+      "description": "Heading without a name for bookmark edit modal.",
+      "message": "Edit unnamed bookmark"
+   },
+   "bookmarkEditSuccessText": {
+      "description": "Button to confirm editing a bookmark.",
+      "message": "Save"
+   },
+   "bookmarkFormAccentByCustomDescription": {
+      "description": "Description for bookmark tile to use a custom accent.",
+      "message": "Override the Theme Accent."
+   },
+   "bookmarkFormAccentByCustomLabel": {
+      "description": "Label for bookmark tile to use a custom accent.",
+      "message": "Custom Accent"
+   },
+   "bookmarkFormAccentByThemeDescription": {
+      "description": "Description for bookmark tile to use the theme accent.",
+      "message": "Use the Accent defined by the Theme."
+   },
+   "bookmarkFormAccentByThemeLabel": {
+      "description": "Label for bookmark tile to use the theme accent.",
+      "message": "Theme Accent"
+   },
+   "bookmarkFormAccentColor": {
+      "description": "Label for bookmark tile accent.",
+      "message": "Accent"
+   },
+   "bookmarkFormBackgroundImageHelperPara1": {
+      "description": "Helper text for bookmark tile background image URL.",
+      "message": "Background image only supports a direct URL to an image file."
+   },
+   "bookmarkFormBackgroundImageLabel": {
+      "description": "Label for bookmark tile background image URL.",
+      "message": "Background image URL"
+   },
+   "bookmarkFormBackgroundImagePlaceholder": {
+      "description": "Placeholder for bookmark tile background image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "bookmarkFormBackgroundOpacity": {
+      "description": "Range for bookmark tile background opacity.",
+      "message": "Opacity"
+   },
+   "bookmarkFormBackgroundShowDescription": {
+      "description": "Description for bookmark tile background.",
+      "message": "Display an Image or video Background on this Bookmark tile."
+   },
+   "bookmarkFormBackgroundShowLabel": {
+      "description": "Label for bookmark tile background.",
+      "message": "Show background"
+   },
+   "bookmarkFormBackgroundTypeImage": {
+      "description": "Radio for bookmark tile image background.",
+      "message": "Image"
+   },
+   "bookmarkFormBackgroundTypeVideo": {
+      "description": "Radio for bookmark tile video background.",
+      "message": "Video"
+   },
+   "bookmarkFormBackgroundVideoHelperPara1": {
+      "description": "Helper text for bookmark tile background video URL.",
+      "message": "Background video only supports a direct URL to a video file. Supports MP4 and WebM format."
+   },
+   "bookmarkFormBackgroundVideoHelperPara2": {
+      "description": "Helper text for bookmark tile background video URL.",
+      "message": "YouTube page URLs can not be used."
+   },
+   "bookmarkFormBackgroundVideoLabel": {
+      "description": "Label for bookmark tile background video URL.",
+      "message": "Background video URL"
+   },
+   "bookmarkFormBackgroundVideoPlaceholder": {
+      "description": "Placeholder for bookmark tile background video URL.",
+      "message": "https://www.example.com/video.mp4"
+   },
+   "bookmarkFormBorder": {
+      "description": "Range for bookmark tile border.",
+      "message": "Border"
+   },
+   "bookmarkFormColorByCustomDescription": {
+      "description": "Description for bookmark tile to use a custom colour.",
+      "message": "Override the Theme color."
+   },
+   "bookmarkFormColorByCustomLabel": {
+      "description": "Label for bookmark tile to use a custom colour.",
+      "message": "Custom color"
+   },
+   "bookmarkFormColorByThemeDescription": {
+      "description": "Description for bookmark tile to use the theme colour.",
+      "message": "Use the Color defined by the Theme."
+   },
+   "bookmarkFormColorByThemeLabel": {
+      "description": "Label for bookmark tile to use the theme colour.",
+      "message": "Theme color"
+   },
+   "bookmarkFormColorColor": {
+      "description": "Label for bookmark tile colour.",
+      "message": "Color"
+   },
+   "bookmarkFormColorOpacity": {
+      "description": "Range for bookmark tile opacity.",
+      "message": "Opacity"
+   },
+   "bookmarkFormDisplayAlignmentBottomCenter": {
+      "description": "Radio to align bookmark tile display bottom centre.",
+      "message": "Bottom Center"
+   },
+   "bookmarkFormDisplayAlignmentBottomLeft": {
+      "description": "Radio to align bookmark tile display bottom left.",
+      "message": "Bottom Left"
+   },
+   "bookmarkFormDisplayAlignmentBottomRight": {
+      "description": "Radio to align bookmark tile display bottom right.",
+      "message": "Bottom Right"
+   },
+   "bookmarkFormDisplayAlignmentCenterCenter": {
+      "description": "Radio to align bookmark tile display centre centre.",
+      "message": "Center Center"
+   },
+   "bookmarkFormDisplayAlignmentCenterLeft": {
+      "description": "Radio to align bookmark tile display centre left.",
+      "message": "Center Left"
+   },
+   "bookmarkFormDisplayAlignmentCenterRight": {
+      "description": "Radio to align bookmark tile display centre right.",
+      "message": "Center Right"
+   },
+   "bookmarkFormDisplayAlignmentLabel": {
+      "description": "Label for bookmark tile display alignment.",
+      "message": "Visual Element and Name alignment"
+   },
+   "bookmarkFormDisplayAlignmentTopCenter": {
+      "description": "Radio to align bookmark tile display top centre.",
+      "message": "Top Center"
+   },
+   "bookmarkFormDisplayAlignmentTopLeft": {
+      "description": "Radio to align bookmark tile display top left.",
+      "message": "Top Left"
+   },
+   "bookmarkFormDisplayAlignmentTopRight": {
+      "description": "Radio to align bookmark tile display top right.",
+      "message": "Top Right"
+   },
+   "bookmarkFormDisplayDirectionHorizontalDescription": {
+      "description": "Description for bookmark tile display horizontal direction.",
+      "message": "Arrange the Visual Element and Name side by side."
+   },
+   "bookmarkFormDisplayDirectionHorizontalLabel": {
+      "description": "Label for bookmark tile display horizontal direction.",
+      "message": "Horizontal"
+   },
+   "bookmarkFormDisplayDirectionVerticalDescription": {
+      "description": "Description for bookmark tile display vertical direction.",
+      "message": "Stack the Visual Element and Name one above the other."
+   },
+   "bookmarkFormDisplayDirectionVerticalLabel": {
+      "description": "Label for bookmark tile display vertical direction.",
+      "message": "Vertical"
+   },
+   "bookmarkFormDisplayGutter": {
+      "description": "Range for bookmark tile gutter space between visual and name.",
+      "message": "Gutter"
+   },
+   "bookmarkFormDisplayNameShow": {
+      "description": "Checkbox to show bookmark tile name.",
+      "message": "Show Name"
+   },
+   "bookmarkFormDisplayNameSize": {
+      "description": "Range for bookmark tile name size.",
+      "message": "Name size"
+   },
+   "bookmarkFormDisplayNameTextLabel": {
+      "description": "Label for bookmark tile name.",
+      "message": "Bookmark name"
+   },
+   "bookmarkFormDisplayNameTextPlaceholder": {
+      "description": "Placeholder for bookmark tile name.",
+      "message": "Example"
+   },
+   "bookmarkFormDisplayOrderNameVisualDescription": {
+      "description": "Description for bookmark tile display name then visual order.",
+      "message": "Place the Name before the Visual Element."
+   },
+   "bookmarkFormDisplayOrderNameVisualLabel": {
+      "description": "Label for bookmark tile display name then visual order.",
+      "message": "Name then visual element"
+   },
+   "bookmarkFormDisplayOrderVisualNameDescription": {
+      "description": "Description for bookmark tile display visual then name order.",
+      "message": "Place the Visual Element before the Name."
+   },
+   "bookmarkFormDisplayOrderVisualNameLabel": {
+      "description": "Label for bookmark tile display visual then name order.",
+      "message": "Visual element then name"
+   },
+   "bookmarkFormDisplayRotate": {
+      "description": "Range for bookmark tile visual rotation.",
+      "message": "Rotate"
+   },
+   "bookmarkFormDisplayTranslateLabel": {
+      "description": "Label for bookmark tile visual translation.",
+      "message": "Adjust Visual Element position"
+   },
+   "bookmarkFormDisplayTranslateX": {
+      "description": "Range for bookmark tile visual translation along the x axis.",
+      "message": "Horizontal"
+   },
+   "bookmarkFormDisplayTranslateY": {
+      "description": "Range for bookmark tile visual translation along the y axis.",
+      "message": "Vertical"
+   },
+   "bookmarkFormDisplayVisualIconRemove": {
+      "description": "Button to remove the bookmark tile visual icon.",
+      "message": "Remove icon"
+   },
+   "bookmarkFormDisplayVisualIconTextLabel": {
+      "description": "Label for bookmark tile visual icon.",
+      "message": "Bookmark icon"
+   },
+   "bookmarkFormDisplayVisualIconTextPlaceholder": {
+      "description": "Placeholder for bookmark tile visual icon.",
+      "message": "FontAwesome Brands or Icons"
+   },
+   "bookmarkFormDisplayVisualImageUrlLabel": {
+      "description": "Label for bookmark tile visual image URL.",
+      "message": "Bookmark image"
+   },
+   "bookmarkFormDisplayVisualImageUrlPlaceholder": {
+      "description": "Placeholder for bookmark tile visual image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "bookmarkFormDisplayVisualLetterTextLabel": {
+      "description": "Label for bookmark tile visual text.",
+      "message": "Bookmark letter"
+   },
+   "bookmarkFormDisplayVisualLetterTextPlaceholder": {
+      "description": "Placeholder for bookmark tile visual text.",
+      "message": "E"
+   },
+   "bookmarkFormDisplayVisualShadowHelperPara1": {
+      "description": "Helper text for bookmark tile visual shadow.",
+      "message": "Visual shadow only applies to a Letter or Icon."
+   },
+   "bookmarkFormDisplayVisualShadowSize": {
+      "description": "Range for bookmark tile visual shadow.",
+      "message": "Visual shadow"
+   },
+   "bookmarkFormDisplayVisualShowDescription": {
+      "description": "Description to show bookmark tile visual.",
+      "message": "Display Letters, Icon or an Image on this Bookmark hexagon."
+   },
+   "bookmarkFormDisplayVisualShowLabel": {
+      "description": "Checkbox to show bookmark tile visual.",
+      "message": "Show Visual Element"
+   },
+   "bookmarkFormDisplayVisualSize": {
+      "description": "Range for bookmark tile visual size.",
+      "message": "Visual size"
+   },
+   "bookmarkFormDisplayVisualTypeIcon": {
+      "description": "Radio for bookmark tile visual icon.",
+      "message": "Icon"
+   },
+   "bookmarkFormDisplayVisualTypeImage": {
+      "description": "Radio for bookmark tile visual image.",
+      "message": "Image"
+   },
+   "bookmarkFormDisplayVisualTypeLetter": {
+      "description": "Radio for bookmark tile visual letter.",
+      "message": "Letter"
+   },
+   "bookmarkFormGroupDestinationExisting": {
+      "description": "Radio for bookmark position in existing bookmark group.",
+      "message": "Existing Group"
+   },
+   "bookmarkFormGroupDestinationNew": {
+      "description": "Radio for bookmark position in new bookmark group.",
+      "message": "New Group"
+   },
+   "bookmarkFormGroupNameLabel": {
+      "description": "Label for bookmark group name.",
+      "message": "URL"
+   },
+   "bookmarkFormGroupNamePlaceholder": {
+      "description": "Placeholder for bookmark group name.",
+      "message": "Example group"
+   },
+   "bookmarkFormGroupPositionGroup": {
+      "description": "Select for bookmark group position.",
+      "message": "Group"
+   },
+   "bookmarkFormGroupPositionItem": {
+      "description": "Select for bookmark position in a group.",
+      "message": "Position"
+   },
+   "bookmarkFormGroupRandom": {
+      "description": "Button for random group name.",
+      "message": "Random Group name"
+   },
+   "bookmarkFormPropagateLayoutDescriptionPara1": {
+      "description": "Helper text to share current bookmark layout settings to all other bookmarks.",
+      "message": "When saved, apply the above Layout to all other Bookmarks."
+   },
+   "bookmarkFormPropagateLayoutDescriptionPara2": {
+      "description": "Helper text to share current bookmark layout settings to all other bookmarks.",
+      "message": "Only the Visual and Name size, Alignment, Order, Position and Gutter will be applied to all."
+   },
+   "bookmarkFormPropagateLayoutLabel": {
+      "description": "Checkbox to share current bookmark layout settings to all other bookmarks.",
+      "message": "Apply Layout to other Bookmarks"
+   },
+   "bookmarkFormPropagateThemeDescriptionPara1": {
+      "description": "Helper text to share current bookmark theme settings to all other bookmarks.",
+      "message": "When saved, apply the above Theme to all other Bookmarks."
+   },
+   "bookmarkFormPropagateThemeDescriptionPara2": {
+      "description": "Helper text to share current bookmark theme settings to all other bookmarks.",
+      "message": "Only the Color, Accent, Opacity, Border and Visual shadow will be applied to all."
+   },
+   "bookmarkFormPropagateThemeLabel": {
+      "description": "Checkbox to share current bookmark theme settings to all other bookmarks.",
+      "message": "Apply Theme to other Bookmarks"
+   },
+   "bookmarkFormPropagateVisualDescriptionPara1": {
+      "description": "Helper text to share current bookmark visual settings to all other bookmarks.",
+      "message": "The Letter, Icon, Image and Name text will not be shared."
+   },
+   "bookmarkFormPropagateVisualDescriptionPara2": {
+      "description": "Helper text to share current bookmark visual settings to all other bookmarks.",
+      "message": "Useful for hiding the Visual Elements or Names on all Bookmarks."
+   },
+   "bookmarkFormPropagateVisualLabel": {
+      "description": "Checkbox to share current bookmark visual settings to all other bookmarks.",
+      "message": "Apply \"Show Visual Element\" and \"Show Name\" to other Bookmarks"
+   },
+   "bookmarkFormSectionAddressDescription": {
+      "description": "Description for bookmark form address page.",
+      "message": "Be sure to use the full URL and include \"https://...\""
+   },
+   "bookmarkFormSectionAddressHeading": {
+      "description": "Heading for bookmark form address page.",
+      "message": "Address"
+   },
+   "bookmarkFormSectionLayoutDescription": {
+      "description": "Description for bookmark form layout page.",
+      "message": "Change the Visual Element and Name position, scale and orientation."
+   },
+   "bookmarkFormSectionLayoutHeading": {
+      "description": "Heading for bookmark form layout page.",
+      "message": "Layout"
+   },
+   "bookmarkFormSectionPositionDescription": {
+      "description": "Description for bookmark form position page.",
+      "message": "The Group to place this Bookmark in."
+   },
+   "bookmarkFormSectionPositionHeading": {
+      "description": "Heading for bookmark form position page.",
+      "message": "Position"
+   },
+   "bookmarkFormSectionThemeDescription": {
+      "description": "Description for bookmark form theme page.",
+      "message": "Override the Theme and Accent color."
+   },
+   "bookmarkFormSectionThemeHeading": {
+      "description": "Heading for bookmark form theme page.",
+      "message": "Theme"
+   },
+   "bookmarkFormSectionVisualDescription": {
+      "description": "Description for bookmark form visual page.",
+      "message": "Display Letters, Icon, Image and a Name on this Bookmark tile."
+   },
+   "bookmarkFormSectionVisualHeading": {
+      "description": "Heading for bookmark form visual page.",
+      "message": "Visual & Name"
+   },
+   "bookmarkFormShapeTallDescription": {
+      "description": "Description for bookmark tile tall shape.",
+      "message": "Bookmark tile to span across two rows."
+   },
+   "bookmarkFormShapeTallLabel": {
+      "description": "Label for bookmark tile tall shape.",
+      "message": "Tall tile"
+   },
+   "bookmarkFormShapeWideDescription": {
+      "description": "Description for bookmark tile wide shape.",
+      "message": "Bookmark tile to span across two columns."
+   },
+   "bookmarkFormShapeWideLabel": {
+      "description": "Label for bookmark tile wide shape.",
+      "message": "Wide tile"
+   },
+   "bookmarkFormTabAddress": {
+      "description": "Label for bookmark form address tab.",
+      "message": "Address"
+   },
+   "bookmarkFormTabLayout": {
+      "description": "Label for bookmark form layout tab.",
+      "message": "Layout"
+   },
+   "bookmarkFormTabPosition": {
+      "description": "Label for bookmark form position tab.",
+      "message": "Position"
+   },
+   "bookmarkFormTabTheme": {
+      "description": "Label for bookmark form theme tab.",
+      "message": "Theme"
+   },
+   "bookmarkFormTabVisual": {
+      "description": "Label for bookmark form visual tab.",
+      "message": "Visual & Name"
+   },
+   "bookmarkFormUrlLabel": {
+      "description": "Label for bookmark url.",
+      "message": "URL"
+   },
+   "bookmarkFormUrlPlaceholder": {
+      "description": "Placeholder for bookmark url.",
+      "message": "https://www.example.com/"
+   },
+   "bookmarkPreviewFull": {
+      "description": "Paragraph for bookmark full size preview.",
+      "message": "Preview"
+   },
+   "bookmarkPreviewHalf": {
+      "description": "Paragraph for bookmark half size preview.",
+      "message": "Preview (50% scale)"
+   },
+   "bookmarkRemoveCancelText": {
+      "description": "Button to cancel removing a bookmark.",
+      "message": "Cancel"
+   },
+   "bookmarkRemoveContent": {
+      "description": "Paragraph for bookmark remove modal.",
+      "message": "Are you sure you want to remove this Bookmark? This can not be undone."
+   },
+   "bookmarkRemoveHeadingName": {
+      "description": "Heading with a name for bookmark remove modal.",
+      "message": "Remove"
+   },
+   "bookmarkRemoveHeadingUnnamed": {
+      "description": "Heading without a name for bookmark remove modal.",
+      "message": "Remove unnamed bookmark"
+   },
+   "bookmarkRemoveSuccessText": {
+      "description": "Button to confirm removing a bookmark.",
+      "message": "Remove"
+   },
+   "bookmarkTileControlEdit": {
+      "description": "Button for bookmark tile edit control.",
+      "message": "Edit this bookmark"
+   },
+   "bookmarkTileControlLeft": {
+      "description": "Button for bookmark tile move left control.",
+      "message": "Move this bookmark left"
+   },
+   "bookmarkTileControlRemove": {
+      "description": "Button for bookmark tile remove control.",
+      "message": "Remove this bookmark"
+   },
+   "bookmarkTileControlRight": {
+      "description": "Button for bookmark tile move right control.",
+      "message": "Move this bookmark right"
+   },
+   "bookmarkTileControlSort": {
+      "description": "Button for bookmark tile drag to sort control.",
+      "message": "Drag bookmark to reorder"
+   },
+   "controlColorMixerMoreControls": {
+      "description": "Button to show more colour controls.",
+      "message": "More controls"
+   },
+   "controlColorMixerSliderB": {
+      "description": "Label for colour control blue.",
+      "message": "Blue"
+   },
+   "controlColorMixerSliderG": {
+      "description": "Label for colour control green.",
+      "message": "Green"
+   },
+   "controlColorMixerSliderH": {
+      "description": "Label for colour control hue.",
+      "message": "Hue"
+   },
+   "controlColorMixerSliderL": {
+      "description": "Label for colour control lightness.",
+      "message": "Lightness"
+   },
+   "controlColorMixerSliderR": {
+      "description": "Label for colour control red.",
+      "message": "Red"
+   },
+   "controlColorMixerSliderS": {
+      "description": "Label for colour control saturation.",
+      "message": "Saturation"
+   },
+   "controlColorRandom": {
+      "description": "Button for random colour.",
+      "message": "Random color"
+   },
+   "controlColorTextPlaceholder": {
+      "description": "Placeholder for hex colour code.",
+      "message": "Hex code"
+   },
+   "controlGeneralReset": {
+      "description": "Button for reset button control.",
+      "message": "Reset to default"
+   },
+   "dataClearAllCancelText": {
+      "description": "Button to cancel clear all data.",
+      "message": "Cancel"
+   },
+   "dataClearAllContentPara1": {
+      "description": "Paragraph for clear all data modal.",
+      "message": "Are you sure you want to clear all {appName} Bookmarks and Settings? {appName} will be restored to the default state."
+   },
+   "dataClearAllContentPara2": {
+      "description": "Paragraph for clear all data modal.",
+      "message": "This can not be undone."
+   },
+   "dataClearAllHeading": {
+      "description": "Heading for clear all data modal.",
+      "message": "Clear all {appName} data?"
+   },
+   "dataClearAllSuccessText": {
+      "description": "Button to confirm clear all data.",
+      "message": "Clear all data"
+   },
+   "dataClearPartialCancelText": {
+      "description": "Button to cancel clear partial data.",
+      "message": "Cancel"
+   },
+   "dataClearPartialContentPara1": {
+      "description": "Paragraph for clear partial data modal.",
+      "message": "Are you sure you want to clear all {appName} Settings? {appName} will be restored to the default state but your Bookmarks and Groups will remain."
+   },
+   "dataClearPartialContentPara2": {
+      "description": "Paragraph for clear partial data modal.",
+      "message": "This can not be undone."
+   },
+   "dataClearPartialHeading": {
+      "description": "Heading for clear partial data modal.",
+      "message": "Clear {appName} data except bookmarks?"
+   },
+   "dataClearPartialSuccessText": {
+      "description": "Button to confirm clear partial data.",
+      "message": "Clear all except bookmarks"
+   },
+   "dataExportBackup": {
+      "description": "String for backup data file name.",
+      "message": "backup"
+   },
+   "dataFeedbackEmpty": {
+      "description": "Paragraph for validation when backup data is empty.",
+      "message": "Nothing selected to import."
+   },
+   "dataFeedbackFailNotAppJson": {
+      "description": "Paragraph for when backup data is not valid JSON from this project.",
+      "message": "Not the right kind of JSON file. Make sure the selected file came from {appName}."
+   },
+   "dataFeedbackFailNotClipboardJson": {
+      "description": "Paragraph for when backup data in clipboard is not valid JSON.",
+      "message": "Not the right kind of data. Make sure the clipboard holds data from {appName} or a {appName} backup JSON file."
+   },
+   "dataFeedbackFailNotJson": {
+      "description": "Paragraph for when backup data is not valid JSON.",
+      "message": "Not a JSON file. Make sure the selected file came from {appName}."
+   },
+   "dataFeedbackSuccess": {
+      "description": "Paragraph for when backup data is valid.",
+      "message": "Success! Restoring {appName} Bookmarks and Settings."
+   },
+   "dataFormBookmarkIncludeDescriptionPara1": {
+      "description": "Description for restoring backup data bookmarks.",
+      "message": "This includes all Groups and Bookmarks"
+   },
+   "dataFormBookmarkIncludeDescriptionPara2": {
+      "description": "Description for restoring backup data bookmarks.",
+      "message": "Bookmarks will keep any custom Colors, Accents and Borders when imported."
+   },
+   "dataFormBookmarkIncludeLabel": {
+      "description": "Heading for restoring backup data bookmarks.",
+      "message": "Bookmarks"
+   },
+   "dataFormBookmarkTypeAppend": {
+      "description": "Radio to append to existing bookmarks when restoring from backup data.",
+      "message": "Add to existing bookmarks"
+   },
+   "dataFormBookmarkTypeRestore": {
+      "description": "Radio to replace existing bookmarks when restoring from backup data.",
+      "message": "Replace existing bookmarks"
+   },
+   "dataFormDescription": {
+      "description": "Description for restoring from backup data.",
+      "message": "You can restore all or parts of a backup file. The following data will be restored:"
+   },
+   "dataFormSetupIncludeDescription": {
+      "description": "Description to restore setting date from backup data.",
+      "message": "This includes Layout size and position, Header area size, Bookmark area size and other user settings."
+   },
+   "dataFormSetupIncludeLabel": {
+      "description": "Label to restore setting date from backup data.",
+      "message": "Settings"
+   },
+   "dataFormThemeIncludeDescription": {
+      "description": "Description to restore theme date from backup data.",
+      "message": "This includes the Color, Accent, Fonts, Background and any saved Custom Themes."
+   },
+   "dataFormThemeIncludeLabel": {
+      "description": "Label to restore theme date from backup data.",
+      "message": "Theme"
+   },
+   "dataRestoreCancelText": {
+      "description": "Button to cancel restoring from backup data.",
+      "message": "Cancel"
+   },
+   "dataRestoreHeading": {
+      "description": "Heading for restore backup data modal.",
+      "message": "Restoring from a {appName} backup"
+   },
+   "dataRestoreSuccessText": {
+      "description": "Button to confirm restoring from backup data.",
+      "message": "Import"
+   },
+   "groupAddCancelText": {
+      "description": "Button to cancel adding a bookmark group.",
+      "message": "Cancel"
+   },
+   "groupAddHeading": {
+      "description": "Heading for bookmark group add modal.",
+      "message": "Add a new Group"
+   },
+   "groupAddSuccessText": {
+      "description": "Button to confirm adding a bookmark group.",
+      "message": "Add"
+   },
+   "groupAreaControlCollapse": {
+      "description": "Button for bookmark group control to collapse bookmark group.",
+      "message": "Collapse this group"
+   },
+   "groupAreaControlDown": {
+      "description": "Button for bookmark group move down control.",
+      "message": "Move this group down"
+   },
+   "groupAreaControlEdit": {
+      "description": "Button for bookmark group edit control.",
+      "message": "Edit this group"
+   },
+   "groupAreaControlOpenAll": {
+      "description": "Button for bookmark group control to open all bookmarks.",
+      "message": "Open all bookmarks in this group"
+   },
+   "groupAreaControlRemove": {
+      "description": "Button for bookmark group remove control.",
+      "message": "Remove this group"
+   },
+   "groupAreaControlSort": {
+      "description": "Button for bookmark group drag to sort control.",
+      "message": "Drag group to reorder"
+   },
+   "groupAreaControlUp": {
+      "description": "Button for bookmark group move up control.",
+      "message": "Move this group up"
+   },
+   "groupEditCancelText": {
+      "description": "Button to cancel editing a bookmark group.",
+      "message": "Cancel"
+   },
+   "groupEditHeadingName": {
+      "description": "Heading with a name for bookmark group edit modal.",
+      "message": "Edit"
+   },
+   "groupEditHeadingUnnamed": {
+      "description": "Heading without a name for bookmark group edit modal.",
+      "message": "Edit unnamed group"
+   },
+   "groupEditSuccessText": {
+      "description": "Button to confirm editing a bookmark group.",
+      "message": "Save"
+   },
+   "groupFormCollapseShowDescription": {
+      "description": "Description to show bookmark group toolbar collapse button.",
+      "message": "The Collapse button will show or hide the Bookmarks in this Group."
+   },
+   "groupFormCollapseShowLabel": {
+      "description": "Label to show bookmark group toolbar collapse button.",
+      "message": "Show Collapse"
+   },
+   "groupFormDestination": {
+      "description": "Select for bookmark group position.",
+      "message": "Position"
+   },
+   "groupFormNameRandom": {
+      "description": "Button for random bookmark group name.",
+      "message": "Random Group name"
+   },
+   "groupFormNameShow": {
+      "description": "Checkbox to show bookmark group name.",
+      "message": "Show Group name"
+   },
+   "groupFormNameTextLabel": {
+      "description": "Label for bookmark group name.",
+      "message": "Group name"
+   },
+   "groupFormNameTextPlaceholder": {
+      "description": "Placeholder for bookmark group name.",
+      "message": "Example group"
+   },
+   "groupFormOpenAllShowDescription": {
+      "description": "Description to show bookmark group toolbar open all button.",
+      "message": "Open all button will appear if there is at least one Bookmark in this Group."
+   },
+   "groupFormOpenAllShowLabel": {
+      "description": "Label to show bookmark group toolbar open all button.",
+      "message": "Show Open all"
+   },
+   "groupFormSectionNameDescription": {
+      "description": "Description for bookmark group form name.",
+      "message": "Display a Name above this Group."
+   },
+   "groupFormSectionNameHeading": {
+      "description": "Heading for bookmark group form name.",
+      "message": "Name"
+   },
+   "groupFormSectionOrderingDescription": {
+      "description": "Description for bookmark group form order.",
+      "message": "The position of this Group."
+   },
+   "groupFormSectionOrderingHeading": {
+      "description": "Heading for bookmark group form order.",
+      "message": "Ordering"
+   },
+   "groupFormSectionToolbarDescription": {
+      "description": "Description for bookmark group form toolbar.",
+      "message": "Display controls to open all or show/hide the Bookmarks in this Group."
+   },
+   "groupFormSectionToolbarHeading": {
+      "description": "Heading for bookmark group form toolbar.",
+      "message": "Toolbar"
+   },
+   "groupRemoveCancelText": {
+      "description": "Button to cancel removing a bookmark group.",
+      "message": "Cancel"
+   },
+   "groupRemoveContent": {
+      "description": "Paragraph for bookmark group remove modal.",
+      "message": "Are you sure you want to remove this Group and all the Bookmarks within? This can not be undone."
+   },
+   "groupRemoveHeadingName": {
+      "description": "Heading with a name for bookmark group remove modal.",
+      "message": "Remove"
+   },
+   "groupRemoveHeadingUnnamed": {
+      "description": "Heading without a name for bookmark group remove modal.",
+      "message": "Remove unnamed group"
+   },
+   "groupRemoveSuccessText": {
+      "description": "Button to confirm removing a bookmark group.",
+      "message": "Remove"
+   },
+   "menuContentAppLink1": {
+      "description": "Link to the community on Reddit.",
+      "message": "Found on Reddit/r/{appName}."
+   },
+   "menuContentAppLink2": {
+      "description": "Link to project on GitHub.",
+      "message": "Found on GitHub."
+   },
+   "menuContentAppLink3": {
+      "description": "Link to project project licence.",
+      "message": "GNU General Public License v3.0."
+   },
+   "menuContentAppPara1": {
+      "description": "Paragraph on where to share with the community.",
+      "message": "Share your setup with the community."
+   },
+   "menuContentAppPara2": {
+      "description": "Paragraph on this project being open source.",
+      "message": "This project is open source."
+   },
+   "menuContentBookmarkGeneralHoverScaleShow": {
+      "description": "Checkbox for scale bookmark on hover.",
+      "message": "Grow on Bookmark hover"
+   },
+   "menuContentBookmarkGeneralLineShow": {
+      "description": "Checkbox for show bookmark line.",
+      "message": "Show Bookmark line"
+   },
+   "menuContentBookmarkGeneralNewTab": {
+      "description": "Checkbox for open bookmark in a new tab.",
+      "message": "Open Bookmarks in a new tab"
+   },
+   "menuContentBookmarkGeneralShadowShowDescription": {
+      "description": "Description to show bookmark shadow.",
+      "message": "Effects may not be visible if Theme Shadow is set to 0."
+   },
+   "menuContentBookmarkGeneralShadowShowLabel": {
+      "description": "label for show bookmark shadow.",
+      "message": "Show shadow on Bookmark hover"
+   },
+   "menuContentBookmarkGeneralShow": {
+      "description": "Checkbox for show bookmark.",
+      "message": "Show Bookmarks"
+   },
+   "menuContentBookmarkGeneralSize": {
+      "description": "Range for bookmark size.",
+      "message": "Bookmark size"
+   },
+   "menuContentBookmarkGeneralUrlShow": {
+      "description": "Checkbox for show bookmark url on hover.",
+      "message": "Show URL on Bookmark hover"
+   },
+   "menuContentBookmarkOrientationBottom": {
+      "description": "Radio for bookmark bottom orientation.",
+      "message": "Bottom"
+   },
+   "menuContentBookmarkOrientationHelperPara1": {
+      "description": "Helper text for bookmark orientation.",
+      "message": "Display the URL and Controls either at the top or bottom of a Bookmark Tile."
+   },
+   "menuContentBookmarkOrientationTop": {
+      "description": "Radio for bookmark top orientation.",
+      "message": "Top"
+   },
+   "menuContentBookmarkSortIcon": {
+      "description": "Button to sort bookmarks by Icon.",
+      "message": "By icon"
+   },
+   "menuContentBookmarkSortLetter": {
+      "description": "Button to sort bookmarks by letter.",
+      "message": "By letter"
+   },
+   "menuContentBookmarkSortName": {
+      "description": "Button to sort bookmarks by name.",
+      "message": "By name"
+   },
+   "menuContentBookmarkStyleBlockDescription": {
+      "description": "Description for bookmark block style.",
+      "message": "Square shaped Bookmark tiles."
+   },
+   "menuContentBookmarkStyleBlockLabel": {
+      "description": "Label for bookmark block style.",
+      "message": "Block"
+   },
+   "menuContentBookmarkStyleListDescription": {
+      "description": "Description for bookmark list style.",
+      "message": "Short and wide Bookmark tiles."
+   },
+   "menuContentBookmarkStyleListLabel": {
+      "description": "Label for bookmark list style.",
+      "message": "List"
+   },
+   "menuContentCoffeeButton": {
+      "description": "Link to buy me a coffee to support the project.",
+      "message": "Buy me a coffee"
+   },
+   "menuContentCoffeePara": {
+      "description": "Paragraph to explain the project is free.",
+      "message": "{appName} is free, appreciation is welcome in the form of coffee!"
+   },
+   "menuContentDataBackupClipboard": {
+      "description": "Button to copy backup data to clipboard.",
+      "message": "Copy to clipboard"
+   },
+   "menuContentDataBackupFile": {
+      "description": "Button to export backup data file.",
+      "message": "Export data"
+   },
+   "menuContentDataBackupHelperPara1": {
+      "description": "Helper text for data backup.",
+      "message": "Download a backup of your {appName} Bookmarks and Settings."
+   },
+   "menuContentDataBackupHelperPara2": {
+      "description": "Helper text for data backup.",
+      "message": "This file can later be imported on this or another device."
+   },
+   "menuContentDataClearAlertLink": {
+      "description": "Link for backup data.",
+      "message": "Backup your data"
+   },
+   "menuContentDataClearAlertPara": {
+      "description": "Alert for clear all data.",
+      "message": "You will lose Bookmarks by clearing all data."
+   },
+   "menuContentDataClearAll": {
+      "description": "Button to clear all data.",
+      "message": "Clear all data"
+   },
+   "menuContentDataClearHelperPara1": {
+      "description": "Helper text for clear all data.",
+      "message": "Clear all data to reset {appName} to the default state."
+   },
+   "menuContentDataClearHelperPara2": {
+      "description": "Helper text for clear all data.",
+      "message": "Alternatively, it is possible to wipe all settings but keep the current Bookmarks and Groups."
+   },
+   "menuContentDataClearPartial": {
+      "description": "Button to clear partial data.",
+      "message": "Clear all except bookmarks"
+   },
+   "menuContentDataRestoreClipboard": {
+      "description": "Button for clipboard backup data import.",
+      "message": "Import from clipboard"
+   },
+   "menuContentDataRestoreDrop": {
+      "description": "Label for backup data file drop area.",
+      "message": "Or drop a {appName} backup file here."
+   },
+   "menuContentDataRestoreFile": {
+      "description": "Input for backup data file import.",
+      "message": "Import from file"
+   },
+   "menuContentDataRestoreHelperPara1": {
+      "description": "Helper text for backup data import.",
+      "message": "Restore a previously exported {appName} backup."
+   },
+   "menuContentGroupAlignmentJustifyCenter": {
+      "description": "Label to justify group items centre.",
+      "message": "Center"
+   },
+   "menuContentGroupAlignmentJustifyLabel": {
+      "description": "Label to justify group items.",
+      "message": "Group details area alignment"
+   },
+   "menuContentGroupAlignmentJustifyLeft": {
+      "description": "Label to justify group items left.",
+      "message": "Left"
+   },
+   "menuContentGroupAlignmentJustifyRight": {
+      "description": "Label to justify group items right.",
+      "message": "Right"
+   },
+   "menuContentGroupAlignmentOrderBodyHeaderDescription": {
+      "description": "Helper text for bookmarks then group details order.",
+      "message": "Order the Bookmark area to appear before the Group detail area."
+   },
+   "menuContentGroupAlignmentOrderBodyHeaderLabel": {
+      "description": "Radio for bookmarks then group details order.",
+      "message": "Bookmarks then Group details"
+   },
+   "menuContentGroupAlignmentOrderHeaderBodyDescription": {
+      "description": "Helper text for group details then bookmarks order.",
+      "message": "Order the Group detail area to appear before the Bookmarks area."
+   },
+   "menuContentGroupAlignmentOrderHeaderBodyLabel": {
+      "description": "Radio for group details then bookmarks order.",
+      "message": "Group details then Bookmarks"
+   },
+   "menuContentGroupAlignmentOrderLabel": {
+      "description": "Label for group order.",
+      "message": "Group details order"
+   },
+   "menuContentGroupCollapseHide": {
+      "description": "Button to collapse all groups.",
+      "message": "Collapse all groups"
+   },
+   "menuContentGroupCollapseShow": {
+      "description": "Button to open all groups.",
+      "message": "Open all groups"
+   },
+   "menuContentGroupNameHelperPara1": {
+      "description": "Helper text for show and hide all group names.",
+      "message": "Group Names can also be changed by editing individual Groups."
+   },
+   "menuContentGroupNameHide": {
+      "description": "Button to hide all group names.",
+      "message": "Hide all"
+   },
+   "menuContentGroupNameShow": {
+      "description": "Button to show all group names.",
+      "message": "Show all"
+   },
+   "menuContentGroupNameSize": {
+      "description": "Range for group name size.",
+      "message": "Name size"
+   },
+   "menuContentGroupToolbarCollapseHelperPara1": {
+      "description": "Helper text for group toolbar collapse control.",
+      "message": "Group toolbar collapse button can also be changed by editing individual Groups."
+   },
+   "menuContentGroupToolbarCollapseHide": {
+      "description": "Button to hide all group toolbar collapse control.",
+      "message": "Hide all"
+   },
+   "menuContentGroupToolbarCollapseLabel": {
+      "description": "Label for group toolbar collapse control.",
+      "message": "Group Collapse control"
+   },
+   "menuContentGroupToolbarCollapseShow": {
+      "description": "Button to show all group toolbar collapse control.",
+      "message": "Show all"
+   },
+   "menuContentGroupToolbarOpenAllHelperPara1": {
+      "description": "Helper text for the bookmark group toolbar open all control.",
+      "message": "Group toolbar open all button can also be changed by editing individual Groups."
+   },
+   "menuContentGroupToolbarOpenAllHide": {
+      "description": "Button to hide all bookmark group toolbar open all control.",
+      "message": "Hide all"
+   },
+   "menuContentGroupToolbarOpenAllLabel": {
+      "description": "Label for the bookmark group toolbar open all control.",
+      "message": "Group Open all control"
+   },
+   "menuContentGroupToolbarOpenAllShow": {
+      "description": "Button to show all group toolbar open all control.",
+      "message": "Show all"
+   },
+   "menuContentGroupToolbarSize": {
+      "description": "Range for group toolbar size.",
+      "message": "Group toolbar size"
+   },
+   "menuContentHeaderAlignmentHelperPara1": {
+      "description": "Helper text to justify header items.",
+      "message": "Effects may not be visible if the Search box size is set to Auto and grows to fill available space."
+   },
+   "menuContentHeaderAlignmentJustifyCenter": {
+      "description": "Label to justify header items centre.",
+      "message": "Center"
+   },
+   "menuContentHeaderAlignmentJustifyLabel": {
+      "description": "Label to justify header items.",
+      "message": "Header item alignment"
+   },
+   "menuContentHeaderAlignmentJustifyLeft": {
+      "description": "Label to justify header items left.",
+      "message": "Left"
+   },
+   "menuContentHeaderAlignmentJustifyRight": {
+      "description": "Label to justify header items right.",
+      "message": "Right"
+   },
+   "menuContentHeaderClockHour24": {
+      "description": "Checkbox for 24 hour clock.",
+      "message": "24 hours"
+   },
+   "menuContentHeaderClockHourDisplayNumber": {
+      "description": "Radio for clock hour as numbers.",
+      "message": "As number"
+   },
+   "menuContentHeaderClockHourDisplayWord": {
+      "description": "Radio for clock hour as words.",
+      "message": "As word"
+   },
+   "menuContentHeaderClockHourShow": {
+      "description": "Checkbox for clock hour.",
+      "message": "Show hours"
+   },
+   "menuContentHeaderClockMeridiem": {
+      "description": "Checkbox for meridiem clock.",
+      "message": "AM / PM"
+   },
+   "menuContentHeaderClockMinuteDisplayNumber": {
+      "description": "Radio for clock minutes as numbers.",
+      "message": "As number"
+   },
+   "menuContentHeaderClockMinuteDisplayWord": {
+      "description": "Radio for clock minutes as words.",
+      "message": "As word"
+   },
+   "menuContentHeaderClockMinuteShow": {
+      "description": "Checkbox for clock minutes.",
+      "message": "Show minutes"
+   },
+   "menuContentHeaderClockNewLineDescription": {
+      "description": "Description for forcing clock onto a new line.",
+      "message": "Force on to a new line and separate from other Header items."
+   },
+   "menuContentHeaderClockNewLineLabel": {
+      "description": "Checkbox to force clock onto a new line.",
+      "message": "New line"
+   },
+   "menuContentHeaderClockSecondDisplayNumber": {
+      "description": "Radio for clock seconds as numbers.",
+      "message": "As number"
+   },
+   "menuContentHeaderClockSecondDisplayWord": {
+      "description": "Radio for clock seconds as words.",
+      "message": "As word"
+   },
+   "menuContentHeaderClockSecondShow": {
+      "description": "Checkbox for clock seconds.",
+      "message": "Show seconds"
+   },
+   "menuContentHeaderClockSeparatorLabel": {
+      "description": "Label for clock separator.",
+      "message": "Separator character"
+   },
+   "menuContentHeaderClockSeparatorPlaceholder": {
+      "description": "Placeholder for clock separator.",
+      "message": ":"
+   },
+   "menuContentHeaderClockSeparatorShow": {
+      "description": "Checkbox for clock separator.",
+      "message": "Show separator"
+   },
+   "menuContentHeaderClockSize": {
+      "description": "Range for clock size.",
+      "message": "Size"
+   },
+   "menuContentHeaderDateDateDisplayNumber": {
+      "description": "Radio for date as numbers.",
+      "message": "As number"
+   },
+   "menuContentHeaderDateDateDisplayOrdinal": {
+      "description": "Checkbox for ordinal date number.",
+      "message": "Ordinal numbers"
+   },
+   "menuContentHeaderDateDateDisplayWord": {
+      "description": "Radio for dates as words.",
+      "message": "As word"
+   },
+   "menuContentHeaderDateDateShow": {
+      "description": "Checkbox for date.",
+      "message": "Show Date"
+   },
+   "menuContentHeaderDateDayDisplayLengthLabel": {
+      "description": "Label for length of day of the week.",
+      "message": "Word length"
+   },
+   "menuContentHeaderDateDayDisplayLengthLong": {
+      "description": "Radio for a long length day of the week.",
+      "message": "Long"
+   },
+   "menuContentHeaderDateDayDisplayLengthShort": {
+      "description": "Radio for short length day of the week.",
+      "message": "Short"
+   },
+   "menuContentHeaderDateDayDisplayNumber": {
+      "description": "Radio for day as numbers.",
+      "message": "As number"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartLabel": {
+      "description": "Label for the start of the week.",
+      "message": "Start of the week"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartMonday": {
+      "description": "Radio for Monday as the start of the week.",
+      "message": "Monday"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartSunday": {
+      "description": "Radio for Sunday as the start of the week.",
+      "message": "Sunday"
+   },
+   "menuContentHeaderDateDayDisplayWord": {
+      "description": "Radio for day as words.",
+      "message": "As word"
+   },
+   "menuContentHeaderDateDayShow": {
+      "description": "Checkbox for day.",
+      "message": "Show Day"
+   },
+   "menuContentHeaderDateFormatDateMonth": {
+      "description": "Radio for date then month format.",
+      "message": "Date / Month"
+   },
+   "menuContentHeaderDateFormatLabel": {
+      "description": "Label for date format.",
+      "message": "Format"
+   },
+   "menuContentHeaderDateFormatMonthDate": {
+      "description": "Radio for month then date format.",
+      "message": "Month / Date"
+   },
+   "menuContentHeaderDateMonthDisplayLengthLabel": {
+      "description": "Label for length of month of the year.",
+      "message": "Word length"
+   },
+   "menuContentHeaderDateMonthDisplayLengthLong": {
+      "description": "Radio for a long length month of the year.",
+      "message": "Long"
+   },
+   "menuContentHeaderDateMonthDisplayLengthShort": {
+      "description": "Radio for a short length month of the year.",
+      "message": "Short"
+   },
+   "menuContentHeaderDateMonthDisplayNumber": {
+      "description": "Radio for month as numbers.",
+      "message": "As number"
+   },
+   "menuContentHeaderDateMonthDisplayOrdinal": {
+      "description": "Checkbox for ordinal month number.",
+      "message": "Ordinal numbers"
+   },
+   "menuContentHeaderDateMonthDisplayWord": {
+      "description": "Radio for month as words.",
+      "message": "As word"
+   },
+   "menuContentHeaderDateMonthShow": {
+      "description": "Checkbox for month.",
+      "message": "Show Month"
+   },
+   "menuContentHeaderDateNewLineDescription": {
+      "description": "Description for forcing date onto a new line.",
+      "message": "Force on to a new line and separate from other Header items."
+   },
+   "menuContentHeaderDateNewLineLabel": {
+      "description": "Checkbox to force date onto a new line.",
+      "message": "New line"
+   },
+   "menuContentHeaderDateSeparatorLabel": {
+      "description": "Checkbox for date separator.",
+      "message": "Separator character"
+   },
+   "menuContentHeaderDateSeparatorPlaceholder": {
+      "description": "Placeholder for date separator.",
+      "message": "/"
+   },
+   "menuContentHeaderDateSeparatorShow": {
+      "description": "Checkbox for date separator.",
+      "message": "Show separator"
+   },
+   "menuContentHeaderDateSize": {
+      "description": "Range for date size.",
+      "message": "Size"
+   },
+   "menuContentHeaderDateYearDisplayNumber": {
+      "description": "Radio for year as numbers.",
+      "message": "As number"
+   },
+   "menuContentHeaderDateYearDisplayWord": {
+      "description": "Radio for year as words.",
+      "message": "As word"
+   },
+   "menuContentHeaderDateYearShow": {
+      "description": "Checkbox for year.",
+      "message": "Show Year"
+   },
+   "menuContentHeaderGreetingCustomLabel": {
+      "description": "Label for custom header greeting.",
+      "message": "Custom greeting text"
+   },
+   "menuContentHeaderGreetingCustomPlaceholder": {
+      "description": "Placeholder for custom header greeting.",
+      "message": "Howdy"
+   },
+   "menuContentHeaderGreetingNameLabel": {
+      "description": "Input for header greeting name.",
+      "message": "Name"
+   },
+   "menuContentHeaderGreetingNamePlaceholder": {
+      "description": "Placeholder for header greeting name.",
+      "message": "Nickname, alias or superhero name"
+   },
+   "menuContentHeaderGreetingNewLineDescription": {
+      "description": "Description for forcing header greeting onto a new line.",
+      "message": "Force on to a new line and separate from other Header items."
+   },
+   "menuContentHeaderGreetingNewLineLabel": {
+      "description": "Checkbox to force header greeting onto a new line.",
+      "message": "New line"
+   },
+   "menuContentHeaderGreetingShow": {
+      "description": "Checkbox to show header greeting.",
+      "message": "Show Greeting"
+   },
+   "menuContentHeaderGreetingSize": {
+      "description": "Range for header greeting size.",
+      "message": "Size"
+   },
+   "menuContentHeaderGreetingTypeCustomDescriptionPara1": {
+      "description": "Description for custom header greeting.",
+      "message": "Use your own greeting."
+   },
+   "menuContentHeaderGreetingTypeCustomDescriptionPara2": {
+      "description": "Description for custom header greeting.",
+      "message": "Defaults to \"Good morning...\" if left blank."
+   },
+   "menuContentHeaderGreetingTypeCustomLabel": {
+      "description": "Radio for custom header greeting.",
+      "message": "Custom"
+   },
+   "menuContentHeaderGreetingTypeGood": {
+      "description": "Radio for \"Good morning\" header greeting.",
+      "message": "\"Good morning...\""
+   },
+   "menuContentHeaderGreetingTypeHello": {
+      "description": "Radio for \"Hello\" header greeting.",
+      "message": "\"Hello...\""
+   },
+   "menuContentHeaderGreetingTypeHi": {
+      "description": "Radio for \"Hi\" header greeting.",
+      "message": "\"Hi...\""
+   },
+   "menuContentHeaderGreetingTypeLabel": {
+      "description": "Label for header greeting.",
+      "message": "Wording"
+   },
+   "menuContentHeaderGreetingTypeNoneDescription": {
+      "description": "Description for no header greeting.",
+      "message": "Useful for displaying just the name."
+   },
+   "menuContentHeaderGreetingTypeNoneLabel": {
+      "description": "Radio for no header greeting.",
+      "message": "None"
+   },
+   "menuContentHeaderSearchEngineCustomNameLabel": {
+      "description": "Label for custom search name.",
+      "message": "Name"
+   },
+   "menuContentHeaderSearchEngineCustomNamePlaceholder": {
+      "description": "Placeholder for custom search name.",
+      "message": "Search engine name"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameHelperPara1": {
+      "description": "Helper text for custom search name.",
+      "message": "Sets the name attribute on the Search input field."
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameHelperPara2": {
+      "description": "Helper text for custom search name.",
+      "message": "This defines the name passed to the search engine when submitting. If not sure leave blank."
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameLabel": {
+      "description": "Label for custom search name.",
+      "message": "Name attribute"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNamePlaceholder": {
+      "description": "Placeholder for custom search name.",
+      "message": "q"
+   },
+   "menuContentHeaderSearchEngineCustomUrlHelperPara1": {
+      "description": "Helper text for custom search URL.",
+      "message": "Enter a web address with the search parameters, e.g.: \"https://vimeo.com/search?q=\""
+   },
+   "menuContentHeaderSearchEngineCustomUrlHelperPara2": {
+      "description": "Helper text for custom search URL.",
+      "message": "{appName} will add the search term entered into the Search box at the end of the above URL."
+   },
+   "menuContentHeaderSearchEngineCustomUrlLabel": {
+      "description": "Label for custom search URL.",
+      "message": "URL"
+   },
+   "menuContentHeaderSearchEngineCustomUrlPlaceholder": {
+      "description": "Placeholder for custom search URL.",
+      "message": "https://"
+   },
+   "menuContentHeaderSearchEngineSelectedCustom": {
+      "description": "Select option for custom search.",
+      "message": "Custom"
+   },
+   "menuContentHeaderSearchEngineSelectedLabel": {
+      "description": "Label for custom search.",
+      "message": "Search engine"
+   },
+   "menuContentHeaderSearchEngineTextJustifyCenter": {
+      "description": "Radio to justify the search text centre.",
+      "message": "Center"
+   },
+   "menuContentHeaderSearchEngineTextJustifyLabel": {
+      "description": "Label to justify search text.",
+      "message": "Search text alignment"
+   },
+   "menuContentHeaderSearchEngineTextJustifyLeft": {
+      "description": "Radio to justify the search text left.",
+      "message": "Left"
+   },
+   "menuContentHeaderSearchEngineTextJustifyRight": {
+      "description": "Radio to justify the search text right.",
+      "message": "Right"
+   },
+   "menuContentHeaderSearchNewLineDescription": {
+      "description": "Description for forcing search onto a new line.",
+      "message": "Force on to a new line and separate from other Header items."
+   },
+   "menuContentHeaderSearchNewLineLabel": {
+      "description": "Checkbox to force search onto a new line.",
+      "message": "New line"
+   },
+   "menuContentHeaderSearchNewTab": {
+      "description": "Checkbox for opening search results in a new tab.",
+      "message": "Open Search results in a new tab"
+   },
+   "menuContentHeaderSearchShow": {
+      "description": "Checkbox for search.",
+      "message": "Show Search"
+   },
+   "menuContentHeaderSearchSize": {
+      "description": "Range for search size.",
+      "message": "Size"
+   },
+   "menuContentHeaderSearchWidthAutoDescription": {
+      "description": "Description for auto search width.",
+      "message": "Search box will grow to best fit available space."
+   },
+   "menuContentHeaderSearchWidthAutoLabel": {
+      "description": "Radio for auto search width.",
+      "message": "Auto width"
+   },
+   "menuContentHeaderSearchWidthCustomDescription": {
+      "description": "Description for custom search width.",
+      "message": "Define how wide the Search box should be inside the Header Area."
+   },
+   "menuContentHeaderSearchWidthCustomLabel": {
+      "description": "Radio for custom search width.",
+      "message": "Custom width"
+   },
+   "menuContentHeaderSearchWidthLabel": {
+      "description": "Label for search width.",
+      "message": "Search box width"
+   },
+   "menuContentHeaderSearchWidthSize": {
+      "description": "Range for search width.",
+      "message": "Width"
+   },
+   "menuContentHeaderTransitionalNewLineDescription": {
+      "description": "Description for forcing transitional text onto a new line.",
+      "message": "Force on to a new line and separate from other Header items."
+   },
+   "menuContentHeaderTransitionalNewLineLabel": {
+      "description": "Checkbox to force transitional text onto a new line.",
+      "message": "New line"
+   },
+   "menuContentHeaderTransitionalShowHelperPara1": {
+      "description": "Helper text for header transitional text.",
+      "message": "Only available when Date or Time is shown."
+   },
+   "menuContentHeaderTransitionalShowLabel": {
+      "description": "Checkbox to show header transitional text.",
+      "message": "Show Transitional words"
+   },
+   "menuContentHeaderTransitionalSize": {
+      "description": "Range for transitional text size.",
+      "message": "Size"
+   },
+   "menuContentHeaderTransitionalTypeIts": {
+      "description": "Radio for \"It's \" transitional text.",
+      "message": "\"It's\""
+   },
+   "menuContentHeaderTransitionalTypeLabel": {
+      "description": "Label for transitional text type.",
+      "message": "Wording"
+   },
+   "menuContentHeaderTransitionalTypeTimeAndDate": {
+      "description": "Radio for \"The time and date is\" transitional text.",
+      "message": "\"The time and date is\""
+   },
+   "menuContentLanguageAlertLink": {
+      "description": "Link to help translate the project.",
+      "message": "Help translate {appName}"
+   },
+   "menuContentLanguageAlertPara": {
+      "description": "Alert for language select.",
+      "message": "Found a translation that isn't right?"
+   },
+   "menuContentLanguageSelect": {
+      "description": "Select for language.",
+      "message": "Language"
+   },
+   "menuContentLanguageSystem": {
+      "description": "Option to use the system defined language.",
+      "message": "Use system language"
+   },
+   "menuContentLayoutAlignmentBottomCenter": {
+      "description": "Radio for layout alignment bottom centre.",
+      "message": "Bottom Center"
+   },
+   "menuContentLayoutAlignmentBottomLeft": {
+      "description": "Radio for layout alignment bottom left.",
+      "message": "Bottom Left"
+   },
+   "menuContentLayoutAlignmentBottomRight": {
+      "description": "Radio for layout alignment bottom right.",
+      "message": "Bottom Right"
+   },
+   "menuContentLayoutAlignmentCenterCenter": {
+      "description": "Radio for layout alignment centre centre.",
+      "message": "Center Center"
+   },
+   "menuContentLayoutAlignmentCenterLeft": {
+      "description": "Radio for layout alignment centre left.",
+      "message": "Center Left"
+   },
+   "menuContentLayoutAlignmentCenterRight": {
+      "description": "Radio for layout alignment centre right.",
+      "message": "Center Right"
+   },
+   "menuContentLayoutAlignmentLabel": {
+      "description": "Label for layout alignment.",
+      "message": "Area alignment"
+   },
+   "menuContentLayoutAlignmentTopCenter": {
+      "description": "Radio for layout alignment top centre.",
+      "message": "Top Center"
+   },
+   "menuContentLayoutAlignmentTopLeft": {
+      "description": "Radio for layout alignment top left.",
+      "message": "Top Left"
+   },
+   "menuContentLayoutAlignmentTopRight": {
+      "description": "Radio for layout alignment top right.",
+      "message": "Top Right"
+   },
+   "menuContentLayoutAreaBookmarkJustifyCenter": {
+      "description": "Radio to justify the bookmark area centre.",
+      "message": "Center"
+   },
+   "menuContentLayoutAreaBookmarkJustifyHelper1Para1": {
+      "description": "Helper text for bookmark area justify.",
+      "message": "Effects may not be visible if the Bookmark Area is full width."
+   },
+   "menuContentLayoutAreaBookmarkJustifyHelper2Para1": {
+      "description": "Helper text for bookmark area justify.",
+      "message": "Only available when Layout Direction is Vertical and Header items are shown."
+   },
+   "menuContentLayoutAreaBookmarkJustifyLabel": {
+      "description": "Label for justify bookmark area.",
+      "message": "Bookmark area alignment"
+   },
+   "menuContentLayoutAreaBookmarkJustifyLeft": {
+      "description": "Radio to justify the bookmark area left.",
+      "message": "Left"
+   },
+   "menuContentLayoutAreaBookmarkJustifyRight": {
+      "description": "Radio to justify the bookmark area right.",
+      "message": "Right"
+   },
+   "menuContentLayoutAreaBookmarkWidth": {
+      "description": "Label for width of the bookmark area.",
+      "message": "Bookmark area width"
+   },
+   "menuContentLayoutAreaHeaderJustifyCenter": {
+      "description": "Radio to justify the header area centre.",
+      "message": "Center"
+   },
+   "menuContentLayoutAreaHeaderJustifyHelper1Para1": {
+      "description": "Helper text for header area justify.",
+      "message": "Effects may not be visible if the Header Area is full width."
+   },
+   "menuContentLayoutAreaHeaderJustifyHelper2Para1": {
+      "description": "Helper text for header area justify.",
+      "message": "Only available when Layout Direction is Vertical and Header items are shown."
+   },
+   "menuContentLayoutAreaHeaderJustifyLabel": {
+      "description": "Label for header area justify.",
+      "message": "Header area alignment"
+   },
+   "menuContentLayoutAreaHeaderJustifyLeft": {
+      "description": "Radio to justify the header area left.",
+      "message": "Left"
+   },
+   "menuContentLayoutAreaHeaderJustifyRight": {
+      "description": "Radio to justify the header area right.",
+      "message": "Right"
+   },
+   "menuContentLayoutAreaHeaderWidth": {
+      "description": "Label for header area width.",
+      "message": "Header area width"
+   },
+   "menuContentLayoutAreaWidth": {
+      "description": "Range for layout area width.",
+      "message": "Layout area width"
+   },
+   "menuContentLayoutDirectionHorizontalDescription": {
+      "description": "Helper text for layout direction horizontal.",
+      "message": "Stack the Header and Bookmarks in a row side by side."
+   },
+   "menuContentLayoutDirectionHorizontalLabel": {
+      "description": "Radio for layout direction horizontal.",
+      "message": "Align horizontal"
+   },
+   "menuContentLayoutDirectionVerticalDescription": {
+      "description": "Helper text for layout direction vertical.",
+      "message": "Stack the Header and Bookmarks in a column one above the other."
+   },
+   "menuContentLayoutDirectionVerticalLabel": {
+      "description": "Radio for layout direction vertical.",
+      "message": "Align vertical"
+   },
+   "menuContentLayoutGutter": {
+      "description": "Range for layout gutter.",
+      "message": "Space between Header and Bookmark items"
+   },
+   "menuContentLayoutOrderBookmarkHeaderDescription": {
+      "description": "Helper text for layout order bookmarks then header.",
+      "message": "Order the Bookmark area to appear before the Header area."
+   },
+   "menuContentLayoutOrderBookmarkHeaderLabel": {
+      "description": "Radio for layout order bookmarks then header.",
+      "message": "Bookmarks then Header"
+   },
+   "menuContentLayoutOrderHeaderBookmarkDescription": {
+      "description": "Helper text for layout order header then bookmarks.",
+      "message": "Order the Header area to appear before the Bookmarks area."
+   },
+   "menuContentLayoutOrderHeaderBookmarkLabel": {
+      "description": "Radio for layout order header then bookmarks.",
+      "message": "Header then Bookmarks"
+   },
+   "menuContentLayoutPadding": {
+      "description": "Range for layout padding.",
+      "message": "Space around Header and Bookmark Area"
+   },
+   "menuContentLayoutPageFaviconHelperPara1": {
+      "description": "Input for favicon URL.",
+      "message": "Not supported by all browsers."
+   },
+   "menuContentLayoutPageFaviconLabel": {
+      "description": "Label for favicon URL.",
+      "message": "Favicon URL"
+   },
+   "menuContentLayoutPageFaviconPlaceholder": {
+      "description": "Placeholder for favicon URL.",
+      "message": "https://www.example.com/favicon.svg"
+   },
+   "menuContentLayoutPageOverscrollActive": {
+      "description": "Checkbox for layout page overscroll.",
+      "message": "Scroll past end"
+   },
+   "menuContentLayoutPageOverscrollUnblurDescriptionPara1": {
+      "description": "Helper text for background image or video unblur on overscroll.",
+      "message": "Background image or video will unblur when scrolled to the bottom of the page."
+   },
+   "menuContentLayoutPageOverscrollUnblurDescriptionPara2": {
+      "description": "Helper text for background image or video unblur on overscroll.",
+      "message": "Image or video blur can be found under Theme Background."
+   },
+   "menuContentLayoutPageOverscrollUnblurLabel": {
+      "description": "Label for background image or video unblur on overscroll.",
+      "message": "Unblur background image or video"
+   },
+   "menuContentLayoutPageScrollbarAuto": {
+      "description": "Radio for page scrollbar auto.",
+      "message": "Auto"
+   },
+   "menuContentLayoutPageScrollbarHelperPara1": {
+      "description": "Helper text for page scrollbar.",
+      "message": "Not supported by all browsers."
+   },
+   "menuContentLayoutPageScrollbarLabel": {
+      "description": "Label for page scrollbar.",
+      "message": "Scrollbar"
+   },
+   "menuContentLayoutPageScrollbarNone": {
+      "description": "Radio for page scrollbar none.",
+      "message": "Hidden"
+   },
+   "menuContentLayoutPageScrollbarThin": {
+      "description": "Radio for page scrollbar thin.",
+      "message": "Thin"
+   },
+   "menuContentLayoutPageTitleLabel": {
+      "description": "Label for page title.",
+      "message": "Title"
+   },
+   "menuContentLayoutPageTitlePlaceholder": {
+      "description": "Input for page title.",
+      "message": "New Tab"
+   },
+   "menuContentLayoutScalingSize": {
+      "description": "Label for layout scaling.",
+      "message": "Global size"
+   },
+   "menuContentSupportLink1": {
+      "description": "Link to open an issue.",
+      "message": "Submit an Issue."
+   },
+   "menuContentSupportLink2": {
+      "description": "Link to the project wiki.",
+      "message": "Check the Wiki."
+   },
+   "menuContentSupportPageApplyToAll": {
+      "description": "Support link to project wiki.",
+      "message": "Applying bookmark settings to all"
+   },
+   "menuContentSupportPageBackgroundImageVideo": {
+      "description": "Support link to project wiki.",
+      "message": "Setting a background video or image"
+   },
+   "menuContentSupportPageBrowser": {
+      "description": "Support link to project wiki.",
+      "message": "Browser support"
+   },
+   "menuContentSupportPageCookies": {
+      "description": "Support link to project wiki.",
+      "message": "Cookies and cache"
+   },
+   "menuContentSupportPageData": {
+      "description": "Support link to project wiki.",
+      "message": "Data backup and restore"
+   },
+   "menuContentSupportPageFirefox": {
+      "description": "Support link to project wiki.",
+      "message": "Setting {appName} as your Firefox homepage"
+   },
+   "menuContentSupportPageLocalBackgroundImage": {
+      "description": "Support link to project wiki.",
+      "message": "Local background image"
+   },
+   "menuContentSupportPagePrivacy": {
+      "description": "Support link to project wiki.",
+      "message": "Respecting your privacy"
+   },
+   "menuContentSupportPageProtectedUrl": {
+      "description": "Support link to project wiki.",
+      "message": "Protected URLs"
+   },
+   "menuContentSupportPageRecovering": {
+      "description": "Support link to project wiki.",
+      "message": "Recovering settings and bookmarks"
+   },
+   "menuContentSupportPageResetting": {
+      "description": "Support link to project wiki.",
+      "message": "Resetting when opening the browser"
+   },
+   "menuContentSupportPara": {
+      "description": "Paragraph to get more support or provide feedback.",
+      "message": "For more support or feedback:"
+   },
+   "menuContentThemeAccentColor": {
+      "description": "Label for accent colour.",
+      "message": "Accent color"
+   },
+   "menuContentThemeAccentCycleActive": {
+      "description": "Checkbox for cycled accent colour.",
+      "message": "Auto change Accent hue"
+   },
+   "menuContentThemeAccentCycleAlert": {
+      "description": "Alert for cycled accent colour.",
+      "message": "Take care as a fast changing Accent hue may cause performance issues."
+   },
+   "menuContentThemeAccentCycleHelperPara1": {
+      "description": "Helper text for cycled accent colour.",
+      "message": "Auto change Accent hue will not work when the Accent color is a gray or black."
+   },
+   "menuContentThemeAccentCycleSpeed": {
+      "description": "Range for cycled accent colour speed.",
+      "message": "Change delay"
+   },
+   "menuContentThemeAccentCycleStep": {
+      "description": "Range for cycled accent colour steps.",
+      "message": "Change steps"
+   },
+   "menuContentThemeAccentPresetColorAqua": {
+      "description": "Label for aqua preset accent colour.",
+      "message": "Aqua"
+   },
+   "menuContentThemeAccentPresetColorBlue": {
+      "description": "Label for blue preset accent colour.",
+      "message": "Blue"
+   },
+   "menuContentThemeAccentPresetColorCyan": {
+      "description": "Label for cyan preset accent colour.",
+      "message": "Cyan"
+   },
+   "menuContentThemeAccentPresetColorFuchsia": {
+      "description": "Label for fuchsia preset accent colour.",
+      "message": "Fuchsia"
+   },
+   "menuContentThemeAccentPresetColorGreen": {
+      "description": "Label for green preset accent colour.",
+      "message": "Green"
+   },
+   "menuContentThemeAccentPresetColorGrey": {
+      "description": "Label for grey preset accent colour.",
+      "message": "Grey"
+   },
+   "menuContentThemeAccentPresetColorLime": {
+      "description": "Label for lime preset accent colour.",
+      "message": "Lime"
+   },
+   "menuContentThemeAccentPresetColorMagenta": {
+      "description": "Label for magenta preset accent colour.",
+      "message": "Magenta"
+   },
+   "menuContentThemeAccentPresetColorOrange": {
+      "description": "Label for orange preset accent colour.",
+      "message": "Orange"
+   },
+   "menuContentThemeAccentPresetColorPurple": {
+      "description": "Label for purple preset accent colour.",
+      "message": "Purple"
+   },
+   "menuContentThemeAccentPresetColorRed": {
+      "description": "Label for red preset accent colour.",
+      "message": "Red"
+   },
+   "menuContentThemeAccentPresetColorTeal": {
+      "description": "Label for teal preset accent colour.",
+      "message": "Teal"
+   },
+   "menuContentThemeAccentPresetColorYellow": {
+      "description": "Label for yellow preset accent colour.",
+      "message": "Yellow"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel1": {
+      "description": "Label for preset accent colour dark level 1.",
+      "message": "Dark"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel2": {
+      "description": "Label for preset accent colour dark level 2.",
+      "message": "Extra dark"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel3": {
+      "description": "Label for preset accent colour dark level 3.",
+      "message": "Super extra dark"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel1": {
+      "description": "Label for preset accent colour light level 1.",
+      "message": "Light"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel2": {
+      "description": "Label for preset accent colour light level 2.",
+      "message": "Extra light"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel3": {
+      "description": "Label for preset accent colour light level 3.",
+      "message": "Super extra light"
+   },
+   "menuContentThemeAccentRandomActive": {
+      "description": "Checkbox for random accent colour on load or refresh.",
+      "message": "Random Accent color on load/refresh"
+   },
+   "menuContentThemeAccentRandomRandomise": {
+      "description": "Button to randomise accent colour now.",
+      "message": "Randomize now"
+   },
+   "menuContentThemeAccentRandomStyleAny": {
+      "description": "Radio for any random accent colour on load or refresh.",
+      "message": "Any"
+   },
+   "menuContentThemeAccentRandomStyleDark": {
+      "description": "Radio for dark random accent colour on load or refresh.",
+      "message": "Dark"
+   },
+   "menuContentThemeAccentRandomStyleLight": {
+      "description": "Radio for light random accent colour on load or refresh.",
+      "message": "Light"
+   },
+   "menuContentThemeAccentRandomStylePastel": {
+      "description": "Radio for pastel random accent colour on load or refresh.",
+      "message": "Pastel"
+   },
+   "menuContentThemeAccentRandomStyleSaturated": {
+      "description": "Radio for saturated random accent colour on load or refresh.",
+      "message": "Saturated"
+   },
+   "menuContentThemeBackgroundColor": {
+      "description": "Label for background colour.",
+      "message": "Background color"
+   },
+   "menuContentThemeBackgroundGradientAngle": {
+      "description": "Label for background gradient angle.",
+      "message": "Background gradient angle"
+   },
+   "menuContentThemeBackgroundGradientLeft": {
+      "description": "Range for background gradient angle left.",
+      "message": "Background gradient start"
+   },
+   "menuContentThemeBackgroundGradientRight": {
+      "description": "Range for background gradient angle right.",
+      "message": "Background gradient end"
+   },
+   "menuContentThemeBackgroundImageAccent": {
+      "description": "Range background image accent.",
+      "message": "Accent"
+   },
+   "menuContentThemeBackgroundImageAlertPara1": {
+      "description": "Alert for image background.",
+      "message": "Local images can no longer be used. Images must be hosted somewhere online."
+   },
+   "menuContentThemeBackgroundImageAlertPara2": {
+      "description": "Alert for image background.",
+      "message": "Why has this changed?"
+   },
+   "menuContentThemeBackgroundImageBlur": {
+      "description": "Range background image blur.",
+      "message": "Blur"
+   },
+   "menuContentThemeBackgroundImageGrayscale": {
+      "description": "Range background image grayscale.",
+      "message": "Grayscale"
+   },
+   "menuContentThemeBackgroundImageOpacity": {
+      "description": "Range background image opacity.",
+      "message": "Opacity"
+   },
+   "menuContentThemeBackgroundImageScale": {
+      "description": "Range background image scale.",
+      "message": "Scale"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara1": {
+      "description": "Helper text for background image.",
+      "message": "Add more than one URL separated by spaces or on new lines for a random background image on load."
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara2": {
+      "description": "Helper text for background image.",
+      "message": "Unsplash can be used for random images, e.g.:"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara3": {
+      "description": "Helper text for background image.",
+      "message": "https://source.unsplash.com/random/1920x1080/?night,day,sky"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara4": {
+      "description": "Helper text for background image.",
+      "message": "Change parameters after .../random/ for more options. Loading times may vary."
+   },
+   "menuContentThemeBackgroundImageUrlLabel": {
+      "description": "Input for background image URL.",
+      "message": "URL"
+   },
+   "menuContentThemeBackgroundImageUrlPlaceholder": {
+      "description": "Placeholder for background image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "menuContentThemeBackgroundImageVignetteOpacity": {
+      "description": "Range for image vignette opacity.",
+      "message": "Vignette"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeLabel": {
+      "description": "Label for image vignette.",
+      "message": "Shade start and end"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeLeft": {
+      "description": "Range for image vignette left.",
+      "message": "Shade end"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeRight": {
+      "description": "Range for image vignette right.",
+      "message": "Shade start"
+   },
+   "menuContentThemeBackgroundTypeAccentDescription": {
+      "description": "Description for background type accent.",
+      "message": "Use the Accent color for the Background."
+   },
+   "menuContentThemeBackgroundTypeAccentLabel": {
+      "description": "Radio for background type accent.",
+      "message": "Background by Accent"
+   },
+   "menuContentThemeBackgroundTypeColor": {
+      "description": "Radio for background type colour.",
+      "message": "Custom color"
+   },
+   "menuContentThemeBackgroundTypeGradient": {
+      "description": "Radio for background type gradient.",
+      "message": "Gradient"
+   },
+   "menuContentThemeBackgroundTypeImage": {
+      "description": "Radio for background type image.",
+      "message": "Image"
+   },
+   "menuContentThemeBackgroundTypeThemeDescription": {
+      "description": "Description for background type theme.",
+      "message": "Use the Background color defined by the Theme."
+   },
+   "menuContentThemeBackgroundTypeThemeLabel": {
+      "description": "Radio for background type theme.",
+      "message": "Background by Theme"
+   },
+   "menuContentThemeBackgroundTypeVideo": {
+      "description": "Radio for background type video.",
+      "message": "Video"
+   },
+   "menuContentThemeBackgroundVideoAccent": {
+      "description": "Range background video accent.",
+      "message": "Accent"
+   },
+   "menuContentThemeBackgroundVideoAlertPara1": {
+      "description": "Alert for video background.",
+      "message": "YouTube page URLs can not be used."
+   },
+   "menuContentThemeBackgroundVideoAlertPara2": {
+      "description": "Alert for video background.",
+      "message": "How to link to a video file."
+   },
+   "menuContentThemeBackgroundVideoBlur": {
+      "description": "Range background video blur.",
+      "message": "Blur"
+   },
+   "menuContentThemeBackgroundVideoGrayscale": {
+      "description": "Range background video grayscale.",
+      "message": "Grayscale"
+   },
+   "menuContentThemeBackgroundVideoOpacity": {
+      "description": "Range background video opacity.",
+      "message": "Opacity"
+   },
+   "menuContentThemeBackgroundVideoScale": {
+      "description": "Range background video scale.",
+      "message": "Scale"
+   },
+   "menuContentThemeBackgroundVideoUrlHelperPara1": {
+      "description": "Helper text for background video.",
+      "message": "Background video only supports a direct URL to a video file. Supports MP4 and WebM format."
+   },
+   "menuContentThemeBackgroundVideoUrlHelperPara2": {
+      "description": "Helper text for background video.",
+      "message": "Add more than one URL separated by spaces or on new lines for a random background video on load."
+   },
+   "menuContentThemeBackgroundVideoUrlLabel": {
+      "description": "Input for background video URL.",
+      "message": "URL"
+   },
+   "menuContentThemeBackgroundVideoUrlPlaceholder": {
+      "description": "Placeholder for background video URL.",
+      "message": "https://www.example.com/video.mp4"
+   },
+   "menuContentThemeBackgroundVideoVignetteOpacity": {
+      "description": "Range for video vignette opacity.",
+      "message": "Vignette"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeLabel": {
+      "description": "Label for video vignette.",
+      "message": "Shade start and end"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeLeft": {
+      "description": "Range for video vignette left.",
+      "message": "Shade end"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeRight": {
+      "description": "Range for video vignette right.",
+      "message": "Shade start"
+   },
+   "menuContentThemeBookmarkColorByCustomDescription": {
+      "description": "Description for colour bookmark area background.",
+      "message": "Use a custom color behind the Bookmark area."
+   },
+   "menuContentThemeBookmarkColorByCustomLabel": {
+      "description": "Radio for colour bookmark area background.",
+      "message": "Custom color"
+   },
+   "menuContentThemeBookmarkColorByTransparentDescription": {
+      "description": "Description for transparent bookmark area background.",
+      "message": "No background color behind the Bookmark area."
+   },
+   "menuContentThemeBookmarkColorByTransparentLabel": {
+      "description": "Radio for transparent bookmark area background.",
+      "message": "Transparent"
+   },
+   "menuContentThemeBookmarkColorColor": {
+      "description": "Label for bookmark area background colour.",
+      "message": "Bookmark background color"
+   },
+   "menuContentThemeBookmarkColorLabel": {
+      "description": "Label for bookmark area colour.",
+      "message": "Bookmark background color"
+   },
+   "menuContentThemeBookmarkColorOpacity": {
+      "description": "Range for bookmark area background opacity.",
+      "message": "Background opacity"
+   },
+   "menuContentThemeBookmarkItemBorderHelperPara1": {
+      "description": "Helper text for bookmark border.",
+      "message": "Bookmark border can also be changed when editing individual Bookmarks."
+   },
+   "menuContentThemeBookmarkItemBorderHelperPara2": {
+      "description": "Helper text for bookmark border.",
+      "message": "The color of the Border is defined by the Accent which can also be changed when editing individual Bookmarks."
+   },
+   "menuContentThemeBookmarkItemBorderLabel": {
+      "description": "Label for bookmark item border.",
+      "message": "Bookmark border"
+   },
+   "menuContentThemeBookmarkItemRainbowAdd": {
+      "description": "Button to add a unique accent colour to each bookmark.",
+      "message": "Add unique accent to each Bookmark"
+   },
+   "menuContentThemeBookmarkItemRainbowHelperPara1": {
+      "description": "Helper text for unique accent colours for each bookmark.",
+      "message": "Bookmark custom Accent can also be changed when editing individual Bookmarks."
+   },
+   "menuContentThemeBookmarkItemRainbowRemove": {
+      "description": "Button to remove a unique accent colour to each bookmark.",
+      "message": "Remove all accent overrides"
+   },
+   "menuContentThemeColorContrastHelperPara1": {
+      "description": "Helper text for primary colour contrast.",
+      "message": "Move the Contrast range controls close together for a muted look."
+   },
+   "menuContentThemeColorContrastHelperPara2": {
+      "description": "Helper text for primary colour contrast.",
+      "message": "Move the Contrast range controls far apart from each other for a sharp vivid look."
+   },
+   "menuContentThemeColorContrastLabel": {
+      "description": "Label for primary colour contrast.",
+      "message": "Contrast range"
+   },
+   "menuContentThemeColorContrastLeft": {
+      "description": "Range for primary colour contrast left side.",
+      "message": "Contrast start"
+   },
+   "menuContentThemeColorContrastRight": {
+      "description": "Range for primary colour contrast right side.",
+      "message": "Contrast end"
+   },
+   "menuContentThemeColorRangePrimaryH": {
+      "description": "Range for primary colour hue.",
+      "message": "Primary color"
+   },
+   "menuContentThemeColorRangePrimaryS": {
+      "description": "Range for primary colour saturation.",
+      "message": "Saturation"
+   },
+   "menuContentThemeColorShadeHelperPara1": {
+      "description": "Helper text for primary colour.",
+      "message": "Backgrounds, Bookmarks and Modals use shades from the left."
+   },
+   "menuContentThemeColorShadeHelperPara2": {
+      "description": "Helper text for primary colour.",
+      "message": "Text and form elements use shades from the right."
+   },
+   "menuContentThemeColorShadeHelperPara3": {
+      "description": "Helper text for primary colour.",
+      "message": "For a light look switch to the Light Style and then select a Primary color. And vice versa for a dark look."
+   },
+   "menuContentThemeFontDisplayNameHelperLink": {
+      "description": "Link to google fonts.",
+      "message": "Find a Google Font"
+   },
+   "menuContentThemeFontDisplayNameHelperPara1": {
+      "description": "Helper text for display font name.",
+      "message": "Use a Google Font to customize the Clock, Date, Group names and Bookmark Letters."
+   },
+   "menuContentThemeFontDisplayNameHelperPara2": {
+      "description": "Helper text for display font name.",
+      "message": "Add a font name as it appears on Google Fonts, including capital letters and spaces, e.g.: enter \"Fredoka One\" or \"Kanit\"."
+   },
+   "menuContentThemeFontDisplayNameHelperPara3": {
+      "description": "Helper text for display font name.",
+      "message": "Clear the field to use the default font \"Fjalla One\"."
+   },
+   "menuContentThemeFontDisplayNameLabel": {
+      "description": "Input for display font name.",
+      "message": "Display font"
+   },
+   "menuContentThemeFontDisplayNamePlaceholder": {
+      "description": "Placeholder for display font name.",
+      "message": "Google font name"
+   },
+   "menuContentThemeFontDisplayStyleItalic": {
+      "description": "Radio for italic display font style.",
+      "message": "Italic"
+   },
+   "menuContentThemeFontDisplayStyleNormal": {
+      "description": "Radio for normal display font style.",
+      "message": "Normal"
+   },
+   "menuContentThemeFontDisplayWeightBold": {
+      "description": "Button for bold weight display font.",
+      "message": "Bold"
+   },
+   "menuContentThemeFontDisplayWeightHelperPara1": {
+      "description": "Helper text for display font weight.",
+      "message": "Not all fonts support all weights. Refer to the Google Font page to see which are available."
+   },
+   "menuContentThemeFontDisplayWeightLabel": {
+      "description": "Label for display font weight.",
+      "message": "Font weight"
+   },
+   "menuContentThemeFontDisplayWeightLight": {
+      "description": "Button for light weight display font.",
+      "message": "Light"
+   },
+   "menuContentThemeFontDisplayWeightRegular": {
+      "description": "Button for regular weight display font.",
+      "message": "Regular"
+   },
+   "menuContentThemeFontUiNameHelperLink": {
+      "description": "Link to google fonts.",
+      "message": "Find a Google Font"
+   },
+   "menuContentThemeFontUiNameHelperPara1": {
+      "description": "Helper text for UI font name.",
+      "message": "Use a Google Font to customize the Bookmark name, URL and form elements."
+   },
+   "menuContentThemeFontUiNameHelperPara2": {
+      "description": "Helper text for UI font name.",
+      "message": "Add a font name as it appears on Google Fonts, including capital letters and spaces, e.g.: enter \"Roboto\", \"Source Sans Pro\" or \"Noto Sans\"."
+   },
+   "menuContentThemeFontUiNameHelperPara3": {
+      "description": "Helper text for UI font name.",
+      "message": "Clear the field to use the default font \"Open Sans\"."
+   },
+   "menuContentThemeFontUiNameLabel": {
+      "description": "Input for UI font name.",
+      "message": "User interface font"
+   },
+   "menuContentThemeFontUiNamePlaceholder": {
+      "description": "Placeholder for UI font name.",
+      "message": "Google font name"
+   },
+   "menuContentThemeFontUiStyleItalic": {
+      "description": "Radio for italic UI font style.",
+      "message": "Italic"
+   },
+   "menuContentThemeFontUiStyleNormal": {
+      "description": "Radio for normal UI font style.",
+      "message": "Normal"
+   },
+   "menuContentThemeFontUiWeightBold": {
+      "description": "Button for bold weight UI font.",
+      "message": "Bold"
+   },
+   "menuContentThemeFontUiWeightHelperPara1": {
+      "description": "Helper text for UI font weight.",
+      "message": "Not all fonts support all weights. Refer to the Google Font page to see which are available."
+   },
+   "menuContentThemeFontUiWeightLabel": {
+      "description": "Label for UI font weight.",
+      "message": "Font weight"
+   },
+   "menuContentThemeFontUiWeightLight": {
+      "description": "Button for light weight UI font.",
+      "message": "Light"
+   },
+   "menuContentThemeFontUiWeightRegular": {
+      "description": "Button for regular weight UI font.",
+      "message": "Regular"
+   },
+   "menuContentThemeHeaderColorByCustomDescription": {
+      "description": "Description for colour header area background.",
+      "message": "Use a custom color behind the Header area."
+   },
+   "menuContentThemeHeaderColorByCustomLabel": {
+      "description": "Radio for colour header area background.",
+      "message": "Custom color"
+   },
+   "menuContentThemeHeaderColorByTransparentDescription": {
+      "description": "Description for transparent header area background.",
+      "message": "No background color behind the Header area."
+   },
+   "menuContentThemeHeaderColorByTransparentLabel": {
+      "description": "Radio for transparent header area background.",
+      "message": "Transparent"
+   },
+   "menuContentThemeHeaderColorColor": {
+      "description": "Label for header area background colour.",
+      "message": "Header background color"
+   },
+   "menuContentThemeHeaderColorLabel": {
+      "description": "Label for header area colour.",
+      "message": "Header background color"
+   },
+   "menuContentThemeHeaderColorOpacity": {
+      "description": "Range for header area background opacity.",
+      "message": "Background opacity"
+   },
+   "menuContentThemeLayoutColorBlurHelperPara1": {
+      "description": "Description for layout background blur.",
+      "message": "Not supported by all browsers."
+   },
+   "menuContentThemeLayoutColorBlurLabel": {
+      "description": "Range for layout background blur.",
+      "message": "Background blur"
+   },
+   "menuContentThemeLayoutColorByCustomDescription": {
+      "description": "Description for colour layout area background.",
+      "message": "Use a custom color behind the Layout."
+   },
+   "menuContentThemeLayoutColorByCustomLabel": {
+      "description": "Radio for colour layout area background.",
+      "message": "Custom color"
+   },
+   "menuContentThemeLayoutColorByTransparentDescription": {
+      "description": "Description for transparent layout area background.",
+      "message": "No background color behind the Layout."
+   },
+   "menuContentThemeLayoutColorByTransparentLabel": {
+      "description": "Radio for transparent layout area background.",
+      "message": "Transparent"
+   },
+   "menuContentThemeLayoutColorColor": {
+      "description": "Label for layout area background colour.",
+      "message": "Layout background color"
+   },
+   "menuContentThemeLayoutColorLabel": {
+      "description": "Label for layout area colour.",
+      "message": "Layout background color"
+   },
+   "menuContentThemeLayoutColorOpacity": {
+      "description": "Range for layout area background opacity.",
+      "message": "Background opacity"
+   },
+   "menuContentThemeLayoutDivider": {
+      "description": "Label for layout divider.",
+      "message": "Divider between Header and Bookmark area"
+   },
+   "menuContentThemeOpacityBookmark": {
+      "description": "Range for bookmark opacity.",
+      "message": "Bookmark"
+   },
+   "menuContentThemeOpacityGeneralHelperPara1": {
+      "description": "Helper text for all opacity.",
+      "message": "Change the opacity of Search bar, Bookmarks, Group controls and the Toolbar."
+   },
+   "menuContentThemeOpacityGeneralHelperPara2": {
+      "description": "Helper text for all opacity.",
+      "message": "Opacity can also be changed when editing individual Bookmarks."
+   },
+   "menuContentThemeOpacityGeneralLabel": {
+      "description": "Range for all opacity.",
+      "message": "All opacity"
+   },
+   "menuContentThemeOpacityGroupToolbar": {
+      "description": "Range for group toolbar opacity.",
+      "message": "Group toolbar"
+   },
+   "menuContentThemeOpacitySearch": {
+      "description": "Range for search opacity.",
+      "message": "Search box"
+   },
+   "menuContentThemeOpacityToolbar": {
+      "description": "Range for toolbar opacity.",
+      "message": "Toolbar"
+   },
+   "menuContentThemePresetHelperPara1": {
+      "description": "Helper text for preset theme.",
+      "message": "Applying a Preset will replace the current Color, Accent, Font, Style, Radius, Shadow, Shade and Background."
+   },
+   "menuContentThemeRadius": {
+      "description": "Range for radius.",
+      "message": "Corner radius"
+   },
+   "menuContentThemeSavedEdit": {
+      "description": "Button to enter edit mode for saved themes.",
+      "message": "Edit saved themes"
+   },
+   "menuContentThemeSavedHelperPara1": {
+      "description": "Helper text for saved themes.",
+      "message": "Saving a Theme will record the current Color, Accent, Font, Style, Opacity, Radius, Shadow, Shade and Background."
+   },
+   "menuContentThemeSavedSave": {
+      "description": "Button to save the current theme setup.",
+      "message": "Save current theme"
+   },
+   "menuContentThemeShadeBlurHelperPara1": {
+      "description": "Helper text for shade blur.",
+      "message": "Not supported by all browsers."
+   },
+   "menuContentThemeShadeBlurLabel": {
+      "description": "Range for shade blur.",
+      "message": "Shade blur"
+   },
+   "menuContentThemeShadeOpacity": {
+      "description": "Range for shade opacity.",
+      "message": "Shade opacity"
+   },
+   "menuContentThemeShadow": {
+      "description": "Range for shadow.",
+      "message": "Shadow size"
+   },
+   "menuContentThemeStyleAutomaticDescription": {
+      "description": "Description for automatic light or dark mode.",
+      "message": "Follow the system Light or Dark mode."
+   },
+   "menuContentThemeStyleAutomaticLabel": {
+      "description": "Radio for automatic light or dark mode.",
+      "message": "Automatic"
+   },
+   "menuContentThemeStyleDarkLabel": {
+      "description": "Radio for dark mode.",
+      "message": "Dark mode"
+   },
+   "menuContentThemeStyleLightLabel": {
+      "description": "Radio for light mode.",
+      "message": "Light mode"
+   },
+   "menuContentToolbarControlsAccent": {
+      "description": "Checkbox to show bookmark group toolbar accent control.",
+      "message": "Show Accent control"
+   },
+   "menuContentToolbarControlsAdd": {
+      "description": "Checkbox to show bookmark group toolbar add control.",
+      "message": "Show Add control"
+   },
+   "menuContentToolbarControlsEdit": {
+      "description": "Checkbox to show bookmark group toolbar edit control.",
+      "message": "Show Edit control"
+   },
+   "menuContentToolbarLocationCorner": {
+      "description": "Radio for bookmark group toolbar in a corner.",
+      "message": "In a corner"
+   },
+   "menuContentToolbarLocationHeader": {
+      "description": "Radio for bookmark group toolbar in header.",
+      "message": "In the Header"
+   },
+   "menuContentToolbarLocationHelperPara1": {
+      "description": "Helper text for toolbar location.",
+      "message": "Position the Toolbar inside the Header or in a corner of the window."
+   },
+   "menuContentToolbarLocationNewLineDescription": {
+      "description": "Description to force the bookmark group toolbar onto a new line.",
+      "message": "Force on to a new line and separate from other Header items."
+   },
+   "menuContentToolbarLocationNewLineHelperPara1": {
+      "description": "Helper text for the bookmark group toolbar on a new line.",
+      "message": "Only available when the Toolbar is positioned inside the Header."
+   },
+   "menuContentToolbarLocationNewLineLabel": {
+      "description": "Checkbox to force the bookmark group toolbar onto a new line.",
+      "message": "New line"
+   },
+   "menuContentToolbarPositionBottomLeft": {
+      "description": "Radio for bookmark group toolbar positioned in the bottom left corner.",
+      "message": "Bottom Left"
+   },
+   "menuContentToolbarPositionBottomRight": {
+      "description": "Radio for bookmark group toolbar positioned in the bottom right corner.",
+      "message": "Bottom Right"
+   },
+   "menuContentToolbarPositionHelper1Para1": {
+      "description": "Helper text for bookmark group toolbar corner location.",
+      "message": "Position the Toolbar in one of the four corners of the window."
+   },
+   "menuContentToolbarPositionHelper2Para1": {
+      "description": "Helper text for bookmark group toolbar corner location.",
+      "message": "Only available when the Toolbar is positioned in a corner."
+   },
+   "menuContentToolbarPositionLabel": {
+      "description": "Label for toolbar corner location.",
+      "message": "Toolbar position"
+   },
+   "menuContentToolbarPositionTopLeft": {
+      "description": "Radio for bookmark group toolbar positioned in the top left corner.",
+      "message": "Top Left"
+   },
+   "menuContentToolbarPositionTopRight": {
+      "description": "Radio for bookmark group toolbar positioned in the top right corner.",
+      "message": "Top Right"
+   },
+   "menuContentToolbarSize": {
+      "description": "Range for bookmark group toolbar size.",
+      "message": "Toolbar size"
+   },
+   "menuNavAppLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "{appName}"
+   },
+   "menuNavBookmarkLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Bookmark"
+   },
+   "menuNavBookmarkSubNavGeneral": {
+      "description": "Label for the settings menu navigation.",
+      "message": "General"
+   },
+   "menuNavBookmarkSubNavOrientation": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Orientation"
+   },
+   "menuNavBookmarkSubNavSort": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Sort"
+   },
+   "menuNavBookmarkSubNavStyle": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Style"
+   },
+   "menuNavCoffeeLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Coffee"
+   },
+   "menuNavDataLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Data"
+   },
+   "menuNavDataSubNavBackup": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Backup"
+   },
+   "menuNavDataSubNavClear": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Clear"
+   },
+   "menuNavDataSubNavRestore": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Restore"
+   },
+   "menuNavDebugLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Debug"
+   },
+   "menuNavDebugSubNavBookmark": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Bookmark"
+   },
+   "menuNavDebugSubNavButton": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Button"
+   },
+   "menuNavDebugSubNavIcon": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Icon"
+   },
+   "menuNavDebugSubNavInput": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Input"
+   },
+   "menuNavGroupLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Group"
+   },
+   "menuNavGroupSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Alignment"
+   },
+   "menuNavGroupSubNavCollapse": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Collapse"
+   },
+   "menuNavGroupSubNavName": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Name"
+   },
+   "menuNavGroupSubNavToolbar": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Toolbar"
+   },
+   "menuNavHeaderLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Header"
+   },
+   "menuNavHeaderSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Alignment"
+   },
+   "menuNavHeaderSubNavClock": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Clock"
+   },
+   "menuNavHeaderSubNavDate": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Date"
+   },
+   "menuNavHeaderSubNavGreeting": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Greeting"
+   },
+   "menuNavHeaderSubNavSearch": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Search"
+   },
+   "menuNavHeaderSubNavTransitional": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Transitional words"
+   },
+   "menuNavLanguageLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Language"
+   },
+   "menuNavLayoutLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Layout"
+   },
+   "menuNavLayoutSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Alignment"
+   },
+   "menuNavLayoutSubNavArea": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Area"
+   },
+   "menuNavLayoutSubNavGutter": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Gutter"
+   },
+   "menuNavLayoutSubNavPadding": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Padding"
+   },
+   "menuNavLayoutSubNavPage": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Page"
+   },
+   "menuNavLayoutSubNavScaling": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Scaling"
+   },
+   "menuNavSupportLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Support"
+   },
+   "menuNavThemeLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Theme"
+   },
+   "menuNavThemeSubNavAccent": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Accent"
+   },
+   "menuNavThemeSubNavBackground": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Background"
+   },
+   "menuNavThemeSubNavBookmark": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Bookmark"
+   },
+   "menuNavThemeSubNavColor": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Color"
+   },
+   "menuNavThemeSubNavFont": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Font"
+   },
+   "menuNavThemeSubNavHeader": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Header"
+   },
+   "menuNavThemeSubNavLayout": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Layout"
+   },
+   "menuNavThemeSubNavOpacity": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Opacity"
+   },
+   "menuNavThemeSubNavPreset": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Preset"
+   },
+   "menuNavThemeSubNavRadius": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Radius"
+   },
+   "menuNavThemeSubNavSaved": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Saved"
+   },
+   "menuNavThemeSubNavShade": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Shade"
+   },
+   "menuNavThemeSubNavShadow": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Shadow"
+   },
+   "menuNavThemeSubNavStyle": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Style"
+   },
+   "menuNavToolbarLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Toolbar"
+   },
+   "menuNavToolbarSubNavControls": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Controls"
+   },
+   "menuNavToolbarSubNavLocation": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Location"
+   },
+   "menuNavToolbarSubNavPosition": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Position"
+   },
+   "menuNavToolbarSubNavSize": {
+      "description": "Label for the settings menu navigation.",
+      "message": "Size"
+   },
+   "themeCustomAddCancelText": {
+      "description": "Button to cancel adding a saved custom theme.",
+      "message": "Cancel"
+   },
+   "themeCustomAddHeading": {
+      "description": "Heading for saved custom theme add modal.",
+      "message": "Save current theme"
+   },
+   "themeCustomAddSuccessText": {
+      "description": "Button to confirm adding a saved custom theme.",
+      "message": "Save"
+   },
+   "themeCustomEditCancelText": {
+      "description": "Button to cancel editing a saved custom theme.",
+      "message": "Cancel"
+   },
+   "themeCustomEditHeadingName": {
+      "description": "Heading with a name for saved custom theme edit modal.",
+      "message": "Edit"
+   },
+   "themeCustomEditHeadingUnnamed": {
+      "description": "Heading without a name for saved custom theme edit modal.",
+      "message": "Edit unnamed custom theme"
+   },
+   "themeCustomEditSuccessText": {
+      "description": "Button to confirm editing a saved custom theme.",
+      "message": "Remove"
+   },
+   "themeCustomFormNameLabel": {
+      "description": "Label for saved custom theme name.",
+      "message": "Name"
+   },
+   "themeCustomFormNamePlaceholder": {
+      "description": "Placeholder for saved custom theme name.",
+      "message": "Example theme"
+   },
+   "themeCustomFormRandom": {
+      "description": "Button for random saved custom theme name.",
+      "message": "Random theme name"
+   },
+   "themeCustomRemoveCancelText": {
+      "description": "Button to cancel removing a saved custom theme.",
+      "message": "Cancel"
+   },
+   "themeCustomRemoveContent": {
+      "description": "Paragraph for saved custom theme remove modal.",
+      "message": "Are you sure you want to remove this saved custom theme? This can not be undone."
+   },
+   "themeCustomRemoveHeadingName": {
+      "description": "Heading with a name for saved custom theme remove modal.",
+      "message": "Remove"
+   },
+   "themeCustomRemoveHeadingUnnamed": {
+      "description": "Heading without a name for saved custom theme remove modal.",
+      "message": "Remove unnamed custom theme"
+   },
+   "themeCustomRemoveSuccessText": {
+      "description": "Button to confirm removing a saved custom theme.",
+      "message": "Save"
+   },
+   "themeCustomTileControlEdit": {
+      "description": "Button to edit saved custom theme.",
+      "message": "Edit this saved custom theme"
+   },
+   "themeCustomTileControlRemove": {
+      "description": "Button to remove saved custom theme.",
+      "message": "Remove this saved custom theme"
+   },
+   "toolbarAccent": {
+      "description": "Button for toolbar accent control.",
+      "message": "Accent color"
+   },
+   "toolbarAddBookmark": {
+      "description": "Button for toolbar control to add a new bookmark group.",
+      "message": "New Bookmark"
+   },
+   "toolbarAddGroup": {
+      "description": "Button for toolbar control to add a new bookmark.",
+      "message": "New Group"
+   },
+   "toolbarAddLabel": {
+      "description": "Button for toolbar control to add.",
+      "message": "Add"
+   },
+   "toolbarEdit": {
+      "description": "Button for toolbar to toggle edit mode.",
+      "message": "Edit groups and bookmarks"
+   },
+   "toolbarSetting": {
+      "description": "Button for toolbar to open settings menu.",
+      "message": "Open settings menu"
+   }
+}

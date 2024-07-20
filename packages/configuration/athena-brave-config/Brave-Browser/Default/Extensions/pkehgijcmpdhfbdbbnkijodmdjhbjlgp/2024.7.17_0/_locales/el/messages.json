@@ -1,0 +1,771 @@
+{
+   "acknowledgement_action": {
+      "description": "",
+      "message": "Καταλαβαίνω"
+   },
+   "add_domain_button": {
+      "description": "",
+      "message": "Προσθήκη domain"
+   },
+   "allow_on_site": {
+      "description": "",
+      "message": "Να επιτρέπεται πάντα για αυτήν την ιστοσελίδα"
+   },
+   "allow_once": {
+      "description": "",
+      "message": "Να επιτρέπεται μία φορά"
+   },
+   "allowlist_domain_input_placeholder": {
+      "description": "",
+      "message": "π.χ. www.example.com, *.example.net, example.org"
+   },
+   "badger_status_allow": {
+      "description": "",
+      "message": "Η πρόσβαση από το $DOMAIN$ επιτράπηκε",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_block": {
+      "description": "",
+      "message": "$DOMAIN$ αποκλείστηκε",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_blocked_scripts": {
+      "description": "",
+      "message": "Αποκλεισμένα cookies και fingerprinting scripts από $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_cookieblock": {
+      "description": "",
+      "message": "Αποκλείστηκαν τα cookies από $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "badger_status_noaction": {
+      "description": "",
+      "message": "Το $DOMAIN$ αυτό δε σας ιχνηλατεί",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "breakage_warning_tooltip": {
+      "description": "",
+      "message": "Αν αποκλείσετε αυτό το domain, κάποιες ιστοσελίδες ενδέχεται να υπολειτουργούν"
+   },
+   "canvas_fingerprinting": {
+      "description": "",
+      "message": "canvas fingerprinting"
+   },
+   "copy_button_copied": {
+      "description": "",
+      "message": "Αντιγράφηκε"
+   },
+   "copy_button_initial": {
+      "description": "",
+      "message": "Αντιγραφή στο πρόχειρο"
+   },
+   "data_settings": {
+      "description": "",
+      "message": "Διαχείριση δεδομένων"
+   },
+   "deprecated_setting": {
+      "description": "",
+      "message": "Η παρακάτω ρύθμιση θα διαγραφεί σε μια μελλοντική έκδοση του Privacy Badger:"
+   },
+   "description": {
+      "description": "",
+      "message": "Το Privacy Badger μαθαίνει αυτόματα να αποκλείει \"αόρατους\" ιχνηλάτες."
+   },
+   "disabled_for_these_domains": {
+      "description": "",
+      "message": "\u003Cp>Το Privacy Badger είναι απενεργοποιημένο στις ακόλουθες ιστοσελίδες. Αυτό σημαίνει ότι δε θα αποκλείσει τίποτα όταν επισκέπτεστε μία από αυτές και δε θα στείλει κανένα από τα σήματα Do Not Track ή Global Privacy Control.\u003C/p>\u003Cp>Εάν νομίζετε ότι το Privacy Badger κάνει μία σελίδα να υπολειτουργεί ή θέλετε να επιτρέψετε σε μία συγκεκριμένη ιστοσελίδα να μοιράζεται ή να πουλάει τα δεδομένα σας, μπορείτε να πληκτρολογήσετε το domain στη παρακάτω φόρμα και να πατήσετε το κουμπί \"Προσθήκη domain\".\u003C/p>"
+   },
+   "disabled_sites": {
+      "description": "",
+      "message": "Απενεργοποιημένες ιστοσελίδες"
+   },
+   "dnt_tooltip": {
+      "description": "",
+      "message": "Αυτό το domain υπόσχεται ότι δε θα σας ιχνηλατήσει"
+   },
+   "domain_slider_allow_tooltip": {
+      "description": "",
+      "message": "Να επιτρέπεται"
+   },
+   "domain_slider_block_tooltip": {
+      "description": "",
+      "message": "Να αποκλειστεί τελείως"
+   },
+   "domain_slider_cookieblock_tooltip": {
+      "description": "",
+      "message": "Να αποκλειστούν τα cookies"
+   },
+   "donate_to_eff": {
+      "description": "",
+      "message": "Καντε μια δωρεα στο EFF"
+   },
+   "download": {
+      "description": "",
+      "message": "Λήψη"
+   },
+   "download_cloud": {
+      "description": "",
+      "message": "Εισαγωγή απενεργοποιημένων ιστοσελίδων από το cloud"
+   },
+   "download_cloud_failure": {
+      "description": "",
+      "message": "Δεν μπορέσαμε να κατεβάσουμε τα δεδομένα σας από το cloud."
+   },
+   "download_cloud_no_data": {
+      "description": "",
+      "message": "Δε βρέθηκαν δεδομένα στο cloud για λήψη."
+   },
+   "download_cloud_success": {
+      "description": "",
+      "message": "Τα δεδομένα από το cloud εισήχθησαν επιτυχώς."
+   },
+   "error_input": {
+      "description": "",
+      "message": "Τι πάει στραβά;"
+   },
+   "export_user_data": {
+      "description": "",
+      "message": "Εξαγωγή δεδομένων χρήστη"
+   },
+   "extension_error_text": {
+      "description": "",
+      "message": "\u003Ca href='https://www.eff.org/privacybadger#faq-I-found-a-bug!-What-do-I-do-now?' target='_blank'>πείτε μας\u003C/a> για το ακόλουθο πρόβλημα:"
+   },
+   "feed_the_badger_title": {
+      "description": "",
+      "message": "Πατήστε για να επιστρέψετε τον έλεγχο του domain στο Privacy Badger"
+   },
+   "firstRun_title": {
+      "description": "",
+      "message": "Ευχαριστούμε που εγκαταστήσατε το Privacy Badger!"
+   },
+   "first_run_text": {
+      "description": "",
+      "message": "Μάθετε πώς το Privacy Badger προστατεύει το απόρρητό σας"
+   },
+   "google_signin_tooltip": {
+      "description": "",
+      "message": "Για να μπορείτε να συνδεθείτε σε άλλες ιστοσελίδες με τον λογαριασμό σας Google, μετακινήστε αυτό το σλάιντερ δεξιά και επαναφορτώστε τη σελίδα"
+   },
+   "import": {
+      "description": "",
+      "message": "Εισαγωγή"
+   },
+   "import_select_file": {
+      "description": "",
+      "message": "Παρακαλώ επιλέξτε ένα αρχείο για την εισαγωγή."
+   },
+   "import_successful": {
+      "description": "",
+      "message": "Η λίστα ιχνηλατών και οι ρυθμίσεις ενημερώθηκαν επιτυχώς!"
+   },
+   "import_user_data": {
+      "description": "",
+      "message": "Εισαγωγή δεδομένων χρήστη"
+   },
+   "intro_beyond_ads": {
+      "description": "",
+      "message": "Εντοπίζει τους πονηρούς ιχνηλάτες"
+   },
+   "intro_beyond_ads_paragraph": {
+      "description": "",
+      "message": "Η \"αόρατη\" ιχνηλάτηση συμβαίνει με πολλούς τρόπους και οι διαφημίσεις είναι μόνο ένας από τους ορατούς. Το Privacy Badger στέλνει το σήμα \u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a> για να απενεργοποιήσει τη δυνατότητα διαμοιρασμού και πώλησης δεδομένων και το σήμα \u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a> για να ενημερώσει τις εταιρίες πως δεν επιθυμείτε να σας ιχνηλατούν. Εάν παρόλα αυτά οι ιστοσελίδες αγνοήσουν τις επιθυμίες σας, τότε το Privacy Badger θα μάθει αυτόματα να αποκλείει τους ιχνηλάτες ανεξάρτητα από το είδος τους."
+   },
+   "intro_by_eff": {
+      "description": "",
+      "message": "Ένα έργο της Electronic Frontier Foundation"
+   },
+   "intro_disable_button": {
+      "description": "",
+      "message": "Εάν νομίζετε πως το Privacy Badger είναι υπεύθυνο για την υπολειτουργία μιας ιστοσελίδας (αν για παράδειγμα ένα βίντεο δε λειτουργεί), μπορείτε να πατήσετε το κουμπί 'Απενεργοποίηση' ώστε η επέκταση να μην έχει πρόσβαση στην ιστοσελίδα αυτή."
+   },
+   "intro_donate1": {
+      "description": "",
+      "message": "Όταν χρησιμοποιείτε το Privacy Badger, ενώνεστε με την \u003Ca href='https://www.eff.org/' target='_blank'>Electronic Frontier Foundation\u003C/a> και εκατομμύρια ακόμα χρήστες για να παλέψετε για την ιδιωτικότητά σας. Είμαστε μία μη κερδοσκοπική εταιρία που παλεύει για τα δικαιώματά σας στο διαδίκτυο. Ευχαριστούμε για την επιλογή σας!"
+   },
+   "intro_donate_heading": {
+      "description": "",
+      "message": "Το απόρρητό σας είναι ομαδικό άθλημα!"
+   },
+   "intro_donate_subheading": {
+      "description": "",
+      "message": "Βοηθηστε μας κανοντας μια δωρεα και μοιραζοντας την υποστηριξη σας για τα εργαλεια μας"
+   },
+   "intro_learns": {
+      "description": "",
+      "message": "Μαθαίνει αυτόματα"
+   },
+   "intro_learns_paragraph": {
+      "description": "",
+      "message": "Αντί να διατηρείτε λίστες αποκλεισμού ιχνηλατών, το Privacy Badger ανακαλύπτει αυτόματα ιχνηλάτες βασιζόμενο στη συμπεριφορά τους."
+   },
+   "intro_link_policy": {
+      "description": "",
+      "message": "Πολιτική απορρήτου"
+   },
+   "intro_next_button": {
+      "description": "",
+      "message": "Περιηγηθειτε"
+   },
+   "intro_not_an_adblocker": {
+      "description": "",
+      "message": "Δεν είμαι ad blocker, είμαι κάτι διαφορετικό"
+   },
+   "intro_not_an_adblocker_paragraph": {
+      "description": "",
+      "message": "Το Privacy Badger αρχίζει να αποκλείει όταν δει τον ίδιο ιχνηλάτη σε τρεις διαφορετικές ιστοσελίδες. Τρεις παραβάσεις κι έξω!"
+   },
+   "intro_pin_instructions": {
+      "description": "",
+      "message": "To pin Privacy Badger's icon, click on the puzzle piece icon in your browser toolbar. Then, click on the pin icon next to Privacy Badger."
+   },
+   "intro_pin_nudge": {
+      "description": "",
+      "message": "First, $START_SPAN_TAG$pin Privacy Badger to your toolbar$END_SPAN_TAG$ for easy access to the \"$DISABLE_FOR_SITE$\" button.",
+      "placeholders": {
+         "disable_for_site": {
+            "content": "$1",
+            "example": "Disable for this site"
+         },
+         "end_span_tag": {
+            "content": "\u003C/span>"
+         },
+         "start_span_tag": {
+            "content": "\u003Cspan id='pin-nudge-cta'>"
+         }
+      }
+   },
+   "intro_privacy_note": {
+      "description": "",
+      "message": "Το Privacy Badger ΠΟΤΕ δε θα διαμοιραστεί το ιστορικό σας χωρίς την άδειά σας."
+   },
+   "intro_report_button": {
+      "description": "",
+      "message": "Μην ξεχάσετε να κάνετε κλικ στο κουμπί «Αναφορά ιστοσελίδας που υπολειτουργεί». Σεβόμαστε την ιδιωτικότητά σας, οπότε δε στέλνουμε αναφορές αυτόματα."
+   },
+   "intro_text1": {
+      "description": "",
+      "message": "Το Privacy Badger σας προστατεύει."
+   },
+   "intro_text2": {
+      "description": "",
+      "message": "Για να μάθετε πώς δουλεύει το Privacy Badger, πατήστε παρακάτω για ένα γρήγορο μάθημα."
+   },
+   "intro_welcome": {
+      "description": "",
+      "message": "Το Privacy Badger μαθαίνει αυτόματα να αποκλείει \"αόρατους\" ιχνηλάτες. Μάθετε πώς."
+   },
+   "invalid_domain": {
+      "description": "",
+      "message": "Προσθέστε μία έγκυρη domain ή διεύθυνση URL"
+   },
+   "invalid_json": {
+      "description": "",
+      "message": "Μη έγκυρο αρχείο JSON."
+   },
+   "learn_more_link": {
+      "description": "",
+      "message": "Επισκεφτείτε την ιστοσελίδα $LINK$ για να μάθετε περισσότερα.",
+      "placeholders": {
+         "link": {
+            "content": "$1",
+            "example": "\u003Ca href='https://example.com'>example.com\u003C/a>"
+         }
+      }
+   },
+   "learning_prompt_button": {
+      "description": "",
+      "message": "Μάθετε πως το Privacy Badger αλλάζει"
+   },
+   "learning_prompt_text1": {
+      "description": "",
+      "message": "Το Privacy Badger δε θα μαθαίνει πλέον από το ιστορικό σας αυτόματα."
+   },
+   "learning_prompt_text2": {
+      "description": "",
+      "message": "Πατήστε παρακάτω για να μάθετε περισσότερα."
+   },
+   "local_learning_warning": {
+      "description": "",
+      "message": "Αν ενεργοποιήσετε τη λειτουργία μάθησης, μπορεί να είστε περισσότερο αναγνωρίσιμοι σε ιστοσελίδες"
+   },
+   "manage_data_intro": {
+      "description": "",
+      "message": "Με την εισαγωγή δεδομένων:\u003Cul>\u003Cli>αντικαθίστανται οι γενικές ρυθμίσεις\u003C/li>\u003Cli>συγχωνεύεται η νέα με την παλιά λίστα απενεργοποιημένων ιστοσελίδων\u003C/li>\u003Cli>οι νέες πληροφορίες για ιχνηλάτες συγχωνεύονται με αυτές που το Privacy Badger ήδη γνώριζε\u003C/li>\u003Cli>αντικαθίστανται οι ρυθμίσεις slider\u003C/li>\u003C/ul>"
+   },
+   "name": {
+      "description": "",
+      "message": "Privacy Badger"
+   },
+   "next_section": {
+      "description": "",
+      "message": "επόμενη ενότητα"
+   },
+   "non_tracker": {
+      "description": "",
+      "message": "Τα domains παρακάτω δε φαίνεται πως σας ιχνηλατούν"
+   },
+   "non_tracker_tip": {
+      "description": "",
+      "message": "Προς το παρόν, το Privacy Badger ελέγχει μόνο αν τρίτοι χρησιμοποιούν cookies, τον τοπικό χώρο αποθήκευσης στην HTML5 ή canvas fingerprinting. Μερικά domains ενδέχεται να χρησιμοποιούν μεθόδους που το Privacy Badger δεν μπορεί να εντοπίσει."
+   },
+   "not_yet_blocked_header": {
+      "description": "",
+      "message": "Το Privacy Badger δεν έχει αποφασίσει ακόμα εάν τα ακόλουθα domains πρέπει να αποκλειστούν"
+   },
+   "options_advanced_settings": {
+      "description": "",
+      "message": "Για προχωρημένους"
+   },
+   "options_disable_floc": {
+      "description": "",
+      "message": "Disable Google's \"Privacy Sandbox\" ad tracking"
+   },
+   "options_disable_google_nav_error_service": {
+      "description": "",
+      "message": "Να απενεργοποιηθεί η αποστολή διευθύνσεων URL που επισκέπτομαι στη Google. Αυτή η επιλογή απενεργοποιεί προτάσεις για παρόμοιες σελίδες όταν κάποια δεν μπορεί να βρεθεί."
+   },
+   "options_disable_hyperlink_auditing": {
+      "description": "",
+      "message": "Να μην επιτρέπεται στους ιστοτόπους να παρακολουθούν τους συνδέσμους που πατάω (\"hyperlink auditing\")"
+   },
+   "options_disable_network_prediction": {
+      "description": "",
+      "message": "Να απενεργοποιηθεί η προφόρτωση"
+   },
+   "options_dnt_policy_setting": {
+      "description": "",
+      "message": "Να ελέγχεται εάν \u003Ca target='_blank' href='https://www.eff.org/privacybadger/faq#What-is-a-third-party-tracker'>τρίτα domains\u003C/a> συμβαδίζουν με \u003Ca target='_blank' href='https://www.eff.org/dnt-policy'>την Do Not Track πολιτική της EFF\u003C/a>"
+   },
+   "options_domain_filter_all": {
+      "description": "",
+      "message": "όλα"
+   },
+   "options_domain_filter_allow": {
+      "description": "",
+      "message": "επιτρεπόμενα"
+   },
+   "options_domain_filter_block": {
+      "description": "",
+      "message": "αποκλεισμένα"
+   },
+   "options_domain_filter_cookieblock": {
+      "description": "",
+      "message": "εν μέρει αποκλεισμένα"
+   },
+   "options_domain_filter_dnt": {
+      "description": "",
+      "message": "συνάδουν με την πολιτική DNT της EFF"
+   },
+   "options_domain_filter_user": {
+      "description": "",
+      "message": "ελεγχόμενα από τον χρήστη"
+   },
+   "options_domain_list_no_trackers": {
+      "description": "",
+      "message": "Το Privacy Badger δεν έχει εντοπίσει κανένα \u003Ca target='_blank' tabindex=-1 title='i18n_what_is_a_tracker' class='tooltip' href='https://www.eff.org/privacybadger#faq-What-is-a-third-party-tracker?'>domain που σας ιχνηλατεί\u003C/a> ακόμα. Συνεχίστε να σερφάρετε!"
+   },
+   "options_domain_list_sites": {
+      "description": "",
+      "message": "Εντοπίσαμε το domain $DOMAIN$ να σας ιχνηλατεί στις ακόλουθες ιστοσελίδες:",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "options_domain_list_tab": {
+      "description": "",
+      "message": "Ιχνηλάτες"
+   },
+   "options_domain_list_trackers": {
+      "description": "",
+      "message": "Το Privacy Badger έχει αποκλείσει $COUNT$ $TRACKER_LINK_START$domains που πιθανά σας ιχνηλατούν$TRACKER_LINK_END$ έως τώρα",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "900"
+         },
+         "tracker_link_end": {
+            "content": "\u003C/a>"
+         },
+         "tracker_link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "options_domain_search": {
+      "description": "",
+      "message": "Αναζήτηση domains:"
+   },
+   "options_domain_search_tooltip": {
+      "description": "",
+      "message": "Για να μη συμπεριλάβετε domains, τοποθετήστε μία παύλα (\"-\") πριν τον όρο αναζήτησης. Για παράδειγμα, \".co -.com\" θα συμπεριλάβει domains με καταλήξεις .co και .co.uk, αλλά όχι με κατάληξη .com."
+   },
+   "options_domain_status_filter": {
+      "description": "",
+      "message": "Με βάση την κατάστασή τους:"
+   },
+   "options_domain_type_filter": {
+      "description": "",
+      "message": "Με βάση τον τύπο τους:"
+   },
+   "options_enable_dnt_checkbox": {
+      "description": "",
+      "message": "Να στέλνονται τα σήματα \"\u003Ca href='https://globalprivacycontrol.org/' target='_blank'>Global Privacy Control\u003C/a>\" και \"\u003Ca href='https://www.eff.org/issues/do-not-track' target='_blank'>Do Not Track\u003C/a>\" στις ιστοσελίδες που επισκέπτομαι"
+   },
+   "options_general_settings": {
+      "description": "",
+      "message": "Γενικά"
+   },
+   "options_hide_in_seed": {
+      "description": "",
+      "message": "Απόκρυψη όλων των domains που βρίσκονται στην πιο πρόσφατη έκδοση της «έτοιμης» λίστας"
+   },
+   "options_hide_social_widgets": {
+      "description": "",
+      "message": "Να μην αντικαθίστανται τα ακόλουθα widgets:"
+   },
+   "options_incognito_setting": {
+      "description": "",
+      "message": "Να μαθαίνω και στην ανώνυμη περιήγηση"
+   },
+   "options_incognito_warning": {
+      "description": "",
+      "message": "Ενεργοποιώντας τη μάθηση στην Ανώνυμη περιήγηση ενδέχεται να αφήσει ίχνη ιστορικού στον υπολογιστή σας. Αυτόματα, το Privacy Badger θα αποκλείσει domains που ήδη ξέρει στην Ανώνυμη περιήγηση, αλλά δε θα μάθει για νέους ιχνηλάτες. Μπορείτε να ενεργοποιήσετε αυτήν την επιλογή εάν σερφάρετε συχνά ανώνυμα."
+   },
+   "options_learn_setting": {
+      "description": "",
+      "message": "Να μαθαίνω αυτόματα να αποκλείω ιχνηλάτες"
+   },
+   "options_privacy_settings": {
+      "description": "",
+      "message": "Απόρρητο"
+   },
+   "options_remove_origin_confirm": {
+      "description": "",
+      "message": "Είστε σίγουρος πως θέλετε να διαγράψατε αυτό το domain από το Privacy Badger;"
+   },
+   "options_show_nontracking_domains_checkbox": {
+      "description": "",
+      "message": "Να εμφανίζονται domains που δε φαίνεται να σας ιχνηλατούν"
+   },
+   "options_show_not_yet_blocked": {
+      "description": "",
+      "message": "Να δω και τα domains που το Privacy Badger δεν έχει αποφασίσει ακόμα να αποκλείσει"
+   },
+   "options_social_widgets_checkbox": {
+      "description": "",
+      "message": "Να αντικαθίστανται τα widget"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Ρυθμίσεις Privacy Badger"
+   },
+   "options_widget_exceptions_header": {
+      "description": "",
+      "message": "Εξαιρέσεις widget"
+   },
+   "options_widget_replacement_desc": {
+      "description": "",
+      "message": "Πολλές φορές επιλέγετε να μην εμφανίζονται τα κουμπιά μέσων κοινωνικής δικτύωσης, ή άλλα πιθανότατα χρήσιμα widgets (που σχετίζονται π.χ. με βίντεο, ήχο, σχόλια) σε συγκεκριμένες ιστοσελίδες. Το Privacy Badger σας δίνει τη δυνατότητα να τα αντικαταστήσετε με άλλα κουμπιά· κάνοντας κλικ σε αυτά, μπορείτε να ενεργοποιήσετε τα αρχικώς αποκλεισμένα widgets."
+   },
+   "options_widget_replacement_tab": {
+      "description": "",
+      "message": "Αντικατάσταση widget"
+   },
+   "options_widget_site_exceptions_header": {
+      "description": "",
+      "message": "Εξαιρέσεις ιστοσελίδων"
+   },
+   "options_widget_site_exceptions_label": {
+      "description": "",
+      "message": "Πάντα να επιτρέπονται τα widgets σε αυτές τις ιστοσελίδες:"
+   },
+   "popup_blocked": {
+      "description": "",
+      "message": "Κανένας τρίτος δεν έχει πρόσβαση σε αυτήν τη σελίδα. Ζήτω η ιδιωτικότητα!"
+   },
+   "popup_disable_for_site": {
+      "description": "",
+      "message": "Απενεργοποίηση σε αυτήν την ιστοσελίδα"
+   },
+   "popup_disabled_site_header": {
+      "description": "",
+      "message": "Το Privacy Badger είναι απενεργοποιημένο σε αυτήν την ιστοσελίδα"
+   },
+   "popup_enable_for_site": {
+      "description": "",
+      "message": "Ενεργοποίηση σε αυτήν την ιστοσελίδα"
+   },
+   "popup_help_button": {
+      "description": "",
+      "message": "Βοήθεια"
+   },
+   "popup_info_firstparty_description": {
+      "description": "",
+      "message": "Κάποιες ιστοσελίδες $LINK_START$χρησιμοποιούν μία μέθοδο παρακολούθησης$LINK_END$ και σας παρακολουθούν όταν κάνετε κλικ σε έναν. Το Privacy Badger αφαιρεί αυτήν τη δυνατότητα παρακολούθησης σε αυτήν την ιστοσελίδα.",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "\u003Ca href='https://privacybadger.org/#What-about-tracking-by-the-sites-I-actively-visit%2c-like-NYTimes.com-or-Facebook.com' target='_blank'>"
+         }
+      }
+   },
+   "popup_info_firstparty_protections": {
+      "description": "",
+      "message": "Η αποτροπή παρακολούθησης για συνδέσμους είναι ενεργή"
+   },
+   "popup_info_youtube": {
+      "description": "",
+      "message": "Ads not blocked? YouTube not working? It's probably not because of Privacy Badger."
+   },
+   "popup_instructions": {
+      "description": "",
+      "message": "$COUNT$ πιθανοί $LINK_START$ιχνηλάτες$LINK_END$ αποκλείστηκαν",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$2",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_instructions_no_trackers": {
+      "description": "",
+      "message": "0 $LINK_START$ιχνηλάτες$LINK_END$ αποκλείστηκαν",
+      "placeholders": {
+         "link_end": {
+            "content": "\u003C/a>"
+         },
+         "link_start": {
+            "content": "$1",
+            "example": "\u003Ca href='https://privacybadger.org/#What-is-a-third-party-tracker'>"
+         }
+      }
+   },
+   "popup_options_button": {
+      "description": "",
+      "message": "Επιλογές"
+   },
+   "popup_share_button": {
+      "description": "",
+      "message": "Μοιραστείτε"
+   },
+   "popup_special_page_header": {
+      "description": "",
+      "message": "Δεν υπάρχει τίποτα εδώ"
+   },
+   "popup_special_page_paragraph": {
+      "description": "",
+      "message": "Το Privacy Badger δε λειτουργεί σε ειδικές σελίδες όπως αυτή. Προσπαθήστε να σερφάρετε κάπου αλλού."
+   },
+   "remove_all": {
+      "description": "",
+      "message": "Διαγραφή όλων"
+   },
+   "remove_all_data": {
+      "description": "",
+      "message": "Διαγραφή των domain που σας ιχνηλατούν"
+   },
+   "remove_all_data_confirm": {
+      "description": "",
+      "message": "Η διαγραφή όλων των domains που σας ιχνηλατούν θα:\n\n• διαγράψει ό,τι ξέρει το Privacy Badger για ιχνηλάτες.\n• έχει ως αποτέλεσμα το Privacy Badger να μην αποκλείει τίποτα έως ότου ξαναμάθει από το ιστορικό σας."
+   },
+   "remove_button": {
+      "description": "",
+      "message": "Διαγραφή επιλεγμένων"
+   },
+   "report_broken_site": {
+      "description": "",
+      "message": "Αναφορά ιστοσελίδας που υπολειτουργεί"
+   },
+   "report_button": {
+      "description": "",
+      "message": "Send report"
+   },
+   "report_cancel": {
+      "description": "",
+      "message": "Άκυρο"
+   },
+   "report_close": {
+      "description": "",
+      "message": "Κλείσιμο"
+   },
+   "report_fail": {
+      "description": "",
+      "message": "Ουπς! Κάτι πήγε στραβά."
+   },
+   "report_input_label": {
+      "description": "",
+      "message": "Briefly describe the problem:"
+   },
+   "report_success": {
+      "description": "",
+      "message": "Ευχαριστούμε! Θα ξεκαθαρίσουμε αυτό το πρόβλημα."
+   },
+   "report_terms": {
+      "description": "",
+      "message": "Αυτή η ενέργεια θα στείλει αυτόματα τις ακόλουθες πληροφορίες στον EFF: την ιστοσελίδα που τώρα επισκέπτεστε, την έκδοση του φυλλομετρητή και του Privacy Badger και την κατάσταση των sliders σε αυτήν τη σελίδα."
+   },
+   "reset": {
+      "description": "",
+      "message": "Επαναφορά"
+   },
+   "reset_data": {
+      "description": "",
+      "message": "Επαναφορά των domains που σας ιχνηλατούν"
+   },
+   "reset_data_confirm": {
+      "description": "",
+      "message": "Η επαναφορά όλων των domains που σας ιχνηλατούν θα έχει ως αποτέλεσμα:\n\n• τη διαγραφή όλων των δεδομένων για ιχνηλάτες που το Privacy Badger έχει συγκεντρώσει από το ιστορικό περιήγησής σας.\n• την αντικατάσταση της υπάρχουσας λίστας domains με την τελευταία έκδοση μιας «έτοιμης» λίστας (δείτε την ιστοσελίδα www.eff.org/badger-pretraining για περισσότερες λεπτομέρειες)."
+   },
+   "share_base_message": {
+      "description": "",
+      "message": "Το Privacy Badger (privacybadger.org) είναι μία επέκταση που μαθαίνει αυτόματα να αποκλείει \"αόρατους\" ιχνηλάτες. Έχε δημιουργηθεί από την Electronic Frontier Foundation, μία μη κερδοσκοπική εταιρία που παλεύει για τα δικαιώματά σας στο διαδίκτυο."
+   },
+   "share_button_title_facebook": {
+      "description": "",
+      "message": "Μοιραστείτε στο Facebook"
+   },
+   "share_button_title_mastodon": {
+      "description": "",
+      "message": "Μοιραστείτε στο Mastodon"
+   },
+   "share_button_title_twitter": {
+      "description": "",
+      "message": "Μοιραστείτε στο Twitter"
+   },
+   "share_title": {
+      "description": "",
+      "message": "Πείτε το στους φίλους σας"
+   },
+   "share_tracker_header": {
+      "description": "",
+      "message": "Το Privacy Badger απέκλεισε $COUNT$ πιθανούς ιχνηλάτες στο $DOMAIN$:",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "15"
+         },
+         "domain": {
+            "content": "$2",
+            "example": "example.com"
+         }
+      }
+   },
+   "show_counter_checkbox": {
+      "description": "",
+      "message": "Να εμφανίζεται ο αριθμός των ιχνηλατών"
+   },
+   "social_tooltip_pb_has_replaced": {
+      "description": "",
+      "message": "Το Privacy Badger έχει αντικαταστήσει αυτό $BUTTON$ το κουμπί",
+      "placeholders": {
+         "button": {
+            "content": "$1",
+            "example": "Facebook Like"
+         }
+      }
+   },
+   "sync_intro": {
+      "description": "",
+      "message": "Ο συγχρονισμός με το cloud:\u003Cul>\u003Cli>απαιτεί συγχρονισμό Firefox/Chrome\u003C/li>\u003Cli>αντικαθιστά, μετά τη μεταφόρτωση, ό,τι δεδομένα υπήρχαν από το Privacy Badger\u003C/li>\u003Cli>συνδυάζει, μετά τη λήψη, τις λίστες ιστοσελίδων όπου το Privacy Badger είναι απενεργοποιημένο\u003C/li>\u003C/ul>"
+   },
+   "tooltip_allow": {
+      "description": "",
+      "message": "Μετακινήστε το σλάιντερ στα δεξιά για να επιτρέψετε πλήρως την πρόσβαση σε ένα domain"
+   },
+   "tooltip_block": {
+      "description": "",
+      "message": "Μετακινήστε το σλάιντερ αριστερά για να αποκλείσετε ένα domain"
+   },
+   "tooltip_cookieblock": {
+      "description": "",
+      "message": "Τοποθετήστε το σλάιντερ στο κέντρο για να αποκλείσετε τα cookies"
+   },
+   "upload": {
+      "description": "",
+      "message": "Μεταφόρτωση"
+   },
+   "upload_cloud": {
+      "description": "",
+      "message": "Εξαγωγή απενεργοποιημένων ιστοσελίδων στο cloud"
+   },
+   "upload_cloud_failure": {
+      "description": "",
+      "message": "Δεν μπορέσαμε να μεταφορτώσουμε τα δεδομένα σας στο cloud"
+   },
+   "upload_cloud_success": {
+      "description": "",
+      "message": "Τα δεδομένα σας μεταφορτώθηκαν επιτυχώς στο cloud"
+   },
+   "version": {
+      "description": "",
+      "message": "έκδοση $VERSION_STRING$",
+      "placeholders": {
+         "version_string": {
+            "content": "$1",
+            "example": "2018.8.1"
+         }
+      }
+   },
+   "what_is_a_tracker": {
+      "description": "",
+      "message": "Τι είναι ένας ιχνηλάτης;"
+   },
+   "widget_placeholder_pb_has_replaced": {
+      "description": "",
+      "message": "Το Privacy Badger έχει αντικαταστήσει $START_ANCHOR_TAG$αυτό $WIDGET$ το widget$END_ANCHOR_TAG$",
+      "placeholders": {
+         "end_anchor_tag": {
+            "content": "$3",
+            "example": "\u003C/a>"
+         },
+         "start_anchor_tag": {
+            "content": "$2",
+            "example": "\u003Ca href='https://vimeo.com/76979871'>"
+         },
+         "widget": {
+            "content": "$1",
+            "example": "Google reCAPTCHA"
+         }
+      }
+   }
+}

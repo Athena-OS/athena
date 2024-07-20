@@ -1,0 +1,2778 @@
+{
+   "appDescription": {
+      "description": "The description of the extension, displayed in the web store.",
+      "message": "nightTabでアクセントの色、レイアウト、スタイル、背景、ブックマークをカスタマイズします。"
+   },
+   "appName": {
+      "description": "The name of the extension, displayed in the web store.",
+      "message": "nightTab"
+   },
+   "appShortName": {
+      "description": "The name of the extension, displayed in the web store.",
+      "message": "nightTab"
+   },
+   "bookmarkAddCancelText": {
+      "description": "Button to cancel adding a bookmark.",
+      "message": "キャンセル"
+   },
+   "bookmarkAddHeading": {
+      "description": "Heading for bookmark add modal.",
+      "message": "新しいブックマークを追加する"
+   },
+   "bookmarkAddSuccessText": {
+      "description": "Button to confirm adding a bookmark.",
+      "message": "追加"
+   },
+   "bookmarkEditCancelText": {
+      "description": "Button to cancel editing a bookmark.",
+      "message": "キャンセル"
+   },
+   "bookmarkEditHeadingName": {
+      "description": "Heading with a name for bookmark edit modal.",
+      "message": "編集"
+   },
+   "bookmarkEditHeadingUnnamed": {
+      "description": "Heading without a name for bookmark edit modal.",
+      "message": "名前のないブックマークを編集する"
+   },
+   "bookmarkEditSuccessText": {
+      "description": "Button to confirm editing a bookmark.",
+      "message": "保存する"
+   },
+   "bookmarkFormAccentByCustomDescription": {
+      "description": "Description for bookmark tile to use a custom accent.",
+      "message": "テーマアクセントを上書きします。"
+   },
+   "bookmarkFormAccentByCustomLabel": {
+      "description": "Label for bookmark tile to use a custom accent.",
+      "message": "カスタムアクセント"
+   },
+   "bookmarkFormAccentByThemeDescription": {
+      "description": "Description for bookmark tile to use the theme accent.",
+      "message": "テーマで定義されたアクセントを使用します。"
+   },
+   "bookmarkFormAccentByThemeLabel": {
+      "description": "Label for bookmark tile to use the theme accent.",
+      "message": "テーマアクセント"
+   },
+   "bookmarkFormAccentColor": {
+      "description": "Label for bookmark tile accent.",
+      "message": "アクセント"
+   },
+   "bookmarkFormBackgroundImageHelperPara1": {
+      "description": "Helper text for bookmark tile background image URL.",
+      "message": "背景画像は、画像ファイルへの直接URLのみをサポートします。"
+   },
+   "bookmarkFormBackgroundImageLabel": {
+      "description": "Label for bookmark tile background image URL.",
+      "message": "背景画像のURL"
+   },
+   "bookmarkFormBackgroundImagePlaceholder": {
+      "description": "Placeholder for bookmark tile background image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "bookmarkFormBackgroundOpacity": {
+      "description": "Range for bookmark tile background opacity.",
+      "message": "不透明度"
+   },
+   "bookmarkFormBackgroundShowDescription": {
+      "description": "Description for bookmark tile background.",
+      "message": "このブックマークタイルに画像またはビデオの背景を表示します。"
+   },
+   "bookmarkFormBackgroundShowLabel": {
+      "description": "Label for bookmark tile background.",
+      "message": "背景を表示"
+   },
+   "bookmarkFormBackgroundTypeImage": {
+      "description": "Radio for bookmark tile image background.",
+      "message": "画像"
+   },
+   "bookmarkFormBackgroundTypeVideo": {
+      "description": "Radio for bookmark tile video background.",
+      "message": "ビデオ"
+   },
+   "bookmarkFormBackgroundVideoHelperPara1": {
+      "description": "Helper text for bookmark tile background video URL.",
+      "message": "バックグラウンドビデオは、ビデオファイルへの直接URLのみをサポートします。 MP4およびWebM形式をサポートします。"
+   },
+   "bookmarkFormBackgroundVideoHelperPara2": {
+      "description": "Helper text for bookmark tile background video URL.",
+      "message": "YouTubeページのURLは使用できません。"
+   },
+   "bookmarkFormBackgroundVideoLabel": {
+      "description": "Label for bookmark tile background video URL.",
+      "message": "背景ビデオのURL"
+   },
+   "bookmarkFormBackgroundVideoPlaceholder": {
+      "description": "Placeholder for bookmark tile background video URL.",
+      "message": "https://www.example.com/video.mp4"
+   },
+   "bookmarkFormBorder": {
+      "description": "Range for bookmark tile border.",
+      "message": "国境"
+   },
+   "bookmarkFormColorByCustomDescription": {
+      "description": "Description for bookmark tile to use a custom colour.",
+      "message": "テーマの色を上書きします。"
+   },
+   "bookmarkFormColorByCustomLabel": {
+      "description": "Label for bookmark tile to use a custom colour.",
+      "message": "カスタムカラー"
+   },
+   "bookmarkFormColorByThemeDescription": {
+      "description": "Description for bookmark tile to use the theme colour.",
+      "message": "テーマで定義された色を使用します。"
+   },
+   "bookmarkFormColorByThemeLabel": {
+      "description": "Label for bookmark tile to use the theme colour.",
+      "message": "テーマカラー"
+   },
+   "bookmarkFormColorColor": {
+      "description": "Label for bookmark tile colour.",
+      "message": "色"
+   },
+   "bookmarkFormColorOpacity": {
+      "description": "Range for bookmark tile opacity.",
+      "message": "不透明度"
+   },
+   "bookmarkFormDisplayAlignmentBottomCenter": {
+      "description": "Radio to align bookmark tile display bottom centre.",
+      "message": "下部中央"
+   },
+   "bookmarkFormDisplayAlignmentBottomLeft": {
+      "description": "Radio to align bookmark tile display bottom left.",
+      "message": "左下"
+   },
+   "bookmarkFormDisplayAlignmentBottomRight": {
+      "description": "Radio to align bookmark tile display bottom right.",
+      "message": "右下"
+   },
+   "bookmarkFormDisplayAlignmentCenterCenter": {
+      "description": "Radio to align bookmark tile display centre centre.",
+      "message": "センターセンター"
+   },
+   "bookmarkFormDisplayAlignmentCenterLeft": {
+      "description": "Radio to align bookmark tile display centre left.",
+      "message": "中央左"
+   },
+   "bookmarkFormDisplayAlignmentCenterRight": {
+      "description": "Radio to align bookmark tile display centre right.",
+      "message": "中道右派"
+   },
+   "bookmarkFormDisplayAlignmentLabel": {
+      "description": "Label for bookmark tile display alignment.",
+      "message": "視覚要素と名前の配置"
+   },
+   "bookmarkFormDisplayAlignmentTopCenter": {
+      "description": "Radio to align bookmark tile display top centre.",
+      "message": "トップセンター"
+   },
+   "bookmarkFormDisplayAlignmentTopLeft": {
+      "description": "Radio to align bookmark tile display top left.",
+      "message": "左上"
+   },
+   "bookmarkFormDisplayAlignmentTopRight": {
+      "description": "Radio to align bookmark tile display top right.",
+      "message": "右上"
+   },
+   "bookmarkFormDisplayDirectionHorizontalDescription": {
+      "description": "Description for bookmark tile display horizontal direction.",
+      "message": "ビジュアル要素と名前を並べて配置します。"
+   },
+   "bookmarkFormDisplayDirectionHorizontalLabel": {
+      "description": "Label for bookmark tile display horizontal direction.",
+      "message": "水平"
+   },
+   "bookmarkFormDisplayDirectionVerticalDescription": {
+      "description": "Description for bookmark tile display vertical direction.",
+      "message": "ビジュアル要素を積み重ねて、上下に名前を付けます。"
+   },
+   "bookmarkFormDisplayDirectionVerticalLabel": {
+      "description": "Label for bookmark tile display vertical direction.",
+      "message": "垂直"
+   },
+   "bookmarkFormDisplayGutter": {
+      "description": "Range for bookmark tile gutter space between visual and name.",
+      "message": "側溝"
+   },
+   "bookmarkFormDisplayNameShow": {
+      "description": "Checkbox to show bookmark tile name.",
+      "message": "名前を表示"
+   },
+   "bookmarkFormDisplayNameSize": {
+      "description": "Range for bookmark tile name size.",
+      "message": "名前のサイズ"
+   },
+   "bookmarkFormDisplayNameTextLabel": {
+      "description": "Label for bookmark tile name.",
+      "message": "ブックマーク名"
+   },
+   "bookmarkFormDisplayNameTextPlaceholder": {
+      "description": "Placeholder for bookmark tile name.",
+      "message": "例"
+   },
+   "bookmarkFormDisplayOrderNameVisualDescription": {
+      "description": "Description for bookmark tile display name then visual order.",
+      "message": "ビジュアル要素の前に名前を配置します。"
+   },
+   "bookmarkFormDisplayOrderNameVisualLabel": {
+      "description": "Label for bookmark tile display name then visual order.",
+      "message": "名前、次に視覚要素"
+   },
+   "bookmarkFormDisplayOrderVisualNameDescription": {
+      "description": "Description for bookmark tile display visual then name order.",
+      "message": "名前の前にビジュアル要素を配置します。"
+   },
+   "bookmarkFormDisplayOrderVisualNameLabel": {
+      "description": "Label for bookmark tile display visual then name order.",
+      "message": "視覚要素と名前"
+   },
+   "bookmarkFormDisplayRotate": {
+      "description": "Range for bookmark tile visual rotation.",
+      "message": "回転する"
+   },
+   "bookmarkFormDisplayTranslateLabel": {
+      "description": "Label for bookmark tile visual translation.",
+      "message": "ビジュアルエレメントの位置を調整する"
+   },
+   "bookmarkFormDisplayTranslateX": {
+      "description": "Range for bookmark tile visual translation along the x axis.",
+      "message": "水平"
+   },
+   "bookmarkFormDisplayTranslateY": {
+      "description": "Range for bookmark tile visual translation along the y axis.",
+      "message": "垂直"
+   },
+   "bookmarkFormDisplayVisualIconRemove": {
+      "description": "Button to remove the bookmark tile visual icon.",
+      "message": "アイコンを削除"
+   },
+   "bookmarkFormDisplayVisualIconTextLabel": {
+      "description": "Label for bookmark tile visual icon.",
+      "message": "ブックマークアイコン"
+   },
+   "bookmarkFormDisplayVisualIconTextPlaceholder": {
+      "description": "Placeholder for bookmark tile visual icon.",
+      "message": "FontAwesomeのブランドまたはアイコン"
+   },
+   "bookmarkFormDisplayVisualImageUrlLabel": {
+      "description": "Label for bookmark tile visual image URL.",
+      "message": "ブックマーク画像"
+   },
+   "bookmarkFormDisplayVisualImageUrlPlaceholder": {
+      "description": "Placeholder for bookmark tile visual image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "bookmarkFormDisplayVisualLetterTextLabel": {
+      "description": "Label for bookmark tile visual text.",
+      "message": "しおり"
+   },
+   "bookmarkFormDisplayVisualLetterTextPlaceholder": {
+      "description": "Placeholder for bookmark tile visual text.",
+      "message": "E"
+   },
+   "bookmarkFormDisplayVisualShadowHelperPara1": {
+      "description": "Helper text for bookmark tile visual shadow.",
+      "message": "視覚的な影は、文字またはアイコンにのみ適用されます。"
+   },
+   "bookmarkFormDisplayVisualShadowSize": {
+      "description": "Range for bookmark tile visual shadow.",
+      "message": "ビジュアルシャドウ"
+   },
+   "bookmarkFormDisplayVisualShowDescription": {
+      "description": "Description to show bookmark tile visual.",
+      "message": "このブックマーク六角形に文字、アイコン、または画像を表示します。"
+   },
+   "bookmarkFormDisplayVisualShowLabel": {
+      "description": "Checkbox to show bookmark tile visual.",
+      "message": "ビジュアル要素を表示"
+   },
+   "bookmarkFormDisplayVisualSize": {
+      "description": "Range for bookmark tile visual size.",
+      "message": "視覚的なサイズ"
+   },
+   "bookmarkFormDisplayVisualTypeIcon": {
+      "description": "Radio for bookmark tile visual icon.",
+      "message": "アイコン"
+   },
+   "bookmarkFormDisplayVisualTypeImage": {
+      "description": "Radio for bookmark tile visual image.",
+      "message": "画像"
+   },
+   "bookmarkFormDisplayVisualTypeLetter": {
+      "description": "Radio for bookmark tile visual letter.",
+      "message": "手紙"
+   },
+   "bookmarkFormGroupDestinationExisting": {
+      "description": "Radio for bookmark position in existing bookmark group.",
+      "message": "既存のグループ"
+   },
+   "bookmarkFormGroupDestinationNew": {
+      "description": "Radio for bookmark position in new bookmark group.",
+      "message": "新しい集団"
+   },
+   "bookmarkFormGroupNameLabel": {
+      "description": "Label for bookmark group name.",
+      "message": "URL"
+   },
+   "bookmarkFormGroupNamePlaceholder": {
+      "description": "Placeholder for bookmark group name.",
+      "message": "グループ例"
+   },
+   "bookmarkFormGroupPositionGroup": {
+      "description": "Select for bookmark group position.",
+      "message": "グループ"
+   },
+   "bookmarkFormGroupPositionItem": {
+      "description": "Select for bookmark position in a group.",
+      "message": "ポジション"
+   },
+   "bookmarkFormGroupRandom": {
+      "description": "Button for random group name.",
+      "message": "ランダムグループ名"
+   },
+   "bookmarkFormPropagateLayoutDescriptionPara1": {
+      "description": "Helper text to share current bookmark layout settings to all other bookmarks.",
+      "message": "保存したら、上記のレイアウトを他のすべてのブックマークに適用します。"
+   },
+   "bookmarkFormPropagateLayoutDescriptionPara2": {
+      "description": "Helper text to share current bookmark layout settings to all other bookmarks.",
+      "message": "ビジュアルと名前のサイズ、配置、順序、位置、およびガターのみがすべてに適用されます。"
+   },
+   "bookmarkFormPropagateLayoutLabel": {
+      "description": "Checkbox to share current bookmark layout settings to all other bookmarks.",
+      "message": "他のブックマークにレイアウトを適用する"
+   },
+   "bookmarkFormPropagateThemeDescriptionPara1": {
+      "description": "Helper text to share current bookmark theme settings to all other bookmarks.",
+      "message": "保存したら、上記のテーマを他のすべてのブックマークに適用します。"
+   },
+   "bookmarkFormPropagateThemeDescriptionPara2": {
+      "description": "Helper text to share current bookmark theme settings to all other bookmarks.",
+      "message": "色、アクセント、不透明度、境界線、視覚的な影のみがすべてに適用されます。"
+   },
+   "bookmarkFormPropagateThemeLabel": {
+      "description": "Checkbox to share current bookmark theme settings to all other bookmarks.",
+      "message": "テーマを他のブックマークに適用する"
+   },
+   "bookmarkFormPropagateVisualDescriptionPara1": {
+      "description": "Helper text to share current bookmark visual settings to all other bookmarks.",
+      "message": "文字、アイコン、画像、名前のテキストは共有されません。"
+   },
+   "bookmarkFormPropagateVisualDescriptionPara2": {
+      "description": "Helper text to share current bookmark visual settings to all other bookmarks.",
+      "message": "すべてのブックマークの視覚要素または名前を非表示にするのに便利です。"
+   },
+   "bookmarkFormPropagateVisualLabel": {
+      "description": "Checkbox to share current bookmark visual settings to all other bookmarks.",
+      "message": "「視覚的要素の表示」と「名前の表示」を他のブックマークに適用します"
+   },
+   "bookmarkFormSectionAddressDescription": {
+      "description": "Description for bookmark form address page.",
+      "message": "必ず完全なURLを使用し、「https：// ...」を含めてください"
+   },
+   "bookmarkFormSectionAddressHeading": {
+      "description": "Heading for bookmark form address page.",
+      "message": "住所"
+   },
+   "bookmarkFormSectionLayoutDescription": {
+      "description": "Description for bookmark form layout page.",
+      "message": "視覚要素と名前の位置、縮尺、向きを変更します。"
+   },
+   "bookmarkFormSectionLayoutHeading": {
+      "description": "Heading for bookmark form layout page.",
+      "message": "レイアウト"
+   },
+   "bookmarkFormSectionPositionDescription": {
+      "description": "Description for bookmark form position page.",
+      "message": "このブックマークを配置するグループ。"
+   },
+   "bookmarkFormSectionPositionHeading": {
+      "description": "Heading for bookmark form position page.",
+      "message": "ポジション"
+   },
+   "bookmarkFormSectionThemeDescription": {
+      "description": "Description for bookmark form theme page.",
+      "message": "テーマとアクセントの色を上書きします。"
+   },
+   "bookmarkFormSectionThemeHeading": {
+      "description": "Heading for bookmark form theme page.",
+      "message": "テーマ"
+   },
+   "bookmarkFormSectionVisualDescription": {
+      "description": "Description for bookmark form visual page.",
+      "message": "このブックマークタイルに文字、アイコン、画像、名前を表示します。"
+   },
+   "bookmarkFormSectionVisualHeading": {
+      "description": "Heading for bookmark form visual page.",
+      "message": "ビジュアルと名前"
+   },
+   "bookmarkFormShapeTallDescription": {
+      "description": "Description for bookmark tile tall shape.",
+      "message": "2行にまたがるブックマークタイル。"
+   },
+   "bookmarkFormShapeTallLabel": {
+      "description": "Label for bookmark tile tall shape.",
+      "message": "背の高いタイル"
+   },
+   "bookmarkFormShapeWideDescription": {
+      "description": "Description for bookmark tile wide shape.",
+      "message": "2つの列にまたがるブックマークタイル。"
+   },
+   "bookmarkFormShapeWideLabel": {
+      "description": "Label for bookmark tile wide shape.",
+      "message": "広いタイル"
+   },
+   "bookmarkFormTabAddress": {
+      "description": "Label for bookmark form address tab.",
+      "message": "住所"
+   },
+   "bookmarkFormTabLayout": {
+      "description": "Label for bookmark form layout tab.",
+      "message": "レイアウト"
+   },
+   "bookmarkFormTabPosition": {
+      "description": "Label for bookmark form position tab.",
+      "message": "ポジション"
+   },
+   "bookmarkFormTabTheme": {
+      "description": "Label for bookmark form theme tab.",
+      "message": "テーマ"
+   },
+   "bookmarkFormTabVisual": {
+      "description": "Label for bookmark form visual tab.",
+      "message": "ビジュアルと名前"
+   },
+   "bookmarkFormUrlLabel": {
+      "description": "Label for bookmark url.",
+      "message": "URL"
+   },
+   "bookmarkFormUrlPlaceholder": {
+      "description": "Placeholder for bookmark url.",
+      "message": "https://www.example.com/"
+   },
+   "bookmarkPreviewFull": {
+      "description": "Paragraph for bookmark full size preview.",
+      "message": "プレビュー"
+   },
+   "bookmarkPreviewHalf": {
+      "description": "Paragraph for bookmark half size preview.",
+      "message": "プレビュー（50％スケール）"
+   },
+   "bookmarkRemoveCancelText": {
+      "description": "Button to cancel removing a bookmark.",
+      "message": "キャンセル"
+   },
+   "bookmarkRemoveContent": {
+      "description": "Paragraph for bookmark remove modal.",
+      "message": "このブックマークを削除してもよろしいですか？これは、元に戻すことはできません。"
+   },
+   "bookmarkRemoveHeadingName": {
+      "description": "Heading with a name for bookmark remove modal.",
+      "message": "削除する"
+   },
+   "bookmarkRemoveHeadingUnnamed": {
+      "description": "Heading without a name for bookmark remove modal.",
+      "message": "名前のないブックマークを削除する"
+   },
+   "bookmarkRemoveSuccessText": {
+      "description": "Button to confirm removing a bookmark.",
+      "message": "削除する"
+   },
+   "bookmarkTileControlEdit": {
+      "description": "Button for bookmark tile edit control.",
+      "message": "このブックマークを編集する"
+   },
+   "bookmarkTileControlLeft": {
+      "description": "Button for bookmark tile move left control.",
+      "message": "このブックマークを左に移動"
+   },
+   "bookmarkTileControlRemove": {
+      "description": "Button for bookmark tile remove control.",
+      "message": "このブックマークを削除する"
+   },
+   "bookmarkTileControlRight": {
+      "description": "Button for bookmark tile move right control.",
+      "message": "このブックマークを右に移動します"
+   },
+   "bookmarkTileControlSort": {
+      "description": "Button for bookmark tile drag to sort control.",
+      "message": "ブックマークをドラッグして並べ替えます"
+   },
+   "controlColorMixerMoreControls": {
+      "description": "Button to show more colour controls.",
+      "message": "その他のコントロール"
+   },
+   "controlColorMixerSliderB": {
+      "description": "Label for colour control blue.",
+      "message": "青い"
+   },
+   "controlColorMixerSliderG": {
+      "description": "Label for colour control green.",
+      "message": "緑"
+   },
+   "controlColorMixerSliderH": {
+      "description": "Label for colour control hue.",
+      "message": "色相"
+   },
+   "controlColorMixerSliderL": {
+      "description": "Label for colour control lightness.",
+      "message": "軽さ"
+   },
+   "controlColorMixerSliderR": {
+      "description": "Label for colour control red.",
+      "message": "赤"
+   },
+   "controlColorMixerSliderS": {
+      "description": "Label for colour control saturation.",
+      "message": "飽和"
+   },
+   "controlColorRandom": {
+      "description": "Button for random colour.",
+      "message": "ランダムカラー"
+   },
+   "controlColorTextPlaceholder": {
+      "description": "Placeholder for hex colour code.",
+      "message": "16進コード"
+   },
+   "controlGeneralReset": {
+      "description": "Button for reset button control.",
+      "message": "デフォルトにリセット"
+   },
+   "dataClearAllCancelText": {
+      "description": "Button to cancel clear all data.",
+      "message": "キャンセル"
+   },
+   "dataClearAllContentPara1": {
+      "description": "Paragraph for clear all data modal.",
+      "message": "{appName}ブックマークと設定をクリアしてもよろしいですか？ {appName}はデフォルトの状態に復元されます。"
+   },
+   "dataClearAllContentPara2": {
+      "description": "Paragraph for clear all data modal.",
+      "message": "これは、元に戻すことはできません。"
+   },
+   "dataClearAllHeading": {
+      "description": "Heading for clear all data modal.",
+      "message": "すべての{appName}データをクリアしますか？"
+   },
+   "dataClearAllSuccessText": {
+      "description": "Button to confirm clear all data.",
+      "message": "すべてのデータをクリアする"
+   },
+   "dataClearPartialCancelText": {
+      "description": "Button to cancel clear partial data.",
+      "message": "キャンセル"
+   },
+   "dataClearPartialContentPara1": {
+      "description": "Paragraph for clear partial data modal.",
+      "message": "{appName}設定をクリアしてもよろしいですか？ {appName}はデフォルトの状態に復元されますが、ブックマークとグループは残ります。"
+   },
+   "dataClearPartialContentPara2": {
+      "description": "Paragraph for clear partial data modal.",
+      "message": "これは、元に戻すことはできません。"
+   },
+   "dataClearPartialHeading": {
+      "description": "Heading for clear partial data modal.",
+      "message": "ブックマーク以外の{appName}データをクリアしますか？"
+   },
+   "dataClearPartialSuccessText": {
+      "description": "Button to confirm clear partial data.",
+      "message": "ブックマークを除くすべてをクリアする"
+   },
+   "dataExportBackup": {
+      "description": "String for backup data file name.",
+      "message": "バックアップ"
+   },
+   "dataFeedbackEmpty": {
+      "description": "Paragraph for validation when backup data is empty.",
+      "message": "インポートするものが選択されていません。"
+   },
+   "dataFeedbackFailNotAppJson": {
+      "description": "Paragraph for when backup data is not valid JSON from this project.",
+      "message": "適切な種類のJSONファイルではありません。 {appName}からのものであることを確認してください。"
+   },
+   "dataFeedbackFailNotClipboardJson": {
+      "description": "Paragraph for when backup data in clipboard is not valid JSON.",
+      "message": "適切な種類のデータではありません。 {appName}または{appName}バックアップJSONファイルからのデータを保持していることを確認してください。"
+   },
+   "dataFeedbackFailNotJson": {
+      "description": "Paragraph for when backup data is not valid JSON.",
+      "message": "JSONファイルではありません。 {appName}からのものであることを確認してください。"
+   },
+   "dataFeedbackSuccess": {
+      "description": "Paragraph for when backup data is valid.",
+      "message": "成功！ {appName}ブックマークと設定を復元しています。"
+   },
+   "dataFormBookmarkIncludeDescriptionPara1": {
+      "description": "Description for restoring backup data bookmarks.",
+      "message": "これには、すべてのグループとブックマークが含まれます"
+   },
+   "dataFormBookmarkIncludeDescriptionPara2": {
+      "description": "Description for restoring backup data bookmarks.",
+      "message": "ブックマークは、インポート時にカスタムの色、アクセント、境界線を保持します。"
+   },
+   "dataFormBookmarkIncludeLabel": {
+      "description": "Heading for restoring backup data bookmarks.",
+      "message": "ブックマーク"
+   },
+   "dataFormBookmarkTypeAppend": {
+      "description": "Radio to append to existing bookmarks when restoring from backup data.",
+      "message": "既存のブックマークに追加"
+   },
+   "dataFormBookmarkTypeRestore": {
+      "description": "Radio to replace existing bookmarks when restoring from backup data.",
+      "message": "既存のブックマークを置き換える"
+   },
+   "dataFormDescription": {
+      "description": "Description for restoring from backup data.",
+      "message": "バックアップファイルの全部または一部を復元できます。次のデータが復元されます。"
+   },
+   "dataFormSetupIncludeDescription": {
+      "description": "Description to restore setting date from backup data.",
+      "message": "これには、レイアウトのサイズと位置、ヘッダー領域のサイズ、ブックマーク領域のサイズ、およびその他のユーザー設定が含まれます。"
+   },
+   "dataFormSetupIncludeLabel": {
+      "description": "Label to restore setting date from backup data.",
+      "message": "設定"
+   },
+   "dataFormThemeIncludeDescription": {
+      "description": "Description to restore theme date from backup data.",
+      "message": "これには、色、アクセント、フォント、背景、および保存されているカスタムテーマが含まれます。"
+   },
+   "dataFormThemeIncludeLabel": {
+      "description": "Label to restore theme date from backup data.",
+      "message": "テーマ"
+   },
+   "dataRestoreCancelText": {
+      "description": "Button to cancel restoring from backup data.",
+      "message": "キャンセル"
+   },
+   "dataRestoreHeading": {
+      "description": "Heading for restore backup data modal.",
+      "message": "{appName}バックアップからの復元"
+   },
+   "dataRestoreSuccessText": {
+      "description": "Button to confirm restoring from backup data.",
+      "message": "輸入"
+   },
+   "groupAddCancelText": {
+      "description": "Button to cancel adding a bookmark group.",
+      "message": "キャンセル"
+   },
+   "groupAddHeading": {
+      "description": "Heading for bookmark group add modal.",
+      "message": "新しいグループを追加する"
+   },
+   "groupAddSuccessText": {
+      "description": "Button to confirm adding a bookmark group.",
+      "message": "追加"
+   },
+   "groupAreaControlCollapse": {
+      "description": "Button for bookmark group control to collapse bookmark group.",
+      "message": "このグループを折りたたむ"
+   },
+   "groupAreaControlDown": {
+      "description": "Button for bookmark group move down control.",
+      "message": "このグループを下に移動します"
+   },
+   "groupAreaControlEdit": {
+      "description": "Button for bookmark group edit control.",
+      "message": "このグループを編集する"
+   },
+   "groupAreaControlOpenAll": {
+      "description": "Button for bookmark group control to open all bookmarks.",
+      "message": "このグループのすべてのブックマークを開きます"
+   },
+   "groupAreaControlRemove": {
+      "description": "Button for bookmark group remove control.",
+      "message": "このグループを削除する"
+   },
+   "groupAreaControlSort": {
+      "description": "Button for bookmark group drag to sort control.",
+      "message": "グループをドラッグして並べ替えます"
+   },
+   "groupAreaControlUp": {
+      "description": "Button for bookmark group move up control.",
+      "message": "このグループを上に移動します"
+   },
+   "groupEditCancelText": {
+      "description": "Button to cancel editing a bookmark group.",
+      "message": "キャンセル"
+   },
+   "groupEditHeadingName": {
+      "description": "Heading with a name for bookmark group edit modal.",
+      "message": "編集"
+   },
+   "groupEditHeadingUnnamed": {
+      "description": "Heading without a name for bookmark group edit modal.",
+      "message": "名前のないグループを編集する"
+   },
+   "groupEditSuccessText": {
+      "description": "Button to confirm editing a bookmark group.",
+      "message": "保存する"
+   },
+   "groupFormCollapseShowDescription": {
+      "description": "Description to show bookmark group toolbar collapse button.",
+      "message": "[折りたたみ]ボタンは、このグループのブックマークを表示または非表示にします。"
+   },
+   "groupFormCollapseShowLabel": {
+      "description": "Label to show bookmark group toolbar collapse button.",
+      "message": "折りたたみを表示"
+   },
+   "groupFormDestination": {
+      "description": "Select for bookmark group position.",
+      "message": "ポジション"
+   },
+   "groupFormNameRandom": {
+      "description": "Button for random bookmark group name.",
+      "message": "ランダムグループ名"
+   },
+   "groupFormNameShow": {
+      "description": "Checkbox to show bookmark group name.",
+      "message": "グループ名を表示"
+   },
+   "groupFormNameTextLabel": {
+      "description": "Label for bookmark group name.",
+      "message": "グループ名"
+   },
+   "groupFormNameTextPlaceholder": {
+      "description": "Placeholder for bookmark group name.",
+      "message": "グループ例"
+   },
+   "groupFormOpenAllShowDescription": {
+      "description": "Description to show bookmark group toolbar open all button.",
+      "message": "このグループに少なくとも1つのブックマークがある場合は、[すべて開く]ボタンが表示されます。"
+   },
+   "groupFormOpenAllShowLabel": {
+      "description": "Label to show bookmark group toolbar open all button.",
+      "message": "表示すべて開く"
+   },
+   "groupFormSectionNameDescription": {
+      "description": "Description for bookmark group form name.",
+      "message": "このグループの上に名前を表示します。"
+   },
+   "groupFormSectionNameHeading": {
+      "description": "Heading for bookmark group form name.",
+      "message": "名前"
+   },
+   "groupFormSectionOrderingDescription": {
+      "description": "Description for bookmark group form order.",
+      "message": "このグループの位置。"
+   },
+   "groupFormSectionOrderingHeading": {
+      "description": "Heading for bookmark group form order.",
+      "message": "注文"
+   },
+   "groupFormSectionToolbarDescription": {
+      "description": "Description for bookmark group form toolbar.",
+      "message": "コントロールを表示して、このグループのすべてのブックマークを開いたり、ブックマークを表示/非表示にしたりします。"
+   },
+   "groupFormSectionToolbarHeading": {
+      "description": "Heading for bookmark group form toolbar.",
+      "message": "ツールバー"
+   },
+   "groupRemoveCancelText": {
+      "description": "Button to cancel removing a bookmark group.",
+      "message": "キャンセル"
+   },
+   "groupRemoveContent": {
+      "description": "Paragraph for bookmark group remove modal.",
+      "message": "このグループとその中のすべてのブックマークを削除してもよろしいですか？これは、元に戻すことはできません。"
+   },
+   "groupRemoveHeadingName": {
+      "description": "Heading with a name for bookmark group remove modal.",
+      "message": "削除する"
+   },
+   "groupRemoveHeadingUnnamed": {
+      "description": "Heading without a name for bookmark group remove modal.",
+      "message": "名前のないグループを削除する"
+   },
+   "groupRemoveSuccessText": {
+      "description": "Button to confirm removing a bookmark group.",
+      "message": "削除する"
+   },
+   "menuContentAppLink1": {
+      "description": "Link to the community on Reddit.",
+      "message": "Reddit/r/{appName}見つかりました。"
+   },
+   "menuContentAppLink2": {
+      "description": "Link to project on GitHub.",
+      "message": "GitHubで見つかりました。"
+   },
+   "menuContentAppLink3": {
+      "description": "Link to project project licence.",
+      "message": "GNU General PublicLicensev3.0。"
+   },
+   "menuContentAppPara1": {
+      "description": "Paragraph on where to share with the community.",
+      "message": "設定をコミュニティと共有します。"
+   },
+   "menuContentAppPara2": {
+      "description": "Paragraph on this project being open source.",
+      "message": "このプロジェクトはオープンソースです。"
+   },
+   "menuContentBookmarkGeneralHoverScaleShow": {
+      "description": "Checkbox for scale bookmark on hover.",
+      "message": "ブックマークホバーで成長"
+   },
+   "menuContentBookmarkGeneralLineShow": {
+      "description": "Checkbox for show bookmark line.",
+      "message": "ブックマーク行を表示"
+   },
+   "menuContentBookmarkGeneralNewTab": {
+      "description": "Checkbox for open bookmark in a new tab.",
+      "message": "新しいタブでブックマークを開く"
+   },
+   "menuContentBookmarkGeneralShadowShowDescription": {
+      "description": "Description to show bookmark shadow.",
+      "message": "テーマシャドウが0に設定されている場合、エフェクトが表示されない場合があります。"
+   },
+   "menuContentBookmarkGeneralShadowShowLabel": {
+      "description": "label for show bookmark shadow.",
+      "message": "ブックマークホバーに影を表示"
+   },
+   "menuContentBookmarkGeneralShow": {
+      "description": "Checkbox for show bookmark.",
+      "message": "ブックマークを表示"
+   },
+   "menuContentBookmarkGeneralSize": {
+      "description": "Range for bookmark size.",
+      "message": "ブックマークサイズ"
+   },
+   "menuContentBookmarkGeneralUrlShow": {
+      "description": "Checkbox for show bookmark url on hover.",
+      "message": "ブックマークホバーにURLを表示"
+   },
+   "menuContentBookmarkOrientationBottom": {
+      "description": "Radio for bookmark bottom orientation.",
+      "message": "下"
+   },
+   "menuContentBookmarkOrientationHelperPara1": {
+      "description": "Helper text for bookmark orientation.",
+      "message": "ブックマークタイルの上部または下部にURLとコントロールを表示します。"
+   },
+   "menuContentBookmarkOrientationTop": {
+      "description": "Radio for bookmark top orientation.",
+      "message": "上"
+   },
+   "menuContentBookmarkSortIcon": {
+      "description": "Button to sort bookmarks by Icon.",
+      "message": "アイコン別"
+   },
+   "menuContentBookmarkSortLetter": {
+      "description": "Button to sort bookmarks by letter.",
+      "message": "手紙で"
+   },
+   "menuContentBookmarkSortName": {
+      "description": "Button to sort bookmarks by name.",
+      "message": "名前で"
+   },
+   "menuContentBookmarkStyleBlockDescription": {
+      "description": "Description for bookmark block style.",
+      "message": "正方形のブックマークタイル。"
+   },
+   "menuContentBookmarkStyleBlockLabel": {
+      "description": "Label for bookmark block style.",
+      "message": "ブロック"
+   },
+   "menuContentBookmarkStyleListDescription": {
+      "description": "Description for bookmark list style.",
+      "message": "短くて広いブックマークタイル。"
+   },
+   "menuContentBookmarkStyleListLabel": {
+      "description": "Label for bookmark list style.",
+      "message": "リスト"
+   },
+   "menuContentCoffeeButton": {
+      "description": "Link to buy me a coffee to support the project.",
+      "message": "私にコーヒーを買う"
+   },
+   "menuContentCoffeePara": {
+      "description": "Paragraph to explain the project is free.",
+      "message": "{appName}は無料です。コーヒーの形で感謝を歓迎します！"
+   },
+   "menuContentDataBackupClipboard": {
+      "description": "Button to copy backup data to clipboard.",
+      "message": "クリップボードにコピー"
+   },
+   "menuContentDataBackupFile": {
+      "description": "Button to export backup data file.",
+      "message": "データのエクスポート"
+   },
+   "menuContentDataBackupHelperPara1": {
+      "description": "Helper text for data backup.",
+      "message": "{appName}ブックマークと設定のバックアップをダウンロードします。"
+   },
+   "menuContentDataBackupHelperPara2": {
+      "description": "Helper text for data backup.",
+      "message": "このファイルは、後でこのデバイスまたは別のデバイスにインポートできます。"
+   },
+   "menuContentDataClearAlertLink": {
+      "description": "Link for backup data.",
+      "message": "データをバックアップする"
+   },
+   "menuContentDataClearAlertPara": {
+      "description": "Alert for clear all data.",
+      "message": "すべてのデータをクリアするとブックマークが失われます。"
+   },
+   "menuContentDataClearAll": {
+      "description": "Button to clear all data.",
+      "message": "すべてのデータをクリアする"
+   },
+   "menuContentDataClearHelperPara1": {
+      "description": "Helper text for clear all data.",
+      "message": "すべてのデータをクリアし{appName}をデフォルトの状態にリセットします。"
+   },
+   "menuContentDataClearHelperPara2": {
+      "description": "Helper text for clear all data.",
+      "message": "または、すべての設定を消去して、現在のブックマークとグループを保持することもできます。"
+   },
+   "menuContentDataClearPartial": {
+      "description": "Button to clear partial data.",
+      "message": "ブックマークを除くすべてをクリアする"
+   },
+   "menuContentDataRestoreClipboard": {
+      "description": "Button for clipboard backup data import.",
+      "message": "クリップボードからインポート"
+   },
+   "menuContentDataRestoreDrop": {
+      "description": "Label for backup data file drop area.",
+      "message": "または、 {appName}バックアップファイルをここにドロップします。"
+   },
+   "menuContentDataRestoreFile": {
+      "description": "Input for backup data file import.",
+      "message": "ファイルからインポート"
+   },
+   "menuContentDataRestoreHelperPara1": {
+      "description": "Helper text for backup data import.",
+      "message": "以前にエクスポートした{appName}バックアップを復元します。"
+   },
+   "menuContentGroupAlignmentJustifyCenter": {
+      "description": "Label to justify group items centre.",
+      "message": "中心"
+   },
+   "menuContentGroupAlignmentJustifyLabel": {
+      "description": "Label to justify group items.",
+      "message": "グループの詳細領域の配置"
+   },
+   "menuContentGroupAlignmentJustifyLeft": {
+      "description": "Label to justify group items left.",
+      "message": "左"
+   },
+   "menuContentGroupAlignmentJustifyRight": {
+      "description": "Label to justify group items right.",
+      "message": "右"
+   },
+   "menuContentGroupAlignmentOrderBodyHeaderDescription": {
+      "description": "Helper text for bookmarks then group details order.",
+      "message": "ブックマーク領域をグループ詳細領域の前に表示するように注文します。"
+   },
+   "menuContentGroupAlignmentOrderBodyHeaderLabel": {
+      "description": "Radio for bookmarks then group details order.",
+      "message": "ブックマークしてからグループの詳細"
+   },
+   "menuContentGroupAlignmentOrderHeaderBodyDescription": {
+      "description": "Helper text for group details then bookmarks order.",
+      "message": "ブックマーク領域の前に表示されるグループ詳細領域を注文します。"
+   },
+   "menuContentGroupAlignmentOrderHeaderBodyLabel": {
+      "description": "Radio for group details then bookmarks order.",
+      "message": "グループの詳細、次にブックマーク"
+   },
+   "menuContentGroupAlignmentOrderLabel": {
+      "description": "Label for group order.",
+      "message": "グループ詳細注文"
+   },
+   "menuContentGroupCollapseHide": {
+      "description": "Button to collapse all groups.",
+      "message": "すべてのグループを折りたたむ"
+   },
+   "menuContentGroupCollapseShow": {
+      "description": "Button to open all groups.",
+      "message": "すべてのグループを開く"
+   },
+   "menuContentGroupNameHelperPara1": {
+      "description": "Helper text for show and hide all group names.",
+      "message": "グループ名は、個々のグループを編集して変更することもできます。"
+   },
+   "menuContentGroupNameHide": {
+      "description": "Button to hide all group names.",
+      "message": "すべて非表示"
+   },
+   "menuContentGroupNameShow": {
+      "description": "Button to show all group names.",
+      "message": "すべて表示する"
+   },
+   "menuContentGroupNameSize": {
+      "description": "Range for group name size.",
+      "message": "名前のサイズ"
+   },
+   "menuContentGroupToolbarCollapseHelperPara1": {
+      "description": "Helper text for group toolbar collapse control.",
+      "message": "グループツールバーの折りたたみボタンは、個々のグループを編集して変更することもできます。"
+   },
+   "menuContentGroupToolbarCollapseHide": {
+      "description": "Button to hide all group toolbar collapse control.",
+      "message": "すべて非表示"
+   },
+   "menuContentGroupToolbarCollapseLabel": {
+      "description": "Label for group toolbar collapse control.",
+      "message": "グループ折りたたみコントロール"
+   },
+   "menuContentGroupToolbarCollapseShow": {
+      "description": "Button to show all group toolbar collapse control.",
+      "message": "すべて表示する"
+   },
+   "menuContentGroupToolbarOpenAllHelperPara1": {
+      "description": "Helper text for the bookmark group toolbar open all control.",
+      "message": "グループツールバーの[すべて開く]ボタンは、個々のグループを編集して変更することもできます。"
+   },
+   "menuContentGroupToolbarOpenAllHide": {
+      "description": "Button to hide all bookmark group toolbar open all control.",
+      "message": "すべて非表示"
+   },
+   "menuContentGroupToolbarOpenAllLabel": {
+      "description": "Label for the bookmark group toolbar open all control.",
+      "message": "グループすべてのコントロールを開く"
+   },
+   "menuContentGroupToolbarOpenAllShow": {
+      "description": "Button to show all group toolbar open all control.",
+      "message": "すべて表示する"
+   },
+   "menuContentGroupToolbarSize": {
+      "description": "Range for group toolbar size.",
+      "message": "グループツールバーのサイズ"
+   },
+   "menuContentHeaderAlignmentHelperPara1": {
+      "description": "Helper text to justify header items.",
+      "message": "検索ボックスのサイズが[自動]に設定されていて、使用可能なスペースを埋めるように大きくなると、効果が表示されない場合があります。"
+   },
+   "menuContentHeaderAlignmentJustifyCenter": {
+      "description": "Label to justify header items centre.",
+      "message": "中心"
+   },
+   "menuContentHeaderAlignmentJustifyLabel": {
+      "description": "Label to justify header items.",
+      "message": "ヘッダーアイテムの配置"
+   },
+   "menuContentHeaderAlignmentJustifyLeft": {
+      "description": "Label to justify header items left.",
+      "message": "左"
+   },
+   "menuContentHeaderAlignmentJustifyRight": {
+      "description": "Label to justify header items right.",
+      "message": "右"
+   },
+   "menuContentHeaderClockHour24": {
+      "description": "Checkbox for 24 hour clock.",
+      "message": "24時間"
+   },
+   "menuContentHeaderClockHourDisplayNumber": {
+      "description": "Radio for clock hour as numbers.",
+      "message": "番号として"
+   },
+   "menuContentHeaderClockHourDisplayWord": {
+      "description": "Radio for clock hour as words.",
+      "message": "言葉として"
+   },
+   "menuContentHeaderClockHourShow": {
+      "description": "Checkbox for clock hour.",
+      "message": "時間を表示"
+   },
+   "menuContentHeaderClockMeridiem": {
+      "description": "Checkbox for meridiem clock.",
+      "message": "午前午後"
+   },
+   "menuContentHeaderClockMinuteDisplayNumber": {
+      "description": "Radio for clock minutes as numbers.",
+      "message": "番号として"
+   },
+   "menuContentHeaderClockMinuteDisplayWord": {
+      "description": "Radio for clock minutes as words.",
+      "message": "言葉として"
+   },
+   "menuContentHeaderClockMinuteShow": {
+      "description": "Checkbox for clock minutes.",
+      "message": "分を表示"
+   },
+   "menuContentHeaderClockNewLineDescription": {
+      "description": "Description for forcing clock onto a new line.",
+      "message": "新しい行に強制し、他のヘッダー項目から分離します。"
+   },
+   "menuContentHeaderClockNewLineLabel": {
+      "description": "Checkbox to force clock onto a new line.",
+      "message": "改行"
+   },
+   "menuContentHeaderClockSecondDisplayNumber": {
+      "description": "Radio for clock seconds as numbers.",
+      "message": "番号として"
+   },
+   "menuContentHeaderClockSecondDisplayWord": {
+      "description": "Radio for clock seconds as words.",
+      "message": "言葉として"
+   },
+   "menuContentHeaderClockSecondShow": {
+      "description": "Checkbox for clock seconds.",
+      "message": "秒を表示"
+   },
+   "menuContentHeaderClockSeparatorLabel": {
+      "description": "Label for clock separator.",
+      "message": "区切り文字"
+   },
+   "menuContentHeaderClockSeparatorPlaceholder": {
+      "description": "Placeholder for clock separator.",
+      "message": "："
+   },
+   "menuContentHeaderClockSeparatorShow": {
+      "description": "Checkbox for clock separator.",
+      "message": "セパレータを表示"
+   },
+   "menuContentHeaderClockSize": {
+      "description": "Range for clock size.",
+      "message": "サイズ"
+   },
+   "menuContentHeaderDateDateDisplayNumber": {
+      "description": "Radio for date as numbers.",
+      "message": "番号として"
+   },
+   "menuContentHeaderDateDateDisplayOrdinal": {
+      "description": "Checkbox for ordinal date number.",
+      "message": "序数"
+   },
+   "menuContentHeaderDateDateDisplayWord": {
+      "description": "Radio for dates as words.",
+      "message": "言葉として"
+   },
+   "menuContentHeaderDateDateShow": {
+      "description": "Checkbox for date.",
+      "message": "日付を表示"
+   },
+   "menuContentHeaderDateDayDisplayLengthLabel": {
+      "description": "Label for length of day of the week.",
+      "message": "単語の長さ"
+   },
+   "menuContentHeaderDateDayDisplayLengthLong": {
+      "description": "Radio for a long length day of the week.",
+      "message": "長いです"
+   },
+   "menuContentHeaderDateDayDisplayLengthShort": {
+      "description": "Radio for short length day of the week.",
+      "message": "短い"
+   },
+   "menuContentHeaderDateDayDisplayNumber": {
+      "description": "Radio for day as numbers.",
+      "message": "番号として"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartLabel": {
+      "description": "Label for the start of the week.",
+      "message": "週の始まり"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartMonday": {
+      "description": "Radio for Monday as the start of the week.",
+      "message": "月曜"
+   },
+   "menuContentHeaderDateDayDisplayWeekStartSunday": {
+      "description": "Radio for Sunday as the start of the week.",
+      "message": "日曜日"
+   },
+   "menuContentHeaderDateDayDisplayWord": {
+      "description": "Radio for day as words.",
+      "message": "言葉として"
+   },
+   "menuContentHeaderDateDayShow": {
+      "description": "Checkbox for day.",
+      "message": "ショーデー"
+   },
+   "menuContentHeaderDateFormatDateMonth": {
+      "description": "Radio for date then month format.",
+      "message": "日付/月"
+   },
+   "menuContentHeaderDateFormatLabel": {
+      "description": "Label for date format.",
+      "message": "フォーマット"
+   },
+   "menuContentHeaderDateFormatMonthDate": {
+      "description": "Radio for month then date format.",
+      "message": "月/日付"
+   },
+   "menuContentHeaderDateMonthDisplayLengthLabel": {
+      "description": "Label for length of month of the year.",
+      "message": "単語の長さ"
+   },
+   "menuContentHeaderDateMonthDisplayLengthLong": {
+      "description": "Radio for a long length month of the year.",
+      "message": "長いです"
+   },
+   "menuContentHeaderDateMonthDisplayLengthShort": {
+      "description": "Radio for a short length month of the year.",
+      "message": "短い"
+   },
+   "menuContentHeaderDateMonthDisplayNumber": {
+      "description": "Radio for month as numbers.",
+      "message": "番号として"
+   },
+   "menuContentHeaderDateMonthDisplayOrdinal": {
+      "description": "Checkbox for ordinal month number.",
+      "message": "序数"
+   },
+   "menuContentHeaderDateMonthDisplayWord": {
+      "description": "Radio for month as words.",
+      "message": "言葉として"
+   },
+   "menuContentHeaderDateMonthShow": {
+      "description": "Checkbox for month.",
+      "message": "月を表示"
+   },
+   "menuContentHeaderDateNewLineDescription": {
+      "description": "Description for forcing date onto a new line.",
+      "message": "新しい行に強制し、他のヘッダー項目から分離します。"
+   },
+   "menuContentHeaderDateNewLineLabel": {
+      "description": "Checkbox to force date onto a new line.",
+      "message": "改行"
+   },
+   "menuContentHeaderDateSeparatorLabel": {
+      "description": "Checkbox for date separator.",
+      "message": "区切り文字"
+   },
+   "menuContentHeaderDateSeparatorPlaceholder": {
+      "description": "Placeholder for date separator.",
+      "message": "/"
+   },
+   "menuContentHeaderDateSeparatorShow": {
+      "description": "Checkbox for date separator.",
+      "message": "セパレータを表示"
+   },
+   "menuContentHeaderDateSize": {
+      "description": "Range for date size.",
+      "message": "サイズ"
+   },
+   "menuContentHeaderDateYearDisplayNumber": {
+      "description": "Radio for year as numbers.",
+      "message": "番号として"
+   },
+   "menuContentHeaderDateYearDisplayWord": {
+      "description": "Radio for year as words.",
+      "message": "言葉として"
+   },
+   "menuContentHeaderDateYearShow": {
+      "description": "Checkbox for year.",
+      "message": "ショーイヤー"
+   },
+   "menuContentHeaderGreetingCustomLabel": {
+      "description": "Label for custom header greeting.",
+      "message": "カスタムグリーティングテキスト"
+   },
+   "menuContentHeaderGreetingCustomPlaceholder": {
+      "description": "Placeholder for custom header greeting.",
+      "message": "ハウディ"
+   },
+   "menuContentHeaderGreetingNameLabel": {
+      "description": "Input for header greeting name.",
+      "message": "名前"
+   },
+   "menuContentHeaderGreetingNamePlaceholder": {
+      "description": "Placeholder for header greeting name.",
+      "message": "ニックネーム、エイリアス、またはスーパーヒーローの名前"
+   },
+   "menuContentHeaderGreetingNewLineDescription": {
+      "description": "Description for forcing header greeting onto a new line.",
+      "message": "新しい行に強制し、他のヘッダー項目から分離します。"
+   },
+   "menuContentHeaderGreetingNewLineLabel": {
+      "description": "Checkbox to force header greeting onto a new line.",
+      "message": "改行"
+   },
+   "menuContentHeaderGreetingShow": {
+      "description": "Checkbox to show header greeting.",
+      "message": "あいさつを表示"
+   },
+   "menuContentHeaderGreetingSize": {
+      "description": "Range for header greeting size.",
+      "message": "サイズ"
+   },
+   "menuContentHeaderGreetingTypeCustomDescriptionPara1": {
+      "description": "Description for custom header greeting.",
+      "message": "あなた自身の挨拶を使用してください。"
+   },
+   "menuContentHeaderGreetingTypeCustomDescriptionPara2": {
+      "description": "Description for custom header greeting.",
+      "message": "空白のままにすると、デフォルトで「Good morning...」になります。"
+   },
+   "menuContentHeaderGreetingTypeCustomLabel": {
+      "description": "Radio for custom header greeting.",
+      "message": "カスタム"
+   },
+   "menuContentHeaderGreetingTypeGood": {
+      "description": "Radio for \"Good morning\" header greeting.",
+      "message": "\"Good morning...\""
+   },
+   "menuContentHeaderGreetingTypeHello": {
+      "description": "Radio for \"Hello\" header greeting.",
+      "message": "\"Hello...\""
+   },
+   "menuContentHeaderGreetingTypeHi": {
+      "description": "Radio for \"Hi\" header greeting.",
+      "message": "\"Hi...\""
+   },
+   "menuContentHeaderGreetingTypeLabel": {
+      "description": "Label for header greeting.",
+      "message": "言葉遣い"
+   },
+   "menuContentHeaderGreetingTypeNoneDescription": {
+      "description": "Description for no header greeting.",
+      "message": "名前だけを表示するのに便利です。"
+   },
+   "menuContentHeaderGreetingTypeNoneLabel": {
+      "description": "Radio for no header greeting.",
+      "message": "なし"
+   },
+   "menuContentHeaderSearchEngineCustomNameLabel": {
+      "description": "Label for custom search name.",
+      "message": "名前"
+   },
+   "menuContentHeaderSearchEngineCustomNamePlaceholder": {
+      "description": "Placeholder for custom search name.",
+      "message": "検索エンジン名"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameHelperPara1": {
+      "description": "Helper text for custom search name.",
+      "message": "検索入力フィールドにname属性を設定します。"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameHelperPara2": {
+      "description": "Helper text for custom search name.",
+      "message": "これは、送信時に検索エンジンに渡される名前を定義します。よくわからない場合は空白のままにしてください。"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNameLabel": {
+      "description": "Label for custom search name.",
+      "message": "名前属性"
+   },
+   "menuContentHeaderSearchEngineCustomQueryNamePlaceholder": {
+      "description": "Placeholder for custom search name.",
+      "message": "q"
+   },
+   "menuContentHeaderSearchEngineCustomUrlHelperPara1": {
+      "description": "Helper text for custom search URL.",
+      "message": "検索パラメータを使用してウェブアドレスを入力します。例： \"https://vimeo.com/search?q=\""
+   },
+   "menuContentHeaderSearchEngineCustomUrlHelperPara2": {
+      "description": "Helper text for custom search URL.",
+      "message": "{appName}は、上記のURLの最後にある検索ボックスに入力された検索語を追加します。"
+   },
+   "menuContentHeaderSearchEngineCustomUrlLabel": {
+      "description": "Label for custom search URL.",
+      "message": "URL"
+   },
+   "menuContentHeaderSearchEngineCustomUrlPlaceholder": {
+      "description": "Placeholder for custom search URL.",
+      "message": "https：//"
+   },
+   "menuContentHeaderSearchEngineSelectedCustom": {
+      "description": "Select option for custom search.",
+      "message": "カスタム"
+   },
+   "menuContentHeaderSearchEngineSelectedLabel": {
+      "description": "Label for custom search.",
+      "message": "検索エンジン"
+   },
+   "menuContentHeaderSearchEngineTextJustifyCenter": {
+      "description": "Radio to justify the search text centre.",
+      "message": "中心"
+   },
+   "menuContentHeaderSearchEngineTextJustifyLabel": {
+      "description": "Label to justify search text.",
+      "message": "テキストの配置を検索"
+   },
+   "menuContentHeaderSearchEngineTextJustifyLeft": {
+      "description": "Radio to justify the search text left.",
+      "message": "左"
+   },
+   "menuContentHeaderSearchEngineTextJustifyRight": {
+      "description": "Radio to justify the search text right.",
+      "message": "右"
+   },
+   "menuContentHeaderSearchNewLineDescription": {
+      "description": "Description for forcing search onto a new line.",
+      "message": "新しい行に強制し、他のヘッダー項目から分離します。"
+   },
+   "menuContentHeaderSearchNewLineLabel": {
+      "description": "Checkbox to force search onto a new line.",
+      "message": "改行"
+   },
+   "menuContentHeaderSearchNewTab": {
+      "description": "Checkbox for opening search results in a new tab.",
+      "message": "検索結果を新しいタブで開く"
+   },
+   "menuContentHeaderSearchShow": {
+      "description": "Checkbox for search.",
+      "message": "検索を表示"
+   },
+   "menuContentHeaderSearchSize": {
+      "description": "Range for search size.",
+      "message": "サイズ"
+   },
+   "menuContentHeaderSearchWidthAutoDescription": {
+      "description": "Description for auto search width.",
+      "message": "検索ボックスは、利用可能なスペースに最も合うように大きくなります。"
+   },
+   "menuContentHeaderSearchWidthAutoLabel": {
+      "description": "Radio for auto search width.",
+      "message": "自動幅"
+   },
+   "menuContentHeaderSearchWidthCustomDescription": {
+      "description": "Description for custom search width.",
+      "message": "ヘッダー領域内の検索ボックスの幅を定義します。"
+   },
+   "menuContentHeaderSearchWidthCustomLabel": {
+      "description": "Radio for custom search width.",
+      "message": "カスタム幅"
+   },
+   "menuContentHeaderSearchWidthLabel": {
+      "description": "Label for search width.",
+      "message": "検索ボックスの幅"
+   },
+   "menuContentHeaderSearchWidthSize": {
+      "description": "Range for search width.",
+      "message": "幅"
+   },
+   "menuContentHeaderTransitionalNewLineDescription": {
+      "description": "Description for forcing transitional text onto a new line.",
+      "message": "新しい行に強制し、他のヘッダー項目から分離します。"
+   },
+   "menuContentHeaderTransitionalNewLineLabel": {
+      "description": "Checkbox to force transitional text onto a new line.",
+      "message": "改行"
+   },
+   "menuContentHeaderTransitionalShowHelperPara1": {
+      "description": "Helper text for header transitional text.",
+      "message": "日付または時刻が表示されている場合にのみ使用できます。"
+   },
+   "menuContentHeaderTransitionalShowLabel": {
+      "description": "Checkbox to show header transitional text.",
+      "message": "過渡的な言葉を表示する"
+   },
+   "menuContentHeaderTransitionalSize": {
+      "description": "Range for transitional text size.",
+      "message": "サイズ"
+   },
+   "menuContentHeaderTransitionalTypeIts": {
+      "description": "Radio for \"It's \" transitional text.",
+      "message": "\"It's\""
+   },
+   "menuContentHeaderTransitionalTypeLabel": {
+      "description": "Label for transitional text type.",
+      "message": "言葉遣い"
+   },
+   "menuContentHeaderTransitionalTypeTimeAndDate": {
+      "description": "Radio for \"The time and date is\" transitional text.",
+      "message": "\"The time and date is\""
+   },
+   "menuContentLanguageAlertLink": {
+      "description": "Link to help translate the project.",
+      "message": "{appName}翻訳を手伝ってください"
+   },
+   "menuContentLanguageAlertPara": {
+      "description": "Alert for language select.",
+      "message": "正しくない翻訳を見つけましたか？"
+   },
+   "menuContentLanguageSelect": {
+      "description": "Select for language.",
+      "message": "言語"
+   },
+   "menuContentLanguageSystem": {
+      "description": "Option to use the system defined language.",
+      "message": "システム言語を使用する"
+   },
+   "menuContentLayoutAlignmentBottomCenter": {
+      "description": "Radio for layout alignment bottom centre.",
+      "message": "下部中央"
+   },
+   "menuContentLayoutAlignmentBottomLeft": {
+      "description": "Radio for layout alignment bottom left.",
+      "message": "左下"
+   },
+   "menuContentLayoutAlignmentBottomRight": {
+      "description": "Radio for layout alignment bottom right.",
+      "message": "右下"
+   },
+   "menuContentLayoutAlignmentCenterCenter": {
+      "description": "Radio for layout alignment centre centre.",
+      "message": "センターセンター"
+   },
+   "menuContentLayoutAlignmentCenterLeft": {
+      "description": "Radio for layout alignment centre left.",
+      "message": "中央左"
+   },
+   "menuContentLayoutAlignmentCenterRight": {
+      "description": "Radio for layout alignment centre right.",
+      "message": "中道右派"
+   },
+   "menuContentLayoutAlignmentLabel": {
+      "description": "Label for layout alignment.",
+      "message": "エリアアライメント"
+   },
+   "menuContentLayoutAlignmentTopCenter": {
+      "description": "Radio for layout alignment top centre.",
+      "message": "トップセンター"
+   },
+   "menuContentLayoutAlignmentTopLeft": {
+      "description": "Radio for layout alignment top left.",
+      "message": "左上"
+   },
+   "menuContentLayoutAlignmentTopRight": {
+      "description": "Radio for layout alignment top right.",
+      "message": "右上"
+   },
+   "menuContentLayoutAreaBookmarkJustifyCenter": {
+      "description": "Radio to justify the bookmark area centre.",
+      "message": "中心"
+   },
+   "menuContentLayoutAreaBookmarkJustifyHelper1Para1": {
+      "description": "Helper text for bookmark area justify.",
+      "message": "ブックマークエリアが全幅の場合、エフェクトが表示されない場合があります。"
+   },
+   "menuContentLayoutAreaBookmarkJustifyHelper2Para1": {
+      "description": "Helper text for bookmark area justify.",
+      "message": "レイアウト方向が垂直で、ヘッダー項目が表示されている場合にのみ使用できます。"
+   },
+   "menuContentLayoutAreaBookmarkJustifyLabel": {
+      "description": "Label for justify bookmark area.",
+      "message": "ブックマーク領域の配置"
+   },
+   "menuContentLayoutAreaBookmarkJustifyLeft": {
+      "description": "Radio to justify the bookmark area left.",
+      "message": "左"
+   },
+   "menuContentLayoutAreaBookmarkJustifyRight": {
+      "description": "Radio to justify the bookmark area right.",
+      "message": "右"
+   },
+   "menuContentLayoutAreaBookmarkWidth": {
+      "description": "Label for width of the bookmark area.",
+      "message": "ブックマーク領域の幅"
+   },
+   "menuContentLayoutAreaHeaderJustifyCenter": {
+      "description": "Radio to justify the header area centre.",
+      "message": "中心"
+   },
+   "menuContentLayoutAreaHeaderJustifyHelper1Para1": {
+      "description": "Helper text for header area justify.",
+      "message": "ヘッダー領域が全幅の場合、エフェクトが表示されない場合があります。"
+   },
+   "menuContentLayoutAreaHeaderJustifyHelper2Para1": {
+      "description": "Helper text for header area justify.",
+      "message": "レイアウト方向が垂直で、ヘッダー項目が表示されている場合にのみ使用できます。"
+   },
+   "menuContentLayoutAreaHeaderJustifyLabel": {
+      "description": "Label for header area justify.",
+      "message": "ヘッダー領域の配置"
+   },
+   "menuContentLayoutAreaHeaderJustifyLeft": {
+      "description": "Radio to justify the header area left.",
+      "message": "左"
+   },
+   "menuContentLayoutAreaHeaderJustifyRight": {
+      "description": "Radio to justify the header area right.",
+      "message": "右"
+   },
+   "menuContentLayoutAreaHeaderWidth": {
+      "description": "Label for header area width.",
+      "message": "ヘッダー領域の幅"
+   },
+   "menuContentLayoutAreaWidth": {
+      "description": "Range for layout area width.",
+      "message": "レイアウトエリア幅"
+   },
+   "menuContentLayoutDirectionHorizontalDescription": {
+      "description": "Helper text for layout direction horizontal.",
+      "message": "ヘッダーとブックマークを並べて積み重ねます。"
+   },
+   "menuContentLayoutDirectionHorizontalLabel": {
+      "description": "Radio for layout direction horizontal.",
+      "message": "水平に揃える"
+   },
+   "menuContentLayoutDirectionVerticalDescription": {
+      "description": "Helper text for layout direction vertical.",
+      "message": "ヘッダーとブックマークを列に積み重ねます。"
+   },
+   "menuContentLayoutDirectionVerticalLabel": {
+      "description": "Radio for layout direction vertical.",
+      "message": "垂直に揃える"
+   },
+   "menuContentLayoutGutter": {
+      "description": "Range for layout gutter.",
+      "message": "ヘッダーアイテムとブックマークアイテムの間のスペース"
+   },
+   "menuContentLayoutOrderBookmarkHeaderDescription": {
+      "description": "Helper text for layout order bookmarks then header.",
+      "message": "ブックマーク領域をヘッダー領域の前に表示するように注文します。"
+   },
+   "menuContentLayoutOrderBookmarkHeaderLabel": {
+      "description": "Radio for layout order bookmarks then header.",
+      "message": "ブックマークしてからヘッダー"
+   },
+   "menuContentLayoutOrderHeaderBookmarkDescription": {
+      "description": "Helper text for layout order header then bookmarks.",
+      "message": "ブックマーク領域の前にヘッダー領域を表示するように注文します。"
+   },
+   "menuContentLayoutOrderHeaderBookmarkLabel": {
+      "description": "Radio for layout order header then bookmarks.",
+      "message": "ヘッダー、ブックマーク"
+   },
+   "menuContentLayoutPadding": {
+      "description": "Range for layout padding.",
+      "message": "ヘッダーとブックマークエリアの周りのスペース"
+   },
+   "menuContentLayoutPageFaviconHelperPara1": {
+      "description": "Input for favicon URL.",
+      "message": "すべてのブラウザでサポートされているわけではありません。"
+   },
+   "menuContentLayoutPageFaviconLabel": {
+      "description": "Label for favicon URL.",
+      "message": "ファビコンURL"
+   },
+   "menuContentLayoutPageFaviconPlaceholder": {
+      "description": "Placeholder for favicon URL.",
+      "message": "https://www.example.com/favicon.svg"
+   },
+   "menuContentLayoutPageOverscrollActive": {
+      "description": "Checkbox for layout page overscroll.",
+      "message": "終わりを過ぎてスクロール"
+   },
+   "menuContentLayoutPageOverscrollUnblurDescriptionPara1": {
+      "description": "Helper text for background image or video unblur on overscroll.",
+      "message": "ページの一番下までスクロールすると、背景画像またはビデオのぼやけがなくなります。"
+   },
+   "menuContentLayoutPageOverscrollUnblurDescriptionPara2": {
+      "description": "Helper text for background image or video unblur on overscroll.",
+      "message": "画像またはビデオのぼかしは、テーマの背景の下にあります。"
+   },
+   "menuContentLayoutPageOverscrollUnblurLabel": {
+      "description": "Label for background image or video unblur on overscroll.",
+      "message": "背景画像またはビデオをぼかす"
+   },
+   "menuContentLayoutPageScrollbarAuto": {
+      "description": "Radio for page scrollbar auto.",
+      "message": "自動"
+   },
+   "menuContentLayoutPageScrollbarHelperPara1": {
+      "description": "Helper text for page scrollbar.",
+      "message": "すべてのブラウザでサポートされているわけではありません。"
+   },
+   "menuContentLayoutPageScrollbarLabel": {
+      "description": "Label for page scrollbar.",
+      "message": "スクロール・バー"
+   },
+   "menuContentLayoutPageScrollbarNone": {
+      "description": "Radio for page scrollbar none.",
+      "message": "隠れた"
+   },
+   "menuContentLayoutPageScrollbarThin": {
+      "description": "Radio for page scrollbar thin.",
+      "message": "薄い"
+   },
+   "menuContentLayoutPageTitleLabel": {
+      "description": "Label for page title.",
+      "message": "タイトル"
+   },
+   "menuContentLayoutPageTitlePlaceholder": {
+      "description": "Input for page title.",
+      "message": "新しいタブ"
+   },
+   "menuContentLayoutScalingSize": {
+      "description": "Label for layout scaling.",
+      "message": "グローバルサイズ"
+   },
+   "menuContentSupportLink1": {
+      "description": "Link to open an issue.",
+      "message": "問題を送信します。"
+   },
+   "menuContentSupportLink2": {
+      "description": "Link to the project wiki.",
+      "message": "Wikiを確認してください。"
+   },
+   "menuContentSupportPageApplyToAll": {
+      "description": "Support link to project wiki.",
+      "message": "すべてにブックマーク設定を適用する"
+   },
+   "menuContentSupportPageBackgroundImageVideo": {
+      "description": "Support link to project wiki.",
+      "message": "背景ビデオまたは画像の設定"
+   },
+   "menuContentSupportPageBrowser": {
+      "description": "Support link to project wiki.",
+      "message": "ブラウザのサポート"
+   },
+   "menuContentSupportPageCookies": {
+      "description": "Support link to project wiki.",
+      "message": "クッキーとキャッシュ"
+   },
+   "menuContentSupportPageData": {
+      "description": "Support link to project wiki.",
+      "message": "データのバックアップと復元"
+   },
+   "menuContentSupportPageFirefox": {
+      "description": "Support link to project wiki.",
+      "message": "Firefoxのホームページとして{appName}を設定する"
+   },
+   "menuContentSupportPageLocalBackgroundImage": {
+      "description": "Support link to project wiki.",
+      "message": "ローカル背景画像"
+   },
+   "menuContentSupportPagePrivacy": {
+      "description": "Support link to project wiki.",
+      "message": "あなたのプライバシーを尊重する"
+   },
+   "menuContentSupportPageProtectedUrl": {
+      "description": "Support link to project wiki.",
+      "message": "保護されたURL"
+   },
+   "menuContentSupportPageRecovering": {
+      "description": "Support link to project wiki.",
+      "message": "設定とブックマークの回復"
+   },
+   "menuContentSupportPageResetting": {
+      "description": "Support link to project wiki.",
+      "message": "ブラウザを開いたときにリセットする"
+   },
+   "menuContentSupportPara": {
+      "description": "Paragraph to get more support or provide feedback.",
+      "message": "より多くのサポートまたはフィードバックについて："
+   },
+   "menuContentThemeAccentColor": {
+      "description": "Label for accent colour.",
+      "message": "アクセントカラー"
+   },
+   "menuContentThemeAccentCycleActive": {
+      "description": "Checkbox for cycled accent colour.",
+      "message": "アクセントの色相を自動変更"
+   },
+   "menuContentThemeAccentCycleAlert": {
+      "description": "Alert for cycled accent colour.",
+      "message": "アクセントの色相が急速に変化すると、パフォーマンスの問題が発生する可能性があるため、注意してください。"
+   },
+   "menuContentThemeAccentCycleHelperPara1": {
+      "description": "Helper text for cycled accent colour.",
+      "message": "アクセントカラーがグレーまたはブラックの場合、アクセントの色相の自動変更は機能しません。"
+   },
+   "menuContentThemeAccentCycleSpeed": {
+      "description": "Range for cycled accent colour speed.",
+      "message": "変更遅延"
+   },
+   "menuContentThemeAccentCycleStep": {
+      "description": "Range for cycled accent colour steps.",
+      "message": "手順を変更する"
+   },
+   "menuContentThemeAccentPresetColorAqua": {
+      "description": "Label for aqua preset accent colour.",
+      "message": "アクア"
+   },
+   "menuContentThemeAccentPresetColorBlue": {
+      "description": "Label for blue preset accent colour.",
+      "message": "青い"
+   },
+   "menuContentThemeAccentPresetColorCyan": {
+      "description": "Label for cyan preset accent colour.",
+      "message": "シアン"
+   },
+   "menuContentThemeAccentPresetColorFuchsia": {
+      "description": "Label for fuchsia preset accent colour.",
+      "message": "フクシア"
+   },
+   "menuContentThemeAccentPresetColorGreen": {
+      "description": "Label for green preset accent colour.",
+      "message": "緑"
+   },
+   "menuContentThemeAccentPresetColorGrey": {
+      "description": "Label for grey preset accent colour.",
+      "message": "グレー"
+   },
+   "menuContentThemeAccentPresetColorLime": {
+      "description": "Label for lime preset accent colour.",
+      "message": "ライム"
+   },
+   "menuContentThemeAccentPresetColorMagenta": {
+      "description": "Label for magenta preset accent colour.",
+      "message": "赤紫色"
+   },
+   "menuContentThemeAccentPresetColorOrange": {
+      "description": "Label for orange preset accent colour.",
+      "message": "オレンジ"
+   },
+   "menuContentThemeAccentPresetColorPurple": {
+      "description": "Label for purple preset accent colour.",
+      "message": "紫の"
+   },
+   "menuContentThemeAccentPresetColorRed": {
+      "description": "Label for red preset accent colour.",
+      "message": "赤"
+   },
+   "menuContentThemeAccentPresetColorTeal": {
+      "description": "Label for teal preset accent colour.",
+      "message": "ティール"
+   },
+   "menuContentThemeAccentPresetColorYellow": {
+      "description": "Label for yellow preset accent colour.",
+      "message": "黄色"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel1": {
+      "description": "Label for preset accent colour dark level 1.",
+      "message": "闇"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel2": {
+      "description": "Label for preset accent colour dark level 2.",
+      "message": "エクストラダーク"
+   },
+   "menuContentThemeAccentPresetModifierDarkLevel3": {
+      "description": "Label for preset accent colour dark level 3.",
+      "message": "スーパーエクストラダーク"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel1": {
+      "description": "Label for preset accent colour light level 1.",
+      "message": "光"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel2": {
+      "description": "Label for preset accent colour light level 2.",
+      "message": "エクストラライト"
+   },
+   "menuContentThemeAccentPresetModifierLightLevel3": {
+      "description": "Label for preset accent colour light level 3.",
+      "message": "スーパーエクストラライト"
+   },
+   "menuContentThemeAccentRandomActive": {
+      "description": "Checkbox for random accent colour on load or refresh.",
+      "message": "ロード/リフレッシュ時のランダムなアクセントカラー"
+   },
+   "menuContentThemeAccentRandomRandomise": {
+      "description": "Button to randomise accent colour now.",
+      "message": "今すぐランダム化"
+   },
+   "menuContentThemeAccentRandomStyleAny": {
+      "description": "Radio for any random accent colour on load or refresh.",
+      "message": "どれでも"
+   },
+   "menuContentThemeAccentRandomStyleDark": {
+      "description": "Radio for dark random accent colour on load or refresh.",
+      "message": "闇"
+   },
+   "menuContentThemeAccentRandomStyleLight": {
+      "description": "Radio for light random accent colour on load or refresh.",
+      "message": "光"
+   },
+   "menuContentThemeAccentRandomStylePastel": {
+      "description": "Radio for pastel random accent colour on load or refresh.",
+      "message": "パステル"
+   },
+   "menuContentThemeAccentRandomStyleSaturated": {
+      "description": "Radio for saturated random accent colour on load or refresh.",
+      "message": "飽和"
+   },
+   "menuContentThemeBackgroundColor": {
+      "description": "Label for background colour.",
+      "message": "背景色"
+   },
+   "menuContentThemeBackgroundGradientAngle": {
+      "description": "Label for background gradient angle.",
+      "message": "背景のグラデーション角度"
+   },
+   "menuContentThemeBackgroundGradientLeft": {
+      "description": "Range for background gradient angle left.",
+      "message": "背景グラデーション開始"
+   },
+   "menuContentThemeBackgroundGradientRight": {
+      "description": "Range for background gradient angle right.",
+      "message": "背景グラデーション終了"
+   },
+   "menuContentThemeBackgroundImageAccent": {
+      "description": "Range background image accent.",
+      "message": "アクセント"
+   },
+   "menuContentThemeBackgroundImageAlertPara1": {
+      "description": "Alert for image background.",
+      "message": "ローカル画像は使用できなくなりました。画像はオンラインのどこかでホストする必要があります。"
+   },
+   "menuContentThemeBackgroundImageAlertPara2": {
+      "description": "Alert for image background.",
+      "message": "なぜこれが変わったのですか？"
+   },
+   "menuContentThemeBackgroundImageBlur": {
+      "description": "Range background image blur.",
+      "message": "ぼかし"
+   },
+   "menuContentThemeBackgroundImageGrayscale": {
+      "description": "Range background image grayscale.",
+      "message": "グレースケール"
+   },
+   "menuContentThemeBackgroundImageOpacity": {
+      "description": "Range background image opacity.",
+      "message": "不透明度"
+   },
+   "menuContentThemeBackgroundImageScale": {
+      "description": "Range background image scale.",
+      "message": "規模"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara1": {
+      "description": "Helper text for background image.",
+      "message": "ロード時にランダムな背景画像を作成するために、スペースまたは新しい行で区切られた複数のURLを追加します。"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara2": {
+      "description": "Helper text for background image.",
+      "message": "Unsplashは、ランダムな画像に使用できます。例："
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara3": {
+      "description": "Helper text for background image.",
+      "message": "https://source.unsplash.com/random/1920x1080/?night,day,sky"
+   },
+   "menuContentThemeBackgroundImageUrlHelperPara4": {
+      "description": "Helper text for background image.",
+      "message": "その他のオプションについては、... / random /の後にパラメータを変更してください。読み込み時間は異なる場合があります。"
+   },
+   "menuContentThemeBackgroundImageUrlLabel": {
+      "description": "Input for background image URL.",
+      "message": "URL"
+   },
+   "menuContentThemeBackgroundImageUrlPlaceholder": {
+      "description": "Placeholder for background image URL.",
+      "message": "https://www.example.com/image.jpg"
+   },
+   "menuContentThemeBackgroundImageVignetteOpacity": {
+      "description": "Range for image vignette opacity.",
+      "message": "ビネット"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeLabel": {
+      "description": "Label for image vignette.",
+      "message": "シェードの開始と終了"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeLeft": {
+      "description": "Range for image vignette left.",
+      "message": "シェードエンド"
+   },
+   "menuContentThemeBackgroundImageVignetteRangeRight": {
+      "description": "Range for image vignette right.",
+      "message": "シェードスタート"
+   },
+   "menuContentThemeBackgroundTypeAccentDescription": {
+      "description": "Description for background type accent.",
+      "message": "背景にはアクセントカラーを使用します。"
+   },
+   "menuContentThemeBackgroundTypeAccentLabel": {
+      "description": "Radio for background type accent.",
+      "message": "アクセントによる背景"
+   },
+   "menuContentThemeBackgroundTypeColor": {
+      "description": "Radio for background type colour.",
+      "message": "カスタムカラー"
+   },
+   "menuContentThemeBackgroundTypeGradient": {
+      "description": "Radio for background type gradient.",
+      "message": "勾配"
+   },
+   "menuContentThemeBackgroundTypeImage": {
+      "description": "Radio for background type image.",
+      "message": "画像"
+   },
+   "menuContentThemeBackgroundTypeThemeDescription": {
+      "description": "Description for background type theme.",
+      "message": "テーマで定義された背景色を使用します。"
+   },
+   "menuContentThemeBackgroundTypeThemeLabel": {
+      "description": "Radio for background type theme.",
+      "message": "テーマ別の背景"
+   },
+   "menuContentThemeBackgroundTypeVideo": {
+      "description": "Radio for background type video.",
+      "message": "ビデオ"
+   },
+   "menuContentThemeBackgroundVideoAccent": {
+      "description": "Range background video accent.",
+      "message": "アクセント"
+   },
+   "menuContentThemeBackgroundVideoAlertPara1": {
+      "description": "Alert for video background.",
+      "message": "YouTubeページのURLは使用できません。"
+   },
+   "menuContentThemeBackgroundVideoAlertPara2": {
+      "description": "Alert for video background.",
+      "message": "ビデオファイルにリンクする方法。"
+   },
+   "menuContentThemeBackgroundVideoBlur": {
+      "description": "Range background video blur.",
+      "message": "ぼかし"
+   },
+   "menuContentThemeBackgroundVideoGrayscale": {
+      "description": "Range background video grayscale.",
+      "message": "グレースケール"
+   },
+   "menuContentThemeBackgroundVideoOpacity": {
+      "description": "Range background video opacity.",
+      "message": "不透明度"
+   },
+   "menuContentThemeBackgroundVideoScale": {
+      "description": "Range background video scale.",
+      "message": "規模"
+   },
+   "menuContentThemeBackgroundVideoUrlHelperPara1": {
+      "description": "Helper text for background video.",
+      "message": "バックグラウンドビデオは、ビデオファイルへの直接URLのみをサポートします。 MP4およびWebM形式をサポートします。"
+   },
+   "menuContentThemeBackgroundVideoUrlHelperPara2": {
+      "description": "Helper text for background video.",
+      "message": "読み込み時にランダムな背景動画を作成するために、スペースまたは新しい行で区切って複数のURLを追加します。"
+   },
+   "menuContentThemeBackgroundVideoUrlLabel": {
+      "description": "Input for background video URL.",
+      "message": "URL"
+   },
+   "menuContentThemeBackgroundVideoUrlPlaceholder": {
+      "description": "Placeholder for background video URL.",
+      "message": "https://www.example.com/video.mp4"
+   },
+   "menuContentThemeBackgroundVideoVignetteOpacity": {
+      "description": "Range for video vignette opacity.",
+      "message": "ビネット"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeLabel": {
+      "description": "Label for video vignette.",
+      "message": "シェードの開始と終了"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeLeft": {
+      "description": "Range for video vignette left.",
+      "message": "シェードエンド"
+   },
+   "menuContentThemeBackgroundVideoVignetteRangeRight": {
+      "description": "Range for video vignette right.",
+      "message": "シェードスタート"
+   },
+   "menuContentThemeBookmarkColorByCustomDescription": {
+      "description": "Description for colour bookmark area background.",
+      "message": "ブックマーク領域の後ろにカスタムカラーを使用します。"
+   },
+   "menuContentThemeBookmarkColorByCustomLabel": {
+      "description": "Radio for colour bookmark area background.",
+      "message": "カスタムカラー"
+   },
+   "menuContentThemeBookmarkColorByTransparentDescription": {
+      "description": "Description for transparent bookmark area background.",
+      "message": "ブックマーク領域の背後に背景色はありません。"
+   },
+   "menuContentThemeBookmarkColorByTransparentLabel": {
+      "description": "Radio for transparent bookmark area background.",
+      "message": "透明"
+   },
+   "menuContentThemeBookmarkColorColor": {
+      "description": "Label for bookmark area background colour.",
+      "message": "ブックマークの背景色"
+   },
+   "menuContentThemeBookmarkColorLabel": {
+      "description": "Label for bookmark area colour.",
+      "message": "ブックマークの背景色"
+   },
+   "menuContentThemeBookmarkColorOpacity": {
+      "description": "Range for bookmark area background opacity.",
+      "message": "背景の不透明度"
+   },
+   "menuContentThemeBookmarkItemBorderHelperPara1": {
+      "description": "Helper text for bookmark border.",
+      "message": "個々のブックマークを編集するときに、ブックマークの境界線を変更することもできます。"
+   },
+   "menuContentThemeBookmarkItemBorderHelperPara2": {
+      "description": "Helper text for bookmark border.",
+      "message": "境界線の色はアクセントによって定義され、個々のブックマークを編集するときにも変更できます。"
+   },
+   "menuContentThemeBookmarkItemBorderLabel": {
+      "description": "Label for bookmark item border.",
+      "message": "ブックマークの境界線"
+   },
+   "menuContentThemeBookmarkItemRainbowAdd": {
+      "description": "Button to add a unique accent colour to each bookmark.",
+      "message": "各ブックマークに独自のアクセントを追加します"
+   },
+   "menuContentThemeBookmarkItemRainbowHelperPara1": {
+      "description": "Helper text for unique accent colours for each bookmark.",
+      "message": "ブックマークのカスタムアクセントは、個々のブックマークを編集するときにも変更できます。"
+   },
+   "menuContentThemeBookmarkItemRainbowRemove": {
+      "description": "Button to remove a unique accent colour to each bookmark.",
+      "message": "すべてのアクセントオーバーライドを削除します"
+   },
+   "menuContentThemeColorContrastHelperPara1": {
+      "description": "Helper text for primary colour contrast.",
+      "message": "コントラスト範囲コントロールを近づけて、落ち着いた外観にします。"
+   },
+   "menuContentThemeColorContrastHelperPara2": {
+      "description": "Helper text for primary colour contrast.",
+      "message": "コントラストレンジコントロールを互いに遠くに移動して、シャープで鮮やかな外観にします。"
+   },
+   "menuContentThemeColorContrastLabel": {
+      "description": "Label for primary colour contrast.",
+      "message": "コントラスト範囲"
+   },
+   "menuContentThemeColorContrastLeft": {
+      "description": "Range for primary colour contrast left side.",
+      "message": "コントラストスタート"
+   },
+   "menuContentThemeColorContrastRight": {
+      "description": "Range for primary colour contrast right side.",
+      "message": "コントラストエンド"
+   },
+   "menuContentThemeColorRangePrimaryH": {
+      "description": "Range for primary colour hue.",
+      "message": "原色"
+   },
+   "menuContentThemeColorRangePrimaryS": {
+      "description": "Range for primary colour saturation.",
+      "message": "飽和"
+   },
+   "menuContentThemeColorShadeHelperPara1": {
+      "description": "Helper text for primary colour.",
+      "message": "背景、ブックマーク、モーダルは左からの色合いを使用しています。"
+   },
+   "menuContentThemeColorShadeHelperPara2": {
+      "description": "Helper text for primary colour.",
+      "message": "テキスト要素とフォーム要素は、右からの陰影を使用します。"
+   },
+   "menuContentThemeColorShadeHelperPara3": {
+      "description": "Helper text for primary colour.",
+      "message": "明るい外観の場合は、ライトスタイルに切り替えてから、原色を選択します。暗い外観の場合はその逆です。"
+   },
+   "menuContentThemeFontDisplayNameHelperLink": {
+      "description": "Link to google fonts.",
+      "message": "GoogleFontを探す"
+   },
+   "menuContentThemeFontDisplayNameHelperPara1": {
+      "description": "Helper text for display font name.",
+      "message": "Google Fontsを使用して、時計、日付、グループ名、ブックマーク文字をカスタマイズします。"
+   },
+   "menuContentThemeFontDisplayNameHelperPara2": {
+      "description": "Helper text for display font name.",
+      "message": "Google Fontsに表示されるフォント名を、大文字とスペースを含めて追加します。例：「FredokaOne」または「Kanit」と入力します。"
+   },
+   "menuContentThemeFontDisplayNameHelperPara3": {
+      "description": "Helper text for display font name.",
+      "message": "フィールドをクリアして、デフォルトのフォント「FjallaOne」を使用します。"
+   },
+   "menuContentThemeFontDisplayNameLabel": {
+      "description": "Input for display font name.",
+      "message": "表示フォント"
+   },
+   "menuContentThemeFontDisplayNamePlaceholder": {
+      "description": "Placeholder for display font name.",
+      "message": "Googleフォント名"
+   },
+   "menuContentThemeFontDisplayStyleItalic": {
+      "description": "Radio for italic display font style.",
+      "message": "イタリック"
+   },
+   "menuContentThemeFontDisplayStyleNormal": {
+      "description": "Radio for normal display font style.",
+      "message": "普通"
+   },
+   "menuContentThemeFontDisplayWeightBold": {
+      "description": "Button for bold weight display font.",
+      "message": "はげ"
+   },
+   "menuContentThemeFontDisplayWeightHelperPara1": {
+      "description": "Helper text for display font weight.",
+      "message": "すべてのフォントがすべての重みをサポートしているわけではありません。利用可能なものを確認するには、GoogleFontページを参照してください。"
+   },
+   "menuContentThemeFontDisplayWeightLabel": {
+      "description": "Label for display font weight.",
+      "message": "フォントの太さ"
+   },
+   "menuContentThemeFontDisplayWeightLight": {
+      "description": "Button for light weight display font.",
+      "message": "光"
+   },
+   "menuContentThemeFontDisplayWeightRegular": {
+      "description": "Button for regular weight display font.",
+      "message": "通常"
+   },
+   "menuContentThemeFontUiNameHelperLink": {
+      "description": "Link to google fonts.",
+      "message": "GoogleFontを探す"
+   },
+   "menuContentThemeFontUiNameHelperPara1": {
+      "description": "Helper text for UI font name.",
+      "message": "Google Fontを使用して、ブックマーク名、URL、およびフォーム要素をカスタマイズします。"
+   },
+   "menuContentThemeFontUiNameHelperPara2": {
+      "description": "Helper text for UI font name.",
+      "message": "Google Fontsに表示されるフォント名を、大文字とスペースを含めて追加します。例：「Roboto」、「Source Sans Pro」、「NotoSans」と入力します。"
+   },
+   "menuContentThemeFontUiNameHelperPara3": {
+      "description": "Helper text for UI font name.",
+      "message": "フィールドをクリアして、デフォルトのフォント「OpenSans」を使用します。"
+   },
+   "menuContentThemeFontUiNameLabel": {
+      "description": "Input for UI font name.",
+      "message": "ユーザーインターフェイスフォント"
+   },
+   "menuContentThemeFontUiNamePlaceholder": {
+      "description": "Placeholder for UI font name.",
+      "message": "Googleフォント名"
+   },
+   "menuContentThemeFontUiStyleItalic": {
+      "description": "Radio for italic UI font style.",
+      "message": "イタリック"
+   },
+   "menuContentThemeFontUiStyleNormal": {
+      "description": "Radio for normal UI font style.",
+      "message": "普通"
+   },
+   "menuContentThemeFontUiWeightBold": {
+      "description": "Button for bold weight UI font.",
+      "message": "はげ"
+   },
+   "menuContentThemeFontUiWeightHelperPara1": {
+      "description": "Helper text for UI font weight.",
+      "message": "すべてのフォントがすべての重みをサポートしているわけではありません。利用可能なものを確認するには、GoogleFontページを参照してください。"
+   },
+   "menuContentThemeFontUiWeightLabel": {
+      "description": "Label for UI font weight.",
+      "message": "フォントの太さ"
+   },
+   "menuContentThemeFontUiWeightLight": {
+      "description": "Button for light weight UI font.",
+      "message": "光"
+   },
+   "menuContentThemeFontUiWeightRegular": {
+      "description": "Button for regular weight UI font.",
+      "message": "通常"
+   },
+   "menuContentThemeHeaderColorByCustomDescription": {
+      "description": "Description for colour header area background.",
+      "message": "ヘッダー領域の後ろにカスタムカラーを使用します。"
+   },
+   "menuContentThemeHeaderColorByCustomLabel": {
+      "description": "Radio for colour header area background.",
+      "message": "カスタムカラー"
+   },
+   "menuContentThemeHeaderColorByTransparentDescription": {
+      "description": "Description for transparent header area background.",
+      "message": "ヘッダー領域の背後に背景色はありません。"
+   },
+   "menuContentThemeHeaderColorByTransparentLabel": {
+      "description": "Radio for transparent header area background.",
+      "message": "透明"
+   },
+   "menuContentThemeHeaderColorColor": {
+      "description": "Label for header area background colour.",
+      "message": "ヘッダーの背景色"
+   },
+   "menuContentThemeHeaderColorLabel": {
+      "description": "Label for header area colour.",
+      "message": "ヘッダーの背景色"
+   },
+   "menuContentThemeHeaderColorOpacity": {
+      "description": "Range for header area background opacity.",
+      "message": "背景の不透明度"
+   },
+   "menuContentThemeLayoutColorBlurHelperPara1": {
+      "description": "Description for layout background blur.",
+      "message": "すべてのブラウザでサポートされているわけではありません。"
+   },
+   "menuContentThemeLayoutColorBlurLabel": {
+      "description": "Range for layout background blur.",
+      "message": "背景のぼかし"
+   },
+   "menuContentThemeLayoutColorByCustomDescription": {
+      "description": "Description for colour layout area background.",
+      "message": "レイアウトの背後にあるカスタムカラーを使用します。"
+   },
+   "menuContentThemeLayoutColorByCustomLabel": {
+      "description": "Radio for colour layout area background.",
+      "message": "カスタムカラー"
+   },
+   "menuContentThemeLayoutColorByTransparentDescription": {
+      "description": "Description for transparent layout area background.",
+      "message": "レイアウトの背後に背景色はありません。"
+   },
+   "menuContentThemeLayoutColorByTransparentLabel": {
+      "description": "Radio for transparent layout area background.",
+      "message": "透明"
+   },
+   "menuContentThemeLayoutColorColor": {
+      "description": "Label for layout area background colour.",
+      "message": "レイアウトの背景色"
+   },
+   "menuContentThemeLayoutColorLabel": {
+      "description": "Label for layout area colour.",
+      "message": "レイアウトの背景色"
+   },
+   "menuContentThemeLayoutColorOpacity": {
+      "description": "Range for layout area background opacity.",
+      "message": "背景の不透明度"
+   },
+   "menuContentThemeLayoutDivider": {
+      "description": "Label for layout divider.",
+      "message": "ヘッダーとブックマーク領域を分割する"
+   },
+   "menuContentThemeOpacityBookmark": {
+      "description": "Range for bookmark opacity.",
+      "message": "ブックマーク"
+   },
+   "menuContentThemeOpacityGeneralHelperPara1": {
+      "description": "Helper text for all opacity.",
+      "message": "検索バー、ブックマーク、グループコントロール、ツールバーの不透明度を変更します。"
+   },
+   "menuContentThemeOpacityGeneralHelperPara2": {
+      "description": "Helper text for all opacity.",
+      "message": "個々のブックマークを編集するときに不透明度を変更することもできます。"
+   },
+   "menuContentThemeOpacityGeneralLabel": {
+      "description": "Range for all opacity.",
+      "message": "すべての不透明度"
+   },
+   "menuContentThemeOpacityGroupToolbar": {
+      "description": "Range for group toolbar opacity.",
+      "message": "グループツールバー"
+   },
+   "menuContentThemeOpacitySearch": {
+      "description": "Range for search opacity.",
+      "message": "検索ボックス"
+   },
+   "menuContentThemeOpacityToolbar": {
+      "description": "Range for toolbar opacity.",
+      "message": "ツールバー"
+   },
+   "menuContentThemePresetHelperPara1": {
+      "description": "Helper text for preset theme.",
+      "message": "プリセットを適用すると、現在の色、アクセント、フォント、スタイル、半径、影、陰影、背景が置き換えられます。"
+   },
+   "menuContentThemeRadius": {
+      "description": "Range for radius.",
+      "message": "コーナー半径"
+   },
+   "menuContentThemeSavedEdit": {
+      "description": "Button to enter edit mode for saved themes.",
+      "message": "保存したテーマを編集する"
+   },
+   "menuContentThemeSavedHelperPara1": {
+      "description": "Helper text for saved themes.",
+      "message": "テーマを保存すると、現在の色、アクセント、フォント、スタイル、不透明度、半径、影、陰影、背景が記録されます。"
+   },
+   "menuContentThemeSavedSave": {
+      "description": "Button to save the current theme setup.",
+      "message": "現在のテーマを保存"
+   },
+   "menuContentThemeShadeBlurHelperPara1": {
+      "description": "Helper text for shade blur.",
+      "message": "すべてのブラウザでサポートされているわけではありません。"
+   },
+   "menuContentThemeShadeBlurLabel": {
+      "description": "Range for shade blur.",
+      "message": "シェードブラー"
+   },
+   "menuContentThemeShadeOpacity": {
+      "description": "Range for shade opacity.",
+      "message": "日陰の不透明度"
+   },
+   "menuContentThemeShadow": {
+      "description": "Range for shadow.",
+      "message": "影のサイズ"
+   },
+   "menuContentThemeStyleAutomaticDescription": {
+      "description": "Description for automatic light or dark mode.",
+      "message": "システムのライトモードまたはダークモードに従います。"
+   },
+   "menuContentThemeStyleAutomaticLabel": {
+      "description": "Radio for automatic light or dark mode.",
+      "message": "自動"
+   },
+   "menuContentThemeStyleDarkLabel": {
+      "description": "Radio for dark mode.",
+      "message": "ダークモード"
+   },
+   "menuContentThemeStyleLightLabel": {
+      "description": "Radio for light mode.",
+      "message": "ライトモード"
+   },
+   "menuContentToolbarControlsAccent": {
+      "description": "Checkbox to show bookmark group toolbar accent control.",
+      "message": "アクセントコントロールを表示"
+   },
+   "menuContentToolbarControlsAdd": {
+      "description": "Checkbox to show bookmark group toolbar add control.",
+      "message": "コントロールの追加を表示"
+   },
+   "menuContentToolbarControlsEdit": {
+      "description": "Checkbox to show bookmark group toolbar edit control.",
+      "message": "編集コントロールを表示"
+   },
+   "menuContentToolbarLocationCorner": {
+      "description": "Radio for bookmark group toolbar in a corner.",
+      "message": "隅に"
+   },
+   "menuContentToolbarLocationHeader": {
+      "description": "Radio for bookmark group toolbar in header.",
+      "message": "ヘッダー内"
+   },
+   "menuContentToolbarLocationHelperPara1": {
+      "description": "Helper text for toolbar location.",
+      "message": "ツールバーをヘッダー内またはウィンドウの隅に配置します。"
+   },
+   "menuContentToolbarLocationNewLineDescription": {
+      "description": "Description to force the bookmark group toolbar onto a new line.",
+      "message": "新しい行に強制し、他のヘッダー項目から分離します。"
+   },
+   "menuContentToolbarLocationNewLineHelperPara1": {
+      "description": "Helper text for the bookmark group toolbar on a new line.",
+      "message": "ツールバーがヘッダー内に配置されている場合にのみ使用できます。"
+   },
+   "menuContentToolbarLocationNewLineLabel": {
+      "description": "Checkbox to force the bookmark group toolbar onto a new line.",
+      "message": "改行"
+   },
+   "menuContentToolbarPositionBottomLeft": {
+      "description": "Radio for bookmark group toolbar positioned in the bottom left corner.",
+      "message": "左下"
+   },
+   "menuContentToolbarPositionBottomRight": {
+      "description": "Radio for bookmark group toolbar positioned in the bottom right corner.",
+      "message": "右下"
+   },
+   "menuContentToolbarPositionHelper1Para1": {
+      "description": "Helper text for bookmark group toolbar corner location.",
+      "message": "ウィンドウの四隅の1つにツールバーを配置します。"
+   },
+   "menuContentToolbarPositionHelper2Para1": {
+      "description": "Helper text for bookmark group toolbar corner location.",
+      "message": "ツールバーが隅に配置されている場合にのみ使用できます。"
+   },
+   "menuContentToolbarPositionLabel": {
+      "description": "Label for toolbar corner location.",
+      "message": "ツールバーの位置"
+   },
+   "menuContentToolbarPositionTopLeft": {
+      "description": "Radio for bookmark group toolbar positioned in the top left corner.",
+      "message": "左上"
+   },
+   "menuContentToolbarPositionTopRight": {
+      "description": "Radio for bookmark group toolbar positioned in the top right corner.",
+      "message": "右上"
+   },
+   "menuContentToolbarSize": {
+      "description": "Range for bookmark group toolbar size.",
+      "message": "ツールバーのサイズ"
+   },
+   "menuNavAppLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "{appName}"
+   },
+   "menuNavBookmarkLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ブックマーク"
+   },
+   "menuNavBookmarkSubNavGeneral": {
+      "description": "Label for the settings menu navigation.",
+      "message": "全般的"
+   },
+   "menuNavBookmarkSubNavOrientation": {
+      "description": "Label for the settings menu navigation.",
+      "message": "オリエンテーション"
+   },
+   "menuNavBookmarkSubNavSort": {
+      "description": "Label for the settings menu navigation.",
+      "message": "選別"
+   },
+   "menuNavBookmarkSubNavStyle": {
+      "description": "Label for the settings menu navigation.",
+      "message": "スタイル"
+   },
+   "menuNavCoffeeLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "コーヒー"
+   },
+   "menuNavDataLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "データ"
+   },
+   "menuNavDataSubNavBackup": {
+      "description": "Label for the settings menu navigation.",
+      "message": "バックアップ"
+   },
+   "menuNavDataSubNavClear": {
+      "description": "Label for the settings menu navigation.",
+      "message": "クリア"
+   },
+   "menuNavDataSubNavRestore": {
+      "description": "Label for the settings menu navigation.",
+      "message": "戻す"
+   },
+   "menuNavDebugLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "デバッグ"
+   },
+   "menuNavDebugSubNavBookmark": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ブックマーク"
+   },
+   "menuNavDebugSubNavButton": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ボタン"
+   },
+   "menuNavDebugSubNavIcon": {
+      "description": "Label for the settings menu navigation.",
+      "message": "アイコン"
+   },
+   "menuNavDebugSubNavInput": {
+      "description": "Label for the settings menu navigation.",
+      "message": "入力"
+   },
+   "menuNavGroupLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "グループ"
+   },
+   "menuNavGroupSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "アラインメント"
+   },
+   "menuNavGroupSubNavCollapse": {
+      "description": "Label for the settings menu navigation.",
+      "message": "崩壊"
+   },
+   "menuNavGroupSubNavName": {
+      "description": "Label for the settings menu navigation.",
+      "message": "名前"
+   },
+   "menuNavGroupSubNavToolbar": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ツールバー"
+   },
+   "menuNavHeaderLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ヘッダ"
+   },
+   "menuNavHeaderSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "アラインメント"
+   },
+   "menuNavHeaderSubNavClock": {
+      "description": "Label for the settings menu navigation.",
+      "message": "時計"
+   },
+   "menuNavHeaderSubNavDate": {
+      "description": "Label for the settings menu navigation.",
+      "message": "日にち"
+   },
+   "menuNavHeaderSubNavGreeting": {
+      "description": "Label for the settings menu navigation.",
+      "message": "挨拶"
+   },
+   "menuNavHeaderSubNavSearch": {
+      "description": "Label for the settings menu navigation.",
+      "message": "検索"
+   },
+   "menuNavHeaderSubNavTransitional": {
+      "description": "Label for the settings menu navigation.",
+      "message": "過渡的な言葉"
+   },
+   "menuNavLanguageLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "言語"
+   },
+   "menuNavLayoutLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "レイアウト"
+   },
+   "menuNavLayoutSubNavAlignment": {
+      "description": "Label for the settings menu navigation.",
+      "message": "アラインメント"
+   },
+   "menuNavLayoutSubNavArea": {
+      "description": "Label for the settings menu navigation.",
+      "message": "領域"
+   },
+   "menuNavLayoutSubNavGutter": {
+      "description": "Label for the settings menu navigation.",
+      "message": "側溝"
+   },
+   "menuNavLayoutSubNavPadding": {
+      "description": "Label for the settings menu navigation.",
+      "message": "パディング"
+   },
+   "menuNavLayoutSubNavPage": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ページ"
+   },
+   "menuNavLayoutSubNavScaling": {
+      "description": "Label for the settings menu navigation.",
+      "message": "スケーリング"
+   },
+   "menuNavSupportLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "サポート"
+   },
+   "menuNavThemeLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "テーマ"
+   },
+   "menuNavThemeSubNavAccent": {
+      "description": "Label for the settings menu navigation.",
+      "message": "アクセント"
+   },
+   "menuNavThemeSubNavBackground": {
+      "description": "Label for the settings menu navigation.",
+      "message": "バックグラウンド"
+   },
+   "menuNavThemeSubNavBookmark": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ブックマーク"
+   },
+   "menuNavThemeSubNavColor": {
+      "description": "Label for the settings menu navigation.",
+      "message": "色"
+   },
+   "menuNavThemeSubNavFont": {
+      "description": "Label for the settings menu navigation.",
+      "message": "フォント"
+   },
+   "menuNavThemeSubNavHeader": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ヘッダ"
+   },
+   "menuNavThemeSubNavLayout": {
+      "description": "Label for the settings menu navigation.",
+      "message": "レイアウト"
+   },
+   "menuNavThemeSubNavOpacity": {
+      "description": "Label for the settings menu navigation.",
+      "message": "不透明度"
+   },
+   "menuNavThemeSubNavPreset": {
+      "description": "Label for the settings menu navigation.",
+      "message": "プリセット"
+   },
+   "menuNavThemeSubNavRadius": {
+      "description": "Label for the settings menu navigation.",
+      "message": "半径"
+   },
+   "menuNavThemeSubNavSaved": {
+      "description": "Label for the settings menu navigation.",
+      "message": "保存しました"
+   },
+   "menuNavThemeSubNavShade": {
+      "description": "Label for the settings menu navigation.",
+      "message": "シェード"
+   },
+   "menuNavThemeSubNavShadow": {
+      "description": "Label for the settings menu navigation.",
+      "message": "風邪"
+   },
+   "menuNavThemeSubNavStyle": {
+      "description": "Label for the settings menu navigation.",
+      "message": "スタイル"
+   },
+   "menuNavToolbarLabel": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ツールバー"
+   },
+   "menuNavToolbarSubNavControls": {
+      "description": "Label for the settings menu navigation.",
+      "message": "コントロール"
+   },
+   "menuNavToolbarSubNavLocation": {
+      "description": "Label for the settings menu navigation.",
+      "message": "位置"
+   },
+   "menuNavToolbarSubNavPosition": {
+      "description": "Label for the settings menu navigation.",
+      "message": "ポジション"
+   },
+   "menuNavToolbarSubNavSize": {
+      "description": "Label for the settings menu navigation.",
+      "message": "サイズ"
+   },
+   "themeCustomAddCancelText": {
+      "description": "Button to cancel adding a saved custom theme.",
+      "message": "キャンセル"
+   },
+   "themeCustomAddHeading": {
+      "description": "Heading for saved custom theme add modal.",
+      "message": "現在のテーマを保存"
+   },
+   "themeCustomAddSuccessText": {
+      "description": "Button to confirm adding a saved custom theme.",
+      "message": "保存する"
+   },
+   "themeCustomEditCancelText": {
+      "description": "Button to cancel editing a saved custom theme.",
+      "message": "キャンセル"
+   },
+   "themeCustomEditHeadingName": {
+      "description": "Heading with a name for saved custom theme edit modal.",
+      "message": "編集"
+   },
+   "themeCustomEditHeadingUnnamed": {
+      "description": "Heading without a name for saved custom theme edit modal.",
+      "message": "名前のないカスタムテーマを編集する"
+   },
+   "themeCustomEditSuccessText": {
+      "description": "Button to confirm editing a saved custom theme.",
+      "message": "削除する"
+   },
+   "themeCustomFormNameLabel": {
+      "description": "Label for saved custom theme name.",
+      "message": "名前"
+   },
+   "themeCustomFormNamePlaceholder": {
+      "description": "Placeholder for saved custom theme name.",
+      "message": "テーマの例"
+   },
+   "themeCustomFormRandom": {
+      "description": "Button for random saved custom theme name.",
+      "message": "ランダムテーマ名"
+   },
+   "themeCustomRemoveCancelText": {
+      "description": "Button to cancel removing a saved custom theme.",
+      "message": "キャンセル"
+   },
+   "themeCustomRemoveContent": {
+      "description": "Paragraph for saved custom theme remove modal.",
+      "message": "この保存されたカスタムテーマを削除してもよろしいですか？これは、元に戻すことはできません。"
+   },
+   "themeCustomRemoveHeadingName": {
+      "description": "Heading with a name for saved custom theme remove modal.",
+      "message": "削除する"
+   },
+   "themeCustomRemoveHeadingUnnamed": {
+      "description": "Heading without a name for saved custom theme remove modal.",
+      "message": "名前のないカスタムテーマを削除する"
+   },
+   "themeCustomRemoveSuccessText": {
+      "description": "Button to confirm removing a saved custom theme.",
+      "message": "保存する"
+   },
+   "themeCustomTileControlEdit": {
+      "description": "Button to edit saved custom theme.",
+      "message": "この保存されたカスタムテーマを編集する"
+   },
+   "themeCustomTileControlRemove": {
+      "description": "Button to remove saved custom theme.",
+      "message": "この保存されたカスタムテーマを削除します"
+   },
+   "toolbarAccent": {
+      "description": "Button for toolbar accent control.",
+      "message": "アクセントカラー"
+   },
+   "toolbarAddBookmark": {
+      "description": "Button for toolbar control to add a new bookmark group.",
+      "message": "新しいブックマーク"
+   },
+   "toolbarAddGroup": {
+      "description": "Button for toolbar control to add a new bookmark.",
+      "message": "新しい集団"
+   },
+   "toolbarAddLabel": {
+      "description": "Button for toolbar control to add.",
+      "message": "追加"
+   },
+   "toolbarEdit": {
+      "description": "Button for toolbar to toggle edit mode.",
+      "message": "グループとブックマークを編集する"
+   },
+   "toolbarSetting": {
+      "description": "Button for toolbar to open settings menu.",
+      "message": "設定メニューを開く"
+   }
+}
