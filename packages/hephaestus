@@ -200,6 +200,11 @@ while getopts "abc:dhrsuwx" opt; do
             echo "-w     Overwrite existing packages in the output directory."
             echo "-x     Search for the fastest mirrors."
             echo
+            echo "Examples:"
+            echo "$0 -a -s -u -x       --> Build and sign all packages by using the fastest mirrors and update the repository database."
+            echo "$0 -s -u aegis ffuf  --> Build and sign 'aegis' and 'ffuf' packages and update the repository database."
+            echo "$0 -a -b             --> Bump version of all git packages."
+            echo "$0 -s -u             --> Update and sign the repository database."
             exit 0
             ;;
         r)
