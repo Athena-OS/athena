@@ -123,6 +123,19 @@ build_package() {
     cd $src_dir
 }
 
+git_bump_package() {
+    pkg_dir=$1
+    src_dir=$2
+
+    echo -e "\nBumping package in $pkg_dir..."
+    cd $pkg_dir
+
+    makepkg -do --noprepare
+    git add PKGBUILD
+
+    cd $src_dir
+}
+
 sign_package() {
     #* If env $sign is false, do not sign packages
     if [[ "$sign" ]]
@@ -152,10 +165,13 @@ echo "The Athena OS CI/CD Builder"
 echo
 
 # Parse command-line options
-while getopts "ac:dhrsuwx" opt; do
+while getopts "abc:dhrsuwx" opt; do
     case $opt in
         a)
             all=true
+            ;;
+        b)
+            bump=true
             ;;
         c)
             buildcores=true
@@ -170,10 +186,11 @@ while getopts "ac:dhrsuwx" opt; do
             NODEPS="-d"
             ;;
         h)
-            echo "Usage: $0 [-a] [-c <ncores>] [-d] [-r] [-s] [-u] [-w] [-x] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-b] [-c <ncores>] [-d] [-r] [-s] [-u] [-w] [-x] [package1 package2 ...]"
             echo
             echo "Options:"
             echo "-a     Build all packages."
+            echo "-b     Bump git packages to the latest version."
             echo "-c     Set number of cores for building (maximum $(nproc))."
             echo "-d     Skip all dependency checks."
             echo "-h     Print this Help."
@@ -250,13 +267,26 @@ elif [[ "$all" ]]; then
     result=($(find_pkgbuild_dirs))
 fi
 
-# Print the result array
-for path in "${result[@]}"; do
-    echo "Found PKGBUILD: $path"
-    # Build and sign packages
-    build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir"
-    echo
-done
+# Only bump git package version
+if [[ "$bump" ]]
+then
+    for path in "${result[@]}"; do
+        echo "Found PKGBUILD: $path"
+        git_bump_package "$(dirname $path)" "$src_dir"
+        echo
+    done
+    echo "Here the updated PKGBUILDs:"
+    git diff --name-only HEAD
+    echo "Commit these changes and push!"
+else
+    # Print the result array
+    for path in "${result[@]}"; do
+        echo "Found PKGBUILD: $path"
+        # Build and sign packages
+        build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir"
+        echo
+    done
+fi
 
 if [[ "$db" ]]
 then
