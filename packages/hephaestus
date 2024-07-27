@@ -45,6 +45,11 @@ find_pkgbuild_dirs() {
     local pkgbuild_paths=()
     local search_dir="/build/packages/"
 
+    # If I'm running the builder outside a container
+    if [ ! -d "$search_dir" ]; then
+      search_dir="$PWD"
+    fi
+
     # If user input is provided, use it as package names to search for
     if [ $# -gt 0 ]; then
         # Loop through provided package names
