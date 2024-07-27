@@ -240,12 +240,15 @@ while getopts "abc:dhrsuwx" opt; do
 done
 shift $((OPTIND - 1))
 
-# Import the signing key
-passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
-if [ -z "$passphrase" ]; then
-    echo "No secret found for GPG key object ${GPG_SEC}."
-else
-    echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+if [[ "$sign" ]]
+then
+    # Import the signing key
+    passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
+    if [ -z "$passphrase" ]; then
+        echo "No secret found for GPG key object ${GPG_SEC}."
+    else
+        echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+    fi
 fi
 
 if [[ "$mirr" ]]
