@@ -135,6 +135,7 @@ git_bump_package() {
     echo -e "\nBumping package in $pkg_dir..."
     cd $pkg_dir
 
+    updpkgsums
     makepkg -do --noprepare
     git add PKGBUILD
     sudo rm -rf /tmp/makepkg/*
