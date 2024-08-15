@@ -3,9 +3,27 @@ post_install() {
 
   mv /usr/share/athena-blue-base/apps/* /usr/share/icons/hicolor/scalable/apps/
   mv /usr/share/athena-blue-base/categories/* /usr/share/icons/hicolor/scalable/categories/
+  if [ -d "/usr/share/gnome-shell" ]; then
+      echo -e "GNOME environment detected..."
+      mkdir -p "/usr/share/gnome-background-properties"
+      mv "/usr/share/athena-blue-base/arch-ascii.xml" "/usr/share/gnome-background-properties/"
+      mv "/usr/share/athena-blue-base/nix-behind.xml" "/usr/share/gnome-background-properties/"
+  fi
   rm -rf /usr/share/athena-blue-base
 }
 
 post_upgrade() {
     post_install $1
+}
+
+post_remove() {
+  # Optionally remove the XML file if GNOME was detected during install
+  if [ -d "/usr/share/gnome-shell" ]; then
+      rm -f "/usr/share/gnome-background-properties/arch-ascii.xml"
+      rm -f "/usr/share/gnome-background-properties/nix-behind.xml"
+  fi
+  # Check if the directory is empty and remove it if it is
+  if [ -z "$(ls -A /usr/share/gnome-background-properties)" ]; then
+      rmdir /usr/share/gnome-background-properties
+  fi
 }

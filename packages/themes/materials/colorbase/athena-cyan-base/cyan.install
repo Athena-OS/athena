@@ -5,13 +5,13 @@ post_install() {
   mv /usr/share/athena-cyan-base/categories/* /usr/share/icons/hicolor/scalable/categories/
   if [ -d "/usr/share/gnome-shell" ]; then
       echo -e "GNOME environment detected..."
-      mkdir "/usr/share/gnome-background-properties"
+      mkdir -p "/usr/share/gnome-background-properties"
       mv "/usr/share/athena-cyan-base/nike.xml" "/usr/share/gnome-background-properties/"
       mv "/usr/share/athena-cyan-base/nike-holo.xml" "/usr/share/gnome-background-properties/"
       mv "/usr/share/athena-cyan-base/samurai-girl.xml" "/usr/share/gnome-background-properties/"
       mv "/usr/share/athena-cyan-base/temple.xml" "/usr/share/gnome-background-properties/"
-      rm -rf /usr/share/athena-cyan-base
   fi
+  rm -rf /usr/share/athena-cyan-base
 }
 
 post_upgrade() {
