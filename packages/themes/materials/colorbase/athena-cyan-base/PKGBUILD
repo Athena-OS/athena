@@ -1,5 +1,5 @@
 pkgname=athena-cyan-base
-pkgver=6.5f53fe0
+pkgver=7.938493c
 pkgrel=1
 pkgdesc="Cyan colorbase resources."
 arch=('any')
@@ -19,11 +19,11 @@ package() {
   cd athena-cyan-base
 
   install -dm 755 "$pkgdir/usr/share/athena-cyan-base"
-  install -dm 755 "$pkgdir/usr/share/backgrounds"
-  install -Dm 644 "wallpapers/samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/"
-  install -Dm 644 "wallpapers/nike.png" "$pkgdir/usr/share/backgrounds/"
-  install -Dm 644 "wallpapers/nike-holo.png" "$pkgdir/usr/share/backgrounds/"
-  install -Dm 644 "wallpapers/temple.png" "$pkgdir/usr/share/backgrounds/"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
+  install -Dm 644 "wallpapers/samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/nike.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/nike-holo.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/temple.png" "$pkgdir/usr/share/backgrounds/athena/"
 
   cp -a "icons/apps" "$pkgdir/usr/share/athena-cyan-base/"
   cp -a "icons/categories" "$pkgdir/usr/share/athena-cyan-base/"
