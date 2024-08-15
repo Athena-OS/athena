@@ -3,9 +3,27 @@ post_install() {
 
   mv /usr/share/athena-purple-base/apps/* /usr/share/icons/hicolor/scalable/apps/
   mv /usr/share/athena-purple-base/categories/* /usr/share/icons/hicolor/scalable/categories/
+  if [ -d "/usr/share/gnome-shell" ]; then
+      echo -e "GNOME environment detected..."
+      mkdir -p "/usr/share/gnome-background-properties"
+      mv "/usr/share/athena-purple-base/neon-circle.xml" "/usr/share/gnome-background-properties/"
+      mv "/usr/share/athena-purple-base/nix-neon-circle.xml" "/usr/share/gnome-background-properties/"
+  fi
   rm -rf /usr/share/athena-purple-base
 }
 
 post_upgrade() {
     post_install $1
+}
+
+post_remove() {
+  # Optionally remove the XML file if GNOME was detected during install
+  if [ -d "/usr/share/gnome-shell" ]; then
+      rm -f "/usr/share/gnome-background-properties/neon-circle.xml"
+      rm -f "/usr/share/gnome-background-properties/nix-neon-circle.xml"
+  fi
+  # Check if the directory is empty and remove it if it is
+  if [ -z "$(ls -A /usr/share/gnome-background-properties)" ]; then
+      rmdir /usr/share/gnome-background-properties
+  fi
 }

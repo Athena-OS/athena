@@ -1,5 +1,5 @@
 pkgname=athena-purple-base
-pkgver=9.32993ef
+pkgver=10.d836964
 pkgrel=1
 pkgdesc="Purple colorbase resources."
 arch=('any')
@@ -20,8 +20,13 @@ package() {
 
   install -dm 755 "$pkgdir/usr/share/athena-purple-base"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-  install -Dm 644 "neon-circle.jpg" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/neon-circle.jpg" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/nix-neon-circle.jpg" "$pkgdir/usr/share/backgrounds/athena/"
 
   cp -a "icons/apps" "$pkgdir/usr/share/athena-purple-base/"
   cp -a "icons/categories" "$pkgdir/usr/share/athena-purple-base/"
+
+  install -dm 755 "$pkgdir/usr/share/gnome-background-properties"
+  install -Dm 644 "gnome-background-properties/neon-circle.xml" "$pkgdir/usr/share/athena-purple-base/"
+  install -Dm 644 "gnome-background-properties/nix-neon-circle.xml" "$pkgdir/usr/share/athena-purple-base/"
 }

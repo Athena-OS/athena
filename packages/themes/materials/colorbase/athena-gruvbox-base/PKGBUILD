@@ -1,5 +1,5 @@
 pkgname=athena-gruvbox-base
-pkgver=3.35c8619
+pkgver=4.040342e
 pkgrel=1
 pkgdesc="Gruvbox colorbase resources."
 arch=('any')
@@ -20,8 +20,11 @@ package() {
 
   install -dm 755 "$pkgdir/usr/share/athena-gruvbox-base"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-  install -Dm 644 "cyborg-gruv.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/cyborg-gruv.png" "$pkgdir/usr/share/backgrounds/athena/"
 
   cp -a "icons/apps" "$pkgdir/usr/share/athena-gruvbox-base/"
   cp -a "icons/categories" "$pkgdir/usr/share/athena-gruvbox-base/"
+
+  install -dm 755 "$pkgdir/usr/share/gnome-background-properties"
+  install -Dm 644 "gnome-background-properties/cyborg-gruv.xml" "$pkgdir/usr/share/athena-gruvbox-base/"
 }
