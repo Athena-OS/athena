@@ -1,5 +1,5 @@
 pkgname=athena-cyan-base
-pkgver=4.b63cc93
+pkgver=6.5f53fe0
 pkgrel=1
 pkgdesc="Cyan colorbase resources."
 arch=('any')
@@ -19,10 +19,22 @@ package() {
   cd athena-cyan-base
 
   install -dm 755 "$pkgdir/usr/share/athena-cyan-base"
-  install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-  install -Dm 644 "samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/athena/"
-  install -Dm 644 "temple.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -dm 755 "$pkgdir/usr/share/backgrounds"
+  install -Dm 644 "wallpapers/samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/"
+  install -Dm 644 "wallpapers/nike.png" "$pkgdir/usr/share/backgrounds/"
+  install -Dm 644 "wallpapers/nike-holo.png" "$pkgdir/usr/share/backgrounds/"
+  install -Dm 644 "wallpapers/temple.png" "$pkgdir/usr/share/backgrounds/"
 
   cp -a "icons/apps" "$pkgdir/usr/share/athena-cyan-base/"
   cp -a "icons/categories" "$pkgdir/usr/share/athena-cyan-base/"
+
+  # Check if the GNOME session is available and create the directory if it is
+  if [ -d "/usr/share/gnome-shell" ]; then
+    echo "GNOME environment detected..."
+    install -dm 755 "$pkgdir/usr/share/gnome-background-properties"
+    install -Dm 644 "gnome-background-properties/nike.xml" "$pkgdir/usr/share/gnome-background-properties/"
+    install -Dm 644 "gnome-background-properties/nike-holo.xml" "$pkgdir/usr/share/gnome-background-properties/"
+    install -Dm 644 "gnome-background-properties/samurai-girl.xml" "$pkgdir/usr/share/gnome-background-properties/"
+    install -Dm 644 "gnome-background-properties/temple.xml" "$pkgdir/usr/share/gnome-background-properties/"
+  fi
 }
