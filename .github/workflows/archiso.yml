@@ -56,7 +56,7 @@ jobs:
           rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
 
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm archiso git github-cli openssh rsync sshpass wget
+        run: pacman -Syyu --noconfirm archiso git github-cli grub openssh rsync sshpass wget
         
       - name: Build ArchISO
         run: |
