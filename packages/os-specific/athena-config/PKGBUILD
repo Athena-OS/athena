@@ -6,7 +6,7 @@ arch=('any')
 license=("custom")
 depends=('athena-theme-tweak' 'terminus-font')
 source=("$pkgname.tar.gz")
-sha512sums=('d63cd06e61a680f97342f9fab6aa1528b336577016c1e69413277a76a3bc8e25d09a7f487303ab98399bcabc0b5a0a69c0d55e289a4efc8828fc96af4d84c07a')
+sha512sums=('a24e09062159f999cfda81cf1cfc06a876bd93b82af08af8d0c86fe58bcff69ad75979948f1ab0a996149fb64566c7f4116379bac824d6132447e75f2352ea97')
 
 package() {
   install -dm 755 "${pkgdir}/usr/bin"
