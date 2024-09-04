@@ -79,8 +79,6 @@ alias spotify='spotify --no-zygote'
 # Alias's to user support
 alias tb='nc termbin.com 9999'
 alias journalctl-upload='sudo journalctl | tb'
-alias config-logs='cat /tmp/config.json | grep -Ev "password|rootpass" | tb'
-alias install-logs='cat /tmp/aegis.log | tb'
 
 #keyboard
 alias give-me-azerty-be="sudo localectl set-x11-keymap be"
@@ -172,9 +170,9 @@ alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pac
 #our experimental - best option for the moment
 alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
 alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
-alias ram='rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
-alias rams='rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist'
-alias rbc='rate-mirrors --concurrency 40 --allow-root --disable-comments --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur'
+alias ram='sudo rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
+alias rams='sudo rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist'
+alias rcm='sudo rate-mirrors --concurrency 40 --allow-root --disable-comments --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur'
 
 #enabling vmware services
 alias start-vmware="sudo systemctl enable --now vmtoolsd.service"
