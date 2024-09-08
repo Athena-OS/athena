@@ -10,16 +10,16 @@ jobs:
     env:
       RELEASE_VERSION: 'v23.11'
     runs-on: ubuntu-latest
-    #container:
-      #image: athenaos/base-devel:latest
-      #options: --privileged 
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged 
     steps:
       - name: Checkout files
         uses: actions/checkout@v4
 
       - name: Install Quicktest
         run: | 
-          sudo apt install quickemu socat ffmpeg imagemagick tesseract-ocr tesseract-ocr-eng
+          pacman -Syyu quickemu qemu-desktop socat ffmpeg imagemagick tesseract-ocr tesseract-data-eng
           git clone https://github.com/quickemu-project/quicktest
 
       - name: Run Test
