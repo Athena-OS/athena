@@ -57,10 +57,10 @@ function test_installer_base() {
     qt_send_key_combo "down"
     qt_send_key "return"
 
-    qt_wait_for_seconds 8
+    qt_wait_for_seconds 1
     qt_send_string_return "us"
 
-    qt_wait_for_seconds 1
+    qt_wait_for_seconds 8
     qt_send_string_return "en_US.UTF-8"
 }
 
@@ -154,6 +154,12 @@ function test_installer_misc() {
 function test_installer_confirm() {
     qt_wait_for_seconds 1
     qt_send_key "return"
+    # cores
+    qt_wait_for_seconds 1
+    qt_send_string_return "0"
+    # jobs
+    qt_wait_for_seconds 1
+    qt_send_string_return "32"
     qt_wait_for_seconds 1
     qt_send_key "return"
 }
