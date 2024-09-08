@@ -19,7 +19,7 @@ jobs:
 
       - name: Install Quicktest
         run: | 
-          sudo apt install socat ffmpeg imagemagick tesseract-ocr tesseract-ocr-eng
+          sudo apt install quickemu socat ffmpeg imagemagick tesseract-ocr tesseract-ocr-eng
           git clone https://github.com/quickemu-project/quicktest
 
       - name: Run Test
