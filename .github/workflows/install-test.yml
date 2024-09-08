@@ -6,7 +6,7 @@ on:
      - cron:  '0 0 */7 * *'
   
 jobs:
-  build:
+  athena-quicktest:
     env:
       RELEASE_VERSION: 'v23.11'
     runs-on: ubuntu-latest
