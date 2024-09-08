@@ -19,7 +19,7 @@ jobs:
 
       - name: Install Quicktest
         run: | 
-          pacman -Syyu quickemu qemu-desktop socat ffmpeg imagemagick tesseract-ocr tesseract-data-eng
+          pacman -Syyu quickemu qemu-desktop socat ffmpeg imagemagick tesseract tesseract-data-eng
           git clone https://github.com/quickemu-project/quicktest
 
       - name: Run Test
