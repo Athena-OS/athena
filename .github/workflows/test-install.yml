@@ -19,7 +19,7 @@ jobs:
 
       - name: Install Quicktest
         run: | 
-          pacman -Syyu --noconfirm quickemu qemu-desktop socat ffmpeg imagemagick tesseract tesseract-data-eng w3m xdg-utils git
+          pacman -Syyu --noconfirm quickemu qemu-desktop socat ffmpeg imagemagick libnotify tesseract tesseract-data-eng w3m xdg-utils git
           ln -s /usr/bin/xdg-open /usr/bin/open
           git clone https://github.com/quickemu-project/quicktest
 
