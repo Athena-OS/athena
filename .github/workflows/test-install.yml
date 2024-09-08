@@ -25,5 +25,6 @@ jobs:
       - name: Run Test
         run: |
           cd quicktest
+          mkdir -p testcases/athenaos/v23.11
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_with_defaults https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_with_defaults
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_with_defaults athenaos ${{env.RELEASE_VERSION}}
