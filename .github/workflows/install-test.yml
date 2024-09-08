@@ -30,6 +30,12 @@ jobs:
           # To prevent missing X11 $DISPLAY error needed by notify-send
           sed -i "s/command -v notify-send/command -v echo/g" ./quicktest
           mkdir -p testcases/athenaos/${{env.RELEASE_VERSION}}/i18n
-          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_with_defaults https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_with_defaults
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/i18n/en_US https://raw.githubusercontent.com/Athena-OS/athena/main/tests/i18n/en_US
-          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_with_defaults athenaos ${{env.RELEASE_VERSION}}
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_arch_with_gnome_gdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_arch_with_gnome_gdm
+          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_gnome_gdm athenaos ${{env.RELEASE_VERSION}}
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_arch_with_kde_lightdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_arch_with_kde_lightdm
+          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_kde_lightdm athenaos ${{env.RELEASE_VERSION}}
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_arch_with_xfce_sddm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_arch_with_xfce_sddm
+          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_xfce_sddm athenaos ${{env.RELEASE_VERSION}}
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_nix_with_gnome_gdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_nix_with_gnome_gdm
+          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_nix_with_gnome_gdm athenaos ${{env.RELEASE_VERSION}}
