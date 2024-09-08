@@ -151,7 +151,7 @@ function test_installer_confirm() {
 function test_installer_installation_complete_screen() {
     # Once the slide show is done, and so is the installation, we should get
     # the installation complete screen
-    qt_wait_for_text "$FUNCNAME" "$text_installation_complete_title" 2 30
+    qt_wait_for_text "$FUNCNAME" "$text_installation_complete_title" 25 30
     qt_send_key "return"
 }
 
