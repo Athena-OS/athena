@@ -27,6 +27,8 @@ jobs:
       - name: Run Test
         run: |
           cd quicktest
+          # To prevent missing X11 $DISPLAY error needed by notify-send
+          sed -i "s/command -v notify-send/command -v echo/g" ./quicktest
           mkdir -p testcases/athenaos/${{env.RELEASE_VERSION}}/i18n
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_with_defaults https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_with_defaults
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/i18n/en_US https://raw.githubusercontent.com/Athena-OS/athena/main/tests/i18n/en_US
