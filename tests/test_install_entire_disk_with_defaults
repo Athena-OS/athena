@@ -1,0 +1,183 @@
+# Boot to the desktop, run a few things and shutdown
+
+function test_description() {
+    cat << EOF
+Boot to the desktop, run a few things and shutdown
+- Wait for GNU GRUB
+- Wait for the Aegis installer, then close it
+- Open a terminal and run xrandr
+- Launch Firefox
+- Power off the VM at the end
+EOF
+}
+
+function test_setup() {
+    # No setup required
+    echo "No setup required"
+}
+
+function test_post_boot_grub() {
+    # Wait a while for EUFI or BIOS to pass
+    # We could skip having this function, but it's nice to have
+    # So we have the opportunity to click that stupid dialog
+    qt_wait_for_seconds 5
+    # Wait for the grub menu
+    #qt_wait_for_text "$FUNCNAME" "$text_console_gnu_grub" 10 5
+    qt_screenshot_ppm "$FUNCNAME"
+    # Press enter on the 'Try or install Ubuntu' GRUB option
+    qt_send_key "return"
+}
+
+function test_installer_initial_load() {
+    # Wait for the installer to load
+    # Takes a while initially to get started so we give it 10 loads/attempts of 15 seconds
+    qt_wait_for_text "$FUNCNAME" "$text_installation_welcome_to_athena_title" 10 15
+    qt_wait_for_text "$FUNCNAME" "$text_installation_welcome_to_athena_body" 10 3
+    qt_send_key "tab"
+    qt_send_key "tab"
+    qt_send_key "tab"
+    qt_send_key "return"
+    #qt_send_key_combo "alt-f4"
+    qt_wait_for_seconds 1
+}
+
+function test_installer_base() {
+    qt_wait_for_text "$FUNCNAME" "$text_installation_base_title" 10 3
+    qt_send_key "return"
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+
+    qt_wait_for_seconds 1
+    qt_send_string_return "Zurich"
+
+    qt_wait_for_seconds 1
+    qt_send_string "en"
+    qt_send_key_combo "down"
+    qt_send_key "return"
+
+    qt_wait_for_seconds 8
+    qt_send_string_return "us"
+
+    qt_wait_for_seconds 1
+    qt_send_string_return "en_US.UTF-8"
+}
+
+function test_installer_user() {
+    #qt_wait_for_text "$FUNCNAME" "$text_installation_create_your_account" 10 3
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+    #qt_wait_for_text "$FUNCNAME" "$text_installation_create_your_password" 10 3
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+    #qt_wait_for_text "$FUNCNAME" "$text_installation_verify_your_password" 10 3
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+    #qt_wait_for_text "$FUNCNAME" "$text_installation_root_account" 10 3
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+}
+
+function test_installer_hostname() {
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+}
+
+function test_installer_partition() {
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+    qt_wait_for_seconds 1
+    qt_send_key_combo "right"
+    qt_send_key "return"
+    qt_wait_for_seconds 1
+    qt_send_key_combo "right"
+    qt_send_key "return"
+}
+
+function test_installer_environment() {
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+}
+
+function test_installer_shell() {
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+}
+
+function test_installer_theme() {
+    qt_wait_for_seconds 1
+    qt_send_key_combo "down"
+    qt_send_key_combo "down"
+    qt_send_key_combo "down"
+    qt_send_key_combo "down"
+    qt_send_key_combo "down"
+    qt_send_key_combo "down"
+    qt_send_key "return"
+}
+
+function test_installer_dm() {
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+}
+
+function test_installer_terminal() {
+    qt_wait_for_seconds 1
+    qt_send_key_combo "down"
+    qt_send_key "return"
+}
+
+function test_installer_browser() {
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+}
+
+function test_installer_misc() {
+    qt_wait_for_seconds 1
+    qt_send_key_combo "down"
+    qt_send_key_combo "spc"
+    qt_send_key_combo "down"
+    qt_send_key_combo "spc"
+    qt_send_key "return"
+}
+
+function test_installer_confirm() {
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+    qt_wait_for_seconds 1
+    qt_send_key "return"
+}
+
+function test_installer_installation_complete_screen() {
+    # Once the slide show is done, and so is the installation, we should get
+    # the installation complete screen
+    qt_wait_for_text "$FUNCNAME" "$text_installation_complete_title" 25 30
+    qt_send_key "return"
+}
+
+function test_power_off_vm() {
+    # send power off
+    qt_poweroff_vm
+}
+
+function test_install_entire_disk_with_defaults() {
+    test_setup
+    test_post_boot_grub
+    test_installer_initial_load
+    test_installer_base
+    test_installer_user
+    test_installer_hostname
+    test_installer_partition
+    test_installer_environment
+    test_installer_shell
+    test_installer_theme
+    test_installer_dm
+    test_installer_terminal
+    test_installer_browser
+    test_installer_misc
+    test_installer_confirm
+    test_installer_installation_complete_screen
+    test_power_off_vm
+}
+
+test_description
