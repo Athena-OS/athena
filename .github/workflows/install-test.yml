@@ -6,7 +6,7 @@ on:
      - cron:  '0 0 */7 * *'
   
 jobs:
-  Quicktest:
+  build:
     env:
       RELEASE_VERSION: 'v23.11'
     runs-on: ubuntu-latest
@@ -17,25 +17,41 @@ jobs:
       - name: Checkout files
         uses: actions/checkout@v4
 
-      - name: Install Quicktest
+      - name: Install dependencies
         run: | 
           pacman -Syyu --noconfirm quickemu qemu-desktop socat ffmpeg imagemagick libnotify tesseract tesseract-data-eng w3m xdg-utils git
           systemd-machine-id-setup
           ln -s /usr/bin/xdg-open /usr/bin/open
           git clone https://github.com/quickemu-project/quicktest
 
-      - name: Run Test
+      - name: Initialize
         run: |
           cd quicktest
           # To prevent missing X11 $DISPLAY error needed by notify-send
           sed -i "s/command -v notify-send/command -v echo/g" ./quicktest
           mkdir -p testcases/athenaos/${{env.RELEASE_VERSION}}/i18n
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/i18n/en_US https://raw.githubusercontent.com/Athena-OS/athena/main/tests/i18n/en_US
+
+      - name: Test - Athena Arch with GNOME and GDM
+        run: |
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_arch_with_gnome_gdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_arch_with_gnome_gdm
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_gnome_gdm athenaos ${{env.RELEASE_VERSION}}
+          rm -rf ~/machines/*
+          
+      - name: Test - Athena Arch with KDE and LightDM
+        run: |
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_arch_with_kde_lightdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_arch_with_kde_lightdm
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_kde_lightdm athenaos ${{env.RELEASE_VERSION}}
+          rm -rf ~/machines/*
+          
+      - name: Test - Athena Arch with XFCE and SDDM
+        run: |
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_arch_with_xfce_sddm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_arch_with_xfce_sddm
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_xfce_sddm athenaos ${{env.RELEASE_VERSION}}
+          rm -rf ~/machines/*
+          
+      - name: Test - Athena Nix with GNOME and GDM
+        run: |
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_nix_with_gnome_gdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_nix_with_gnome_gdm
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_nix_with_gnome_gdm athenaos ${{env.RELEASE_VERSION}}
+          rm -rf ~/machines/*
