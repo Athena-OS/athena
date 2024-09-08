@@ -25,7 +25,7 @@ jobs:
       - name: Run Test
         run: |
           cd quicktest
-          mkdir -p testcases/athenaos/${{env.RELEASE_VERSION}}
+          mkdir -p testcases/athenaos/${{env.RELEASE_VERSION}}/i18n
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_with_defaults https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_with_defaults
-          cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/i18n/en_US https://raw.githubusercontent.com/Athena-OS/athena/main/tests/i18n/en_US
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_with_defaults athenaos ${{env.RELEASE_VERSION}}
