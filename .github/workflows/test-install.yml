@@ -1,0 +1,29 @@
+name: Test Installation
+on:
+  # push:
+  workflow_dispatch:
+  schedule:
+     - cron:  '0 0 */7 * *'
+  
+jobs:
+  build:
+    env:
+      RELEASE_VERSION: 'v23.11'
+    runs-on: ubuntu-latest
+    #container:
+      #image: athenaos/base-devel:latest
+      #options: --privileged 
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+
+      - name: Install Quicktest
+        run: | 
+          apt install socat ffmpeg imagemagick tesseract-ocr tesseract-ocr-eng
+          git clone https://github.com/quickemu-project/quicktest
+
+      - name: Run Test
+        run: |
+          cd quicktest
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_with_defaults https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_with_defaults
+          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_with_defaults athenaos ${{env.RELEASE_VERSION}}
