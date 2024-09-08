@@ -24,7 +24,7 @@ function test_post_boot_grub() {
     # Wait for the grub menu
     #qt_wait_for_text "$FUNCNAME" "$text_console_gnu_grub" 10 5
     qt_screenshot_ppm "$FUNCNAME"
-    # Press enter on the 'Try or install Ubuntu' GRUB option
+    # Press enter on the 'Athena' GRUB option
     qt_send_key "return"
 }
 
@@ -43,6 +43,8 @@ function test_installer_initial_load() {
 
 function test_installer_base() {
     qt_wait_for_text "$FUNCNAME" "$text_installation_base_title" 10 3
+    # Athena Nix
+    qt_send_key_combo "down"
     qt_send_key "return"
     qt_wait_for_seconds 1
     qt_send_key "return"
@@ -97,16 +99,19 @@ function test_installer_partition() {
 
 function test_installer_environment() {
     qt_wait_for_seconds 1
+    # GNOME
     qt_send_key "return"
 }
 
 function test_installer_shell() {
     qt_wait_for_seconds 1
+    # fish
     qt_send_key "return"
 }
 
 function test_installer_theme() {
     qt_wait_for_seconds 1
+    # Temple
     qt_send_key_combo "down"
     qt_send_key_combo "down"
     qt_send_key_combo "down"
@@ -118,24 +123,29 @@ function test_installer_theme() {
 
 function test_installer_dm() {
     qt_wait_for_seconds 1
+    # GDM
     qt_send_key "return"
 }
 
 function test_installer_terminal() {
     qt_wait_for_seconds 1
+    # kitty
     qt_send_key_combo "down"
     qt_send_key "return"
 }
 
 function test_installer_browser() {
     qt_wait_for_seconds 1
+    # Firefox
     qt_send_key "return"
 }
 
 function test_installer_misc() {
     qt_wait_for_seconds 1
+    # zram
     qt_send_key_combo "down"
     qt_send_key_combo "spc"
+    # flatpak
     qt_send_key_combo "down"
     qt_send_key_combo "spc"
     qt_send_key "return"
@@ -160,7 +170,7 @@ function test_power_off_vm() {
     qt_poweroff_vm
 }
 
-function test_install_entire_disk_with_defaults() {
+function test_install_entire_disk_nix_with_gnome_gdm() {
     test_setup
     test_post_boot_grub
     test_installer_initial_load
