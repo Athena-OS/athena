@@ -1,0 +1,110 @@
+name: "👶 Request new package"
+description: "Request new package"
+labels: ["request:new-pkg"]
+title: "[Request] "
+body:
+  - type: textarea
+    attributes:
+      label: "Package:"
+      description: |
+        Link to the upstream package repository.
+        If a relevant issue already exists, please comment instead of opening a new one.
+      placeholder: "https://github.com/dev/packagenamehere"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "Purpose:"
+      description: "What does the package do?  How is it used?  How is it useful?"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "Building:"
+      description: |
+        Read: https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot
+        If you have built this package, type the commands you used.
+        If any special procedures were needed, please describe them.
+      placeholder: "makepkg 🙃"
+  - type: textarea
+    attributes:
+      label: "Copyright:"
+      description: |
+        What is the name of the copyright license?
+        Only the name is needed for standard licenses, like GPL2.
+        Include both the name and link to non-standard or custom licenses.
+        Include a link to the EULA if there is one.
+      placeholder: "GPL3"
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: "Cyber Categories:"
+      description: |
+        What are the cybersecurity categories of the package?
+        Try to be accurate. Packages may be dropped if they don't meet expectations.
+      options:
+        - label: "anti-forensic"
+        - label: "automation"
+        - label: "automobile"
+        - label: "backdoor"
+        - label: "binary"
+        - label: "bluetooth"
+        - label: "code-audit"
+        - label: "config"
+        - label: "cracker"
+        - label: "crypto"
+        - label: "database"
+        - label: "debugger"
+        - label: "decompiler"
+        - label: "defensive"
+        - label: "disassembler"
+        - label: "dos"
+        - label: "drone"
+        - label: "exploitation"
+        - label: "fingerprint"
+        - label: "firmware"
+        - label: "forensic"
+        - label: "fuzzer"
+        - label: "hardware"
+        - label: "honeypot"
+        - label: "ids"
+        - label: "keylogger"
+        - label: "malware"
+        - label: "misc"
+        - label: "mobile"
+        - label: "networking"
+        - label: "nfc"
+        - label: "packer"
+        - label: "proxy"
+        - label: "radio"
+        - label: "recon"
+        - label: "reversing"
+        - label: "scanner"
+        - label: "sniffer"
+        - label: "social"
+        - label: "spoof"
+        - label: "stego"
+        - label: "tunnel"
+        - label: "unpacker"
+        - label: "voip"
+        - label: "webapp"
+        - label: "windows"
+        - label: "wireless"
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: "Already available?"
+      description: |
+        Is this package already available in Arch or Chaotic AUR?
+        Do not answer without searching first.
+        `pacman -Ss <pkgname>`
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "More information:"

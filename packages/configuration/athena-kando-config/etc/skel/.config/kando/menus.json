@@ -1,0 +1,1889 @@
+{
+  "menus": [
+    {
+      "root": {
+        "type": "submenu",
+        "name": "Athena",
+        "icon": "athenaos-blue-net.svg",
+        "iconTheme": "athena",
+        "children": [
+          {
+            "type": "command",
+            "data": {
+              "command": "kitty",
+              "delayed": false
+            },
+            "name": "Terminal",
+            "icon": "terminal.svg",
+            "iconTheme": "athena"
+          },
+          {
+            "type": "command",
+            "data": {
+              "command": "firefox-esr",
+              "delayed": false
+            },
+            "name": "Browser",
+            "icon": "firefox-logo.svg",
+            "iconTheme": "athena"
+          },
+          {
+            "type": "submenu",
+            "data": {},
+            "name": "Red Team",
+            "icon": "redteam.svg",
+            "iconTheme": "athena",
+            "children": [
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Vulnerability Assessment",
+                "icon": "athena-vuln-assessment-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b legion -r",
+                      "delayed": false
+                    },
+                    "name": "legion",
+                    "icon": "athena-legion.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b nikto -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "nikto",
+                    "icon": "athena-nikto.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b unix-privesc-check",
+                      "delayed": false
+                    },
+                    "name": "Unix Privesc Check",
+                    "icon": "athena-unix-privesc-check.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Web Application Analysis",
+                "icon": "athena-web-application-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b wpscan -x '--help'",
+                      "delayed": false
+                    },
+                    "name": "Wpscan",
+                    "icon": "athena-wpscan.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b caido -p caido-desktop -g",
+                      "delayed": false
+                    },
+                    "name": "Caido",
+                    "icon": "athena-caido.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b burpsuite -g",
+                      "delayed": false
+                    },
+                    "name": "Burpsuite",
+                    "icon": "athena-burpsuite.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b dirb",
+                      "delayed": false
+                    },
+                    "name": "dirb",
+                    "icon": "athena-dirb.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b dirbuster -g",
+                      "delayed": false
+                    },
+                    "name": "dirbuster",
+                    "icon": "athena-dirbuster.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b ffuf -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "ffuf",
+                    "icon": "athena-ffuf.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b wfuzz",
+                      "delayed": false
+                    },
+                    "name": "wfuzz",
+                    "icon": "athena-wfuzz.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b sqlmap -x '--wizard'",
+                      "delayed": false
+                    },
+                    "name": "SQLMap",
+                    "icon": "athena-sqlmap.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Password Attacks",
+                "icon": "athena-password-attacks-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b hashcat -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Hashcat",
+                    "icon": "athena-hashcat.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b hydra -x '| grep --color=auto \"^\\|Supported services:\"; hydra-wizard.sh'",
+                      "delayed": false
+                    },
+                    "name": "Hydra",
+                    "icon": "athena-hydra.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b cewl -x '--help'",
+                      "delayed": false
+                    },
+                    "name": "CeWL",
+                    "icon": "athena-cewl.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b crunch",
+                      "delayed": false
+                    },
+                    "name": "Crunch",
+                    "icon": "athena-crunch.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b rsmangler -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "RSMangler",
+                    "icon": "athena-rsmangler.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b medusa -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Medusa",
+                    "icon": "athena-medusa.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b john",
+                      "delayed": false
+                    },
+                    "name": "John",
+                    "icon": "athena-john.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Sniffing",
+                "icon": "athena-sniffing-spoofing-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b mitmproxy -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "MITM Proxy",
+                    "icon": "athena-mitmproxy.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b responder -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Responder",
+                    "icon": "athena-responder.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b wireshark -p wireshark-qt -g",
+                      "delayed": false
+                    },
+                    "name": "Wireshark",
+                    "icon": "athena-wireshark.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Wireless Attacks",
+                "icon": "athena-wireless-attacks-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b aircrack-ng",
+                      "delayed": false
+                    },
+                    "name": "Aircrack-ng",
+                    "icon": "athena-aircrack-ng.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b kismet -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Kismet",
+                    "icon": "athena-kismet.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b reaver -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Reaver",
+                    "icon": "athena-reaver.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b wifite -x '--help'",
+                      "delayed": false
+                    },
+                    "name": "WiFite",
+                    "icon": "athena-wifite.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b fern-wifi-cracker -g -r",
+                      "delayed": false
+                    },
+                    "name": "Fern WiFi Cracker",
+                    "icon": "athena-fern-wifi-cracker.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b spooftooph -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "spooftooph",
+                    "icon": "athena-spooftooph.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Reverse Engineering",
+                "icon": "athena-reverse-engineering-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b nasm -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "NASM",
+                    "icon": "athena-metasploit-framework.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b radare2 -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "radare2",
+                    "icon": "athena-radare2.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b ghidra -g",
+                      "delayed": false
+                    },
+                    "name": "Ghidra",
+                    "icon": "athena-ghidra.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b edb -g",
+                      "delayed": false
+                    },
+                    "name": "EDB Debugger",
+                    "icon": "athena-edb-debugger.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Exploitation",
+                "icon": "athena-exploitation-tools-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b msfconsole -p metasploit -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Metasploit",
+                    "icon": "athena-metasploit-framework.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b setoolkit -r -p set",
+                      "delayed": false
+                    },
+                    "name": "SET",
+                    "icon": "athena-set.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b searchsploit -p exploitdb",
+                      "delayed": false
+                    },
+                    "name": "Searchsploit",
+                    "icon": "athena-searchsploit.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Post Exploitation",
+                "icon": "athena-maintaining-access-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b powersploit -d /usr/share/windows/powersploit",
+                      "delayed": false
+                    },
+                    "name": "Powersploit",
+                    "icon": "athena-powersploit.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b mimikatz -d /usr/share/windows/mimikatz",
+                      "delayed": false
+                    },
+                    "name": "Mimikatz",
+                    "icon": "athena-mimikatz.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b evil-winrm -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Evil WinRM",
+                    "icon": "athena-evil-winrm.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b proxychains4 -p proxychains-ng",
+                      "delayed": false
+                    },
+                    "name": "ProxyChains",
+                    "icon": "athena-proxychains.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b weevely -x 'terminal -h'",
+                      "delayed": false
+                    },
+                    "name": "Weevely",
+                    "icon": "athena-weevely.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Information Gathering",
+                "icon": "athena-info-gathering-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b dmitry",
+                      "delayed": false
+                    },
+                    "name": "dmitry",
+                    "icon": "athena-dmitry.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b nmap",
+                      "delayed": false
+                    },
+                    "name": "nmap",
+                    "icon": "athena-nmap.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b spiderfoot -x '--help'",
+                      "delayed": false
+                    },
+                    "name": "spiderfoot",
+                    "icon": "athena-spiderfoot.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b theharvester -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "TheHarvester",
+                    "icon": "athena-theharvester.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b enum4linux",
+                      "delayed": false
+                    },
+                    "name": "enum4linux",
+                    "icon": "athena-enum4linux.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b wafw00f -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "wafw00f",
+                    "icon": "athena-wafw00f.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b fierce -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "fierce",
+                    "icon": "athena-fierce.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "submenu",
+            "data": {},
+            "name": "PWNage",
+            "icon": "social.svg",
+            "iconTheme": "athena",
+            "children": [
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Hack The Box",
+                "icon": "htb.png",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "submenu",
+                    "data": {},
+                    "name": "Free Machines",
+                    "icon": "htb-machines.png",
+                    "iconTheme": "htb-toolkit",
+                    "children": []
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b htb-toolkit -x '-s'",
+                      "delayed": false
+                    },
+                    "name": "Stop Active Machine",
+                    "icon": "htb-stop.png",
+                    "iconTheme": "htb-toolkit"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b htb-toolkit -x '-r'",
+                      "delayed": false
+                    },
+                    "name": "Reset Active Machine",
+                    "icon": "htb-reset.png",
+                    "iconTheme": "htb-toolkit"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b htb-toolkit -x '-f'",
+                      "delayed": false
+                    },
+                    "name": "Submit Flag",
+                    "icon": "htb-flag.png",
+                    "iconTheme": "htb-toolkit"
+                  },
+                  {
+                    "type": "uri",
+                    "data": {
+                      "uri": "https://app.hackthebox.com/home"
+                    },
+                    "name": "Open URI",
+                    "icon": "htb-website.png",
+                    "iconTheme": "htb-toolkit"
+                  },
+                  {
+                    "type": "submenu",
+                    "data": {},
+                    "name": "VPN Connection",
+                    "icon": "vpn-icon.png",
+                    "iconTheme": "htb-toolkit",
+                    "children": [
+                      {
+                        "type": "submenu",
+                        "data": {},
+                        "name": "Machines",
+                        "icon": "machines.svg",
+                        "iconTheme": "htb-toolkit",
+                        "children": [
+                          {
+                            "type": "submenu",
+                            "data": {},
+                            "name": "VIP",
+                            "icon": "ic-vip-big.svg",
+                            "iconTheme": "htb-toolkit",
+                            "children": [
+                              {
+                                "type": "submenu",
+                                "data": {},
+                                "name": "SG VIP",
+                                "icon": "flags/sg-flag.png",
+                                "iconTheme": "htb-toolkit",
+                                "children": [
+                                  {
+                                    "type": "command",
+                                    "data": {
+                                      "command": "shell-rocket -b htb-toolkit -x '-v SGVIP1'",
+                                      "delayed": false
+                                    },
+                                    "name": "SG VIP 1",
+                                    "icon": "flags/sg-flag.png",
+                                    "iconTheme": "htb-toolkit"
+                                  },
+                                  {
+                                    "type": "command",
+                                    "data": {
+                                      "command": "shell-rocket -b htb-toolkit -x '-v SGVIP2'",
+                                      "delayed": false
+                                    },
+                                    "name": "SG VIP 2",
+                                    "icon": "flags/sg-flag.png",
+                                    "iconTheme": "htb-toolkit"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v AUVIP1'",
+                                  "delayed": false
+                                },
+                                "name": "AU VIP",
+                                "icon": "flags/au-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "submenu",
+                                "data": {},
+                                "name": "EU VIP",
+                                "icon": "flags/eu-flag.png",
+                                "iconTheme": "htb-toolkit",
+                                "children": [
+                                  {
+                                    "type": "submenu",
+                                    "data": {},
+                                    "name": "EU VIP 1-10",
+                                    "icon": "flags/eu-flag.png",
+                                    "iconTheme": "htb-toolkit",
+                                    "children": [
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP1'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 1",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP2'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 2",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP3'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 3",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP4'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 4",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP5'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 5",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP6'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 6",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP7'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 7",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP8'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 8",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP9'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 9",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP10'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 10",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "submenu",
+                                    "data": {},
+                                    "name": "EU VIP 11-20",
+                                    "icon": "flags/eu-flag.png",
+                                    "iconTheme": "htb-toolkit",
+                                    "children": [
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP12'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 12",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP11'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 11",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP20'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 20",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP19'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 19",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP18'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 18",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP17'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 17",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP16'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 16",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP15'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 15",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP14'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 14",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP13'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 13",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "submenu",
+                                    "data": {},
+                                    "name": "EU VIP 21-28",
+                                    "icon": "flags/eu-flag.png",
+                                    "iconTheme": "htb-toolkit",
+                                    "children": [
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP21'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 21",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP22'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 22",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP23'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 23",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP24'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 24",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP25'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 25",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP26'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 26",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP27'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 27",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v EUVIP28'",
+                                          "delayed": false
+                                        },
+                                        "name": "EU VIP 28",
+                                        "icon": "flags/eu-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "submenu",
+                                "data": {},
+                                "name": "US VIP",
+                                "icon": "flags/us-flag.png",
+                                "iconTheme": "htb-toolkit",
+                                "children": [
+                                  {
+                                    "type": "submenu",
+                                    "data": {},
+                                    "name": "US VIP 1-10",
+                                    "icon": "flags/us-flag.png",
+                                    "iconTheme": "htb-toolkit",
+                                    "children": [
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP1'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 1",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP2'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 2",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP3'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 3",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP4'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 4",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP5'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 5",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP6'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 6",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP7'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 7",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP8'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 8",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP9'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 9",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP10'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 10",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "submenu",
+                                    "data": {},
+                                    "name": "US VIP 11-20",
+                                    "icon": "flags/us-flag.png",
+                                    "iconTheme": "htb-toolkit",
+                                    "children": [
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP11'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 11",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP12'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 12",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP13'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 13",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP14'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 14",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP15'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 15",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP16'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 16",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP17'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 17",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP18'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 18",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP19'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 19",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP20'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 20",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "submenu",
+                                    "data": {},
+                                    "name": "US VIP 21-27",
+                                    "icon": "flags/us-flag.png",
+                                    "iconTheme": "htb-toolkit",
+                                    "children": [
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP21'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 21",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP22'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 22",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP23'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 23",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP24'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 24",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP25'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 25",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP26'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 26",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      },
+                                      {
+                                        "type": "command",
+                                        "data": {
+                                          "command": "shell-rocket -b htb-toolkit -x '-v USVIP27'",
+                                          "delayed": false
+                                        },
+                                        "name": "US VIP 27",
+                                        "icon": "flags/us-flag.png",
+                                        "iconTheme": "htb-toolkit"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "submenu",
+                            "data": {},
+                            "name": "VIP+",
+                            "icon": "ic-vip+-big.svg",
+                            "iconTheme": "htb-toolkit",
+                            "children": [
+                              {
+                                "type": "submenu",
+                                "data": {},
+                                "name": "EU VIP+",
+                                "icon": "flags/eu-flag.png",
+                                "iconTheme": "htb-toolkit",
+                                "children": [
+                                  {
+                                    "type": "command",
+                                    "data": {
+                                      "command": "shell-rocket -b htb-toolkit -x '-v EUVIP+2'",
+                                      "delayed": false
+                                    },
+                                    "name": "EU VIP+ 2",
+                                    "icon": "flags/eu-flag.png",
+                                    "iconTheme": "htb-toolkit"
+                                  },
+                                  {
+                                    "type": "command",
+                                    "data": {
+                                      "command": "shell-rocket -b htb-toolkit -x '-v EUVIP+1'",
+                                      "delayed": false
+                                    },
+                                    "name": "EU VIP+ 1",
+                                    "icon": "flags/eu-flag.png",
+                                    "iconTheme": "htb-toolkit"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v USVIP+1'",
+                                  "delayed": false
+                                },
+                                "name": "US VIP+ 1",
+                                "icon": "flags/us-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v SGVIP+1'",
+                                  "delayed": false
+                                },
+                                "name": "SG VIP+ 1",
+                                "icon": "flags/sg-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "submenu",
+                            "data": {},
+                            "name": "Free",
+                            "icon": "vpnfree.svg",
+                            "iconTheme": "htb-toolkit",
+                            "children": [
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v EUFree2'",
+                                  "delayed": false
+                                },
+                                "name": "EU Free 2",
+                                "icon": "flags/eu-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v EUFree1'",
+                                  "delayed": false
+                                },
+                                "name": "EU Free 1",
+                                "icon": "flags/eu-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v USFree1'",
+                                  "delayed": false
+                                },
+                                "name": "US Free 1",
+                                "icon": "flags/us-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v USFree2'",
+                                  "delayed": false
+                                },
+                                "name": "US Free 2",
+                                "icon": "flags/us-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v USFree3'",
+                                  "delayed": false
+                                },
+                                "name": "US Free 3",
+                                "icon": "flags/us-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v AUFree1'",
+                                  "delayed": false
+                                },
+                                "name": "AU Free 1",
+                                "icon": "flags/au-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v SGFree1'",
+                                  "delayed": false
+                                },
+                                "name": "SG Free 1",
+                                "icon": "flags/sg-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              },
+                              {
+                                "type": "command",
+                                "data": {
+                                  "command": "shell-rocket -b htb-toolkit -x '-v EUFree3'",
+                                  "delayed": false
+                                },
+                                "name": "EU Free 3",
+                                "icon": "flags/eu-flag.png",
+                                "iconTheme": "htb-toolkit"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "command",
+                        "data": {
+                          "command": "shell-rocket -c \"echo \\\"Disconnecting all VPN sessions...\\\";sudo killall openvpn;htb-toolkit -s\"",
+                          "delayed": false
+                        },
+                        "name": "Disconnect VPN",
+                        "icon": "mimo_disconnect",
+                        "iconTheme": "material-symbols-rounded"
+                      },
+                      {
+                        "type": "submenu",
+                        "data": {},
+                        "name": "Starting Point",
+                        "icon": "startingpoint.svg",
+                        "iconTheme": "htb-toolkit",
+                        "children": [
+                          {
+                            "type": "command",
+                            "data": {
+                              "command": "shell-rocket -b htb-toolkit -x '-v EUSPFree1'",
+                              "delayed": false
+                            },
+                            "name": "EU Starting Point Free 1",
+                            "icon": "flags/eu-flag.png",
+                            "iconTheme": "htb-toolkit"
+                          },
+                          {
+                            "type": "command",
+                            "data": {
+                              "command": "shell-rocket -b htb-toolkit -x '-v EUSPVIP1'",
+                              "delayed": false
+                            },
+                            "name": "EU Starting Point VIP 1",
+                            "icon": "flags/eu-flag.png",
+                            "iconTheme": "htb-toolkit"
+                          },
+                          {
+                            "type": "command",
+                            "data": {
+                              "command": "shell-rocket -b htb-toolkit -x '-v USSPFree1'",
+                              "delayed": false
+                            },
+                            "name": "US Starting Point Free 1",
+                            "icon": "flags/us-flag.png",
+                            "iconTheme": "htb-toolkit"
+                          },
+                          {
+                            "type": "command",
+                            "data": {
+                              "command": "shell-rocket -b htb-toolkit -x '-v USSPVIP1'",
+                              "delayed": false
+                            },
+                            "name": "US Starting Point VIP 1",
+                            "icon": "flags/us-flag.png",
+                            "iconTheme": "htb-toolkit"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "submenu",
+                    "data": {},
+                    "name": "Starting Point Machines",
+                    "icon": "startingpoint.svg",
+                    "iconTheme": "htb-toolkit",
+                    "children": [
+                      {
+                        "type": "submenu",
+                        "data": {},
+                        "name": "Tier 0",
+                        "icon": "Tier-0.svg",
+                        "iconTheme": "htb-toolkit",
+                        "children": []
+                      },
+                      {
+                        "type": "submenu",
+                        "data": {},
+                        "name": "Tier 1",
+                        "icon": "Tier-1.svg",
+                        "iconTheme": "htb-toolkit",
+                        "children": []
+                      },
+                      {
+                        "type": "submenu",
+                        "data": {},
+                        "name": "Tier 2",
+                        "icon": "Tier-2.svg",
+                        "iconTheme": "htb-toolkit",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "uri",
+                "data": {
+                  "uri": "https://pwnx.io"
+                },
+                "name": "PWNX",
+                "icon": "pwnx.png",
+                "iconTheme": "athena"
+              },
+              {
+                "type": "uri",
+                "data": {
+                  "uri": "https://www.offensive-security.com/labs"
+                },
+                "name": "Proving Grounds",
+                "icon": "offsec-red.png",
+                "iconTheme": "athena"
+              },
+              {
+                "type": "uri",
+                "data": {
+                  "uri": "https://portswigger.net/web-security/all-labs"
+                },
+                "name": "PortSwigger",
+                "icon": "portswigger.png",
+                "iconTheme": "athena"
+              },
+              {
+                "type": "uri",
+                "data": {
+                  "uri": "https://www.root-me.org/?lang=en"
+                },
+                "name": "Root Me",
+                "icon": "rootme.png",
+                "iconTheme": "athena"
+              },
+              {
+                "type": "uri",
+                "data": {
+                  "uri": "https://pentesterlab.com"
+                },
+                "name": "PentesterLab",
+                "icon": "pentesterlab.png",
+                "iconTheme": "athena"
+              },
+              {
+                "type": "uri",
+                "data": {
+                  "uri": "https://tryhackme.com"
+                },
+                "name": "TryHackMe",
+                "icon": "tryhackme-blue.png",
+                "iconTheme": "athena"
+              }
+            ]
+          },
+          {
+            "type": "submenu",
+            "data": {},
+            "name": "Blue Team",
+            "icon": "blueteam.svg",
+            "iconTheme": "athena",
+            "children": [
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Identify",
+                "icon": "athena-identify-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b spiderfoot -x '--help'",
+                      "delayed": false
+                    },
+                    "name": "spiderfoot",
+                    "icon": "athena-spiderfoot.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b searchsploit -p exploitdb",
+                      "delayed": false
+                    },
+                    "name": "Searchsploit",
+                    "icon": "athena-searchsploit.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b zaproxy -g",
+                      "delayed": false
+                    },
+                    "name": "OWASP ZAP",
+                    "icon": "athena-zaproxy.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b maltego -g",
+                      "delayed": false
+                    },
+                    "name": "Maltego",
+                    "icon": "athena-maltego.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b wapiti -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Wapiti",
+                    "icon": "athena-wapiti.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Recover",
+                "icon": "athena-recover-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b scrounge-ntfs -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Scrounge NTFS",
+                    "icon": "athena-scrounge-ntfs.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Respond",
+                "icon": "athena-respond-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b guymager -g -r",
+                      "delayed": false
+                    },
+                    "name": "Guymager",
+                    "icon": "athena-guymager.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b ghidra -g",
+                      "delayed": false
+                    },
+                    "name": "Ghidra",
+                    "icon": "athena-ghidra.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b galleta",
+                      "delayed": false
+                    },
+                    "name": "Galleta",
+                    "icon": "athena-galleta.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b foremost -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Foremost",
+                    "icon": "athena-foremost.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b wireshark -p wireshark-qt -g",
+                      "delayed": false
+                    },
+                    "name": "Wireshark",
+                    "icon": "athena-wireshark.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b ollydbg -g",
+                      "delayed": false
+                    },
+                    "name": "OllyDbg",
+                    "icon": "athena-ollydbg.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b netsniff-ng -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "Netsniff-ng",
+                    "icon": "athena-netsniff-ng.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b mactime -p sleuthkit",
+                      "delayed": false
+                    },
+                    "name": "Mactime",
+                    "icon": "athena-mactime.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b ils -p sleuthkit",
+                      "delayed": false
+                    },
+                    "name": "ILS",
+                    "icon": "athena-ils.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b icat -p sleuthkit",
+                      "delayed": false
+                    },
+                    "name": "ICAT",
+                    "icon": "athena-icat.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Detect",
+                "icon": "athena-detect-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b sentrypeer -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "SentryPeer",
+                    "icon": "athena-sentrypeer.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Protect",
+                "icon": "athena-protect-trans.svg",
+                "iconTheme": "athena",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b fwbuilder",
+                      "delayed": false
+                    },
+                    "name": "Firewall Builder",
+                    "icon": "athena-fwbuilder.svg",
+                    "iconTheme": "athena"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "shell-rocket -b clamscan -p clamav -x '-h'",
+                      "delayed": false
+                    },
+                    "name": "ClamAV",
+                    "icon": "athena-clamav.svg",
+                    "iconTheme": "athena"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "command",
+            "data": {
+              "command": "codium",
+              "delayed": false
+            },
+            "name": "VSCodium",
+            "icon": "vscode.svg",
+            "iconTheme": "athena"
+          }
+        ]
+      },
+      "shortcut": "Control+Space",
+      "shortcutID": "",
+      "centered": false,
+      "anchored": false
+    }
+  ],
+  "templates": []
+}
