@@ -1,0 +1,40 @@
+name: Installation Testing
+on:
+  # push:
+  workflow_dispatch:
+  schedule:
+     - cron:  '0 0 */1 * *'
+  
+jobs:
+  athena-quicktest:
+    env:
+      RELEASE_VERSION: 'v23.11'
+    runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged 
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: | 
+          pacman -Syyu --noconfirm quickemu qemu-desktop socat ffmpeg imagemagick libnotify tesseract tesseract-data-eng w3m xdg-utils git
+          systemd-machine-id-setup
+          ln -s /usr/bin/xdg-open /usr/bin/open
+          git clone https://github.com/quickemu-project/quicktest
+
+      - name: Initialize
+        run: |
+          cd quicktest
+          # To prevent missing X11 $DISPLAY error needed by notify-send
+          sed -i "s/command -v notify-send/command -v echo/g" ./quicktest
+          mkdir -p testcases/athenaos/${{env.RELEASE_VERSION}}/i18n
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/i18n/en_US https://raw.githubusercontent.com/Athena-OS/athena/main/tests/i18n/en_US
+          
+      - name: Test - Athena Nix with GNOME and GDM
+        run: |
+          cd quicktest
+          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_nix_with_gnome_gdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_nix_with_gnome_gdm
+          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_nix_with_gnome_gdm athenaos ${{env.RELEASE_VERSION}}
+          rm -rf ./machines/*
