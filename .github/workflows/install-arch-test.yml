@@ -52,10 +52,3 @@ jobs:
           curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_arch_with_xfce_sddm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_arch_with_xfce_sddm
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_xfce_sddm athenaos ${{env.RELEASE_VERSION}}
           rm -rf ./machines/*
-          
-      - name: Test - Athena Nix with GNOME and GDM
-        run: |
-          cd quicktest
-          curl -o testcases/athenaos/${{env.RELEASE_VERSION}}/test_install_entire_disk_nix_with_gnome_gdm https://raw.githubusercontent.com/Athena-OS/athena/main/tests/test_install_entire_disk_nix_with_gnome_gdm
-          QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_nix_with_gnome_gdm athenaos ${{env.RELEASE_VERSION}}
-          rm -rf ./machines/*
