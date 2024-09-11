@@ -18,12 +18,9 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Send a request to webhook
-       env: 
-       		DISC_ACTION_TOKEN: ${{ secrets.DISC_ACTION_TOKEN }}
-       run: | 
-       	curl -H "Content-Type: application/json" -d "{\"content\": \"Athena install workflow started.\nBranch: ${{ github.ref }}\nCommit: ${{ github.sha }}\"}" ${{ secrets.WEBHOOK_URL }})
-       	
-       	
+        run: |
+          curl -H "Content-Type: application/json" -d "{"content": "Athena install workflow started.\nBranch: ${{ github.ref }}\nCommit: ${{ github.sha }}\"}" ${{ secrets.WEBHOOK_URL }})
+
       - name: Install dependencies
         run: | 
           pacman -Syyu --noconfirm quickemu qemu-desktop socat ffmpeg imagemagick libnotify tesseract tesseract-data-eng w3m xdg-utils git
