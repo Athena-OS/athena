@@ -19,7 +19,7 @@ jobs:
         
       - name: Send a request to webhook
         run: |
-           curl -H "Content-Type: application/json" -d '{"content": "Athena install workflow started."}' ${{secrets.$WEBHOOK_URL}}
+           curl -H "Content-Type: application/json" -d '{"content": "Athena install workflow started."}' ${{ secrets.WEBHOOK_URL }})
             
       - name: Install dependencies
         run: | 
