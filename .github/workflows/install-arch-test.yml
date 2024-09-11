@@ -54,16 +54,13 @@ jobs:
           rm -rf ./machines/*
           
       - name: Workflow Test Result
-      	 if: always()
-        env:
-       		DISC_ACTION_TOKEN: ${{ secrets.DISC_ACTION_TOKEN }}
         run: |
           if [ "${{ job.status }}" == "success" ]; then
             STATUS="successful"
           else
             STATUS="failed"
           fi
-          curl -H "Content-Type: application/json" -d {"content": Athena testing workflow completed with status: $STATUS.\nBranch: ${{ github.ref }}\nCommit: ${{ github.sha }}\"}" $DISC_ACTION_TOKEN
+          curl -H "Content-Type: application/json" -d {"content": Athena testing workflow completed with status: $STATUS.\nBranch: ${{ github.ref }}\nCommit: ${{ github.sha }}\"}" ${{ secrets.WEBHOOK_URL }})
 			
 			
 		         
