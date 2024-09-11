@@ -19,9 +19,7 @@ jobs:
         
       - name: Send a request to webhook
         run: |
-          curl -H "Content-Type: application/json" \
-            -d "{\"content\": \"Athena install workflow started.\nBranch: ${GITHUB_REF}\nCommit: ${GITHUB_SHA}\"}" \
-            $WEBHOOK_URL
+           curl -H "Content-Type: application/json" -d '{"content": "Athena install workflow started."}' ${{secrets.$WEBHOOK_URL}}
             
       - name: Install dependencies
         run: | 
@@ -59,6 +57,4 @@ jobs:
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_xfce_sddm athenaos ${{env.RELEASE_VERSION}}
           rm -rf ./machines/*
           
-      - name: Workflow Test Result
-        run: |
-          curl -H "Content-Type: application/json" -d {"content": Athena testing workflow completed with status: $STATUS.\nBranch: ${{ github.ref }}\nCommit: ${{ github.sha }}\"}" ${{ secrets.WEBHOOK_URL }})
+   
