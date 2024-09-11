@@ -55,12 +55,4 @@ jobs:
           
       - name: Workflow Test Result
         run: |
-          if [ "${{ job.status }}" == "success" ]; then
-            STATUS="successful"
-          else
-            STATUS="failed"
-          fi
           curl -H "Content-Type: application/json" -d {"content": Athena testing workflow completed with status: $STATUS.\nBranch: ${{ github.ref }}\nCommit: ${{ github.sha }}\"}" ${{ secrets.WEBHOOK_URL }})
-			
-			
-		         
