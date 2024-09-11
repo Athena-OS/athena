@@ -57,4 +57,12 @@ jobs:
           QUICKEMU_WIDTH=1024 QUICKEMU_HEIGHT=768 ./quicktest test_install_entire_disk_arch_with_xfce_sddm athenaos ${{env.RELEASE_VERSION}}
           rm -rf ./machines/*
           
-   
+      - name: Test - Workflow Test Result
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            STATUS="successful"
+          else
+            STATUS="failed"
+          fi
+           curl -H "Content-Type: application/json" -d '{"content": "Athena install workflow Finished with Status: $STATUS"}' ${{ secrets.WEBHOOK_URL }}
+            
