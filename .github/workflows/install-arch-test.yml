@@ -19,8 +19,10 @@ jobs:
         
       - name: Send a request to webhook
         run: |
-          curl -H "Content-Type: application/json" -d "{"content": "Athena install workflow started.\nBranch: ${{ github.ref }}\nCommit: ${{ github.sha }}\"}" ${{ secrets.WEBHOOK_URL }})
-
+          curl -H "Content-Type: application/json" \
+            -d "{\"content\": \"Athena install workflow started.\nBranch: ${GITHUB_REF}\nCommit: ${GITHUB_SHA}\"}" \
+            $WEBHOOK_URL
+            
       - name: Install dependencies
         run: | 
           pacman -Syyu --noconfirm quickemu qemu-desktop socat ffmpeg imagemagick libnotify tesseract tesseract-data-eng w3m xdg-utils git
