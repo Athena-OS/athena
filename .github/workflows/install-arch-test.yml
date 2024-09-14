@@ -19,7 +19,7 @@ jobs:
         
       - name: Send a request to webhook
         run: |
-           curl -H "Content-Type: application/json" -d '{"content": "Athena Arch installation testing workflow started.\n ${{ github.ref }} \nCommit: ${{ github.sha }}"}' ${{ secrets.WEBHOOK_URL }}
+           curl -H "Content-Type: application/json" -d '{"content": "Athena Arch installation testing workflow started.\n Branch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}"}' ${{ secrets.WEBHOOK_URL }}
             
       - name: Install dependencies
         run: | 
