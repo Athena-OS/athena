@@ -88,5 +88,5 @@ jobs:
               }
             }],
             "username": "Athena Git Ninja",
-            "content": "Athena Arch installation testing workflow finished with status: ${{ job.status }}. \nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}"
+            "content": "Athena Arch installation testing workflow finished with status: ${{ job.status^^ }}. \nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}"
           }' ${{ secrets.WEBHOOK_URL }}
