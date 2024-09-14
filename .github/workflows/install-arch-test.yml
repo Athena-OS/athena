@@ -19,7 +19,7 @@ jobs:
         
       - name: Send a request to webhook
         run: |
-           curl -H "Content-Type: application/json" -d '{"content": "Athena install workflow started. ${{ github.ref }} Commit: ${{ github.sha }}"}' ${{ secrets.WEBHOOK_URL }}
+           curl -H "Content-Type: application/json" -d '{"content": "Athena Arch installation testing workflow started.\n ${{ github.ref }} \nCommit: ${{ github.sha }}"}' \n${{ secrets.WEBHOOK_URL }}
             
       - name: Install dependencies
         run: | 
@@ -59,10 +59,5 @@ jobs:
           
       - name: Test - Workflow Test Result
         run: |
-          if [ "${{ job.status }}" == "success" ]; then
-            STATUS="successful"
-          else
-            STATUS="failed"
-          fi
-           curl -H "Content-Type: application/json" -d '{"content": "Athena install workflow Finished with Status: $STATUS"}' ${{ secrets.WEBHOOK_URL }}
+           curl -H "Content-Type: application/json" -d '{"content": "Athena Arch installation testing workflow finished with status: ${{ job.status }}"}' ${{ secrets.WEBHOOK_URL }}
             
