@@ -19,7 +19,17 @@ jobs:
         
       - name: Send a request to webhook
         run: |
-           curl -H "Content-Type: application/json" -d '{"username": "Athena Git Ninja", "content": "Athena Arch installation testing workflow started.\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}"}' ${{ secrets.WEBHOOK_URL }}
+            curl -H "Content-Type: application/json" -d '{
+              "embeds": [{
+                "type": "rich",
+                "title": "Workflow Actions",
+                "thumbnail": {
+                  "url": "https://athenaos.org/_astro/athena-chibi.C4AxdAFD_Z1ifHWb.webp"
+                }
+              }],
+              "username": "Athena Git Ninja",
+              "content": "Athena Arch installation testing workflow started.\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}"
+            }' ${{ secrets.WEBHOOK_URL }}
             
       - name: Install dependencies
         run: | 
