@@ -19,22 +19,22 @@ jobs:
         
       - name: Send a request to webhook
         run: |
-            curl -H "Content-Type: application/json" -d '{
-              "embeds": [{
-                "type": "rich",
-                "title": "Workflow Actions",
-                "thumbnail": {
-                  "url": "https://athenaos.org/_astro/athena-chibi.C4AxdAFD_Z1ifHWb.webp"
-                },
-                "author": {
-              "name": "${{ github.actor }}",
-              "url": "https://github.com/${{ github.actor_id }}",
-              "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4"
+          curl -H "Content-Type: application/json" -d '{
+            "embeds": [{
+              "type": "rich",
+              "title": "Workflow Actions",
+              "thumbnail": {
+                "url": "https://athenaos.org/_astro/athena-chibi.C4AxdAFD_Z1ifHWb.webp"
               },
-              }],
-              "username": "Athena Git Ninja",
-              "content": "Athena Arch installation testing workflow started.\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}"
-            }' ${{ secrets.WEBHOOK_URL }}
+              "author": {
+                "name": "${{ github.actor }}",
+                "url": "https://github.com/${{ github.actor }}",
+                "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4"
+              }
+            }],
+            "username": "Athena Git Ninja",
+            "content": "Athena Arch installation testing workflow started.\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}"
+          }' ${{ secrets.WEBHOOK_URL }}
             
       - name: Install dependencies
         run: | 
