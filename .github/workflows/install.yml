@@ -11,9 +11,6 @@ jobs:
       options: --privileged
 
     steps:
-      - name: Checkout files
-        uses: actions/checkout@v4
-
       - name: Install dependencies
         run: pacman -Syyu --noconfirm aegis
 
@@ -22,9 +19,15 @@ jobs:
 
       - name: Create a raw disk image
         run: |
-             dd if=/dev/zero of=disk.img bs=1M count=10240  # Create a 10GB disk image
-             losetup -d /dev/loop0
+             dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 10GB disk image
+             if losetup -a | grep -q "/dev/loop0"; then
+                 losetup -d /dev/loop0
+             fi
              losetup /dev/loop0 disk.img  # Attach the file as a loopback device
+             parted -s /dev/loop0 -- mklabel gpt
+             parted -s /dev/loop0 -- mkpart ESP fat32 1MiB 512MiB
+             parted -s /dev/loop0 -- set 1 esp on
+             parted -s /dev/loop0 -- mkpart primary btrfs 512MiB 100%
 
       - name: Run the installer
         run: aegis-arch config arch.json
