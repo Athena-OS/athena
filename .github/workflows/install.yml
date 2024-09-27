@@ -19,10 +19,10 @@ jobs:
 
       - name: Create a raw disk image
         run: |
-             dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 10GB disk image
-             if losetup -a | grep -q "/dev/loop0"; then
+             dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
+             while losetup -a | grep -q "/dev/loop0"; do
                  losetup -d /dev/loop0
-             fi
+             done
              losetup /dev/loop0 disk.img  # Attach the file as a loopback device
              parted -s /dev/loop0 -- mklabel gpt
              parted -s /dev/loop0 -- mkpart ESP fat32 1MiB 512MiB
