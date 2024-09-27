@@ -23,6 +23,7 @@ jobs:
       - name: Create a raw disk image
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=10240  # Create a 10GB disk image
+             losetup -d /dev/loop0
              losetup /dev/loop0 disk.img  # Attach the file as a loopback device
 
       - name: Run the installer
