@@ -13,29 +13,18 @@ jobs:
       - name: Checkout files
         uses: actions/checkout@v4
 
-      - name: Init Keys
-        run: | 
-          rm -rf /etc/pacman.d/gnupg
-          pacman-key --init
-          pacman-key --populate
-          pacman -Syy
-
-      - name: Install rate-mirrors
-        run: pacman -Syyu --noconfirm rate-mirrors
-
-      - name: Set fastest mirrors
-        run: |
-          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
-          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
-
       - name: Install dependencies
-        run: pacman -Syyu aegis
+        run: pacman -Syyu --noconfirm aegis
 
       - name: Retrieve install configuration
         run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/arch.json
 
       - name: Create a raw disk image
-        run: dd if=/dev/zero of=disk.img bs=1M count=20480  # Create a 20GB disk image
+        run: |
+             dd if=/dev/zero of=disk.img bs=1M count=20480  # Create a 20GB disk image
+             losetup /dev/loop0 disk.img  # Attach the file as a loopback device
+             ls -la /dev/
+             ls -la /home/athena/
 
       - name: Run the installer
-        run: arch-aegis config arch.json
+        run: aegis-arch config arch.json
