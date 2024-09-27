@@ -24,8 +24,6 @@ jobs:
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=20480  # Create a 20GB disk image
              losetup /dev/loop0 disk.img  # Attach the file as a loopback device
-             ls -la /dev/
-             ls -la /home/athena/
 
       - name: Run the installer
         run: aegis-arch config arch.json
