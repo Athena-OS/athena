@@ -1,6 +1,7 @@
 name: Athena Arch Installation
 
-on: [push]
+on:
+   workflow_dispatch:
 
 jobs:
   install:
@@ -21,10 +22,9 @@ jobs:
 
       - name: Create a raw disk image
         run: |
-             dd if=/dev/zero of=disk.img bs=1M count=20480  # Create a 20GB disk image
+             dd if=/dev/zero of=disk.img bs=1M count=10240  # Create a 10GB disk image
+             losetup -d /dev/loop0
              losetup /dev/loop0 disk.img  # Attach the file as a loopback device
-             ls -la /dev/
-             ls -la /home/athena/
 
       - name: Run the installer
         run: aegis-arch config arch.json
