@@ -1,6 +1,7 @@
 name: Athena Arch Installation
 
-on: [push]
+on:
+   workflow_dispatch:
 
 jobs:
   install:
