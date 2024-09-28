@@ -34,14 +34,13 @@ jobs:
 
     steps:
       - name: Maximize build space
-        uses: easimon/maximize-build-space@master
+        uses: easimon/maximize-build-space@v10
         with:
-          root-reserve-mb: 512
           remove-dotnet: 'true'
           remove-android: 'true'
           remove-haskell: 'true'
           remove-codeql: 'true'
-          
+
       - name: Install dependencies
         run: pacman -Syyu --noconfirm cyber-toolkit
       - name: Run the installer
