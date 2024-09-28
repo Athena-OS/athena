@@ -70,7 +70,7 @@ jobs:
   notify-result:
     runs-on: ubuntu-latest
     needs: athena-installation  # Wait until all matrix jobs complete
-    if: always()  # Ensures this job runs even if any job fails
+    if: always()  # Ensures this job runs even if any job fails or is canceled
     steps:
       - name: Generate Job Results Summary
         id: generate_summary
