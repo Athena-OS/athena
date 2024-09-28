@@ -11,17 +11,15 @@ jobs:
       options: --privileged
 
     steps:
-      - name: Install dependencies
-        run: pacman -Syyu --noconfirm aegis
-
-      - name: Retrieve install configuration
-        run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/arch.json
-
       - name: Create a raw disk image
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
-             while losetup -a | grep -q "/dev/loop0"; do
+             if losetup -a | grep -q "/dev/loop0"; then
                  losetup -d /dev/loop0
-             done
+             fi
+             losetup -a
              lsblk
              fdisk -l
+             mount | grep "/dev/loop"
+             lsof /dev/loop0
+             umount /dev
