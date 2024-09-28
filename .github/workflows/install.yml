@@ -7,7 +7,7 @@ on:
 
 jobs:
   # Matrix Job for GNOME, BSPWM, KDE, and Nix
-  athena-installation:
+  installation-testing:
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
@@ -69,8 +69,26 @@ jobs:
   # Final job to send summary to webhook
   notify-result:
     runs-on: ubuntu-latest
-    needs: athena-installation  # Wait until all matrix jobs complete
+    needs: installation-testing  # Wait until all matrix jobs complete
+    if: always()  # Ensures this job runs even if any job fails or is canceled
     steps:
+      - name: Generate Job Results Summary
+        id: generate_summary
+        run: |
+          summary="Job Results:"
+          # Convert the entire 'needs' context to JSON
+          job_data=$(echo '${{ toJSON(needs) }}' | jq .)
+
+          # Loop over each job and collect the results
+          for job_name in $(echo "$job_data" | jq -r 'keys[]'); do
+            job_result=$(echo "$job_data" | jq -r --arg job "$job_name" '.[$job].result')
+            summary="$summary\n$job_name: $job_result"
+          done
+
+          # Output the summary to be used in later steps
+          echo "$summary"
+          echo "::set-output name=job-summary::$summary"
+
       - name: Send a request to webhook
         run: |
           curl -H "Content-Type: application/json" -d '{
@@ -87,5 +105,5 @@ jobs:
               }
             }],
             "username": "Athena Git Ninja",
-            "content": "Athena Arch installation testing workflow finished. \nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }} \n\nJob Results:\n\n${{ needs.athena-installation.outputs.job-summary }}"
+            "content": "Athena Installation Test\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}\n\n${{ steps.generate_summary.outputs.job-summary }}"
           }' ${{ secrets.WEBHOOK_URL }}
