@@ -1,9 +1,9 @@
-name: Athena Cyber Roles Testing
+name: Cyber Roles Testing
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 17 */1 * *'
+    - cron: '0 16 */1 * *'
 
 jobs:
   role-testing:
@@ -33,6 +33,8 @@ jobs:
     name: Pentesting Tools Test (${{ matrix.role_installer.job_name }}) # Dynamically assign the job name based on the matrix
 
     steps:
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm cyber-toolkit
       - name: Run the installer
         run: cyber-toolkit ${{ matrix.role_installer.role }}
 
