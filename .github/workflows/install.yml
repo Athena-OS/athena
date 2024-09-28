@@ -76,9 +76,9 @@ jobs:
         id: generate_summary
         run: |
           summary="Job Results:\n"
-          for job in ${{ toJSON(needs.athena-installation) }}; do
-            job_name=$(echo "$job" | jq -r '.config_installer.job_name')
-            job_result=$(echo "$job" | jq -r '.result')
+          # Loop over each job in needs.athena-installation and collect results
+          for job_name in $(echo ${{ toJSON(needs) }} | jq -r 'keys[]'); do
+            job_result=$(echo ${{ toJSON(needs) }} | jq -r --arg job "$job_name" '.[$job].result')
             summary="$summary\n$job_name: $job_result"
           done
           echo "$summary"
