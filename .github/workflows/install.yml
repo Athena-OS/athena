@@ -70,6 +70,7 @@ jobs:
   notify-result:
     runs-on: ubuntu-latest
     needs: athena-installation  # Wait until all matrix jobs complete
+    if: always()  # Ensures this job runs even if any job fails
     steps:
       - name: Send a request to webhook
         run: |
