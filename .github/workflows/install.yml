@@ -2,7 +2,8 @@ name: Athena Installation Testing
 
 on:
    workflow_dispatch:
-
+   schedule:
+     - cron:  '0 17 */1 * *'
 jobs:
   athena-arch:
     runs-on: ubuntu-latest
