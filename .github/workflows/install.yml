@@ -20,14 +20,18 @@ jobs:
       - name: Create a raw disk image
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
-             while losetup -a | grep -q "/dev/loop0"; do
-                 losetup -d /dev/loop0
-             done
-             losetup /dev/loop0 disk.img  # Attach the file as a loopback device
-             parted -s /dev/loop0 -- mklabel gpt
-             parted -s /dev/loop0 -- mkpart ESP fat32 1MiB 512MiB
-             parted -s /dev/loop0 -- set 1 esp on
-             parted -s /dev/loop0 -- mkpart primary btrfs 512MiB 100%
+             loop_device=$(sudo losetup --find --partscan --show disk.img)
+             losetup -d "$loop_device"
+             echo "Loop Device: $loop_device"
+             losetup "$loop_device" disk.img  # Attach the file as a loopback device
+             parted -s "$loop_device" -- mklabel gpt
+             parted -s "$loop_device" -- mkpart ESP fat32 1MiB 512MiB
+             parted -s "$loop_device" -- set 1 esp on
+             parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
+             sed -i "s#/dev/loop0#$loop_device#g" arch.json
+             mknod "${loop_device}p1" b 259 0 # Need to create manually because the GitHub hosted-runner kernel does not refresh /dev after partition creation
+             mknod "${loop_device}p2" b 259 1
+             ls -la /dev
 
       - name: Run the installer
         run: aegis-arch config arch.json
