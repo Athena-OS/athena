@@ -8,15 +8,19 @@ on:
 jobs:
   role-testing:
     runs-on: ubuntu-latest
+
+    # Steps that run on the Ubuntu host (outside the container)
     steps:
-      - name: Maximize build space
+      - name: Maximize build space (run on host)
         uses: easimon/maximize-build-space@v10
-      - name: Checkout
+
+      - name: Checkout code (run on host)
         uses: actions/checkout@v3
 
+    # Now start container execution
     container:
       image: athenaos/base-devel:latest
-      options: --privileged
+      options: --privileged  # Needed for hwclock and other privileged operations
 
     strategy:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
@@ -34,14 +38,15 @@ jobs:
           - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️" }
           - { role: "red", job_name: "❤️ Red Teamer ❤️" }
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
-          
 
     name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
 
+    # Steps to run inside the container
     steps:
-      - name: Install dependencies
+      - name: Install dependencies (run inside container)
         run: pacman -Syyu --noconfirm cyber-toolkit
-      - name: Run the installer
+
+      - name: Run the installer (run inside container)
         run: cyber-toolkit ${{ matrix.role_installer.role }}
 
   # Final job to send summary to webhook
