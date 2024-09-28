@@ -17,6 +17,7 @@ jobs:
              if losetup -a | grep -q "/dev/loop0"; then
                  losetup -d /dev/loop0
              fi
+             ls -la /dev/
              losetup -a
              lsblk
              fdisk -l
