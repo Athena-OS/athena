@@ -1,9 +1,9 @@
-name: Athena Cyber Roles Testing
+name: Cyber Roles Testing
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 17 */1 * *'
+    - cron: '0 16 */1 * *'
 
 jobs:
   role-testing:
@@ -17,7 +17,7 @@ jobs:
       matrix:
         role_installer:
           - { role: "blue", job_name: "💙 Blue Teamer 💙" }
-          - { role: "bounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
+          - { role: "bugbounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
           - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘" }
           - { role: "dos", job_name: "💀 DoS Tester 💀" }
           - { role: "student", job_name: "🎓 Enthusiast Student 🎓" }
@@ -30,9 +30,11 @@ jobs:
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
           
 
-    name: Pentesting Tools Test (${{ matrix.role_installer.job_name }}) # Dynamically assign the job name based on the matrix
+    name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
 
     steps:
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm cyber-toolkit
       - name: Run the installer
         run: cyber-toolkit ${{ matrix.role_installer.role }}
 
