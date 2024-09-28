@@ -72,6 +72,18 @@ jobs:
     needs: athena-installation  # Wait until all matrix jobs complete
     if: always()  # Ensures this job runs even if any job fails
     steps:
+      - name: Generate Job Results Summary
+        id: generate_summary
+        run: |
+          summary="Job Results:\n"
+          for job in ${{ toJSON(needs.athena-installation) }}; do
+            job_name=$(echo "$job" | jq -r '.config_installer.job_name')
+            job_result=$(echo "$job" | jq -r '.result')
+            summary="$summary\n$job_name: $job_result"
+          done
+          echo "$summary"
+          echo "::set-output name=job-summary::$summary"
+
       - name: Send a request to webhook
         run: |
           curl -H "Content-Type: application/json" -d '{
@@ -88,5 +100,5 @@ jobs:
               }
             }],
             "username": "Athena Git Ninja",
-            "content": "Athena Arch installation testing workflow finished. \nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }} \n\nJob Results:\n\n${{ needs.athena-installation.outputs.job-summary }}"
+            "content": "Athena Arch installation testing workflow finished. \nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }} \n\nJob Results:\n\n${{ steps.generate_summary.outputs.job-summary }}"
           }' ${{ secrets.WEBHOOK_URL }}
