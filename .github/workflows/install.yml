@@ -21,11 +21,12 @@ jobs:
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
              loop_device=$(sudo losetup -f)
-             losetup $loop_device disk.img  # Attach the file as a loopback device
-             parted -s $loop_device -- mklabel gpt
-             parted -s $loop_device -- mkpart ESP fat32 1MiB 512MiB
-             parted -s $loop_device -- set 1 esp on
-             parted -s $loop_device -- mkpart primary btrfs 512MiB 100%
+             echo "Loop Device: $loop_device"
+             losetup "$loop_device" disk.img  # Attach the file as a loopback device
+             parted -s "$loop_device" -- mklabel gpt
+             parted -s "$loop_device" -- mkpart ESP fat32 1MiB 512MiB
+             parted -s "$loop_device" -- set 1 esp on
+             parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
              sed -i "s#/dev/loop0#$loop_device#g" arch.json
              ls -la /dev/
 
