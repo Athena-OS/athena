@@ -31,8 +31,6 @@ jobs:
              sed -i "s#/dev/loop0#$loop_device#g" arch.json
              lsblk "$loop_device"
              sudo fdisk -l "$loop_device"
-             sudo modprobe dm_mod
-             sudo dmsetup ls
              ls -la /dev
 
       - name: Run the installer
