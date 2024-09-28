@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm aegis
+        run: pacman -Syyu --noconfirm aegis udev
 
       - name: Retrieve install configuration
         run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/arch.json
@@ -29,8 +29,11 @@ jobs:
              parted -s "$loop_device" -- set 1 esp on
              parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
              sed -i "s#/dev/loop0#$loop_device#g" arch.json
-             fdisk -l # It triggers the kernel to be aware of new devices in /dev dir
-             ls -la /dev/
+
+      - name: Trigger udev to create partition device nodes
+        run: |
+             sudo udevadm trigger
+             sudo udevadm settle
 
       - name: Run the installer
         run: aegis-arch config arch.json
