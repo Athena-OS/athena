@@ -30,7 +30,7 @@ jobs:
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
           
 
-    name: Pentesting Tools Test (${{ matrix.role_installer.job_name }}) # Dynamically assign the job name based on the matrix
+    name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
 
     steps:
       - name: Install dependencies
