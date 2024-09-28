@@ -3,14 +3,14 @@
         "device": "/dev/loop0",
         "mode": "Auto",
         "encrypt_check": false,
-        "efi": true,
+        "efi": false,
         "swap": false,
         "swap_size": "",
         "partitions": []
     },
     "bootloader": {
-        "type": "grub-efi",
-        "location": "/boot"
+        "type": "grub-legacy",
+        "location": "/dev/loop0"
     },
     "locale": {
         "locale": [
