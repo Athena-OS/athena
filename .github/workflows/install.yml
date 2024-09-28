@@ -30,8 +30,8 @@ jobs:
              parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
              sed -i "s#/dev/loop0#$loop_device#g" arch.json
              lsblk "$loop_device"
-             mknod /dev/loop0p1 b 259 0 # Need to create manually because the GitHub hosted-runner kernel does not refresh /dev after partition creation
-             mknod /dev/loop0p2 b 259 1
+             mknod "/dev/${loop_device}p1" b 259 0 # Need to create manually because the GitHub hosted-runner kernel does not refresh /dev after partition creation
+             mknod "/dev/${loop_device}p2" b 259 1
              ls -la /dev
 
       - name: Run the installer
