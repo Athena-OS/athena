@@ -13,11 +13,11 @@ jobs:
     steps:
       - name: Create a raw disk image
         run: |
+             ls -la /dev/
              dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
              if losetup -a | grep -q "/dev/loop0"; then
                  losetup -d /dev/loop0
              fi
-             ls -la /dev/
              losetup -a
              lsblk
              fdisk -l
