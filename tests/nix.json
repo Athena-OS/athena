@@ -1,0 +1,51 @@
+{
+    "partition": {
+        "device": "/dev/loop0",
+        "mode": "Auto",
+        "encrypt_check": false,
+        "efi": false,
+        "swap": false,
+        "swap_size": "",
+        "partitions": []
+    },
+    "bootloader": {
+        "type": "grub-legacy",
+        "location": "/dev/loop0"
+    },
+    "locale": {
+        "locale": [
+            "en_US.UTF-8 UTF-8"
+        ],
+        "virtkeymap": "en",
+        "x11keymap": "us",
+        "timezone": "Europe/Zurich"
+    },
+    "networking": {
+        "hostname": "athenaos",
+        "ipv6": false
+    },
+    "users": [
+        {
+            "name": "athena",
+            "password": "$6$eYaiImALQl2MYniY$6isIzrmojOfrtbZ0ijttiFEo8jyYnCYlQYzz7fUqJE0pxLRSdsYAMBg0zKCNb0dhURW/G1APNG3vonA1KcPJu1",
+            "hasroot": true,
+            "shell": "fish"
+        }
+    ],
+    "rootpass": "$6$rIcLQOrbvMlmnIIg$NdUdh7D7jtvuwpl2N78snjVQvHoYR4Nq1jheWLND/BKAGkODIs0ceTNgd9u4z926zbYfAwjgbtOqjqGy6KtWi0",
+    "desktop": "gnome",
+    "theme": "temple",
+    "displaymanager": "gdm",
+    "browser": "firefox",
+    "terminal": "kitty",
+    "extra_packages": [
+
+    ],
+    "flatpak": true,
+    "zramd": true,
+    "kernel": "linux lts",
+    "params": {
+        "cores": "0",
+        "jobs": "32"
+    }
+}
