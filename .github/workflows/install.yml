@@ -105,5 +105,5 @@ jobs:
               }
             }],
             "username": "Athena Git Ninja",
-            "content": "Athena Installation Test.\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}\n\n${{ steps.generate_summary.outputs.job-summary }}"
+            "content": "Athena Installation Test\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}\n\n${{ steps.generate_summary.outputs.job-summary }}"
           }' ${{ secrets.WEBHOOK_URL }}
