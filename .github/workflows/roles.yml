@@ -33,6 +33,19 @@ jobs:
     name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
 
     steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+      - name: Build
+        run: |
+          echo "Free space:"
+          df -h
       - name: Install dependencies
         run: pacman -Syyu --noconfirm cyber-toolkit
       - name: Run the installer
