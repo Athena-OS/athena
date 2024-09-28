@@ -1,10 +1,10 @@
-name: Athena Arch Installation
+name: Athena Installation Testing
 
 on:
    workflow_dispatch:
 
 jobs:
-  install:
+  athena-arch:
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
