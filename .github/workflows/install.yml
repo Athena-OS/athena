@@ -7,7 +7,7 @@ on:
 
 jobs:
   # Matrix Job for GNOME, BSPWM, KDE, and Nix
-  athena-installation:
+  installation-testing:
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
@@ -75,16 +75,16 @@ jobs:
       - name: Generate Job Results Summary
         id: generate_summary
         run: |
-          summary="Job Results:\n"
+          summary="Job Results:"
           # Convert the entire 'needs' context to JSON
           job_data=$(echo '${{ toJSON(needs) }}' | jq .)
-      
+
           # Loop over each job and collect the results
           for job_name in $(echo "$job_data" | jq -r 'keys[]'); do
             job_result=$(echo "$job_data" | jq -r --arg job "$job_name" '.[$job].result')
             summary="$summary\n$job_name: $job_result"
           done
-      
+
           # Output the summary to be used in later steps
           echo "$summary"
           echo "::set-output name=job-summary::$summary"
@@ -105,5 +105,5 @@ jobs:
               }
             }],
             "username": "Athena Git Ninja",
-            "content": "Athena Arch installation testing workflow finished. \nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }} \n\nJob Results:\n\n${{ steps.generate_summary.outputs.job-summary }}"
+            "content": "Athena Installation Test.\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}\n\n${{ steps.generate_summary.outputs.job-summary }}"
           }' ${{ secrets.WEBHOOK_URL }}
