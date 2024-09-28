@@ -1,0 +1,79 @@
+name: Athena Cyber Roles Testing
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 17 */1 * *'
+
+jobs:
+  role-testing:
+    runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged
+
+    strategy:
+      fail-fast: false  # Ensure all matrix jobs continue even if one fails
+      matrix:
+        role_installer:
+          - { role: "blue", job_name: "💙 Blue Teamer 💙" }
+          - { role: "bounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
+          - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘" }
+          - { role: "dos", job_name: "💀 DoS Tester 💀" }
+          - { role: "student", job_name: "🎓 Enthusiast Student 🎓" }
+          - { role: "forensic", job_name: "🔍 Forensic Analyst 🔍" }
+          - { role: "malware", job_name: "🦠 Malware Analyst 🦠" }
+          - { role: "mobile", job_name: "📱 Mobile Analyst 📱" }
+          - { role: "network", job_name: "🌐 Network Analyst 🌐" }
+          - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️" }
+          - { role: "red", job_name: "❤️ Red Teamer ❤️" }
+          - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
+          
+
+    name: Pentesting Tools Test (${{ matrix.role_installer.job_name }}) # Dynamically assign the job name based on the matrix
+
+    steps:
+      - name: Run the installer
+        run: cyber-toolkit ${{ matrix.role_installer.role }}
+
+  # Final job to send summary to webhook
+  notify-result:
+    runs-on: ubuntu-latest
+    needs: role-testing  # Wait until all matrix jobs complete
+    if: always()  # Ensures this job runs even if any job fails or is canceled
+    steps:
+      - name: Generate Job Results Summary
+        id: generate_summary
+        run: |
+          summary="Job Results:"
+          # Convert the entire 'needs' context to JSON
+          job_data=$(echo '${{ toJSON(needs) }}' | jq .)
+
+          # Loop over each job and collect the results
+          for job_name in $(echo "$job_data" | jq -r 'keys[]'); do
+            job_result=$(echo "$job_data" | jq -r --arg job "$job_name" '.[$job].result')
+            summary="$summary\n$job_name: $job_result"
+          done
+
+          # Output the summary to be used in later steps
+          echo "$summary"
+          echo "::set-output name=job-summary::$summary"
+
+      - name: Send a request to webhook
+        run: |
+          curl -H "Content-Type: application/json" -d '{
+            "embeds": [{
+              "type": "rich",
+              "title": "Workflow Actions",
+              "thumbnail": {
+                "url": "https://athenaos.org/_astro/athena-chibi.C4AxdAFD_Z1ifHWb.webp"
+              },
+              "author": {
+                "name": "${{ github.actor }}",
+                "url": "https://github.com/${{ github.actor }}",
+                "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4"
+              }
+            }],
+            "username": "Athena Git Ninja",
+            "content": "Athena Cyber Roles Test\nBranch: ${{ github.ref }} \nCommit Hash: ${{ github.sha }}\n\n${{ steps.generate_summary.outputs.job-summary }}"
+          }' ${{ secrets.WEBHOOK_URL }}
