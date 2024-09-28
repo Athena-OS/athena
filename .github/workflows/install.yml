@@ -1,37 +1,43 @@
 name: Athena Installation Testing
 
 on:
-   workflow_dispatch:
-   schedule:
-     - cron:  '0 17 */1 * *'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 17 */1 * *'
+
 jobs:
-  athena-arch:
+  athena-installation:
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
-      options: --privileged # needed to allow docker container to access to host clock device for hwclock during Aegis installation
+      options: --privileged # needed to allow docker container to access host clock device for hwclock during Aegis installation
+
+    strategy:
+      matrix:
+        config_file: [arch.json, nix.json]  # Define the different configurations
+        installer: [aegis-arch, aegis-nix]  # Define the different installers
 
     steps:
       - name: Install dependencies
         run: pacman -Syyu --noconfirm aegis grub mkinitcpio
 
       - name: Retrieve install configuration
-        run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/arch.json
+        run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/${{ matrix.config_file }}
 
       - name: Create a raw disk image
         run: |
-             dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
-             loop_device=$(sudo losetup --find --partscan --show disk.img)
-             losetup -d "$loop_device"
-             echo "Loop Device: $loop_device"
-             losetup "$loop_device" disk.img  # Attach the file as a loopback device
-             parted -s "$loop_device" -- mklabel gpt
-             parted -s "$loop_device" -- mkpart ESP fat32 1MiB 512MiB
-             parted -s "$loop_device" -- set 1 esp on
-             parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
-             sed -i "s#/dev/loop0#$loop_device#g" arch.json
-             mknod "${loop_device}p1" b 259 0 # Need to create manually because the GitHub hosted-runner kernel does not refresh /dev after partition creation
-             mknod "${loop_device}p2" b 259 1
+          dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
+          loop_device=$(sudo losetup --find --partscan --show disk.img)
+          losetup -d "$loop_device"
+          echo "Loop Device: $loop_device"
+          losetup "$loop_device" disk.img  # Attach the file as a loopback device
+          parted -s "$loop_device" -- mklabel gpt
+          parted -s "$loop_device" -- mkpart ESP fat32 1MiB 512MiB
+          parted -s "$loop_device" -- set 1 esp on
+          parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
+          sed -i "s#/dev/loop0#$loop_device#g" ${{ matrix.config_file }}
+          mknod "${loop_device}p1" b 259 0  # Need to create manually because the GitHub hosted-runner kernel does not refresh /dev after partition creation
+          mknod "${loop_device}p2" b 259 1
 
       - name: Run the installer
-        run: aegis-arch config arch.json
+        run: ${{ matrix.installer }} config ${{ matrix.config_file }}
