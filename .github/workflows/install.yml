@@ -20,7 +20,7 @@ jobs:
       - name: Create a raw disk image
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
-             loop_device=$(sudo losetup -f)
+             loop_device=$(sudo losetup --find --partscan --show disk.img)
              echo "Loop Device: $loop_device"
              losetup "$loop_device" disk.img  # Attach the file as a loopback device
              parted -s "$loop_device" -- mklabel gpt
