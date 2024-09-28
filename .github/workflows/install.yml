@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
-      options: --privileged
+      options: --privileged # needed to allow docker container to access to host clock device for hwclock during Aegis installation
 
     steps:
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm aegis grub
+        run: pacman -Syyu --noconfirm aegis grub mkinitcpio
 
       - name: Retrieve install configuration
         run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/arch.json
