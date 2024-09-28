@@ -20,14 +20,15 @@ jobs:
       - name: Create a raw disk image
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
-             while losetup -a | grep -q "/dev/loop0"; do
-                 losetup -d /dev/loop0
-             done
-             losetup /dev/loop0 disk.img  # Attach the file as a loopback device
-             parted -s /dev/loop0 -- mklabel gpt
-             parted -s /dev/loop0 -- mkpart ESP fat32 1MiB 512MiB
-             parted -s /dev/loop0 -- set 1 esp on
-             parted -s /dev/loop0 -- mkpart primary btrfs 512MiB 100%
+             if losetup -a | grep -q "/dev/loop9"; then
+                 losetup -d /dev/loop9
+             fi
+             losetup /dev/loop9 disk.img  # Attach the file as a loopback device
+             parted -s /dev/loop9 -- mklabel gpt
+             parted -s /dev/loop9 -- mkpart ESP fat32 1MiB 512MiB
+             parted -s /dev/loop9 -- set 1 esp on
+             parted -s /dev/loop9 -- mkpart primary btrfs 512MiB 100%
+             sed -i "s/loop0/loop9/g" arch.json
 
       - name: Run the installer
         run: aegis-arch config arch.json
