@@ -121,6 +121,9 @@ build_package() {
             echo -e "Moving $pfile to $out_dir"
             cp -f $pfile* $out_dir
             rm -f $pfile*
+
+            # Add the package to the pkg_array
+            pkg_array+=("$pfile")
         done
     else
         >&2 echo "$pkgfile already exists in $out_dir"
@@ -203,7 +206,7 @@ while getopts "abc:dhrsuwx" opt; do
             echo "-h     Print this Help."
             echo "-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
             echo "-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
-            echo "-u     Update the package repository database."
+            echo "-u     Update the entire package repository database."
             echo "-w     Overwrite existing packages in the output directory."
             echo "-x     Search for the fastest mirrors."
             echo
@@ -272,6 +275,9 @@ cpu_arch="x86_64"
 src_dir="$(pwd)"
 out_dir="$(df -P /build/output | awk 'NR==2 {print $6}')"
 
+# Initialize an empty array to store package filenames
+pkg_array=()
+
 makepkg_settings
 prebuild_command
 
@@ -301,6 +307,14 @@ else
         build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir"
         echo
     done
+
+    # Loop over the pkg_array to run repo-add for each package to update the database
+    if [[ "${#pkg_array[@]}" -gt 0 ]]; then
+        for fpkg in "${pkg_array[@]}"; do
+            echo "Adding $fpkg to athena.db..."
+            repo-add --verify --sign -R "$out_dir/athena.db.tar.gz" "$out_dir/$fpkg"
+        done
+    fi
 fi
 
 if [[ "$db" ]]
