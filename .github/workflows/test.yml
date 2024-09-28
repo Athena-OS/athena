@@ -1,0 +1,27 @@
+name: Test
+
+on:
+   workflow_dispatch:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged
+
+    steps:
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm aegis
+
+      - name: Retrieve install configuration
+        run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/arch.json
+
+      - name: Create a raw disk image
+        run: |
+             dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
+             while losetup -a | grep -q "/dev/loop0"; do
+                 losetup -d /dev/loop0
+             done
+             lsblk
+             fdisk -l
