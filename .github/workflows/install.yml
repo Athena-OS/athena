@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm aegis udev
+        run: pacman -Syyu --noconfirm aegis udev multipath-tools
 
       - name: Retrieve install configuration
         run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/arch.json
@@ -24,10 +24,7 @@ jobs:
              losetup -d "$loop_device"
              echo "Loop Device: $loop_device"
              losetup "$loop_device" disk.img  # Attach the file as a loopback device
-             parted -s "$loop_device" -- mklabel gpt
-             parted -s "$loop_device" -- mkpart ESP fat32 1MiB 512MiB
-             parted -s "$loop_device" -- set 1 esp on
-             parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
+             kpartx -av "$loop_device"
              sed -i "s#/dev/loop0#$loop_device#g" arch.json
              lsblk "$loop_device"
              partprobe "$loop_device"
