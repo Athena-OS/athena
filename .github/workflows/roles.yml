@@ -17,7 +17,7 @@ jobs:
       matrix:
         role_installer:
           - { role: "blue", job_name: "💙 Blue Teamer 💙" }
-          - { role: "bounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
+          - { role: "bugbounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
           - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘" }
           - { role: "dos", job_name: "💀 DoS Tester 💀" }
           - { role: "student", job_name: "🎓 Enthusiast Student 🎓" }
