@@ -21,7 +21,7 @@ jobs:
         run: |
              dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
              loop_device=$(sudo losetup --find --partscan --show disk.img)
-             losetup -d $loop_device
+             losetup -d "$loop_device"
              echo "Loop Device: $loop_device"
              losetup "$loop_device" disk.img  # Attach the file as a loopback device
              parted -s "$loop_device" -- mklabel gpt
@@ -29,6 +29,7 @@ jobs:
              parted -s "$loop_device" -- set 1 esp on
              parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
              sed -i "s#/dev/loop0#$loop_device#g" arch.json
+             lsblk # It triggers the kernel to be aware of new devices in /dev dir
              ls -la /dev/
 
       - name: Run the installer
