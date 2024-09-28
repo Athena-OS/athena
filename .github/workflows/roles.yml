@@ -9,18 +9,37 @@ jobs:
   role-testing:
     runs-on: ubuntu-latest
 
-    # Steps that run on the Ubuntu host (outside the container)
     steps:
-      - name: Maximize build space (run on host)
+      # Steps running on the host (Ubuntu)
+      - name: Maximize build space
         uses: easimon/maximize-build-space@v10
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
 
-      - name: Checkout code (run on host)
+      - name: Checkout code
         uses: actions/checkout@v3
 
-    # Now start container execution
-    container:
-      image: athenaos/base-devel:latest
-      options: --privileged  # Needed for hwclock and other privileged operations
+      - name: Start the container manually
+        run: |
+          docker run --privileged --name athena-container -d athenaos/base-devel:latest tail -f /dev/null
+
+      - name: Install dependencies inside container
+        run: |
+          docker exec athena-container pacman -Syyu --noconfirm cyber-toolkit
+
+      - name: Run the installer inside container
+        run: |
+          docker exec athena-container cyber-toolkit ${{ matrix.role_installer.role }}
+
+      - name: Stop and remove the container
+        run: |
+          docker stop athena-container
+          docker rm athena-container
 
     strategy:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
@@ -39,15 +58,8 @@ jobs:
           - { role: "red", job_name: "❤️ Red Teamer ❤️" }
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
 
-    name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
+    name: ${{ matrix.role_installer.job_name }} Test
 
-    # Steps to run inside the container
-    steps:
-      - name: Install dependencies (run inside container)
-        run: pacman -Syyu --noconfirm cyber-toolkit
-
-      - name: Run the installer (run inside container)
-        run: cyber-toolkit ${{ matrix.role_installer.role }}
 
   # Final job to send summary to webhook
   notify-result:
