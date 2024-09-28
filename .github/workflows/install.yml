@@ -69,7 +69,7 @@ jobs:
   # Final job to send summary to webhook
   notify-result:
     runs-on: ubuntu-latest
-    needs: athena-installation  # Wait until all matrix jobs complete
+    needs: installation-testing  # Wait until all matrix jobs complete
     if: always()  # Ensures this job runs even if any job fails or is canceled
     steps:
       - name: Generate Job Results Summary
