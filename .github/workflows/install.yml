@@ -76,11 +76,16 @@ jobs:
         id: generate_summary
         run: |
           summary="Job Results:\n"
-          # Loop over each job in needs.athena-installation and collect results
-          for job_name in $(echo ${{ toJSON(needs) }} | jq -r 'keys[]'); do
-            job_result=$(echo ${{ toJSON(needs) }} | jq -r --arg job "$job_name" '.[$job].result')
+          # Convert the entire 'needs' context to JSON
+          job_data=$(echo '${{ toJSON(needs) }}' | jq .)
+      
+          # Loop over each job and collect the results
+          for job_name in $(echo "$job_data" | jq -r 'keys[]'); do
+            job_result=$(echo "$job_data" | jq -r --arg job "$job_name" '.[$job].result')
             summary="$summary\n$job_name: $job_result"
           done
+      
+          # Output the summary to be used in later steps
           echo "$summary"
           echo "::set-output name=job-summary::$summary"
 
