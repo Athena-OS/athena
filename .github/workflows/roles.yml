@@ -8,33 +8,9 @@ on:
 jobs:
   role-testing:
     runs-on: ubuntu-latest
-
-    steps:
-      # Steps running on the host (Ubuntu)
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@v10
-        with:
-          remove-dotnet: 'true'
-          remove-android: 'true'
-          remove-haskell: 'true'
-          remove-codeql: 'true'
-
-      - name: Start the container manually
-        run: |
-          docker run --privileged --name athena-container -d athenaos/base-devel:latest tail -f /dev/null
-
-      - name: Install dependencies inside container
-        run: |
-          docker exec athena-container pacman -Syyu --noconfirm cyber-toolkit
-
-      - name: Run the installer inside container
-        run: |
-          docker exec athena-container cyber-toolkit ${{ matrix.role_installer.role }}
-
-      - name: Stop and remove the container
-        run: |
-          docker stop athena-container
-          docker rm athena-container
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged
 
     strategy:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
@@ -52,9 +28,15 @@ jobs:
           - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️" }
           - { role: "red", job_name: "❤️ Red Teamer ❤️" }
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
+          
 
-    name: ${{ matrix.role_installer.job_name }} Test
+    name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
 
+    steps:
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm cyber-toolkit
+      - name: Run the installer
+        run: cyber-toolkit ${{ matrix.role_installer.role }}
 
   # Final job to send summary to webhook
   notify-result:
