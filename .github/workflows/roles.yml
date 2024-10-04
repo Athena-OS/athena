@@ -28,7 +28,7 @@ jobs:
           - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️" }
           - { role: "red", job_name: "❤️ Red Teamer ❤️" }
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
-          
+
 
     name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
 
@@ -38,10 +38,42 @@ jobs:
       - name: Run the installer
         run: cyber-toolkit ${{ matrix.role_installer.role }}
 
+  nix-role-testing:
+    runs-on: ubuntu-latest
+    container:
+      image: nixos/nix:latest
+      options: --privileged
+    strategy:
+      fail-fast: false  # Ensure all matrix jobs continue even if one fails
+      matrix:
+        role_installer:
+          - { role: "blue", job_name: "💙 Blue Teamer 💙" }
+          - { role: "bugbounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
+          - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘" }
+          - { role: "dos", job_name: "💀 DoS Tester 💀" }
+          - { role: "student", job_name: "🎓 Enthusiast Student 🎓" }
+          - { role: "forensic", job_name: "🔍 Forensic Analyst 🔍" }
+          - { role: "malware", job_name: "🦠 Malware Analyst 🦠" }
+          - { role: "mobile", job_name: "📱 Mobile Analyst 📱" }
+          - { role: "network", job_name: "🌐 Network Analyst 🌐" }
+          - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️" }
+          - { role: "red", job_name: "❤️ Red Teamer ❤️" }
+          - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
+          
+    name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
+    steps:
+      - name: Clone Athena Nix
+        run: git clone https://github.com/Athena-OS/athena-nix
+      - name: Set nix configuration
+        run: |
+          ls -la /etc
+          cd athena-nix/nixos
+          cp -rf home-manager hosts modules pkgs configuration.nix default.nix /etc/nixos/
+          nixos-rebuild switch
   # Final job to send summary to webhook
   notify-result:
     runs-on: ubuntu-latest
-    needs: arch-role-testing  # Wait until all matrix jobs complete
+    needs: [arch-role-testing, nix-role-testing]  # Wait until all matrix jobs complete
     if: always()  # Ensures this job runs even if any job fails or is canceled
     steps:
       - name: Generate Job Results Summary
@@ -50,17 +82,14 @@ jobs:
           summary="Job Results:"
           # Convert the entire 'needs' context to JSON
           job_data=$(echo '${{ toJSON(needs) }}' | jq .)
-
           # Loop over each job and collect the results
           for job_name in $(echo "$job_data" | jq -r 'keys[]'); do
             job_result=$(echo "$job_data" | jq -r --arg job "$job_name" '.[$job].result')
             summary="$summary\n$job_name: $job_result"
           done
-
           # Output the summary to be used in later steps
           echo "$summary"
           echo "::set-output name=job-summary::$summary"
-
       - name: Send a request to webhook
         run: |
           curl -H "Content-Type: application/json" -d '{
