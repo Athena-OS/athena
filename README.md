@@ -129,3 +129,7 @@ podman run \
     -e POST_EXEC="ls -la /build/output" # Post-build command
     docker.io/athenaos/hephaestus -a -d -r -s -x
 ```
+Example usage:
+```
+podman run -ti --rm --secret key-sec --ulimit nofile=1024:524288 --userns=keep-id -v "/srv/mirrors/athena:/build/output" -v "$HOME/keydir:/build/keydir" -e GPG_SEC="key-sec" docker.io/athenaos/hephaestus -s -x bloodhound-python certipy
+```

@@ -81,6 +81,7 @@ build_package() {
     cpu_arch=$2
     src_dir=$3
     out_dir=$4
+    logs_dir=$5
 
     echo -e "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
@@ -88,8 +89,10 @@ build_package() {
     makepkg -do --noprepare
 
     pkgname=($(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/[\[('\'')]//g' -e 's/"//g'))
+    pkgdesc=$(grep "^pkgdesc=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgepoch=$(grep "^epoch=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1] ":"}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    groups=$(grep "^groups=" PKGBUILD | sed -e "s/groups=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=()
@@ -99,20 +102,21 @@ build_package() {
 
     if [ ! -f "$out_dir/$pkgfile" ] || [[ "$overwrite" ]]; then
         if [ -f "build.sh" ]; then
-            # Error handling to prevent running interruption
-            ./build.sh || {
+            ./build.sh >> "$logs_dir/$pkgname-$arch.log" 2>&1 || {
                 >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
+                build_status="Fail"
                 return 1
             }
         else
             updpkgsums
-            # Error handling to prevent running interruption
-            makepkg -f -src $NODEPS --noconfirm || {
+            makepkg -f -src $NODEPS --noconfirm >> "$logs_dir/$pkgname-$arch.log" 2>&1 || {
                 >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
+                build_status="Fail"
                 return 1
             }
             sudo rm -rf src pkg
         fi
+        build_status="Success"
 
         sign_package
 
@@ -273,7 +277,8 @@ sudo pacman -Syy
 # Set the CPU Architecture for packaging
 cpu_arch="x86_64"
 src_dir="$(pwd)"
-out_dir="$(df -P /build/output | awk 'NR==2 {print $6}')"
+out_dir="$(df -P /build/output | awk 'NR==2 {print $6}')/$cpu_arch"
+logs_dir="$(df -P /build/output | awk 'NR==2 {print $6}')/logs"
 
 # Initialize an empty array to store package filenames
 pkg_array=()
@@ -304,7 +309,7 @@ else
     for path in "${result[@]}"; do
         echo "Found PKGBUILD: $path"
         # Build and sign packages
-        build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir"
+        build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir" "$logs_dir"
         echo
     done
 
