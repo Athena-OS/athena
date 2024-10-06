@@ -108,7 +108,7 @@ build_package() {
                 return 1
             }
         else
-            updpkgsums 2>&1 | tee test.log
+            updpkgsums 2>&1 | tee "$logs_dir/$pkgname-$arch.log"
             makepkg -f -src $NODEPS --noconfirm 2>&1 | tee -a "$logs_dir/$pkgname-$arch.log" || {
                 >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
                 build_status="Fail"
