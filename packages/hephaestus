@@ -102,14 +102,14 @@ build_package() {
 
     if [ ! -f "$out_dir/$pkgfile" ] || [[ "$overwrite" ]]; then
         if [ -f "build.sh" ]; then
-            ./build.sh >> "$logs_dir/$pkgname-$arch.log" 2>&1 || {
+            ./build.sh 2>&1 | tee "$logs_dir/$pkgname-$arch.log" || {
                 >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
                 build_status="Fail"
                 return 1
             }
         else
-            updpkgsums
-            makepkg -f -src $NODEPS --noconfirm >> "$logs_dir/$pkgname-$arch.log" 2>&1 || {
+            updpkgsums 2>&1 | tee test.log
+            makepkg -f -src $NODEPS --noconfirm 2>&1 | tee -a "$logs_dir/$pkgname-$arch.log" || {
                 >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
                 build_status="Fail"
                 return 1
