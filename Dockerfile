@@ -6,20 +6,18 @@ ENV PUID=1000
 
 RUN pacman -Syyu --noconfirm pacman-contrib sudo git rate-mirrors rsync sshpass
 
-RUN useradd -ms /bin/bash $PUSER
-RUN usermod -aG lp,rfkill,sys,wheel -u "$PUID" $PUSER && echo "$PUSER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$PUSER
+RUN useradd -d /src -ms /bin/bash $PUSER
+RUN usermod -aG wheel -u "$PUID" $PUSER && echo "$PUSER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$PUSER
 RUN chmod 044 /etc/sudoers.d/$PUSER
-RUN echo -e "$PUSER\n$PUSER" | passwd "$PUSER"
 
 # Copy the PKGBUILD files
-COPY packages/ /build/packages/
-RUN mkdir -p /build/output
+COPY packages/ /src/packages/
+RUN mkdir -p /src/output
 
-# Set up an entry point script
-RUN chown -R builder:builder /build
+USER $PUSER
+WORKDIR /src
 
-USER $PUSER:$PUSER
-WORKDIR /build/packages
+COPY --chown=$PUSER:$PUSER . .
 
 # Define the entry point
 ENTRYPOINT ["/build/packages/hephaestus"]
