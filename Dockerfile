@@ -20,4 +20,4 @@ WORKDIR /src
 COPY --chown=$PUSER:$PUSER . .
 
 # Define the entry point
-ENTRYPOINT ["/build/packages/hephaestus"]
+ENTRYPOINT ["/src/packages/hephaestus"]
