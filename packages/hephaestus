@@ -43,7 +43,7 @@ postbuild_command() {
 # Function to find directories containing PKGBUILD files
 find_pkgbuild_dirs() {
     local pkgbuild_paths=()
-    local search_dir="/build/packages/"
+    local search_dir="/src/packages/"
 
     # If I'm running the builder outside a container
     if [ ! -d "$search_dir" ]; then
@@ -271,7 +271,7 @@ then
     if [ -z "$passphrase" ]; then
         echo "No secret found for GPG key object ${GPG_SEC}."
     else
-        echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /build/keydir/key.asc
+        echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /src/keydir/key.asc
     fi
 fi
 
@@ -287,8 +287,8 @@ sudo pacman -Syy
 # Set the CPU Architecture for packaging
 cpu_arch="x86_64"
 src_dir="$(pwd)"
-out_dir="$(df -P /build/output | awk 'NR==2 {print $6}')/$cpu_arch"
-logs_dir="$(df -P /build/output | awk 'NR==2 {print $6}')/logs"
+out_dir="$(df -P /src/output | awk 'NR==2 {print $6}')/$cpu_arch"
+logs_dir="$(df -P /src/output | awk 'NR==2 {print $6}')/logs"
 
 # Initialize an empty array to store package filenames
 pkg_array=()
