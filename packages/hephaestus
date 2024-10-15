@@ -179,7 +179,7 @@ echo "The Athena OS CI/CD Builder"
 echo
 
 # Parse command-line options
-while getopts "abc:dhrsuwx" opt; do
+while getopts "abc:dhrstuwx" opt; do
     case $opt in
         a)
             all=true
@@ -200,7 +200,7 @@ while getopts "abc:dhrsuwx" opt; do
             NODEPS="-d"
             ;;
         h)
-            echo "Usage: $0 [-a] [-b] [-c <ncores>] [-d] [-r] [-s] [-u] [-w] [-x] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-b] [-c <ncores>] [-d] [-r] [-s] [-t] [-u] [-w] [-x] [package1 package2 ...]"
             echo
             echo "Options:"
             echo "-a     Build all packages."
@@ -210,6 +210,7 @@ while getopts "abc:dhrsuwx" opt; do
             echo "-h     Print this Help."
             echo "-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
             echo "-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
+            echo "-t     Test PKGBUILD on the current directory."
             echo "-u     Update the entire package repository database."
             echo "-w     Overwrite existing packages in the output directory."
             echo "-x     Search for the fastest mirrors."
@@ -237,6 +238,9 @@ while getopts "abc:dhrsuwx" opt; do
         s)
             sign=true
             ;;
+        t)
+            test=true
+            ;;
         u)
             db=true
             ;;
@@ -253,6 +257,12 @@ while getopts "abc:dhrsuwx" opt; do
     esac
 done
 shift $((OPTIND - 1))
+
+if [[ "$test" ]]
+then
+    makepkg -s -f --noconfirm --needed
+    exit 0
+fi
 
 if [[ "$sign" ]]
 then
