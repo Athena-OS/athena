@@ -66,10 +66,11 @@ jobs:
         run: git clone https://github.com/Athena-OS/athena-nix
       - name: Set nix configuration
         run: |
-          ls -la /etc
+          nix-channel --update
+          nix-shell -p nixos-install-tools --run "nixos-generate-config"
           cd athena-nix/nixos
           cp -rf home-manager hosts modules pkgs configuration.nix default.nix /etc/nixos/
-          nixos-rebuild switch
+          nix-shell -p nixos-rebuild --run "nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix"
   # Final job to send summary to webhook
   notify-result:
     runs-on: ubuntu-latest
