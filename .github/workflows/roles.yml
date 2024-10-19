@@ -69,7 +69,6 @@ jobs:
           nix-channel --update
           nix-shell -p nixos-install-tools --run "nixos-generate-config"
           cd athena-nix/nixos
-          mkdir /etc/nixos
           cp -rf home-manager hosts modules pkgs configuration.nix default.nix /etc/nixos/
           nix-shell -p nixos-rebuild --run "nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix"
   # Final job to send summary to webhook
