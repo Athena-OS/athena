@@ -30,12 +30,12 @@ jobs:
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
 
 
-    name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
+    name: ${{ matrix.role_installer.job_name }} Install # Dynamically assign the job name based on the matrix
 
     steps:
       - name: Install dependencies
         run: pacman -Syyu --noconfirm cyber-toolkit
-      - name: Run the installer
+      - name: Install role
         run: cyber-toolkit ${{ matrix.role_installer.role }}
 
   nix-role-testing:
@@ -60,13 +60,13 @@ jobs:
           - { role: "red", job_name: "❤️ Red Teamer ❤️" }
           - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
           
-    name: ${{ matrix.role_installer.job_name }} Test # Dynamically assign the job name based on the matrix
+    name: ${{ matrix.role_installer.job_name }} Install # Dynamically assign the job name based on the matrix
     steps:
-      - name: Clone Athena Nix
-        run: git clone https://github.com/Athena-OS/athena-nix
-      - name: Set role
+      - name: Install role
         run: |
-          nix-shell --expr '{ pkgs ? import <nixpkgs> {} }: pkgs.mkShell { buildInputs = (import ./athena-nix/nixos/modules/cyber/roles/${{ matrix.role_installer.role }}.nix { inherit pkgs; }); }'
+          git clone https://github.com/Athena-OS/athena-nix
+          nix-shell --expr '{ pkgs ? import <nixpkgs> { config.allowUnfree = true; } }: pkgs.mkShell { buildInputs = (import ./athena-nix/nixos/modules/cyber/roles/${{ matrix.role_installer.role }}.nix { inherit pkgs; }); }'
+
   # Final job to send summary to webhook
   notify-result:
     runs-on: ubuntu-latest
