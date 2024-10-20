@@ -64,7 +64,7 @@ jobs:
     steps:
       - name: Clone Athena Nix
         run: git clone https://github.com/Athena-OS/athena-nix
-      - name: Set nix configuration
+      - name: Set role
         run: |
           nix-shell --expr '{ pkgs ? import <nixpkgs> {} }: pkgs.mkShell { buildInputs = (import ./athena-nix/nixos/modules/cyber/roles/${{ matrix.role_installer.role }}.nix { inherit pkgs; }); }'
   # Final job to send summary to webhook
