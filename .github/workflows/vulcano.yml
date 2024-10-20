@@ -60,6 +60,7 @@ jobs:
           for FILE in "${CHANGED_FILES[@]}"; do
             if [[ $(basename "$FILE") == "PKGBUILD" ]]; then
               echo "Building $FILE..."
-              podman run --rm --userns=keep-id -v "${GITHUB_WORKSPACE}/$(dirname "$FILE"):/src" docker.io/athenaos/vulcano
+              podman build --load -t builder -f vulcano/Dockerfile $(dirname $FILE)
+              podman run --rm builder
             fi
           done
