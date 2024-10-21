@@ -120,16 +120,16 @@ podman run \
     --secret ssh-sec \
     --ulimit nofile=1024:524288 \ # Fix fakeroot hanging
     --userns=keep-id \ # Prevent to set root as owner of mounted volume directories
-    -v "$HOME/output:/build/output" \ # Set the target directory to store packages
-    -v "$HOME/keydir:/build/keydir" \ # Set the target directory to retrieve the signing key from the host
+    -v "$HOME/output:/src/output" \ # Set the target directory to store packages
+    -v "$HOME/keydir:/src/keydir" \ # Set the target directory to retrieve the signing key from the host
     -e GPG_SEC=$(key-sec) \ # Set the signing key secret object
     -e SSH_SEC=$(ssh-sec) \ # Set the SSH repository server secret object
     -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
-    -e PRE_EXEC="ls -la /build" \ # Pre-build command
-    -e POST_EXEC="ls -la /build/output" # Post-build command
+    -e PRE_EXEC="ls -la /src" \ # Pre-build command
+    -e POST_EXEC="ls -la /src/output" # Post-build command
     docker.io/athenaos/hephaestus -a -d -r -s -x
 ```
 Example usage:
 ```
-podman run -ti --rm --secret key-sec --ulimit nofile=1024:524288 --userns=keep-id -v "/srv/mirrors/athena:/build/output" -v "$HOME/keydir:/build/keydir" -e GPG_SEC="key-sec" docker.io/athenaos/hephaestus -s -x bloodhound-python certipy
+podman run -ti --rm --secret key-sec --ulimit nofile=1024:524288 --userns=keep-id -v "/srv/mirrors/athena:/src/output" -v "$HOME/keydir:/src/keydir" -e GPG_SEC="key-sec" docker.io/athenaos/hephaestus -s -x bloodhound-python certipy
 ```
