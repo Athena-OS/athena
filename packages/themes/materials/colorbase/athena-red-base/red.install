@@ -7,6 +7,7 @@ post_install() {
       echo -e "GNOME environment detected..."
       mkdir -p "/usr/share/gnome-background-properties"
       mv "/usr/share/athena-red-base/akame.xml" "/usr/share/gnome-background-properties/"
+      mv "/usr/share/athena-red-base/murasame.xml" "/usr/share/gnome-background-properties/"
       mv "/usr/share/athena-red-base/redmoon.xml" "/usr/share/gnome-background-properties/"
   fi
   rm -rf /usr/share/athena-red-base
@@ -20,6 +21,7 @@ post_remove() {
   # Optionally remove the XML file if GNOME was detected during install
   if [ -d "/usr/share/gnome-shell" ]; then
       rm -f "/usr/share/gnome-background-properties/akame.xml"
+      rm -f "/usr/share/gnome-background-properties/murasame.xml"
       rm -f "/usr/share/gnome-background-properties/redmoon.xml"
   fi
   # Check if the directory is empty and remove it if it is
