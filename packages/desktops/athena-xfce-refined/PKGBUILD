@@ -1,12 +1,12 @@
 pkgname=athena-xfce-refined
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="XFCE Refined configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-xfce-base' 'nautilus')
 source=("$pkgname.tar.gz")
-sha512sums=('1f218388959cb8f818a832f10f453f782b464f36fd53313196b225d8d59ae8190c154aaaa658e6a89a5679b005edc8410010ea847d3fdb8e4f4522be80e64f99')
+sha512sums=('fd58b940b36894421cacc6c72d28f616351cbe07b99c869cc78e96e8ecbe2f94f4d45e0d09a602cac9c80437854c7ef98a7576441a256062230778a5440293b7')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel/.config"
