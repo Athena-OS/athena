@@ -1,13 +1,13 @@
 pkgname=athena-gnome-material-shell-config
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="GNOME Material Shell configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-gnome-base' 'malcontent' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-material-shell-git')
 conflicts=('athena-gnome-config')
 source=("$pkgname.tar.gz")
-sha512sums=('1c16e6a0a4fac22980e5e344155f2cdb76bcc370323f3ae5a5c25ecc0d955893ffb27ecb76d19e934e748df63d7068b835540cae4356e16dfb3179235b301d5d')
+sha512sums=('7145fa4f11ed14cbdb06a5d2356091c8cca21f6afc5270ceebe21e8f06df55561a5d4884296d58512ebfde61956b07912140ad979ac4792e632f2cf25133281d')
 
 package() {
   mkdir -p "${pkgdir}/etc"

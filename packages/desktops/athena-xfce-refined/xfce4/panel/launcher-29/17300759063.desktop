@@ -1,0 +1,25 @@
+[Desktop Entry]
+Version=1.0
+Name=Brave
+GenericName=Web Browser
+Comment=Access the Internet
+StartupNotify=true
+StartupWMClass=brave-browser
+TryExec=brave
+Exec=brave %U
+Terminal=false
+Icon=brave-desktop
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ipfs;x-scheme-handler/ipns;
+Actions=new-window;new-private-window;
+X-XFCE-Source=file:///usr/share/applications/brave-browser.desktop
+
+[Desktop Action new-window]
+Name=New Window
+Exec=brave
+
+[Desktop Action new-private-window]
+Name=New Incognito Window
+Exec=brave --incognito
+MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;

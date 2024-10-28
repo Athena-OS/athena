@@ -1,6 +1,6 @@
 pkgname=athena-kde-base
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE base configuration for Athena."
 arch=('any')
 license=("custom")
@@ -9,12 +9,14 @@ source=("applications-kmenuedit.menu"
         "kwinrc"
         "kwinrulesrc"
         "kde-init.desktop"
-        "kde-init")
+        "kde-init"
+        "plasma-org.kde.plasma.desktop-appletsrc")
 sha512sums=('95b77baa43bc02b79761b18fae7c1b58dfdae029ba327d9fb7be6a1eb9c88d728bc52c3f95dd3b21a7b99920798baf7d7190c922ae2df8f53aff62a63c32f37f'
-            '4994d23a62c7ca1685766502c1139430ed8bb108738dc4a6fd28e3aaa9095f76a3201c0891d2b61648eeddb9b46d37611e93c23e608f747c5ab4a1104c289131'
+            '0fa3d224959ebc73fc9236ad7f59f5bfa82566da14259b951333b01f7e013ac0dccdf0c09ed79d6c2f47ce848be3fe3c80096f0c05f67b783fade29284077319'
             'a5d2d3b60bd951c10d4495465129800163d63a2ec676dda81607ef885f6378690e0363f46a7c3fd0e8481cd25e9b2920731c041563aaade18bee1d0db07525e1'
             '4693dcdc626a96c1404b153cd535828569eae6a9af46873a4e459cdfc40e8017bed054dea0616b2dfeb95c2a4ede7eea079d0141a3b605f58715beb9cb3999b9'
-            '17b353e723b0ab318ec2076e2a3370f3cb2f378e58c9ee95f636d537b06aad7ddd8c8c15ae2647b9faa3c61a7b5c23398f05c7c32e483fee9745333f3da6b37a')
+            '17b353e723b0ab318ec2076e2a3370f3cb2f378e58c9ee95f636d537b06aad7ddd8c8c15ae2647b9faa3c61a7b5c23398f05c7c32e483fee9745333f3da6b37a'
+            '5735b398c030459e1b2eaba70703c254bec39621d376c404a621b4b4cd48f76cbc4bc4e3ec6b0992d3f333d93e7a4cec0abb29183c599b6c74c94f0e44fb69a4')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config"
@@ -24,6 +26,7 @@ package() {
 
   install -Dm644 "${srcdir}/kwinrc" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "${srcdir}/kwinrulesrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "${srcdir}/plasma-org.kde.plasma.desktop-appletsrc" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "${srcdir}/kde-init.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm644 "${srcdir}/applications-kmenuedit.menu" "${pkgdir}/etc/xdg/menus/"
   install -Dm755 "${srcdir}/kde-init" "${pkgdir}/usr/bin/"
