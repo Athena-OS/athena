@@ -1,10 +1,10 @@
 pkgname=gruvbox-gtk-theme
 _pkgname=Gruvbox-GTK-Theme
-pkgver=62.1a0f6672
+pkgver=75.eed3858
 pkgrel=1
-pkgdesc="A GTK theme based on the Gruvbox colour palette."
+pkgdesc='A GTK theme based on the Gruvbox colour palette.'
 arch=('any')
-license=("GPL3")
+license=('GPL3')
 makedepends=('git')
 source=("git+https://github.com/Fausto-Korpsvart/$_pkgname.git")
 sha512sums=('SKIP')
@@ -12,7 +12,12 @@ sha512sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {

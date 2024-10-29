@@ -1,10 +1,10 @@
 pkgname=matrix-gtk-theme
 _pkgname=Matrix-GTK-Theme
-pkgver=9.f453093d
+pkgver=12.15a799b
 pkgrel=1
-pkgdesc="A GTK theme based on the Matrix colour palette."
+pkgdesc='A GTK theme based on the Matrix colour palette.'
 arch=('any')
-license=("GPL3")
+license=('GPL3')
 makedepends=('git')
 source=("git+https://github.com/D3vil0p3r/$_pkgname.git")
 sha512sums=('SKIP')
@@ -12,7 +12,12 @@ sha512sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
