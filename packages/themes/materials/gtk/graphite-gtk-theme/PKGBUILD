@@ -1,10 +1,10 @@
 pkgname=graphite-gtk-theme
 _pkgname=Graphite-gtk-theme
-pkgver=2024.04.28.r2.g3b09e9b
+pkgver=2024.07.15.r15.g9a004f9
 pkgrel=1
-pkgdesc="Graphite Dark theme."
+pkgdesc='Graphite Dark theme.'
 arch=('any')
-license=("GPL3")
+license=('GPL3')
 makedepends=('git' 'gnome-shell' 'sassc')
 source=("git+https://github.com/vinceliuice/$_pkgname.git")
 sha512sums=('SKIP')
@@ -12,7 +12,12 @@ sha512sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
