@@ -129,6 +129,8 @@ build_package() {
             # Add the package to the pkg_array
             pkg_array+=("$pfile")
         done
+
+        curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pkgname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"description\":\"$pkgdesc\",\"repository\":\"athena\"}}"
     else
         >&2 echo "$pkgfile already exists in $out_dir"
     fi
@@ -208,8 +210,8 @@ while getopts "abc:dhrstuwx" opt; do
             echo "-c     Set number of cores for building (maximum $(nproc))."
             echo "-d     Skip all dependency checks."
             echo "-h     Print this Help."
-            echo "-r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments."
-            echo "-s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument."
+            echo "-r     Upload packages to the specified repository server."
+            echo "-s     Sign packages."
             echo "-t     Test PKGBUILD on the current directory."
             echo "-u     Update the entire package repository database."
             echo "-w     Overwrite existing packages in the output directory."
@@ -224,10 +226,10 @@ while getopts "abc:dhrstuwx" opt; do
             ;;
         r)
             rsync=true
-            sshsec="$(cat /run/secrets/${SSH_SEC})"
+            sshsec="$(cat /run/secrets/ssh-sec)"
             if [[ -z "$sshsec" || -z "${REPOSITORY_SERVER}" ]]; then
                 if [[ -z "$sshsec" ]]; then
-                    echo "Error -r argument: Missing 'SSH_SEC' environment variable passed as container argument."
+                    echo "Error -r argument: Missing 'ssh-sec' podman secret variable."
                 fi
                 if [[ -z "${REPOSITORY_SERVER}" ]]; then
                     echo "Error -r argument: Missing 'REPOSITORY_SERVER' environment variable passed as container argument."
@@ -267,9 +269,9 @@ fi
 if [[ "$sign" ]]
 then
     # Import the signing key
-    passphrase="$(cat /run/secrets/${GPG_SEC})" # pass argument -e GPG_SEC= to the container program
+    passphrase="$(cat /run/secrets/key-sec)"
     if [ -z "$passphrase" ]; then
-        echo "No secret found for GPG key object ${GPG_SEC}."
+        echo "No secret found for GPG key object key-sec."
     else
         echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /src/keydir/key.asc
     fi

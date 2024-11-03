@@ -118,12 +118,11 @@ podman run \
     --rm \
     --secret key-sec \
     --secret ssh-sec \
+    --secret strapi-sec \
     --ulimit nofile=1024:524288 \ # Fix fakeroot hanging
     --userns=keep-id \ # Prevent to set root as owner of mounted volume directories
     -v "$HOME/output:/src/output" \ # Set the target directory to store packages
     -v "$HOME/keydir:/src/keydir" \ # Set the target directory to retrieve the signing key from the host
-    -e GPG_SEC=$(key-sec) \ # Set the signing key secret object
-    -e SSH_SEC=$(ssh-sec) \ # Set the SSH repository server secret object
     -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
     -e PRE_EXEC="ls -la /src" \ # Pre-build command
     -e POST_EXEC="ls -la /src/output" # Post-build command
