@@ -121,7 +121,8 @@ podman run \
     --secret strapi-sec \
     --ulimit nofile=1024:524288 \ # Fix fakeroot hanging
     --userns=keep-id \ # Prevent to set root as owner of mounted volume directories
-    -v "$HOME/output:/src/output" \ # Set the target directory to store packages
+    -v "/srv/mirrors/athena:/src/output" \ # Set the target directory to store packages
+    -v "/srv/logs:/src/logs" \ # Set the target directory to store build logs
     -v "$HOME/keydir:/src/keydir" \ # Set the target directory to retrieve the signing key from the host
     -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
     -e PRE_EXEC="ls -la /src" \ # Pre-build command
