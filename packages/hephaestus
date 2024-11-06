@@ -292,7 +292,7 @@ sudo pacman -Syy
 cpu_arch="x86_64"
 src_dir="$(pwd)"
 out_dir="$(df -P /src/output | awk 'NR==2 {print $6}')/$cpu_arch"
-logs_dir="$(df -P /src/output | awk 'NR==2 {print $6}')/logs"
+logs_dir="$(df -P /src/logs | awk 'NR==2 {print $6}')"
 
 # Initialize an empty array to store package filenames
 pkg_array=()
