@@ -116,7 +116,7 @@ build_package() {
             }
             sudo rm -rf src pkg
         fi
-        build_status="Success"
+        build_status="Done"
 
         sign_package
 
@@ -129,6 +129,8 @@ build_package() {
             # Add the package to the pkg_array
             pkg_array+=("$pfile")
         done
+
+        curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pkgname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"repository\":\"athena\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\"}}"
 
         curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pkgname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"description\":\"$pkgdesc\",\"repository\":\"athena\"}}"
     else
