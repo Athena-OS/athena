@@ -1,9 +1,0 @@
-[
-  (definition)
-  (selection)
-] @indent
-
-[
-  "{"
-  "}"
-] @branch

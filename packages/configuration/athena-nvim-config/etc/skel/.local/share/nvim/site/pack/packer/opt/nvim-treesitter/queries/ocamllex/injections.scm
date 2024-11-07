@@ -1,3 +1,0 @@
-(ocaml) @ocaml
-
-(comment) @comment

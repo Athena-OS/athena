@@ -1,4 +1,0 @@
-import foo.{
-  Bar, 
-  baz,
-}

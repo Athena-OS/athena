@@ -1,3 +1,0 @@
-@Nothing
-public class Testo {
-}

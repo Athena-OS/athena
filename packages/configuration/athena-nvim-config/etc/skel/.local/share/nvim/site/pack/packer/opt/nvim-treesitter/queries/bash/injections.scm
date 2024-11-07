@@ -1,3 +1,0 @@
-(comment) @comment
-
-(regex) @regex

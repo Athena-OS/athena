@@ -1,4 +1,0 @@
-[
-  (object)
-  (array)
-] @scope
