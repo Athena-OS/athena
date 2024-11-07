@@ -1,3 +1,0 @@
-[
-    (journal_item)
-] @indent

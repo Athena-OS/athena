@@ -1,6 +1,0 @@
-[
-  (pool)
-  (rule)
-  (build)
-] @indent
-

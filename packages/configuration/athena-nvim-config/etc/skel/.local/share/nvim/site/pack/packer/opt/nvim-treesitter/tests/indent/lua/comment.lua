@@ -1,7 +1,0 @@
--- some
--- comment
-
---[[
-  another
-  comment
---]]
