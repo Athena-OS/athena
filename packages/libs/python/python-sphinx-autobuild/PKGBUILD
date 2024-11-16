@@ -1,9 +1,9 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
+pkgbase=python-sphinx-autobuild
+pkgname=(python-sphinx-autobuild python2-sphinx-autobuild)
 _pkgname=sphinx-autobuild
-pkgbase=python-$_pkgname
-pkgname=(python-$_pkgname python2-$_pkgname)
 pkgver=0.7.1
 pkgrel=5
 pkgdesc='Watch a Sphinx directory and rebuild the documentation when a change is detected. Also includes a livereload enabled web server.'
