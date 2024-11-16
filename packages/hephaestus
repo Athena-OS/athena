@@ -126,7 +126,7 @@ build_package() {
 
         # A PKGBUILD could contain more than one package (i.e., python- packages)
         for pname in "${pkgname[@]}"; do
-            pfile+="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
+            pfile="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
             installed_size="$(pacman -Qip $pfile | grep 'Installed Size' | awk '{print $4, $5}')"
             echo -e "Moving $pfile to $out_dir"
             cp -f $pfile* $out_dir
