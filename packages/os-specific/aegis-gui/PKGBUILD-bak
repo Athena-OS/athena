@@ -4,12 +4,23 @@ pkgrel=3
 pkgdesc='Libadwaita based GUI front-end for Aegis.'
 license=('GPL3')
 arch=('x86_64' 'aarch64')
-url="https://github.com/Athena-OS/${pkgname}"
+url='https://github.com/Athena-OS/aegis-gui'
 depends=('aegis' 'openssl' 'libadwaita' 'python-pytz' 'gparted' 'vte4' 'gtksourceview5' 'python-tzlocal' 'python-requests')
-makedepends=('cmake' 'meson' 'ninja' 'desktop-file-utils' 'appstream-glib' 'gtk4' 'pkg-config')
+makedepends=('cmake' 'meson' 'ninja' 'desktop-file-utils' 'appstream-glib' 'gtk4' 'pkg-config' 'git')
 #source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
 
 build() {
     cd $pkgname
