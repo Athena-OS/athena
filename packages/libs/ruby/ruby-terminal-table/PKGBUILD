@@ -4,17 +4,17 @@
 # Old Maintainer: farawayer <farwayer@gmail.com>
 # Old Co-Maintainer: Bert Peters <bert@bertptrs.nl>
 
-_gemname=terminal-table
-pkgname="ruby-$_gemname"
+pkgname=ruby-terminal-table
+_gemname=${pkgname#ruby-}
 pkgver=3.0.2
 pkgrel=1
 pkgdesc='Simple, feature rich ascii table generation library.'
-arch=(any)
+arch=('any')
 url='https://github.com/tj/terminal-table'
 license=('MIT')
 depends=('ruby' 'ruby-unicode-display-width')
 options=(!emptydirs)
-source=(https://github.com/tj/terminal-table/archive/v${pkgver}.tar.gz)
+source=("https://github.com/tj/terminal-table/archive/v${pkgver}.tar.gz")
 sha512sums=('5e8aa375fb1a5d2789ac0a735e5b5420261700b91650658e2b084bc9544cc195a1af329d157626b6aa4e738ad59a860245da15a099940ba68bbe0e937fd2574d')
 
 prepare() {
