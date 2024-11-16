@@ -83,6 +83,7 @@ build_package() {
     src_dir=$3
     out_dir=$4
     logs_dir=$5
+    pkg_missing=false
 
     echo -e "\nBuilding package in $pkg_dir..."
     cd $pkg_dir
@@ -97,12 +98,17 @@ build_package() {
     arch=$(awk -v cpu_arch="x86_64" -F"['\" ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgurl=$(grep "^url=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-    pkgfile=()
+
     for pname in "${pkgname[@]}"; do
-        pkgfile+=("${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
+        pkgfile="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
+        if [ ! -f "$out_dir/$pkgfile" ]; then
+            # if a package of a pkgbase is missing, the entire pkgbase PKGBUILD needs to be rebuilt
+            pkg_missing=true
+            break
+        fi
     done
 
-    if [ ! -f "$out_dir/$pkgfile" ] || [[ "$overwrite" ]]; then
+    if $pkg_missing || [[ "$overwrite" ]]; then
         if [ -f "build.sh" ]; then
             ./build.sh 2>&1 | tee "$logs_dir/$pkgname-$arch.log" || {
                 >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
