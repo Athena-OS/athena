@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o pipefail  # Ensure pipeline exit code reflects failures in any command in the pipeline
 
 makepkg_settings() {
     if [[ "$buildcores" ]]; then
