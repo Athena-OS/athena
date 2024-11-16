@@ -5,9 +5,9 @@ pkgname=python-pyradamsa
 _pkgname=pyradamsa
 pkgver=v0.1.1.r1.g8d1fdb5
 pkgrel=1
-pkgdesc='Python bindings for radamsa fuzzing library..'
+pkgdesc='Python bindings for radamsa fuzzing library.'
 arch=('x86_64' 'aarch64')
-url="https://github.com/tsundokul/$_pkgname"
+url='https://github.com/tsundokul/pyradamsa'
 license=('MIT')
 depends=('python' 'python-pytest' 'python-setuptools')
 makedepends=('git' 'python-build' 'python-wheel' 'python-installer')
@@ -17,7 +17,12 @@ sha512sums=('SKIP')
 pkgver() {
   cd $pkgname
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {

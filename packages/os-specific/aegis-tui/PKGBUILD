@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='TUI frontend for the Aegis installer.'
 license=('GPL3')
 arch=('x86_64' 'aarch64')
-url="https://github.com/Athena-OS/${pkgname}"
+url='https://github.com/Athena-OS/aegis-tui'
 depends=('aegis' 'gum' 'util-linux')
 makedepends=('git')
 source=("git+https://github.com/Athena-OS/$pkgname.git")
@@ -13,7 +13,12 @@ sha512sums=('SKIP')
 pkgver() {
   cd $pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
