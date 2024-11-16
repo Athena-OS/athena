@@ -94,7 +94,7 @@ build_package() {
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgepoch=$(grep "^epoch=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1] ":"}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     groups=$(grep "^groups=" PKGBUILD | sed -e "s/groups=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//' | awk '{printf "%s, ", $0}' | sed 's/, $//')
-    arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
+    arch=$(awk -v cpu_arch="x86_64" -F"['\" ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=()
     for pname in "${pkgname[@]}"; do
