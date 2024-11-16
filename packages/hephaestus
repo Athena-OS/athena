@@ -92,7 +92,7 @@ build_package() {
     pkgdesc=$(grep "^pkgdesc=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgepoch=$(grep "^epoch=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1] ":"}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-    groups=$(grep "^groups=" PKGBUILD | sed -e "s/groups=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//')
+    groups=$(grep "^groups=" PKGBUILD | sed -e "s/groups=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//' | awk '{printf "%s, ", $0}' | sed 's/, $//')
     arch=$(awk -v cpu_arch="$cpu_arch" -F"[' ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgfile=()
@@ -105,6 +105,7 @@ build_package() {
             ./build.sh 2>&1 | tee "$logs_dir/$pkgname-$arch.log" || {
                 >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
                 build_status="Fail"
+                build_status_api
                 return 1
             }
         else
@@ -112,6 +113,7 @@ build_package() {
             makepkg -f -src $NODEPS --noconfirm 2>&1 | tee -a "$logs_dir/$pkgname-$arch.log" || {
                 >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
                 build_status="Fail"
+                build_status_api
                 return 1
             }
             sudo rm -rf src pkg
@@ -130,13 +132,22 @@ build_package() {
             pkg_array+=("$pfile")
         done
 
-        curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pkgname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"repository\":\"athena\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\"}}"
-
-        curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pkgname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"category\":\"$groups\",\"description\":\"$pkgdesc\",\"repository\":\"athena\"}}"
+        build_status_api
+        package_list_api
+        
     else
         >&2 echo "$pkgfile already exists in $out_dir"
     fi
     cd $src_dir
+}
+
+# Currently works only on x86_64. Need to be adapted for other archs
+build_status_api() {
+    curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pkgname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"repository\":\"athena\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\"}}"
+}
+
+package_list_api() {
+    curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pkgname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"category\":\"$groups\",\"description\":\"$pkgdesc\",\"repository\":\"athena\"}}"
 }
 
 git_bump_package() {
