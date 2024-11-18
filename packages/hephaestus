@@ -90,6 +90,7 @@ build_package() {
 
     makepkg -do --noprepare
 
+    pkgbase=$(grep "^pkgbase=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     pkgname=($(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/[\[('\'')]//g' -e 's/"//g'))
     pkgdesc=$(grep "^pkgdesc=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
@@ -97,7 +98,15 @@ build_package() {
     groups=$(grep "^groups=" PKGBUILD | sed -e "s/groups=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//' | awk '{printf "%s, ", $0}' | sed 's/, $//')
     arch=$(awk -v cpu_arch="x86_64" -F"['\" ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgurl=$(grep "^url=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
+    license=$(grep "^license=" PKGBUILD | sed -e "s/license=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | awk '{printf "%s, ", $0}' | sed 's/, $//')
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    pkgsource=https://github.com/Athena-OS/athena/tree/main/${pkgdir#/src/}
+
+    if [[ -z "$pkgbase" ]]; then
+        logfile="$pkgname-$arch.log"
+    else
+        logfile="$pkgbase-$arch.log"
+    fi
 
     for pname in "${pkgname[@]}"; do
         pkgfile="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
@@ -110,15 +119,15 @@ build_package() {
 
     if $pkg_missing || [[ "$overwrite" ]]; then
         if [ -f "build.sh" ]; then
-            ./build.sh 2>&1 | tee "$logs_dir/$pkgname-$arch.log" || {
+            ./build.sh 2>&1 | tee "$logs_dir/$logfile" || {
                 >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
                 build_status="Fail"
                 build_status_api
                 return 1
             }
         else
-            updpkgsums 2>&1 | tee "$logs_dir/$pkgname-$arch.log"
-            makepkg -f -src $NODEPS --noconfirm 2>&1 | tee -a "$logs_dir/$pkgname-$arch.log" || {
+            updpkgsums 2>&1 | tee "$logs_dir/$logfile"
+            makepkg -f -src $NODEPS --noconfirm 2>&1 | tee -a "$logs_dir/$logfile" || {
                 >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
                 build_status="Fail"
                 build_status_api
@@ -153,11 +162,11 @@ build_package() {
 
 # Currently works only on x86_64. Need to be adapted for other archs
 build_status_api() {
-    curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\"}}"
+    curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"package_source\":\"$pkgsource\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_x86_64_logs\":\"$logfile\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_i686_logs\":\"-\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"status_ARMv6h_logs\":\"-\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_ARMv7h_logs\":\"-\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\",\"status_AArch64_logs\":\"-\"}}"
 }
 
 package_list_api() {
-    curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"category\":\"$groups\",\"description\":\"$pkgdesc\",\"installed_size\":\"$installed_size\",\"upstream_url\":\"$pkgurl\"}}"
+    curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"category\":\"$groups\",\"description\":\"$pkgdesc\",\"installed_size\":\"$installed_size\",\"license\":\"$license\",\"upstream_url\":\"$pkgurl\"}}"
 }
 
 git_bump_package() {
