@@ -1,10 +1,10 @@
 pkgname=athena-gnome-config
 pkgver=2.2
-pkgrel=7
+pkgrel=8
 pkgdesc="GNOME configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('athena-gnome-base' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-arc-menu-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
+depends=('athena-gnome-base' 'gnome-shell-extension-appindicator' 'gnome-shell-extension-arc-menu' 'gnome-shell-extension-desktop-icons-ng' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals')
 conflicts=('athena-gnome-material-shell-config')
 source=("$pkgname.tar.gz")
 
