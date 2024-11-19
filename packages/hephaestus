@@ -98,6 +98,7 @@ build_package() {
     groups=$(grep "^groups=" PKGBUILD | sed -e "s/groups=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//' | awk '{printf "%s, ", $0}' | sed 's/, $//')
     arch=$(awk -v cpu_arch="x86_64" -F"['\" ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgurl=$(grep "^url=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
+    license=$(grep "^license=" PKGBUILD | sed -e "s/license=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | awk '{printf "%s, ", $0}' | sed 's/, $//')
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgsource=https://github.com/Athena-OS/athena/tree/main/${pkgdir#/src/}
 
@@ -161,11 +162,11 @@ build_package() {
 
 # Currently works only on x86_64. Need to be adapted for other archs
 build_status_api() {
-    curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"package_source\":\"pkgsource\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_x86_64_logs\":\"$logfile\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_i686_logs\":\"-\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"status_ARMv6h_logs\":\"-\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_ARMv7h_logs\":\"-\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\",\"status_AArch64_logs\":\"-\"}}"
+    curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"package_source\":\"$pkgsource\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_x86_64_logs\":\"$logfile\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_i686_logs\":\"-\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"status_ARMv6h_logs\":\"-\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_ARMv7h_logs\":\"-\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\",\"status_AArch64_logs\":\"-\"}}"
 }
 
 package_list_api() {
-    curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"category\":\"$groups\",\"description\":\"$pkgdesc\",\"installed_size\":\"$installed_size\",\"upstream_url\":\"$pkgurl\"}}"
+    curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"category\":\"$groups\",\"description\":\"$pkgdesc\",\"installed_size\":\"$installed_size\",\"license\":\"$license\",\"upstream_url\":\"$pkgurl\"}}"
 }
 
 git_bump_package() {
