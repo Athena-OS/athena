@@ -65,7 +65,7 @@ find_pkgbuild_dirs() {
         # Use find to locate PKGBUILD files in subdirectories
         while IFS= read -r -d '' pkgbuild_path; do
             # Consider only packages not in 'broken' and 'old' directories
-            if [[ ! $pkgbuild_path =~ "broken" && ! $pkgbuild_path =~ "old" ]]; then
+            if [[ ! $pkgbuild_path =~ "broken" && ! $pkgbuild_path =~ "old" && ! $pkgbuild_path =~ "metapackages" ]]; then
                 # Extract package name from PKGBUILD path
                 pkgbuild_paths+=("$pkgbuild_path")
             fi
