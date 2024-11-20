@@ -100,7 +100,7 @@ build_package() {
     pkgurl=$(grep "^url=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     license=$(grep "^license=" PKGBUILD | sed -e "s/license=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | awk '{printf "%s, ", $0}' | sed 's/, $//')
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-    pkgsource=https://github.com/Athena-OS/athena/tree/main/${pkgdir#/src/}
+    pkgsource="https://github.com/Athena-OS/athena/tree/main/${pkgdir#/src/}"
 
     if [[ -z "$pkgbase" ]]; then
         logfile="$pkgname-$arch.log"
