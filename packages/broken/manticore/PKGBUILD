@@ -8,7 +8,7 @@ pkgdesc='Symbolic execution tool.'
 arch=('any')
 groups=('athena' 'athena-binary')
 url='https://github.com/trailofbits/manticore'
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=('python' 'python-yaml' 'python-protobuf' 'python-pysha3' 'python-cbor2'
          'python-prettytable' 'python-ply' 'python-rlp' 'python-intervaltree'
          'python-crytic-compile' 'python-wasm'

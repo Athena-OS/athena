@@ -8,7 +8,7 @@ pkgdesc='SSL security checker.'
 groups=('athena' 'athena-crypto')
 arch=('any')
 url='https://blog.techstacks.com/cryptonark.html'
-license=('GPL')
+license=('GPL-1.0-or-later')
 depends=('perl-io-socket-ssl' 'perl-tie-hash-indexed' 'perl-modern-perl'
          'perl-mozilla-ca')
 source=("https://www.techstacks.com/files/cnark-v${pkgver}.zip")

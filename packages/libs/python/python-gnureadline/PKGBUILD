@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='The standard Python readline extension statically linked against the GNU readline library.'
 arch=('any')
 url='https://pypi.org/project/gnureadline/#files'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('fakeroot' 'gcc' 'make' 'patch'
              'python2-setuptools' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")

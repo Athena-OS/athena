@@ -8,7 +8,7 @@ pkgdesc='Simple PROFINET fuzzer based on Scapy.'
 groups=('athena' 'athena-fuzzer')
 arch=('any')
 url='https://github.com/HSASec/ProFuzz'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python2' 'python2-pyqt4' 'python2-gnuplot' 'python2-pyx' 'python2-scapy'
          'python2-pycryptodome' 'tcpdump' 'graphviz')
 makedepends=('git')

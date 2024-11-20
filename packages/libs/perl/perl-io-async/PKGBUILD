@@ -11,7 +11,7 @@ pkgrel=3
 pkgdesc='Asynchronous event-driven programming.'
 arch=('any')
 url='https://metacpan.org/release/IO-Async'
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-future' 'perl-struct-dumb')
 makedepends=('perl-test-fatal' 'perl-test-identity' 'perl-test-refcount')
 options=('!emptydirs' 'purge')

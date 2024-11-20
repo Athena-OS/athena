@@ -8,7 +8,7 @@ pkgrel=11
 pkgdesc='A unified framework to send a receive packets.'
 arch=('any')
 url='https://metacpan.org/release/Net-Packet'
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'PerlArtistic')
 depends=('perl-net-ipv4addr' 'perl-bit-vector' 'perl-net-write>=1.00'
          'perl-socket6' 'perl-net-pcap>=0.12' 'perl-net-libdnet'
          'perl-class-gomor>=1.00' 'perl-net-ipv6addr')

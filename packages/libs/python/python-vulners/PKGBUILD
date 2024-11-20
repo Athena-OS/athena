@@ -10,7 +10,7 @@ arch=('any')
 url='https://pypi.org/project/vulners/#files'
 depends=('python-requests' 'python-six')
 makedepends=('python-setuptools')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('893308081598c08ef5313da6874500beb5433b243529c21e60f4e4315c4dd1db97e3736027669bd01547ed1a667f735f990ed65327d8a363b89f86ec85c2f4b5')
 

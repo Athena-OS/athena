@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='An HTTP client library aiming to perform a large number of requests on a server as fast as it can take them, but without distrupting operations significantly.'
 url='https://pypi.org/project/HammerTime-http/#files'
 arch=('any')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('python' 'python-aiohttp' 'python-easyinject' 'python-aiodns'
          'python-simhash')
 makedepends=('python-setuptools')

@@ -8,8 +8,8 @@ pkgrel=3
 pkgdesc='Async WebDriver implementation for asyncio and asyncio-compatible frameworks.'
 arch=('any')
 groups=('athena' 'athena-automation' 'athena-webapp')
-url='https://github.com/HDE/arsenic/releases'
-license=('Apache')
+url='https://github.com/HDE/arsenic'
+license=('Apache-2.0')
 depends=('python' 'python-pip' 'python-build' 'python-attrs' 'python-structlog'
          'python-aiohttp' 'geckodriver')
 makedepends=('python-setuptools')

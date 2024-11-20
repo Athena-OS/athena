@@ -9,7 +9,7 @@ pkgdesc='SSH mitm server for security audits supporting public key authenticatio
 arch=('any')
 groups=('athena' 'athena-exploitation' 'athena-sniffer')
 url='https://pypi.org/project/ssh-mitm/#files'
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('python' 'python-argcomplete' 'python-paramiko' 'python-pytz' 'python-enhancements'
          'python-requests' 'python-typeguard' 'python-packaging' 'python-rich' 'python-json-logger'
          'python-sshpubkeys' 'python-colored' 'python-pyaml' 'python-wrapt')

@@ -8,7 +8,7 @@ groups=('athena' 'athena-recon')
 pkgdesc='Traceroute-like application piggybacking on existing TCP connections.'
 url='https://intrace.googlecode.com'
 arch=('x86_64' 'aarch64')
-license=('GPL2' 'GPL3')
+license=('GPL-2.0-or-later' 'GPL-3.0-or-later')
 source=("http://intrace.googlecode.com/files/$pkgname-$pkgver.tgz"
         'make.patch')
 sha512sums=('bfcd412051c7c981fee2ea4453c796a17ce581de'

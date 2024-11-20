@@ -8,7 +8,7 @@ pkgrel=4
 pkgdesc='Enable all of the features of Modern Perl with one command.'
 arch=('any')
 url='https://metacpan.org/release/Modern-Perl'
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=("http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/$_pkgname-$pkgver.tar.gz")

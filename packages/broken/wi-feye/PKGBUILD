@@ -8,7 +8,7 @@ groups=('athena' 'athena-wireless')
 pkgdesc='An automated wireless penetration testing tool written in python, its designed to simplify common attacks that can be performed on wifi networks so that they can be executed quickly and easily.'
 arch=('any')
 url='http://wi-feye.za1d.com/download.php'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('python2' 'aircrack-ng' 'ettercap' 'hamster' 'python2-scapy'
         'python2-pexpect' 'dsniff' 'driftnet' 'evilgrade' 'python2-colorama')
 source=("http://wi-feye.isecur1ty.org/releases/Wi-fEye-v$pkgver.tar.gz")

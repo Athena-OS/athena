@@ -2,16 +2,15 @@
 # See COPYING for license details.
 
 pkgname=justdecompile
-pkgver=22018
-pkgrel=2
+pkgver=2015
+pkgrel=1
 pkgdesc='The decompilation engine of JustDecompile.'
-url='https://github.com/telerik/JustDecompileEngine/tags'
-groups=('athena' 'athena-windows' 'athena-decompiler'
-        'athena-binary' 'athena-reversing')
-license=('APACHE')
+url='https://github.com/cdfpaz/JustDecompileEngine'
+groups=('athena' 'athena-windows' 'athena-decompiler' 'athena-binary' 'athena-reversing')
+license=('Apache-2.0')
 arch=('any')
-source=("$pkgname-R${pkgver}SP1.zip::https://github.com/telerik/JustDecompileEngine/archive/ReleaseR${pkgver}SP1(default).zip")
-sha512sums=('ff0e503a82bc5b65324e42fe480f25fdd2503e3c54881f707f655e70dea65d776772feed2aa1cda0627be26d7adc228458d6afcde233fe0285f9d6bcf258ff02')
+source=("$pkgname-R${pkgver}SP1.zip::https://github.com/cdfpaz/JustDecompileEngine/archive/ReleaseQ1${pkgver}SP3(default).zip")
+sha512sums=('9ee9cafe09dd81d26370d3948982f945e5da36439d17493ed975cd2441f2964f8849fd5ed7f3a7c76008ca308a6c8526eb3c1a3dd4e6a979d8cf3b830de718de')
 
 package() {
   install -dm 755 "$pkgdir/usr/share/windows/$pkgname"
