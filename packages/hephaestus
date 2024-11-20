@@ -65,7 +65,7 @@ find_pkgbuild_dirs() {
         # Use find to locate PKGBUILD files in subdirectories
         while IFS= read -r -d '' pkgbuild_path; do
             # Consider only packages not in 'broken' and 'old' directories
-            if [[ ! $pkgbuild_path =~ "broken" && ! $pkgbuild_path =~ "old" ]]; then
+            if [[ ! $pkgbuild_path =~ "broken" && ! $pkgbuild_path =~ "old" && ! $pkgbuild_path =~ "metapackages" ]]; then
                 # Extract package name from PKGBUILD path
                 pkgbuild_paths+=("$pkgbuild_path")
             fi
@@ -100,7 +100,7 @@ build_package() {
     pkgurl=$(grep "^url=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     license=$(grep "^license=" PKGBUILD | sed -e "s/license=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | awk '{printf "%s, ", $0}' | sed 's/, $//')
     pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-    pkgsource=https://github.com/Athena-OS/athena/tree/main/${pkgdir#/src/}
+    pkgsource="https://github.com/Athena-OS/athena/tree/main/${pkg_dir#/src/}"
 
     if [[ -z "$pkgbase" ]]; then
         logfile="$pkgname-$arch.log"
