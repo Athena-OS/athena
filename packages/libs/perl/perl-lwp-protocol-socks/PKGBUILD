@@ -8,7 +8,7 @@ pkgrel=9
 pkgdesc='Adds support for the socks protocol and proxy facility.'
 url='https://metacpan.org/pod/LWP::Protocol::socks'
 arch=('any')
-license=('GPL')
+license=('GPL-1.0-or-later')
 depends=('perl-libwww' 'perl-io-socket-ssl' 'perl-io-socket-socks'
          'perl-lwp-protocol-https')
 source=("http://search.cpan.org/CPAN/authors/id/S/SC/SCR/$_pkgname-$pkgver.tar.gz")

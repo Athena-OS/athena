@@ -8,7 +8,7 @@ groups=('athena' 'athena-forensic')
 pkgdesc='Utilities for viewing data and exporting schema from Microsoft Access Database files.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/evanmiller/mdbtools"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 makedepends=('git' 'bison' 'flex' 'txt2man' 'autoconf')
 options=('!libtool' '!makeflags')
 source=("git+https://github.com/evanmiller/$pkgname.git#branch=buffer-overflow")

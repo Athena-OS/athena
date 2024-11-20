@@ -8,7 +8,7 @@ pkgrel=11
 pkgdesc='Python 2.x bindings for Poppler.'
 arch=('x86_64' 'aarch64')
 url='https://launchpad.net/poppler-python'
-license=('GPL')
+license=('GPL-1.0-or-later')
 depends=('pygtk' 'poppler-glib')
 source=("https://launchpad.net/poppler-python/trunk/development/+download/$_pkgname-$pkgver.tar.gz"
         'pypoppler-0.12.1-poppler-0.16.0.patch'

@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='High speed arbitrary size integer math.'
 arch=('x86_64' 'aarch64')
 url='https://metacpan.org/pod/Math::GMP'
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'PerlArtistic')
 depends=('perl' 'gmp' 'perl-devel-checklib' 'perl-alien-base-modulebuild'
          'perl-alien-gmp')
 options=(!emptydirs)

@@ -7,7 +7,7 @@ pkgver=0.08
 pkgrel=14
 pkgdesc='Read/write encrypted ASN.1 PEM files.'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('PerlArtistic' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl' 'perl-class-errorhandler' 'perl-convert-asn1>=0.10'
          'perl-crypt-des_ede3')

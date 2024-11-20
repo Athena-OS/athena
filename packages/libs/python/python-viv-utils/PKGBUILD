@@ -9,7 +9,7 @@ pkgdesc='Utilities for binary analysis using vivisect.'
 arch=('any')
 # https://github.com/williballenthin/viv-utils
 url='https://pypi.org/project/viv-utils/#files'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python' 'python-funcy' 'python-pefile' 'vivisect'
          'python-intervaltree' 'python-python-flirt')
 makedepends=('python-setuptools')

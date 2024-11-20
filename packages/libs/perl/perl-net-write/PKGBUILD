@@ -8,7 +8,7 @@ pkgrel=12
 pkgdesc='A portable interface to open and send raw data to network.'
 arch=('any')
 url='https://metacpan.org/release/Net-Write'
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'PerlArtistic')
 depends=('perl-class-gomor' 'perl-socket6' 'perl-net-pcap>=0.12')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/$_pkgname-$pkgver.tar.gz")

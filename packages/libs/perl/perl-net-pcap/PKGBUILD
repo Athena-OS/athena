@@ -8,7 +8,7 @@ pkgrel=9
 pkgdesc='Perl/CPAN Module Net::Pcap.'
 arch=('x86_64' 'aarch64')
 url='https://metacpan.org/release/Net-Pcap'
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'PerlArtistic')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/S/SA/SAPER/$_realname-$pkgver.tar.gz"
         'stubs.inc.patch')

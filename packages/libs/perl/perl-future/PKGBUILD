@@ -11,7 +11,7 @@ pkgrel=3
 pkgdesc='Perl module to deal with operation awaiting completion.'
 arch=('any')
 url='https://metacpan.org/release/Future'
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'PerlArtistic')
 makedepends=('perl-module-build>=0.4004')
 checkdepends=('perl-test-fatal' 'perl-test-identity' 'perl-test-refcount')
 depends=('perl>=5.15.8' 'perl-test-fatal')

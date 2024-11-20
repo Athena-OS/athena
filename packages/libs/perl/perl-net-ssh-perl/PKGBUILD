@@ -7,7 +7,7 @@ pkgver=2.14
 pkgrel=11
 pkgdesc='Perl client interface to SSH.'
 arch=('x86_64' 'aarch64')
-license=('GPL' 'custom')
+license=('GPL-1.0-or-later' 'custom')
 options=('!emptydirs')
 depends=('perl-convert-pem' 'perl-crypt-dh' 'perl-crypt-dsa' 'perl-crypt-idea'
          'perl-crypt-rsa' 'perl-digest-bubblebabble' 'perl-digest-hmac'

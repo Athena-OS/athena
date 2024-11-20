@@ -9,7 +9,7 @@ epoch=1
 pkgdesc='Experimental Python wrapper for OpenSSL.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nabla-c0d3/nassl'
-license=('GPL')
+license=('GPL-1.0-or-later')
 depends=('python')
 makedepends=('openssl' 'openssl-1.0' 'zlib' 'python-setuptools' 'python-invoke'
              'python-pipenv')
