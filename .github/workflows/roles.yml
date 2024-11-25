@@ -16,18 +16,18 @@ jobs:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
       matrix:
         role_installer:
-          - { role: "blue", job_name: "💙 Blue Teamer 💙" }
-          - { role: "bugbounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
-          - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘" }
-          - { role: "dos", job_name: "💀 DoS Tester 💀" }
-          - { role: "student", job_name: "🎓 Enthusiast Student 🎓" }
-          - { role: "forensic", job_name: "🔍 Forensic Analyst 🔍" }
-          - { role: "malware", job_name: "🦠 Malware Analyst 🦠" }
-          - { role: "mobile", job_name: "📱 Mobile Analyst 📱" }
-          - { role: "network", job_name: "🌐 Network Analyst 🌐" }
-          - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️" }
-          - { role: "red", job_name: "❤️ Red Teamer ❤️" }
-          - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
+          - { role: "blue", job_name: "💙 Blue Teamer 💙 Arch" }
+          - { role: "bugbounty", job_name: "🐞 Bug Bounty Hunter 🐞 Arch" }
+          - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘 Arch" }
+          - { role: "dos", job_name: "💀 DoS Tester 💀 Arch" }
+          - { role: "student", job_name: "🎓 Enthusiast Student 🎓 Arch" }
+          - { role: "forensic", job_name: "🔍 Forensic Analyst 🔍 Arch" }
+          - { role: "malware", job_name: "🦠 Malware Analyst 🦠 Arch" }
+          - { role: "mobile", job_name: "📱 Mobile Analyst 📱 Arch" }
+          - { role: "network", job_name: "🌐 Network Analyst 🌐 Arch" }
+          - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️ Arch" }
+          - { role: "red", job_name: "❤️ Red Teamer ❤️ Arch" }
+          - { role: "web", job_name: "🕸️ Web Pentester 🕸️ Arch" }
 
 
     name: ${{ matrix.role_installer.job_name }} Install # Dynamically assign the job name based on the matrix
@@ -47,18 +47,18 @@ jobs:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
       matrix:
         role_installer:
-          - { role: "blue", job_name: "💙 Blue Teamer 💙" }
-          - { role: "bugbounty", job_name: "🐞 Bug Bounty Hunter 🐞" }
-          - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘" }
-          - { role: "dos", job_name: "💀 DoS Tester 💀" }
-          - { role: "student", job_name: "🎓 Enthusiast Student 🎓" }
-          - { role: "forensic", job_name: "🔍 Forensic Analyst 🔍" }
-          - { role: "malware", job_name: "🦠 Malware Analyst 🦠" }
-          - { role: "mobile", job_name: "📱 Mobile Analyst 📱" }
-          - { role: "network", job_name: "🌐 Network Analyst 🌐" }
-          - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️" }
-          - { role: "red", job_name: "❤️ Red Teamer ❤️" }
-          - { role: "web", job_name: "🕸️ Web Pentester 🕸️" }
+          - { role: "blue", job_name: "💙 Blue Teamer 💙 Nix" }
+          - { role: "bugbounty", job_name: "🐞 Bug Bounty Hunter 🐞 Nix" }
+          - { role: "cracker", job_name: "🍘 Cracker Specialist 🍘 Nix" }
+          - { role: "dos", job_name: "💀 DoS Tester 💀 Nix" }
+          - { role: "student", job_name: "🎓 Enthusiast Student 🎓 Nix" }
+          - { role: "forensic", job_name: "🔍 Forensic Analyst 🔍 Nix" }
+          - { role: "malware", job_name: "🦠 Malware Analyst 🦠 Nix" }
+          - { role: "mobile", job_name: "📱 Mobile Analyst 📱 Nix" }
+          - { role: "network", job_name: "🌐 Network Analyst 🌐 Nix" }
+          - { role: "osint", job_name: "🕵️ OSINT Specialist 🕵️ Nix" }
+          - { role: "red", job_name: "❤️ Red Teamer ❤️ Nix" }
+          - { role: "web", job_name: "🕸️ Web Pentester 🕸️ Nix" }
           
     name: ${{ matrix.role_installer.job_name }} Install # Dynamically assign the job name based on the matrix
     steps:
