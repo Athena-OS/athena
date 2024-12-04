@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=python-recommonmark
+_pkgname=recommonmark
+pkgver=0.7.1
+pkgrel=8
+pkgdesc='A docutils-compatibility bridge to CommonMark, enabling you to write CommonMark inside of Docutils & Sphinx projects.'
+arch=('any')
+url='https://pypi.org/project/recommonmark/'
+license=('MIT')
+depends=('python' 'python-commonmark' 'python-docutils' 'python-sphinx')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/r/$_pkgname/$_pkgname-$pkgver.tar.gz"
+        'autostructify-tab_width-fallback.patch')
+sha512sums=('3d8068b36c02be5977c123675cf4bb387b3155f2fcf111ee02792b655f9d9efb6e35a9e127baef01f32f0ddbe58554b47dd26053edf8833add57ac0ef2184694'
+            'e1a37f1668013cf99910ba29a557f9747c761c7ce95b4dff9ba6e1fe6d52964876d60aa64583dc4d5cf7979fde1c3a4fb17aee2fec60cddb84f9ff4a299b80c6')
+
+prepare() {
+  cd $_pkgname-$pkgver
+
+  patch -Np1 -i ../autostructify-tab_width-fallback.patch
+}
+
+build() {
+  cd $_pkgname-$pkgver
+
+  python setup.py build
+
+  make -C docs text man
+}
+
+
+package() {
+  cd $_pkgname-$pkgver
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md CHANGELOG.md \
+    docs/_build/text/*.txt
+  install -Dm 644 -t "$pkgdir/usr/share/man/man1" "docs/_build/man/$_pkgname.1"
+}
+
