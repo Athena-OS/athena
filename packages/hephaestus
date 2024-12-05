@@ -95,7 +95,8 @@ build_package() {
     pkgdesc=$(grep "^pkgdesc=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
     pkgepoch=$(grep "^epoch=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1] ":"}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
-    groups=$(grep "^groups=" PKGBUILD | sed -e "s/groups=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//' | awk '{printf "%s, ", $0}' | sed 's/, $//')
+    groups=$(awk '/^groups=/{g=1} g {gsub(/\047/, ""); if ($0 ~ /\)/) {g=0}; print}' PKGBUILD | tr -d '\n' | sed -e "s/groups=(//" -e "s/)//" | tr -s
+ ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//' | awk 'NF {printf "%s, ", $0}' | sed 's/, $//')
     arch=$(awk -v cpu_arch="x86_64" -F"['\" ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
     pkgurl=$(grep "^url=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
     license=$(grep "^license=" PKGBUILD | sed -e "s/license=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | awk '{printf "%s, ", $0}' | sed 's/, $//')
