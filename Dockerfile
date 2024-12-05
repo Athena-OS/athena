@@ -4,7 +4,7 @@ FROM docker.io/athenaos/base-devel:latest
 ENV PUSER=builder
 ENV PUID=1000
 
-RUN pacman -Syyu --noconfirm pacman-contrib sudo git rate-mirrors rsync sshpass
+RUN pacman -Syyu --noconfirm coreutils git pacman-contrib rate-mirrors rsync sshpass sudo
 
 RUN useradd -d /src -ms /bin/bash $PUSER
 RUN usermod -aG wheel -u "$PUID" $PUSER && echo "$PUSER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$PUSER
