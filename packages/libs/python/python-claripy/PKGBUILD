@@ -3,26 +3,37 @@
 
 pkgname=python-claripy
 _pkgname=${pkgname#python-}
-pkgver=9.2.102
+pkgver=2418.027dda7
 pkgrel=1
 pkgdesc='An abstraction layer for constraint solvers.'
 arch=('any')
-url='https://pypi.org/project/claripy/#files'
-license=('custom:unknown')
+url='https://github.com/angr/claripy'
+license=('BSD-2-Clause')
 depends=('python' 'z3' 'python-future' 'python-cachetools' 'python-decorator'
          'python-pysmt')
-makedepends=('python-build' 'python-pip')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('554d66b7a1dc75d4f937a6d8318fd8213c861f7dc6c4ae77b69d225c63516f8891f6f0825f1d47b112d682bd2e35767b4305ad07a43a0d0618b10919ab360942')
+makedepends=('git' 'python-build' 'python-pip')
+source=("git+https://github.com/angr/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd $_pkgname
 
   python -m build --wheel --outdir="$startdir/dist"
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd $_pkgname
 
   pip install \
     --verbose \
@@ -37,3 +48,4 @@ package() {
     --find-links="file://$startdir/dist" \
     $_pkgname
 }
+

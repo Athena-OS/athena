@@ -1,8 +1,0 @@
-post_install() {
-  systemctl enable bactl.service > /dev/null 2>&1
-  systemctl start bactl.service > /dev/null 2>&1
-}
-
-post_upgrade() {
-  post_install "$@"
-}

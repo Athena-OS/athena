@@ -1,0 +1,56 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pyside6-qtads
+_pkgname=pyside6_qtads
+pkgver=v4.3.1.1.r1.gd94bee2
+pkgrel=1
+pkgdesc='Python bindings to Qt Advanced Docking System for PySide6.'
+arch=('any')
+url='https://github.com/mborgerson/pyside6_qtads'
+license=('MIT')
+depends=('python' 'pyside6')
+makedepends=('git' 'python-build' 'python-pip')
+source=("git+https://github.com/mborgerson/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+prepare() {
+  cd $_pkgname
+
+  git submodule update --init --recursive
+}
+
+build() {
+  cd $_pkgname
+
+  python -m build --wheel --outdir="$startdir/dist"
+}
+
+package() {
+  cd $_pkgname
+
+  pip install \
+    --verbose \
+    --disable-pip-version-check \
+    --no-warn-script-location \
+    --ignore-installed \
+    --no-compile \
+    --no-deps \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-index \
+    --find-links="file://$startdir/dist" \
+    $_pkgname
+}
+
