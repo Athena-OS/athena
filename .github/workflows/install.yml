@@ -50,7 +50,7 @@ jobs:
 
       - name: Create a raw disk image
         run: |
-          dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
+          dd if=/dev/zero of=disk.img bs=1M count=20480  # Create a 20 GB disk image. Increase it if the workflow ends with no space left error during test installation
           loop_device=$(sudo losetup --find --partscan --show disk.img)
           losetup -d "$loop_device"
           echo "Loop Device: $loop_device"
@@ -62,7 +62,9 @@ jobs:
           sed -i "s#/dev/loop0#$loop_device#g" ${{ matrix.config_installer.config_file }}
           mknod "${loop_device}p1" b 259 0  # Manually create because hosted-runner kernel does not refresh /dev
           mknod "${loop_device}p2" b 259 1
-
+          echo "System Disk Layout:"
+          lsblk
+        
       - name: Run the installer
         run: ${{ matrix.config_installer.installer }} config ${{ matrix.config_installer.config_file }}
 
