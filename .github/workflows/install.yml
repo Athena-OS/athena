@@ -31,41 +31,61 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm aegis grub mkinitcpio jq multipath-tools
+        run: pacman -Syyu --noconfirm aegis grub mkinitcpio jq
 
       - name: Retrieve install configuration
         run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/${{ matrix.config_installer.config_file }}
 
       - name: Modify install configuration
         run: |
-          jq --arg desktop "${{ matrix.config_installer.desktop }}" \
+          ROOT_DEVICE=$(mount | grep "^/dev" | awk '{print $1}')
+          # Sometimes GitHub-hosted runners could use sda disk to host their files and other times sdb. 
+          if [[ "$ROOT_DEVICE" == *"sda"* ]]; then
+              echo "Root device is on sda. Using sdb for test operations."
+              TARGET_DISK="/dev/sdb"
+          elif [[ "$ROOT_DEVICE" == *"sdb"* ]]; then
+              echo "Root device is on sdb. Using sda for test operations."
+              TARGET_DISK="/dev/sda"
+          else
+              echo "Root device is not sda or sdb. Unable to determine free disk."
+              exit 1
+          fi
+          echo "TARGET_DISK=$TARGET_DISK" >> $GITHUB_ENV  # Set environment variable
+          #lsblk $TARGET_DISK
+          #fdisk -l $TARGET_DISK
+          #mount
+          #ls -la /mnt
+          #ls -la /root
+          #ls -la /tmp
+          #ls -la /
+          #mount ${TARGET_DISK}1 /mnt
+          #ls -la /mnt
+          #swapon --show
+          #sudo swapoff /mnt/swapfile
+          #swapon --show
+          #rm -rf /mnt/*
+          #ls -la /mnt
+          #umount ${TARGET_DISK}1
+          #parted -s $TARGET_DISK -- mklabel msdos
+          #wipefs $TARGET_DISK
+          #parted $TARGET_DISK align-check optimal 1
+          #parted -s $TARGET_DISK -- mkpart primary ext4 1MiB 512MiB align optimal
+          #parted -s $TARGET_DISK -- set 1 boot on
+          #parted -s $TARGET_DISK -- mkpart primary btrfs 512MiB 100% align optimal
+          #mkfs.ext4 -F ${TARGET_DISK}1
+          #mkfs.btrfs -L athenaos -f ${TARGET_DISK}2
+          #lsblk
+          #fdisk -l $TARGET_DISK
+          jq --arg target_disk "$TARGET_DISK" \
+             --arg desktop "${{ matrix.config_installer.desktop }}" \
              --arg displaymanager "${{ matrix.config_installer.displaymanager }}" \
              --arg theme "${{ matrix.config_installer.theme || '' }}" \
              --arg terminal "${{ matrix.config_installer.terminal || '' }}" \
              --arg shell "${{ matrix.config_installer.shell || '' }}" \
              --arg browser "${{ matrix.config_installer.browser || '' }}" \
-             '.desktop = $desktop | .displaymanager = $displaymanager | .theme = $theme | .terminal = $terminal | .shell = $shell | .browser = $browser' \
+             '.partition.device = $target_disk | .partition.mode = "EraseDisk" | .bootloader.location = $target_disk | .desktop = $desktop | .displaymanager = $displaymanager | .theme = $theme | .terminal = $terminal | .shell = $shell | .browser = $browser' \
              ${{ matrix.config_installer.config_file }} > modified_${{ matrix.config_installer.config_file }}
           mv modified_${{ matrix.config_installer.config_file }} ${{ matrix.config_installer.config_file }}
-
-      - name: Create a raw disk image
-        run: |
-          dd if=/dev/zero of=disk.img bs=1M count=15360  # Create a 15GB disk image
-          loop_device=$(sudo losetup --find --partscan --show disk.img)
-          losetup -d "$loop_device"
-          echo "Loop Device: $loop_device"
-          losetup "$loop_device" disk.img  # Attach the file as a loopback device
-          parted -s "$loop_device" -- mklabel gpt
-          parted -s "$loop_device" -- mkpart ESP fat32 1MiB 512MiB
-          parted -s "$loop_device" -- set 1 esp on
-          parted -s "$loop_device" -- mkpart primary btrfs 512MiB 100%
-          sed -i "s#/dev/loop0#$loop_device#g" arch.json
-          mknod "${loop_device}p1" b 259 0  # Manually create because hosted-runner kernel does not refresh /dev
-          mknod "${loop_device}p2" b 259 1
-
-          echo "System Disk Layout:"
-          lsblk
-          ls -la "$loop_device"*
         
       - name: Run the installer
         run: ${{ matrix.config_installer.installer }} config ${{ matrix.config_installer.config_file }}
