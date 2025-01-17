@@ -1,5 +1,5 @@
-name: Vulcano
 
+name: Vulcano
 on:
   push:
     branches: [ master ]
@@ -9,7 +9,6 @@ on:
     types: [opened, reopened, edited, synchronize, ready_for_review]
     paths:
       - 'packages/**/PKGBUILD'
-
 jobs:
   labeling:
     runs-on: ubuntu-latest
@@ -18,9 +17,11 @@ jobs:
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: '1.has: package'
-
   pkgcheck:
     runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,12 +29,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           fetch-depth: 0
-
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install pkgcheck-arch
-
+          pacman -Syyu --noconfirm pkgcheck-arch
       - name: Check Styling
         run: |
           CHANGED_FILES=($(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} | tr '\n' ' '))
@@ -43,7 +41,6 @@ jobs:
               pkgcheck "$FILE"
             fi
           done
-
   validate:
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +50,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           fetch-depth: 0
-
       - name: Build Package
         run: |
           CHANGED_FILES=($(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} | tr '\n' ' '))
