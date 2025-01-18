@@ -4,4 +4,25 @@ pkgrel=2
 pkgdesc="Bug Bounty Hunter Role tools."
 arch=('any')
 license=("custom")
-depends=('nmap' 'sublist3r' 'amass' 'massdns' 'findomain' 'theharvester' 'chaos-client' 'domained' 'shuffledns' 'altdns' 'dns-parallel-prober' 'dnscan' 'knock' 'hakrevdns' 'dnsx' 'subfinder' 'assetfinder' 'vhostscan' 'masscan' 'rustscan' 'naabu' 'sandmap' 'eyewitness' 'eyeballer' 'depix' 'httpscreenshot' 'aquatone' 'gowitness' 'webanalyze' 'whatweb' 'httpx' 'feroxbuster' 'dirsearch' 'filebuster' 'dirstalk' 'dirbuster-ng' 'gospider' 'hakrawler' 'linkfinder' 'waybackurls' 'gau' 'parameth' 'parampampam' 'arjun' 'commix' 'scrying' 'corsy' 'corstest' 'crlfuzz' 'injectus' 'xsrfprobe' 'dotdotpwn' 'fdsploit' 'liffy' 'lfisuite' 'graphqlmap' 'ysoserial' 'phpggc' 'smuggler' 'h2csmuggler' 'ssrfmap' 'gopherus' 'ssrf-sheriff' 'extended-ssrf-search' 'lorsrf' 'rbndr' 'nosqli' 'xsstrike' 'xsscrapy' 'dalfox' 'xsser' 'xspear' 'docem' 'brutexss' 'xsscon' 'xxeserv' 'xxexploiter' 'xxeinjector' 'changeme' 'brutex' 'patator' 'gitleaks' 'trufflehog' 'gitgraber' 'gitminer' 'shhgit' 'detect-secrets' 'whispers' 'gittools' 'git-dumper' 'dvcs-ripper' 's3scanner' 'awsbucketdump' 'cmsmap' 'joomscan' 'pyfiscan' 'jwt-hack' 'jwt-cracker' 'wafw00f' 'nikto' 'wpscan' 'burpsuite' 'caido-desktop' 'dirb' 'ffuf' 'wfuzz' 'sqlmap' 'sleuthql' 'subjack' 'subover' 'second-order' 'nuclei' 'arachni' 'jaeles' 'getsploit' 'findsploit' 'jsonbee' 'hydra' 'cewl' 'crunch' 'exploitdb' 'metasploit' 'gobuster' 'commentor' 'osert' 'wordlister' 'pwncat-caleb' 'villain' 'hoaxshell' 'psudohash' )
+depends=('nmap' 'sublist3r' 'amass' 'massdns' 'findomain' 'theharvester'
+         'chaos-client' 'domained' 'shuffledns' 'altdns' 'dns-parallel-prober'
+         'knock' 'hakrevdns' 'dnsx' 'subfinder' 'assetfinder' 'vhostscan'
+         'rustscan' 'naabu' 'sandmap' 'eyewitness' 'eyeballer' 'depix'
+         'aquatone' 'gowitness' 'webanalyze' 'whatweb' 'httpx' 'feroxbuster'
+         'filebuster' 'dirstalk' 'dirbuster-ng' 'gospider' 'hakrawler'
+         'waybackurls' 'gau' 'parameth' 'parampampam' 'arjun' 'commix'
+         'corstest' 'crlfuzz' 'injectus' 'xsrfprobe' 'dotdotpwn' 'fdsploit'
+         'lfisuite' 'graphqlmap' 'ysoserial' 'phpggc' 'smuggler' 'h2csmuggler'
+         'gopherus' 'ssrf-sheriff' 'extended-ssrf-search' 'lorsrf' 'rbndr'
+         'xsstrike' 'xsscrapy' 'dalfox' 'xsser' 'xspear' 'docem' 'brutexss'
+         'xxeserv' 'xxexploiter' 'xxeinjector' 'changeme' 'brutex' 'patator'
+         'trufflehog' 'gitgraber' 'gitminer' 'shhgit' 'detect-secrets'
+         'gittools' 'git-dumper' 'dvcs-ripper' 's3scanner' 'awsbucketdump'
+         'joomscan' 'pyfiscan' 'jwt-hack' 'jwt-cracker' 'wafw00f' 'nikto'
+         'burpsuite' 'caido-desktop' 'dirb' 'ffuf' 'wfuzz' 'sqlmap' 'sleuthql'
+         'subover' 'second-order' 'nuclei' 'arachni' 'jaeles' 'getsploit'
+         'jsonbee' 'hydra' 'cewl' 'crunch' 'exploitdb' 'metasploit' 'gobuster'
+         'commentor' 'osert' 'wordlister' 'pwncat-caleb' 'villain' 'hoaxshell'
+         'psudohash' 'dnscan' 'masscan' 'httpscreenshot' 'dirsearch' 'xsscon'
+         'linkfinder' 'scrying' 'corsy' 'liffy' 'ssrfmap' 'nosqli' 'gitleaks'
+         'whispers' 'cmsmap' 'wpscan' 'subjack' 'findsploit')

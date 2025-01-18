@@ -1,7 +1,7 @@
 pkgname=athena-forensic
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Forensic Analyst Role tools."
 arch=('any')
 license=("custom")
-depends=( 'aesfix' 'aeskeyfind' 'afflib' 'air' 'analyzemft' 'atstaketools' 'bios_memimage' 'bmap-tools' 'bmc-tools' 'captipper' 'chaosmap' 'chkrootkit' 'chromefreak' 'chromensics' 'dc3dd' 'dcfldd' 'dfir-ntfs' 'dftimewolf' 'disitool' 'dumpzilla' 'eindeutig' 'emldump' 'evtkit' 'exiflooter' 'extractusnjrnl' 'firefox-decrypt' 'fridump' 'galleta' 'guymager' 'imagemounter' 'indx2csv' 'indxcarver' 'interrogate' 'iosforensic' 'iphoneanalyzer' 'jpegdump' 'lazagne' 'ldsview' 'lfle' 'libfvde' 'limeaide' 'log-file-parser' 'mac-robber' 'make-pdf' 'maltego' 'malwaredetect' 'memfetch' 'mft2csv' 'mftcarver' 'mftrcrd' 'mftref2name' 'mimipenguin' 'mp3nema' 'ms-sys' 'myrescue' 'naft' 'networkminer' 'ntdsxtract' 'ntfs-file-extractor' 'ntfs-log-tracker' 'origami' 'pasco' 'pcapfex' 'pcapxray' 'pdblaster' 'pdf-parser' 'pdfid' 'pdfresurrect' 'peepdf' 'periscope' 'pev' 'pextractor' 'pngcheck' 'powermft' 'python-oletools' 'python2-oletools' 'python2-peepdf' 'rcrdcarver' 'recentfilecache-parser' 'recoverdm' 'recoverjpeg' 'recuperabit' 'regipy' 'reglookup' 'regreport' 'regripper' 'regrippy' 'rekall' 'rifiuti2' 'rsakeyfind' 'safecopy' 'scalpel' 'scrounge-ntfs' 'secure2csv' 'shadowexplorer' 'skypefreak' 'snort' 'stegdetect' 'stenographer' 'swap-digger' 'tchunt-ng' 'tekdefense-automater' 'tell-me-your-secrets' 'thumbcacheviewer' 'trid' 'truehunter' 'undbx' 'usbrip' 'usnjrnl2csv' 'usnparser' 'vinetto' 'volafox' 'windows-prefetch-parser' 'wmi-forensics' 'wyd' 'zipdump' )
+depends=('athena-forensic')

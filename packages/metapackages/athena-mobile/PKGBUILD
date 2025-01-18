@@ -1,7 +1,7 @@
 pkgname=athena-mobile
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile Analyst Role tools."
 arch=('any')
 license=("custom")
-depends=( 'amoco' 'android-apktool' 'android-ndk' 'android-sdk' 'android-udev-rules' 'androidsniffer' 'androwarn' 'angr' 'apkleaks' 'apkstat' 'appmon' 'arcane' 'backdoor-apk' 'backhack' 'bagbak' 'bandicoot' 'barf' 'binaryninja-demo' 'bindiff' 'binnavi' 'bsdiff' 'bytecode-viewer' 'cafebabe' 'cnamulator' 'cpp2il' 'ctypes-sh' 'damm' 'de4dot' 'detect-it-easy' 'dex2jar' 'dexpatcher' 'dnspy' 'dotpeek' 'dwarf' 'dynamorio' 'edb' 'elidecode' 'eresi' 'frida-extract' 'gostringsr2' 'gtp-scan' 'hopper' 'ibrute' 'ida-free' 'idb' 'innounp' 'iosforensic' 'iphoneanalyzer' 'jd-cli' 'jd-gui' 'jdeserialize' 'jeb-android' 'jeb-arm' 'jeb-intel' 'jeb-mips' 'jeb-webasm' 'jwscan' 'kalibrate-rtl' 'kraken' 'lazydroid' 'lief' 'malwareanalyser' 'mara-framework' 'marc4dasm' 'mikrotik-npk' 'netzob' 'objection' 'pcileech' 'pe-bear' 'pepper' 'pev' 'phoneinfoga' 'phonesploit' 'pin' 'pintool' 'pintool2' 'ppee' 'pyaxmlparser' 'python-frida' 'python-frida-tools' 'python-peid' 'python2-capstone' 'python2-frida' 'python2-frida-tools' 'python2-jsbeautifier' 'qark' 'quark-engine' 'radare2-unicorn' 'recstudio' 'resourcehacker' 'retdec' 'rvi-capture' 'sandy' 'serializationdumper' 'shed' 'simplify' 'smali-cfgs' 'stacoan' 'syms2elf' 'triton' 'truegaze' 'udis86' 'uefi-firmware-parser' 'veles' 'zerowine' )
+depends=('athena-mobile' 'athena-reversing')
