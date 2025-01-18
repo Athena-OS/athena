@@ -4,7 +4,8 @@
 pkgname=depdep
 pkgver=16.5e556e9
 pkgrel=1
-groups=('athena' 'athena-networking' 'athena-malware')
+groups=('role-redteamer' 'role-network' 'role-malware' 'athena'
+        'athena-networking' 'athena-malware')
 pkgdesc='A merciless sentinel which will seek sensitive files containing critical info leaking through your network.'
 arch=('any')
 url='https://github.com/bedirhan/depdep'

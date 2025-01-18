@@ -7,7 +7,8 @@ pkgver=4.1.1
 pkgrel=1
 pkgdesc='SSH mitm server for security audits supporting public key authentication, session hijacking and file manipulation.'
 arch=('any')
-groups=('athena' 'athena-exploitation' 'athena-sniffer')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-exploitation'
+        'athena-sniffer')
 url='https://pypi.org/project/ssh-mitm/#files'
 license=('LGPL-3.0-or-later')
 depends=('python' 'python-argcomplete' 'python-paramiko' 'python-pytz' 'python-enhancements'

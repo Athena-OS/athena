@@ -4,7 +4,8 @@
 pkgname=pyminifakedns
 pkgver=0.1
 pkgrel=6
-groups=('athena' 'athena-networking' 'athena-spoof')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-networking'
+        'athena-spoof')
 pkgdesc='Minimal DNS server written in Python; it always replies with a 127.0.0.1 A-record.'
 arch=('any')
 url='http://code.activestate.com/recipes/491264/'

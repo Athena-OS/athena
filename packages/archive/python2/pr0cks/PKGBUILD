@@ -5,7 +5,8 @@ pkgname=pr0cks
 pkgver=3.3b740fa
 pkgrel=1
 epoch=2
-groups=('athena' 'athena-proxy' 'athena-tunnel' 'athena-networking')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-proxy' 'athena-tunnel'
+        'athena-networking')
 pkgdesc='python script setting up a transparent proxy to forward all TCP and DNS traffic through a SOCKS / SOCKS5 or HTTP(CONNECT) proxy using iptables -j REDIRECT target.'
 arch=('any')
 url='https://github.com/n1nj4sec/pr0cks'

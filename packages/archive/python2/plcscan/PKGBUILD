@@ -4,7 +4,8 @@
 pkgname=plcscan
 pkgver=0.1
 pkgrel=3
-groups=('athena' 'athena-scanner' 'athena-networking')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-scanner'
+        'athena-networking')
 pkgdesc='This is a tool written in Python that will scan for PLC devices over s7comm or modbus protocols.'
 arch=('any')
 url='http://packetstormsecurity.com/files/119726/PLC-Device-Scanner.html'

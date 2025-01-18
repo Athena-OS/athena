@@ -4,7 +4,8 @@
 pkgname=maligno
 pkgver=2.5
 pkgrel=4
-groups=('athena' 'athena-scanner' 'athena-fuzzer' 'athena-exploitation')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-scanner'
+        'athena-fuzzer' 'athena-exploitation')
 pkgdesc='An open source penetration testing tool written in python, that serves Metasploit payloads. It generates shellcode with msfvenom and transmits it over HTTP or HTTPS.'
 arch=('any')
 url='http://www.encripto.no/tools/'

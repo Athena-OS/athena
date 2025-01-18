@@ -4,7 +4,8 @@
 pkgname=hdmi-sniff
 pkgver=5.f7fbc0e
 pkgrel=3
-groups=('athena' 'athena-hardware' 'athena-sniffer' 'athena-cracker')
+groups=('role-redteamer' 'role-network' 'role-cracker' 'athena'
+        'athena-hardware' 'athena-sniffer' 'athena-cracker')
 pkgdesc='HDMI DDC (I2C) inspection tool. It is designed to demonstrate just how easy it is to recover HDCP crypto keys from HDMI devices.'
 arch=('any')
 url='https://github.com/ApertureLabsLtd/hdmi-sniff'

@@ -6,7 +6,8 @@ _pkgname=rdp-check-ciphers
 pkgver=0.1
 pkgrel=2
 pkgdesc='Enumerate the encryption protocols supported by the server and the cipher strengths supported using native RDP encryption.'
-groups=('athena' 'athena-scanner' 'athena-crypto' 'athena-windows')
+groups=('role-redteamer' 'role-cracker' 'athena' 'athena-scanner'
+        'athena-crypto' 'athena-windows')
 arch=('any')
 url='https://labs.f-secure.com/tools/rdp-cipher-checker/'
 license=('BSD')

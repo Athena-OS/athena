@@ -4,8 +4,9 @@
 pkgname=mikrotik-npk
 pkgver=11.d54e97c
 pkgrel=2
-groups=('athena' 'athena-reversing' 'athena-binary'
-        'athena-networking' 'athena-packer' 'athena-unpacker')
+groups=('role-redteamer' 'role-network' 'role-mobile' 'role-malware' 'athena'
+        'athena-reversing' 'athena-binary' 'athena-networking' 'athena-packer'
+        'athena-unpacker')
 pkgdesc='Python tools for manipulating Mikrotik NPK format.'
 arch=('any')
 url='https://github.com/kost/mikrotik-npk'

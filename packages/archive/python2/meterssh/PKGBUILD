@@ -4,7 +4,8 @@
 pkgname=meterssh
 pkgver=18.9a5ed19
 pkgrel=1
-groups=('athena' 'athena-backdoor' 'athena-networking')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-backdoor'
+        'athena-networking')
 pkgdesc='A way to take shellcode, inject it into memory then tunnel whatever port you want to over SSH to mask any type of communications as a normal SSH connection.'
 arch=('any')
 url='https://github.com/trustedsec/meterssh'

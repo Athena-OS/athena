@@ -6,7 +6,8 @@ pkgver=4.8bc08a0
 pkgrel=2
 pkgdesc='Personalized wordlist generator with NLP, by analyzing tweets (A.K.A crunch2049).'
 arch=('any')
-groups=('athena' 'athena-automation' 'athena-cracker')
+groups=('role-redteamer' 'role-cracker' 'athena' 'athena-automation'
+        'athena-cracker')
 url='https://github.com/utkusen/rhodiola'
 license=('BSD')
 depends=('python2-exrex' 'nltk-data' 'python2' 'python2-nltk' 'python2-textblob'

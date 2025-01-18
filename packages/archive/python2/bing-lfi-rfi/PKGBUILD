@@ -4,7 +4,8 @@
 pkgname=bing-lfi-rfi
 pkgver=0.1
 pkgrel=3
-groups=('athena' 'athena-webapp' 'athena-scanner' 'athena-fuzzer')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-webapp'
+        'athena-scanner' 'athena-fuzzer')
 pkgdesc='Python script for searching Bing for sites that may have local and remote file inclusion vulnerabilities.'
 arch=('any')
 url='http://packetstormsecurity.com/files/121590/Bing-LFI-RFI-Scanner.html'

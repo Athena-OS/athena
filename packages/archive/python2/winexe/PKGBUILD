@@ -10,7 +10,7 @@ url='http://sourceforge.net/projects/winexe/'
 license=('GPL-3.0-or-later')
 depends=('gnutls' 'libsasl' 'popt' 'talloc' 'tdb')
 makedepends=('python2')
-groups=('athena' 'athena-misc' 'athena-windows')
+groups=('role-redteamer' 'athena' 'athena-misc' 'athena-windows')
 source=("http://downloads.sourceforge.net/project/winexe/winexe-$pkgver.tar.gz"
         'getopts.patch'
         'gnutls.patch'

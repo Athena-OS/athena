@@ -9,7 +9,7 @@ arch=('any')
 url='http://www.cqure.net/wp/test/'
 license=('GPL-1.0-or-later')
 depends=('java-environment')
-groups=('athena' 'athena-fuzzer')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-fuzzer')
 source=("http://www.cqure.net/tools/$pkgname-source-$pkgver.zip"
         'oat-path.patch')
 sha512sums=('7f3c961abc86893842bba0fadd7be89e49811734'

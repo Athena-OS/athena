@@ -6,7 +6,8 @@ pkgver=52.4e6f189
 pkgrel=2
 pkgdesc='Polymorphic webshells.'
 arch=('any')
-groups=('athena' 'athena-webapp' 'athena-backdoor')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-webapp'
+        'athena-backdoor')
 url='https://github.com/grCod/poly'
 license=('MIT')
 depends=('python2' 'python2-argparse')

@@ -4,7 +4,8 @@
 pkgname=replayproxy
 pkgver=1.1
 pkgrel=3
-groups=('athena' 'athena-forensic' 'athena-proxy')
+groups=('role-network' 'role-forensic' 'athena' 'athena-forensic'
+        'athena-proxy')
 pkgdesc='Forensic tool to replay web-based attacks (and also general HTTP traffic) that were captured in a pcap file.'
 url='https://code.google.com/p/replayproxy/'
 arch=('any')

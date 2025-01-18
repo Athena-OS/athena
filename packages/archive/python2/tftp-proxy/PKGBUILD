@@ -4,7 +4,8 @@
 pkgname=tftp-proxy
 pkgver=0.1
 pkgrel=3
-groups=('athena' 'athena-proxy' 'athena-networking')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-proxy'
+        'athena-networking')
 pkgdesc="This tool accepts connection on tftp and reloads requested content from an upstream tftp server."
 arch=('any')
 url='http://www.c0decafe.de/'

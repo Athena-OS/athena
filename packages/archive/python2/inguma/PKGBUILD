@@ -6,8 +6,9 @@ pkgver=0.1.1
 pkgrel=8
 pkgdesc='A free penetration testing and vulnerability discovery toolkit entirely written in python. Framework includes modules to discover hosts, gather information about, fuzz targets, brute force usernames and passwords, exploits, and a disassembler.'
 arch=('any')
-groups=('athena' 'athena-cracker' 'athena-disassembler'
-        'athena-exploitation' 'athena-fuzzer' 'athena-scanner')
+groups=('role-webpentester' 'role-redteamer' 'role-malware' 'role-cracker'
+        'athena' 'athena-cracker' 'athena-disassembler' 'athena-exploitation'
+        'athena-fuzzer' 'athena-scanner')
 url='http://inguma.sourceforge.net'
 license=('GPL-1.0-or-later')
 depends=('python2' 'python2-paramiko' 'python2-pyqt')

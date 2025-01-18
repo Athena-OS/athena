@@ -6,7 +6,8 @@ pkgver=1.2
 pkgrel=2
 pkgdesc='Turn back the asterisks in password fields to plaintext passwords.'
 url='http://ntsecurity.nu/toolbox/snitch/'
-groups=('athena' 'athena-windows' 'athena-cracker')
+groups=('role-redteamer' 'role-cracker' 'athena' 'athena-windows'
+        'athena-cracker')
 license=('custom:unknown')
 arch=('any')
 source=("http://ntsecurity.nu/downloads/$pkgname.exe")

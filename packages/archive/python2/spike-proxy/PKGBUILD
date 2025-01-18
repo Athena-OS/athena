@@ -8,7 +8,7 @@ pkgdesc='A Proxy for detecting vulnerabilities in web applications.'
 arch=('any')
 url='http://www.immunitysec.com/resources-freesoftware.shtml'
 license=('GPL-1.0-or-later')
-groups=('athena' 'athena-webapp')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-webapp')
 depends=('python2' 'python2-pyopenssl' 'bash')
 source=("http://www.immunitysec.com/downloads/SP$pkgver.tgz"
         'fix-encoding.patch')

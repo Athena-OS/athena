@@ -4,7 +4,8 @@
 pkgname=backcookie
 pkgver=51.6dabc38
 pkgrel=3
-groups=('athena' 'athena-backdoor' 'athena-webapp')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-backdoor'
+        'athena-webapp')
 pkgdesc='Small backdoor using cookie.'
 arch=('any')
 depends=('python2' 'python2-requests')

@@ -5,7 +5,8 @@ pkgname=tls-fingerprinting
 pkgver=257.4b6e878
 pkgrel=1
 pkgdesc='Tool and scripts to perform TLS Fingerprinting.'
-groups=('athena' 'athena-fingerprint' 'athena-sniffer')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-fingerprint'
+        'athena-sniffer')
 arch=('x86_64' 'aarch64')
 url='https://github.com/LeeBrotherston/tls-fingerprinting'
 license=('GPL-3.0-or-later')

@@ -5,7 +5,8 @@ pkgname=unifuzzer
 pkgver=5.3385a3b
 pkgrel=4
 pkgdesc='A fuzzing tool for closed-source binaries based on Unicorn and LibFuzzer.'
-groups=('athena' 'athena-fuzzer' 'athena-binary')
+groups=('role-webpentester' 'role-redteamer' 'role-malware' 'athena'
+        'athena-fuzzer' 'athena-binary')
 arch=('x86_64' 'aarch64')
 url='https://github.com/PAGalaxyLab/uniFuzzer'
 license=('GPL-3.0-or-later')

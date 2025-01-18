@@ -1,5 +1,5 @@
 pkgname=cyber-toolkit
-pkgver=20.795982c
+pkgver=21.e20d83b
 pkgrel=1
 pkgdesc='Set your Cyber Security role.'
 arch=('x86_64' 'aarch64')
@@ -13,12 +13,17 @@ sha512sums=('SKIP')
 pkgver() {
   cd $pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build() {
   cd $pkgname
-  
+
   cargo clean
   cargo build --release --locked
 }

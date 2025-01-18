@@ -7,7 +7,8 @@ pkgver=1.2.9
 pkgrel=2
 pkgdesc='Python implementation of the Packed Executable iDentifier (PEiD).'
 arch=('any')
-groups=('athena' 'athena-binary' 'athena-reversing')
+groups=('role-mobile' 'role-malware' 'athena' 'athena-binary'
+        'athena-reversing')
 license=('GPL-3.0-or-later')
 depends=('python' 'python-pefile' 'python-pip')
 makedepends=('python-build')

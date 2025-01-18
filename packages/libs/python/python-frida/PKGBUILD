@@ -6,7 +6,8 @@ _pkgname=${pkgname#python-}
 pkgver=15.2.2
 pkgrel=3
 pkgdesc='Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers.'
-groups=('athena' 'athena-reversing' 'athena-binary')
+groups=('role-mobile' 'role-malware' 'athena' 'athena-reversing'
+        'athena-binary')
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/frida/#files'
 depends=('python' 'python-colorama' 'python-pygments' 'python-prompt_toolkit')

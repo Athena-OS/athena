@@ -6,7 +6,8 @@ pkgver=2.0
 pkgrel=4
 pkgdesc='A TCP/UDP forwarder/redirector that works with both IPv4 and IPv6.'
 url='https://ntsecurity.nu/toolbox/winrelay/'
-groups=('athena' 'athena-windows' 'athena-networking')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-windows'
+        'athena-networking')
 license=('custom:unknown')
 arch=('any')
 source=("https://ntsecurity.nu/downloads/$pkgname.exe")

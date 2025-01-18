@@ -6,7 +6,8 @@ pkgver=2015
 pkgrel=1
 pkgdesc='The decompilation engine of JustDecompile.'
 url='https://github.com/cdfpaz/JustDecompileEngine'
-groups=('athena' 'athena-windows' 'athena-decompiler' 'athena-binary' 'athena-reversing')
+groups=('role-redteamer' 'role-mobile' 'role-malware' 'athena' 'athena-windows'
+        'athena-decompiler' 'athena-binary' 'athena-reversing')
 license=('Apache-2.0')
 arch=('any')
 source=("$pkgname-R${pkgver}SP1.zip::https://github.com/cdfpaz/JustDecompileEngine/archive/ReleaseQ1${pkgver}SP3(default).zip")

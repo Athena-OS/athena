@@ -4,7 +4,8 @@
 pkgname=starttls-mitm
 pkgver=7.b257756
 pkgrel=3
-groups=('athena' 'athena-proxy' 'athena-sniffer' 'athena-networking')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-proxy' 'athena-sniffer'
+        'athena-networking')
 pkgdesc='A mitm proxy that will transparently proxy and dump both plaintext and TLS traffic.'
 arch=('any')
 url='https://github.com/ipopov/starttls-mitm'

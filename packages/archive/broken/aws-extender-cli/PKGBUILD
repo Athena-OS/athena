@@ -4,7 +4,8 @@
 pkgname=aws-extender-cli
 pkgver=17.a351154
 pkgrel=4
-groups=('athena' 'athena-scanner' 'athena-webapp')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-scanner'
+        'athena-webapp')
 pkgdesc='Script to test S3 buckets as well as Google Storage buckets and Azure Storage containers for common misconfiguration issues.'
 arch=('any')
 url='https://github.com/VirtueSecurity/aws-extender-cli'

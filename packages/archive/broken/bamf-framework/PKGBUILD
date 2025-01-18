@@ -8,7 +8,7 @@ pkgdesc='A modular framework designed to be a platform to launch attacks against
 url='https://github.com/bwall/BAMF'
 arch=('any')
 license=('MIT')
-groups=('athena' 'athena-malware' 'athena-defensive')
+groups=('role-malware' 'athena' 'athena-malware' 'athena-defensive')
 depends=('python2' 'python2-yara' 'yara' 'python2-simplejson' 'python2-pycurl'
         'python2-pygeoip')
 makedepends=('git')

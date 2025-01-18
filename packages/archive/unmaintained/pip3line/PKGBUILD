@@ -1,0 +1,42 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=pip3line
+pkgver=92.5e27195
+pkgrel=4
+epoch=2
+groups=('role-cracker' 'athena' 'athena-crypto')
+pkgdesc='The Swiss army knife of byte manipulation.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/nccgroup/pip3line'
+license=('AGPL-3.0-or-later')
+depends=('qt4' 'python' 'gcc-libs' 'openssl' 'distorm' 'xdg-utils')
+makedepends=('git' 'cmake')
+source=("git+https://github.com/nccgroup/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+
+  mkdir -p build
+
+  cd build
+
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_SKIP_RPATH=ON -DALL=ON \
+    -DWITH_DISTORM=ON -DWITH_OPENSSL=ON -DWITH_PYTHON3=ON ../
+}
+
+package() {
+  cd $pkgname
+
+  cd build
+
+  make DESTDIR="$pkgdir" install
+}
+

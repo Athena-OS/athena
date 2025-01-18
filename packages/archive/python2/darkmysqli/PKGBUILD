@@ -9,7 +9,8 @@ arch=('any')
 url='https://github.com/BlackArch/darkmysqli'
 license=('custom:unknown')
 depends=('python2')
-groups=('athena' 'athena-exploitation' 'athena-webapp')
+groups=('role-webpentester' 'role-redteamer' 'athena' 'athena-exploitation'
+        'athena-webapp')
 source=("https://github.com/BlackArch/darkmysqli/raw/master/darkmysqli${pkgver//./}.tar.gz")
 sha512sums=('5a835aeffb8a06af9152db338a0a900d8ffe1e7c1654fed6706d811034ded02efc6f09a472df2981663730757a14e50c7fc589868c795b44a1252b9275159576')
 

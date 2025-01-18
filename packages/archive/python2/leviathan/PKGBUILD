@@ -5,8 +5,9 @@ pkgname=leviathan
 pkgver=35.a1a1d8c
 pkgrel=2
 pkgdesc='A mass audit toolkit which has wide range service discovery, brute force, SQL injection detection and running custom exploit capabilities.'
-groups=('athena' 'athena-scanner' 'athena-cracker' 'athena-webapp'
-        'athena-fuzzer' 'athena-exploitation')
+groups=('role-webpentester' 'role-redteamer' 'role-cracker' 'athena'
+        'athena-scanner' 'athena-cracker' 'athena-webapp' 'athena-fuzzer'
+        'athena-exploitation')
 arch=('any')
 url='https://github.com/leviathan-framework/leviathan'
 license=('GPL-1.0-or-later')

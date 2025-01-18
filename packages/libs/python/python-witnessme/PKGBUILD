@@ -8,7 +8,8 @@ pkgrel=5
 epoch=1
 pkgdesc='Web Inventory tool, takes screenshots of webpages using Pyppeteer.'
 arch=('any')
-groups=('athena' 'athena-webapp' 'athena-recon')
+groups=('role-blueteamer' 'role-webpentester' 'role-redteamer' 'role-osint'
+        'athena' 'athena-webapp' 'athena-recon')
 url='https://pypi.org/project/witnessme/#files'
 license=('GPL-3.0-or-later')
 depends=('python' 'python-aiosqlite' 'python-appdirs' 'python-imgcat'

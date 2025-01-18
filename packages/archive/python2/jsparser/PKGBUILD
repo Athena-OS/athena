@@ -6,7 +6,8 @@ pkgver=31.ccd3ab6
 pkgrel=3
 pkgdesc='Parse javascript using Tornado and JSBeautifier to discover interesting enpoints.'
 arch=('any')
-groups=('athena' 'athena-webapp' 'athena-reversing')
+groups=('role-webpentester' 'role-redteamer' 'role-mobile' 'role-malware'
+        'athena' 'athena-webapp' 'athena-reversing')
 url='https://github.com/nahamsec/JSParser'
 license=('custom:unknown')
 depends=('python2' 'python2-safeurl' 'python2-tornado' 'python2-jsbeautifier'

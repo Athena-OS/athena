@@ -9,7 +9,7 @@ arch=('any')
 url='https://bitbucket.org/instarch/wmi-client/'
 license=('GPL-2.0-or-later')
 depends=('gnutls' 'python2')
-groups=('athena' 'athena-networking')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-networking')
 source=("http://dev.zenoss.org/svn/branches/zenoss-3.2.x/inst/externallibs/wmi-$pkgver.tar.bz2"
         'gnutls.patch'
         'python3.patch')

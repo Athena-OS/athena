@@ -8,7 +8,8 @@ pkgdesc="Offline debugger for malware's reverse engineering."
 url='https://github.com/MalwareLu/malwasm'
 license=('GPL-2.0-or-later')
 arch=('any')
-groups=('athena' 'athena-reversing' 'athena-debugger')
+groups=('role-redteamer' 'role-mobile' 'role-malware' 'athena'
+        'athena-reversing' 'athena-debugger')
 depends=('python2' 'python2-psycopg2' 'python2-flask' 'python2-progressbar'
          'libcuckoo' 'postgresql')
 makedepens=('git')

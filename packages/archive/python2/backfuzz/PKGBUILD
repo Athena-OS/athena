@@ -5,7 +5,8 @@ pkgname=backfuzz
 pkgver=1.b0648de
 pkgrel=1
 epoch=1
-groups=('athena' 'athena-fuzzer' 'athena-networking')
+groups=('role-webpentester' 'role-redteamer' 'role-network' 'athena'
+        'athena-fuzzer' 'athena-networking')
 pkgdesc='A network protocol fuzzing toolkit.'
 arch=('any')
 url='https://github.com/localh0t/backfuzz'

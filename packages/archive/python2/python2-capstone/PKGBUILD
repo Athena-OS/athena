@@ -6,7 +6,8 @@ _pkgname=capstone
 pkgver=4.0.1
 pkgrel=4
 pkgdesc='A disassembly framework with the target of becoming the ultimate disasm engine for binary analysis and reversing in the security community.'
-groups=('athena' 'athena-disassembler' 'athena-reversing')
+groups=('role-mobile' 'role-malware' 'athena' 'athena-disassembler'
+        'athena-reversing')
 url='https://github.com/aquynh/capstone'
 arch=('x86_64' 'aarch64')
 license=('BSD')

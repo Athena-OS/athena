@@ -6,7 +6,8 @@ pkgver=40.1b74741
 pkgrel=2
 pkgdesc='Hackish way to intercept and modify non-HTTP protocols through Burp & others.'
 arch=('any')
-groups=('athena' 'athena-proxy' 'athena-sniffer')
+groups=('role-redteamer' 'role-network' 'athena' 'athena-proxy'
+        'athena-sniffer')
 url='https://github.com/jrmdev/mitm_relay'
 license=('Apache-2.0')
 depends=('python' 'python-requests')

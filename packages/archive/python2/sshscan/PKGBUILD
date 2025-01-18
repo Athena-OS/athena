@@ -5,7 +5,8 @@ pkgname=sshscan
 pkgver=1.0
 pkgrel=2
 epoch=1
-groups=('athena' 'athena-cracker' 'athena-scanner')
+groups=('role-redteamer' 'role-cracker' 'athena' 'athena-cracker'
+        'athena-scanner')
 pkgdesc='A horizontal SSH scanner that scans large swaths of IPv4 space for a single SSH user and pass.'
 arch=('any')
 url='https://github.com/getdual/scripts-n-tools/blob/master/sshscan.py'

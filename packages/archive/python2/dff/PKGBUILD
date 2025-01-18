@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/arxsys/dff'
 license=('GPL-1.0-or-later')
 provides=('dff')
-groups=('athena' 'athena-forensic')
+groups=('role-forensic' 'athena' 'athena-forensic')
 depends=('python2' 'qt4' 'python-pyqt4' 'python2-pyqt4' 'python2-magic'
          'python2-apsw' 'python2-pillow6' 'poppler-qt4' 'python2-poppler-qt4'
          'ffmpeg' 'libbfio' 'libbde' 'libewf' 'libpff' 'libvshadow')
