@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-gdshortener
-_pkgname=gdshortener
+_pkgname=${pkgname#python-}
 pkgver=1.0.1
 pkgrel=4
 pkgdesc='A module that provides access to .gd URL Shortener.'
 arch=('any')
 url='https://pypi.python.org/pypi/gdshortener'
 license=('LGPL')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('72e9063419bb239d0cc4c49a9813b2fba2367f4cef8de3346a7bc704a1d0450b62ff262a8dbdc091b06c35a6d1e79f0efebd680ae98da863359162c9cc18d046')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-gdshortener() {
-  depends=('python2' 'python2-requests')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

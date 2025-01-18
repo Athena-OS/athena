@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-graphillion
-_pkgname=Graphillion
-pkgver=1.5
-pkgrel=3
+_pkgname=${pkgname#python-}
+pkgver=1.9
+pkgrel=1
 pkgdesc='Fast, lightweight library for a huge number of graphs.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/Graphillion/'
 license=('MIT')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/Graphillion-$pkgver.tar.gz")
-sha512sums=('79e5e0a0abc1fa0e9ff96a10f0822bf569c0a6fc5431727d63d8f0bfcd4c4e66d4a2432421fd6d75a9699eeff0f78a1157bfddfb8a7b7312f8693593c61beca8')
+depends=('python' 'python-future')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('e72bc79d4be8f984d728585436f34fdc084bc4d2a7ed37d194e83390f925054bfb700855074da1ea0317bf7b2238f409f1c4273377c7bbbd873cff0acfdaf2a4')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-graphillion() {
-  depends=('python2' 'python2-future')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-future')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

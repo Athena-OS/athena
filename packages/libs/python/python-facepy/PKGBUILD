@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-facepy
-_pkgname=facepy
+_pkgname=${pkgname#python-}
 pkgver=1.0.12
 pkgrel=4
 pkgdesc="Makes it really easy to interact with Facebook's Graph API."
 arch=('any')
 url='https://github.com/jgorset/facepy'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests' 'python-six')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('f803338bb64f98a43197259e927e87da212ce6f4cb6c35e021c78ce69365964a26b473ad531a211a82c9897f2a4f869fcd27ca839c2bb4d910f4818c23516241')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-facepy() {
-  depends=('python2' 'python2-requests' 'python2-six')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests' 'python-six')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -8,31 +8,22 @@ pkgrel=5
 pkgdesc='Better content negotiation for flask.'
 arch=('any')
 url='https://pypi.org/project/Flask-negotiation/#files'
-makedepends=('python-setuptools')
-license=('custom:unknown')
+depends=('python' 'python-flask')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+license=('BSD')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('c3500c940c3734286b6d02bcae54175e7623b6974f4fe5ee3e1c113d5c6242d26325e532c0f34434e27e271142f9d0fbba4573621ee6f87b19e66385a88c10ec')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-flask-negotiation() {
-  depends=('python2' 'python2-flask')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-flask')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

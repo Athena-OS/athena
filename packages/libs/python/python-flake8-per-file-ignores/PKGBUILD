@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-flake8-per-file-ignores
-_pkgname=flake8-per-file-ignores
+_pkgname=${pkgname#python-}
 pkgver=0.8.1
 pkgrel=6
 pkgdesc='Ignore individual error codes per file with flake8.'
 url='https://pypi.org/project/flake8-per-file-ignores/#files'
 arch=('any')
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-pathmatch')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('8fb25f576682d9146ee5396b04b034b5fb7b8ebd9aaef8ee01ca4dbf3d678a7c4df3efd48a45402b6bd2ab5b7a2a1b049863e5a72729a0a3b3ab7c577c29841c')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-flake8-per-file-ignores() {
-  depends=('python2' 'python2-pathmatch')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-pathmatch')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

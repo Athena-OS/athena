@@ -2,39 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-hrt
-_pkgname=hrt
+_pkgname=${pkgname#python-}
 pkgver=0.1.0
 pkgrel=5
 pkgdesc='Translates raw HTTP requests to Python,Ruby,Php and Bash scripts.'
 arch=('any')
 url='https://pypi.org/project/hrt/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('1957d6663993b0bca0d2b44d9e43d5329728dd1fefd7470aca390f14027a0931a2b32afb42eb91f3a444bd69d495a756361cc0762069ca34b9e68705ba2f0755')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-hrt() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

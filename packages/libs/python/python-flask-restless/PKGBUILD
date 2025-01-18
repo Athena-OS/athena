@@ -10,32 +10,22 @@ pkgdesc='A Flask extension for easy ReSTful API generation.'
 arch=('any')
 url='https://pypi.org/project/Flask-Restless/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python-flask' 'python-sqlalchemy' 'python-dateutil'
+         'python-mimerender')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('c7fc7ee0626f010af528fce02dcfb896673c5ba81e9815acc50f5060a826a95a7f5c5af966a3bc6f222416d161dad70cad25acb43e9575621d036f0315d526d3')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-flask-restless() {
-  depends=('python2-flask' 'python2-sqlalchemy' 'python2-dateutil'
-           'python2-mimerender')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python-flask' 'python-sqlalchemy' 'python-dateutil'
-           'python-mimerender')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

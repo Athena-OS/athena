@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-gps
-_pkgname=gps
+_pkgname=${pkgname#python-}
 pkgver=3.19
 pkgrel=5
 pkgdesc='GPSD client.'
 arch=('any')
 url='https://pypi.org/project/gps/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('1a18298e4f41928f2dfe77f6d85cfd3c4959de1b4954f4897e698efd19dc1d329492f762c2461145d791098d92c7ae27bbb7d9fe862309197b59b60aa9d25379')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-gps() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

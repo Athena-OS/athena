@@ -2,14 +2,15 @@
 # See COPYING for license details.
 
 pkgname=python-flipflop
-_pkgname=flipflop
+_pkgname=${pkgname#python-}
 pkgver=1.0
 pkgrel=9
 pkgdesc='A python FastCGI wrapper for WSGI applications.'
 arch=('any')
 url='https://github.com/Kozea/flipflop'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('cff8e6e0ecfbf633aacbfe7612837cc85d5208b1dadc4b30a20cc4934549365a066df9ed66bab4e760b7fe73d7ce796de6a53fc01cec742d81fceb17e2529267')
@@ -17,23 +18,12 @@ sha512sums=('cff8e6e0ecfbf633aacbfe7612837cc85d5208b1dadc4b30a20cc4934549365a066
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-flipflop() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,39 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-hpfeeds3
-_pkgname=hpfeeds3
+_pkgname=${pkgname#python-}
 pkgver=0.9.10
 pkgrel=4
 pkgdesc='Python implementation of the honeypot feeds broker.'
 url='https://pypi.org/project/hpfeeds3/#files'
 arch=('any')
 license=('GPL-1.0-or-later')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('5355d5d16da2acd4308a5e6cafb2bdfb48f3814cec8cec77b6e209459a810ab747f3aa993c2d0a7818ff1f7c303ff01e4a8e63bdc7bc304851789f645f2388a9')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-hpfeeds3() {
-  depends=('python2')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-
-  for i in "$pkgdir/usr/bin/"*; do
-    mv $i "${i}2"
-  done
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

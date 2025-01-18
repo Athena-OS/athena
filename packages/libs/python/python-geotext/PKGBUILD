@@ -2,14 +2,15 @@
 # See COPYING for license details.
 
 pkgname=python-geotext
-_pkgname=geotext
+_pkgname=${pkgname#python-}
 pkgver=0.4.0
 pkgrel=4
 pkgdesc='Geotext extracts country and city mentions from text.'
 arch=('any')
 url='https://pypi.org/project/geotext/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('30ffd2c52359c9b1ac8e83d659e1ad0036b51a1716cc8f286bce60153a2455419f7d2f19481b4e5714b51b668b12fed19a3d53d5d992097bf462b99cee8f839c')
@@ -17,21 +18,12 @@ sha512sums=('30ffd2c52359c9b1ac8e83d659e1ad0036b51a1716cc8f286bce60153a2455419f7
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-geotext() {
-  depends=('python2' 'python2-wheel')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-wheel')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-httmock
-_pkgname=httmock
+_pkgname=${pkgname#python-}
 pkgver=1.4.0
 pkgrel=4
 pkgdesc='A mocking library for requests.'
 arch=('any')
 url='https://pypi.org/project/httmock/#files'
 license=('Apache-2.0')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('d8674c0bd7c667d02e100f35157f717189ddcfb14d26993a87e8823aec255d191ab6ac53da0cb4035eb37caab36f8f7c6705bf10f0d8d4de62a5aa09cddacfc4')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-httmock() {
-  depends=('python2' 'python2-requests')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
