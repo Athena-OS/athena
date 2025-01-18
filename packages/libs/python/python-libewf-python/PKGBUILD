@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-libewf-python
-pkgname=('python2-libewf-python' 'python-libewf-python')
+pkgname=python-libewf-python
 _pkgname=libewf-python
 pkgver=20230212
 pkgrel=2
@@ -10,7 +9,7 @@ pkgdesc='A library to access the Expert Witness Compression Format (EWF).'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/libewf-python/#files'
 license=('LGPLv3+')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('5d00e92cc361683a59d26a03b49f83b1b3ae3f17480653cd5ae956c8f644ece459da0f35ddebe94fd4f6648fe9aeb5c8d89d2c704b7203c3aff45e91557ba930')
 
@@ -22,7 +21,7 @@ package_python2-libewf-python() {
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-package_python-libewf-python() {
+package() {
   depends=('python')
 
   cd "libewf-$pkgver"

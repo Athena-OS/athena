@@ -1,9 +1,8 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-canari
-_pkgbase=${pkgbase#python-}
-pkgname=('python2-canari' 'python-canari')
+pkgname=python-canari
+_pkgname=${pkgbase#python-}
 pkgver=3.3.10
 pkgrel=6
 groups=('athena' 'athena-forensic' 'athena-recon' 'athena-scanner')
@@ -11,44 +10,24 @@ pkgdesc='Maltego rapid transform development and execution framework.'
 arch=('any')
 url='https://pypi.org/project/canari/#files'
 license=('GPL-2.0-or-later')
-makedepends=('python2-setuptools' 'python2-pip' 'python-setuptools' 'python-pip')
-source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz")
-sha512sums=('38e920d36ec3cee27ec34f260c51bf7d3ac664187bd144b43e4cabd062bb621b6298fa4467d41d5d7cd3549e0b8b29e5840d31e5263823b3b57c25c570cc6940')
-
-prepare() {
-  cp -a "$_pkgbase-$pkgver"{,-2}
-}
-
-build() {
-  cd "$_pkgbase-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgbase-$pkgver"
-
-  python setup.py build
-}
-
-package_python2-canari() {
-  depends=('python2' 'python2-argparse' 'python2-flask' 'python2-mr.bob'
-         'python2-safedexml' 'python2-pyasn1' 'python2-twistedx'
-         'python2-pyopenssl' 'python2-boto3' 'python2-lxml' 'python2-six'
-         'python2-future' 'python2-click' 'python2-colorama' 'python2-stringcase'
-         'python2-service-identity')
-
-  cd "$_pkgbase-$pkgver-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-}
-
-package_python-canari() {
-  depends=('python' 'python-argparse' 'python-flask' 'python-mr.bob'
+depends=('python' 'python-argparse' 'python-flask' 'python-mr.bob'
          'python-safedexml' 'python-pyasn1' 'python-twistedx'
          'python-pyopenssl' 'python-boto3' 'python-lxml' 'python-six'
          'python-future' 'python-click' 'python-colorama' 'python-stringcase'
          'python-service-identity')
+makedepends=('python-setuptools' 'python-pip')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('38e920d36ec3cee27ec34f260c51bf7d3ac664187bd144b43e4cabd062bb621b6298fa4467d41d5d7cd3549e0b8b29e5840d31e5263823b3b57c25c570cc6940')
 
-  cd "$_pkgbase-$pkgver"
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
 
   python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
+

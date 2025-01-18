@@ -4,8 +4,7 @@
 # Old Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: minder
 
-pkgbase=python-pillow6
-pkgname=('python2-pillow6' 'python-pillow6')
+pkgname=python-pillow6
 pkgver=6.2.2
 pkgrel=2
 _appname=Pillow
@@ -26,35 +25,10 @@ checkdepends=('python-pytest' 'python2-pytest')
 source=("https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$pkgver.tar.gz")
 sha512sums=('517c971d4fb23a47466a7e8326c8c29291f7832d4521001c1898d6223ea25d4b0a8b7c8f7e78dd706f421229a8261b558b9fbdc43e47a0a2a7b2b4bbc1a21eff')
 
-prepare() {
-  cp -r "$_appname-$pkgver" "$srcdir/python2-pillow"
-
-  cd "$srcdir/$_appname-$pkgver"
-  rm -rf src/PIL6
-  mv src/PIL src/PIL6
-  sed -i 's|/PIL/|/PIL6/|' setup.py Makefile
-  sed -i 's|"PIL\.|"PIL6.|' setup.py src/_imagingcms.c src/PIL6/Image.py
-  sed -i 's|"PIL"|"PIL6"|' setup.py
-  sed -i 's|from PIL import|from PIL6 import|' selftest.py
-  sed -i 's|import PIL$|import PIL6|' src/PIL6/*.py docs/conf.py Tests/test_000_sanity.py
-  sed -i 's|PIL\.|PIL6.|' docs/conf.py
-  sed -i 's|from PIL import|from PIL6 import|' src/PIL6/*.py Tests/*.py
-  sed -i 's|from PIL\.|from PIL6.|' src/PIL6/*.py Tests/*.py
-  sed -i 's|PIL\.Image|PIL6.Image|' Tests/*.py
-  sed -i 's|"PIL"|"PIL6"|' Tests/test_main.py
-  sed -i 's|/PIL/|/PIL6/|' Tests/import_all.py
-  sed -i 's|100x100 at"|100x100 a"|' Tests/test_image.py
-  sed -i 's|100x100 "|100x100"|' Tests/test_image.py
-}
-
 build() {
   cd "$_appname-$pkgver"
-
   python setup.py build
-
   cd "$srcdir/python2-pillow"
-
-  python2 setup.py build
 }
 
 package_python2-pillow6() {
@@ -74,7 +48,7 @@ package_python2-pillow6() {
   install -m 644 -t "$pkgdir/usr/include/python$_py2basever/" src/libImaging/*.h
 }
 
-package_python-pillow6() {
+package() {
   depends+=('python')
   optdepends+=('python-olefile: OLE2 file support'
                'python-pyqt5: for the ImageQt module')

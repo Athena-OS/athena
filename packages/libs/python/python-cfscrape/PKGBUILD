@@ -1,9 +1,8 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-cfscrape
-pkgname=('python2-cfscrape' 'python-cfscrape')
-_pkgname=cfscrape
+pkgname=python-cfscrape
+_pkgname=${pkgname#python-}
 pkgver=2.1.1
 pkgrel=4
 epoch=1
@@ -11,36 +10,18 @@ pkgdesc="A small Python module to bypass Cloudflare's anti-bot page, using Reque
 arch=('any')
 url='https://pypi.org/project/cfscrape/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('54cc0fda438e78ca6d405288eb48083cc87e3a6df50517cfdaa313f6d71da7e0fffcf51e6e4d0f140530a644933b014a19d72c4f4b2557e837c2f77f2ef51f2d')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
 
-package_python2-cfscrape() {
-  depends=('python2' 'python2-requests')
-
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-}
-
-package_python-cfscrape() {
-  depends=('python' 'python-requests')
-
+package() {
   cd "$_pkgname-$pkgver"
 
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \

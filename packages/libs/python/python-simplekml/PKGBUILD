@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-simplekml
-pkgname=('python2-simplekml' 'python-simplekml')
+pkgname=python-simplekml
 _pkgname=simplekml
 pkgver=1.3.6
 pkgrel=3
@@ -11,20 +10,12 @@ pkgdesc='KML generation with as little effort as possible.'
 arch=('any')
 url='https://pypi.org/project/simplekml/#files'
 license=('GPL-1.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('0b589559141571f62936ac981c3970e64046169bd5444e1409594dcaf3245c674dfcaa35e607e9870b63b3eb806e5c7cd7a4600924dbb0680a03ff458e58bdef')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -32,13 +23,12 @@ build() {
 package_python2-simplekml() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-simplekml() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

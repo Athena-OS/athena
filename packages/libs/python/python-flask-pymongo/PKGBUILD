@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-flask-pymongo
-pkgname=('python2-flask-pymongo' 'python-flask-pymongo')
+pkgname=python-flask-pymongo
 _pkgname=Flask-PyMongo
 pkgver=2.3.0
 _pyver=3.12
@@ -27,7 +26,7 @@ package_python2-flask-pymongo() {
 }
 
 
-package_python-flask-pymongo() {
+package() {
   depends=('python' 'python-flask')
 
   cd "$_pkgname-$pkgver"

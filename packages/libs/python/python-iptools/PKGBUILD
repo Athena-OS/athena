@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-iptools
-pkgname=('python2-iptools' 'python-iptools')
+pkgname=python-iptools
 _pkgname=iptools
 pkgver=0.7.0
 pkgrel=6
@@ -10,20 +9,12 @@ pkgdesc='Collection of utilities for dealing with IP addresses.'
 url='http://python-iptools.readthedocs.org/'
 arch=('any')
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('e42bbb204d43a9dbf7980036e332e0078c434763aaccbcaf2e25a7438249fcf9a060630e45a7f10bebcb8023f55bb808131bcd2c989b000ea7476246ac18ae06')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -37,7 +28,7 @@ package_python2-iptools() {
     --skip-build
 }
 
-package_python-iptools() {
+package() {
   depends=('python' 'python-nose')
 
   cd "$_pkgname-$pkgver"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pybinaryedge
-pkgname=('python2-pybinaryedge' 'python-pybinaryedge')
+pkgname=python-pybinaryedge
 _pkgname=pybinaryedge
 pkgver=0.5
 pkgrel=5
@@ -10,20 +9,12 @@ pkgdesc='Python 3 Wrapper for the binary edge API https://www.binaryedge.io/.'
 arch=('any')
 url='https://pypi.org/project/pybinaryedge/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('3d8029effa98089a356d53dac9eeefadc888303b89ff0cb62cbbab3898ca3a87194393afe3ea4f6fcf7eb8aa26a97807292b2ebe6283ba8c3dbb2e07d8be2f3f')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,7 +22,6 @@ build() {
 package_python2-pybinaryedge() {
   depends=('python2' 'python2-configparser' 'python2-requests')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
@@ -39,7 +29,7 @@ package_python2-pybinaryedge() {
   mv "$pkgdir/usr/bin/binaryedge" "$pkgdir/usr/bin/binaryedge2"
 }
 
-package_python-pybinaryedge() {
+package() {
   depends=('python' 'python-requests')
 
   cd "$_pkgname-$pkgver"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-ip2location
-pkgname=('python2-ip2location' 'python-ip2location')
+pkgname=python-ip2location
 _pkgname=IP2Location
 pkgver=8.10.0
 pkgrel=1
@@ -10,20 +9,12 @@ pkgdesc='Python API for IP2Location database.'
 arch=('any')
 url='https://pypi.org/project/IP2Location/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/IP2Location-$pkgver.tar.gz")
 sha512sums=('e154c5e543905360ed229760b13199a3ae391f52abfef7cbff2eec2a6180145c09a2b28b9c0e6e4fdc48b979e15cdfdf3bb6ef7628b01be30acab0c4b3518c1d')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,12 +22,11 @@ build() {
 package_python2-ip2location() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
 
-package_python-ip2location() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

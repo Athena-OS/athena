@@ -21,15 +21,6 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "nfqueue-bindings"
-
-  patch -p1 -i ../python-support.patch
-
-  # I don't feel like editing the patch.
-  sed -i 'i\#include <stdint.h>' nfq.h
-  sed -i 's/dist-packages/site-packages/' python/CMakeLists.txt
-}
 
 package() {
   cd "nfqueue-bindings"

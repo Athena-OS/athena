@@ -1,46 +1,27 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-backports.shutil-get-terminal-size
-pkgname=('python2-backports.shutil-get-terminal-size' 'python-backports.shutil-get-terminal-size')
-_pkgbase=backports.shutil_get_terminal_size
+pkgname=python-backports.shutil-get-terminal-size
+_pkgname=backports.shutil_get_terminal_size
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A backport of the get_terminal_size function from Python 3.3's shutil."
 url='https://pypi.org/project/backports.shutil_get_terminal_size/#files'
 arch=('any')
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz")
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('b74341c6616f9aace5abcc7fd657fc33801b558b6227c533002ccaf588734490b465a4a27d2bdc8047a385771afdcded610edef832dfa5ef24632f4541729050')
 
-prepare() {
-  cp -a "$_pkgbase-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgbase-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
 
-package_python2-backports.shutil-get-terminal-size() {
-  depends=('python2')
-
-  cd "$_pkgbase-$pkgver-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-}
-
-package_python-backports.shutil-get-terminal-size() {
-  depends=('python')
-
-  cd "$_pkgbase-$pkgver"
+package() {
+  cd "$_pkgname-$pkgver"
 
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build

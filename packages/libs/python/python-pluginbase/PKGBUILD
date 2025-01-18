@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pluginbase
-pkgname=('python2-pluginbase' 'python-pluginbase')
+pkgname=python-pluginbase
 _pkgname=pluginbase
 pkgver=1.0.1
 pkgrel=3
@@ -15,16 +14,8 @@ makedepends=('python2-setuptools' 'python-setuptools' 'python2-pip' 'python-pip'
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('20844fb78daf3e03a7a8013f82a059bf6b0723a184e89061ce5cb674b5a978900623f2eceed56fc9f9a34410e7e6ca8d41a5ac0a21e374b1b3ce32d4e522348e')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -32,12 +23,11 @@ build() {
 package_python2-pluginbase() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-pluginbase() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

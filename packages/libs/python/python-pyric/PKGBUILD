@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pyric
-pkgname=('python2-pyric' 'python-pyric')
+pkgname=python-pyric
 _pkgname=PyRIC
 pkgver=184.bc0dce3
 pkgrel=5
@@ -20,17 +19,10 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cp -a "$_pkgname"{,-2}
-}
 
 build() {
   cd "$_pkgname-2"
-
-  python2 setup.py build
-
   cd "$srcdir/$_pkgname"
-
   python setup.py build
 }
 
@@ -42,7 +34,7 @@ package_python2-pyric() {
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-pyric() {
+package() {
   depends=('python')
 
   cd $_pkgname

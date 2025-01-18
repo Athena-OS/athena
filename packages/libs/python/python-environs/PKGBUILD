@@ -2,27 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-environs
-_pkgname=environs
-pkgver=9.5.0
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=14.1.0
+pkgrel=1
 pkgdesc='Simplified environment variable parsing.'
 arch=('any')
 url='https://pypi.org/project/environs/#files'
 license=('MIT')
 depends=('python' 'python-marshmallow' 'python-dotenv')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('618c422f0e2a90bc5922ea9c38f1f8f96a048e916c6f8023124e2bb755a93a11ccb25acd9b1879171c8144b7d1fb7777aa69101b700a5e675294e8584dc28bd3')
+sha512sums=('ba53dbe7a9d1690eccb77ea5b9850f48ed635f953e1cb0b01e57b257e120c89c5de0062d8237a506f73d0b8336a371e9bf4b04be4ab72dcada5cfbf783f1ef08')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -1,30 +1,21 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-libfwsi-python
+pkgname=python-libfwsi-python
 _pkgbase=${pkgbase#python-}
-pkgname=('python2-libfwsi-python' 'python-libfwsi-python')
 pkgver=20230710
 pkgrel=1
 pkgdesc='Python bindings module for libfwsi.'
 url='https://pypi.org/project/libfwsi-python/#files'
 arch=('x86_64' 'aarch64')
 license=('LGPL-3.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz")
 sha512sums=('72313d0df4bcaf9bbe099c9acba526b7e616bd7b436c6881d4ee3c99ea92d6ed1d7be2bfe5694536e2a1429127aab33f8d2150011b2da599bf727f24ca487862')
 
-prepare() {
-  cp -a "libfwsi-$pkgver"{,-2}
-}
-
 build() {
   cd "libfwsi-$pkgver-2"
-
-  python2 setup.py build
-
   cd "$srcdir/libfwsi-$pkgver"
-
   python setup.py build
 }
 
@@ -36,7 +27,7 @@ package_python2-libfwsi-python() {
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
 
-package_python-libfwsi-python() {
+package() {
   depends=('python')
 
   cd "libfwsi-$pkgver"

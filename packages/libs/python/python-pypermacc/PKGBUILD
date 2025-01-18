@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pypermacc
-pkgname=('python2-pypermacc' 'python-pypermacc')
+pkgname=python-pypermacc
 _pkgname=pypermacc
 pkgver=4.d896512
 pkgrel=5
@@ -20,17 +19,10 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cp -a "$_pkgname"{,-2}
-}
 
 build() {
   cd "$_pkgname-2"
-
-  python2 setup.py build
-
   cd "$srcdir/$_pkgname"
-
   python setup.py build
 }
 
@@ -43,7 +35,7 @@ package_python2-pypermacc() {
     --skip-build
 }
 
-package_python-pypermacc() {
+package() {
   depends=('python' 'python-requests')
 
   cd $_pkgname

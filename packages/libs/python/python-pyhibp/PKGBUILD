@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pyhibp
-pkgname=('python2-pyhibp' 'python-pyhibp')
+pkgname=python-pyhibp
 _pkgname=pyhibp
 pkgver=4.2.0
 pkgrel=3
@@ -10,21 +9,13 @@ pkgdesc="An interface to Troy Hunt's 'Have I Been Pwned' public API."
 arch=('any')
 url='https://pypi.org/project/pyHIBP/#files'
 license=('AGPL-3.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('407ed0f260c03f28415d2da531be0105ef95025e734bafc2d07fdad7f09138f4bb84acef83cdc463e28c4cb601e3a8aa64d0d09b9c14033d69154c3c587334df')
 
-prepare() {
-  cp -a "pyhibp-$pkgver" "pyhibp2-$pkgver"
-}
-
 build() {
   cd "pyhibp2-$pkgver"
-
-  python2 setup.py build
-
   cd "$srcdir/pyhibp-$pkgver"
-
   python setup.py build
 }
 
@@ -37,7 +28,7 @@ package_python2-pyhibp() {
     --skip-build
 }
 
-package_python-pyhibp() {
+package() {
   depends=('python-requests' 'python-six')
 
   cd "pyhibp-$pkgver"

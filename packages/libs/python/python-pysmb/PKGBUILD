@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pysmb
-pkgname=('python2-pysmb' 'python-pysmb')
+pkgname=python-pysmb
 _pkgname=pysmb
 pkgver=1.2.9.1
 pkgrel=2
@@ -10,20 +9,12 @@ pkgdesc='An experimental SMB/CIFS library written in Python to support file shar
 arch=('any')
 url='https://pypi.org/project/pysmb/#files'
 license=('GPL-1.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
 sha512sums=('07816fa7d5862f584bbfa2be827146d99c12f73898a9172b4565de86e490e3ec375f9ab5e50fc4da38d540c1b0201802eca3aff126cb448886f3b2e56394b470')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-pysmb() {
   depends=('python2' 'python2-pyasn1')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-pysmb() {
+package() {
   depends=('python' 'python-pyasn1')
 
   cd "$_pkgname-$pkgver"

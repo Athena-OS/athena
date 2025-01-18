@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-ordereddict
-pkgname=('python2-ordereddict' 'python-ordereddict')
+pkgname=python-ordereddict
 _pkgname=ordereddict
 pkgver=1.1
 pkgrel=7
@@ -10,20 +9,12 @@ pkgdesc="A drop-in substitute for Python 2.7's collections.OrderedDict that work
 arch=('any')
 url='https://pypi.org/project/ordereddict/#files'
 license=('Apache-2.0')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('20b2beb1ee6309885b2d702c04d21e683fae3061f19176aceae381688be0fed5b2fbf55a1ff901460e93bf14c83169d2b7a286e3725b008583711134656d86e5')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,12 +22,11 @@ build() {
 package_python2-ordereddict() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-ordereddict() {
+package() {
   depends=('python2')
 
   cd "$_pkgname-$pkgver"

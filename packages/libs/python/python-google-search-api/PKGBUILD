@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-google-search-api
-pkgname=('python2-google-search-api' 'python-google-search-api')
+pkgname=python-google-search-api
 _pkgname=Google-Search-API
 pkgver=1.1.14
 pkgrel=9
@@ -17,18 +16,8 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname
 sha512sums=('1be83e693d695f98bbf108ece4f242ffcaf7c3aa64248d804f7c7b9cf3f10b5ef51d88c2fcf0dfbdbdbe48468cd3270071d4e3bf8bc32182dccafb83bc2ae513'
             '9eb086c78ab718236771e2e86dc556ef9ad52f4f88aec9d3e7ec723c510b6586897f16504157f052cd3ed57da634631abfb13005266252a16e07543c3c595a20')
 
-prepare() {
-  patch -p1 < setup.py.patch
-
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -43,7 +32,7 @@ package_python2-google-search-api() {
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-google-search-api() {
+package() {
   depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-unidecode'
            'python-selenium' 'python-vcrpy' 'python-future'
            'python-fake-useragent')

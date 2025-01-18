@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-rarfile
-pkgname=('python2-rarfile' 'python-rarfile')
+pkgname=python-rarfile
 _pkgname=rarfile
 pkgver=4.1
 pkgrel=1
@@ -10,20 +9,12 @@ pkgdesc='RAR archive reader for Python.'
 arch=('any')
 url='https://pypi.org/project/rarfile/#files'
 license=('ISC')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('ca3ac26e02b8d7770c43fe70a06cf42b2183a34846d59c79d3478651e9d7ffc022fe7336be44b8df8fa6f0789bae055c1d057c21d87af78acccc43a927fd02e2')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-rarfile() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-rarfile() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-nyawc
-pkgname=('python2-nyawc' 'python-nyawc')
+pkgname=python-nyawc
 _pkgname=nyawc
 pkgver=1.8.2
 _pyver=3.12
@@ -11,20 +10,12 @@ pkgdesc='A web crawler that gathers more than you can imagine.'
 arch=('any')
 url='https://pypi.python.org/pypi/nyawc/'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('077634f35f501c589dcb21c4ea9096ba001620a983d581b0a9c316ea054db0e541d1592ef0dbb20496ca985e0af179c2cd9186d1228c7c024e6ec507de7ab031')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -33,14 +24,13 @@ package_python2-nyawc() {
   depends=('python2' 'python2-lxml' 'python2-beautifulsoup4' 'python2-requests'
            'python2-requests-toolbelt' 'python2-sphinx')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 
   rm -rf "$pkgdir/usr/lib/python2.7/site-packages/test"
 }
 
-package_python-nyawc() {
+package() {
   depends=('python' 'python-lxml' 'python-beautifulsoup4' 'python-requests'
            'python-requests-toolbelt' 'python-sphinx')
 

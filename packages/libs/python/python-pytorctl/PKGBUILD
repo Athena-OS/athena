@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pytorctl
-pkgname=('python2-pytorctl' 'python-pytorctl')
+pkgname=python-pytorctl
 _pkgname=pytorctl
 pkgver=c8fcb25
 pkgrel=1
@@ -40,7 +39,7 @@ package_python2-pytorctl() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
-package_python-pytorctl() {
+package() {
   depends=('python' 'python-geoip')
 
   install -dm 755 "$pkgdir/usr/share/"{licenses,doc}"/${pkgname[1]}"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-jinja-time
-pkgname=('python2-jinja-time' 'python-jinja-time')
+pkgname=python-jinja-time
 _pkgname=jinja2-time
 pkgver=0.2.0
 pkgrel=5
@@ -10,20 +9,12 @@ pkgdesc='Jinja2 Extension for Dates and Times.'
 arch=('any')
 url='https://pypi.org/project/jinja2-time/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('8ac4686312cde689f7a431001833d5d477030c4f5e9470d949bd07a40fcb9521f6ddcde37a72468093121ff9451e352a0bb43d20a796d7a204cf94e8a7545f2c')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py  build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-jinja-time() {
   depends=('python2' 'python2-jinja' 'python2-arrow')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-jinja-time() {
+package() {
   depends=('python' 'python-jinja' 'python-arrow')
 
   cd "$_pkgname-$pkgver"

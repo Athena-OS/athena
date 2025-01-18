@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-passivetotal
-pkgname=('python2-passivetotal' 'python-passivetotal')
+pkgname=python-passivetotal
 _pkgname=passivetotal
 pkgver=2.5.9
 _pyver=3.12
@@ -11,20 +10,12 @@ pkgdesc='Client for the PassiveTotal REST API.'
 arch=('any')
 url='https://pypi.org/project/passivetotal/#files'
 license=('GPL-2.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('cb7968a6910702aa4e073d4f1bf5405f6ff6d9cbc9dae95d9ed04b853ce34e72099b9752b9f09d640602e6169815db3198c411bc7ab7ee56f933f2dd366ff8ed')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -32,7 +23,6 @@ build() {
 package_python2-passivetotal() {
   depends=('python2' 'python2-dateutil' 'python2-future' 'python2-requests')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 
@@ -43,7 +33,7 @@ package_python2-passivetotal() {
   done
 }
 
-package_python-passivetotal() {
+package() {
   depends=('python' 'python-dateutil' 'python-future' 'python-requests')
 
   cd "$_pkgname-$pkgver"

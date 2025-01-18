@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-mss
-pkgname=('python2-mss' 'python-mss')
+pkgname=python-mss
 _pkgname=mss
 pkgver=9.0.1
 pkgrel=1
@@ -10,20 +9,12 @@ pkgdesc='An ultra fast cross-platform multiple screenshots module in pure python
 url='https://pypi.org/project/mss/#files'
 arch=('any')
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('22c4aa56eaf5d3c6ca752a8c966908b35256056a23f5f707d2ccd5acfbefecec6b6b8bff5d8c18024ef94f365a6ce1433aafddfdf9f7f30180af5dbd8a1f8eb7')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,7 +22,6 @@ build() {
 package_python2-mss() {
   depends=('python2' 'python2-argparse')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
@@ -39,7 +29,7 @@ package_python2-mss() {
   mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}2"
 }
 
-package_python-mss() {
+package() {
   depends=('python' 'python-argparse')
 
   cd "$_pkgname-$pkgver"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-mcafee-epo
-pkgname=('python2-mcafee-epo' 'python-mcafee-epo')
+pkgname=python-mcafee-epo
 _pkgname=mcafee-epo
 pkgver=1.1.0
 pkgrel=4
@@ -10,20 +9,12 @@ pkgdesc='McAfee ePolicy Orchestrator API client.'
 arch=('any')
 url='https://pypi.org/project/mcafee-epo/#files'
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('1cae342983017d243b5d3e538e9b7e2180091325e215b63cb5bd61da7807499f7942d1024d30d73bdbe22d2297c260759e6cca1843c5cc913b6046e90e7c2bac')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,12 +22,11 @@ build() {
 package_python2-mcafee-epo() {
   depends=('python2' 'python2-requests')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
 
-package_python-mcafee-epo() {
+package() {
   depends=('python' 'python-requests')
 
   cd "$_pkgname-$pkgver"

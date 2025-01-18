@@ -5,7 +5,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 # Contributor: Jan-Erik Meyer-Luetgens <nyan at meyer-luetgens dot de>
 
-pkgbase=python-pyside
+pkgname=python-pyside
 pkgname=(python-pyside-common python2-pyside python-pyside)
 _pkgrealname=pyside
 pkgver=1.2.4
@@ -20,13 +20,11 @@ sha256sums=('1421bc1bf612c396070de9e1ffe227c07c1f3129278bc7d30c754b5146be2433')
 
 build(){
   cd $srcdir/PySide-$pkgver/sources/pyside
-
   mkdir -p build_py3
   cd build_py3
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=OFF \
     -DQT_PHONON_INCLUDE_DIR=/usr/include/qt4/phonon -DQT_QMAKE_EXECUTABLE=qmake-qt4
   make
-
   cd ..
   mkdir -p build_py2
   cd build_py2
@@ -37,7 +35,7 @@ build(){
   make
 }
 
-package_python-pyside-common(){
+package() {
   pkgdesc="Provides LGPL Qt bindings for Python and related tools for binding generation (Common Files)"
     # cmake will use Python 3 version by default
   cd PySide-$pkgver/sources/pyside/build_py3
@@ -48,7 +46,7 @@ package_python-pyside-common(){
   rm "$pkgdir"/usr/lib/cmake/PySide-$pkgver/PySideConfig*python*.cmake
 }
 
-package_python-pyside(){
+package() {
   depends=(python-shiboken python-pyside-common)
   pkgdesc="Provides LGPL Qt bindings for Python and related tools for binding generation (Python 3 version)"
   optdepends=('phonon-qt4: for PySide.phonon')

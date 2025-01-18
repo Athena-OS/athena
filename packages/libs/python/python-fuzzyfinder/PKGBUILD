@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-fuzzyfinder
-pkgname=('python2-fuzzyfinder' 'python-fuzzyfinder')
+pkgname=python-fuzzyfinder
 _pkgname=fuzzyfinder
 pkgver=2.1.0
 pkgrel=6
@@ -10,20 +9,12 @@ pkgdesc='Fuzzy Finder implemented in Python.'
 arch=('any')
 url='https://pypi.org/project/fuzzyfinder/#files'
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('9bade55a060613b0c9620376c74ebdcecb8331bdbbe45df2f4b566fc351bcf1f73b71f2d9282065c87eaca4d896382f80622f668a29c10a0c9b2c4ccdc2be97f')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-fuzzyfinder() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-fuzzyfinder() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

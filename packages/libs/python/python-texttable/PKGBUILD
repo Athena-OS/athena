@@ -1,9 +1,8 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-texttable
+pkgname=python-texttable
 _pkgbase=${pkgbase#python-}
-pkgname=('python2-texttable' 'python-texttable')
 pkgver=1.7.0
 pkgrel=1
 pkgdesc='Generate a formatted text table using ASCII characters.'
@@ -14,17 +13,9 @@ makedepends=('python2-cjkwrap' 'python2-setuptools' 'python-cjkwrap' 'python-set
 source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz")
 sha512sums=('427ab262301bc38066c4a54e8ef10163579b5d6210aeb003a729dbaef8badd347a2d01f9ea1d9d136611fc104a3a8cf59a7a9acac6f76f64f9575dc6e5ab4313')
 
-prepare() {
-  cp -a "$_pkgbase-$pkgver"{,-2}
-}
-
 build() {
   cd "$_pkgbase-$pkgver-2"
-
-  python2 setup.py build
-
   cd "$srcdir/$_pkgbase-$pkgver"
-
   python setup.py build
 }
 
@@ -37,7 +28,7 @@ package_python2-texttable() {
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
 
-package_python-texttable() {
+package() {
   depends=('python')
   optdepends=('python-cjkwrap: for better CJK support')
 

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-scapy-http
-pkgname=('python2-scapy-http' 'python-scapy-http')
+pkgname=python-scapy-http
 _pkgname=scapy-http
 pkgver=1.8.2
 pkgrel=7
@@ -15,20 +14,8 @@ makedepends=('python2-setuptools' 'python-setuptools' 'python2-scapy'
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('2f895db87b413066ed1094e2e57c1e93e7165871a0e3f9bd736b05c5ca775b49ab55e56bce4baa4ebfec0bd82661ceb10e4303aa8bcf93cffbfd38ddb8d1f949')
 
-prepare() {
-  # We need this because scapy-http was merged into scapy but some tools continue
-  # using the old library
-  sed -i "20d" "$_pkgname-$pkgver/setup.py"
-
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -36,12 +23,11 @@ build() {
 package_python2-scapy-http() {
   depends=('python2' 'python2-scapy')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-scapy-http() {
+package() {
   depends=('python' 'python-scapy')
 
   cd "$_pkgname-$pkgver"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-publicsuffix
-pkgname=('python2-publicsuffix' 'python-publicsuffix')
+pkgname=python-publicsuffix
 _pkgname=publicsuffix
 pkgver=1.1.1
 pkgrel=4
@@ -10,20 +9,12 @@ pkgdesc='Get a public suffix for a domain name using the Public Suffix List.'
 arch=('any')
 url='https://pypi.python.org/pypi/publicsuffix'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('eed6be3a4fbc558a6e450eb267883d0125e37e0932db3898a77eb90e3404c40b948b937d082b919dd7d89e8724b6e6eb6427ed79797bd6c006b475391893ea2f')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-publicsuffix() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-publicsuffix() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

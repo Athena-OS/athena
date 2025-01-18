@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-kismet-rest
-pkgname=('python2-kismet-rest' 'python-kismet-rest')
+pkgname=python-kismet-rest
 _pkgname=kismet_rest
 pkgver=2020.5.1
 pkgrel=4
@@ -10,20 +9,12 @@ pkgdesc='Simplified Python API for the Kismet REST interface.'
 arch=('any')
 url='https://pypi.org/project/kismet-rest/#files'
 license=('GPL-2.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/kismet_rest-$pkgver.tar.gz")
 sha512sums=('e885c1caaa385b7544379cc2cfe52c3e5c6a7c0e624a5566ddb539af4f69eac572c6a45cfa11f36a8214b02ea71714e928dca2ddbc0075565e03d8689d230dd9')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,12 +22,11 @@ build() {
 package_python2-kismet-rest() {
   depends=('python2' 'python2-requests')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
 
-package_python-kismet-rest() {
+package() {
   depends=('python' 'python-requests')
 
   cd "$_pkgname-$pkgver"

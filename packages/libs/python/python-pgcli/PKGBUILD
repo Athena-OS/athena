@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pgcli
-pkgname=('python2-pgcli' 'python-pgcli')
+pkgname=python-pgcli
 _pkgname=pgcli
 pkgver=3.5.0
 pkgrel=2
@@ -10,20 +9,12 @@ pkgdesc='CLI for Postgres Database. With auto-completion and syntax highlighting
 arch=('any')
 url='https://pypi.org/project/pgcli/#files'
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('d72cec375fd85aa83e90a3b88877b32df2143c47968c9531417dddb0e7de5463827668a5af78e4dddce3ddc1cf9baa97ada7271bd3844f7dea047adc7fca076f')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -33,7 +24,6 @@ package_python2-pgcli() {
            'python2-sqlparse' 'python2-configobj' 'python2-pgspecial'
            'python2-setproctitle' 'python2-cli-helpers' 'python2-humanize')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
@@ -41,7 +31,7 @@ package_python2-pgcli() {
   mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}-2"
 }
 
-package_python-pgcli() {
+package() {
   depends=('python' 'python-click' 'python-pygments' 'python-psycopg2'
            'python-sqlparse' 'python-configobj' 'python-pgspecial'
            'python-setproctitle' 'python-cli-helpers' 'python-humanize')

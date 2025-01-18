@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-multipartposthandler
-pkgname=('python2-multipartposthandler' 'python-multipartposthandler')
+pkgname=python-multipartposthandler
 _pkgname=MultipartPostHandler
 pkgver=0.1.0
 pkgrel=8
@@ -10,24 +9,12 @@ pkgdesc='A handler for urllib2 to enable multipart form uploading.'
 arch=('any')
 url='https://pypi.python.org/pypi/MultipartPostHandler/0.1.0'
 license=('LGPL')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('3e68b6d10a992d5911bba720def93b83da656d8835c7c57474c907aac5cf81d8bf9af83f9a1bbe5816c5867edb56a7820b1933e8713e823e8d5338ef3d2b1bdb')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-
-  grep -iRl 'python' "$_pkgname-$pkgver-2/"* |
-  xargs sed -i \
-    's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -35,13 +22,12 @@ build() {
 package_python2-multipartposthandler() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-multipartposthandler() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pycrtsh
-pkgname=('python2-pycrtsh' 'python-pycrtsh')
+pkgname=python-pycrtsh
 _pkgname=pycrtsh
 pkgver=57.1aed5e8
 pkgrel=1
@@ -20,17 +19,10 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cp -a "$_pkgname"{,-2}
-}
 
 build() {
   cd "$_pkgname-2"
-
-  python2 setup.py build
-
   cd "$srcdir/$_pkgname"
-
   python setup.py build
 }
 
@@ -46,7 +38,7 @@ package_python2-pycrtsh() {
   mv "$pkgdir/usr/bin/certsh" "$pkgdir/usr/bin/certsh2"
 }
 
-package_python-pycrtsh() {
+package() {
   depends=('python' 'python-beautifulsoup4' 'python-dateutil' 'python-lxml'
            'python-requests')
 

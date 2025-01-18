@@ -1,51 +1,37 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-alexa-top-sites
-pkgname=('python2-alexa-top-sites' 'python-alexa-top-sites')
+pkgname=python-alexa-top-sites
 pkgver=5.98d6109
 pkgrel=7
-pkgdesc='Python library to fetch the top 1..N (where N < 1 million) sites from alexa.'
+pkgdesc='Python library to fetch the top 1..N (where N < 1 million) sites from Alexa.'
 arch=('any')
 url='https://github.com/philarkwright/Alexa-Top-Sites'
 license=('BSD')
-makedepends=('git' 'python2-setuptools' 'python-setuptools')
-source=("$pkgbase::git+https://github.com/philarkwright/Alexa-Top-Sites.git")
+depends=('python')
+makedepends=('git' 'python-setuptools')
+source=("$pkgname::git+https://github.com/philarkwright/Alexa-Top-Sites.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgbase
+  cd $pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cp -a $pkgbase "$pkgbase-2"
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build() {
-  cd "$pkgbase-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$pkgbase"
+  cd $pkgname
 
   python setup.py build
 }
 
-package_python2-alexa-top-sites() {
-  depends=('python2')
-
-  cd "$pkgbase-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-}
-
-package_python-alexa-top-sites() {
-  depends=('python')
-
-  cd $pkgbase
+package() {
+  cd $pkgname
 
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build

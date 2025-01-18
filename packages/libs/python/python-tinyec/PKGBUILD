@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-tinyec
-pkgname=('python2-tinyec' 'python-tinyec')
+pkgname=python-tinyec
 _pkgname=tinyec
 pkgver=15.d187fdb
 _pyver=3.12
@@ -21,17 +20,10 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cp -a $_pkgname "$_pkgname-2"
-}
 
 build() {
   cd "$_pkgname-2"
-
-  python2 setup.py build
-
   cd "$srcdir/$_pkgname"
-
   python setup.py build
 }
 
@@ -46,7 +38,7 @@ package_python2-tinyec() {
   "$pkgdir"/usr/lib/python2.7/site-packages/tinyec-*-py2.7.egg-info/*
 }
 
-package_python-tinyec() {
+package() {
   depends=('python')
 
   cd $_pkgname

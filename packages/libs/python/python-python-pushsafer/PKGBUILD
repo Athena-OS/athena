@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-python-pushsafer
-pkgname=('python2-python-pushsafer' 'python-python-pushsafer')
+pkgname=python-python-pushsafer
 _pkgname=python-pushsafer
 pkgver=1.1
 pkgrel=2
@@ -15,17 +14,9 @@ makedepends=('python2-setuptools' 'python-setuptools' 'python2-pip' 'python-pip'
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('764d54d713ad4866f0949b42d8571e4d12f8621bcbedeb63bbabaac83d8902a2f9f7cb4347a66fbe030e5f47871912106c46cdff24a8f419710d114a9dae37ff')
 
-prepare() {
-  cp -a "python-pushsafer-$pkgver" "python-pushsafer2-$pkgver"
-}
-
 build() {
   cd "${_pkgname}2-$pkgver"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
-
+  cd "$_pkgname-$pkgver"
   python setup.py build
 }
 
@@ -37,7 +28,7 @@ package_python2-python-pushsafer() {
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-python-pushsafer() {
+package() {
   depends=('python-requests')
 
   cd "$_pkgname-$pkgver"

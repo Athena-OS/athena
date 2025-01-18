@@ -1,62 +1,39 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-exscript
-pkgname=('python2-exscript' 'python-exscript')
-pkgver=1810.9d5b035
+pkgname=python-exscript
+_pkgname=${pkgname#python-}
+pkgver=v2.6.r30.g9d5b035
 pkgrel=1
 pkgdesc='A Python module making Telnet and SSH easy.'
 arch=('any')
 url='https://github.com/knipknap/exscript'
 license=('GPL-2.0-or-later')
-makedepends=('git' 'python2-setuptools' 'python-setuptools')
-source=("$pkgbase::git+https://github.com/knipknap/exscript.git")
+depends=('python' 'python-pycryptodome' 'python-paramiko' 'python-future')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("git+https://github.com/knipknap/$_pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgbase
+  cd $_pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd $pkgbase
-
-  ./version.sh
-
-  cd ..
-  
-  cp -a $pkgbase "$pkgbase-2"
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build() {
-  cd "$pkgbase-2"
+  cd $_pkgname
 
-  python2 setup.py build
-
-  cd "$srcdir/$pkgbase"
-
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
-package_python2-exscript() {
-  depends=('python2' 'python2-pycryptodome' 'python2-paramiko'
-           'python2-configparser' 'python2-future')
+package() {
+  cd $_pkgname
 
-  cd "$pkgbase-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  mv "$pkgdir/usr/bin/exscript" "$pkgdir/usr/bin/exscript2"
-  mv "$pkgdir/usr/bin/otp" "$pkgdir/usr/bin/otp2"
-}
-
-package_python-exscript() {
-  depends=('python' 'python-pycryptodome' 'python-paramiko' 'python-future')
-
-  cd $pkgbase
-
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

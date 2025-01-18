@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-gdshortener
-pkgname=('python2-gdshortener' 'python-gdshortener')
+pkgname=python-gdshortener
 _pkgname=gdshortener
 pkgver=1.0.1
 pkgrel=4
@@ -10,20 +9,12 @@ pkgdesc='A module that provides access to .gd URL Shortener.'
 arch=('any')
 url='https://pypi.python.org/pypi/gdshortener'
 license=('LGPL')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('72e9063419bb239d0cc4c49a9813b2fba2367f4cef8de3346a7bc704a1d0450b62ff262a8dbdc091b06c35a6d1e79f0efebd680ae98da863359162c9cc18d046')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-gdshortener() {
   depends=('python2' 'python2-requests')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-gdshortener() {
+package() {
   depends=('python' 'python-requests')
 
   cd "$_pkgname-$pkgver"

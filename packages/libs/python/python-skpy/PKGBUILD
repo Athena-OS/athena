@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-skpy
-pkgname=('python2-skpy' 'python-skpy')
+pkgname=python-skpy
 _pkgname=SkPy
 pkgver=0.10.6
 pkgrel=1
@@ -10,20 +9,12 @@ pkgdesc='An unofficial Python library for interacting with the Skype HTTP API.'
 arch=('any')
 url='https://pypi.org/project/skpy/#files'
 license=('custom:unknown')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/SkPy-$pkgver.tar.gz")
 sha512sums=('8db89e016556bf08bb67ea43b6b5cf0008fbb4178d5fee7199a0e55ea10987e9843ad3bb18c34abae582d646cb6289f04e2496b061aa65403fe3d263e93d0f37')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-skpy() {
   depends=('python2' 'python2-beautifulsoup4' 'python2-requests')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-skpy() {
+package() {
   depends=('python' 'python-beautifulsoup4' 'python-requests')
 
   cd "$_pkgname-$pkgver"

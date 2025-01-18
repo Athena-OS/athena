@@ -1,50 +1,29 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-cpppo
-pkgname=('python2-cpppo' 'python-cpppo')
-_pkgname=cpppo
-pkgver=4.4.2
-pkgrel=3
+pkgname=python-cpppo
+_pkgname=${pkgname#python-}
+pkgver=5.2.4
+pkgrel=1
 pkgdesc='A Communication Protocol Python Parser and Originator.'
 arch=('any')
 url='https://pypi.org/project/cpppo/#files'
 license=('GPL-3.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=('python' 'python-greenery')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('973bb11b74103c7575731313e75e851364b8569bac46116c57fa77e9b123b0098aabb4c1134f4ff70a32462bedc8002204c6a65ee00f2a35904736646a43cf99')
-
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
+sha512sums=('d45fb940d932eb015d47a1519ee6f7b784d9b752b61e3c9cd9fed495ec24ecade1be947d67d0efe2bc52528bcf8413fb77c832d27b076b7d140fbfd7fd9a5802')
 
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
-
-  python setup.py build
-}
-
-package_python2-cpppo() {
-  depends=('python2' 'python2-greenery' 'python2-ipaddress')
-
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  for i in "$pkgdir/usr/bin/"*; do
-    mv $i "${i}2"
-  done
-}
-
-package_python-cpppo() {
-  depends=('python' 'python-greenery')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

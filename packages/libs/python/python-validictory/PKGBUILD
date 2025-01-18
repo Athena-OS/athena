@@ -10,7 +10,7 @@ arch=('any')
 url='https://pypi.org/project/validictory/#files'
 license=('MIT')
 depends=('python')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('94c292c99b382d323f229e632fb7e162e8cc724d895a6f361f92ef5f737f47ccfc25e5375891d5c9c2a1bf1b23be9171c93bfc639890597c5a9832e911a06898')
 

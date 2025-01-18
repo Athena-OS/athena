@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-pgpdump
-pkgname=('python2-pgpdump' 'python-pgpdump')
+pkgname=python-pgpdump
 _pkgname=pgpdump
 pkgver=1.5
 pkgrel=5
@@ -10,20 +9,12 @@ pkgdesc='PGP packet parser library.'
 arch=('any')
 url='https://pypi.org/project/pgpdump/#files'
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('b9fc7f78b920296301acaad2dbbafefff7b5f1658cbb65f5892a28d0b4d5110581bba984ad5cdabde3330025e3828387d7127c689cb86a7163c0b5ac0d0d2de0')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,12 +22,11 @@ build() {
 package_python2-pgpdump() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
 
-package_python-pgpdump() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

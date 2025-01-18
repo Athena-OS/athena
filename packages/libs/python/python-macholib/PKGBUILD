@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-macholib
-pkgname=('python2-macholib' 'python-macholib')
+pkgname=python-macholib
 _pkgname=macholib
 pkgver=1.16.2
 pkgrel=2
@@ -10,20 +9,12 @@ pkgdesc='Mach-O header analysis and editing.'
 arch=('any')
 url='https://pypi.org/project/macholib/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('8de00c926bb0aa3475675c75e208bd35ac3eeeee16d93fb22f63b34c34b909feb5e3ac441d7a085430fa73d29cd2a61d13a7ab9f993ae2fade36e116bdd42947')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,7 +22,6 @@ build() {
 package_python2-macholib() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
@@ -41,7 +31,7 @@ package_python2-macholib() {
   done
 }
 
-package_python-macholib() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

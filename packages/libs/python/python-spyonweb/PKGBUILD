@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-spyonweb
-pkgname=('python2-spyonweb' 'python-spyonweb')
+pkgname=python-spyonweb
 _pkgname=spyonweb
 pkgver=10.a8a255a
 pkgrel=5
@@ -20,17 +19,10 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cp -a "$_pkgname"{,-2}
-}
 
 build() {
   cd "$_pkgname-2"
-
-  python2 setup.py build
-
   cd "$srcdir/$_pkgname"
-
   python setup.py build
 }
 
@@ -45,7 +37,7 @@ package_python2-spyonweb() {
   mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}2"
 }
 
-package_python-spyonweb() {
+package() {
   depends=('python' 'python-requests')
 
   cd $_pkgname

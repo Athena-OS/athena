@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-rpio
-pkgname=('python2-rpio' 'python-rpio')
+pkgname=python-rpio
 _pkgname=RPIO
 pkgver=0.10.0
 pkgrel=7
@@ -11,20 +10,12 @@ pkgdesc='A GPIO toolbox for the Raspberry Pi.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/rpio/#files'
 license=('LGPL-3.0-or-later')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('6b366d47809e0f1b3733316821bdebd02a202cdf4a31f67fda07aa806cfcf546bd2a38644e25d481ec0d6fd2210ea697fdc0d0f3e57340ab40d81d7e275f483c')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -32,7 +23,6 @@ build() {
 package_python2-rpio() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
@@ -42,7 +32,7 @@ package_python2-rpio() {
   done
 }
 
-package_python-rpio() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

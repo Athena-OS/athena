@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-puttykeys
-pkgname=('python2-puttykeys' 'python-puttykeys')
+pkgname=python-puttykeys
 _pkgname=puttykeys
 pkgver=1.0.3
 _pyver=3.12
@@ -11,20 +10,12 @@ pkgdesc='Library to convert Putty private keys to OpenSSH format.'
 url='https://pypi.org/project/puttykeys/#files'
 arch=('any')
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('7789f44beaead38965ec89cf5be4d53a448c07146167f68a7958bfb4c8b49a7fdce4e0329ce37d55a439177406e3cf80583fbf1255bb7399ab6c83f80cd3790f')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -32,7 +23,6 @@ build() {
 package_python2-puttykeys() {
   depends=('python2' 'python2-cryptography')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 
@@ -40,7 +30,7 @@ package_python2-puttykeys() {
     "$pkgdir"/usr/lib/python2.7/site-packages/puttykeys-*-py2.7.egg-info/*
 }
 
-package_python-puttykeys() {
+package() {
   depends=('python' 'python-cryptography')
 
   cd "$_pkgname-$pkgver"

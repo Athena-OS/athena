@@ -1,52 +1,30 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-commandparse
-pkgname=('python2-commandparse' 'python-commandparse')
-_pkgname=commandparse
+pkgname=python-commandparse
+_pkgname=${pkgname#python-}
 pkgver=1.1.2
-_pyver=3.12
-pkgrel=2
+_pyver=3.13
+pkgrel=3
 pkgdesc='CLI application commands parser.'
 arch=('any')
 url='https://pypi.org/project/commandparse/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('862ca8ff29a757523ed026f031e5c589d93d9621c211fd8187040756ec0abd2325078874ce8107463e2ebc38456211c291c0904a5ab48d9532c0f57e69f53c46')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
-
-  python setup.py build
-}
-
-package_python2-commandparse() {
-  depends=('python2')
-
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  chmod 644 "$pkgdir"/usr/lib/python2.7/site-packages/commandparse-1.1.2-py2.7.egg-info/*
-}
-
-package_python-commandparse() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
+}
 
-  chmod 644 \
-    "$pkgdir/usr/lib/python$_pyver/site-packages/commandparse-1.1.2-py$_pyver.egg-info/"*
+package() {
+  cd "$_pkgname-$pkgver"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

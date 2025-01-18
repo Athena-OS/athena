@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-r2pipe
-pkgname=('python2-r2pipe' 'python-r2pipe')
+pkgname=python-r2pipe
 _pkgname=r2pipe
 pkgver=1.8.0
 pkgrel=2
@@ -10,20 +9,12 @@ pkgdesc='Pipe interface for radare2.'
 arch=('any')
 url='https://pypi.org/project/r2pipe/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('6dd0e8f318db44fd8ead87ec201cd96002045d4950b3b077b71e1e08edd928b266cc76f356935d02985af9cb0b3ef0ede239dca08c33d4716de1db0252ed7ecc')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,13 +22,12 @@ build() {
 package_python2-r2pipe() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
     --skip-build
 }
 
-package_python-r2pipe() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"

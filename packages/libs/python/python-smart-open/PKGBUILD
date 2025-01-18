@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-smart-open
-pkgname=('python2-smart-open' 'python-smart-open')
+pkgname=python-smart-open
 _pkgname=smart_open
 pkgver=7.0.4
 pkgrel=1
@@ -10,21 +9,13 @@ pkgdesc='Utils for streaming large files (S3, HDFS, gzip, bz2...).'
 arch=('any')
 url='https://pypi.org/project/smart-open/#files'
 license=('MIT')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/smart_open-$pkgver.tar.gz")
 sha512sums=('22d0f2dd8794df39aa1c8bf19c5fef95acc095c4fdccac20de786659b7a9c05ac13e09562cf751ee0dc0c23107a25327c51a22fd8ecc5136f1b028fa7e5125a2')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -32,12 +23,11 @@ build() {
 package_python2-smart-open() {
   depends=('python2' 'python2-boto' 'python2-requests' 'python2-boto3')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-smart-open() {
+package() {
   depends=('python' 'python-boto3' 'python-paramiko' 'python-requests' 'python-zstandard' 'python-wrapt')
 
   cd "$_pkgname-$pkgver"

@@ -1,8 +1,7 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python-trans
-pkgname=('python2-trans' 'python-trans')
+pkgname=python-trans
 _pkgname=trans
 pkgver=2.1.0
 pkgrel=4
@@ -10,20 +9,12 @@ pkgdesc='National characters transcription module.'
 arch=('any')
 url='https://pypi.org/project/trans/#files'
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.bz2")
 sha512sums=('c35d2de55687aa898934b4b673df24b1ab96555e541b18d1535c09add2d282a1ed56865383b0160be801fc455d3161b43044c705925340999c81ca19f1719555')
 
-prepare() {
-  cp -a "$_pkgname-$pkgver"{,-2}
-}
-
 build() {
-  cd "$_pkgname-$pkgver-2"
-
-  python2 setup.py build
-
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py build
 }
@@ -31,12 +22,11 @@ build() {
 package_python2-trans() {
   depends=('python2')
 
-  cd "$_pkgname-$pkgver-2"
 
   python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
 
-package_python-trans() {
+package() {
   depends=('python')
 
   cd "$_pkgname-$pkgver"
