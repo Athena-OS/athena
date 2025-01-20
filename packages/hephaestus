@@ -326,6 +326,7 @@ logs_dir="$(df -P /src/logs | awk 'NR==2 {print $6}')"
 
 # Initialize an empty array to store package filenames
 pkg_array=()
+cnt=1
 
 makepkg_settings
 prebuild_command
@@ -341,9 +342,10 @@ fi
 if [[ "$bump" ]]
 then
     for path in "${result[@]}"; do
-        echo "Found PKGBUILD: $path"
+        echo "Found PKGBUILD: $path [$cnt/${#result[@]}]"
         git_bump_package "$(dirname $path)" "$src_dir"
         echo
+        ((cnt++))
     done
     echo "Here the updated PKGBUILDs:"
     git diff --name-only HEAD
@@ -351,10 +353,11 @@ then
 else
     # Print the result array
     for path in "${result[@]}"; do
-        echo "Found PKGBUILD: $path"
+        echo "Found PKGBUILD: $path [$cnt/${#result[@]}]"
         # Build and sign packages
         build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir" "$logs_dir"
         echo
+        ((cnt++))
     done
 
     # Loop over the pkg_array to run repo-add for each package to update the database
