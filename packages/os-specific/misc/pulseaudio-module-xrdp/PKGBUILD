@@ -9,12 +9,16 @@ pkgdesc='PulseAudio modules for xrdp. Git version, devel branch.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
 url='https://github.com/neutrinolabs/pulseaudio-module-xrdp'
 license=('LGPL-2.1')
-depends=('pulse-native-provider' 'xrdp')
+depends=('pulse-native-provider' 'bluez' 'check' 'gst-plugins-base-libs'
+         'gtk3' 'libice' 'libsm' 'libxcb' 'libxtst' 'lirc' 'openssl' 'orc'
+         'pipewire-jack' 'sbc' 'systemd-libs' 'tdb' 'xrdp')
 makedepends=('git' 'meson' 'check' 'doxygen' 'perl-xml-parser')
 install="${pkgname}.install"
 
-_pulseaudio_ver="$(pulseaudio --version | awk '{split($NF, a, "-"); print a[1]}')"
-: "${_pulseaudio_ver:=17.0}"
+# Note: the host that builds this PKGBUILD must have pulseaudio installed
+#_pulseaudio_ver="$(pulseaudio --version | awk '{split($NF, a, "-"); print a[1]}')"
+#: "${_pulseaudio_ver:=17.0}"
+_pulseaudio_ver="17.0"
 
 source=(
     "git+${url}.git#branch=devel"

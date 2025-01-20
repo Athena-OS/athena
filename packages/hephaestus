@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -o pipefail  # Ensure pipeline exit code reflects failures in any command in the pipeline
 
+#Color variables
+#W="\033[00;37m"
+W="\033[0m"
+B="\033[01;36m"
+R="\033[01;31m"
+G="\033[01;32m"
+Y="\033[01;33m"
+N="\033[0m"
+
 makepkg_settings() {
     if [[ "$buildcores" ]]; then
         ncores=$coresnum
@@ -85,7 +94,7 @@ build_package() {
     logs_dir=$5
     pkg_missing=false
 
-    echo -e "\nBuilding package in $pkg_dir..."
+    echo -e "\n${Y}Building package in $pkg_dir...${W}"
     cd $pkg_dir
 
     makepkg -do --noprepare
@@ -120,7 +129,7 @@ build_package() {
     if $pkg_missing || [[ "$overwrite" ]]; then
         if [ -f "build.sh" ]; then
             ./build.sh 2>&1 | tee "$logs_dir/$logfile" || {
-                >&2 echo "ERROR: Failed to execute build.sh in $pkg_dir"
+                >&2 echo -e "${R}ERROR: Failed to execute build.sh in $pkg_dir${W}"
                 build_status="Fail"
                 build_status_api
                 return 1
@@ -128,7 +137,7 @@ build_package() {
         else
             updpkgsums 2>&1 | tee "$logs_dir/$logfile"
             makepkg -f -src $NODEPS --noconfirm 2>&1 | tee -a "$logs_dir/$logfile" || {
-                >&2 echo "ERROR: Failed to execute makepkg in $pkg_dir"
+                >&2 echo -e "${R}ERROR: Failed to execute makepkg in $pkg_dir${W}"
                 build_status="Fail"
                 build_status_api
                 return 1
@@ -143,7 +152,7 @@ build_package() {
         for pname in "${pkgname[@]}"; do
             pfile="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
             installed_size="$(pacman -Qip $pfile | grep 'Installed Size' | awk '{print $4, $5}')"
-            echo -e "Moving $pfile to $out_dir"
+            echo -e "${G}Moving $pfile to $out_dir${W}"
             cp -f $pfile* $out_dir
             rm -f $pfile*
 
@@ -155,7 +164,7 @@ build_package() {
         done
         
     else
-        >&2 echo "$pkgfile already exists in $out_dir"
+        >&2 echo -e "${Y}$pkgfile already exists in $out_dir${W}"
     fi
     cd $src_dir
 }
@@ -342,7 +351,7 @@ fi
 if [[ "$bump" ]]
 then
     for path in "${result[@]}"; do
-        echo "Found PKGBUILD: $path [$cnt/${#result[@]}]"
+        echo -e "${G}Found PKGBUILD: $path [$cnt/${#result[@]}]${W}"
         git_bump_package "$(dirname $path)" "$src_dir"
         echo
         ((cnt++))
@@ -353,7 +362,7 @@ then
 else
     # Print the result array
     for path in "${result[@]}"; do
-        echo "Found PKGBUILD: $path [$cnt/${#result[@]}]"
+        echo -e "${G}Found PKGBUILD: $path [$cnt/${#result[@]}]${W}"
         # Build and sign packages
         build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir" "$logs_dir"
         echo
@@ -365,6 +374,7 @@ else
         for fpkg in "${pkg_array[@]}"; do
             echo "Adding $fpkg to athena.db..."
             repo-add --verify --sign -R "$out_dir/athena.db.tar.gz" "$out_dir/$fpkg"
+            echo
         done
     fi
 fi

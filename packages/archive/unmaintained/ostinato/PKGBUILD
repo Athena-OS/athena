@@ -1,0 +1,38 @@
+# Credits BlackArch ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=ostinato
+pkgver=1.2.0
+pkgrel=1
+pkgdesc='An open-source, cross-platform packet/traffic generator and analyzer with a friendly GUI.'
+groups=('role-redteamer' 'role-network' 'athena' 'athena-sniffer'
+        'athena-networking')
+url='https://github.com/pstavirs/ostinato/'
+arch=('x86_64' 'aarch64')
+license=('GPL-3.0-or-later')
+depends=('qt4' 'libpcap' 'protobuf' 'protobuf-c')
+source=("https://github.com/pstavirs/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('c3fb1f63a8f32c199ae2c8630244a3d6110e25e9117fbc96b009fd54d6bc16dbfa120b2d26c474ca06e86dbed59a5051443f82064fb8a0eda2feb212e4e1a1c5')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i 's|-Wall -W -Wextra -Werror||g' options.pri
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  qmake-qt4 -Wnone PREFIX=/usr ost.pro
+
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm 775 "client/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -m 775 server/drone "$pkgdir/usr/bin/drone"
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
