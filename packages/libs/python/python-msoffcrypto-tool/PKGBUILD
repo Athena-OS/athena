@@ -2,40 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-msoffcrypto-tool
-_pkgbase=${pkgbase#python-}
-_pkgname=msoffcrypto-tool
-pkgver=5.0.1
+_pkgname=msoffcrypto_tool
+pkgver=5.4.2
 pkgrel=1
 epoch=1
 pkgdesc='A Python tool and library for decrypting MS Office files with passwords or other keys.'
 arch=('any')
 url='https://pypi.org/project/msoffcrypto-tool/#files'
 license=('MIT')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/msoffcrypto_tool-$pkgver.tar.gz")
-sha512sums=('a05e830aadcde4cf999c814b5fb5318b3b2b177692281f88038d592d3748236ea65e28f7a660065abab6035ac42dcc492e601b08bb525b73db2b1bac132d57e0')
+depends=('python' 'python-olefile' 'python-cryptography')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/msoffcrypto_tool-$pkgver.tar.gz")
+sha512sums=('f498f980db2f06171a63dc4e79e827f767c397eaa837d4fda869b5c5867c311bd768576a64e02e829e724c9490319d9025e934447e2ab11a3774640ec3d979e8')
 
 build() {
-  cd "msoffcrypto_tool-$pkgver-2"
-  cd "$srcdir/msoffcrypto_tool-$pkgver"
-  python setup.py build
-}
+  cd "$_pkgname-$pkgver"
 
-package_python2-msoffcrypto-tool() {
-  depends=('python2' 'python2-olefile' 'python2-cryptography')
-
-  cd "msoffcrypto_tool-$pkgver-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  mv "$pkgdir/usr/bin/msoffcrypto-tool" "$pkgdir/usr/bin/msoffcrypto-tool-2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-olefile' 'python-cryptography')
+  cd "$_pkgname-$pkgver"
 
-  cd "msoffcrypto_tool-$pkgver"
-
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

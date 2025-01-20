@@ -2,39 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-xlutils
-_pkgname=xlutils
+_pkgname=${pkgname#python-}
 pkgver=2.0.0
 pkgrel=7
 pkgdesc='Utilities for working with Excel files that require both xlrd and xlwt.'
 arch=('any')
 url='https://pypi.org/project/xlutils/#files'
 license=('custom:unknown')
-makedepends=('python-setuptools')
+depends=('python' 'python-xlrd' 'python-xlwt')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('7b6c39912a2b23d718b1aaac2f21770f1e5b156fdc7416f11d4a7e6b52195ffffb982aecb52b5571599eb4928c7e09bbfb20fdf2554f0c49c286b243e2fb3ea9')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-xlutils() {
-  depends=('python2' 'python2-xlrd' 'python2-xlwt')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  mv "$pkgdir/usr/bin/margins" "$pkgdir/usr/bin/margins2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-xlrd' 'python-xlwt')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-javalang
-_pkgname=javalang
+_pkgname=${pkgname#python-}
 pkgver=0.13.0
 pkgrel=4
 pkgdesc='Pure Python Java parser and tools.'
 arch=('any')
 url='https://pypi.org/project/javalang/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-six' 'java-runtime')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('260cb4f356a88ae17eaeec9221b48eb9ebe21c81d7e364e8624ed059613e72c4a84d3d08c67fb3ab366072f6687dbf0cf638a63699ce5a03b8f2674479364014')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-javalang() {
-  depends=('python2' 'python2-six' 'java-runtime')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-six' 'java-runtime')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -10,32 +10,21 @@ pkgdesc='AlienVault OTX API.'
 arch=('any')
 url='https://pypi.python.org/pypi/OTXv2/'
 license=('Apache-2.0')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests' 'python-dateutil' 'python-pytz')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/OTXv2-$pkgver.tar.gz")
 sha512sums=('059a76afee75fd7c235626421573f68ce9a2d648acac00cf9169a17583b0c30cd14d3cc4dc0765b5c15964240c40abf28a34834baa7e326b7fe6d56f876c3cfe')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-otxv2() {
-  depends=('python2' 'python2-requests' 'python2-dateutil' 'python2-pytz')
-
-  install -dm 755 "$pkgdir/usr/share/${pkgname[0]}"
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests' 'python-dateutil' 'python-pytz')
-
-  install -dm 755 "$pkgdir/usr/share/${pkgname[1]}"
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

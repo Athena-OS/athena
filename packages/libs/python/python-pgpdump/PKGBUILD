@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-pgpdump
-_pkgname=pgpdump
+_pkgname=${pkgname#python-}
 pkgver=1.5
 pkgrel=5
 pkgdesc='PGP packet parser library.'
 arch=('any')
 url='https://pypi.org/project/pgpdump/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('b9fc7f78b920296301acaad2dbbafefff7b5f1658cbb65f5892a28d0b4d5110581bba984ad5cdabde3330025e3828387d7127c689cb86a7163c0b5ac0d0d2de0')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pgpdump() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

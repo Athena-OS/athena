@@ -2,41 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-xhtml2pdf
-_pkgname=xhtml2pdf
-pkgver=0.2.11
+_pkgname=${pkgname#python-}
+pkgver=0.2.16
 pkgrel=1
 pkgdesc='PDF generator using HTML and CSS.'
 arch=('any')
 url='https://pypi.org/project/xhtml2pdf/#files'
 license=('Apache-2.0')
-makedepends=('python-setuptools')
+depends=('python' 'python-html5lib' 'python-pillow' 'python-six'
+         'python-pypdf2' 'python-reportlab')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('6cdc4f68df4432f23d504a7f8d9d0a8c9f465b265c41bd43106bddc10a965c0f34bcd4a1a54003062009d843913be04d4038d04d749d8c0d5fc15ce5f3f547c9')
+sha512sums=('aa7cf478338dbf1430c8cb08100964557f944a3ced22f5b755a4d6cd4d8cd94852db92a13995b3647a6ca3c5c5f41b9ebabcfdb82664fe8fde6ad8a29d40d90a')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-xhtml2pdf() {
-  depends=('python2' 'python2-html5lib' 'python2-pillow6' 'python2-six'
-           'python2-pypdf2' 'python2-reportlab')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-
-  for i in "$pkgdir/usr/bin/"* ; do
-    mv $i "${i}2"
-  done
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-html5lib' 'python-pillow' 'python-six'
-           'python-pypdf2' 'python-reportlab')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-pydotplus
-_pkgname=pydotplus
+_pkgname=${pkgname#python-}
 pkgver=2.0.2
 pkgrel=8
-pkgdesc='Provides a Python Interface to Graphviz’s Dot language.'
+pkgdesc="Provides a Python Interface to Graphviz’s Dot language."
 arch=('any')
 url='https://pypi.org/project/pydotplus/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-pyparsing')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('6f06a1f284401123a4514f9e9a4974dee8dc8d01e6b7c40a797fb70eed22b99fe774272f8b106b5632a33f524b356349fe1ff9633101ff61ef2fc3fe69d641ac')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pydotplus() {
-  depends=('python2' 'python2-pyparsing')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-pyparsing')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

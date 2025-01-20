@@ -2,42 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-puttykeys
-_pkgname=puttykeys
+_pkgname=${pkgname#python-}
 pkgver=1.0.3
-_pyver=3.12
-pkgrel=6
+_pyver=3.13
+pkgrel=7
 pkgdesc='Library to convert Putty private keys to OpenSSH format.'
 url='https://pypi.org/project/puttykeys/#files'
 arch=('any')
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-cryptography')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('7789f44beaead38965ec89cf5be4d53a448c07146167f68a7958bfb4c8b49a7fdce4e0329ce37d55a439177406e3cf80583fbf1255bb7399ab6c83f80cd3790f')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-puttykeys() {
-  depends=('python2' 'python2-cryptography')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  chmod 644 \
-    "$pkgdir"/usr/lib/python2.7/site-packages/puttykeys-*-py2.7.egg-info/*
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-cryptography')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  chmod 644 \
-    "$pkgdir"/usr/lib/python$_pyver/site-packages/puttykeys-*-py$_pyver.egg-info/*
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

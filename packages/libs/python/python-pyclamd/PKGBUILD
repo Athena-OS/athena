@@ -9,30 +9,21 @@ pkgdesc='A python interface to Clamd (Clamav daemon).'
 arch=('any')
 url='https://pypi.python.org/pypi/pyClamd/'
 license=('LGPL-3.0-or-later')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://pypi.python.org/packages/13/73/97a0518b59f1b6aefa2ac851566038d2c9128f8a5503bcf4cd0adf8b0072/$_pkgname-$pkgver.tar.gz")
 sha512sums=('b96e26729e0fe2600572534c0fa22a01238761589f1771e72a054dde9c1b8f122493c83ca04cffda167f7a0e44fbf309bdf76b8fe1de499ec50d56c677923bd4')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pyclamd() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,46 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-ua-parser
-_pkgname=ua-parser
-pkgver=0.18.0
+_pkgname=ua_parser
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python port of Browserscope's user agent parser."
 url='https://pypi.org/project/ua-parser/#files'
 license=('Apache-2.0')
 arch=('any')
-makedepends=('python-setuptools')
+depends=('python' 'python-yaml')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('1b3685df8fc65f529b3a54d7bc56aa6d2df56e028d3a2fd2206826119c1ccabe2aaf7dd4c2c00122a0189c0987360a6d7af12ec2dac444b55cf745ebfc7365fd')
+sha512sums=('50219481bddd619dd0ead6b9b93117af8d5e460213b9b55d5bfe3e177c867f11d0480e72ffdf3ab00fa1ee00a847d0ff211bfabc6cd1239c9c3c38ea0f5be44f')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-ua-parser() {
-  depends=('python2' 'python2-yaml')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  find "$pkgdir" -type f -name '*.py' | xargs sed -i \
-    's|#!/usr/bin/python2.5|#!/usr/bin/python2|'
-  find "$pkgdir" -type f -name '*.py' | xargs sed -i \
-    's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-yaml')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  find "$pkgdir" -type f -name '*.py' | xargs sed -i \
-    's|#!/usr/bin/python2.5|#!/usr/bin/python|'
-  find "$pkgdir" -type f -name '*.py' | xargs sed -i \
-    's|#!/usr/bin/env python|#!/usr/bin/env python|'
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
+

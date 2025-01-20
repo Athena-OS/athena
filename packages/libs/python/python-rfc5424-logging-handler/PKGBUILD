@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-rfc5424-logging-handler
-_pkgname=rfc5424-logging-handler
+_pkgname=${pkgname#python-}
 pkgver=1.4.3
 pkgrel=5
 pkgdesc='An up-to-date, RFC5424-Compliant syslog handler for the Python logging framework.'
 arch=('any')
 url='https://pypi.org/project/rfc5424-logging-handler/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('127d29392e41697655978ab9344bb115e97ec71e57d76cad584fdc2a7471f1519ae6073c4fc38f10276249f4daf62730c9124f93ec700a8c31d9202099ff092c')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-rfc5424-logging-handler() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

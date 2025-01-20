@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-pdfkit
-_pkgname=pdfkit
+_pkgname=${pkgname#python-}
 pkgver=1.0.0
 pkgrel=3
 pkgdesc='Wkhtmltopdf python wrapper to convert html to pdf using the webkit rendering engine and qt.'
 arch=('any')
 url='https://pypi.python.org/pypi/pdfkit/'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'wkhtmltopdf')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('f00d66ff0f425b2313d06e052aa83e2cf526074307ab10c8ea370dab5503d6642228ca92795754c73c45640f09f7252ec7a6b66cdccd9f5f1d34fa5e686b1c6f')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pdfkit() {
-  depends=('python2' 'wkhtmltopdf')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'wkhtmltopdf')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,39 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-ipwhois
-_pkgname=ipwhois
-pkgver=1.2.0
-pkgrel=4
+_pkgname=${pkgname#python-}
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Retrieve and parse whois data for IPv4 and IPv6 addresses.'
 url='https://pypi.org/project/ipwhois/#files'
 arch=('any')
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-dnspython')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('f1dc15f0c664e5f63aa6554284a0f6eaeed2371413e3640f9760cbefa132938be55c4bb4ae7392a809bc149e477ff5bdd4e8ad3cdcd363f871b87c2dc074aa16')
+sha512sums=('4fba512abae765e447a2ac1b89abda1f013098391674fb1ade84f365d3e89e457a77ce7f8165e5ee8cb311f8d1166c500a395a3b3bc438c0dff9e409ce3b77d8')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-ipwhois() {
-  depends=('python2' 'python2-dnspython' 'python2-ipaddr')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  mv "$pkgdir/usr/bin/ipwhois_cli.py" "$pkgdir/usr/bin/ipwhois_cli2.py"
-  mv "$pkgdir/usr/bin/ipwhois_utils_cli.py" \
-    "$pkgdir/usr/bin/ipwhois_utils_cli2.py"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-dnspython')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

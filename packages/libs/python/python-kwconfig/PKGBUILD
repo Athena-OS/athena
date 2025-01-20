@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-kwconfig
-_pkgname=kwconfig
+_pkgname=${pkgname#python-}
 pkgver=1.1.7
 pkgrel=5
 pkgdesc='A Python module for managing config files in keyword style json format.'
 arch=('any')
 url='https://pypi.org/project/kwconfig/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-argparse')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('039f2cf3bed0ab96fc9475f088d469d55a8ccb8b54e38162692ee1556d9be7c4c3df1fcb006d5d6a4c4ff3fbdd15d2b9918ecb29effbcf7493e4c6742e3d9bde')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-kwconfig() {
-  depends=('python2' 'python2-argparse')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-	--skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-argparse')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-	--skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

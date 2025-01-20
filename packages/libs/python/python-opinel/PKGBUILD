@@ -2,39 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-opinel
-_pkgname=opinel
+_pkgname=${pkgname#python-}
 pkgver=3.3.4
 pkgrel=9
 pkgdesc='Code shared between Scout2 and AWS-recipes.'
 arch=('any')
 url='https://pypi.org/project/opinel/#files'
 license=('GPL-2.0-or-later')
-makedepends=('python-setuptools')
+depends=('python' 'python-iampoliciesgonewild' 'python-boto3'
+         'python-requests' 'python-netaddr' 'python-yaml')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('9fb9b4513b58a480cafc98f221e76e1c62b616912c1a067d04d682a7bd06b21f70bd08251b542bb4f54cc51e2e3823be14d362c9c95e3ec63568d682f847a137')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-opinel() {
-  depends=('python2' 'python2-iampoliciesgonewild' 'python2-boto3'
-           'python2-requests' 'python2-netaddr' 'python2-yaml')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-iampoliciesgonewild' 'python-boto3'
-           'python-requests' 'python-netaddr' 'python-yaml')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -9,36 +9,32 @@ pkgdesc='Python Radio Interface Controller Linux wireless library for the Python
 arch=('any')
 url='https://pypi.org/project/pyric/#files'
 license=('GPL-3.0-or-later')
-makedepends=('git' 'python2-setuptools' 'python-setuptools')
+depends=('python')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("git+https://github.com/sophron/$_pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
-
 
 build() {
-  cd "$_pkgname-2"
-  cd "$srcdir/$_pkgname"
-  python setup.py build
-}
+  cd $_pkgname
 
-package_python2-pyric() {
-  depends=('python2')
-
-  cd "$_pkgname-2"
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd $_pkgname
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

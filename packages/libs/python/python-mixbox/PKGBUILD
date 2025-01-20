@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-mixbox
-_pkgname=mixbox
+_pkgname=${pkgname#python-}
 pkgver=1.0.5
 pkgrel=4
 pkgdesc='Utility library for cybox, maec, and stix packages.'
 arch=('any')
 url='https://pypi.org/project/mixbox/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python' 'python-dateutil' 'python-lxml' 'python-ordered-set')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('cc88013146116890c7396eb1fb68022709f31f68b3d863aa2e48513b2c84285c32e322d457cb5b8fdbade785ef0c0101539d10f29941607947cbf810823aa975')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-mixbox() {
-  depends=('python2' 'python2-dateutil' 'python2-lxml' 'python2-ordered-set')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-dateutil' 'python-lxml' 'python-ordered-set')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

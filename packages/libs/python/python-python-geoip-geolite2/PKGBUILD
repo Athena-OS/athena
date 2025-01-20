@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-python-geoip-geolite2
-_pkgname=python-geoip-geolite2
+_pkgname=${pkgname#python-}
 pkgver=2015.0303
 pkgrel=6
 pkgdesc='Provides access to the geolite2 database.'
 arch=('any')
 url='https://pypi.org/project/python-geoip-geolite2/#files'
 license=('custom:unknown')
-makedepends=('python-setuptools')
+depends=('python' 'python-python-geoip')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('da382b62b66ac617bd2c0e58452b81c42264de094283385c756ad963f4c3d4ea448a0d66025e2e79f089a9614ade36af9937f63933ba713b88f6fe0c50bb5e31')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-python-geoip-geolite2() {
-  depends=('python2' 'python2-python-geoip')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-python-geoip')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

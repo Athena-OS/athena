@@ -2,39 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-pybinaryedge
-_pkgname=pybinaryedge
+_pkgname=${pkgname#python-}
 pkgver=0.5
 pkgrel=5
 pkgdesc='Python 3 Wrapper for the binary edge API https://www.binaryedge.io/.'
 arch=('any')
 url='https://pypi.org/project/pybinaryedge/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('3d8029effa98089a356d53dac9eeefadc888303b89ff0cb62cbbab3898ca3a87194393afe3ea4f6fcf7eb8aa26a97807292b2ebe6283ba8c3dbb2e07d8be2f3f')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pybinaryedge() {
-  depends=('python2' 'python2-configparser' 'python2-requests')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  mv "$pkgdir/usr/bin/binaryedge" "$pkgdir/usr/bin/binaryedge2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

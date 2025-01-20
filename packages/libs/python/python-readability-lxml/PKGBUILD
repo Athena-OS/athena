@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-readability-lxml
-_pkgname=readability-lxml
+_pkgname=${pkgname#python-}
 pkgver=0.8.1
 pkgrel=4
 pkgdesc='Fast html to text parser (article readability tool) with python3 support.'
 arch=('any')
 url='https://pypi.org/project/readability-lxml/#files'
 license=('Apache-2.0')
-makedepends=('python-setuptools')
+depends=('python' 'python-lxml')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('e975116c8e34d7395e22acab2257dc9e90d75835317deadab6fb4bfd8aea5a8af9eacaabf26e96230665006dee63a0e7dd2afceba480da4d5f31b2b3bf7129c2')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-readability-lxml() {
-  depends=('python2' 'python2-lxml')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-lxml')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

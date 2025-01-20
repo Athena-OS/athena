@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-user-agents
-_pkgname=user-agents
+_pkgname=${pkgname#python-}
 pkgver=2.2.0
 pkgrel=4
 pkgdesc='A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings.'
 url='https://pypi.org/project/user-agents/#files'
 arch=('any')
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-ua-parser')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('39d17acdb75e0e4e7520b584794db1d07babd98f25e0cb75e9667733897c30610f03b350b93da6938d96317ebe417e7368d794ee7aa134fbba52ac8ab0124aa8')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-user-agents() {
-  depends=('python2' 'python2-ua-parser')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-ua-parser')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -9,28 +9,21 @@ pkgdesc='Active Record, Django-like queries, nested eager load and beauty __repr
 arch=('any')
 url='https://pypi.org/project/sqlalchemy-mixins/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/sqlalchemy_mixins-$pkgver.tar.gz")
 sha512sums=('c1c15fb210d5f6fe7782b68c003dc888740697d4929a2ba78a35ebdd74ad51a9e2164a3f67b18df7b42c97e4b41aaf997934ab121d288e5be8f11efbda545883')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-sqlalchemy-mixins() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

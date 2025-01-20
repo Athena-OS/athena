@@ -9,30 +9,21 @@ pkgdesc='Simplified, lightweight HTTP client library.'
 arch=('any')
 url='https://pypi.org/project/unirest/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('bfbd1feddcdb97e951dda51d9654f2efd7d3f1ac0f73d4c024653aee0efad4dd7a25215dadc8c856334ba837cf6489fecd99f77b97b9485f65f333bf9424468f')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-unirest() {
-  depends=('python2' 'python2-poster')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

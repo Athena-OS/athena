@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-poyo
-_pkgname=poyo
+_pkgname=${pkgname#python-}
 pkgver=0.5.0
 pkgrel=5
 pkgdesc='A lightweight YAML Parser for Python.'
 arch=('any')
 url='https://pypi.org/project/poyo/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('aad4334a2aaf63cafab0ecdbdd6f94e9e3d412e6476d7ac13a4399b4af0f43b1eb910e6a3cc7438e84262bc39413fadbe91674534e1e66f446d738c1328b9905')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py  build
-}
-
-package_python2-poyo() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

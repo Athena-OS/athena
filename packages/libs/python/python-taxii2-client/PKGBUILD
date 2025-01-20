@@ -9,7 +9,8 @@ pkgdesc='OASIS TC Open Repository: TAXII 2 Client Library Written in Python.'
 arch=('any')
 url='https://github.com/oasis-open/cti-taxii-client'
 license=('BSD')
-makedepends=('git' 'python2-setuptools' 'python-setuptools')
+depends=('python' 'python-requests' 'python-six' 'python-pytz')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 options=(!emptydirs)
 source=("https://github.com/oasis-open/cti-taxii-client/archive/v$pkgver.tar.gz")
 sha512sums=('d635d98704232f8a89062275a6344bf540f4bbc893ce0071d3cc01aef166b8a211b4e10773f8f6c0ec3b99ffa242113fdb4f21234c9ef7036ba128273f496487')
@@ -17,21 +18,12 @@ sha512sums=('d635d98704232f8a89062275a6344bf540f4bbc893ce0071d3cc01aef166b8a211b
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-taxii2-client() {
-  depends=('python2' 'python2-requests' 'python2-six' 'python2-pytz')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests' 'python-six' 'python-pytz')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,42 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-ipparser
-_pkgname=ipparser
-pkgver=1.0.0
-_pyver=3.12
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=1.0.2
+_pyver=3.13
+pkgrel=1
 pkgdesc='Parse IP address information and return a list for iteration.'
 arch=('any')
 url='https://pypi.org/project/ipparser/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python' 'python-dnspython')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('430b296de8b2464cc4b2264ec712c2ff3fbfaf32e605bae969a1a8f87c6c9994d31ae483df00268e0bc6924d3a9b48d76aa6c78705ad53ff444dd13cbfd79692')
+sha512sums=('623833c0475df218a00ce94f016353fe580a1ddeeed98f114160a02171600d4adc43a118c6881b7932b16869bdbb5c58dd0081efcd15de96799baf956e2cbfab')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-ipparser() {
-  depends=('python2' 'python2-dnspython')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  chmod 644 \
-    "$pkgdir/usr/lib/python2.7/site-packages/$_pkgname-$pkgver-py2.7.egg-info/"*
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-dnspython')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  chmod 644 \
-    "$pkgdir/usr/lib/python$_pyver/site-packages/$_pkgname-$pkgver-py$_pyver.egg-info/"*
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

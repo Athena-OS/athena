@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-ip2location
-_pkgname=IP2Location
-pkgver=8.10.0
+_pkgname=${pkgname#python-}
+pkgver=8.10.4
 pkgrel=1
 pkgdesc='Python API for IP2Location database.'
 arch=('any')
 url='https://pypi.org/project/IP2Location/#files'
 license=('MIT')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/IP2Location-$pkgver.tar.gz")
-sha512sums=('e154c5e543905360ed229760b13199a3ae391f52abfef7cbff2eec2a6180145c09a2b28b9c0e6e4fdc48b979e15cdfdf3bb6ef7628b01be30acab0c4b3518c1d')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('82f48e2a808f85c452f29b24833d0f1c77e95ee6dc5873e566e40829f4b341fb86cd3d2f764f174f269597d379086a002c823df0095253a007e0e5b1c373b33e')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-ip2location() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,40 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-safeurl
-_pkgname=safeurl
+_pkgname=${pkgname#python-}
 pkgver=0.0.7
-_pyver=3.12
+_pyver=3.13
 pkgrel=10
 pkgdesc='Link analyzer on Python'
 arch=('any')
 url='https://pypi.org/project/safeurl/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests' 'python-coverage' 'python-coveralls')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('db63ca9e08d4799cd9685c4bd152240e77a6d95f6d2448d58f3bd5d980a5b72e9baa7438fb1131967562bcb2952324e62bdebfc8e150981563703fea0564e3c2')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-safeurl() {
-  depends=('python2' 'python2-requests' 'python2-coverage' 'python2-coveralls')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  rm -rf "$pkgdir/usr/lib/python2.7/site-packages/tests"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests' 'python-coverage' 'python-coveralls')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  rm -rf "$pkgdir/usr/lib/python$_pyver/site-packages/tests"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

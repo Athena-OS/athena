@@ -9,28 +9,21 @@ pkgdesc='Distribution Network Evaluation Tool.'
 arch=('any')
 url='https://pypi.python.org/pypi/PyDNET/'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-networkx' 'python-pyaml' 'python-graphillion')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://pypi.python.org/packages/34/87/083403e9ce4a737888fd9740bd151b59a6d017887cfd9ab908ec67a96a62/$_pkgname-$pkgver.tar.gz")
 sha512sums=('ade69de549b37a4e156a99c7d4370d4e9b3ba7015c045265a0d87ff273de116ff26c674c83cf613930c33e57ff64b13c2b01d2a8ee38f3a6aa6adc2a47329421')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pydnet() {
-  depends=('python2' 'python2-networkx' 'python2-pyaml' 'python2-graphillion')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-networkx' 'python-pyaml' 'python-graphillion')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

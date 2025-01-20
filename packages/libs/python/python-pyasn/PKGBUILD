@@ -2,46 +2,27 @@
 # See COPYING for license details.
 
 pkgname=python-pyasn
-_pkgname=pyasn
+_pkgname=${pkgname#python-}
 pkgver=1.6.2
-_pyver=3.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Offline IP address to Autonomous System Number lookup module.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/pyasn/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('432d1bca71f32d6d09101d6180e512285841d1201d50e9833ed211b3d2b1d52923d9f3cff8b8763927dcc75cf44ba965d121b62ac78b9b620c40e7eb6e21c433')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pyasn() {
-  depends=('python2' 'python2-ordereddict')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  for i in "$pkgdir/usr/bin/"*; do
-    mv $i "${i}2"
-  done
-
-  chmod 644 \
-    "$pkgdir/usr/lib/python2.7/site-packages/pyasn-1.6.2-py2.7.egg-info/"*
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  chmod 644 \
-    "$pkgdir/usr/lib/python$_pyver/site-packages/pyasn-1.6.2-py$_pyver.egg-info/"*
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-

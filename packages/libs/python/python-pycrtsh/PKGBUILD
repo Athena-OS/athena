@@ -2,49 +2,40 @@
 # See COPYING for license details.
 
 pkgname=python-pycrtsh
-_pkgname=pycrtsh
+_pkgname=${pkgname#python-}
 pkgver=57.1aed5e8
 pkgrel=1
 pkgdesc='Python library to request crt.sh certificate information.'
 arch=('any')
 url='https://pypi.org/project/pycrtsh/#files'
 license=('Apache-2.0')
-makedepends=('git' 'python2-setuptools' 'python-setuptools')
+depends=('python' 'python-beautifulsoup4' 'python-dateutil' 'python-lxml'
+         'python-requests')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("git+https://github.com/Te-k/$_pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
-
 
 build() {
-  cd "$_pkgname-2"
-  cd "$srcdir/$_pkgname"
-  python setup.py build
-}
+  cd $_pkgname
 
-package_python2-pycrtsh() {
-  depends=('python2' 'python2-beautifulsoup4' 'python2-dateutil' 'python2-lxml'
-           'python2-requests')
-
-  cd "$_pkgname-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  mv "$pkgdir/usr/bin/certsh" "$pkgdir/usr/bin/certsh2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-beautifulsoup4' 'python-dateutil' 'python-lxml'
-           'python-requests')
-
   cd $_pkgname
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

@@ -2,36 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-libsigscan-python
-_pkgbase=${pkgbase#python-}
-pkgver=20230109
-pkgrel=3
+_pkgname=${pkgname#python-}
+pkgver=20240505
+pkgrel=1
 pkgdesc='Python bindings module for libsigscan.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.python.org/pypi/libsigscan-python/'
 license=('LGPL-3.0-or-later')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz")
-sha512sums=('0f311cc4ede717e22d6f71c39f65954a46e2a48e80c567a985d930a1336e1c353f66252625ad3a97b61211242c4017a37aa70ded3513f494b635e05fa74075d3')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('8525ca2a0c23475f1e9af70844959f73024fd74a68fdb1a531ac0603c1f1d527f2691a420edc75074a3939a2db22a2e5e3f4d636f9826c01593e80067df1522b')
 
 build() {
-  cd "libsigscan-$pkgver-2"
-  cd "$srcdir/libsigscan-$pkgver"
-  python setup.py build
-}
+  cd "libsigscan-$pkgver"
 
-package_python2-libsigscan-python() {
-  depends=('python2')
-
-  cd "libsigscan-$pkgver-2"
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "libsigscan-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

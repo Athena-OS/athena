@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-python-pptx
-_pkgname=python-pptx
-pkgver=0.6.22
+_pkgname=python_pptx
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Generate and manipulate Open XML PowerPoint (.pptx) files.'
 arch=('any')
 url='https://pypi.org/project/python-pptx/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-lxml' 'python-pillow' 'python-xlsxwriter')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('e64d5cb00606b20203fac65bc5fad1445ab7087507d0586fe5ecbc223386d84431bafdbbcbbf84efb596fddd6e436d8b94cc402e8af16bfe54c6cd87cec44ad6')
+sha512sums=('c8316fc6391f66cc532f9f94d8e3f1bf52dc7b6f6063336bf98209b75ccfbe96cb4e4257292ca8fca8974a34515ecc3843ade9c69fad683a2ddf43d40acad1d5')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-python-pptx() {
-  depends=('python2' 'python2-lxml' 'python2-pillow6' 'python2-xlsxwriter')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-lxml' 'python-pillow' 'python-xlsxwriter')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

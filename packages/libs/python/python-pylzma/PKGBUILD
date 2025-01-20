@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-pylzma
-_pkgname=pylzma
+_pkgname=${pkgname#python-}
 pkgver=0.5.0
 pkgrel=7
 pkgdesc='Python bindings for the LZMA library.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/pylzma/#files'
 license=('LGPL')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('c4956d84d9e1cbc152c68208acf21f11e6e4ba094b914bf8baeb0522bf8ab7b18dcdbcf114a1b2d1bf29c1cd91808d66c7dd61758686d340ff89cd82fba53ad2')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pylzma() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

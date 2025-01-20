@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-threatcrowd
-_pkgname=threatcrowd
+_pkgname=${pkgname#python-}
 pkgver=0.4
 pkgrel=7
 pkgdesc='Library for working with the threatcrowd api.'
 arch=('any')
 url='https://pypi.python.org/pypi/threatcrowd/'
 license=('custom:unknown')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://pypi.python.org/packages/5a/02/8db9f02b97c4a42b49413e1dd9684a26eede084c3270bc9755604741d015/$_pkgname-$pkgver.tar.gz")
 sha512sums=('1d63c9d3d360bc29dafb5b37b309ea06c606ed950f9eb79a1c7a8c42e1e69751e14f434710b749c3e4418cd0392df77cf39c7ad8dfe0b5fabdcd5b01777f04dd')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-threatcrowd() {
-  depends=('python2' 'python2-requests')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

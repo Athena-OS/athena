@@ -9,30 +9,21 @@ pkgdesc='A handler for urllib2 to enable multipart form uploading.'
 arch=('any')
 url='https://pypi.python.org/pypi/MultipartPostHandler/0.1.0'
 license=('LGPL')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('3e68b6d10a992d5911bba720def93b83da656d8835c7c57474c907aac5cf81d8bf9af83f9a1bbe5816c5867edb56a7820b1933e8713e823e8d5338ef3d2b1bdb')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-multipartposthandler() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

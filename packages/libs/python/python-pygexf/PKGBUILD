@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-pygexf
-_pkgname=pygexf
+_pkgname=${pkgname#python-}
 pkgver=0.2.2
 pkgrel=4
 pkgdesc='Python library to generate gexf file format.'
 arch=('any')
 url='https://pypi.org/project/pygexf/#files'
 license=('LGPL')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('7e0e87abbea99a304a4dc89ec7ab64ffb8721dfe514ceddf613d4a05cb6dd69d9f6ac393d0fb40235b6669a95af0060d4c1a4d8cb37652a02b96347c899012fb')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pygexf() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

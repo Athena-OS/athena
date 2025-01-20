@@ -3,39 +3,27 @@
 
 pkgname=python-spark-parser
 _pkgname=spark_parser
-pkgver=1.8.9
-pkgrel=5
+pkgver=1.9.0
+pkgrel=1
 pkgdesc='An Earley-Algorithm Context-free grammar Parser Toolkit.'
 arch=('any')
 url='https://pypi.org/project/spark-parser/#files'
 license=('MIT')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/spark_parser-$pkgver.tar.gz")
-sha512sums=('2ac5a21729d7d7f9f4bbe1e90884b51a91fb287804ba2b4ab46135c4daa743f5d15c457994f1d6a56c1bb6b3fd64e97d326fb851ae87900be3511a653026b75f')
+depends=('python' 'python-click')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('ee1c374dc91b2237a5dd16c682d72ec1883559aceaccbbcfce4f19aa5a5af533f7d70a0c188a300745d2ec3085a23577eaf50cab9d580e32c47af23977518dee')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-spark-parser() {
-  depends=('python2' 'python2-click')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
-  mv "$pkgdir/usr/bin/spark-parser-coverage" \
-    "$pkgdir/usr/bin/spark-parser-coverage2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-click')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

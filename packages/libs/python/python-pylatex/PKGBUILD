@@ -3,34 +3,27 @@
 
 pkgname=python-pylatex
 _pkgname=PyLaTeX
-pkgver=1.4.1
-pkgrel=4
+pkgver=1.4.2
+pkgrel=1
 pkgdesc='A Python library for creating LaTeX files and snippets.'
 arch=('any')
 url='https://pypi.org/project/PyLaTeX/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-ordered-set')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/PyLaTeX-$pkgver.tar.gz")
-sha512sums=('6c77d67d0f340c608001b7a5c69b7a5656a9dc6948a6d9bdfecae6362618d64b0e99784ed68383f48e1a9378bea81a60c31b0fb8af5552cceef4347508ff29d1')
+sha512sums=('b8d8d5712b0e5e32733a5bc6f4c8e195081612ad119df5e1a6b12d084fe27141daedbee41f4da636d7ceb2bcc800695be0a6a65b490d78ae3023e84fe3187ac6')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pylatex() {
-  depends=('python2' 'python2-ordered-set')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-ordered-set')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

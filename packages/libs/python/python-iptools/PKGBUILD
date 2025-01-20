@@ -2,38 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-iptools
-_pkgname=iptools
+_pkgname=${pkgname#python-}
 pkgver=0.7.0
 pkgrel=6
 pkgdesc='Collection of utilities for dealing with IP addresses.'
 url='http://python-iptools.readthedocs.org/'
 arch=('any')
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python' 'python-nose')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('e42bbb204d43a9dbf7980036e332e0078c434763aaccbcaf2e25a7438249fcf9a060630e45a7f10bebcb8023f55bb808131bcd2c989b000ea7476246ac18ae06')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-iptools() {
-  depends=('python2' 'python2-nose')
-
-  cd "$_pkgname-$pkgver"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-nose')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

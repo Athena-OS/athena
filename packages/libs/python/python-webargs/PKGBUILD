@@ -1,38 +1,29 @@
 # Credits BlackArch ( https://www.blackarch.org/ ).
 # See COPYING for license details.
 
-pkgbase=python2-webargs
-_pkgname=webargs
-pkgver=8.3.0
+pkgname=python-webargs
+_pkgname=${pkgname#python-}
+pkgver=8.6.0
 pkgrel=1
 pkgdesc='A friendly library for parsing and validating HTTP request arguments, with built-in support for popular web frameworks, including Flask, Django, Bottle, Tornado, Pyramid, webapp2, Falcon, and aiohttp.'
 arch=('any')
 url='https://pypi.org/project/webargs/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-marshmallow')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('d15e9626f716e99942a3ac2d4e643dc2bfd791e392d3c6d20dc894b1a5146717fe394bb153aa9c9c5102de9424625ad1f7759886cf078668519fe6a921d96db0')
+sha512sums=('276a32f841f77b5940eb9cd1c99f823876701b63ee9a688e53c52b0fc1f07c9e3a7988a2bb03eb1b8b22530fb632bd2287399ff2a9967f44ded42ab52a37b124')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-webargs() {
-  depends=('python2' 'python2-marshmallow' 'python2-simplejson')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-marshmallow')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

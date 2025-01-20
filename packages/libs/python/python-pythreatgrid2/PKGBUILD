@@ -2,46 +2,39 @@
 # See COPYING for license details.
 
 pkgname=python-pythreatgrid2
-_pkgname=pythreatgrid2
+_pkgname=${pkgname#python-}
 pkgver=5.3521e34
 pkgrel=5
 pkgdesc='Python library to request crt.sh certificate information.'
 arch=('any')
 url='https://pypi.org/project/pythreatgrid2/#files'
 license=('Apache-2.0')
-makedepends=('git' 'python2-setuptools' 'python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("git+https://github.com/Te-k/$_pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
 
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
-
 
 build() {
-  cd "$_pkgname-2"
-  cd "$srcdir/$_pkgname"
-  python setup.py build
-}
+  cd $_pkgname
 
-package_python2-pythreatgrid2() {
-  depends=('python2' 'python2-requests')
-
-  cd "$_pkgname-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
-
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests')
-
   cd $_pkgname
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

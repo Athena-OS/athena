@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-slowaes
-_pkgname=slowaes
+_pkgname=${pkgname#python-}
 pkgver=0.1a1
 pkgrel=10
 pkgdesc='Implementation of AES in Python.'
 arch=('any')
 url='https://pypi.org/project/slowaes/#files'
 license=('Apache-2.0')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('09126a6cf2a0da27c45b12d25c3a9147f47448311f9e36b6db2aa62d8b85f3fdf66f10f8f5d84edf48cde7f6c766d9ed384832f9ca0e28f95104149a7f424d95')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-slowaes() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

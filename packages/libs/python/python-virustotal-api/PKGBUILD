@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-virustotal-api
-_pkgname=virustotal-api
+_pkgname=${pkgname#python-}
 pkgver=1.1.11
 pkgrel=5
 pkgdesc='Virus Total Public/Private/Intel API.'
 arch=('any')
 url='https://pypi.org/project/virustotal-api/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('af29d4f5600753fc7d07a7a0b2846463dc484c4068151844fdbdc8a9c949556b1f4849175f7a4d0bce20cfd37a419f7f000aa5235003716a31dd9cf1899e2991')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-virustotal-api() {
-  depends=('python2' 'python2-requests')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

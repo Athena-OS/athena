@@ -2,42 +2,30 @@
 # See COPYING for license details.
 
 pkgname=python-terminaltables
-_pkgbase=${pkgbase#python-}
+_pkgname=${pkgname#python-}
 pkgver=3.1.10
 pkgrel=1
 pkgdesc='Generate simple tables in terminals from a nested list of strings.'
 arch=('any')
 url='https://github.com/Robpol86/terminaltables'
 license=('MIT')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz"
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
         'python-3.8.patch')
 sha512sums=('a5bd30116cb0eb05c859860f40590c05a5ee8067436e09724f4f08e6b7e2f91c7b704f84128f48a6c54037d6546ec8a108ed8d463f3e1a39c001d4f3382cedc4'
             '9a33ef51cbd2854bf9acc247e2d966332229446158e7dae9cad25e03335eb9689d50b0a22234285aa56c707e6e93c12f950299efcfbe7e42ed527216090592f2')
 
 build() {
-  cd "$_pkgbase-$pkgver-2"
-  cd "$srcdir/$_pkgbase-$pkgver"
-  python setup.py build
-}
+  cd "$_pkgname-$pkgver"
 
-package_python2-terminaltables() {
-  depends=('python2')
-
-  cd "$_pkgbase-$pkgver-2"
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
+  cd "$_pkgname-$pkgver"
 
-  cd "$_pkgbase-$pkgver"
-
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
+

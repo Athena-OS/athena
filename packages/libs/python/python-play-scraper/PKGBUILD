@@ -9,32 +9,22 @@ pkgdesc='Google Play Store application scraper.'
 arch=('any')
 url='https://pypi.org/project/play-scraper/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-beautifulsoup4' 'python-lxml'
+         'python-requests-futures')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/play_scraper-$pkgver.tar.gz")
 sha512sums=('7a2ab229f03ec598770d9caffda103a5f3d37d2aa096bca60a04eadf0e1da569a0c988ef6edba3502449db5d441f6f163b525b98a70c74adcd570abb7fe34db2')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-play-scraper() {
-  depends=('python2' 'python2-beautifulsoup4' 'python2-lxml'
-           'python2-requests-futures')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-beautifulsoup4' 'python-lxml'
-           'python-requests-futures')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

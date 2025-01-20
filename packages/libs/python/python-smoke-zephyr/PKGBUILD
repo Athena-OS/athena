@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-smoke-zephyr
-_pkgname=smoke-zephyr
+_pkgname=${pkgname#python-}
 pkgver=2.0.1
 pkgrel=3
 pkgdesc='This project provides a collection of miscellaneous Python utilities.'
 arch=('any')
 url='https://pypi.org/project/smoke-zephyr/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('6db369887b08e3fcfaa8294a76ea99b80505da25649f0013ba663d7fd145e7b2f078e3fc139c37fdc1100aa2a7d3f25e66e45f5ca612dbf5f432fb9e1982ccc0')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-smoke-zephyr() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

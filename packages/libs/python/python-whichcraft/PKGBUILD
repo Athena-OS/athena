@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-whichcraft
-_pkgname=whichcraft
+_pkgname=${pkgname#python-}
 pkgver=0.6.1
 pkgrel=5
 pkgdesc='This package provides cross-platform cross-python shutil.which functionality.'
 arch=('any')
 url='https://pypi.python.org/pypi/whichcraft/'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('85075289ae5cacb8f45a23776fcbbef3f62a4d8bdf110e1d3f9f25fb4ba44117c459d5f42dec7fd7f5c9680963d6aa1c1e31fc5b9fbe6127395698468f8d77fb')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-whichcraft() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

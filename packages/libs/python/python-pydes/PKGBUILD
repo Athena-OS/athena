@@ -9,8 +9,9 @@ pkgdesc='Pure python implementation of DES and TRIPLE DES encryption algorithm.'
 arch=('any')
 url='https://pypi.org/project/pyDes/#files'
 license=('custom:Public Domain')
-makedepends=('python2-setuptools' 'python-setuptools' 'python2-pip' 'python-pip'
-             'python2-wheel' 'python-wheel')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
         'LICENSE')
 sha512sums=('9d2a048dd6f629713d93d5cfcf5eaccb45a28fd3942f6837baf492bc6d9f0fcd16a1611e467231e9abfa6756d1684b0848c2190195e9e772bed2e6574327885c'
@@ -19,21 +20,13 @@ sha512sums=('9d2a048dd6f629713d93d5cfcf5eaccb45a28fd3942f6837baf492bc6d9f0fcd16a
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pydes() {
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-
-  install -Dm 644 ../LICENSE \
-    "$pkgdir/usr/share/licenses/${pkgname[0]}/LICENSE"
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 ../LICENSE \
     "$pkgdir/usr/share/licenses/${pkgname[1]}/LICENSE"

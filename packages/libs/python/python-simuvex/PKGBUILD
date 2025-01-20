@@ -2,37 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-simuvex
-_pkgname=simuvex
+_pkgname=${pkgname#python-}
 pkgver=7.7.9.8
 pkgrel=7
 pkgdesc='A symbolic execution engine for the VEX IR.'
 arch=('any')
 url='https://pypi.org/project/simuvex/#files'
 license=('custom:unknown')
-makedepends=('python-setuptools')
+depends=('python' 'python-pyvex' 'python-archinfo' 'python-claripy'
+         'python-cooldict' 'python-ana' 'python-bintrees' 'python-dpkt')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('dfec36635449b7b1b4f4541d639101cc7c63fe3a3be337da6a62e41801513a592ac3909ff9a0e35cc40093cc233ce2af8883c26c04a625cdb04157fc29922597')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-simuvex() {
-  depends=('python2' 'python2-pyvex' 'python2-archinfo' 'python2-claripy'
-           'python2-cooldict' 'python2-ana' 'python2-bintrees' 'python2-dpkt')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-pyvex' 'python-archinfo' 'python-claripy'
-           'python-cooldict' 'python-ana' 'python-bintrees' 'python-dpkt')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

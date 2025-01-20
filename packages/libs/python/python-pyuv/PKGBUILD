@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-pyuv
-_pkgname=pyuv
+_pkgname=${pkgname#python-}
 pkgver=1.4.0
 pkgrel=6
 pkgdesc='Python interface for libuv.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/pyuv/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'libuv')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('cfb85b933a9ffa37969fd61965abbb49189c1606f435f7924d14c7dcfd3c0ec16f45de93182e7c7de19d0ad26c770ef07b66136e9685542dbb76c22c55c5c51a')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-pyuv() {
-  depends=('python2' 'libuv')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'libuv')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

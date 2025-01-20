@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-steganography
-_pkgname=steganography
+_pkgname=${pkgname#python-}
 pkgver=0.1.1
 pkgrel=8
 pkgdesc='Digital image steganography of encrypted text.'
 arch=('any')
 url='https://pypi.org/project/steganography/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-pillow6')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('63286a9be33256f1ffb42fdc370d895b34202de5d600549214ef1ddbefd8f61bd0a991d45a08c7b6570bd8b2bf50f38467d5c16b9bbd7296361217b5f2dc999d')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-steganography() {
-  depends=('python2' 'python2-pillow6')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-
-  mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-pillow6')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

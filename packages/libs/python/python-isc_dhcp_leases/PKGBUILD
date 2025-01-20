@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-isc_dhcp_leases
-_pkgname=isc_dhcp_leases
+_pkgname=${pkgname#python-}
 pkgver=0.10.0
 pkgrel=1
 pkgdesc='Small python module for reading /var/lib/dhcp/dhcpd.leases from isc-dhcp-server.'
 arch=('any')
 license=('MIT')
 url='https://pypi.org/project/isc_dhcp_leases/'
-makedepends=('python-setuptools')
+depends=('python' 'python-six')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('6c103ad74fb3bd6254887beeac00dc572a17b43330982edac9d072d2afa22724493a4ed206ab66c4ddbfa4d4d4c8f20a74131d77ddb29e5ad19656a822caf905')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-isc_dhcp_leases() {
-  depends=('python2' 'python2-six')
-
-
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-six')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

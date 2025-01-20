@@ -2,35 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-mcafee-epo
-_pkgname=mcafee-epo
+_pkgname=${pkgname#python-}
 pkgver=1.1.0
 pkgrel=4
 pkgdesc='McAfee ePolicy Orchestrator API client.'
 arch=('any')
 url='https://pypi.org/project/mcafee-epo/#files'
 license=('BSD')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('1cae342983017d243b5d3e538e9b7e2180091325e215b63cb5bd61da7807499f7942d1024d30d73bdbe22d2297c260759e6cca1843c5cc913b6046e90e7c2bac')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-mcafee-epo() {
-  depends=('python2' 'python2-requests')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-requests')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

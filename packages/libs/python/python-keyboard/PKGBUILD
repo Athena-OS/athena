@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-keyboard
-_pkgname=keyboard
+_pkgname=${pkgname#python-}
 pkgver=0.13.5
 pkgrel=4
 pkgdesc='Hook and simulate keyboard events on Windows and Linux.'
-url='https://pypi.org/project/keyboard/#files'
 arch=('any')
+url='https://pypi.org/project/keyboard/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
 sha512sums=('e20e2dd8040f8ada62fd2e2aa6cefedadf6359f4ab9752cea8cdb2c21b0a0acd9a563d7e5dbee1b596bff44a8999703999740335911c2da614a1dab065827f71')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-keyboard() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

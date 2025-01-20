@@ -9,30 +9,21 @@ pkgdesc='Parsing and pattern matching made easy.'
 arch=('any')
 url='https://pypi.python.org/pypi/parsley/'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://pypi.python.org/packages/06/52/cac2f9e78c26cff8bb518bdb4f2b5a0c7058dec7a62087ed48fe87478ef0/$_pkgname-$pkgver.tar.gz")
 sha512sums=('b87ebc44796e8511ad113f06d7bd4ebfec0161cfc8cd4d1db214da821ff61884328931ab39fdf34d33df5c9e803a1c3f5ac31e7ede176262f54b8b0a9cf3818b')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-parsley() {
-  depends=('python2')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

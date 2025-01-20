@@ -2,37 +2,29 @@
 # See COPYING for license details.
 
 pkgname=python-symath
-_pkgname=symath
+_pkgname=${pkgname#python-}
 pkgver=0.1.25
 pkgrel=10
 pkgdesc='Symbolic mathematics for Python.'
 arch=('any')
 url='https://pypi.org/project/symath/#files'
 license=('custom:unknown')
-makedepends=('python-setuptools')
+depends=('python' 'python-numpy' 'python-matplotlib' 'python-pydot'
+         'python-scipy' 'python-pyparsing')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('050b1b98d678affd1f3a7305c9cc04e042d104e7eaaaca1c4b88e044184ab1f2f96f4925e6f015e8391774a055ba69f1144b65b0fe400b767f5866c77beebd01')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-symath() {
-  depends=('python2' 'python2-numpy' 'python2-matplotlib' 'python2-pydot'
-           'python2-scipy' 'python2-pyparsing')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-numpy' 'python-matplotlib' 'python-pydot'
-           'python-scipy' 'python-pyparsing')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

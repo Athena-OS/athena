@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-telepot
-_pkgname=telepot
+_pkgname=${pkgname#python-}
 pkgver=12.7
 pkgrel=7
 pkgdesc='Python framework for Telegram Bot API.'
 arch=('any')
 url='https://pypi.org/project/telepot/#files'
 license=('MIT')
-makedepends=('python-setuptools')
+depends=('python' 'python-urllib3')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('ea4b2278f9c267a8ec79733283081e3e24be25e7bdde6a1c9226a84aac1e918fd069d4db185402d009cfd8d820696c76411e75f33bbf5b178f2a737f7064044f')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-telepot() {
-  depends=('python2' 'python2-urllib3')
-
-
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-urllib3')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 \
-    --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

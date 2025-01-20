@@ -2,30 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-libbde-python
-_pkgbase=${pkgbase#python-}
-pkgver=20220807
+_pkgname=${pkgname#python-}
+pkgver=20240502
 pkgrel=1
 pkgdesc='Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes.'
 arch=('x86_64' 'aarch64')
 url='https://pypi.org/project/libbde-python/#files'
 license=('LGPL-3.0-or-later')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz")
-sha512sums=('e01c107ef8eaa2b021d9f0fc07d0c172f098f12fe18c6c015c7b109d9bb43f4767685452c3125f1bf3987c35e4c02e8e17f4673d648c449cab3c4a4987e710c9')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('4708554a3a594428005b568907cedea4b0491257c5e33e26053ab50615da43bc49f4df9cb753f488f9fd3d9aabef1a3fab43c0c4116d48627a6995d477e1a4a9')
 
-package_python2-libbde-python() {
-  depends=('python2')
-
+build() {
   cd "libbde-$pkgver"
 
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python')
-
   cd "libbde-$pkgver"
 
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

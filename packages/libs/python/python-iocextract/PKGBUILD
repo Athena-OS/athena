@@ -2,37 +2,28 @@
 # See COPYING for license details.
 
 pkgname=python-iocextract
-_pkgname=iocextract
+_pkgname=${pkgname#python-}
 pkgver=1.16.1
 pkgrel=1
 pkgdesc='Defanged Indicator of Compromise (IOC) Extractor.'
 arch=('any')
 url='https://pypi.org/project/iocextract/#files'
 license=('GPL-1.0-or-later')
-makedepends=('python-setuptools')
+depends=('python' 'python-ipaddress' 'python-regex')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('3f359758f6ebab7144071b88ca8d5dc972a6a0903ae409eb10e5ea7bb2b635e00466dc5ec78e8d9d7fa24bf4942939e6d952f7c31bc3772bc33b97bdd43815fc')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
-}
-
-package_python2-iocextract() {
-  depends=('python2' 'python2-ipaddress' 'python2-regex')
-
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
-
-  mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/${_pkgname}2"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  depends=('python' 'python-ipaddress' 'python-regex')
-
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
