@@ -5,7 +5,7 @@ pkgname=python-proxy-db
 _pkgname=${pkgname#python-}
 _pyver=3.13
 pkgver=0.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc='Manage free and private proxies on local db for Python Projects.'
 arch=('any')
 url='https://pypi.org/project/proxy-db/#files'
@@ -27,5 +27,7 @@ package() {
   cd "$_pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  rm -rf "$pkgdir/usr/lib/python$_pyver/site-packages/tests"
 }
 
