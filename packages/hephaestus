@@ -146,12 +146,11 @@ build_package() {
         fi
         build_status="Done"
 
-        sign_package
-
         # A PKGBUILD could contain more than one package (i.e., python- packages)
         for pname in "${pkgname[@]}"; do
             pfile="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
             installed_size="$(pacman -Qip $pfile | grep 'Installed Size' | awk '{print $4, $5}')"
+            sign_package
             echo -e "${G}Moving $pfile to $out_dir${W}"
             cp -f $pfile* $out_dir
             rm -f $pfile*
@@ -205,9 +204,9 @@ sign_package() {
         fi
 
         if [ -n "$passphrase" ]; then
-            for pfile in "${pkgfile[@]}"; do
-                echo "Creating $pfile.sig"
-                echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pfile.sig $pfile
+            for filename in "${pfile[@]}"; do
+                echo "Creating $filename.sig"
+                echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $filename.sig $filename
             done
         else
             echo "Error: 'PASSPHRASE' environment variable not set."
