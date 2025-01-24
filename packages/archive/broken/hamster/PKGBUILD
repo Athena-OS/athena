@@ -2,8 +2,8 @@
 # See COPYING for license details.
 
 pkgname=hamster
-pkgver=2.0.0
-pkgrel=16
+pkgver=3.745b185
+pkgrel=1
 groups=('role-redteamer' 'athena' 'athena-exploitation')
 pkgdesc='Tool for HTTP session sidejacking.'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,19 @@ url='http://hamster.erratasec.com/'
 license=('GPL-1.0-or-later')
 depends=('libpcap')
 makedepends=(unzip)
-source=("http://www.clshack.it/nopaste/$pkgname-$pkgver.zip")
-sha512sums=('fc1a3e221399cb451c3a4e41b887421cf5a319db')
+source=("git+https://github.com/robertdavidgraham/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
 
 prepare() {
   # execvp looks for commands in PATH
