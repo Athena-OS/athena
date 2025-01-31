@@ -1,0 +1,127 @@
+name: Build Virtual Machine Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # You can change this to another runner (e.g., `macos-latest`, `windows-latest`)
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged  # Needed for hwclock
+    env:
+      IMAGE_NAME: 'athena-amd64' # Note that "image" name should contain the architecture string
+
+    strategy:
+      fail-fast: false  # Ensure all matrix jobs continue even if one fails
+      matrix:
+        config_installer:
+          - { desktop: "gnome", displaymanager: "Astronaut", theme: "temple", terminal: "gnome terminal", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (GNOME)", config_file: "arch.json", installer: "aegis-arch" }
+
+    name: ${{ matrix.config_installer.job_name }}  # Dynamically assign the job name based on the matrix
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Install dependencies
+      - name: Install dependencies
+        run: pacman -Syyu --noconfirm aegis grub mkinitcpio jq multipath-tools qemu-base openssh rsync sshpass 7zip
+
+      # Set environment variables (adjust these as needed)
+      - name: Set up environment variables
+        run: |
+          echo "RECIPEDIR=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+          echo "ARTIFACTDIR=$GITHUB_WORKSPACE/artifacts" >> $GITHUB_ENV
+          echo "SCRIPTSDIR=$GITHUB_WORKSPACE/scripts" >> $GITHUB_ENV
+
+      # Create the necessary directories
+      - name: Create directories
+        run: |
+          mkdir -p $ARTIFACTDIR
+
+      - name: Retrieve install configuration
+        run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/${{ matrix.config_installer.config_file }}
+
+      - name: Install Athena OS
+        run: |
+          dd if=/dev/zero of=${{env.IMAGE_NAME}}.raw bs=1M count=15360  # Create a 15GB disk image
+          parted -s ${{env.IMAGE_NAME}}.raw mklabel msdos
+          parted -s ${{env.IMAGE_NAME}}.raw mkpart primary ext4 1MiB 512MiB
+          parted -s ${{env.IMAGE_NAME}}.raw mkpart primary btrfs 512MiB 100%
+          losetup -fP ${{env.IMAGE_NAME}}.raw
+          LOOP_DEV=$(losetup -j ${{env.IMAGE_NAME}}.raw | cut -d':' -f1)
+          kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
+          ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
+          jq --arg target_disk "/dev/mapper/${LOOP_DEV#/dev/}" \
+             --arg desktop "${{ matrix.config_installer.desktop }}" \
+             --arg displaymanager "${{ matrix.config_installer.displaymanager }}" \
+             --arg theme "${{ matrix.config_installer.theme || '' }}" \
+             --arg terminal "${{ matrix.config_installer.terminal || '' }}" \
+             --arg shell "${{ matrix.config_installer.shell || '' }}" \
+             --arg browser "${{ matrix.config_installer.browser || '' }}" \
+             '.partition.device = $target_disk | .partition.mode = "EraseDisk" | .bootloader.location = $target_disk | .desktop = $desktop | .displaymanager = $displaymanager | .theme = $theme | .terminal = $terminal | .shell = $shell | .browser = $browser' \
+             ${{ matrix.config_installer.config_file }} > modified_${{ matrix.config_installer.config_file }}
+          mv modified_${{ matrix.config_installer.config_file }} ${{ matrix.config_installer.config_file }}
+
+          ${{ matrix.config_installer.installer }} config ${{ matrix.config_installer.config_file }}
+          mv ${{env.IMAGE_NAME}}.raw $ARTIFACTDIR/
+
+      - name: Generate VM image
+        run: |
+          cd $ARTIFACTDIR
+
+          info() { echo "INFO:" "$@"; }
+
+          #info "Generate ${{env.IMAGE_NAME}}.vmdk"
+          #qemu-img convert -O vmdk ${{env.IMAGE_NAME}}.raw ${{env.IMAGE_NAME}}.vmdk
+
+          #info "Generate ${{env.IMAGE_NAME}}.ovf"
+          #$SCRIPTSDIR/generate-ovf.sh ${{env.IMAGE_NAME}}.vmdk
+
+          #info "Generate ${{env.IMAGE_NAME}}.mf"
+          #$SCRIPTSDIR/generate-mf.sh ${{env.IMAGE_NAME}}.ovf ${{env.IMAGE_NAME}}.vmdk
+
+          #info "Generate ${{env.IMAGE_NAME}}.ova"
+          #tar -cvf ${{env.IMAGE_NAME}}.ova ${{env.IMAGE_NAME}}.ovf ${{env.IMAGE_NAME}}.vmdk # ${{env.IMAGE_NAME}}.mf (Ignoring .mf file to prevent bugged VMware SHA mismatch issue: https://github.com/home-assistant/operating-system/issues/2121)
+
+
+          
+
+          info "Generate ${{env.IMAGE_NAME}}.vdi"
+          qemu-img convert -O vdi ${{env.IMAGE_NAME}}.raw ${{env.IMAGE_NAME}}.vdi
+
+          info "Generate ${{env.IMAGE_NAME}}.vbox"
+          $SCRIPTSDIR/generate-vbox.sh ${{env.IMAGE_NAME}}.vdi
+
+          info "Compress to ${{env.IMAGE_NAME}}.7z"
+          mkdir ${{env.IMAGE_NAME}}
+          mv ${{env.IMAGE_NAME}}.vdi ${{env.IMAGE_NAME}}.vbox ${{env.IMAGE_NAME}}
+          7zr a -sdel -mx=9 ${{env.IMAGE_NAME}}.7z ${{env.IMAGE_NAME}}
+
+          echo "Creating checksums for : ${{env.IMAGE_NAME}}.7z"
+          echo
+          echo "Building md5sum"
+          echo "########################"
+          md5sum ${{env.IMAGE_NAME}}.ova | tee ${{env.IMAGE_NAME}}.7z.md5
+          echo
+          echo "Building sha1sum"
+          echo "########################"
+          sha1sum ${{env.IMAGE_NAME}}.ova | tee ${{env.IMAGE_NAME}}.7z.sha1
+          echo
+          echo "Building sha256sum"
+          echo "########################"
+          sha256sum ${{env.IMAGE_NAME}}.ova | tee ${{env.IMAGE_NAME}}.7z.sha256
+          echo
+          echo "Building sha512sum"
+          echo "########################"
+          sha512sum ${{env.IMAGE_NAME}}.ova | tee ${{env.IMAGE_NAME}}.7z.sha512
+   
+      - name: Upload to Athena OS Mirror
+        run: |
+          cd $ARTIFACTDIR
+          #sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" ${{env.IMAGE_NAME}}.ova ${{env.IMAGE_NAME}}.ova.md5 ${{env.IMAGE_NAME}}.ova.sha1 ${{env.IMAGE_NAME}}.ova.sha256 ${{env.IMAGE_NAME}}.ova.sha512 ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena-images/rolling/
+          sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" ${{env.IMAGE_NAME}}.7z ${{env.IMAGE_NAME}}.7z.md5 ${{env.IMAGE_NAME}}.7z.sha1 ${{env.IMAGE_NAME}}.7z.sha256 ${{env.IMAGE_NAME}}.7z.sha512 ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena-images/rolling/
