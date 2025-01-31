@@ -1,10 +1,10 @@
 pkgname=athena-win-kex
 pkgver=10.a9cfff9
-pkgrel=1
+pkgrel=2
 pkgdesc="Win Kex for Athena"
 arch=('any')
 license=('GPL-3.0-or-later')
-depends=('dbus' 'pulseaudio' 'pulseaudio-module-xrdp' 'tigervnc' 'xrdp')
+depends=('dbus' 'pulseaudio' 'pulseaudio-module-xrdp-git' 'tigervnc' 'xrdp')
 makedepends=('git')
 install=$pkgname.install
 source=("git+https://github.com/Athena-OS/athena-win-kex")
