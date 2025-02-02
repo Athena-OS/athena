@@ -2,7 +2,7 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 
 pkgname=athena-hyprland-config
-pkgver=2.9.7.4
+pkgver=2.9.7.4.r61.g230946e
 pkgrel=1
 pkgdesc='The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions.'
 arch=('any')
@@ -31,7 +31,6 @@ depends=(
     'hyprlock'
     'hypridle'
     'noto-fonts'
-    'xdg-desktop-portal'
     'xdg-desktop-portal-hyprland' 
     'libnotify' 
     'dunst'
@@ -39,35 +38,97 @@ depends=(
     'qt5-wayland' 
     'qt6-wayland'
     'uwsm'
+    'fastfetch'
+    'xdg-desktop-portal-gtk'
+    'eza' 
+    'python-pip' 
+    'python-gobject'
+    'python-screeninfo'
+    'tumbler' 
+    'brightnessctl'
+    'nm-connection-editor'
+    'network-manager-applet'
+    'gtk4'
+    'libadwaita'
+    'fuse2'
+    'imagemagick'
+    'jq'
+    'xclip'    
+    'firefox'
+    'neovim'
+    'htop'
+    'nautilus'
+    'nautilus-open-any-terminal'
+    'python-pywal'
+    'blueman'
+    'grim' 
+    'slurp'
+    'cliphist'
+    'nwg-look'
+    'qt6ct'
+    'waybar' 
+    'rofi-wayland'
+    'polkit-gnome'
+    'zsh'
+    'zsh-completions'
+    'fzf'
+    'pavucontrol' 
+    'papirus-icon-theme'
+    'breeze'
+    'flatpak'
+    'swaync'
+    'gvfs'
+    'wlogout'
+    'pinta'
+    'gnome-text-editor'
+    'gnome-calculator'
+    'waypaper'
+    'grimblast-git'
+    'bibata-cursor-theme'
+    'pacseek'
+    'otf-font-awesome' 
+    'ttf-fira-sans' 
+    'ttf-fira-code' 
+    'ttf-firacode-nerd'
+    'nwg-dock-hyprland'
+    'oh-my-posh-bin'
 )
 conflicts=('ml4w-hyprland' 'ml4w-hyprland-git')
-makedepends=()
-source=("${pkgname}-${pkgver}::https://github.com/mylinuxforwork/dotfiles/archive/refs/tags/${pkgver}.tar.gz")
+makedepends=(git)
+source=("${pkgname}::git+https://github.com/mylinuxforwork/dotfiles.git")
 md5sums=('SKIP')
+
+pkgver() {
+
+    #version
+    cd "$pkgname"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
+}
 
 package() {
 
     # share
 	install -dm 755 ${pkgdir}/usr/share/ml4w-hyprland
-	cp -r ${srcdir}/dotfiles-${pkgver}/share/. ${pkgdir}/usr/share/ml4w-hyprland
+	cp -r ${srcdir}/${pkgname}/share/. ${pkgdir}/usr/share/ml4w-hyprland
 
     # lib
 	install -dm 755 ${pkgdir}/usr/lib/ml4w-hyprland
-	cp -r ${srcdir}/dotfiles-${pkgver}/lib/. ${pkgdir}/usr/lib/ml4w-hyprland
+	cp -r ${srcdir}/${pkgname}/lib/. ${pkgdir}/usr/lib/ml4w-hyprland
 
     # bin
-    install -Dm 755 ${srcdir}/dotfiles-${pkgver}/bin/ml4w-hyprland-setup ${pkgdir}/usr/bin/ml4w-hyprland-setup
+    install -Dm 755 ${srcdir}/${pkgname}/bin/ml4w-hyprland-setup ${pkgdir}/usr/bin/ml4w-hyprland-setup
 
     # license
-    install -Dm 755 ${srcdir}/dotfiles-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm 755 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
     # doc
-    install -Dm 755 ${srcdir}/dotfiles-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+    install -Dm 755 ${srcdir}/${pkgname}/README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 
     # message
     echo
-    echo ":: ML4W Dotfiles ${pkgver} for Hyprland - Main Release"
-    echo ":: ---------------------------------------------------"
+    echo ":: ML4W Dotfiles 2.9.8BETA2 for Hyprland - Rolling Release"
+    echo ":: ------------------------------------------------------"
     echo ":: Please execute the command ml4w-hyprland-setup when the installation is complete."
     echo ":: You can start Hyprland already with command Hyprland or from your display manager."
     echo
