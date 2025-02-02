@@ -1,10 +1,5 @@
 name: Build Virtual Machine Image
 
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build:
     runs-on: ubuntu-latest  # You can change this to another runner (e.g., `macos-latest`, `windows-latest`)
