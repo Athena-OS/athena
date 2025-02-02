@@ -1,4 +1,9 @@
 name: Build Virtual Machine Image
+on:
+  # push:
+  workflow_dispatch:
+  #schedule:
+  #   - cron:  '0 0 */7 * *'
 
 jobs:
   build:
