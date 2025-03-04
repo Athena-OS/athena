@@ -1,6 +1,6 @@
 pkgname=athena-firefox-config
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Mozilla Firefox configuration for Athena."
 arch=('any')
 license=("custom")
@@ -16,4 +16,4 @@ package() {
   install -Dm644 "${srcdir}/psd.conf" "${pkgdir}/etc/skel/.config/psd/"
 }
 sha512sums=('07a7f0b209770ef38541041e57af1281fa553c051b22f7256498f9afad16efaf0f058b02c346cc9403f99f9e161c5535ff3a1143b6b01d8a832a3eb8cd2c6798'
-            '6612d88c4c0fd4131be2dcad80d92a3ffac319f5c81c49add490acedc0deddc1a96088ef988da77f6991b232626b9e3c667c39b8f62b4d4ba421f87f5ce35663')
+            '5a1756f71ae15aa5a692be0eb8a581f61344cef4c9e92a933999abcc5fba4924aee7e68d6f2a91184ea1872115c535ef39641ed59421f1e66e7dc7209fa58f77')
