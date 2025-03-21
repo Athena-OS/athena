@@ -6,11 +6,11 @@ from gi.repository import Gtk
 # list of tuples for each variable, containing the environment variable name, its path, and the security category
 variable_list = [
     ("$PAYLOADS", "/usr/share/payloads", "Generic"),
-    ("$AUTOWORDLISTS", "$PAYLOADS/Auto_Wordlists", "Generic"),
+    ("$AUTOWORDLISTS", "$PAYLOADS/autowordlists", "Generic"),
     ("$FUZZDB", "$PAYLOADS/FuzzDB", "Generic"),
-    ("$PAYLOADSALLTHETHINGS", "$PAYLOADS/PayloadsAllTheThings", "Generic"),
-    ("$SECLISTS", "$PAYLOADS/SecLists", "Generic"),
-    ("$SECURITYWORDLIST", "$PAYLOADS/Security-Wordlist", "Generic"),
+    ("$PAYLOADSALLTHETHINGS", "$PAYLOADS/payloadsallthethings", "Generic"),
+    ("$SECLISTS", "$PAYLOADS/seclists", "Generic"),
+    ("$SECURITYWORDLIST", "$PAYLOADS/security-wordlist", "Generic"),
     ("$MIMIKATZ", "/usr/share/windows/mimikatz", "Post Exploitation"),
     ("$POWERSPLOIT", "/usr/share/windows/powersploit", "Post Exploitation"),
     ("$DIRBIG", "$SECLISTS/Discovery/Web-Content/directory-list-2.3-big.txt", "Web Analysis"),
