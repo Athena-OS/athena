@@ -1,0 +1,70 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=kando-bin
+_pkgname=Kando
+pkgver=1.8.0
+_electronversion=31
+pkgrel=1
+pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.(Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
+url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
+_ghurl="https://github.com/kando-menu/kando"
+license=("MIT")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    "electron${_electronversion}"
+    'xdg-utils'
+)
+optdepends=(
+    'kde-cli-tools'
+    'gnome-browser-connector'
+    'trash-cli'
+    'gvfs'
+    'alsa-lib'
+    'pulseaudio'
+)
+options=(
+    '!strip'
+    '!emptydirs'
+)
+source=(
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver}/LICENSE.md"
+    "${pkgname%-bin}.sh"
+    "config.json"
+    "menus.json"
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
+sha512sums=('046d3429e40271479fcdd731c793ea9c20533d1be46701ced689925778b8949f0b87f4b1b1d0f231428f4524141c9e4c885be632e382a538f6cca25137cec3a1'
+            '3578476802bbcd6680830bd3853e76c4999bed73fce55ff955baf82cee24204c8b5639ff3e2ca915147caed1ddf9d8380923ca37bf80c138e524da2456dfe0cf'
+            '81064df4033091749b989a1be6c2be4ebc1fa63ab59c893cfb9ce806c0da9c8b531e3c218561909568444fe41d1592722ef7f5dd53e7f9159e4cf6e49659656b'
+            'b3966fdb6622f84d05cc47a2c49269400d408572af655d59becede327c53ef634c2a018223bf5dd37a9d0dd66652bb5180bdfc884c132cf487c4a5bdc2c96f39')
+sha512sums_aarch64=('6584bf1c72a457600931d3992be80f454338fbf7e61d08e9db91dc899f38f2f1965a13a105534c134cd766b01be67925d7e2ff9156ed6af17416f6cfafd3a115')
+sha512sums_x86_64=('9e4467719f89ba83a3bccf44f3800be326f33fa622ecadedec7ceafbd2c21eafa07565152ab0eb5fb40593058f053a903aa32c48e626994344efbfb8a4b52c21')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " "${srcdir}/${pkgname%-bin}.sh"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -dm755 "${pkgdir}/etc/skel/.config/${pkgname%-bin}"
+    install -dm755 "${pkgdir}/etc/xdg/autostart"
+    install -dm755 "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "config.json" "${pkgdir}/etc/skel/.config/${pkgname%-bin}/config.json"
+    install -Dm644 "menus.json" "${pkgdir}/etc/skel/.config/${pkgname%-bin}/menus.json"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -dm755 "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes"
+    ln -s "/usr/share/icons/hicolor" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/hicolor"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/etc/xdg/autostart"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
