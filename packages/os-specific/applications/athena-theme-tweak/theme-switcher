@@ -18,7 +18,7 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-chosen_theme="$1"
+chosen_theme="${1,,}"
 detect_virt=$(systemd-detect-virt)
 
 # Remove directories
@@ -28,7 +28,7 @@ rm -rf "$HOME/.config/gtk-4.0"
 # Create the gtk-4.0 directory
 mkdir -p "$HOME/.config/gtk-4.0"
 
-if [ "$chosen_theme" == "Akame" ]; then
+if [ "$chosen_theme" == "akame" ]; then
     THEME="Nightfox-Dark"
     GNOME_SHELL="Nightfox-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -38,7 +38,7 @@ if [ "$chosen_theme" == "Akame" ]; then
     CODIUM_THEME="red-blood"
     KITTY_THEME="CrayonPonyFish.conf"
     TMUX_THEME="redwine"
-elif [ "$chosen_theme" == "Cyborg" ]; then
+elif [ "$chosen_theme" == "cyborg" ]; then
     THEME="Gruvbox-Dark"
     GNOME_SHELL="Gruvbox-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -48,7 +48,7 @@ elif [ "$chosen_theme" == "Cyborg" ]; then
     CODIUM_THEME="Gruvbox Material Dark"
     KITTY_THEME="gruvbox_dark.conf"
     TMUX_THEME="gold"
-elif [ "$chosen_theme" == "Graphite" ]; then
+elif [ "$chosen_theme" == "graphite" ]; then
     THEME="Graphite-Rimless-Dark"
     GNOME_SHELL="Graphite-Rimless-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -58,7 +58,7 @@ elif [ "$chosen_theme" == "Graphite" ]; then
     CODIUM_THEME="Just Black"
     KITTY_THEME="Atom.conf"
     TMUX_THEME="snow"
-elif [ "$chosen_theme" == "HackTheBox" ]; then
+elif [ "$chosen_theme" == "hackthebox" ]; then
     THEME="Matrix-Dark"
     GNOME_SHELL="Matrix-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -68,7 +68,7 @@ elif [ "$chosen_theme" == "HackTheBox" ]; then
     CODIUM_THEME="Hack The Box"
     KITTY_THEME="Box.conf"
     TMUX_THEME="forest"
-elif [ "$chosen_theme" == "Samurai" ]; then
+elif [ "$chosen_theme" == "samurai" ]; then
     THEME="Tokyonight-Dark"
     GNOME_SHELL="Tokyonight-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -78,7 +78,7 @@ elif [ "$chosen_theme" == "Samurai" ]; then
     CODIUM_THEME="Tokyo Night Storm"
     KITTY_THEME="Tokyo_Night_Storm.conf"
     TMUX_THEME="sky"
-elif [ "$chosen_theme" == "Sweet" ]; then
+elif [ "$chosen_theme" == "sweet" ]; then
     THEME="Sweet-Dark-v40"
     GNOME_SHELL="Sweet-Dark-v40"
     COLOR_SCHEMA="prefer-dark"
@@ -88,7 +88,7 @@ elif [ "$chosen_theme" == "Sweet" ]; then
     CODIUM_THEME="Radical"
     KITTY_THEME="AdventureTime.conf"
     TMUX_THEME="violet"
-elif [ "$chosen_theme" == "Temple" ]; then
+elif [ "$chosen_theme" == "temple" ]; then
     THEME="Tokyonight-Dark"
     GNOME_SHELL="Tokyonight-Dark"
     COLOR_SCHEMA="prefer-dark"
