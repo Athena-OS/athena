@@ -1,13 +1,13 @@
 pkgname=athena-theme-tweak
-pkgver=1.0.8
-pkgrel=3
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Athena Theme Tweak Tool."
 arch=('any')
 license=("custom")
 source=("theme-switcher"
         "$pkgname.py")
-sha512sums=('3013b7f80aa9b3663c51253b2699dd0abdf3c0f5c5d044755b7f3a2676ffe6fc6b26404781c380f5734c6faa3466541d30a4d358e5d0f7a6143858f8cbd4cf91'
-            '864d213c746af57323920f558bad1083a4295ee67613c03b6c37518468b4c915e9cb55ca8254a346d8d2ab373fcc9f1d636d256b21372b28626cdd5524b8e01a')
+sha512sums=('e90b262897d1bbaebdcd7830a6d133d0a45f1cbbd54a1e1c13b7b625052bd745f727b90e28c3c1180f3dad5734c92e04ce2851aafb80c372a7e4bb86e3f4144e'
+            '0ee1c5c842b37e169fc11b6974666a07d98bf4958e1dc43fc23f5aa696d39a75b2e47189b5366ff89532e3c72bb11ac8686290cc61f15fd3dde06f6432ac48d6')
 
 package() {
 

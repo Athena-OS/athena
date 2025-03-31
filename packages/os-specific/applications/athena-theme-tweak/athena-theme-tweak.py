@@ -66,7 +66,7 @@ def arg_parse():
     parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "foot", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
-    parser.add_argument("-t", "--theme", choices=["AkameGaKill", "Cyborg", "Graphite", "HackTheBox", "SamuraiGirl", "SweetDark", "Temple"], help="specify an Athena theme to be set [AkameGaKill|Cyborg|Graphite|HackTheBox|SamuraiGirl|SweetDark|Temple]")
+    parser.add_argument("-t", "--theme", choices=["Akame", "Cyborg", "Graphite", "HackTheBox", "Samurai", "Sweet", "Temple"], help="specify an Athena theme to be set [Akame|Cyborg|Graphite|HackTheBox|Samurai|Sweet|Temple]")
     
 
     args = parser.parse_args()
@@ -84,12 +84,12 @@ def help():
    print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|urxvt|xterm]")
    print("-h, --help                    show this help message and exit")
    print("-l, --list                    list all available Athena themes")
-   print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|Cyborg|Graphite|HackTheBox|SamuraiGirl|SweetDark|Temple]")
+   print("-t, --theme <theme-name>      specify an Athena theme to be set [Akame|Cyborg|Graphite|HackTheBox|Samurai|Sweet|Temple]")
    print("\n")
    print("Usage Examples:")
    print("athena-theme-tweak -l")
    print("athena-theme-tweak -e alacritty")
-   print("athena-theme-tweak -t SamuraiGirl")
+   print("athena-theme-tweak -t Samurai")
    print("athena-theme-tweak -b")
 
 def print_banner():
@@ -128,12 +128,12 @@ browser_map = {
 }
 
 theme_map = {
-    "AkameGaKill": "athena-akame-theme",
+    "Akame": "athena-akame-theme",
     "Cyborg": "athena-cyborg-theme",
     "Graphite": "athena-graphite-theme",
     "HackTheBox": "athena-htb-theme",
-    "SamuraiGirl": "athena-samurai-theme",
-    "SweetDark": "athena-sweetdark-theme",
+    "Samurai": "athena-samurai-theme",
+    "Sweet": "athena-sweetdark-theme",
     "Temple": "athena-temple-theme"
 }
 

@@ -2,7 +2,7 @@
 
 # Check if the number of command-line arguments is correct
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <chosen_theme> AkameGaKill|Cyborg|Graphite|HackTheBox|SamuraiGirl|SweetDark|Temple"
+    echo "Usage: $0 <chosen_theme> Akame|Cyborg|Graphite|HackTheBox|Samurai|Sweet|Temple"
     exit 1
 fi
 
@@ -16,7 +16,7 @@ rm -rf "$HOME/.config/gtk-4.0"
 # Create the gtk-4.0 directory
 mkdir -p "$HOME/.config/gtk-4.0"
 
-if [ "$chosen_theme" == "AkameGaKill" ]; then
+if [ "$chosen_theme" == "Akame" ]; then
     theme_name="Nightfox-Dark"
     gnome_shell="Nightfox-Dark"
     color_scheme="prefer-dark"
@@ -76,7 +76,7 @@ elif [ "$chosen_theme" == "HackTheBox" ]; then
     topbarmaterialscheme="finale"
     topbariconscheme="dark"
     musicbarscheme="#9fef00"
-elif [ "$chosen_theme" == "SamuraiGirl" ]; then
+elif [ "$chosen_theme" == "Samurai" ]; then
     theme_name="Tokyonight-Dark"
     gnome_shell="Tokyonight-Dark"
     color_scheme="prefer-dark"
@@ -91,7 +91,7 @@ elif [ "$chosen_theme" == "SamuraiGirl" ]; then
     topbarmaterialscheme="default"
     topbariconscheme="dark"
     musicbarscheme="#6FE7FB"
-elif [ "$chosen_theme" == "SweetDark" ]; then
+elif [ "$chosen_theme" == "Sweet" ]; then
     theme_name="Sweet-Dark-v40"
     gnome_shell="Sweet-Dark-v40"
     color_scheme="prefer-dark"
@@ -122,7 +122,7 @@ elif [ "$chosen_theme" == "Temple" ]; then
     topbariconscheme="dark"
     musicbarscheme="#6FE7FB"
 else
-    echo "Please choose between the following themes: AkameGaKill, Cyborg, Graphite, HackTheBox, SamuraiGirl, SweetDark, Temple"
+    echo "Please choose between the following themes: Akame, Cyborg, Graphite, HackTheBox, Samurai, Sweet, Temple"
     exit 1
 fi
 
