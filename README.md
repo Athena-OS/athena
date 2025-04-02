@@ -84,8 +84,9 @@ Usage: ./hephaestus [-a] [-c <ncores>] [-d] [-r] [-s] [-u] [-w] [-x] [package1 p
 Options:
 -a     Build all packages.
 -c     Set number of cores for building (maximum 4).
--d     Skip all dependency checks.
+-d     Delete packages from the repository database.
 -h     Print this Help.
+-n     Skip all dependency checks.
 -r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments.
 -s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument.
 -u     Update the package repository database.
