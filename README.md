@@ -79,7 +79,7 @@ As a container, it can be run in every platform supporting Docker or Podman. It 
 
 The Athena OS CI/CD Builder
 
-Usage: ./hephaestus [-a] [-c <ncores>] [-d] [-r] [-s] [-u] [-w] [-x] [package1 package2 ...]
+Usage: ./hephaestus [-a] [-b] [-c <ncores>] [-d <package-name>] [-h] [-n] [-r] [-s] [-t] [-u] [-w] [-x] [package1 package2 ...]
 
 Options:
 -a     Build all packages.
