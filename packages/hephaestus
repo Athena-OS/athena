@@ -343,6 +343,13 @@ cnt=1
 makepkg_settings
 prebuild_command
 
+# Get user input if provided
+if [ "$#" -gt 0 ] && [[ -z "$rmdb" ]]; then
+    result=($(find_pkgbuild_dirs "$@"))
+elif [[ "$all" ]]; then
+    result=($(find_pkgbuild_dirs))
+fi
+
 # Only bump git package version
 if [[ "$bump" ]]
 then
@@ -411,18 +418,10 @@ then
         exit 1
     fi
     repo-remove --verify --sign $out_dir/athena.db.tar.gz "$@"
-    exit 1
 fi
 
 if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
     sshpass -p "$sshsec" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" "$out_dir/" "${REPOSITORY_SERVER}"
-fi
-
-# Get user input if provided
-if [ "$#" -gt 0 ]; then
-    result=($(find_pkgbuild_dirs "$@"))
-elif [[ "$all" ]]; then
-    result=($(find_pkgbuild_dirs))
 fi
 
 postbuild_command
