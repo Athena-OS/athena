@@ -418,7 +418,7 @@ if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
 fi
 
 # Get user input if provided
-if [ "$#" -gt 0 ] && [[ -z "$rmdb" ]]; then
+if [ "$#" -gt 0 ] && [[ ! "$rmdb" ]]; then
     result=($(find_pkgbuild_dirs "$@"))
 elif [[ "$all" ]]; then
     result=($(find_pkgbuild_dirs))
