@@ -411,6 +411,7 @@ then
         exit 1
     fi
     repo-remove --verify --sign $out_dir/athena.db.tar.gz "$@"
+    exit 1
 fi
 
 if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
@@ -418,7 +419,7 @@ if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
 fi
 
 # Get user input if provided
-if [ "$#" -gt 0 ] && [[ ! "$rmdb" ]]; then
+if [ "$#" -gt 0 ]; then
     result=($(find_pkgbuild_dirs "$@"))
 elif [[ "$all" ]]; then
     result=($(find_pkgbuild_dirs))
