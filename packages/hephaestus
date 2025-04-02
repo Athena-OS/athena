@@ -239,17 +239,19 @@ while getopts "abc:dhrstuwx" opt; do
             fi
             ;;
         d)
-            NODEPS="-d"
+            rmdb=true
+            rmpkg=$((OPTARG))
             ;;
         h)
-            echo "Usage: $0 [-a] [-b] [-c <ncores>] [-d] [-r] [-s] [-t] [-u] [-w] [-x] [package1 package2 ...]"
+            echo "Usage: $0 [-a] [-b] [-c <ncores>] [-d <package-name>] [-h] [-n] [-r] [-s] [-t] [-u] [-w] [-x] [package1 package2 ...]"
             echo
             echo "Options:"
             echo "-a     Build all packages."
             echo "-b     Bump git packages to the latest version."
             echo "-c     Set number of cores for building (maximum $(nproc))."
-            echo "-d     Skip all dependency checks."
+            echo "-d     Delete packages from the repository database."
             echo "-h     Print this Help."
+            echo "-n     Skip all dependency checks."
             echo "-r     Upload packages to the specified repository server."
             echo "-s     Sign packages."
             echo "-t     Test PKGBUILD on the current directory."
@@ -263,6 +265,9 @@ while getopts "abc:dhrstuwx" opt; do
             echo "$0 -a -b             --> Bump version of all git packages."
             echo "$0 -s -u             --> Update and sign the repository database."
             exit 0
+            ;;
+        n)
+            NODEPS="-d"
             ;;
         r)
             rsync=true
@@ -396,6 +401,24 @@ then
     # rm $out_dir/athena.db* $out_dir/athena.files*
     # Note that if only one package fails to be processed (i.e., packages with 0 size), athena.db won't be created
     repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
+fi
+
+if [[ "$rmdb" ]]
+then
+    echo "Invoking the key..."
+    if id "builder" >/dev/null 2>&1; then
+        user="builder"
+    else
+        user="$(whoami)"
+    fi
+
+    if [ -n "$passphrase" ]; then
+        echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0
+    else
+        echo "Error: 'PASSPHRASE' environment variable not set."
+        exit 1
+    fi
+    repo-remove --verify --sign $out_dir/athena.db.tar.gz $rmpkg
 fi
 
 if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
