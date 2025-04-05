@@ -1,6 +1,6 @@
 pkgname=athena-tweak-tool
 pkgver=5.7552982
-pkgrel=2
+pkgrel=3
 pkgdesc="Tweak Tool to manage the graphical environment in Athena OS."
 arch=('any')
 license=("GPL-3.0-or-later")
@@ -45,7 +45,7 @@ package() {
 echo "---------------------------------------------------------------------------"
 echo "[INFO]: Checking session"
 test \$(whoami) == "root" && echo "[ERROR]: Do not run this script as root." && exit 1
-test -z $DISPLAY && echo "[ERROR]: DISPLAY variable is not set." && exit 1
+test -z \$DISPLAY && echo "[ERROR]: DISPLAY variable is not set." && exit 1
 
 # check session is either one of X11, Wayland or TTY
 SESSION=\$(loginctl show-session \$(loginctl|grep \$(whoami) | awk '{print \$1}') -p Type | awk -F= '{print \$2}' | grep "x11\|wayland\|tty")
