@@ -1,0 +1,129 @@
+pkgname=athena-tweak-tool
+pkgver=5.7552982
+pkgrel=1
+pkgdesc="Tweak Tool to manage the graphical environment in Athena OS."
+arch=('any')
+license=("GPL-3.0-or-later")
+depends=('python-distro')
+makedepends=('git')
+conflicts=('athena-theme-tweak')
+source=("git+https://github.com/Athena-OS/$pkgname.git"
+        "theme-switcher")
+sha512sums=('SKIP'
+            '36f2114ffc5be5e14fc77a3d7085f8164aec4f036421b910e2b87616701f92cc5f73114eb4ab8abf28db91bfb099e8b3b712a30c83b8e7c82e4cc79d1522fda4')
+
+pkgver() {
+  cd $pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  install -dm 755 "$pkgdir/usr/share/applications"
+  install -dm 755 "$pkgdir/usr/share/polkit-1/actions"
+
+  install -Dm 755 ../theme-switcher "$pkgdir/usr/bin/"
+  install -Dm 644 athena-tweak-tool.desktop "$pkgdir/usr/share/applications/athena-tweak-tool.desktop"
+  install -Dm 644 org.athena.tweaktool.policy "$pkgdir/usr/share/polkit-1/actions/org.athena.tweaktool.policy"
+  cp -a athena-tweak-tool/* "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/usr/bin/env bash
+
+# This script should not be run as root
+# The polkit agent running on the desktop environment should prompt for root password
+
+echo "---------------------------------------------------------------------------"
+echo "[INFO]: Checking session"
+test \$(whoami) == "root" && echo "[ERROR]: Do not run this script as root." && exit 1
+test -z $DISPLAY && echo "[ERROR]: DISPLAY variable is not set." && exit 1
+
+# check session is either one of X11, Wayland or TTY
+SESSION=\$(loginctl show-session \$(loginctl|grep \$(whoami) | awk '{print \$1}') -p Type | awk -F= '{print \$2}' | grep "x11\|wayland\|tty")
+test -z "\$SESSION" && echo "[ERROR]: Failed to verify session for user, SESSION = \$SESSION" && exit 1
+
+XAUTHORITY=\$(xauth info | awk -F"Authority file:" '{print \$2}' | tr -d ' ')
+test -z "\$XAUTHORITY" && echo "[ERROR]: XAUTHORIY file is not set" && exit 1
+test -s "\$XAUTHORITY" || touch "\$XAUTHORITY"
+
+XAUTH_HONORED=\$(xauth info | awk -F"Changes honored:" '{print \$2}' | tr -d ' ')
+test \$XAUTH_HONORED = "yes" || echo "[ERROR]: Xauth changes honored = no, restart X server" || exit 1
+
+echo "[INFO]: XAUTHORITY = \$XAUTHORITY"
+echo "[INFO]: DBUS_SESSION_BUS_ADDRESS = \$DBUS_SESSION_BUS_ADDRESS"
+echo "[INFO]: DESKTOP SESSION = \$DESKTOP_SESSION"
+
+function start_in_wayland() {
+  echo "[INFO]: Starting in Wayland session"
+  xauth gen \$DISPLAY &> /dev/null
+  pkexec '/usr/share/athena-tweak-tool/athena-tweak-tool.py'
+}
+
+function start_in_x11() {
+  echo "[INFO]: Starting in X11 session"
+  pkexec '/usr/share/athena-tweak-tool/athena-tweak-tool.py'
+}
+
+function start_in_tty() {
+  echo "[INFO]: Starting in TTY session"
+  pkexec '/usr/share/athena-tweak-tool/athena-tweak-tool.py'
+}
+
+case "\$SESSION" in
+    "wayland")
+      # Wayland session, generate Xauth session cookie for \$DISPLAY
+      echo "[INFO]: Display = \$DISPLAY"
+      echo "[INFO]: Session = \$SESSION"
+      start_in_wayland
+    ;;
+    "x11")
+      # X11 session, don't do anything here
+      echo "[INFO]: Display = \$DISPLAY"
+      echo "[INFO]: Session = \$SESSION"
+
+      # just show msg on whether the Xauth session cookie is setup
+      start_in_x11
+    ;;
+    "tty")
+      # TTY session, as user may not use a display manager
+      echo "[INFO]: Display = \$DISPLAY"
+      echo "[INFO]: Session = \$SESSION"
+
+      start_in_tty
+    ;;
+    *)
+      # anything here is an unknown session, fallback to XDG_SESSION_TYPE
+      echo "[INFO]: Display = \$DISPLAY"
+      echo "[WARN]: Session could not be verified, using XDG_SESSION_TYPE"
+
+      case "\$XDG_SESSION_TYPE" in
+        "wayland")
+          start_in_wayland
+        ;;
+        "tty")
+          start_in_tty
+        ;;
+        "x11")
+          start_in_x11
+        ;;
+        *)
+          echo "[ERROR]: \$XDG_SESSION_TYPE is empty, cannot continue"
+          exit 1
+        ;;
+      esac
+    ;;
+  esac
+echo "---------------------------------------------------------------------------"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+}

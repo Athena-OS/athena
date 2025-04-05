@@ -1,12 +1,12 @@
 pkgname=athena-config
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="System configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('athena-theme-tweak' 'terminus-font')
+depends=('athena-tweak-tool' 'terminus-font')
 source=("$pkgname.tar.gz")
-sha512sums=('b22a3214fc9d652cc356485d1658b71a2f5c8d5b3b8a15e19c79c031dec077baf8f3151fdebc0d45c3324824d6370c5ba3fad8e0a58a04e82d7149a2fcfeac09')
+sha512sums=('b3697760ea38003cbebfb3401080fc4c7e1b952191ab0151848027619231be3c348cc3485e81273b584980b899f9fc831d56b2e487ea32fad4a613c0074a4cf8')
 
 package() {
   install -dm 755 "${pkgdir}/usr/bin"
