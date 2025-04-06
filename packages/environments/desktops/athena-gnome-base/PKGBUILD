@@ -1,6 +1,6 @@
 pkgname=athena-gnome-base
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME base configuration for Athena."
 arch=('any')
 license=("custom")
@@ -11,7 +11,7 @@ source=("gnome-applications.menu"
 install='gnome-base.install'
 sha512sums=('aa55e8094b5ce8113c8df2182fe3d1842c53431f5b2e2f9f5d92348a1844cfb47acc4a07ce55a3c93fcec67122e48624613e60aa957c9aced10059be3b1f5de7'
             '5d10503e9aa98aed969899d3b0383225f5f2a86ac49a6983f44dd4aca1ce5487f824c19295da32640a70146e8c6690c1aeffafb9571d08b4a752ed430f319813'
-            '47cb714317393e27d5677d14032b3083af3b3303dbd9dbed071b3766bdfb7f4c66f419f8d6719e5304cda60a2fec5944f08e76054fb9f239c7457021b19a4522')
+            'e62674b0afb9efd1489098e0ab2de663ca62b5dabf513e07a7af80947a82b4bf3755fd440d075990e83caa944f6658de9bab5d4b2cb0bff6d438c7818398d578')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel"

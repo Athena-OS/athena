@@ -13,7 +13,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
 
-         athena-theme-tweak -a
+         theme-switcher -a
 
          rm -rf "$FLAGFILE"
 

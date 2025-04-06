@@ -1,6 +1,6 @@
 pkgname=athena-cinnamon-base
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Cinnamon base configuration for Athena."
 arch=('any')
 license=("custom")
@@ -15,7 +15,7 @@ sha512sums=('4874b6b883bec819715d86a34d972a7d2726b834162096d9285a2ad22fc20b8d4a6
             '35baee57164b41da2dcf4f6565a59874e71d1031016a839f3a12c628adf413570eba015d8c76c55eb79b8582269d42142d9f9411724d9f524808e7bcf1ab24a8'
             '4ca36297c680ce28e34f6f03d4c8958e90a48aea9a03f7c7edf88bbce9bcb126bf8b2f9f9695a62d03bc2a49407059076d800f9a78720191b5e2f276d36cb000'
             '4a8545498758c510cd919170ddffdb87cb10cdcc720df024ebb8be6ea3e4421834b93f9a1c968180c9b0c95a977c296e79a81383daaead8270ef455ebf10353c'
-            '7cf9467477926967630144285c856454c6bfc9f95fc39899fb038232d11d8cab8216633f698a548b332af57732496bbd88e659c9bcf16ebdf08a41ba10f0adbf')
+            'a375c18ca3f80e1a9c78374ea225198b7698858e9113b60449a7ede9cc1904dee8864edc91682051d291a24effbf832b12a6289f9ea9eb7142b9296da26c1753')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config/cinnamon/spices/grouped-window-list@cinnamon.org"
