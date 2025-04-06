@@ -14,12 +14,45 @@
 
 # Check if the number of command-line arguments is correct
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <chosen_theme> Akame|Cyborg|Graphite|HackTheBox|Samurai|Sweet|Temple"
+    echo "Usage: $0 <chosen_theme>"
+    echo "       $0 --auto | -a    # Automatically detect installed theme"
+    echo "Available themes: Akame | Cyborg | Graphite | HackTheBox | Samurai | Sweet | Temple"
     exit 1
 fi
 
 chosen_theme="${1,,}"
 detect_virt=$(systemd-detect-virt)
+
+declare -A theme_map=(
+    ["akame"]="athena-akame-theme"
+    ["cyborg"]="athena-cyborg-theme"
+    ["graphite"]="athena-graphite-theme"
+    ["hackthebox"]="athena-htb-theme"
+    ["samurai"]="athena-samurai-theme"
+    ["sweet"]="athena-sweetdark-theme"
+    ["temple"]="athena-temple-theme"
+)
+
+# Auto-detect theme based on installed package
+if [[ "$1" == "-a" || "$1" == "--auto" ]]; then
+    for theme in "${!theme_map[@]}"; do
+        if pacman -Qq "${theme_map[$theme]}" &>/dev/null; then
+            chosen_theme="$theme"
+            echo
+            tput setaf 6
+            echo "Auto-detected installed theme: $chosen_theme"
+            tput sgr0
+            echo
+            break
+        fi
+    done
+
+    if [[ -z "$chosen_theme" ]]; then
+        echo "No recognized theme package found. Please install one of the following packages:"
+        for pkg in "${theme_map[@]}"; do echo "  - $pkg"; done
+        exit 1
+    fi
+fi
 
 # Remove directories
 rm -rf "$HOME/.config/assets"
@@ -150,22 +183,6 @@ apply_gtk4() {
     fi 
 }
 
-# /usr/share/icons/default/index.theme
-apply_index() {
-	if [ -f /usr/share/icons/default/index.theme ]; then
-
-		echo
-		tput setaf 3
-		echo "################################################################"
-		echo "################### Applying index.theme settings"
-		echo "################################################################"
-		tput sgr0
-		echo
-
-		sudo sed -i "s/Inherits=.*/Inherits=$CURSOR/g" /usr/share/icons/default/index.theme
-	fi
-}
-
 # I add check on tty because on Live Environment, when I run startx (that is run in tty), $XDG_CURRENT_DESKTOP is empty
 if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
     xfconf-query -c xsettings -p /Net/ThemeName -s "$THEME"
@@ -248,7 +265,6 @@ sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme '$TMUX_THEME'/g" "
 
 apply_gtk3
 apply_gtk4
-apply_index
 
 echo
 tput setaf 3
