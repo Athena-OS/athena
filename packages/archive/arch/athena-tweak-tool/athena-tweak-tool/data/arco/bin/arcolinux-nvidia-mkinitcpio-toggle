@@ -1,0 +1,84 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.ariser.eu
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black
+#tput setaf 1 = red
+#tput setaf 2 = green
+#tput setaf 3 = yellow
+#tput setaf 4 = dark blue
+#tput setaf 5 = purple
+#tput setaf 6 = cyan
+#tput setaf 7 = gray
+#tput setaf 8 = light blue
+
+#end colors
+#tput sgr0
+##################################################################################################################
+
+# Function to check if the script is run as root
+check_root() {
+    if [ "$(id -u)" -ne 0 ]; then
+        tput setaf 3
+        echo
+        echo "This script needs to be run with superuser rights."
+        echo "Please restart the script with 'sudo' rights by typing:"
+        echo
+        echo "sudo $0"
+        echo
+        tput sgr0
+        exit 1
+    fi
+}
+
+# Check if running as root
+if [ "$(id -u)" -ne 0 ]; then
+    check_root
+fi
+
+# Function to toggle the MODULES line in /etc/mkinitcpio.conf
+toggle_modules() {
+    local CONFIG_FILE="/etc/mkinitcpio.conf"
+    local NVIDIA_MODULES1='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
+    local NVIDIA_MODULES2='MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)'
+    local EMPTY_MODULES1='MODULES=""'
+    local EMPTY_MODULES2='MODULES=()'
+
+    # Check if the MODULES line contains NVIDIA modules and toggle off
+    if grep -q "$NVIDIA_MODULES1" "$CONFIG_FILE"; then
+        sed -i "s|$NVIDIA_MODULES1|$EMPTY_MODULES1|g" "$CONFIG_FILE"
+        echo "Toggled off NVIDIA modules in $CONFIG_FILE"
+    elif grep -q "$NVIDIA_MODULES2" "$CONFIG_FILE"; then
+        sed -i "s|$NVIDIA_MODULES2|$EMPTY_MODULES2|g" "$CONFIG_FILE"
+        echo "Toggled off NVIDIA modules in $CONFIG_FILE"
+    # Check if the MODULES line is empty and toggle on
+    elif grep -q "$EMPTY_MODULES1" "$CONFIG_FILE"; then
+        sed -i "s|$EMPTY_MODULES1|$NVIDIA_MODULES2|g" "$CONFIG_FILE"
+        echo "Toggled on NVIDIA modules in $CONFIG_FILE"
+    elif grep -q "$EMPTY_MODULES2" "$CONFIG_FILE"; then
+        sed -i "s|$EMPTY_MODULES2|$NVIDIA_MODULES2|g" "$CONFIG_FILE"
+        echo "Toggled on NVIDIA modules in $CONFIG_FILE"
+    else
+        echo "No recognizable MODULES line found in $CONFIG_FILE"
+    fi
+}
+
+# Main script execution
+check_root
+toggle_modules
+
+mkinitcpio -P

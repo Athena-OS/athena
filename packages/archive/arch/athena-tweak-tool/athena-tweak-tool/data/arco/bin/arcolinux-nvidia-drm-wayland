@@ -1,0 +1,191 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.ariser.eu
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black
+#tput setaf 1 = red
+#tput setaf 2 = green
+#tput setaf 3 = yellow
+#tput setaf 4 = dark blue
+#tput setaf 5 = purple
+#tput setaf 6 = cyan
+#tput setaf 7 = gray
+#tput setaf 8 = light blue
+
+#end colors
+#tput sgr0
+##################################################################################################################
+
+# Function to restart the script with sudo
+restart_with_sudo() {
+	tput setaf 3
+	echo
+    echo "This script needs to be run with superuser rights."
+    echo "Please restart the script with 'sudo' rights by typing:"
+    echo "sudo $0"
+    echo
+    tput sgr0
+    exit 1
+
+}
+
+# Check if running as root
+if [ "$(id -u)" -ne 0 ]; then
+    restart_with_sudo
+fi
+
+# Check for each Wayland session file
+if 	[ -f /usr/share/wayland-sessions/hyprland.desktop ] || \
+	[ -f /usr/share/wayland-sessions/sway.desktop ] || \
+	[ -f /usr/share/wayland-sessions/wayfire.desktop ] || \
+	[ -f /usr/share/wayland-sessions/niri.desktop ] || \
+	[ -f /usr/share/wayland-sessions/plasma.desktop ] || \
+	[ -f /usr/share/wayland-sessions/gnome-wayland.desktop ]; then
+
+	# Just checking if nvidia-dkms is installed else stop
+	if pacman -Qi nvidia-dkms &> /dev/null; then
+
+		# INSTALL
+
+		echo
+		echo "################################################################"
+		echo "################### Adding option nvidia-drm.modeset=1"
+		echo "################################################################"
+		echo
+
+		# GRUB
+		if [ -f /etc/default/grub ] && [ -d "/boot/grub" ] && [ -d "/boot/efi/EFI/grub" ]; then
+		    # Check if 'nvidia-drm.modeset=1' is already in the GRUB_CMDLINE_LINUX_DEFAULT line
+		    if ! grep -q "nvidia-drm.modeset=1" /etc/default/grub; then
+		        # Use sed to append 'nvidia-drm.modeset=1' to the GRUB_CMDLINE_LINUX_DEFAULT line
+		        sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nvidia-drm.modeset=1\"/" /etc/default/grub
+		        echo "Added 'nvidia-drm.modeset=1' to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub"
+				grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux
+				grub-mkconfig -o /boot/grub/grub.cfg
+		    else
+		        echo "'nvidia-drm.modeset=1' is already present in /etc/default/grub"
+		    fi
+		fi
+
+		# SYSTEMD-BOOT
+		if [ -d /boot/efi/loader/entries/ ]; then
+			ENTRY_DIR="/boot/efi/loader/entries/"
+			PARAM="nvidia-drm.modeset=1"
+
+			for entry in "$ENTRY_DIR"*.conf; do
+		  	if grep -q "nvidia-drm.modeset=1" "$entry"; then
+		    	echo "'nvidia-drm.modeset=1' is already present in $(basename "$entry")"
+		  	else
+		    	sed -i "/^options / s/options /&$PARAM /" "$entry"
+		    	echo "Added parameter to $(basename "$entry")"
+		  	fi
+			done
+		fi
+
+		# REFIND
+		if [ -f /boot/refind_linux.conf ]; then
+			CONF_FILE="/boot/refind_linux.conf"
+			PARAM="nvidia-drm.modeset=1"
+
+			# Function to add the parameter to a line
+			add_param() {
+			    echo "$1" | sed "s/\"$/ $PARAM\"/"
+			}
+
+			# Check if the configuration file exists
+			if [ ! -f "$CONF_FILE" ]; then
+			    echo "Configuration file not found: $CONF_FILE"
+			    exit 1
+			fi
+
+			# Check if parameter is already set
+			if grep -q "$PARAM" "$CONF_FILE"; then
+			    echo "Parameter '$PARAM' is already present in $CONF_FILE."
+			    exit 0
+			fi
+
+			# Read the file and append the parameter
+			while IFS= read -r line; do
+			    # Append the parameter if the line ends with "
+			    if [[ "$line" =~ \"$ ]]; then
+			        line=$(add_param "$line")
+			    fi
+			    echo "$line"
+			done < "$CONF_FILE" > "${CONF_FILE}.tmp"
+
+			# Replace the original file with the modified one
+			mv "${CONF_FILE}.tmp" "$CONF_FILE"
+			echo "Parameter '$PARAM' has been added to $CONF_FILE."
+		fi
+
+	else
+
+		# REMOVE
+
+		# GRUB
+        if [ -f /etc/default/grub ] && [ -d "/boot/grub" ] && [ -d "/boot/efi/EFI/grub" ]; then
+            if grep -q "nvidia-drm.modeset=1" /etc/default/grub; then
+                sed -i "s/ nvidia-drm.modeset=1//" /etc/default/grub
+                echo "Removed 'nvidia-drm.modeset=1' from GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub"
+                grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux
+                grub-mkconfig -o /boot/grub/grub.cfg
+            fi
+        fi
+
+        # SYSTEMD-BOOT
+        if [ -d /boot/efi/loader/entries/ ]; then
+            ENTRY_DIR="/boot/efi/loader/entries/"
+            PARAM="nvidia-drm.modeset=1"
+
+            for entry in "$ENTRY_DIR"*.conf; do
+                if grep -q "$PARAM" "$entry"; then
+                    sed -i "s/ $PARAM//" "$entry"
+                    echo "Removed parameter from $(basename "$entry")"
+                fi
+            done
+        fi
+
+        # REFIND
+       	if [ -f /boot/refind_linux.conf ]; then
+	        CONF_FILE="/boot/refind_linux.conf"
+
+	        # Function to remove the parameter from a line
+	        remove_param() {
+	            echo "$1" | sed "s/ $PARAM//"
+	        }
+
+	        PARAM="nvidia-drm.modeset=1"
+
+	        if [ -f "$CONF_FILE" ]; then
+	            if grep -q "$PARAM" "$CONF_FILE"; then
+	                while IFS= read -r line; do
+	                    if [[ "$line" =~ \"$ ]]; then
+	                        line=$(remove_param "$line")
+	                    fi
+	                    echo "$line"
+	                done < "$CONF_FILE" > "${CONF_FILE}.tmp"
+
+	                # Replace the original file with the modified one
+	                mv "${CONF_FILE}.tmp" "$CONF_FILE"
+	                echo "Parameter '$PARAM' has been removed from $CONF_FILE."
+	            fi
+	        else
+	            echo "Configuration file not found: $CONF_FILE, nothing to remove."
+	        fi
+	    fi
+	fi
+fi

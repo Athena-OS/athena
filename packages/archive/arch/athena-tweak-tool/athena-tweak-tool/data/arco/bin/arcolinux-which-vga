@@ -1,0 +1,76 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author 	: Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website	: https://www.arcolinux.info
+# Website	: https://www.arcolinux.com
+# Website	: https://www.arcolinuxd.com
+# Website	: https://www.arcolinuxb.com
+# Website	: https://www.arcolinuxiso.com
+# Website	: https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+echo "###############################################################################"
+echo "###        SOME COMMANDS WILL GIVE NO OUTPUT OR ERROR MESSAGES             ####"
+echo "###            ONE OF THEM SHOULD BE ABLE TO GIVE YOU INFO                 ####"
+echo "###############################################################################"
+echo
+echo "###############################################################################"
+echo "###                               Check 1  LSPCI                           ####"
+echo "###############################################################################"
+echo
+echo "command 1:"
+lspci -vnnn | perl -lne 'print if /^\d+\:.+(\[\S+\:\S+\])/' | grep VGA
+echo
+echo "command 2:"
+lspci -x | grep VGA
+echo
+
+echo
+echo "###############################################################################"
+echo "###                               Check 2  GLXINFO                         ####"
+echo "###############################################################################"
+echo
+
+if test -f /usr/bin/glxinfo ; then
+	echo "glxinfo is present"
+	echo
+else
+	echo "We have installed glxinfo to get more info on your graphical card"
+	echo "info  : mesa-demos provides the same glxinfo tool - it will conflict with this package"
+	sudo pacman -S glxinfo --noconfirm
+fi
+
+glxinfo | grep -E "OpenGL vendor|OpenGL renderer*"
+
+echo
+echo "###############################################################################"
+echo "###                               Check 3  NVIDIA-SMI                      ####"
+echo "###############################################################################"
+echo
+
+if test -f /usr/bin/nvidia-smi; then
+	nvidia-smi -L
+else
+	echo "No nvidia driver present"
+fi
+
+echo "###############################################################################"
+echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
+echo "###############################################################################"

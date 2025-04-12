@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+  <vendor>AthenaOS</vendor>
+  <vendor_url>https://athenaos.org/</vendor_url>
+  <icon_name>package-x-generic</icon_name>
+  <action id="org.athenaos.pkexec.athena-tweak-tool">
+    <description>Change your own user data</description>
+    <description xml:lang="zh_TW">變更您自身的使用者資料</description>
+    <description xml:lang="zh_CN">修改您的用户数据</description>
+    <description xml:lang="uk">Зміна даних вашого користувача</description>
+    <description xml:lang="tr">Kullanıcı bilgilerinizi değiştirin</description>
+    <description xml:lang="sv">Ändra ditt egna användardata</description>
+    <description xml:lang="sr">Измените ваше личне корисничке податке</description>
+    <description xml:lang="sr@latin">Izmenite vaše lične korisničke podatke</description>
+    <description xml:lang="sl">Spremenite lastne uporabniške podatke</description>
+    <description xml:lang="sk">Zmeniť svoje vlastné používateľské údaje</description>
+    <description xml:lang="ru">Изменить личные пользовательские данные</description>
+    <description xml:lang="pt">Alterar os seus próprios dados</description>
+    <description xml:lang="pt_BR">Alterar dados do próprio usuário</description>
+    <description xml:lang="pl">Zmiana własnych danych</description>
+    <description xml:lang="pa">ਆਪਣਾ ਯੂਜ਼ਰ ਡਾਟਾ ਬਦਲੋ</description>
+    <description xml:lang="oc">Modificar sas pròprias donadas</description>
+    <description xml:lang="nl">Uw eigen gebruikersgegevens bewerken</description>
+    <description xml:lang="lv">Mainīt pašam savus lietotāja datus</description>
+    <description xml:lang="lt">Keisti savo naudotojo duomenis</description>
+    <description xml:lang="ko">개인 사용자 데이터 변경</description>
+    <description xml:lang="kk">Өзіңіздің пайдаланушы ақпаратыңызды өзгерту</description>
+    <description xml:lang="ka">თქვენი პირადი ინფორმაციის შეცვლა</description>
+    <description xml:lang="ja">自身のユーザーデータを変更する</description>
+    <description xml:lang="it">Cambia i propri dati utente</description>
+    <description xml:lang="id">Ubah data penggunamu sendiri</description>
+    <description xml:lang="ia">Modificar tu proprie datos de usator</description>
+    <description xml:lang="hu">Saját felhasználói adatainak módosítása</description>
+    <description xml:lang="hr">Promijenite vlastite korisničke podatke</description>
+    <description xml:lang="gl">Cambiar os seus propios datos de usuario</description>
+    <description xml:lang="fur">Cambie i tiei dâts utent</description>
+    <description xml:lang="fr">Modifier ses propres données</description>
+    <description xml:lang="fi">Muuta omia käyttäjätietojasi</description>
+    <description xml:lang="eu">Aldatu zure erabiltzaile-datuak</description>
+    <description xml:lang="es">Cambie sus propios datos de usuario</description>
+    <description xml:lang="eo">Ŝanĝi viajn proprajn uzantodatumojn</description>
+    <description xml:lang="en">Change your own user data</description>
+    <description xml:lang="en_GB">Change your own user data</description>
+    <description xml:lang="el">Αλλάξτε τα δεδομένα χρήστη σας</description>
+    <description xml:lang="de">Ändern Sie Ihre eigenen Benutzerdaten</description>
+    <description xml:lang="da">Skift data for din egen bruger</description>
+    <description xml:lang="cs">Změnit své vlastní údaje</description>
+    <description xml:lang="ca">Canvieu les dades d'usuari pròpies</description>
+    <description xml:lang="ast">Camudacia de los tos datos d'usuariu</description>
+    <description xml:lang="ar">غيّر بيانات المستخدم خاصتك</description>
+    <message>Authentication is required to change your own user data</message>
+    <message xml:lang="zh_TW">若要變更您自身的使用者資料需要核對身分</message>
+    <message xml:lang="zh_CN">需要授权以修改您的用户数据</message>
+    <message xml:lang="uk">Для зміни даних вашого користувача потрібно пройти розпізнавання</message>
+    <message xml:lang="tr">Kendi kullanıcı bilginizi değiştirmek için kimlik kanıtlaması gereklidir</message>
+    <message xml:lang="sv">Autentisering krävs för att ändra ditt egna användardata</message>
+    <message xml:lang="sr">Потребно је потврђивање идентитета за промену ваших личних корисничких података</message>
+    <message xml:lang="sr@latin">Potrebno je potvrđivanje identiteta za promenu vaših ličnih korisničkih podataka</message>
+    <message xml:lang="sl">Za spremembo lastnih podatkov je zahtevana overitev</message>
+    <message xml:lang="sk">Na zmenu vlastných používateľských údajov je potrebné overenie totožnosti</message>
+    <message xml:lang="ru">Для изменения личных пользовательских данных требуется аутентификация</message>
+    <message xml:lang="pt">É necessária autenticação para alterar os seus próprios dados de utilizador</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para alterar dados do próprio usuário</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmienić własne dane</message>
+    <message xml:lang="pa">ਤੁਹਾਡਾ ਯੂਜ਼ਰ ਡਾਟਾ ਬਦਲਣ ਲਈ ਪਰਮਾਣਿਤ ਹੋਣ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="oc">Vos cal vos autentificar per modificar vòstras pròprias donadas d'utilizaire</message>
+    <message xml:lang="nl">Authenticatie vereist om uw eigen gebruikersgegevens te kunnen veranderen</message>
+    <message xml:lang="lv">Nepieciešama autentifikācija, lai mainītu pats savus lietotāja datus</message>
+    <message xml:lang="lt">Norint keisti savo naudotojo duomenis, reikia patvirtinti tapatybę</message>
+    <message xml:lang="ko">내 사용자 데이터를 변경하려면 인증해야 합니다</message>
+    <message xml:lang="kk">Өзіңіздің пайдаланушы ақпаратыңызды өзгерту үшін аутентификация керек</message>
+    <message xml:lang="ka">თქვენი პირადი მონაცემების შესაცვლელად აუცილებელია ავთენტიფიკაციის გავლა.</message>
+    <message xml:lang="ja">自分自身のユーザーデータを変更するには認証が必要です</message>
+    <message xml:lang="it">È richiesto autenticarsi per cambiare i propri dati utente</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah data pengguna milikmu</message>
+    <message xml:lang="ia">Authentication es necessari pro modificar tu proprie datos de usator</message>
+    <message xml:lang="hu">Hitelesítés szükséges a saját felhasználói adatai módosításához</message>
+    <message xml:lang="hr">Potrebna je ovjera za promjenu vlastitih korisničkih podataka</message>
+    <message xml:lang="gl">Requírese autenticación para cambiar os seus propios datos de usuario</message>
+    <message xml:lang="fur">La autenticazion e je necssarie par cambiâ i propris dâts utent</message>
+    <message xml:lang="fr">Vous devez vous authentifier pour modifier vos propres données utilisateur</message>
+    <message xml:lang="fi">Omien käyttäjätietojen muuttaminen vaatii tunnistautumisen</message>
+    <message xml:lang="eu">Derrigorrezkoa da autentifikatzea zure erabiltzaile-datuak aldatzeko</message>
+    <message xml:lang="es">Se necesita autenticación para cambiar sus datos de usuario</message>
+    <message xml:lang="eo">Aŭtentigo bezonatas por ŝanĝi viajn proprajn uzantodatumojn</message>
+    <message xml:lang="en">Authentication is required to change your own user data</message>
+    <message xml:lang="en_GB">Authentication is required to change your own user data</message>
+    <message xml:lang="el">Απαιτείται πιστοποίηση για αλλαγή των δικών σας δεδομένων χρήστη</message>
+    <message xml:lang="de">Zur Änderung Ihrer eigenen Benutzerdaten ist eine Authentifizierung erforderlich</message>
+    <message xml:lang="da">Der kræves autentifikation for at skifte data for din egen bruger</message>
+    <message xml:lang="cs">Pro změnu svých vlastních údajů je vyžadována autentizace</message>
+    <message xml:lang="ca">Es requereix autenticació per canviar les vostres dades d'usuari</message>
+    <message xml:lang="ast">Ríquese l'autenticación pa camudar los tos datos d'usuairu</message>
+    <message xml:lang="ar">الاستيثاق مطلوب لتغيير بيانات المستخدم التي تملكها</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/athena-tweak-tool/athena-tweak-tool.py</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+</policyconfig>

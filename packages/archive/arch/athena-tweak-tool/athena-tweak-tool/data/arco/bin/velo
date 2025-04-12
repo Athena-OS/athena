@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+sudo pacman -Syy
+sudo pacman -S sublime-text-4 --noconfirm --needed
+sudo pacman -S the_platinum_searcher-bin --noconfirm --needed
+sudo pacman -S ripgrep --noconfirm --needed
+sudo pacman -S meld --noconfirm --needed
+sudo pacman -S thunar --noconfirm --needed
+sudo pacman -S thunar-archive-plugin --noconfirm --needed
+sudo pacman -S thunar-volman --noconfirm --needed
+sudo pacman -S simplescreenrecorder  --noconfirm --needed
+sudo pacman -S vlc  --noconfirm --needed
+sudo pacman -S pavucontrol  --noconfirm --needed

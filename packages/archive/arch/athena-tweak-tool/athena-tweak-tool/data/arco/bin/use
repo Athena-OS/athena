@@ -1,0 +1,112 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+# Function to restart the script with sudo
+restart_with_sudo() {
+    tput setaf 3
+    echo
+    echo "This script needs to be run with superuser rights."
+    echo "Please restart the script with 'sudo' rights by typing:"
+    echo "sudo $0"
+    echo
+    tput sgr0
+    exit 1
+}
+
+# Check if running as root
+if [ "$(id -u)" -ne 0 ]; then
+    restart_with_sudo
+fi
+
+clear
+tput setaf 9
+echo "----------------------------------------------------"
+tput sgr0; echo "Iso: "; tput setaf 9; cat /etc/dev-rel; echo "----------------------------------------------------"
+tput sgr0; echo -n "BIOS or UEFI: "; tput setaf 9; [ -d /sys/firmware/efi ] && echo "uefi" || echo "bios"; echo "----------------------------------------------------"
+tput sgr0; echo -n "Boot system: "; tput setaf 9; sed '2d' /bootloader; echo "----------------------------------------------------"
+tput sgr0; echo -n "Mounted Filesystems: "; tput setaf 9
+mount | grep "^/dev" | awk '{print $1, $5}' | sort | paste -sd "  "
+echo "----------------------------------------------------"
+
+# Check active display manager
+tput sgr0; echo -n "Active Display Manager: "; tput setaf 9
+display_managers=("sddm" "lxdm" "gdm" "lightdm" "ly")
+active_dm=""
+
+for dm in "${display_managers[@]}"; do
+    if systemctl is-active --quiet "$dm"; then
+        active_dm="$dm"
+        echo "$dm"
+        break
+    fi
+done
+echo "----------------------------------------------------"
+
+tput sgr0; echo -n "X11 sessions: "; tput setaf 9; ls /usr/share/xsessions; echo "----------------------------------------------------"
+tput sgr0; echo -n "Wayland sessions: "; tput setaf 9
+if [ -d /usr/share/wayland-sessions ]; then
+    ls /usr/share/wayland-sessions
+else
+    echo "no wayland desktops"
+fi
+echo "----------------------------------------------------"
+
+tput sgr0; echo -n "Kernels: "; tput setaf 9; ls /usr/lib/modules; echo "----------------------------------------------------"
+tput sgr0; echo -n "Kernel in use: "; tput setaf 9; cat /proc/version; echo "----------------------------------------------------"
+
+# Nvidia related checks
+tput sgr0; echo -n "NVIDIA driver in use: "; tput setaf 9
+if lspci | grep -i nvidia > /dev/null; then
+    lspci -nnk | grep -i nvidia | grep -qi 'kernel driver in use' && echo "Yes" || echo "No"
+else
+    echo "No NVIDIA card detected"
+fi
+echo "----------------------------------------------------"
+tput sgr0; echo -n "Nvidia packages installed: "; tput setaf 9
+if pacman -Q | grep -i nvidia > /dev/null; then
+    pacman -Q | grep -i nvidia | tr '\n' ' '
+else
+    echo -n "No NVIDIA packages are installed"
+fi
+echo; echo "----------------------------------------------------"
+tput sgr0; echo -n "Nvidia-drm.modeset=... "; tput setaf 9
+if [ -f /etc/default/grub ]; then
+    grep "nvidia-drm.modeset=1" /etc/default/grub || echo "Not found"
+else
+    echo "/etc/default/grub not found"
+fi
+echo "----------------------------------------------------"
+tput sgr0; echo -n "Modules in /etc/mkinitcpio.conf: "; tput setaf 9; grep "^MODULES=(.*)" /etc/mkinitcpio.conf; echo "----------------------------------------------------"
+echo "Use 'arcolinux-nvidia-drm-modeset-toggle' to add or remove nvidia-drm.modeset=1"
+echo "to any bootloader for nvidia cards only"
+echo
+echo "Use 'arcolinux-nvidia-mkinitcpio' to add" 
+echo "MODULES= nvidia nvidia_modeset nvidia_uvm nvidia_drm"
+echo "in /etc/mkinitcpio.conf and creating new files with sudo mkinitcpio -P"
+echo "https://wiki.archlinux.org/title/NVIDIA#Early_loading"
+echo "###############################################################################"
+tput sgr0;

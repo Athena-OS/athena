@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <number_of_parallel_downloads>"
+    exit 1
+fi
+
+# Validate that the argument is a positive integer
+if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+    echo "Error: Argument must be a positive integer."
+    exit 1
+fi
+
+# Store the input in a variable
+PARALLEL_DOWNLOADS=$1
+
+# Use sed to update the ParallelDownloads setting in /etc/pacman.conf
+sudo sed -i "s/^#*ParallelDownloads = .*/ParallelDownloads = ${PARALLEL_DOWNLOADS}/" /etc/pacman.conf
+
+echo "Updated ParallelDownloads to ${PARALLEL_DOWNLOADS} in /etc/pacman.conf"

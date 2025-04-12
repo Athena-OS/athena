@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+session=$(loginctl show-session $(loginctl|grep $(whoami) | awk '{print $1}') -p Type | awk -F= '{print $2}' | grep "wayland" | uniq )
+xauth_file=$(xauth info | awk -F"Authority file:" '{print $2}' | tr -d ' ')
+
+
+case "$session" in
+  "wayland")
+    # Wayland session, generate Xauth session cookie for $DISPLAY
+	test -s "$xauth_file" || touch "$xauth_file"
+    xauth gen $DISPLAY &> /dev/null
+    echo "[INFO] Display = $DISPLAY"
+    echo "[INFO] Session = $session"
+
+    test -z "$(xauth list)" || echo "[INFO] Xauth session = OK"
+  ;;
+  "x11")
+    # X11 session, don't do anything here
+    echo "[INFO] Display = $DISPLAY"
+    echo "[INFO] Session = $session"
+    echo "[INFO] This script is only for Wayland"
+  ;;
+  "tty")
+    # TTY session, as user may not use a display manager
+    echo "[INFO] Display = $DISPLAY"
+    echo "[INFO] Session = $session"
+    echo "[INFO] This script is only for Wayland"
+  ;;
+  *)
+    # anything here is an unknown session
+    echo "[INFO] This script is only for Wayland"
+  ;;
+esac
+echo "---------------------------------------------------------------------------"
+

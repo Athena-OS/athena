@@ -1,0 +1,114 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.ariser.eu
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black
+#tput setaf 1 = red
+#tput setaf 2 = green
+#tput setaf 3 = yellow
+#tput setaf 4 = dark blue
+#tput setaf 5 = purple
+#tput setaf 6 = cyan
+#tput setaf 7 = gray
+#tput setaf 8 = light blue
+
+#end colors
+#tput sgr0
+##################################################################################################################
+
+# Function to restart the script with sudo
+restart_with_sudo() {
+	tput setaf 3
+	echo
+    echo "This script needs to be run with superuser rights."
+    echo "Please restart the script with 'sudo' rights by typing:"
+    echo
+    echo "sudo $0"
+    echo
+    tput sgr0
+    exit 1
+
+}
+
+# Check if running as root
+if [ "$(id -u)" -ne 0 ]; then
+    restart_with_sudo
+fi
+
+echo
+echo "################################################################"
+echo "################### nvidia-drm.modeset=1"
+echo "################################################################"
+echo
+
+# GRUB
+if [ -f /etc/default/grub ]; then
+    # Check if 'nvidia-drm.modeset=1' is already in the GRUB_CMDLINE_LINUX_DEFAULT line
+	FILE="/etc/default/grub"
+	PARAM="nvidia-drm.modeset=1"
+
+	if ! grep -q "$PARAM" "$FILE"; then
+	    echo "Adding '$PARAM' to GRUB_CMDLINE_LINUX_DEFAULT in $FILE..."
+	    # Ensure there's exactly one space before appending the parameter
+	    sudo sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\" *$/ $PARAM\"/" "$FILE"
+	    echo "Added '$PARAM' to GRUB_CMDLINE_LINUX_DEFAULT."
+	else
+	    echo "Removing '$PARAM' from GRUB_CMDLINE_LINUX_DEFAULT in $FILE..."
+	    # Remove the parameter and clean up spaces, ensuring no double spaces or trailing spaces are left
+        sudo sed -i "s/ nvidia-drm.modeset=1//" /etc/default/grub
+	    echo "Removed '$PARAM' from GRUB_CMDLINE_LINUX_DEFAULT."
+	fi
+
+	# Update GRUB
+	sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+fi
+
+# SYSTEMD-BOOT
+if [ -d /boot/efi/loader/entries/ ]; then
+	ENTRY_DIR="/boot/efi/loader/entries/"
+	PARAM="nvidia-drm.modeset=1"
+
+	for entry in "$ENTRY_DIR"*.conf; do
+	    if sudo grep -q "$PARAM" "$entry"; then
+	        echo "Removing '$PARAM' from $(basename "$entry")..."
+	        # Remove the parameter and clean up spaces, ensuring no double spaces or trailing spaces are left
+	        sudo sed -i -e "s/\s*$PARAM\s*/ /g" -e "s/[[:space:]]\+/ /g" -e "s/[[:space:]]$//g" "$entry"
+	    else
+	        echo "Adding '$PARAM' to $(basename "$entry")..."
+	        # Add the parameter, ensuring not to introduce an unnecessary space if one already exists
+	        sudo sed -i -e "/^options /{s/\s*$//;s/$/ $PARAM/}" "$entry"
+	    fi
+	done
+fi
+
+# REFIND
+if [ -f /boot/refind_linux.conf ]; then
+	FILE="/boot/refind_linux.conf"
+	PARAM="nvidia-drm.modeset=1"
+
+	if grep -q "$PARAM" "$FILE"; then
+	    # Parameter is found; remove it.
+	    echo "Removing '$PARAM' from the kernel options in $FILE."
+	    sudo sed -i -e "s/\s*$PARAM\s*/ /g" -e "s/[[:space:]]\+/ /g" -e "s/ $//g" "$FILE"
+	else
+	    # Parameter not found; add it.
+	    echo "Adding '$PARAM' to the kernel options in $FILE."
+	    sudo sed -i -e "/\" rw / s/\s*$/ /" -e "/\" rw / s/$/ $PARAM/" "$FILE"
+	fi
+fi

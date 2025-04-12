@@ -1,0 +1,56 @@
+# ArcoLinux
+# Erik Dubois
+
+# Background image - valid values: stretch, tile
+background_style        stretch
+background_color        #000000
+
+# Input controls
+# where to put panel.png
+input_panel_x           15%
+input_panel_y           75%
+
+
+# Text : "User : loginname"
+msg_color               #FFFFFF
+msg_font                NotoSans-Regular:size=15:bold:dpi=96
+msg_x                   15%
+msg_y                   70%
+msg_shadow_color #702342
+msg_shadow_xoffset 1
+msg_shadow_yoffset 1
+
+
+# typing to the actual hidden password
+input_font          	NotoSans-Regular:size=15:bold:dpi=96
+input_color             #ffffff
+input_fgcolor           #ffffff
+input_name_x            200
+input_name_y            35
+
+
+# not used
+
+#username_msg            Username:
+#password_msg            Password:
+# force single input box (gdm style)
+#input_pass_x            30%
+#input_pass_y            75%
+
+
+# welcome message
+#welcome_x              	50%
+#welcome_y              	22
+#welcome_font          	    NotoSans-Regular:size=15:bold:dpi=96
+#welcome_color          	#ffffff
+
+# username / password request (actual text)
+#username_font           NotoSans-Regular:size=15:bold:dpi=96
+#username_color        	 #ffffff
+#username_shadow_color   #702342
+#username_shadow_xoffset 1
+#username_shadow_yoffset 1
+#username_x              15%
+#username_y              75%
+#password_x              18%
+#password_y              77%

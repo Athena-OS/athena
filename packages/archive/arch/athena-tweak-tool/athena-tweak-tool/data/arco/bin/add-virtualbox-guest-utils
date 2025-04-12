@@ -1,0 +1,123 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+PURPLE=$(tput setaf 5)
+GRAY=$(tput setaf 7)
+LIGHT_GRAY=$(tput setaf 8)
+RESET=$(tput sgr0)
+
+# --------------------------------------------
+# 📝 Description: VirtualBox Guest Utils Installer
+# --------------------------------------------
+
+echo "#############################################################################################"
+echo "Checking if pacman is running..."
+echo "#############################################################################################"
+
+# Detect if pacman is locked
+MAX_WAIT=30  # Maximum wait time in seconds
+WAIT_INTERVAL=5
+seconds=0
+
+while [ -e "/var/lib/pacman/db.lck" ]; do
+    echo "Pacman is not ready yet. Retrying in $WAIT_INTERVAL seconds..."
+    seconds=$((seconds + WAIT_INTERVAL))
+    sleep $WAIT_INTERVAL
+
+    if [ "$seconds" -ge "$MAX_WAIT" ]; then
+        echo "Warning: Removing pacman db.lck after $MAX_WAIT seconds!"
+        sudo rm -f /var/lib/pacman/db.lck
+        break
+    fi
+done
+
+# Detect virtualization
+result=$(systemd-detect-virt)
+echo "Virtualization detected: $result"
+
+# --------------------------------------------
+# 🧠 Virtualization Check
+# --------------------------------------------
+if [ "$result" != "none" ]; then
+    echo "#############################################################################################"
+    echo "${GREEN}Installing virtualbox-guest-utils and activating vboxservice${RESET}"
+    echo "#############################################################################################"
+
+    # Install VirtualBox Guest Utils
+    sudo pacman -Sy --noconfirm virtualbox-guest-utils
+
+    # Function to check service status
+    check_service_status() {
+        systemctl is-enabled vboxservice &>/dev/null
+        SERVICE_ENABLED=$?
+
+        systemctl is-active vboxservice &>/dev/null
+        SERVICE_ACTIVE=$?
+    }
+
+    # Enable and start vboxservice if not active
+    enable_and_start_service() {
+        echo "Enabling vboxservice..."
+        sudo systemctl enable vboxservice
+
+        echo "Starting vboxservice..."
+        sudo systemctl start vboxservice
+    }
+
+    # Main logic for service handling
+    echo "Checking vboxservice status..."
+    check_service_status
+
+    if [[ $SERVICE_ENABLED -ne 0 ]]; then
+        echo "vboxservice is not enabled. Enabling it now..."
+        sudo systemctl enable vboxservice
+    fi
+
+    if [[ $SERVICE_ACTIVE -ne 0 ]]; then
+        echo "vboxservice is not running. Starting it now..."
+        sudo systemctl start vboxservice
+    fi
+
+    # Final verification
+    check_service_status
+
+    if [[ $SERVICE_ENABLED -eq 0 && $SERVICE_ACTIVE -eq 0 ]]; then
+        echo "vboxservice is enabled and running successfully."
+    else
+        echo "Failed to enable/start vboxservice. Check logs:"
+        sudo journalctl -u vboxservice --no-pager | tail -n 20
+    fi
+
+else
+    echo "#############################################################################################"
+    echo "${YELLOW}Virtualization not detected. Skipping virtualbox-guest-utils installation.${RESET}"
+    echo "#############################################################################################"
+fi

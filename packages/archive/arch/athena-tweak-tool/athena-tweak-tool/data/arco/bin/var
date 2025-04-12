@@ -1,0 +1,76 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+echo "###############################################################################"
+echo "Reinstalling the default variety config from Nemesis"
+echo "###############################################################################"
+
+Online=0
+file_boolean=0
+
+function check_connectivity() {
+
+    local test_ip
+    local test_count
+
+    test_ip="8.8.8.8"
+    test_count=1
+
+    if ping -c ${test_count} ${test_ip} > /dev/null; then
+       echo "You have internet connectivity"
+       Online=1
+    else
+       echo "You do not have connectivity"
+       Online=0
+    fi
+ }
+
+
+check_connectivity
+
+# config + online
+if [ $Online -eq 1 ] ; then
+	echo "getting latest variety config from github"
+	sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+   echo
+   echo "###############################################################################"
+   echo "###                    Nemesis config is in place                          ####"
+   echo "###############################################################################"
+fi
+
+# config + offline
+if [ $Online -eq 0 ] ; then
+   echo "No internet - so no config your you"
+   echo
+   echo "###############################################################################"
+   echo "###                    Nemesis config is NOT in place                     ####"
+   echo "###############################################################################"
+fi
+
+
+

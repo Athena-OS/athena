@@ -1,0 +1,36 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author	:	Erik Dubois
+# Website	:	https://www.erikdubois.be
+# Website	:	https://www.arcolinux.info
+# Website	:	https://www.arcolinux.com
+# Website	:	https://www.arcolinuxd.com
+# Website	:	https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+echo
+echo "#################################"
+echo "Start arcolinux-all-cores"
+echo "#################################"
+echo
+
+numberofcores=$(nproc)
+
+if [ $numberofcores -gt 1 ]
+then
+        echo "Changing the makeflags for "$numberofcores" cores."
+        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j'$(($numberofcores))'"/g' /etc/makepkg.conf;
+        echo "Changing the PKGEXT to pkg.tar.zst"
+        sudo sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/g" /etc/makepkg.conf
+else
+        echo "No change."
+fi
+echo
+echo "#################################"
+echo "End arcolinux-all-cores"
+echo "#################################"
+echo

@@ -1,0 +1,57 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+#[arcolinux_repo_testing]
+#SigLevel = PackageRequired DatabaseNever
+#Include = /etc/pacman.d/arcolinux-mirrorlist
+
+if grep -q "#\[arcolinux_repo_testing\]" /etc/pacman.conf; then
+	echo "###############################################################################"
+	echo "Activate the test repo"
+	echo "###############################################################################"
+	sudo sed -i "s/#\[arcolinux_repo_testing\]/\[arcolinux_repo_testing\]/g" /etc/pacman.conf;
+	sudo sed -i "s/#SigLevel = PackageRequired DatabaseNever/SigLevel = PackageRequired DatabaseNever/g" /etc/pacman.conf;
+	sudo sed -i "s/#Include = \/etc\/pacman.d\/arcolinux-mirrorlist/Include = \/etc\/pacman.d\/arcolinux-mirrorlist/g" /etc/pacman.conf;
+else
+	echo "###############################################################################"
+	echo "Deactivate the test repo"
+	echo "###############################################################################"
+	sudo sed -i '0,/\[arcolinux_repo_testing\]/s/\[arcolinux_repo_testing\]/#\[arcolinux_repo_testing\]/' /etc/pacman.conf
+#	sudo sed -i "s/\[arcolinux_repo_testing\]/#\[arcolinux_repo_testing\]/g" /etc/pacman.conf;
+	#sudo sed -i "s/SigLevel = PackageRequired DatabaseNever/#SigLevel = PackageRequired DatabaseNever/g" /etc/pacman.conf;
+	sudo sed -i '0,/SigLevel = PackageRequired DatabaseNever/s/SigLevel = PackageRequired DatabaseNever/#SigLevel = PackageRequired DatabaseNever/' /etc/pacman.conf
+	sudo sed -i '0,/Include = \/etc\/pacman.d\/arcolinux-mirrorlist/s/Include = \/etc\/pacman.d\/arcolinux-mirrorlist/#Include = \/etc\/pacman.d\/arcolinux-mirrorlist/' /etc/pacman.conf
+
+	#sudo sed -i "s/Include = \/etc\/pacman.d\/arcolinux-mirrorlist/#Include = \/etc\/pacman.d\/arcolinux-mirrorlist/g" /etc/pacman.conf;
+
+fi
+
+echo
+echo "###############################################################################"
+echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
+echo "###############################################################################"

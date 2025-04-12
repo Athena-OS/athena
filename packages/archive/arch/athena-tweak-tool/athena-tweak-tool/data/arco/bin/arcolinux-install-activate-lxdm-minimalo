@@ -1,0 +1,47 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author 	: Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website	: https://www.arcolinux.info
+# Website	: https://www.arcolinux.com
+# Website	: https://www.arcolinuxd.com
+# Website	: https://www.arcolinuxb.com
+# Website	: https://www.arcolinuxiso.com
+# Website	: https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+echo "###############################################################################"
+echo "Install packages"
+echo "###############################################################################"
+
+sudo pacman -S  arcolinux-lxdm-theme-minimalo-git --noconfirm --needed
+
+echo "###############################################################################"
+echo "Change /etc/lxdm/lxdm.conf"
+echo "###############################################################################"
+
+sudo cp /etc/lxdm/lxdm.conf /etc/lxdm/lxdm.conf.bak
+sudo cp /usr/local/share/arcolinux/lxdm/lxdm.conf.original /etc/lxdm/lxdm.conf
+sudo sed -i "s/gtk_theme=Adwaita/gtk_theme=Arc-Dark/g" /etc/lxdm/lxdm.conf
+sudo sed -i "s/# bg=\/usr\/share\/backgrounds\/default.png/bg=\/usr\/share\/backgrounds\/arcolinux\/arco-wallpaper.jpg/g" /etc/lxdm/lxdm.conf
+sudo sed -i "s/theme=Industrial/theme=minimalo/g" /etc/lxdm/lxdm.conf
+
+echo "###############################################################################"
+echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
+echo "###############################################################################"

@@ -1,0 +1,73 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+# Fix computers that have our old ordering
+if grep -q "base udev microcode autodetect" /etc/mkinitcpio.conf; then
+
+	echo "###############################################################################"
+	echo "Adding microcode AFTER autodetect"
+	echo "###############################################################################"
+	sudo sed -i "s/^HOOKS=(base udev microcode autodetect/HOOKS=(base udev autodetect microcode/g" /etc/mkinitcpio.conf;
+	sudo sed -i 's/^HOOKS="base udev microcode autodetect/HOOKS="base udev autodetect microcode/g' /etc/mkinitcpio.conf;
+fi
+
+
+# HOOKS=(base udev microcode autodetect kms modconf block keyboard keymap consolefont filesystems fsck)
+if grep -q "base udev autodetect microcode" /etc/mkinitcpio.conf; then
+	echo "###############################################################################"
+	echo "Microcode is already in"
+	echo "###############################################################################"
+else
+	#sudo sed -i "s/HOOKS=(base udev autodetect kms /HOOKS=(base udev microcode autodetect kms /g" /etc/mkinitcpio.conf;
+	echo "###############################################################################"
+	echo "Adding microcode after autodetect"
+	echo "###############################################################################"
+	sudo sed -i "s/^HOOKS=(base udev autodetect/HOOKS=(base udev autodetect microcode/g" /etc/mkinitcpio.conf;
+	sudo sed -i 's/^HOOKS="base udev autodetect/HOOKS="base udev autodetect microcode/g' /etc/mkinitcpio.conf;
+fi
+
+echo
+echo "###############################################################################"
+echo "Installing the correct microcode - intel or amd"
+echo "###############################################################################"
+cpu=$(cat /proc/cpuinfo | grep vendor_id | uniq | awk '{print $3}')
+echo "We are installing the package for this cpu: "$cpu
+echo "###############################################################################"
+
+if [ $cpu == "GenuineIntel" ]; then
+	sudo pacman -S --noconfirm intel-ucode
+else
+	sudo pacman -S --noconfirm amd-ucode
+fi
+
+sudo mkinitcpio -P
+
+echo
+echo "###############################################################################"
+echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
+echo "###############################################################################"
