@@ -1,6 +1,6 @@
 <h1 align="center">
   Dive into a new Pentesting Experience with<br>
-Athena OS 
+Athena OS
 </h1>
 
 <p align="center">
