@@ -16,7 +16,7 @@
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <chosen_theme>"
     echo "       $0 --auto | -a    # Automatically detect installed theme"
-    echo "Available themes: Akame | Cyborg | Graphite | HackTheBox | Samurai | Sweet | Temple"
+    echo "Available themes: Cyborg | Graphite | HackTheBox | RedMoon | Samurai | Sweet | Temple"
     exit 1
 fi
 
@@ -24,10 +24,10 @@ chosen_theme="${1,,}"
 detect_virt=$(systemd-detect-virt)
 
 declare -A theme_map=(
-    ["akame"]="athena-akame-theme"
     ["cyborg"]="athena-cyborg-theme"
     ["graphite"]="athena-graphite-theme"
     ["hackthebox"]="athena-htb-theme"
+    ["redmoon"]="athena-redmoon-theme"
     ["samurai"]="athena-samurai-theme"
     ["sweet"]="athena-sweetdark-theme"
     ["temple"]="athena-temple-theme"
@@ -61,17 +61,7 @@ rm -rf "$HOME/.config/gtk-4.0"
 # Create the gtk-4.0 directory
 mkdir -p "$HOME/.config/gtk-4.0"
 
-if [ "$chosen_theme" == "akame" ]; then
-    THEME="Nightfox-Dark"
-    GNOME_SHELL="Nightfox-Dark"
-    COLOR_SCHEMA="prefer-dark"
-    ICONS="Material-Black-Cherry-Suru"
-    CURSOR="Bibata-Modern-DarkRed"
-    BACKGROUND="/usr/share/backgrounds/athena/akame.jpg"
-    CODIUM_THEME="red-blood"
-    KITTY_THEME="CrayonPonyFish.conf"
-    TMUX_THEME="redwine"
-elif [ "$chosen_theme" == "cyborg" ]; then
+if [ "$chosen_theme" == "cyborg" ]; then
     THEME="Gruvbox-Dark"
     GNOME_SHELL="Gruvbox-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -101,6 +91,16 @@ elif [ "$chosen_theme" == "hackthebox" ]; then
     CODIUM_THEME="Hack The Box"
     KITTY_THEME="Box.conf"
     TMUX_THEME="forest"
+elif [ "$chosen_theme" == "redmoon" ]; then
+    THEME="Nightfox-Dark"
+    GNOME_SHELL="Nightfox-Dark"
+    COLOR_SCHEMA="prefer-dark"
+    ICONS="Material-Black-Cherry-Suru"
+    CURSOR="Bibata-Modern-DarkRed"
+    BACKGROUND="/usr/share/backgrounds/athena/redmoon.png"
+    CODIUM_THEME="red-blood"
+    KITTY_THEME="CrayonPonyFish.conf"
+    TMUX_THEME="redwine"
 elif [ "$chosen_theme" == "samurai" ]; then
     THEME="Tokyonight-Dark"
     GNOME_SHELL="Tokyonight-Dark"
@@ -132,7 +132,7 @@ elif [ "$chosen_theme" == "temple" ]; then
     KITTY_THEME="Tokyo_Night_Storm.conf"
     TMUX_THEME="sky"
 else
-    echo "Please choose between the following themes: Akame, Cyborg, Graphite, HackTheBox, Samurai, Sweet, Temple"
+    echo "Please choose between the following themes: Cyborg, Graphite, HackTheBox, RedMoon, Samurai, Sweet, Temple"
     exit 1
 fi
 

@@ -1,16 +1,16 @@
 pkgname=athena-tweak-tool
-pkgver=5.7552982
-pkgrel=4
+pkgver=10.97a4c78
+pkgrel=1
 pkgdesc="Tweak Tool to manage the graphical environment in Athena OS."
 arch=('any')
 license=("GPL-3.0-or-later")
 depends=('exo' 'python-distro')
 makedepends=('git')
 conflicts=('athena-theme-tweak')
-source=("git+https://github.com/Athena-OS/$pkgname.git"
+source=("git+https://github.com/Athena-OS/$pkgname.git#branch=arch"
         "theme-switcher")
 sha512sums=('SKIP'
-            'b95cf5c6b07d1c7c39a0f086054e8abfff75e9a93298360229a2e0d290c4c2bcb2cb416946f7ab36d9dbd3770413f70c27086e207e0e0ed81560275468c550c8')
+            '545fc8f8fbf35e4be6959cdfb22fe6a262d0434c83788f51dd6a07803ddd98acf25bb3a40d7e7c79d2fc2f42f8eab9240bd84f99d2dc22dc0f9cda3c67ca13b3')
 
 pkgver() {
   cd $pkgname

@@ -18,7 +18,7 @@ jobs:
       matrix:
         config_installer:
           - { desktop: "gnome", displaymanager: "Astronaut", theme: "temple", terminal: "gnome terminal", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (GNOME)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "kde plasma", displaymanager: "Cyberpunk", theme: "akame", terminal: "alacritty", shell: "zsh", browser: "brave", job_name: "Arch-based Install Test (KDE)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "kde plasma", displaymanager: "Cyberpunk", theme: "redmoon", terminal: "alacritty", shell: "zsh", browser: "brave", job_name: "Arch-based Install Test (KDE)", config_file: "arch.json", installer: "aegis-arch" }
           - { desktop: "xfce refined", displaymanager: "Kath", theme: "samurai", terminal: "xfce", shell: "bash", browser: "brave", job_name: "Arch-based Install Test (XFCE Refined)", config_file: "arch.json", installer: "aegis-arch" }
           - { desktop: "xfce picom", displaymanager: "Post-Apocalypse", theme: "graphite", terminal: "xfce", shell: "zsh", browser: "firefox", job_name: "Arch-based Install Test (XFCE Picom)", config_file: "arch.json", installer: "aegis-arch" }
           - { desktop: "mate", displaymanager: "Cyborg", theme: "hackthebox", terminal: "cool retro term", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (MATE)", config_file: "arch.json", installer: "aegis-arch" }
