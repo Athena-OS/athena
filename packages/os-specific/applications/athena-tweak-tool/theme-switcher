@@ -169,7 +169,7 @@ apply_gtk4() {
 	tput sgr0
 	echo
 
-	if [ -f /usr/share/themes/$THEME/gtk-4.0/assets ]; then
+	if [ -d /usr/share/themes/$THEME/gtk-4.0/assets ]; then
         ln -sf "/usr/share/themes/$THEME/gtk-4.0/assets" "$HOME/.config/gtk-4.0/assets"
     fi
 	if [ -f /usr/share/themes/$THEME/gtk-4.0/gtk.css ]; then
@@ -178,7 +178,7 @@ apply_gtk4() {
 	if [ -f /usr/share/themes/$THEME/gtk-4.0/gtk-dark.css ]; then
         ln -sf "/usr/share/themes/$THEME/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
     fi
-	if [ -f /usr/share/themes/$THEME/assets ]; then
+	if [ -d /usr/share/themes/$THEME/assets ]; then
         ln -sf "/usr/share/themes/$THEME/assets" "$HOME/.config/assets"
     fi 
 }
