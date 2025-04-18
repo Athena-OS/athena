@@ -1,61 +1,85 @@
 # Credits Athena OS ( https://athenaos.org )
 
-# Maintainer: Jat <chat@jat.email>
+# Contributor: Jat <chat@jat.email>
 
-pkgname='pulseaudio-module-xrdp'
-pkgver=0.7.r19.g1910e49
+_pkgname="pulseaudio-module-xrdp"
+pkgname="$_pkgname"
+pkgver=0.8
 pkgrel=1
-pkgdesc='PulseAudio modules for xrdp. Git version, devel branch.'
+pkgdesc="xrdp pulseaudio module"
+url="https://github.com/neutrinolabs/pulseaudio-module-xrdp"
+license=('LGPL-2.1-only')
 arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
-url='https://github.com/neutrinolabs/pulseaudio-module-xrdp'
-license=('LGPL-2.1')
-depends=('pulse-native-provider' 'bluez' 'check' 'gst-plugins-base-libs'
-         'gtk3' 'libice' 'libsm' 'libxcb' 'libxtst' 'lirc' 'openssl' 'orc'
-         'pipewire-jack' 'sbc' 'systemd-libs' 'tdb' 'xrdp')
-makedepends=('git' 'meson' 'check' 'doxygen' 'perl-xml-parser')
-install="${pkgname}.install"
 
-# Note: the host that builds this PKGBUILD must have pulseaudio installed
-#_pulseaudio_ver="$(pulseaudio --version | awk '{split($NF, a, "-"); print a[1]}')"
-#: "${_pulseaudio_ver:=17.0}"
-_pulseaudio_ver="17.0"
-
-source=(
-    "git+${url}.git#branch=devel"
-    "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz")
-sha256sums=(
-    'SKIP'
-    "$(curl -fs "${source[1]}.sha256sum" | awk '{print $1}')"
+makedepends=(
+  'check'
+  'git'
+  'libpulse'
+  'meson'
+  'tdb'
 )
 
-pkgver() {
-    cd "$srcdir/$pkgname"
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-    _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
-    _rev=$(git rev-list --count "$_tag"..HEAD)
-    _hash=$(git rev-parse --short HEAD)
-    printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//; s/-/_/'
-}
+install="$_pkgname.install"
 
-prepare() {
-    cd "${srcdir}/pulseaudio-${_pulseaudio_ver}"
+_pkgsrc="$_pkgname-$pkgver"
+_pkgsrc_pulse="pulseaudio.gitlab"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v${pkgver}.$_pkgext"
+  "$_pkgsrc_pulse"::"git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git"
+)
+sha256sums=(
+  'f0cc39b67421511c28395329a4091f8c5be79d861414b7d67313aa760e3b9db4'
+  'SKIP'
+)
 
-    meson build
-}
+_build_pulse() (
+  echo "Building pulseaudio..."
+
+  local _pulseaudio_ver _ref
+  _pulseaudio_ver=$(LANG=C LC_ALL=C pacman -Si pulseaudio | grep -Pom1 '^Version\s+:\s+\K(\S+)-[0-9\.]+')
+  if grep -qm1 '+' <<< "$_pulseaudio_ver"; then
+    _ref=$(sed -E 's&^\S+[+]g([a-f0-9]+)-\S+$&\1&' <<< ${_pulseaudio_ver})
+  else
+    _ref=v$(sed -E 's&^([0-9]+\.[0-9]+).*$&\1&' <<< ${_pulseaudio_ver})
+  fi
+
+  cd "$_pkgsrc_pulse"
+  git -c advice.detachedHead=false checkout -f "${_ref:?}"
+
+  local _meson_options=(
+    -Ddoxygen=false
+    -Dtests=false
+  )
+
+  meson build "${_meson_options[@]}"
+)
+
+_build_plugin() (
+  echo "Building pulseaudio-module-xrdp..."
+
+  cd "$_pkgsrc"
+  sed -i '\#-I $(PULSE_DIR)/src#a -I $(PULSE_DIR)/build \\' src/Makefile.am
+
+  autoreconf -ivf
+  ./configure "PULSE_DIR=$srcdir/$_pkgsrc_pulse" --prefix='/usr' --libexecdir='/usr/lib'
+  make
+)
 
 build() {
-    cd "${srcdir}/${pkgname}"
-
-    sed -i '\#-I $(PULSE_DIR)/src#a -I $(PULSE_DIR)/build \\' src/Makefile.am
-
-    ./bootstrap
-    ./configure "PULSE_DIR=${srcdir}/pulseaudio-${_pulseaudio_ver}"
-    make
+  _build_pulse
+  _build_plugin
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+  depends=(
+    'pulseaudio'
+    'xrdp'
+  )
 
-    make DESTDIR="$pkgdir" install
+  cd "$_pkgsrc"
+  make DESTDIR="$pkgdir" install
 }
-
