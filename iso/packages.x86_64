@@ -5,7 +5,7 @@
 amd-ucode
 arch-install-scripts
 base
-broadcom-wl-dkms
+broadcom-wl
 dhcpcd
 dialog
 edk2-shell
@@ -13,12 +13,12 @@ efibootmgr
 grub
 inetutils
 intel-ucode
+linux
+linux-atm
 linux-firmware
-linux-lts
-linux-lts-headers
+linux-headers
 lvm2
 mesa
-mesa-utils
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
 mkinitcpio-openswap
@@ -32,19 +32,16 @@ nfs-utils
 nss-mdns
 ntp
 os-prober
-pavucontrol
 pipewire
 pipewire-pulse
 pv
 rsync
-rtl8821cu-morrownr-dkms-git
 sof-firmware
 squashfs-tools
 sudo
 syslinux
 testdisk
 usbutils
-vi
 wireless_tools
 wireplumber
 wpa_supplicant
@@ -75,6 +72,7 @@ ttf-jetbrains-mono-nerd
 
 bat
 espeakup
+fastfetch
 git
 gparted
 lsd
@@ -104,13 +102,12 @@ chaotic-mirrorlist
 #######################################################
 
 aegis-tui
-athena-alacritty-config
+athena-bash
 athena-config
 athena-firefox-config
-athena-graphite-theme
+athena-graphite-design
 athena-keyring
 athena-mirrorlist
-athena-neofetch-config
 athena-powershell-config
 athena-tmux-config
 athena-vscodium-themes

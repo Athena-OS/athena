@@ -1,8 +1,0 @@
-post_install() {
-  echo "Setting Graphite theme"
-  mv /etc/skel/.config/kitty/Atom.conf /etc/skel/.config/kitty/current-theme.conf
-}
-
-post_upgrade() {
-    post_install $1
-}

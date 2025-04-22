@@ -7,8 +7,8 @@
       "root": {
         "type": "submenu",
         "name": "Athena",
-        "icon": "scalable/categories/menu.svg",
-        "iconTheme": "hicolor",
+        "icon": "athena-menu.svg",
+        "iconTheme": "athena-theme",
         "children": [
           {
             "type": "command",
@@ -17,8 +17,8 @@
               "delayed": false
             },
             "name": "Terminal",
-            "icon": "scalable/apps/terminal.svg",
-            "iconTheme": "hicolor",
+            "icon": "terminal.svg",
+            "iconTheme": "athena-theme",
             "children": [
               {
                 "type": "command",
@@ -70,12 +70,12 @@
           {
             "type": "command",
             "data": {
-              "command": "firefox-esr",
+              "command": "firefox",
               "delayed": false
             },
             "name": "Browser",
-            "icon": "scalable/apps/firefox-logo.svg",
-            "iconTheme": "hicolor",
+            "icon": "firefox-logo.svg",
+            "iconTheme": "athena-theme",
             "children": [
               {
                 "type": "uri",
@@ -202,20 +202,20 @@
               "delayed": false
             },
             "name": "Red Team",
-            "icon": "scalable/categories/redteam.svg",
-            "iconTheme": "hicolor",
+            "icon": "redteam.svg",
+            "iconTheme": "athena-theme",
             "children": [
               {
                 "type": "submenu",
                 "data": {},
                 "name": "Vulnerability Assessment",
-                "icon": "scalable/categories/athena-vuln-assessment-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-vuln-assessment-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b legion -r",
+                      "command": "cyber-shell -b legion -r",
                       "delayed": false
                     },
                     "name": "legion",
@@ -225,7 +225,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b nikto -x '-h'",
+                      "command": "cyber-shell -b nikto -x '-h'",
                       "delayed": false
                     },
                     "name": "nikto",
@@ -235,7 +235,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b unix-privesc-check",
+                      "command": "cyber-shell -b unix-privesc-check",
                       "delayed": false
                     },
                     "name": "Unix Privesc Check",
@@ -248,13 +248,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Web Application Analysis",
-                "icon": "scalable/categories/athena-web-application-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-web-application-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b wpscan -x '--help'",
+                      "command": "cyber-shell -b wpscan -x '--help'",
                       "delayed": false
                     },
                     "name": "Wpscan",
@@ -264,7 +264,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b caido -p caido-desktop -g",
+                      "command": "cyber-shell -b caido -p caido-desktop -g",
                       "delayed": false
                     },
                     "name": "Caido",
@@ -274,7 +274,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b burpsuite -g",
+                      "command": "cyber-shell -b burpsuite -g",
                       "delayed": false
                     },
                     "name": "Burpsuite",
@@ -284,7 +284,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b dirb",
+                      "command": "cyber-shell -b dirb",
                       "delayed": false
                     },
                     "name": "dirb",
@@ -294,7 +294,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b dirbuster -g",
+                      "command": "cyber-shell -b dirbuster -g",
                       "delayed": false
                     },
                     "name": "dirbuster",
@@ -304,7 +304,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b ffuf -x '-h'",
+                      "command": "cyber-shell -b ffuf -x '-h'",
                       "delayed": false
                     },
                     "name": "ffuf",
@@ -314,7 +314,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b wfuzz",
+                      "command": "cyber-shell -b wfuzz",
                       "delayed": false
                     },
                     "name": "wfuzz",
@@ -324,7 +324,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b sqlmap -x '--wizard'",
+                      "command": "cyber-shell -b sqlmap -x '--wizard'",
                       "delayed": false
                     },
                     "name": "SQLMap",
@@ -337,13 +337,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Password Attacks",
-                "icon": "scalable/categories/athena-password-attacks-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-password-attacks-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b hashcat -x '-h'",
+                      "command": "cyber-shell -b hashcat -x '-h'",
                       "delayed": false
                     },
                     "name": "Hashcat",
@@ -353,7 +353,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b hydra -x '| grep --color=auto \"^\\|Supported services:\"; hydra-wizard.sh'",
+                      "command": "cyber-shell -b hydra -x '| grep --color=auto \"^\\|Supported services:\"; hydra-wizard.sh'",
                       "delayed": false
                     },
                     "name": "Hydra",
@@ -363,7 +363,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b cewl -x '--help'",
+                      "command": "cyber-shell -b cewl -x '--help'",
                       "delayed": false
                     },
                     "name": "CeWL",
@@ -373,7 +373,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b crunch",
+                      "command": "cyber-shell -b crunch",
                       "delayed": false
                     },
                     "name": "Crunch",
@@ -383,7 +383,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b rsmangler -x '-h'",
+                      "command": "cyber-shell -b rsmangler -x '-h'",
                       "delayed": false
                     },
                     "name": "RSMangler",
@@ -393,7 +393,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b medusa -x '-h'",
+                      "command": "cyber-shell -b medusa -x '-h'",
                       "delayed": false
                     },
                     "name": "Medusa",
@@ -403,7 +403,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b john",
+                      "command": "cyber-shell -b john",
                       "delayed": false
                     },
                     "name": "John",
@@ -416,13 +416,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Sniffing",
-                "icon": "scalable/categories/athena-sniffing-spoofing-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-sniffing-spoofing-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b mitmproxy -x '-h'",
+                      "command": "cyber-shell -b mitmproxy -x '-h'",
                       "delayed": false
                     },
                     "name": "MITM Proxy",
@@ -432,7 +432,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b responder -x '-h'",
+                      "command": "cyber-shell -b responder -x '-h'",
                       "delayed": false
                     },
                     "name": "Responder",
@@ -442,7 +442,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b wireshark -p wireshark-qt -g",
+                      "command": "cyber-shell -b wireshark -p wireshark-qt -g",
                       "delayed": false
                     },
                     "name": "Wireshark",
@@ -455,13 +455,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Wireless Attacks",
-                "icon": "scalable/categories/athena-wireless-attacks-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-wireless-attacks-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b aircrack-ng",
+                      "command": "cyber-shell -b aircrack-ng",
                       "delayed": false
                     },
                     "name": "Aircrack-ng",
@@ -471,7 +471,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b kismet -x '-h'",
+                      "command": "cyber-shell -b kismet -x '-h'",
                       "delayed": false
                     },
                     "name": "Kismet",
@@ -481,7 +481,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b reaver -x '-h'",
+                      "command": "cyber-shell -b reaver -x '-h'",
                       "delayed": false
                     },
                     "name": "Reaver",
@@ -491,7 +491,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b wifite -x '--help'",
+                      "command": "cyber-shell -b wifite -x '--help'",
                       "delayed": false
                     },
                     "name": "WiFite",
@@ -501,7 +501,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b fern-wifi-cracker -g -r",
+                      "command": "cyber-shell -b fern-wifi-cracker -g -r",
                       "delayed": false
                     },
                     "name": "Fern WiFi Cracker",
@@ -511,7 +511,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b spooftooph -x '-h'",
+                      "command": "cyber-shell -b spooftooph -x '-h'",
                       "delayed": false
                     },
                     "name": "spooftooph",
@@ -524,13 +524,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Reverse Engineering",
-                "icon": "scalable/categories/athena-reverse-engineering-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-reverse-engineering-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b nasm -x '-h'",
+                      "command": "cyber-shell -b nasm -x '-h'",
                       "delayed": false
                     },
                     "name": "NASM",
@@ -540,7 +540,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b radare2 -x '-h'",
+                      "command": "cyber-shell -b radare2 -x '-h'",
                       "delayed": false
                     },
                     "name": "radare2",
@@ -550,7 +550,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b ghidra -g",
+                      "command": "cyber-shell -b ghidra -g",
                       "delayed": false
                     },
                     "name": "Ghidra",
@@ -560,7 +560,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b edb -g",
+                      "command": "cyber-shell -b edb -g",
                       "delayed": false
                     },
                     "name": "EDB Debugger",
@@ -573,13 +573,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Exploitation",
-                "icon": "scalable/categories/athena-exploitation-tools-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-exploitation-tools-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b msfconsole -p metasploit -x '-h'",
+                      "command": "cyber-shell -b msfconsole -p metasploit -x '-h'",
                       "delayed": false
                     },
                     "name": "Metasploit",
@@ -589,7 +589,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b setoolkit -r -p set",
+                      "command": "cyber-shell -b setoolkit -z -p set",
                       "delayed": false
                     },
                     "name": "SET",
@@ -599,7 +599,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b searchsploit -p exploitdb",
+                      "command": "cyber-shell -b searchsploit -p exploitdb",
                       "delayed": false
                     },
                     "name": "Searchsploit",
@@ -612,13 +612,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Post Exploitation",
-                "icon": "scalable/categories/athena-maintaining-access-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-maintaining-access-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b powersploit -d /usr/share/windows/powersploit",
+                      "command": "cyber-shell -b powersploit -d /usr/share/windows/powersploit",
                       "delayed": false
                     },
                     "name": "Powersploit",
@@ -628,7 +628,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b mimikatz -d /usr/share/windows/mimikatz",
+                      "command": "cyber-shell -b mimikatz -d /usr/share/windows/mimikatz",
                       "delayed": false
                     },
                     "name": "Mimikatz",
@@ -638,7 +638,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b evil-winrm -x '-h'",
+                      "command": "cyber-shell -b evil-winrm -x '-h'",
                       "delayed": false
                     },
                     "name": "Evil WinRM",
@@ -648,7 +648,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b proxychains4 -p proxychains-ng",
+                      "command": "cyber-shell -b proxychains4 -p proxychains-ng",
                       "delayed": false
                     },
                     "name": "ProxyChains",
@@ -658,7 +658,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b weevely -x 'terminal -h'",
+                      "command": "cyber-shell -b weevely -x 'terminal -h'",
                       "delayed": false
                     },
                     "name": "Weevely",
@@ -671,13 +671,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Information Gathering",
-                "icon": "scalable/categories/athena-info-gathering-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-info-gathering-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b dmitry",
+                      "command": "cyber-shell -b dmitry",
                       "delayed": false
                     },
                     "name": "dmitry",
@@ -687,7 +687,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b nmap",
+                      "command": "cyber-shell -b nmap",
                       "delayed": false
                     },
                     "name": "nmap",
@@ -697,7 +697,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b spiderfoot -x '--help'",
+                      "command": "cyber-shell -b spiderfoot -x '--help'",
                       "delayed": false
                     },
                     "name": "spiderfoot",
@@ -707,7 +707,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b theharvester -x '-h'",
+                      "command": "cyber-shell -b theharvester -x '-h'",
                       "delayed": false
                     },
                     "name": "TheHarvester",
@@ -717,7 +717,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b enum4linux",
+                      "command": "cyber-shell -b enum4linux",
                       "delayed": false
                     },
                     "name": "enum4linux",
@@ -727,7 +727,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b wafw00f -x '-h'",
+                      "command": "cyber-shell -b wafw00f -x '-h'",
                       "delayed": false
                     },
                     "name": "wafw00f",
@@ -737,7 +737,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b fierce -x '-h'",
+                      "command": "cyber-shell -b fierce -x '-h'",
                       "delayed": false
                     },
                     "name": "fierce",
@@ -752,8 +752,8 @@
             "type": "submenu",
             "data": {},
             "name": "PWNage",
-            "icon": "scalable/categories/social.svg",
-            "iconTheme": "hicolor",
+            "icon": "social.svg",
+            "iconTheme": "athena-theme",
             "children": [
               {
                 "type": "submenu",
@@ -1806,8 +1806,8 @@
             "type": "submenu",
             "data": {},
             "name": "Blue Team",
-            "icon": "scalable/categories/blueteam.svg",
-            "iconTheme": "hicolor",
+            "icon": "blueteam.svg",
+            "iconTheme": "athena-theme",
             "children": [
               {
                 "type": "submenu",
@@ -1816,13 +1816,13 @@
                   "delayed": false
                 },
                 "name": "Identify",
-                "icon": "scalable/categories/athena-identify-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-identify-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b spiderfoot -x '--help'",
+                      "command": "cyber-shell -b spiderfoot -x '--help'",
                       "delayed": false
                     },
                     "name": "spiderfoot",
@@ -1832,7 +1832,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b searchsploit -p exploitdb",
+                      "command": "cyber-shell -b searchsploit -p exploitdb",
                       "delayed": false
                     },
                     "name": "Searchsploit",
@@ -1842,7 +1842,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b zaproxy -g",
+                      "command": "cyber-shell -b zaproxy -g",
                       "delayed": false
                     },
                     "name": "OWASP ZAP",
@@ -1852,7 +1852,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b maltego -g",
+                      "command": "cyber-shell -b maltego -g",
                       "delayed": false
                     },
                     "name": "Maltego",
@@ -1862,7 +1862,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b wapiti -x '-h'",
+                      "command": "cyber-shell -b wapiti -x '-h'",
                       "delayed": false
                     },
                     "name": "Wapiti",
@@ -1879,13 +1879,13 @@
                   "delayed": false
                 },
                 "name": "Recover",
-                "icon": "scalable/categories/athena-recover-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-recover-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b scrounge-ntfs -x '-h'",
+                      "command": "cyber-shell -b scrounge-ntfs -x '-h'",
                       "delayed": false
                     },
                     "name": "Scrounge NTFS",
@@ -1901,13 +1901,13 @@
                   "delayed": false
                 },
                 "name": "Respond",
-                "icon": "scalable/categories/athena-respond-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-respond-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b guymager -g -r",
+                      "command": "cyber-shell -b guymager -g -r",
                       "delayed": false
                     },
                     "name": "Guymager",
@@ -1917,7 +1917,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b ghidra -g",
+                      "command": "cyber-shell -b ghidra -g",
                       "delayed": false
                     },
                     "name": "Ghidra",
@@ -1927,7 +1927,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b galleta",
+                      "command": "cyber-shell -b galleta",
                       "delayed": false
                     },
                     "name": "Galleta",
@@ -1937,7 +1937,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b foremost -x '-h'",
+                      "command": "cyber-shell -b foremost -x '-h'",
                       "delayed": false
                     },
                     "name": "Foremost",
@@ -1947,7 +1947,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b wireshark -p wireshark-qt -g",
+                      "command": "cyber-shell -b wireshark -p wireshark-qt -g",
                       "delayed": false
                     },
                     "name": "Wireshark",
@@ -1957,7 +1957,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b ollydbg -g",
+                      "command": "cyber-shell -b ollydbg -g",
                       "delayed": false
                     },
                     "name": "OllyDbg",
@@ -1967,7 +1967,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b netsniff-ng -x '-h'",
+                      "command": "cyber-shell -b netsniff-ng -x '-h'",
                       "delayed": false
                     },
                     "name": "Netsniff-ng",
@@ -1977,7 +1977,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b mactime -p sleuthkit",
+                      "command": "cyber-shell -b mactime -p sleuthkit",
                       "delayed": false
                     },
                     "name": "Mactime",
@@ -1987,7 +1987,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b ils -p sleuthkit",
+                      "command": "cyber-shell -b ils -p sleuthkit",
                       "delayed": false
                     },
                     "name": "ILS",
@@ -1997,7 +1997,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b icat -p sleuthkit",
+                      "command": "cyber-shell -b icat -p sleuthkit",
                       "delayed": false
                     },
                     "name": "ICAT",
@@ -2013,13 +2013,13 @@
                   "delayed": false
                 },
                 "name": "Detect",
-                "icon": "scalable/categories/athena-detect-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-detect-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b sentrypeer -x '-h'",
+                      "command": "cyber-shell -b sentrypeer -x '-h'",
                       "delayed": false
                     },
                     "name": "SentryPeer",
@@ -2033,13 +2033,13 @@
                 "type": "submenu",
                 "data": {},
                 "name": "Protect",
-                "icon": "scalable/categories/athena-protect-trans.svg",
-                "iconTheme": "hicolor",
+                "icon": "athena-protect-trans.svg",
+                "iconTheme": "athena-theme",
                 "children": [
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b fwbuilder",
+                      "command": "cyber-shell -b fwbuilder",
                       "delayed": false
                     },
                     "name": "Firewall Builder",
@@ -2049,7 +2049,7 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "shell-rocket -b clamscan -p clamav -x '-h'",
+                      "command": "cyber-shell -b clamscan -p clamav -x '-h'",
                       "delayed": false
                     },
                     "name": "ClamAV",
@@ -2067,8 +2067,8 @@
               "delayed": false
             },
             "name": "Welcome",
-            "icon": "scalable/categories/menu.svg",
-            "iconTheme": "hicolor"
+            "icon": "athena-menu.svg",
+            "iconTheme": "athena-theme"
           },
           {
             "type": "command",
@@ -2077,8 +2077,8 @@
               "delayed": false
             },
             "name": "VSCodium",
-            "icon": "scalable/apps/vscode.svg",
-            "iconTheme": "hicolor",
+            "icon": "vscode.svg",
+            "iconTheme": "athena-theme",
             "children": [
               {
                 "type": "hotkey",

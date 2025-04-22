@@ -17,16 +17,16 @@ jobs:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
       matrix:
         config_installer:
-          - { desktop: "gnome", displaymanager: "Astronaut", theme: "temple", terminal: "gnome terminal", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (GNOME)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "kde plasma", displaymanager: "Cyberpunk", theme: "redmoon", terminal: "alacritty", shell: "zsh", browser: "brave", job_name: "Arch-based Install Test (KDE)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "xfce refined", displaymanager: "Kath", theme: "samurai", terminal: "xfce", shell: "bash", browser: "brave", job_name: "Arch-based Install Test (XFCE Refined)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "xfce picom", displaymanager: "Post-Apocalypse", theme: "graphite", terminal: "xfce", shell: "zsh", browser: "firefox", job_name: "Arch-based Install Test (XFCE Picom)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "mate", displaymanager: "Cyborg", theme: "hackthebox", terminal: "cool retro term", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (MATE)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "cinnamon", displaymanager: "Black Hole", theme: "sweet", terminal: "konsole", shell: "zsh", browser: "brave", job_name: "Arch-based Install Test (Cinnamon)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "gnome", displaymanager: "Astronaut", design: "temple", terminal: "gnome terminal", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (GNOME)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "kde plasma", displaymanager: "Cyberpunk", design: "redmoon", terminal: "alacritty", shell: "zsh", browser: "brave", job_name: "Arch-based Install Test (KDE)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "xfce refined", displaymanager: "Kath", design: "samurai", terminal: "xfce", shell: "bash", browser: "brave", job_name: "Arch-based Install Test (XFCE Refined)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "xfce picom", displaymanager: "Post-Apocalypse", design: "graphite", terminal: "xfce", shell: "zsh", browser: "firefox", job_name: "Arch-based Install Test (XFCE Picom)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "mate", displaymanager: "Cyborg", design: "hackthebox", terminal: "cool retro term", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (MATE)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "cinnamon", displaymanager: "Black Hole", design: "sweet", terminal: "konsole", shell: "zsh", browser: "brave", job_name: "Arch-based Install Test (Cinnamon)", config_file: "arch.json", installer: "aegis-arch" }
           - { desktop: "bspwm", displaymanager: "Purple Leaves", terminal: "kitty", browser: "brave", job_name: "Arch-based Install Test (BSPWM)", config_file: "arch.json", installer: "aegis-arch" }
           - { desktop: "hyprland", displaymanager: "Pixel Sakura", terminal: "foot", browser: "firefox", job_name: "Arch-based Install Test (Hyprland)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "gnome", displaymanager: "sddm", theme: "temple", terminal: "kitty", shell: "fish", browser: "firefox", job_name: "Nix-based Install Test (Temple)", config_file: "nix.json", installer: "aegis-nix" }
-          - { desktop: "gnome", displaymanager: "sddm", theme: "redmoon", terminal: "kitty", shell: "fish", browser: "firefox", job_name: "Nix-based Install Test (Red Moon)", config_file: "nix.json", installer: "aegis-nix" }
+          - { desktop: "gnome", displaymanager: "sddm", design: "temple", terminal: "kitty", shell: "fish", browser: "firefox", job_name: "Nix-based Install Test (Temple)", config_file: "nix.json", installer: "aegis-nix" }
+          - { desktop: "gnome", displaymanager: "sddm", design: "redmoon", terminal: "kitty", shell: "fish", browser: "firefox", job_name: "Nix-based Install Test (Red Moon)", config_file: "nix.json", installer: "aegis-nix" }
 
     name: ${{ matrix.config_installer.job_name }}  # Dynamically assign the job name based on the matrix
 
@@ -50,11 +50,11 @@ jobs:
           jq --arg target_disk "/dev/mapper/${LOOP_DEV#/dev/}" \
              --arg desktop "${{ matrix.config_installer.desktop }}" \
              --arg displaymanager "${{ matrix.config_installer.displaymanager }}" \
-             --arg theme "${{ matrix.config_installer.theme || '' }}" \
+             --arg design "${{ matrix.config_installer.design || '' }}" \
              --arg terminal "${{ matrix.config_installer.terminal || '' }}" \
              --arg shell "${{ matrix.config_installer.shell || '' }}" \
              --arg browser "${{ matrix.config_installer.browser || '' }}" \
-             '.partition.device = $target_disk | .partition.mode = "EraseDisk" | .bootloader.location = $target_disk | .desktop = $desktop | .displaymanager = $displaymanager | .theme = $theme | .terminal = $terminal | .shell = $shell | .browser = $browser' \
+             '.partition.device = $target_disk | .partition.mode = "EraseDisk" | .bootloader.location = $target_disk | .desktop = $desktop | .displaymanager = $displaymanager | .design = $design | .terminal = $terminal | .shell = $shell | .browser = $browser' \
              ${{ matrix.config_installer.config_file }} > modified_${{ matrix.config_installer.config_file }}
           mv modified_${{ matrix.config_installer.config_file }} ${{ matrix.config_installer.config_file }}
 

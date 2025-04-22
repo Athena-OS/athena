@@ -1,6 +1,6 @@
 pkgname=athena-xfce-picom
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="XFCE Picom configuration for Athena."
 arch=('any')
 license=("custom")
@@ -16,7 +16,7 @@ sha512sums=('807c896223158da8fa396bb10a5eb9769259c66deb44d7482ac47e1d5d6df4e75b5
             '760472ee4e056b2b387776ba34383060e72911c2685af676ed05be098cb4e7ccbd7e162e63d13c460ddf1fcddea81badceb3d5ff49a36b8f534e15bbd791ec42'
             '6774132f1e51e7bce831d21aa4c083f1b95fc0839e4dc6c337e72eeb0156cb3d4cedce48dc91267c7e2c90904cdf19e785dce62266574681798e47bf3dbc4a19'
             '34c8a7a5ef398637b5e210e83cb7d9d1c7e8467047a45560fe781df43b4ae7b736fa3944b3e9ed8b2fe6a6e769c0648ad42356e02b60e89a80ad781afd8b5216'
-            '9837d47bfb5b8cfe766734e3ecdd981e8cd8837b504dfbceb378d69f0cda3ba387a25a2ae66455bb9b724898b17b23977bb19baf86a1884497dfd854a4b05ae0')
+            'a72d4d18c1b7e36af50a8534e5103be91efcb52e7d4c31e178383c5a3cd12d93613b8922cf074f17ec86390b8a318449bd524ba24da8a6cd1c8de11f221ecb0c')
 
 package() {
   mkdir -p "${pkgdir}/etc/xdg/autostart"

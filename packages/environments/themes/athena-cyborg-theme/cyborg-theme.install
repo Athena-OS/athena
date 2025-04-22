@@ -1,8 +1,0 @@
-post_install() {
-  echo "Setting Cyborg gruvbox theme"
-  mv /etc/skel/.config/kitty/gruvbox-dark.conf /etc/skel/.config/kitty/current-theme.conf
-}
-
-post_upgrade() {
-    post_install $1
-}

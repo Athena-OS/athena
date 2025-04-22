@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 ##################################################################################################################
 #tput setaf 0 = black
@@ -14,42 +14,59 @@
 
 # Check if the number of command-line arguments is correct
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <chosen_theme>"
-    echo "       $0 --auto | -a    # Automatically detect installed theme"
-    echo "Available themes: Cyborg | Graphite | HackTheBox | RedMoon | Samurai | Sweet | Temple"
+    echo "Usage: $0 <chosen_design>"
+    echo "       $0 --auto | -a    # Automatically detect installed design"
+    echo "Available design: Cyborg | Graphite | HackTheBox | RedMoon | Samurai | Sweet | Temple"
     exit 1
 fi
 
-chosen_theme="${1,,}"
+chosen_design="${1,,}"
 detect_virt=$(systemd-detect-virt)
 
-declare -A theme_map=(
-    ["cyborg"]="athena-cyborg-theme"
-    ["graphite"]="athena-graphite-theme"
-    ["hackthebox"]="athena-htb-theme"
-    ["redmoon"]="athena-redmoon-theme"
-    ["samurai"]="athena-samurai-theme"
-    ["sweet"]="athena-sweetdark-theme"
-    ["temple"]="athena-temple-theme"
+is_package_installed() {
+    local package="$1"
+
+    if command -v rpm &>/dev/null; then
+        rpm -q "$package" &>/dev/null
+    elif command -v dpkg &>/dev/null; then
+        dpkg -l "$package" 2>/dev/null | grep -q "^ii"
+    elif command -v pacman &>/dev/null; then
+        pacman -Q "$package" &>/dev/null
+    elif command -v apk &>/dev/null; then
+        apk info -e "$package" &>/dev/null
+    else
+        echo "Unsupported package manager." >&2
+        return 2
+    fi
+}
+
+declare -A design_map=(
+    ["cyborg"]="athena-cyborg-design"
+    ["graphite"]="athena-graphite-design"
+    ["hackthebox"]="athena-htb-design"
+    ["redmoon"]="athena-redmoon-design"
+    ["samurai"]="athena-samurai-design"
+    ["sweet"]="athena-sweetdark-design"
+    ["temple"]="athena-temple-design"
 )
 
-# Auto-detect theme based on installed package
+# Auto-detect design based on installed package
 if [[ "$1" == "-a" || "$1" == "--auto" ]]; then
-    for theme in "${!theme_map[@]}"; do
-        if pacman -Qq "${theme_map[$theme]}" &>/dev/null; then
-            chosen_theme="$theme"
+    for design in "${!design_map[@]}"; do
+        if is_package_installed "${design_map[$design]}"; then
+            chosen_design="$design"
             echo
             tput setaf 6
-            echo "Auto-detected installed theme: $chosen_theme"
+            echo "Auto-detected installed design: $chosen_design"
             tput sgr0
             echo
             break
         fi
     done
 
-    if [[ -z "$chosen_theme" ]]; then
-        echo "No recognized theme package found. Please install one of the following packages:"
-        for pkg in "${theme_map[@]}"; do echo "  - $pkg"; done
+    if [[ -z "$chosen_design" ]]; then
+        echo "No recognized design package found. Please install one of the following packages:"
+        for pkg in "${design_map[@]}"; do echo "  - $pkg"; done
         exit 1
     fi
 fi
@@ -61,7 +78,7 @@ rm -rf "$HOME/.config/gtk-4.0"
 # Create the gtk-4.0 directory
 mkdir -p "$HOME/.config/gtk-4.0"
 
-if [ "$chosen_theme" == "cyborg" ]; then
+if [ "$chosen_design" == "cyborg" ]; then
     THEME="Gruvbox-Dark"
     GNOME_SHELL="Gruvbox-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -71,7 +88,8 @@ if [ "$chosen_theme" == "cyborg" ]; then
     CODIUM_THEME="Gruvbox Material Dark"
     KITTY_THEME="gruvbox_dark.conf"
     TMUX_THEME="gold"
-elif [ "$chosen_theme" == "graphite" ]; then
+    COLORBASE="gruvbox"
+elif [ "$chosen_design" == "graphite" ]; then
     THEME="Graphite-Rimless-Dark"
     GNOME_SHELL="Graphite-Rimless-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -81,7 +99,8 @@ elif [ "$chosen_theme" == "graphite" ]; then
     CODIUM_THEME="Just Black"
     KITTY_THEME="Atom.conf"
     TMUX_THEME="snow"
-elif [ "$chosen_theme" == "hackthebox" ]; then
+    COLORBASE="blue"
+elif [ "$chosen_design" == "hackthebox" ]; then
     THEME="Matrix-Dark"
     GNOME_SHELL="Matrix-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -91,7 +110,8 @@ elif [ "$chosen_theme" == "hackthebox" ]; then
     CODIUM_THEME="Hack The Box"
     KITTY_THEME="Box.conf"
     TMUX_THEME="forest"
-elif [ "$chosen_theme" == "redmoon" ]; then
+    COLORBASE="green"
+elif [ "$chosen_design" == "redmoon" ]; then
     THEME="Nightfox-Dark"
     GNOME_SHELL="Nightfox-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -101,7 +121,8 @@ elif [ "$chosen_theme" == "redmoon" ]; then
     CODIUM_THEME="red-blood"
     KITTY_THEME="CrayonPonyFish.conf"
     TMUX_THEME="redwine"
-elif [ "$chosen_theme" == "samurai" ]; then
+    COLORBASE="red"
+elif [ "$chosen_design" == "samurai" ]; then
     THEME="Tokyonight-Dark"
     GNOME_SHELL="Tokyonight-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -111,7 +132,8 @@ elif [ "$chosen_theme" == "samurai" ]; then
     CODIUM_THEME="Tokyo Night Storm"
     KITTY_THEME="Tokyo_Night_Storm.conf"
     TMUX_THEME="sky"
-elif [ "$chosen_theme" == "sweet" ]; then
+    COLORBASE="cyan"
+elif [ "$chosen_design" == "sweet" ]; then
     THEME="Sweet-Dark-v40"
     GNOME_SHELL="Sweet-Dark-v40"
     COLOR_SCHEMA="prefer-dark"
@@ -121,7 +143,8 @@ elif [ "$chosen_theme" == "sweet" ]; then
     CODIUM_THEME="Radical"
     KITTY_THEME="AdventureTime.conf"
     TMUX_THEME="violet"
-elif [ "$chosen_theme" == "temple" ]; then
+    COLORBASE="purple"
+elif [ "$chosen_design" == "temple" ]; then
     THEME="Tokyonight-Dark"
     GNOME_SHELL="Tokyonight-Dark"
     COLOR_SCHEMA="prefer-dark"
@@ -131,10 +154,25 @@ elif [ "$chosen_theme" == "temple" ]; then
     CODIUM_THEME="Tokyo Night Storm"
     KITTY_THEME="Tokyo_Night_Storm.conf"
     TMUX_THEME="sky"
+    COLORBASE="cyan"
 else
-    echo "Please choose between the following themes: Cyborg, Graphite, HackTheBox, RedMoon, Samurai, Sweet, Temple"
+    echo "Please choose between the following design: Cyborg, Graphite, HackTheBox, RedMoon, Samurai, Sweet, Temple"
     exit 1
 fi
+
+echo "$DESKTOP_SESSION session detected."
+
+apply_menu_icons() {
+    mkdir -p "$HOME/.config/kando/icon-themes/athena-theme"
+    mkdir -p "$HOME/.local/share/icons/hicolor/scalable/apps"
+    mkdir -p "$HOME/.local/share/icons/hicolor/scalable/categories"
+
+    # Here 'hicolor' is used because all icon themes automatically inherit hicolor icons from system dirs and home dirs
+    cp -rf /usr/share/athena-$COLORBASE-base/icons/apps/* "$HOME/.config/kando/icon-themes/athena-theme/"
+    cp -rf /usr/share/athena-$COLORBASE-base/icons/categories/* "$HOME/.config/kando/icon-themes/athena-theme/"
+    cp -rf /usr/share/athena-$COLORBASE-base/icons/apps/* "$HOME/.local/share/icons/hicolor/scalable/apps/"
+    cp -rf /usr/share/athena-$COLORBASE-base/icons/categories/* "$HOME/.local/share/icons/hicolor/scalable/categories/"
+}
 
 # /home/<user>/.config/gtk-3.0/settings.ini
 apply_gtk3() {
@@ -183,8 +221,11 @@ apply_gtk4() {
     fi 
 }
 
-# I add check on tty because on Live Environment, when I run startx (that is run in tty), $XDG_CURRENT_DESKTOP is empty
-if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
+# I add check on tty because on Live Environment, when I run startx (that is run in tty), $DESKTOP_SESSION is empty
+if [[ "$DESKTOP_SESSION" =~ "xfce" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
+    # Need to wait for some time to wait for the needed xfce process to be loaded, to prevent to have a blank background
+    # Be aware that for Arch and Fedora the BACKGROUND value must be changed above to prevent blank screen.
+    sleep 0.5
     xfconf-query -c xsettings -p /Net/ThemeName -s "$THEME"
     xfconf-query -c xsettings -p /Net/IconThemeName -s "$ICONS"
     xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$CURSOR"
@@ -197,16 +238,16 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$
     for x in $(xfconf-query -c xfce4-desktop -lv | grep last-image | awk '{print $1}'); do xfconf-query -c xfce4-desktop -p $x -s $BACKGROUND; done
 fi
 
-if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]]; then
+if [[ "$DESKTOP_SESSION" =~ "plasma" ]]; then
     plasma-apply-lookandfeel -a org.kde.breezedark.desktop # It applies Plasma Global Theme and Color Scheme too
     dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:$THEME"
-    /usr/lib/plasma-changeicons "$ICONS"
+    /usr/libexec/plasma-changeicons "$ICONS"
     plasma-apply-cursortheme "$CURSOR"
-    qdbus6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops(); for(i=0; i<allDesktops.length; i++) { myDesktop=allDesktops[i]; print(myDesktop); myDesktop.currentConfigGroup = Array(\"Wallpaper\",\"org.kde.image\",\"General\");var wallpaper = \"$BACKGROUND\"; myDesktop.writeConfig(\"Image\", wallpaper);print(myDesktop.readConfig(\"Image\"));}"
+    qdbus-qt6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "var allDesktops = desktops(); for(i=0; i<allDesktops.length; i++) { myDesktop=allDesktops[i]; print(myDesktop); myDesktop.currentConfigGroup = Array(\"Wallpaper\",\"org.kde.image\",\"General\");var wallpaper = \"$BACKGROUND\"; myDesktop.writeConfig(\"Image\", wallpaper);print(myDesktop.readConfig(\"Image\"));}"
     kwriteconfig6 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$BACKGROUND"
 fi
 
-if [[ "$XDG_CURRENT_DESKTOP" =~ "MATE" ]]; then
+if [[ "$DESKTOP_SESSION" =~ "mate" ]]; then
     dconf write /org/mate/desktop/interface/gtk-theme "'$THEME'"
     dconf write /org/mate/marco/general/theme "'$THEME'"
     dconf write /org/mate/desktop/interface/icon-theme "'$ICONS'"
@@ -214,7 +255,7 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "MATE" ]]; then
     dconf write /org/mate/desktop/background/picture-filename "'$BACKGROUND'"
 fi
 
-if [[ "$XDG_CURRENT_DESKTOP" =~ "Cinnamon" ]]; then
+if [[ "$DESKTOP_SESSION" =~ "cinnamon" ]]; then
     gsettings set org.cinnamon.desktop.interface gtk-theme ""
     gsettings set org.cinnamon.desktop.wm.preferences theme ""
     sleep 1
@@ -229,7 +270,7 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "Cinnamon" ]]; then
     gsettings set org.cinnamon.desktop.background picture-options "stretched"
 fi
 
-#if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]] || [[ "$XDG_CURRENT_DESKTOP" =~ "Hyprland" ]]; then
+#if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]] || [[ "$DESKTOP_SESSION" =~ "hyprland" ]]; then
 #    cp -rf "$BACKGROUND" "$HOME/.config/hypr/wallpaper" 2>/dev/null
     #pkill swaybg 2>/dev/null
     #swaybg -i "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null & #Note that swaybg needs to be runned in background
@@ -240,7 +281,7 @@ fi
 #    hyprctl setcursor "$CURSOR" 24 2>/dev/null
 #fi
 
-if [[ "$XDG_CURRENT_DESKTOP" =~ "GNOME" ]]; then
+if [[ "$DESKTOP_SESSION" =~ "gnome" ]]; then
     gsettings set org.gnome.desktop.interface gtk-theme ""
     gsettings set org.gnome.desktop.wm.preferences theme ""
     gsettings set org.gnome.shell.extensions.user-theme name ""
@@ -259,12 +300,43 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "GNOME" ]]; then
     gsettings set org.gnome.desktop.background picture-options "stretched"
 fi
 
-sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"$CODIUM_THEME\",/g" "$HOME/.config/VSCodium/User/settings.json"
-cp -rf "$HOME/.config/kitty/kitty-themes/themes/$KITTY_THEME" "$HOME/.config/kitty/current-theme.conf" 2>/dev/null
-sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme '$TMUX_THEME'/g" "$HOME/.tmux.conf"
+# VSCodium fallback
+VSCODIUM_USER="$HOME/.config/VSCodium/User"
+VSCODIUM_FILE="$VSCODIUM_USER/settings.json"
+
+if [[ -d "/etc/skel/.vscode-oss" ]]; then
+  echo "⚙️ Restoring VSCodium themes..."
+  cp -rf "/etc/skel/.vscode-oss" "$HOME/"
+fi
+
+if [[ ! -f "$VSCODIUM_FILE" && -f "/etc/skel/.config/VSCodium/User/settings.json" ]]; then
+  echo "⚙️ Restoring default VSCodium settings..."
+  mkdir -p "$VSCODIUM_USER"
+  cp "/etc/skel/.config/VSCodium/User/settings.json" "$VSCODIUM_FILE"
+fi
+sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"$CODIUM_THEME\",/g" "$VSCODIUM_FILE"
+
+# Kitty fallback
+KITTY_DIR="$HOME/.config/kitty"
+KITTY_FILE="$KITTY_DIR/current-theme.conf"
+if [[ ! -f "$KITTY_FILE" && -f "/etc/skel/.config/kitty/current-theme.conf" ]]; then
+  echo "🎨 Restoring default Kitty theme..."
+  mkdir -p "$KITTY_DIR"
+  cp "/etc/skel/.config/kitty/current-theme.conf" "$KITTY_FILE"
+fi
+cp -f "$KITTY_DIR/kitty-themes/themes/$KITTY_THEME" "$KITTY_FILE" 2>/dev/null
+
+# Tmux fallback
+TMUX_FILE="$HOME/.tmux.conf"
+if [[ ! -f "$TMUX_FILE" && -f "/etc/skel/.tmux.conf" ]]; then
+  echo "🧩 Restoring default tmux config..."
+  cp "/etc/skel/.tmux.conf" "$TMUX_FILE"
+fi
+sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme '$TMUX_THEME'/g" "$TMUX_FILE"
 
 apply_gtk3
 apply_gtk4
+apply_menu_icons
 
 echo
 tput setaf 3

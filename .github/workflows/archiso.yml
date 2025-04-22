@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     env:
+      ATHENA_ID: 'athenaos'
       ATHENA_VERSION: 'rolling'
       ISO_VERSION: 'rolling' # It must be the same on profiledef.sh and installation_script
       ISO_ARCHITECTURE: 'x86_64'
@@ -56,7 +57,7 @@ jobs:
           rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
 
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm archiso git github-cli grub openssh rsync sshpass wget
+        run: pacman -Syyu --noconfirm archiso edk2-ovmf git github-cli gnupg grub openssh openssl qemu-desktop rsync sshpass wget # Install also optional deps for archiso
         
       - name: Build ArchISO
         run: |
@@ -65,7 +66,7 @@ jobs:
           
       - name: Upload to Athena OS Mirror
         run: |
-          sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena-images/rolling/
+          sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena-images/rolling/
 
       - name: Upload to GitHub Release
         env:
@@ -80,4 +81,4 @@ jobs:
 
       - name: Upload to SourceForge
         run: |
-          sshpass -p "${{ secrets.SOURCEFORGE_TOKEN }}" rsync -avP -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/athena-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}}/
+          sshpass -p "${{ secrets.SOURCEFORGE_TOKEN }}" rsync -avP -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.SOURCEFORGE_USER }}@frs.sourceforge.net:/home/frs/project/athena-iso/${{env.ATHENA_VERSION}}/

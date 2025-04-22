@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="athena"
+iso_name="athenaos"
 iso_label="ATHENA-OS"
-iso_publisher="Athena <https://www.athenaos.org>"
-iso_application="Athena Live/Rescue CD"
+iso_publisher="Athena OS <https://www.athenaos.org>"
+iso_application="Athena OS Live/Rescue CD"
 iso_version="rolling"
 install_dir="arch"
 buildmodes=('iso')
@@ -14,7 +14,9 @@ bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito'
 arch="x86_64"
 pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
-airootfs_image_tool_options=('-comp' 'xz' '-Xbcj' 'x86' '-b' '1M' '-Xdict-size' '1M')
+#airootfs_image_tool_options=('-comp' 'xz' '-Xbcj' 'x86' '-b' '1M' '-Xdict-size' '1M')
+#airootfs_image_tool_options=('-comp' 'xz')
+airootfs_image_tool_options=('-comp' 'gzip' '-Xcompression-level' '1')
 file_permissions=(
   ["/etc/gshadow"]="0:0:600"
   ["/etc/shadow"]="0:0:600"

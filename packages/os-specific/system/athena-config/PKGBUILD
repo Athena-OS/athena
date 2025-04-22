@@ -1,20 +1,18 @@
 pkgname=athena-config
-pkgver=1.0.8
-pkgrel=1
+pkgver=1.1.0
+pkgrel=3
 pkgdesc="System configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-tweak-tool' 'terminus-font')
 source=("$pkgname.tar.gz")
-sha512sums=('b3697760ea38003cbebfb3401080fc4c7e1b952191ab0151848027619231be3c348cc3485e81273b584980b899f9fc831d56b2e487ea32fad4a613c0074a4cf8')
+sha512sums=('9666004387cf7f8faebc98852a580ddfdab1d28ef6fc70949574e251886b1a6e273b4620af79246532da47393ac7f197ec774a556886a58aac542b0d2d21b649')
 
 package() {
   install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/etc/modprobe.d"
   install -dm 755 "${pkgdir}/etc/pacman.d/hooks"
-  install -dm 755 "${pkgdir}/etc/skel"
   install -dm 755 "${pkgdir}/etc/xdg/menus"
-  install -dm 755 "${pkgdir}/usr/lib"
   install -dm 755 "${pkgdir}/usr/local/bin"
   install -dm 755 "${pkgdir}/usr/local/share"
   install -dm 755 "${pkgdir}/usr/share/applications"
@@ -25,13 +23,10 @@ package() {
 
   cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
-  cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
   install -Dm644 "${srcdir}/etc/xdg/menus/blue-applications.menu" "${pkgdir}/etc/xdg/menus/"
   install -Dm644 "${srcdir}/etc/xdg/menus/red-applications.menu" "${pkgdir}/etc/xdg/menus/"
 
-  cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
   cp -rf "${srcdir}/usr/bin/shell-rocket" "${pkgdir}/usr/bin/"
   cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
   cp -rf "${srcdir}/usr/local/share/athena" "${pkgdir}/usr/local/share/"

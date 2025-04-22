@@ -31,10 +31,10 @@ echo
 
         athenaVersion='rolling'
 
-        isoLabel='athena-'$athenaVersion'-x86_64.iso'
+        isoLabel='athenaos-'$athenaVersion'-x86_64.iso'
 
         # setting of the general parameters
-        archisoRequiredVersion="archiso 77-1"
+        archisoRequiredVersion="archiso 83-1"
         buildFolder=$HOME"/athena-build"
         outFolder=$HOME"/Athena-Out"
         # outFolder="/mnt/hgfs/VirtualShare/Athena-Out"
@@ -160,7 +160,7 @@ echo
         echo "Copying the Archiso folder to build work"
         echo
         mkdir $buildFolder
-        cp -r ../iso $buildFolder/iso
+        cp -r ../iso/* $buildFolder/
 
 echo
 echo "################################################################## "
@@ -176,34 +176,34 @@ echo "################################################################## "
 echo
 
         echo "Deleting any files in /etc/skel"
-        rm -rf $buildFolder/iso/airootfs/etc/skel/.bashrc 2> /dev/null
+        rm -rf $buildFolder/airootfs/etc/skel/.bashrc 2> /dev/null
         echo
 
         echo "Getting the last version of bashrc in /etc/skel"
         echo
-        wget https://raw.githubusercontent.com/Athena-OS/athena/main/iso/airootfs/etc/skel/.bashrc -O $buildFolder/iso/airootfs/etc/skel/.bashrc
+        wget https://raw.githubusercontent.com/Athena-OS/athena/main/iso/airootfs/etc/skel/.bashrc -O $buildFolder/airootfs/etc/skel/.bashrc
 
         echo "Removing the old packages.x86_64 file from build folder"
-        rm $buildFolder/iso/packages.x86_64
-        #rm $buildFolder/iso/packages-personal-repo.x86_64
+        rm $buildFolder/packages.x86_64
+        #rm $buildFolder/packages-personal-repo.x86_64
         echo
 
         echo "Copying the new packages.x86_64 file to the build folder"
-        cp -f ../iso/packages.x86_64 $buildFolder/iso/packages.x86_64
+        cp -f ../iso/packages.x86_64 $buildFolder/packages.x86_64
         echo
 
         if [ $personalrepo == true ]; then
                 echo "Adding packages from your personal repository - packages-personal-repo.x86_64"
-                printf "\n" | sudo tee -a $buildFolder/iso/packages.x86_64
-                #cat ../iso/packages-personal-repo.x86_64 | sudo tee -a $buildFolder/iso/packages.x86_64
+                printf "\n" | sudo tee -a $buildFolder/packages.x86_64
+                #cat ../iso/packages-personal-repo.x86_64 | sudo tee -a $buildFolder/packages.x86_64
         fi
 
         if [ $personalrepo == true ]; then
                 echo "Adding our own repo to /etc/pacman.conf"
-                printf "\n" | sudo tee -a $buildFolder/iso/pacman.conf
-                printf "\n" | sudo tee -a $buildFolder/iso/airootfs/etc/pacman.conf
-                cat personal-repo | sudo tee -a $buildFolder/iso/pacman.conf
-                cat personal-repo | sudo tee -a $buildFolder/iso/airootfs/etc/pacman.conf
+                printf "\n" | sudo tee -a $buildFolder/pacman.conf
+                printf "\n" | sudo tee -a $buildFolder/airootfs/etc/pacman.conf
+                cat personal-repo | sudo tee -a $buildFolder/pacman.conf
+                cat personal-repo | sudo tee -a $buildFolder/airootfs/etc/pacman.conf
         fi
 
 echo
@@ -219,35 +219,35 @@ echo
         #Setting variables
 
         #profiledef.sh
-        oldname1='iso_name="athena"'
-        newname1='iso_name="athena"'
+        #oldname1='iso_name="athenaos"'
+        #newname1='iso_name="athenaos"'
 
-        oldname2='iso_label="athena"'
-        newname2='iso_label="athena"'
+        #oldname2='iso_label="ATHENA-OS"'
+        #newname2='iso_label="ATHENA-OS"'
 
-        oldname3='Athena OS'
-        newname3='Athena OS'
+        #oldname3='Athena OS'
+        #newname3='Athena OS'
 
         #hostname
-        oldname4='Athena'
-        newname4='Athena'
+        #oldname4='athenaos'
+        #newname4='athenaos'
 
         #sddm.conf user-session
-        oldname5='Session=gnome'
-        newname5='Session='$dmDesktop
+        #oldname5='Session=gnome'
+        #newname5='Session='$dmDesktop
 
-        echo "Changing all references"
-        echo
-        sed -i 's/'$oldname1'/'$newname1'/g' $buildFolder/iso/profiledef.sh
-        sed -i 's/'$oldname2'/'$newname2'/g' $buildFolder/iso/profiledef.sh
-        sed -i 's/'$oldname3'/'$newname3'/g' $buildFolder/iso/airootfs/etc/dev-rel
-        sed -i 's/'$oldname4'/'$newname4'/g' $buildFolder/iso/airootfs/etc/hostname
-        #sed -i 's/'$oldname5'/'$newname5'/g' $buildFolder/iso/airootfs/etc/sddm.conf
+        #echo "Changing all references"
+        #echo
+        #sed -i "s/'$oldname1'/'$newname1'/g" $buildFolder/profiledef.sh
+        #sed -i "s/'$oldname2'/'$newname2'/g" $buildFolder/profiledef.sh
+        #sed -i "s/'$oldname3'/'$newname3'/g" $buildFolder/airootfs/etc/dev-rel
+        #sed -i "s/'$oldname4'/'$newname4'/g" $buildFolder/airootfs/etc/hostname
+        #sed -i "s/'$oldname5'/'$newname5'/g" $buildFolder/airootfs/etc/sddm.conf
 
         echo "Adding time to /etc/dev-rel"
         date_build=$(date -d now)
         echo "Iso build on : "$date_build
-        sudo sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/iso/airootfs/etc/dev-rel
+        sudo sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/airootfs/etc/dev-rel
 
 
 echo
@@ -272,8 +272,8 @@ echo "################################################################## "
 echo
 
         [ -d $outFolder ] || mkdir $outFolder
-        cd $buildFolder/iso/
-        sudo mkarchiso -v -w $buildFolder -o $outFolder $buildFolder/iso/
+        cd $buildFolder/
+        sudo mkarchiso -v -w $buildFolder -o $outFolder $buildFolder/
 
 
 
@@ -307,7 +307,7 @@ echo
         echo
         echo "Moving pkglist.x86_64.txt"
         echo "########################"
-        cp $buildFolder/iso/arch/pkglist.x86_64.txt  $outFolder/$isoLabel".pkglist.txt"
+        cp $buildFolder/arch/pkglist.x86_64.txt  $outFolder/$isoLabel".pkglist.txt"
 
 echo
 echo "##################################################################"

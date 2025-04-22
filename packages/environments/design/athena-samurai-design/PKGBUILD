@@ -1,0 +1,14 @@
+pkgname=athena-samurai-design
+pkgver=1.0.3
+pkgrel=1
+pkgdesc="Samurai Girl design for Athena."
+arch=('any')
+license=('GPL-3.0-or-later')
+depends=('athena-cyan-base' 'tokyonight-gtk-theme-git' 'oreo-blue-cursors')
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/tokyo_night_storm.conf")
+sha512sums=('d35b99dc34b145b674bfab93d82624ea22268fbd5b8295801dcff621d6a986190abf31974b8bbfaf5f282b9fa4953b8bf6a5a2b67f40b821851dd0bea4e051a7')
+
+package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
+  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/"
+}
