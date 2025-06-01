@@ -1,0 +1,220 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+
+  <Name>Applications</Name>
+  <Directory>cinnamon-menu-applications.directory</Directory>
+
+  <!-- Read standard .directory and .desktop file locations -->
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+
+  <!-- Read in overrides and child menus from applications-merged/ -->
+  <DefaultMergeDirs/>
+
+  <Menu>
+    <Name>Red Team</Name>
+    <Directory>00-red-team.directory</Directory>
+    <MergeFile>../red-applications.menu</MergeFile>
+  </Menu>
+
+  <Menu>
+    <Name>Blue Team</Name>
+    <Directory>00-blue-team.directory</Directory>
+    <MergeFile>../blue-applications.menu</MergeFile>
+  </Menu>
+
+  <Menu>
+    <Name>MITRE</Name>
+    <Directory>00-mitre-menu.directory</Directory>
+    <MergeFile>../mitre-applications.menu</MergeFile>
+  </Menu>
+
+  <!-- Accessories submenu -->
+  <Menu>
+    <Name>Accessories</Name>
+    <Directory>cinnamon-utility.directory</Directory>
+    <Include>
+      <And>
+        <Category>Utility</Category>
+	<!-- Accessibility spec must have either the Utility or Settings
+	     category, and we display an accessibility submenu already for
+	     the ones that do not have Settings, so don't display accessibility
+	     applications here -->
+        <Not><Category>Accessibility</Category></Not>
+        <Not><Category>System</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Accessories -->
+
+  <!-- Accessibility submenu -->
+  <Menu>
+    <Name>Universal Access</Name>
+    <Directory>cinnamon-utility-accessibility.directory</Directory>
+    <Include>
+      <And>
+        <Category>Accessibility</Category>
+        <Not><Category>Settings</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Accessibility -->
+
+  <!-- Development Tools -->
+  <Menu>
+    <Name>Development</Name>
+    <Directory>cinnamon-development.directory</Directory>
+    <Include>
+      <And>
+        <Category>Development</Category>
+      </And>
+      <Filename>emacs.desktop</Filename>
+    </Include>
+  </Menu> <!-- End Development Tools -->
+
+  <!-- Education -->
+  <Menu>
+    <Name>Education</Name>
+    <Directory>cinnamon-education.directory</Directory>
+    <Include>
+      <And>
+        <Category>Education</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Education -->
+
+  <!-- Games -->
+  <Menu>
+    <Name>Games</Name>
+    <Directory>cinnamon-game.directory</Directory>
+    <Include>
+      <And>
+        <Category>Game</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Games -->
+
+  <!-- Graphics -->
+  <Menu>
+    <Name>Graphics</Name>
+    <Directory>cinnamon-graphics.directory</Directory>
+    <Include>
+      <And>
+        <Category>Graphics</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Graphics -->
+
+  <!-- Internet -->
+  <Menu>
+    <Name>Internet</Name>
+    <Directory>cinnamon-network.directory</Directory>
+    <Include>
+      <And>
+        <Category>Network</Category>
+      </And>
+    </Include>
+  </Menu>   <!-- End Internet -->
+
+  <!-- Multimedia -->
+  <Menu>
+    <Name>Multimedia</Name>
+    <Directory>cinnamon-audio-video.directory</Directory>
+    <Include>
+      <And>
+        <Category>AudioVideo</Category>
+      </And>
+    </Include>
+  </Menu>   <!-- End Multimedia -->
+
+  <!-- Office -->
+  <Menu>
+    <Name>Office</Name>
+    <Directory>cinnamon-office.directory</Directory>
+    <Include>
+      <And>
+        <Category>Office</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Office -->
+
+  <!-- System Tools-->
+  <Menu>
+    <Name>System</Name>
+    <Directory>cinnamon-system-tools.directory</Directory>    
+  </Menu>   <!-- End System Tools -->
+
+  <!-- Other -->
+  <Menu>
+    <Name>Other</Name>
+    <Directory>cinnamon-other.directory</Directory>
+    <OnlyUnallocated/>
+    <Include>
+      <And>
+        <Not><Category>Core</Category></Not>
+        <Not><Category>Settings</Category></Not>
+        <Not><Category>Screensaver</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Other -->
+
+ <!-- Wine -->
+  <Menu>
+    <Name>wine-wine</Name>
+    <Directory>wine-wine.directory</Directory>
+    <Include>
+      <And>
+        <Category>Wine</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Wine -->
+
+  <Menu>
+    <Name>Preferences</Name>
+    <Directory>cinnamon-settings.directory</Directory>
+    <Include>
+      <And>
+        <Category>Settings</Category>
+        <Not><Category>System</Category></Not>
+      </And>
+    </Include>
+  </Menu>
+
+  <!-- System Settings -->
+  <Menu>
+    <Name>Administration</Name>
+    <Directory>cinnamon-settings-system.directory</Directory>
+    <Include>
+      <And>
+        <Category>Settings</Category>
+        <Category>System</Category>
+      </And>
+    </Include>
+    <Include>
+      <And>
+        <Category>System</Category>
+        <Not><Category>Settings</Category></Not>
+      </And>
+    </Include>
+  </Menu>     <!-- End System Settings -->
+
+  <Layout>
+	<Merge type="menus"/>
+	<Menuname>Accessories</Menuname>
+	<Menuname>Education</Menuname>
+	<Menuname>Games</Menuname>
+	<Menuname>Graphics</Menuname>
+	<Menuname>Internet</Menuname>
+	<Menuname>Office</Menuname>
+	<Menuname>Other</Menuname>
+	<Menuname>Development</Menuname>
+	<Menuname>Multimedia</Menuname>
+	<Menuname>System</Menuname>
+	<Menuname>Universal Access</Menuname>
+	<Menuname>wine-wine</Menuname>
+	<Menuname>Preferences</Menuname>
+	<Menuname>Administration</Menuname>
+	<Merge type="files"/>
+  </Layout>
+
+</Menu>  <!-- End Applications -->

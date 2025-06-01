@@ -1,12 +1,10 @@
 [Desktop Entry]
 Name=hydra
 Comment=A very fast network logon cracker which supports many different services
-Encoding=UTF-8
-# grep is used to highlight the supported services before running the wizard
-Exec=shell-rocket -b hydra -x '| grep --color=auto "^\\|Supported services:"; hydra-wizard.sh'
+Exec=shell-rocket -b hydra
 Icon=athena-hydra
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=05-password-attacks;05-01-online-attacks;
+Categories=mitre-brute-force;mitre-credential-access;red-05-password-attacks;red-online-attacks;
 X-Athena-Package=hydra

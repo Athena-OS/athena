@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=extundelete
-Encoding=UTF-8
+Comment=Utility to undelete files from an ext3 or ext4 partition.
 Exec=shell-rocket -b extundelete -x '--help'
-Icon=athenaos-blue-net
+Icon=athena-menu
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=11-05-forensic-carving-tools;005-recover;
+Categories=athena-forensic-carving-tools;mitre-recover;red-forensic-carving-tools;blue-recover;
 X-Athena-Package=extundelete

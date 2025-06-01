@@ -225,7 +225,7 @@ apply_gtk4() {
 if [[ "$DESKTOP_SESSION" =~ "xfce" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
     # Need to wait for some time to wait for the needed xfce process to be loaded, to prevent to have a blank background
     # Be aware that for Arch and Fedora the BACKGROUND value must be changed above to prevent blank screen.
-    sleep 0.5
+    sleep 1.5
     xfconf-query -c xsettings -p /Net/ThemeName -s "$THEME"
     xfconf-query -c xsettings -p /Net/IconThemeName -s "$ICONS"
     xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$CURSOR"

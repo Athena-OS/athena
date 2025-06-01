@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=evil-winrm
-Encoding=UTF-8
+Comment=ultimate WinRM shell for hacking/pentesting
 Exec=shell-rocket -b evil-winrm -x '-h'
 Icon=athena-evil-winrm
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=10-maintaining-access;05-04-pass-hash;
+Categories=mitre-pass-the-hash;mitre-lateral-movement;mitre-application-layer-protocol;red-10-maintaining-access;red-pass-hash;
 X-Athena-Package=evil-winrm

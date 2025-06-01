@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=burpsuite
-Encoding=UTF-8
+Comment=platform for security testing of web applications
 Exec=shell-rocket -b burpsuite -g
 Icon=athena-burpsuite
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=03-webapp-analysis;03-06-web-application-proxies;
+Categories=mitre-web-vulnerability-scanning;mitre-reconnaissance;red-03-webapp-analysis;red-web-application-proxies;
 X-Athena-Package=burpsuite
 StartupWMClass=burp-StartBurp

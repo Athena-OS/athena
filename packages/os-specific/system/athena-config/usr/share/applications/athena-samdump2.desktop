@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=samdump2
-Encoding=UTF-8
+Comment=Retrieves syskey and extract hashes from Windows 2k/NT/XP/Vista SAM.
 Exec=shell-rocket -b samdump2 -x '-h'
 Icon=athena-samdump2
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=05-02-offline-attacks;
+Categories=mitre-os-credential-dumping;red-offline-attacks;
 X-Athena-Package=samdump2

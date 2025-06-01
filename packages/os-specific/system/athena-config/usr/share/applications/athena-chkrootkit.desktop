@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=chkrootkit
-Encoding=UTF-8
+Comment=Scan the system for signs of rootkits
 Exec=shell-rocket -b chkrootkit -x '-h'
 Icon=athena-chkrootkit
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=11-forensics;
+Categories=athena-forensics;red-11-forensics;
 X-Athena-Package=chkrootkit

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=spiderfoot-cli
-Encoding=UTF-8
+Comment=OSINT collection and reconnaissance tool
 Exec=shell-rocket -b spiderfoot-cli -p spiderfoot -x '--help'
-Icon=athena-spiderfoot
+Icon=athena-spiderfoot-cli
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=01-07-osint-analysis;001-identify;
+Categories=mitre-host-information;mitre-identify;red-osint-analysis;blue-identify;
 X-Athena-Package=spiderfoot

@@ -1,15 +1,15 @@
 pkgname=athena-kitty-config
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kitty configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('kitty' 'ttf-jetbrains-mono-nerd')
 source=("$pkgname.tar.gz")
+sha512sums=('0d821c227c9944dce46c998f30e5bdd0903a86a6f850ee8dcb6d0c23cf0fe83729d550f153bb4a9b952112ea1cf73eec6e5bbe3d286db558f9b670fcef03ea3a')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"
 
   cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
 }
-sha512sums=('9d193171e093bf8ccdde6bf789a6c3ca0f6dfcf870a2608ac936c79dd2a862c2a7e6ee6ad079d327b6f0127f21de0767d62ae037db8cc4d0a2bfcdfbb9181dd2')

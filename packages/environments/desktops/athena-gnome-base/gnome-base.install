@@ -1,8 +1,0 @@
-post_install() {
-  echo "Setting GNOME menu"
-  mv /usr/share/gnome-shell/gnome-applications.menu /etc/xdg/menus/
-}
-
-post_upgrade() {
-    post_install $1
-}

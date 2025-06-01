@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=dirbuster
-Encoding=UTF-8
+Comment=Web server directory brute-forcer
 Exec=shell-rocket -b dirbuster -g
 Icon=athena-dirbuster
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=03-04-web-crawlers;
+Categories=mitre-web-scanning;mitre-reconnaissance;red-web-crawlers;
 X-Athena-Package=dirbuster
 StartupWMClass=com-sittinglittleduck-DirBuster-Start

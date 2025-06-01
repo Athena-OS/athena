@@ -1,12 +1,12 @@
 pkgname=athena-config
 pkgver=1.1.0
-pkgrel=3
+pkgrel=6
 pkgdesc="System configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-tweak-tool' 'terminus-font')
 source=("$pkgname.tar.gz")
-sha512sums=('9666004387cf7f8faebc98852a580ddfdab1d28ef6fc70949574e251886b1a6e273b4620af79246532da47393ac7f197ec774a556886a58aac542b0d2d21b649')
+sha512sums=('c2ebd8d2920a4aeb7b576c1745d23c24c0cd0a0021d1b80269efaa771f94c4f3f7bc30ca66e726a77e824e15c86ec6f7d36c4da7e775792749d54e896e3203b6')
 
 package() {
   install -dm 755 "${pkgdir}/usr/bin"
@@ -26,6 +26,7 @@ package() {
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
   install -Dm644 "${srcdir}/etc/xdg/menus/blue-applications.menu" "${pkgdir}/etc/xdg/menus/"
   install -Dm644 "${srcdir}/etc/xdg/menus/red-applications.menu" "${pkgdir}/etc/xdg/menus/"
+  install -Dm644 "${srcdir}/etc/xdg/menus/mitre-applications.menu" "${pkgdir}/etc/xdg/menus/"
 
   cp -rf "${srcdir}/usr/bin/shell-rocket" "${pkgdir}/usr/bin/"
   cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"

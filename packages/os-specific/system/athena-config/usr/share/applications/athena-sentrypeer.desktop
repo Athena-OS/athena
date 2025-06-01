@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=sentrypeer
-Encoding=UTF-8
+Comment=A distributed list of bad IP addresses and phone numbers collected via a SIP Honeypot
 Exec=shell-rocket -b sentrypeer -x '-h'
-Icon=athena-sentrypeer
+Icon=athena-menu
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=003-detect;
+Categories=mitre-detect;blue-detect;
 X-Athena-Package=sentrypeer

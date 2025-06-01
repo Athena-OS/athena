@@ -1,6 +1,6 @@
 pkgname=athena-gnome-config
 pkgver=2.3
-pkgrel=2
+pkgrel=4
 pkgdesc="GNOME configuration for Athena."
 arch=('any')
 license=("custom")
@@ -14,4 +14,4 @@ package() {
 
   cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
 }
-sha512sums=('c36a9a33d210d06db7d2c8a9f6ce59453b795d12618aa1bf1105b8a00d0b5a3f3345505bda2b5dab5f23acd56277da703088f588d54c0d6e2745aa31f5a614ec')
+sha512sums=('873bd9582354b7d1692c914fa6a4f9f117335779cc75a449f2f87e11ab5bdd3e8b2fc0ccf8e39d17ecc5819ee306cac1558d9120ba99d2869785a982f081a9a3')

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=blkstat
-Encoding=UTF-8
+Comment=Display details of a file system data unit (i.e. block or sector)
 Exec=shell-rocket -b blkstat -p sleuthkit
 Icon=athena-blkstat
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=11-08-forensic-suites;
+Categories=athena-sleuth-kit-suite;red-forensic-suites;
 X-Athena-Package=sleuthkit

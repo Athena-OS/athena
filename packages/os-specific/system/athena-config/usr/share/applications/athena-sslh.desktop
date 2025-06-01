@@ -1,11 +1,10 @@
 [Desktop Entry]
 Name=sslh
 Comment=Protocol demultiplexer
-Encoding=UTF-8
 Exec=shell-rocket -b sslh -x '-h'
 Icon=athena-sslh
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=01-13-ssl-analysis;10-02-tunneling;
+Categories=mitre-protocol-tunneling;red-ssl-analysis;red-tunneling;
 X-Athena-Package=sslh

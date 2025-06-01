@@ -1,0 +1,48 @@
+<!DOCTYPE Menu PUBLIC '-//freedesktop//DTD Menu 1.0//EN' 'http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd'>
+<Menu>
+ <Layout>
+  <Merge type="menus"/>
+  <Menuname>Cyber Security</Menuname>
+  <Menuname>Blue Team</Menuname>
+  <Menuname>MITRE</Menuname>
+  <Menuname>Red Team</Menuname>
+  <Menuname>Education</Menuname>
+  <Menuname>Games</Menuname>
+  <Menuname>Graphics</Menuname>
+  <Menuname>Internet</Menuname>
+  <Menuname>Multimedia</Menuname>
+  <Menuname>Office</Menuname>
+  <Menuname>Science</Menuname>
+  <Menuname>Settingsmenu</Menuname>
+  <Menuname>System</Menuname>
+  <Menuname>Utilities</Menuname>
+  <Menuname>Development</Menuname>
+  <Menuname>Applications</Menuname>
+ </Layout>
+ <Menu>
+  <Name>Education</Name>
+  <Layout>
+   <Merge type="menus"/>
+   <Menuname>Languages</Menuname>
+   <Menuname>Mathematics</Menuname>
+   <Menuname>Miscellaneous</Menuname>
+   <Menuname>Science</Menuname>
+   <Menuname>Tools</Menuname>
+  </Layout>
+ </Menu>
+  <Menu>
+    <Name>Red Team</Name>
+    <Directory>00-red-team.directory</Directory>
+    <MergeFile>../red-applications.menu</MergeFile>
+  </Menu>
+  <Menu>
+    <Name>Blue Team</Name>
+    <Directory>00-blue-team.directory</Directory>
+    <MergeFile>../blue-applications.menu</MergeFile>
+  </Menu>
+  <Menu>
+    <Name>MITRE</Name>
+    <Directory>00-mitre-menu.directory</Directory>
+    <MergeFile>../mitre-applications.menu</MergeFile>
+  </Menu>
+</Menu>

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=slowhttptest
+Comment=Denial Of Service attacks simulator
+Exec=shell-rocket -b slowhttptest -x '-h'
+Icon=athena-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-impact
+X-Athena-Package=slowhttptest

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=impacket-smbexec
+Comment=Python3 module to easily build and dissect network protocols
+Exec=shell-rocket -b smbexec.py -p impacket
+Icon=athena-impacket-smbexec
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-lateral-movement
+X-Athena-Package=impacket

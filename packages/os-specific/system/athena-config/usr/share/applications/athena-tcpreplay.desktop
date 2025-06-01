@@ -1,11 +1,10 @@
 [Desktop Entry]
 Name=tcpreplay
 Comment=Replay network traffic stored in pcap files
-Encoding=UTF-8
 Exec=shell-rocket -b tcpreplay -x '-h'
 Icon=athena-tcpreplay
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=09-02-network-spoofing;
+Categories=mitre-system-network-configuration-discovery;red-network-spoofing;
 X-Athena-Package=tcpreplay

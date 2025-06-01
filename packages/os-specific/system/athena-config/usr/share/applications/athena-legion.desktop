@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=legion (root)
-Encoding=UTF-8
+Name=legion
+Comment=semi-automated network penetration testing tool
 Exec=shell-rocket -b legion -r
 Icon=athena-legion
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=01-info-gathering;02-vulnerability-analysis;
+Categories=mitre-network-information;mitre-reconnaissance;red-01-info-gathering;red-02-vulnerability-analysis;
 X-Athena-Package=legion
 StartupWMClass=legion.py

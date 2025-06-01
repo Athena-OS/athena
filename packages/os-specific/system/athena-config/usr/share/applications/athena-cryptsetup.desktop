@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=cryptsetup
-Encoding=UTF-8
+Comment=Manage plain dm-crypt, LUKS, and other encrypted volumes
 Exec=shell-rocket -b cryptsetup -x '--help'
-Icon=athenaos-blue-net
+Icon=athena-cryptsetup
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=002-protect;
+Categories=mitre-protect;blue-protect;
 X-Athena-Package=cryptsetup

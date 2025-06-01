@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=dnschef
-Encoding=UTF-8
+Comment=DNS proxy for penetration testers
 Exec=shell-rocket -b dnschef -x '-h'
 Icon=athena-dnschef
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=09-02-network-spoofing;09-01-network-sniffers;
+Categories=mitre-network-sniffing;red-network-spoofing;red-network-sniffers;
 X-Athena-Package=dnschef

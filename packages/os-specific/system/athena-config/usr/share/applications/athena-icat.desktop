@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=icat
+Comment=Output the contents of a file based on its inode number.
+Exec=shell-rocket -b icat -p sleuthkit
+Icon=athena-icat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=athena-sleuth-kit-suite;mitre-respond
+X-Athena-Package=sleuthkit

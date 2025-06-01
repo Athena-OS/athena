@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=tsk_gettimes
-Encoding=UTF-8
+Comment=Collect MAC times from a disk image into a body file.
 Exec=shell-rocket -b tsk_gettimes -p sleuthkit -x '-h'
 Icon=athena-tsk_gettimes
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=11-08-forensic-suites;
+Categories=athena-sleuth-kit-suite;red-forensic-suites;
 X-Athena-Package=sleuthkit

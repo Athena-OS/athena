@@ -1,30 +1,29 @@
 pkgname=athena-mate-base
 pkgver=1.0.3
-pkgrel=3
+pkgrel=5
 pkgdesc="MATE base configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('caja' 'eom' 'marco' 'mate-control-center' 'mate-desktop' 'mate-media' 'mate-netbook' 'mate-panel' 'mate-polkit' 'mate-power-manager' 'mate-session-manager' 'mate-tweak' 'mate-utils' 'xdg-user-dirs')
 source=("dconf-panel.ini"
-        "mate-applications.menu"
+        "athena-mate-applications.menu"
         "mate-init.desktop"
         "mate-init")
-install='mate-base.install'
-sha512sums=('c34a402b48a4e78e76f49687c030e8b398b57925132feb2c4b0666685370d99442ac373af86aeb8944fd8d4508543ae9485cf2a50bc47137b3bef51b0c71bac4'
-            'a936face7680f861d24c20444a0455f51767e19ff112520c5eb4896f22ea9193178bdec214186f4160565e80a71d9c61c28b0c7c0c106f1979337e9a2988c429'
+sha512sums=('bb40675a31311866fef7eed422a025cd5bb3bbb6c330a4e3d795d898f716e7c1c68d6bb32e7bac991e56f3205738d4247c0265eeb8df292adf1c040c5bc0697a'
+            'e43388357df40c36c53505ee4821a1f4d9bbcac06db75979de5a5601e2c91fdbf88d48d83e647abe8c83b3dc3bc28352aa7ec48cfdf35c50119cde105868e912'
             'aa5d8c1adde6afe962e0c3f8852b39dc6160cd5bf4a5436794f9da18d61f08ffcc2d4c3e7163f1b75f8b9f4c3d17b292b538339368b1375134fa05fffbf63e76'
             'd4e15138320d7dbb3e11376c4ad579d9b2108cdc51f520e243473fa40225cda8e7993f88128836befac06ebcec14c6e6d6d404707dc00125440afeb29fa433ed')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel"
   install -dm 755 "${pkgdir}/etc/xdg/autostart"
-  install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/etc/xdg/menus/applications-merged"
   install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/usr/share/mate"
 
   install -Dm644 "${srcdir}/mate-init.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm755 "${srcdir}/mate-init" "${pkgdir}/usr/bin/"
   install -Dm644 "${srcdir}/dconf-panel.ini" "${pkgdir}/usr/share/mate/"
-  install -Dm644 "${srcdir}/mate-applications.menu" "${pkgdir}/usr/share/mate/"
+  install -Dm644 "${srcdir}/athena-mate-applications.menu" "${pkgdir}/etc/xdg/menus/applications-merged/athena-mate-applications.menu"
   touch "${pkgdir}/etc/skel/.flag-mate-once"
 }

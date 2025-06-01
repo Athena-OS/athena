@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=grokevt-builddb
-Encoding=UTF-8
+Comment=Builds a database tree based on a single windows system for the purpose of event log conversion.
 Exec=shell-rocket -b grokevt-builddb -p grokevt -x '-h'
-Icon=athenaos-blue-net
+Icon=athena-menu
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=11-08-forensic-suites;003-detect;
+Categories=athena-sleuth-kit-suite;mitre-detect;red-forensic-suites;blue-detect;
 X-Athena-Package=grokevt

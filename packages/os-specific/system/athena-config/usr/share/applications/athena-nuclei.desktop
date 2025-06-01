@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=nuclei
+Comment=Fast and customizable vulnerability scanner based on simple YAML based DSL
+Exec=shell-rocket -b nuclei -x '-h'
+Icon=athena-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-web-vulnerability-scanning
+X-Athena-Package=nuclei

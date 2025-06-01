@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=arpspoof
+Comment=Intercept packets on a switched LAN
+Exec=shell-rocket -b arpspoof -r -x '-h'
+Icon=athena-arpspoof
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-network-sniffing
+X-Athena-Package=dsniff

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=masscan
-Encoding=UTF-8
+Comment=Fast scan of the Internet
 Exec=shell-rocket -b masscan -x '--help'
 Icon=athena-masscan
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=01-02-identify-live-hosts;01-04-network-scanners;
+Categories=mitre-network-service-discovery;mitre-discovery;red-identify-live-hosts;red-network-scanners;
 X-Athena-Package=masscan

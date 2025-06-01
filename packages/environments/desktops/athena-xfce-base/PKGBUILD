@@ -1,25 +1,25 @@
 pkgname=athena-xfce-base
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="XFCE base configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('mugshot' 'network-manager-applet' 'ristretto' 'xdg-user-dirs' 'xfce4-appfinder' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfce4-taskmanager' 'xfce4-whiskermenu-plugin' 'xfdesktop' 'xfwm4' 'xorg-xrandr')
-source=("xfce-applications.menu"
+source=("athena-xfce-applications.menu"
         "xfce-init.desktop"
         "xfce-init"
         "xfce4-keyboard-shortcuts.xml"
         "$pkgname.tar.gz")
-install='xfce-base.install'
-sha512sums=('e53cc2e573489c83f1126c543c0fe944fe73e894d1bd534b5d7b1e796efa02773255dadfbeeb3c68a6519be3f43f4d0e6d468ced5e5cce3a7dddc5c0e7be2705'
+sha512sums=('5653bb6a304f7c5c624857f0d7268b3ac21228f2586e654c7dd6fb94f518f7fe2dd0c6ec93ec1d5547acf7f636f93ca0cf6261e7caa2762ed9e9a88640957cc2'
             '12c16f08a8d503a76277f984ef8493bcc8eb22bae52a414b0d23222b27f93c2a89612f678fcf334c0d8dc27a03ae12672e2ccc52b6850b4c0265161ead125589'
             'fe8cf704675d0459112b8c6b8c5712e8c7d49ca06ab5dbbcbcb678e239ff141561d6dee188e1055351a7823945e7c403d22f01e5c9acd084b9c47e7097ed481f'
             'a532187402d8034bda78620dd9e23ec2c8b1a2868489ef5439893b0f3250a5bb5b8fbcea3a58531bcd7a6a09b8e084cb52a2236d6a779af6853178fda800cd7b'
-            'b3f46f85daf815006af40ed43192b02a2a9f41cc4efc3713513349fbb96fa4a70e5ed0f4b9064bee132dfe1ca2697bfa210cba71d4a8344c77df440000790054')
+            'd64767504f5d9368bb7b3e69ae067bcb6c5bf16124fedb6ce5c74f1d1d63cf1c4d3378d73e4f4ed195339fb4e0517ea8562eb567dc7249afc0ec734695d9d441')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml"
   install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/etc/xdg/menus/applications-merged"
   install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/usr/share/xfce4"
   install -dm 755 "${pkgdir}/usr/share/themes"
@@ -27,7 +27,7 @@ package() {
   install -Dm644 "${srcdir}/xfce4-keyboard-shortcuts.xml" "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/"
   install -Dm644 "${srcdir}/xfce-init.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm755 "${srcdir}/xfce-init" "${pkgdir}/usr/bin/"
-  install -Dm644 "${srcdir}/xfce-applications.menu" "${pkgdir}/usr/share/xfce4/xfce-applications.menu"
+  install -Dm644 "${srcdir}/athena-xfce-applications.menu" "${pkgdir}/etc/xdg/menus/applications-merged/athena-xfce-applications.menu"
   cp -a "$srcdir/Everblush-xfwm" "$pkgdir/usr/share/themes/"
   touch "${pkgdir}/etc/skel/.flag-xfce-once"
 }

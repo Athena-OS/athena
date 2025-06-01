@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=mdb-sql
-Encoding=UTF-8
+Comment=SQL interface to MDB Tools
 Exec=shell-rocket -b mdb-sql -p mdbtools -x '-h'
 Icon=athena-mdb-sql
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=04-database-assessment;
+Categories=mitre-databases;red-04-database-assessment;
 X-Athena-Package=mdbtools
