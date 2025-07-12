@@ -43,7 +43,7 @@ Athena OS
 
 <h3 align="center">
   💞
-  <a href="https://hub.athenaos.org/athena-images/rolling/athena-rolling-x86_64.iso">
+  <a href="https://athenaos.org/">
   Get Athena OS Now!
     </a>
   💞
