@@ -1,10 +1,10 @@
 pkgname=athena-firefox-config
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Mozilla Firefox configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('athena-nighttab' 'firefox' 'profile-sync-daemon')
+depends=('athena-nighttab' 'firefox' 'firefox-ublock-origin' 'profile-sync-daemon')
 source=("psd.conf"
         "$pkgname.tar.gz")
 
@@ -16,4 +16,4 @@ package() {
   install -Dm644 "${srcdir}/psd.conf" "${pkgdir}/etc/skel/.config/psd/"
 }
 sha512sums=('07a7f0b209770ef38541041e57af1281fa553c051b22f7256498f9afad16efaf0f058b02c346cc9403f99f9e161c5535ff3a1143b6b01d8a832a3eb8cd2c6798'
-            'a53986fed1306e89989856261ba9c814ee50619ccda3ed726c76d7302060eb7409e168c2f81eae2cfc9893f18a3764f8d3b5b7f2c3ec58f0dbeb4badee2d3d40')
+            'b1e2d2879363a5ecf1415f7aa3438cd32518d4651cbbf8cec9a83e00a74d5e54186692afe9ae3daaabc2ed52af0d3feabc4a566f56d86aa6a9dfab62d10e9c5f')
