@@ -1,6 +1,6 @@
 pkgname=athena-xfce-base
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="XFCE base configuration for Athena."
 arch=('any')
 license=("custom")
@@ -12,9 +12,9 @@ source=("athena-xfce-applications.menu"
         "$pkgname.tar.gz")
 sha512sums=('5653bb6a304f7c5c624857f0d7268b3ac21228f2586e654c7dd6fb94f518f7fe2dd0c6ec93ec1d5547acf7f636f93ca0cf6261e7caa2762ed9e9a88640957cc2'
             '12c16f08a8d503a76277f984ef8493bcc8eb22bae52a414b0d23222b27f93c2a89612f678fcf334c0d8dc27a03ae12672e2ccc52b6850b4c0265161ead125589'
-            'fe8cf704675d0459112b8c6b8c5712e8c7d49ca06ab5dbbcbcb678e239ff141561d6dee188e1055351a7823945e7c403d22f01e5c9acd084b9c47e7097ed481f'
+            '1aea18bd30ade994114b658ba10cbd6dad4066736e49edd6a0f74c3420ec8f53b2c1b37c2bc6d2d7a28792544cc3d9a63a1b5f9b1e052123742a6b2738f4120b'
             'a532187402d8034bda78620dd9e23ec2c8b1a2868489ef5439893b0f3250a5bb5b8fbcea3a58531bcd7a6a09b8e084cb52a2236d6a779af6853178fda800cd7b'
-            'd64767504f5d9368bb7b3e69ae067bcb6c5bf16124fedb6ce5c74f1d1d63cf1c4d3378d73e4f4ed195339fb4e0517ea8562eb567dc7249afc0ec734695d9d441')
+            '3b0a15a0334045a1325b16b555fcfde0a7f7b340812d047bfeffa060ec8230f401113717fc040c0bfe472f0df8b2221b34759a0936ef50361c58a0a91d8178e9')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml"

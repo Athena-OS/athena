@@ -1,11 +1,11 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox ESR
+Name=Firefox
 GenericName=Web Browser
 Comment=Browse the World Wide Web
 Keywords=Internet;WWW;Browser;Web;Explorer
-Exec=/usr/lib/firefox-esr/firefox-esr %u
-Icon=firefox-esr
+Exec=/usr/lib/firefox/firefox %u
+Icon=firefox
 Terminal=false
 X-MultipleArgs=false
 Type=Application
@@ -14,14 +14,15 @@ StartupNotify=true
 StartupWMClass=firefoxesr
 Categories=Network;WebBrowser;
 Actions=new-window;new-private-window;
-X-XFCE-Source=file:///usr/share/applications/firefox-esr.desktop
+X-XFCE-Source=file:///usr/share/applications/firefox.desktop
 
 [Desktop Action new-window]
 Name=New Window
 Name[en_US]=New Window
-Exec=/usr/lib/firefox-esr/firefox-esr --new-window %u
+Exec=/usr/lib/firefox/firefox --new-window %u
 
 [Desktop Action new-private-window]
 Name=New Private Window
 Name[en_US]=New Private Window
-Exec=/usr/lib/firefox-esr/firefox-esr --private-window %u
+Exec=/usr/lib/firefox/firefox --private-window %u
+

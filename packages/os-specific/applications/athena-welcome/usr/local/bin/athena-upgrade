@@ -125,8 +125,8 @@ if pacman -Qi $package > /dev/null 2>&1 ; then
             [yY] ) 
             systemctl --user stop psd
             systemctl --user disable psd
-            mkdir -p "$HOME/.mozilla/firefox-esr"
-            sudo rsync -a --delete "/etc/skel/.mozilla/firefox-esr/" "$HOME/.mozilla/firefox-esr/"; rsync -a --delete "/etc/skel/.config/psd/" "$HOME/.config/psd/"
+            mkdir -p "$HOME/.mozilla/firefox"
+            sudo rsync -a --delete "/etc/skel/.mozilla/firefox/" "$HOME/.mozilla/firefox/"; rsync -a --delete "/etc/skel/.config/psd/" "$HOME/.config/psd/"
             sudo chown -LR $USER "$HOME/.mozilla"; sudo chgrp -LR $USER "$HOME/.mozilla"
             systemctl --user enable psd
             systemctl --user start psd
