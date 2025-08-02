@@ -23,6 +23,21 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Init Keys
+        run: | 
+          rm -rf /etc/pacman.d/gnupg
+          pacman-key --init
+          pacman-key --populate
+          pacman -Syy
+
+      - name: Install rate-mirrors
+        run: pacman -Syyu --noconfirm rate-mirrors
+
+      - name: Set fastest mirrors
+        run: |
+          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
       -
         name: Build and push
         uses: docker/build-push-action@v6
