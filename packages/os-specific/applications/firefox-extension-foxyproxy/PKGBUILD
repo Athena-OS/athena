@@ -1,16 +1,14 @@
 # Credits AUR
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
-_plugin_name=foxyproxy
+pkgname=firefox-extension-foxyproxy
 _plugin_version=9.2
 _plugin_id=4472757
 _plugin_ext=""
-pkgdesc="FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities."
-license=('GPL-2.0-only')
-
-pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
 pkgrel=1
+pkgdesc="FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities."
+license=('GPL-2.0-only')
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/'
 depends=("firefox>=57")

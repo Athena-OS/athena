@@ -3,8 +3,8 @@
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
-_pkgname=privacybadger
-pkgname=firefox-extension-${_pkgname}
+pkgname=firefox-extension-privacybadger
+_pkgname=${pkgname#firefox-extension-}
 pkgver=2025.5.30
 pkgrel=1
 pkgdesc='Block third party tracking in your browser.'
