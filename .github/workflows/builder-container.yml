@@ -9,7 +9,7 @@ on:
 
 jobs:
   docker-publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     steps:
       -
         name: Set up QEMU
