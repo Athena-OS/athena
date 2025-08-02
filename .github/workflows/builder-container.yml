@@ -10,6 +10,9 @@ on:
 jobs:
   docker-publish:
     runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged 
     steps:
       -
         name: Set up QEMU
