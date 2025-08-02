@@ -1,0 +1,26 @@
+# Credits AUR
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+
+_plugin_name=foxyproxy
+_plugin_version=9.2
+_plugin_id=4472757
+_plugin_ext=""
+pkgdesc="FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities."
+license=('GPL-2.0-only')
+
+pkgname=firefox-extension-$_plugin_name
+pkgver=$_plugin_version
+pkgrel=1
+arch=('any')
+url='https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/'
+depends=("firefox>=57")
+source=("https://addons.mozilla.org/firefox/downloads/file/${_plugin_id}/foxyproxy_standard-${pkgver}${_plugin_ext}.xpi")
+noextract=('foxyproxy_standard-${pkgver}${_plugin_ext}.xpi')
+sha512sums=('172f2f51bfdf19994f4ff4025feed1d89bccee1148769eec6e8330311eb49988f4fceb80abadedee1dad22327d3c825c904b6dd74f46fbfada6a17cdb2b236a2')
+
+package() {
+  cd "${srcdir}"
+  _extension_id="foxyproxy@eric.h.jung"
+  _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
+  install -Dm644 foxyproxy_standard-${pkgver}${_plugin_ext}.xpi "${_extension_dest}.xpi"
+}
