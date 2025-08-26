@@ -9,8 +9,18 @@ on:
 
 jobs:
   docker-publish:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged
     steps:
+      - name: Install rate-mirrors
+        run: pacman -Syyu --noconfirm rate-mirrors
+
+      - name: Set fastest mirrors
+        run: |
+          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
