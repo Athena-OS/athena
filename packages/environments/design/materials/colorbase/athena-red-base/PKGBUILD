@@ -1,6 +1,6 @@
 pkgname=athena-red-base
-pkgver=9.fc62750
-pkgrel=2
+pkgver=10.c73ed60
+pkgrel=1
 pkgdesc="Red colorbase resources."
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -24,8 +24,8 @@ package() {
 
   install -dm 755 "$pkgdir/usr/share/athena-red-base/icons"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-  install -Dm 644 "wallpapers/akame.jpg" "$pkgdir/usr/share/backgrounds/athena/"
-  install -Dm 644 "wallpapers/murasame.jpg" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/akame.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/murasame.png" "$pkgdir/usr/share/backgrounds/athena/"
   install -Dm 644 "wallpapers/redmoon.png" "$pkgdir/usr/share/backgrounds/athena/"
 
   cp -a "icons/apps" "$pkgdir/usr/share/athena-red-base/icons/"

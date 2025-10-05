@@ -1,6 +1,6 @@
 pkgname=athena-cyan-base
-pkgver=8.bbeb536
-pkgrel=2
+pkgver=9.64d08ea
+pkgrel=1
 pkgdesc="Cyan colorbase resources."
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -24,7 +24,7 @@ package() {
 
   install -dm 755 "$pkgdir/usr/share/athena-cyan-base/icons"
   install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
-  install -Dm 644 "wallpapers/samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/samurai-girl.png" "$pkgdir/usr/share/backgrounds/athena/"
   install -Dm 644 "wallpapers/nike.png" "$pkgdir/usr/share/backgrounds/athena/"
   install -Dm 644 "wallpapers/nike-holo.png" "$pkgdir/usr/share/backgrounds/athena/"
   install -Dm 644 "wallpapers/temple.png" "$pkgdir/usr/share/backgrounds/athena/"
