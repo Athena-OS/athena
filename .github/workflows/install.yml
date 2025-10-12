@@ -17,16 +17,7 @@ jobs:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
       matrix:
         config_installer:
-          - { desktop: "gnome", displaymanager: "Astronaut", design: "temple", terminal: "gnome terminal", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (GNOME)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "kde plasma", displaymanager: "Cyberpunk", design: "redmoon", terminal: "alacritty", shell: "zsh", browser: "firefox", job_name: "Arch-based Install Test (KDE)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "xfce refined", displaymanager: "Kath", design: "samurai", terminal: "xfce", shell: "bash", browser: "firefox", job_name: "Arch-based Install Test (XFCE Refined)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "xfce picom", displaymanager: "Post-Apocalypse", design: "graphite", terminal: "xfce", shell: "zsh", browser: "firefox", job_name: "Arch-based Install Test (XFCE Picom)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "mate", displaymanager: "Cyborg", design: "hackthebox", terminal: "cool retro term", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (MATE)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "cinnamon", displaymanager: "Black Hole", design: "sweet", terminal: "konsole", shell: "zsh", browser: "firefox", job_name: "Arch-based Install Test (Cinnamon)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "bspwm", displaymanager: "Purple Leaves", terminal: "kitty", browser: "firefox", job_name: "Arch-based Install Test (BSPWM)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "hyprland", displaymanager: "Pixel Sakura", terminal: "foot", browser: "firefox", job_name: "Arch-based Install Test (Hyprland)", config_file: "arch.json", installer: "aegis-arch" }
-          - { desktop: "gnome", displaymanager: "sddm", design: "temple", terminal: "kitty", shell: "fish", browser: "firefox", job_name: "Nix-based Install Test (Temple)", config_file: "nix.json", installer: "aegis-nix" }
-          - { desktop: "gnome", displaymanager: "sddm", design: "redmoon", terminal: "kitty", shell: "fish", browser: "firefox", job_name: "Nix-based Install Test (Red Moon)", config_file: "nix.json", installer: "aegis-nix" }
+          - { base: "Athena Arch", design: "temple", desktop: "gnome", display_manager: "astronaut", hostname: "athenaos", keyboard_layout: "us", locale: "en_US.UTF-8 UTF-8", root_passwd_hash: "$y$j9T$PvxwcqCC6Hdvd2Ordjyou.$YUqNgUIkMsI9FKtr7DwpO/d9ZKmQmgMMnD9EbPC5sH7", timezone: "Europe/Rome", username: "athena", password_hash: "$y$j9T$PvxwcqCC6Hdvd2Ordjyou.$YUqNgUIkMsI9FKtr7DwpO/d9ZKmQmgMMnD9EbPC5sH7", shell: "fish", job_name: "Arch-based Install Test (GNOME)"}
 
     name: ${{ matrix.config_installer.job_name }}  # Dynamically assign the job name based on the matrix
 
@@ -35,7 +26,9 @@ jobs:
         run: pacman -Syyu --noconfirm aegis grub mkinitcpio jq multipath-tools
 
       - name: Retrieve install configuration
-        run: curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/${{ matrix.config_installer.config_file }}
+        run: |
+          curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/system.json
+          curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/drives.json
 
       - name: Modify install configuration
         run: |
@@ -47,19 +40,52 @@ jobs:
           LOOP_DEV=$(losetup -j virtual_disk.img | cut -d':' -f1)
           kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
           ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
-          jq --arg target_disk "/dev/mapper/${LOOP_DEV#/dev/}" \
-             --arg desktop "${{ matrix.config_installer.desktop }}" \
-             --arg displaymanager "${{ matrix.config_installer.displaymanager }}" \
-             --arg design "${{ matrix.config_installer.design || '' }}" \
-             --arg terminal "${{ matrix.config_installer.terminal || '' }}" \
-             --arg shell "${{ matrix.config_installer.shell || '' }}" \
-             --arg browser "${{ matrix.config_installer.browser || '' }}" \
-             '.partition.device = $target_disk | .partition.mode = "EraseDisk" | .bootloader.location = $target_disk | .desktop = $desktop | .displaymanager = $displaymanager | .design = $design | .terminal = $terminal | .shell = $shell | .browser = $browser' \
-             ${{ matrix.config_installer.config_file }} > modified_${{ matrix.config_installer.config_file }}
-          mv modified_${{ matrix.config_installer.config_file }} ${{ matrix.config_installer.config_file }}
+          TARGET_DISK="/dev/mapper/${LOOP_DEV#/dev/}"
+          
+          jq --arg d "$TARGET_DISK" '
+            .drives.device = $d
+            | .drives.content.type = "msdos"
+            | .drives.content.partitions = [
+                {action:"modify", blockdevice:($d+"p1"), end:"1026047", filesystem:"ext4", flags:["boot"], label:"BOOT", mountpoint:"/boot", sectors:1024000, size:"524M", start:"2048", type:"filesystem"},
+                {action:"modify", blockdevice:($d+"p2"), end:"28614655", filesystem:"btrfs", flags:[], label:"ROOT", mountpoint:"/",     sectors:27588608, size:"14G",  start:"1026048", type:"filesystem"},
+                {action:"modify", blockdevice:($d+"p3"), end:"30711807", filesystem:"swap", flags:[], label:"SWAP", mountpoint:null,     sectors:2097152,  size:"1G",   start:"28614656", type:"filesystem"}
+              ]
+          ' drives.json > drives.json.tmp && mv drives.json.tmp drives.json
+      
+          # ---- Update system.json with all fields from the matrix ----
+          jq \
+            --arg base             "${{ matrix.config_installer.base }}" \
+            --arg design           "${{ matrix.config_installer.design }}" \
+            --arg desktop          "${{ matrix.config_installer.desktop }}" \
+            --arg display_manager  "${{ matrix.config_installer.display_manager }}" \
+            --arg hostname         "${{ matrix.config_installer.hostname }}" \
+            --arg keyboard_layout  "${{ matrix.config_installer.keyboard_layout }}" \
+            --arg locale           "${{ matrix.config_installer.locale }}" \
+            --arg root_hash        "${{ matrix.config_installer.root_passwd_hash }}" \
+            --arg timezone         "${{ matrix.config_installer.timezone }}" \
+            --arg username         "${{ matrix.config_installer.username }}" \
+            --arg user_hash        "${{ matrix.config_installer.password_hash }}" \
+            --arg shell            "${{ matrix.config_installer.shell }}" \
+            '
+            .config.base               = $base
+            | .config.design           = $design
+            | .config.desktop_environment = $desktop
+            | .config.display_manager  = $display_manager
+            | .config.hostname         = $hostname
+            | .config.keyboard_layout  = $keyboard_layout
+            | .config.locale           = $locale
+            | .config.root_passwd_hash = $root_hash
+            | .config.timezone         = $timezone
+            # Ensure there is at least one user entry, then fill it
+            | (.config.users |= (if (.|length)>0 then . else [ {} ] end))
+            | .config.users[0].username      = $username
+            | .config.users[0].password_hash = $user_hash
+            | .config.users[0].shell         = $shell
+            | (.config.users[0].groups //= ["wheel"])
+            ' system.json > system.json.tmp && mv system.json.tmp system.json
 
       - name: Run the installer
-        run: ${{ matrix.config_installer.installer }} config ${{ matrix.config_installer.config_file }}
+        run: aegis --system-file ./system.json --drives-file ./drives.json 
 
   # Final job to send summary to webhook
   notify-result:
