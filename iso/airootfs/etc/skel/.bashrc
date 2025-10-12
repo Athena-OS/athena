@@ -24,12 +24,9 @@ export PAGER='most'
 export TERM=xterm-256color
 export SHELL=$(which bash)
 
-export PAYLOADS="/usr/share/payloads"
-export SECLISTS="$PAYLOADS/seclists"
-export PAYLOADSALLTHETHINGS="$PAYLOADS/payloadsallthethings"
-export FUZZDB="$PAYLOADS/fuzzdb"
-export AUTOWORDLISTS="$PAYLOADS/autowordlists"
-export SECURITYWORDLIST="$PAYLOADS/security-wordlist"
+export SECLISTS="/usr/share/seclists"
+export PAYLOADSALLTHETHINGS="/usr/share/payloadsallthethings"
+export FUZZDB="/usr/share/fuzzdb"
 
 export MIMIKATZ="/usr/share/windows/mimikatz/"
 export POWERSPLOIT="/usr/share/windows/powersploit/"
