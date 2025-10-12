@@ -46,9 +46,9 @@ jobs:
             .drives.device = $d
             | .drives.content.type = "msdos"
             | .drives.content.partitions = [
-                {action:"create", blockdevice:($d+"p1"), end:"1026047", filesystem:"ext4", flags:["boot"], label:"BOOT", mountpoint:"/boot", sectors:1024000, size:"524M", start:"2048", type:"filesystem"},
-                {action:"create", blockdevice:($d+"p2"), end:"28614655", filesystem:"btrfs", flags:[], label:"ROOT", mountpoint:"/",     sectors:27588608, size:"14G",  start:"1026048", type:"filesystem"},
-                {action:"create", blockdevice:($d+"p3"), end:"30711807", filesystem:"swap", flags:[], label:"SWAP", mountpoint:null,     sectors:2097152,  size:"1G",   start:"28614656", type:"filesystem"}
+                {action:"modify", blockdevice:($d+"p1"), end:"1026047", filesystem:"ext4", flags:["boot"], label:"BOOT", mountpoint:"/boot", sectors:1024000, size:"524M", start:"2048", type:"filesystem"},
+                {action:"modify", blockdevice:($d+"p2"), end:"28614655", filesystem:"btrfs", flags:[], label:"ROOT", mountpoint:"/",     sectors:27588608, size:"14G",  start:"1026048", type:"filesystem"},
+                {action:"modify", blockdevice:($d+"p3"), end:"30711807", filesystem:"swap", flags:[], label:"SWAP", mountpoint:null,     sectors:2097152,  size:"1G",   start:"28614656", type:"filesystem"}
               ]
           ' drives.json > drives.json.tmp && mv drives.json.tmp drives.json
       
