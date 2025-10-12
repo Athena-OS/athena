@@ -172,6 +172,7 @@ alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --so
 alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
 alias ram='sudo rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
 alias rams='sudo rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist'
+alias rbm='sudo rate-mirrors --concurrency 40 --allow-root --disable-comments --save /etc/pacman.d/blackarch-mirrorlist blackarch'
 alias rcm='sudo rate-mirrors --concurrency 40 --allow-root --disable-comments --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur'
 
 #enabling vmware services
