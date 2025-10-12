@@ -1,6 +1,6 @@
 pkgname=athena-cyber-hub
 pkgver=23.fab05f4
-pkgrel=1
+pkgrel=2
 pkgdesc="Running vulnerable labs and Cyber Security platforms."
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -229,7 +229,7 @@ package() {
     git clone https://github.com/DefectDojo/django-DefectDojo $srcdir/defectdojo
     cd $srcdir/defectdojo
     install -dm 755 $pkgdir/usr/share/$pkgname/platforms/defectdojo
-    cp -a docker* dc* $pkgdir/usr/share/$pkgname/platforms/defectdojo/
+    cp -a docker* $pkgdir/usr/share/$pkgname/platforms/defectdojo/
     rm -rf $srcdir/defectdojo
 
     cd $srcdir/$pkgname
