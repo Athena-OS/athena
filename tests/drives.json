@@ -1,0 +1,78 @@
+{
+  "drives": {
+    "content": {
+      "partitions": [
+        {
+          "action": "delete",
+          "blockdevice": "/dev/sdb1",
+          "end": "1026047",
+          "filesystem": "ext4",
+          "flags": [],
+          "label": null,
+          "mountpoint": "/mnt/boot",
+          "sectors": 1024000,
+          "size": "524M",
+          "start": "2048",
+          "type": "filesystem"
+        },
+        {
+          "action": "delete",
+          "blockdevice": "/dev/sdb2",
+          "end": "30711807",
+          "filesystem": "ext4",
+          "flags": [],
+          "label": null,
+          "mountpoint": "/mnt",
+          "sectors": 29685760,
+          "size": "15G",
+          "start": "1026048",
+          "type": "filesystem"
+        },
+        {
+          "action": "create",
+          "blockdevice": "/dev/sdb1",
+          "end": "1026047",
+          "filesystem": "ext4",
+          "flags": [
+            "boot"
+          ],
+          "label": "BOOT",
+          "mountpoint": "/boot",
+          "sectors": 1024000,
+          "size": "524M",
+          "start": "2048",
+          "type": "filesystem"
+        },
+        {
+          "action": "create",
+          "blockdevice": "/dev/sdb2",
+          "end": "28614655",
+          "filesystem": "btrfs",
+          "flags": [],
+          "label": "ROOT",
+          "mountpoint": "/",
+          "sectors": 27588608,
+          "size": "14G",
+          "start": "1026048",
+          "type": "filesystem"
+        },
+        {
+          "action": "create",
+          "blockdevice": "/dev/sdb3",
+          "end": "30711807",
+          "filesystem": "swap",
+          "flags": [],
+          "label": "SWAP",
+          "mountpoint": null,
+          "sectors": 2097152,
+          "size": "1G",
+          "start": "28614656",
+          "type": "filesystem"
+        }
+      ],
+      "type": "msdos"
+    },
+    "device": "/dev/sdb",
+    "type": "disk"
+  }
+}
