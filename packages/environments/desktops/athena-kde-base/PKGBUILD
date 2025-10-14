@@ -1,6 +1,6 @@
 pkgname=athena-kde-base
 pkgver=1.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="KDE base configuration for Athena."
 arch=('any')
 license=("custom")
@@ -16,7 +16,7 @@ sha512sums=('4d0e7b43369c459f52bf58443ece94264297c76f534f50029d273baf529e57b6817
             'a5d2d3b60bd951c10d4495465129800163d63a2ec676dda81607ef885f6378690e0363f46a7c3fd0e8481cd25e9b2920731c041563aaade18bee1d0db07525e1'
             '4693dcdc626a96c1404b153cd535828569eae6a9af46873a4e459cdfc40e8017bed054dea0616b2dfeb95c2a4ede7eea079d0141a3b605f58715beb9cb3999b9'
             '65eab2a3b61bb720fb508941f7b599cf52da8b4b6237f3fd72f6ec9d44583e22c2d0dd310484988e8d20a61b4f930489ffefddad4bdb586d23cc508e012e3ffb'
-            '3a8dc5a911c7bbc9584401cd17a618e6fd2baa7587912319c10e660caedcd5ec9b4bcb9b3e70e683d04f4923f72e2d533f7a1bbf60afcbd4222ab9610c73ec70')
+            '8da20e2571957bcb05a0f06ed30617f17d672f5e97cd6e35c952636b0b8376d791b8f4e7b230b0cbb1c37e785f1f9ec94556dd738c5bcbc88501defbd5d1be70')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config"
