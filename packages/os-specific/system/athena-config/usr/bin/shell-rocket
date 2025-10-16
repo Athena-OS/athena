@@ -76,12 +76,7 @@ if [ $# -eq 0 ]; then
 fi
 
 temp_file=$(mktemp)
-TERMINAL_EXEC="kitty -e"
-
-# Set fallback terminal if needed
-if [[ "$TERMINAL_EXEC" =~ "terminator" || "$TERMINAL_EXEC" =~ "terminology" || "$TERMINAL_EXEC" =~ "xfce4-terminal" ]]; then
-  TERMINAL_EXEC="kitty -e"
-fi
+TERMINAL_EXEC="kitty --class shell -e"
 
 if [[ -z "$command" ]]; then
   # Search for application
