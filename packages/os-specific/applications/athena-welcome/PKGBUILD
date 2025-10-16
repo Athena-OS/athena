@@ -1,6 +1,6 @@
 pkgname=athena-welcome
-pkgver=42.c99158a
-pkgrel=2
+pkgver=47.40a8971
+pkgrel=1
 pkgdesc='Welcome App for Athena.'
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -22,23 +22,23 @@ pkgver() {
 package() {
   cd $pkgname
 
-  mkdir -p "$pkgdir/etc/skel/.config/autostart"
-  mkdir -p "$pkgdir/etc/skel/.config/athena-welcome"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  install -dm 755 "$pkgdir/etc/skel/.config/autostart"
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/applications"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
   #install -Dm755 "usr/bin/hacking-variables" "$pkgdir/usr/bin/"
   #install -Dm755 "usr/bin/role-viewer" "$pkgdir/usr/bin/"
   #install -Dm755 "usr/bin/tool-recipe" "$pkgdir/usr/bin/"
-  install -Dm644 "share/applications/athena-welcome.desktop" "$pkgdir/etc/skel/.config/autostart/"
-  install -Dm644 "share/applications/athena-welcome.desktop" "$pkgdir/usr/share/applications/"
-  install -Dm644 "share/icons/hicolor/scalable/apps/athenaos.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  cp -a "share/athena-welcome" "$pkgdir/usr/share/"
+  install -Dm644 "athena-welcome.desktop" "$pkgdir/etc/skel/.config/autostart/"
+  install -Dm644 "athena-welcome.desktop" "$pkgdir/usr/share/applications/"
+  install -Dm644 "athenaos.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  cp -a "athena-welcome" "$pkgdir/usr/share/"
 
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/usr/bin/env bash
 cd /usr/share/athena-welcome
+sleep 3
 exec python athena-welcome.py "\$@"
 EOF
 
