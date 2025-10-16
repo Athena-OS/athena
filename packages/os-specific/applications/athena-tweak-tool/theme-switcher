@@ -137,7 +137,7 @@ elif [ "$chosen_design" == "sweet" ]; then
     THEME="Sweet-Dark-v40"
     GNOME_SHELL="Sweet-Dark-v40"
     COLOR_SCHEMA="prefer-dark"
-    ICONS="Candy"
+    ICONS="candy-icons"
     CURSOR="oreo_spark_purple_cursors"
     BACKGROUND="/usr/share/backgrounds/athena/neon-circle.png"
     CODIUM_THEME="Radical"
@@ -160,7 +160,7 @@ else
     exit 1
 fi
 
-echo "$DESKTOP_SESSION session detected."
+echo "$XDG_CURRENT_DESKTOP session detected."
 
 apply_menu_icons() {
     mkdir -p "$HOME/.config/kando/icon-themes/athena-theme"
@@ -221,8 +221,8 @@ apply_gtk4() {
     fi 
 }
 
-# I add check on tty because on Live Environment, when I run startx (that is run in tty), $DESKTOP_SESSION is empty
-if [[ "$DESKTOP_SESSION" =~ "xfce" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
+# I add check on tty because on Live Environment, when I run startx (that is run in tty), $DESKTOP_SESSION is empty. UPDATE: I replaced it by XDG_CURRENT_DESKTOP
+if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
     # Need to wait for some time to wait for the needed xfce process to be loaded, to prevent to have a blank background
     # Be aware that for Arch and Fedora the BACKGROUND value must be changed above to prevent blank screen.
     sleep 1.5
@@ -238,7 +238,7 @@ if [[ "$DESKTOP_SESSION" =~ "xfce" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$dete
     for x in $(xfconf-query -c xfce4-desktop -lv | grep last-image | awk '{print $1}'); do xfconf-query -c xfce4-desktop -p $x -s $BACKGROUND; done
 fi
 
-if [[ "$DESKTOP_SESSION" =~ "plasma" ]]; then
+if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]]; then
     plasma-apply-lookandfeel -a org.kde.breezedark.desktop # It applies Plasma Global Theme and Color Scheme too
     dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:$THEME"
     /usr/libexec/plasma-changeicons "$ICONS"
@@ -247,7 +247,7 @@ if [[ "$DESKTOP_SESSION" =~ "plasma" ]]; then
     kwriteconfig6 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$BACKGROUND"
 fi
 
-if [[ "$DESKTOP_SESSION" =~ "mate" ]]; then
+if [[ "$XDG_CURRENT_DESKTOP" =~ "MATE" ]]; then
     dconf write /org/mate/desktop/interface/gtk-theme "'$THEME'"
     dconf write /org/mate/marco/general/theme "'$THEME'"
     dconf write /org/mate/desktop/interface/icon-theme "'$ICONS'"
@@ -255,9 +255,10 @@ if [[ "$DESKTOP_SESSION" =~ "mate" ]]; then
     dconf write /org/mate/desktop/background/picture-filename "'$BACKGROUND'"
 fi
 
-if [[ "$DESKTOP_SESSION" =~ "cinnamon" ]]; then
+if [[ "$XDG_CURRENT_DESKTOP" =~ "Cinnamon" ]]; then
     gsettings set org.cinnamon.desktop.interface gtk-theme ""
     gsettings set org.cinnamon.desktop.wm.preferences theme ""
+    gsettings set org.gnome.desktop.interface icon-theme ""
     sleep 1
     gsettings set org.cinnamon.desktop.interface gtk-theme "$THEME"
     gsettings set org.cinnamon.desktop.wm.preferences theme "$THEME"
@@ -270,7 +271,7 @@ if [[ "$DESKTOP_SESSION" =~ "cinnamon" ]]; then
     gsettings set org.cinnamon.desktop.background picture-options "stretched"
 fi
 
-#if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]] || [[ "$DESKTOP_SESSION" =~ "hyprland" ]]; then
+#if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]] || [[ "$XDG_CURRENT_DESKTOP" =~ "Hyprland" ]]; then
 #    cp -rf "$BACKGROUND" "$HOME/.config/hypr/wallpaper" 2>/dev/null
     #pkill swaybg 2>/dev/null
     #swaybg -i "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null & #Note that swaybg needs to be runned in background
@@ -281,10 +282,11 @@ fi
 #    hyprctl setcursor "$CURSOR" 24 2>/dev/null
 #fi
 
-if [[ "$DESKTOP_SESSION" =~ "gnome" ]]; then
+if [[ "$XDG_CURRENT_DESKTOP" =~ "GNOME" ]]; then
     gsettings set org.gnome.desktop.interface gtk-theme ""
     gsettings set org.gnome.desktop.wm.preferences theme ""
     gsettings set org.gnome.shell.extensions.user-theme name ""
+    gsettings set org.gnome.desktop.interface icon-theme ""
     sleep 1
     gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
     gsettings set org.gnome.desktop.wm.preferences theme "$THEME"
