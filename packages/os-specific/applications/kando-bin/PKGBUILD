@@ -3,7 +3,7 @@ pkgname=kando-bin
 _pkgname=Kando
 pkgver=2.0.0
 _electronversion=31
-pkgrel=4
+pkgrel=5
 pkgdesc='A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.'
 arch=('aarch64' 'x86_64')
 url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
@@ -38,7 +38,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha512sums=('046d3429e40271479fcdd731c793ea9c20533d1be46701ced689925778b8949f0b87f4b1b1d0f231428f4524141c9e4c885be632e382a538f6cca25137cec3a1'
             '3578476802bbcd6680830bd3853e76c4999bed73fce55ff955baf82cee24204c8b5639ff3e2ca915147caed1ddf9d8380923ca37bf80c138e524da2456dfe0cf'
             '81064df4033091749b989a1be6c2be4ebc1fa63ab59c893cfb9ce806c0da9c8b531e3c218561909568444fe41d1592722ef7f5dd53e7f9159e4cf6e49659656b'
-            'b191a6a36edecefffdab6e6a2324020931b2df757933de4759f60b2b1bc9c8cfe0f6eef08da574ecb4f33adfcb0a70e36e4489c9e89302fa9cfb005c6e4c73df')
+            '374572c23e16a9d76c2f48f08b538cdc3a73e4657013fe158f5eccc591b5d16521663e9ada9766ee840079ae0d0832303fa64f9ef2a3a0da667a01f466c9a3c6')
 sha512sums_aarch64=('628f5b89875129d4b0ae62a72c7c617be7c46cf810af12622e389d4c8c3e5a4675745f350511d0071b5bda55f44d50395ec641d3193e9251cce061e24cd3cb38')
 sha512sums_x86_64=('ce85cbbeaef3dd80230c867b93d2011c2c6996324a7b54b0a4e87ba74df43d5e9748b52536e6dc124e4a1b36735d008a49ef35cab64fcb7495541b41f6dbc198')
 prepare() {
