@@ -45,8 +45,6 @@ usbutils
 wireless_tools
 wireplumber
 wpa_supplicant
-xorg-server
-xorg-xinit
 
 #######################################################
 ###                   VPN Plugins                   ###
@@ -70,24 +68,27 @@ ttf-jetbrains-mono-nerd
 ###                    UTILITIES                    ###
 #######################################################
 
-alacritty
 bat
-espeakup
+#espeakup
 fastfetch
 git
-gparted
 lsd
 openbsd-netcat
-orca
+#orca
 paru
 polkit
-reflector
 ufw
-vnstat
 wget
 which
 xclip
 zoxide
+
+#######################################################
+###                   BLACKARCH                     ###
+#######################################################
+
+blackarch-keyring
+blackarch-mirrorlist
 
 #######################################################
 ###                   CHAOTIC AUR                   ###
@@ -100,26 +101,34 @@ chaotic-mirrorlist
 ###                ATHENA REPOSITORY                ###
 #######################################################
 
-aegis-tui
+aegis
 athena-bash
 athena-config
-athena-firefox-config
-athena-graphite-design
 athena-keyring
 athena-mirrorlist
-athena-powershell-config
-athena-tmux-config
-athena-vscodium-themes
-athena-welcome
-athena-xfce-refined
 devotio
+
+#######################################################
+###                 GUI ENVIRONMENT                 ###
+#######################################################
+#athena-firefox-config
+#athena-kitty-config
+#athena-powershell-config
+#athena-temple-design
+#athena-tmux-config
+#athena-vscodium-themes
+#athena-welcome
+#athena-xfce-refined
+#gparted
+#xorg-server
+#xorg-xinit
 
 #######################################################
 ###                 LIVE ENVIRONMENT                ###
 #######################################################
-hyperv
-xf86-video-fbdev
-open-vm-tools
-qemu-guest-agent
-spice-vdagent
-virtualbox-guest-utils
+#hyperv
+#xf86-video-fbdev
+#open-vm-tools
+#qemu-guest-agent
+#spice-vdagent
+#virtualbox-guest-utils

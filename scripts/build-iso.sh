@@ -26,15 +26,15 @@ echo
         #Let us set the desktop"
         #First letter of desktop is small letter
 
-        desktop="gnome"
-        dmDesktop="gnome"
+        desktop="none"
+        dmDesktop="none"
 
-        athenaVersion='rolling'
+        athenaVersion='live'
 
         isoLabel='athenaos-'$athenaVersion'-x86_64.iso'
 
         # setting of the general parameters
-        archisoRequiredVersion="archiso 83-1"
+        archisoRequiredVersion="archiso 86-1"
         buildFolder=$HOME"/athena-build"
         outFolder=$HOME"/Athena-Out"
         # outFolder="/mnt/hgfs/VirtualShare/Athena-Out"

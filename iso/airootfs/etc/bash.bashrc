@@ -20,3 +20,9 @@ case ${TERM} in
 esac
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
+
+# Automatically re-show MOTD after exiting nmtui
+alias nmtui='command nmtui "$@"; tput sgr0; clear; [ -r /etc/motd ] && echo -e "$(cat /etc/motd)"'
+
+# Quick command to manually redisplay MOTD
+alias motd='clear; [ -r /etc/motd ] && echo -e "$(cat /etc/motd)"'

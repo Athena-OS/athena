@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = *-keyring
+
+[Action]
+Description = Initializing and populating all keyrings...
+When = PostTransaction
+Exec = /usr/bin/bash -c "pacman-key --init; pacman-key --populate"

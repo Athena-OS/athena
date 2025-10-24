@@ -5,13 +5,11 @@ iso_name="athenaos"
 iso_label="ATHENA-OS"
 iso_publisher="Athena OS <https://www.athenaos.org>"
 iso_application="Athena OS Live/Rescue CD"
-iso_version="rolling"
+iso_version="live"
 install_dir="arch"
 buildmodes=('iso')
-bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito'
-           'uefi-ia32.systemd-boot.esp' 'uefi-x64.systemd-boot.esp'
-           'uefi-ia32.systemd-boot.eltorito' 'uefi-x64.systemd-boot.eltorito')
-arch="x86_64"
+bootmodes=('bios.syslinux' 'uefi.systemd-boot')
+arch=('x86_64')
 pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
 airootfs_image_tool_options=('-comp' 'xz' '-Xbcj' 'x86' '-b' '1M' '-Xdict-size' '1M')

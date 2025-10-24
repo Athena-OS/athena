@@ -10,7 +10,7 @@ jobs:
     env:
       ATHENA_ID: 'athenaos'
       ATHENA_VERSION: 'rolling'
-      ISO_VERSION: 'rolling' # It must be the same on profiledef.sh and installation_script
+      ISO_VERSION: 'live' # It must be the same on profiledef.sh and build-iso.sh
       ISO_ARCHITECTURE: 'x86_64'
     runs-on: ubuntu-latest
     container:
@@ -33,6 +33,7 @@ jobs:
       - name: Set fastest mirrors
         run: |
           rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+          rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/blackarch-mirrorlist blackarch
           rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
 
       - name: Install dependencies
@@ -55,5 +56,5 @@ jobs:
           git clone https://github.com/Athena-OS/athena
           cd athena
           for f in $(find $HOME/Athena-Out -name '*.iso*'); do
-            gh release upload v23.11 $f --clobber
+            gh release upload v25.11 $f --clobber
           done
