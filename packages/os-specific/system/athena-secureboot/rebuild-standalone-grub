@@ -7,6 +7,11 @@ EFI_BOOT_DIR=/boot/efi/EFI/BOOT
 CERT=/etc/.secureboot/keys/MOK.crt
 KEY=/etc/.secureboot/keys/MOK.key
 
+[[ -f "$CERT" && -f "$KEY" ]] || {
+  echo "Secure Boot keys not found — skipping GRUB signing."
+  exit 0
+}
+
 # Modules you actually need; keep lean but sufficient
 EXTRA_GRUB_MODULES="bli boot cat efifwsetup efinet gcry_arcfour gcry_blowfish gcry_camellia gcry_cast5 gcry_crc gcry_des gcry_dsa gcry_idea gcry_md4 gcry_md5 gcry_rfc2268 gcry_rijndael gcry_rmd160 gcry_rsa gcry_seed gcry_serpent gcry_sha1 gcry_sha256 gcry_sha512 gcry_tiger gcry_twofish gcry_whirlpool gfxterm_background halt help hfsplus iso9660 jpeg keystatus loopback ls lsefi lsefimmap lsefisystab lssal memdisk minicmd part_apple password_pbkdf2 png raid5rec raid6rec reboot serial sleep smbios squash4 true video zfs zfscrypt zfsinfo"
 
