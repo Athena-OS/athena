@@ -1,0 +1,22 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = grub
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = boot/grub/grub.cfg
+Target = usr/share/grub/unicode.pf2
+Target = usr/share/grub/sbat.csv
+# Add any embedded theme assets you include:
+# Target = boot/grub/themes/my/theme.txt
+# Target = boot/grub/themes/my/bg.png
+
+[Action]
+Description = Rebuilding standalone GRUB EFI (embed cfg+font) and signing
+When = PostTransaction
+Exec = /usr/local/bin/rebuild-standalone-grub
+NeedsTargets

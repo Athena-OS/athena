@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+CERT=/etc/.secureboot/keys/MOK.crt
+KEY=/etc/.secureboot/keys/MOK.key
+
+for kimg in /boot/vmlinuz*; do
+  # Skip if not a regular file
+  [[ -f "$kimg" ]] || continue
+  echo "Signing $kimg ..."
+  sbsign --key "$KEY" --cert "$CERT" --output "$kimg" "$kimg"
+  # Optional integrity check
+  sbverify --list "$kimg" >/dev/null && echo "Verified $kimg"
+done

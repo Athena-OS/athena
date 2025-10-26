@@ -1,0 +1,11 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = boot/vmlinuz*
+
+[Action]
+Description = Signing updated kernels for Secure Boot
+When = PostTransaction
+Exec = /usr/local/bin/sign-kernels
+NeedsTargets

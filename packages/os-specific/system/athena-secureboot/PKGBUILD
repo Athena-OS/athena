@@ -1,0 +1,23 @@
+pkgname=athena-secureboot
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Athena OS Secure Boot configuration."
+arch=('any')
+license=("custom")
+source=("90-sign-kernel.hook"
+        "95-rebuild-standalone-grub.hook"
+        "rebuild-standalone-grub"
+        "sign-kernels")
+sha512sums=('66bf850a926fab3f73bdea94b28089ceed2799d12c7f61c1ce781edb51c6e344cd9093789f9d22920449c20713565792b137570936f2b26f94435354b6e122f1'
+            '2527b27bcc40a2bf1b03c993820016addd626a69464680697465c801d86a9a353bc87eabece16c3e6013658a87a7407ea4f83bc9300286015e349a082cfaaff3'
+            'f4d7da62cf598a5edfa3f6f8fac46d3ea14c3d218744efc93568ab979efcb413fedd2156e8502bc935761d71a097cd1ed72ffa01d91b2afbf76b2251acfe0c34'
+            '9e88a1a01642d98396e120ab62aac076c650c9c6461f4b82952b1bb89cdaefee28ce5d700f9deb152677cbf697e1b54ddf94f1fb39cbc6da521cca7223c3ac6f')
+
+package() {
+  install -dm 755 "$pkgdir/etc/pacman.d/hooks"
+  install -dm 755 "$pkgdir/usr/local/bin"
+  
+  install -Dm 644 -t "$pkgdir/etc/pacman.d/hooks/" *.hook
+  install -Dm 755 -t "$pkgdir/usr/local/bin/" rebuild-standalone-grub sign-kernels
+}
+
