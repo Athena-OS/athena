@@ -89,6 +89,17 @@ if [ "$chosen_design" == "cyborg" ]; then
     KITTY_THEME="gruvbox_dark.conf"
     TMUX_THEME="gold"
     COLORBASE="gruvbox"
+elif [ "$chosen_design" == "frost" ]; then
+    THEME="Tokyonight-Dark"
+    GNOME_SHELL="Tokyonight-Dark"
+    COLOR_SCHEMA="prefer-dark"
+    ICONS="FairyWren_Dark"
+    CURSOR="oreo_blue_cursors"
+    BACKGROUND="/usr/share/backgrounds/athena/frost-daughter.png"
+    CODIUM_THEME="Tokyo Night Storm"
+    KITTY_THEME="Tokyo_Night_Storm.conf"
+    TMUX_THEME="sky"
+    COLORBASE="cyan"
 elif [ "$chosen_design" == "graphite" ]; then
     THEME="Graphite-Rimless-Dark"
     GNOME_SHELL="Graphite-Rimless-Dark"

@@ -1,0 +1,21 @@
+pkgname=athena-frost-design
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Frost design for Athena."
+arch=('any')
+license=('GPL-3.0-or-later')
+depends=('athena-cyan-base' 'tokyonight-gtk-theme-git' 'oreo-blue-cursors')
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/tokyo_night_storm.conf"
+        "git+https://gitlab.com/aiyahm/FairyWren-Icons.git")
+sha512sums=('2e7545b870d5742684d336550c27cd3f1b74e60f2d495bc6f57848c49c14b29905d0d97999afe770f6fa2b4c0cacf57a65102c635e2435fb40465ffa575841d6'
+            'SKIP')
+
+package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
+  install -dm 755 "$pkgdir/usr/share/icons"
+  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/"
+
+  cd FairyWren-Icons
+
+  cp -a FairyWren_Dark "$pkgdir/usr/share/icons/"
+}
