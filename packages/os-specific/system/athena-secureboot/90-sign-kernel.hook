@@ -4,6 +4,30 @@ Operation = Install
 Operation = Upgrade
 Target = boot/vmlinuz*
 
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+Target = linux-next*
+Target = linux-new*
+Target = linux-amd*
+Target = linux-lts*
+Target = linux-zen*
+Target = linux-hardened*
+Target = linux-rt*
+Target = linux-rt-lts*
+Target = linux-lqx*
+Target = linux-xanmod*
+Target = linux-tkg*
+Target = linux-raven*
+Target = linux-slim*
+Target = linux-test*
+Target = linux-main*
+Target = linux-dctxmei*
+Target = linux-froidzen*
+Target = linux-jwrdegoede*
+
 [Action]
 Description = Signing updated kernels for Secure Boot
 When = PostTransaction

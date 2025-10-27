@@ -1,5 +1,5 @@
 pkgname=athena-secureboot
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Athena OS Secure Boot configuration."
 arch=('any')
@@ -8,7 +8,7 @@ source=("90-sign-kernel.hook"
         "95-rebuild-standalone-grub.hook"
         "rebuild-standalone-grub"
         "sign-kernels")
-sha512sums=('66bf850a926fab3f73bdea94b28089ceed2799d12c7f61c1ce781edb51c6e344cd9093789f9d22920449c20713565792b137570936f2b26f94435354b6e122f1'
+sha512sums=('2a6e36925ec5d45c78fa957d6972eb8de01886d04d75a5feecdfb096351be5d70e02faa5d2479edc6e85d419e8856fe973cbc50913ae8522f02c0f88f81e98d2'
             '2527b27bcc40a2bf1b03c993820016addd626a69464680697465c801d86a9a353bc87eabece16c3e6013658a87a7407ea4f83bc9300286015e349a082cfaaff3'
             '6e1beef2b6b310746dcdb05514157d6f9c505dbaa6059732656e1d17218cad8bcecd44d12faf96a2e231e693a60d7ac3dae37a01447319f99b060f50357a9101'
             'bd17ed870718df95c30d3d8c966ce9a341b24691cebe6f5b2a106d1aad333dd0ff3564364fad62bf63175627df65044d16619070667dedb403858caf7abc1d3a')
