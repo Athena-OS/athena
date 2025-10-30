@@ -1,10 +1,10 @@
 pkgname=athena-plasma-base
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="KDE Plasma base configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('bluez-qt' 'discover' 'dolphin' 'elisa' 'gwenview' 'kcalc' 'kde-gtk-config' 'kdeconnect' 'kdeplasma-addons' 'kfind' 'kinfocenter' 'kmenuedit' 'kpipewire' 'kscreen' 'kservice5' 'kwin-effects-kinetic' 'kwrite' 'plasma-browser-integration' 'plasma-desktop' 'plasma-nm' 'plasma-systemmonitor' 'plasma-thunderbolt' 'plasma-vault' 'plasma-welcome' 'plasma-workspace' 'plasma-pa' 'polkit-kde-agent' 'spectacle' 'systemsettings' 'xdg-desktop-portal-kde')
+depends=('bluez-qt' 'discover' 'dolphin' 'elisa' 'gwenview' 'kcalc' 'kde-gtk-config' 'kdeconnect' 'kdeplasma-addons' 'kfind' 'kinfocenter' 'kmenuedit' 'kpipewire' 'kscreen' 'kservice5' 'kwin-effects-kinetic' 'kwin-x11' 'kwrite' 'plasma-browser-integration' 'plasma-desktop' 'plasma-nm' 'plasma-systemmonitor' 'plasma-thunderbolt' 'plasma-vault' 'plasma-welcome' 'plasma-workspace' 'plasma-pa' 'polkit-kde-agent' 'spectacle' 'systemsettings' 'xdg-desktop-portal-kde')
 source=("athena-plasma-applications.menu"
         "kwinrc"
         "kwinrulesrc"
