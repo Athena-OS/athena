@@ -1,6 +1,6 @@
 pkgname=gnome-shell-extension-kando-integration
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME Shell extension required for Kando to work on Wayland."
 arch=('any')
 url='https://github.com/kando-menu/gnome-shell-integration'
@@ -22,4 +22,6 @@ package() {
   install -dm 755 "$pkgdir/usr/share/gnome-shell/extensions/kando-integration@kando-menu.github.io"
 
   unzip kando-integration@kando-menu.github.io.zip -d "$pkgdir/usr/share/gnome-shell/extensions/kando-integration@kando-menu.github.io"
+
+  glib-compile-schemas "$pkgdir/usr/share/gnome-shell/extensions/kando-integration@kando-menu.github.io/schemas"
 }
