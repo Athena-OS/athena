@@ -37,7 +37,7 @@ jobs:
           rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
 
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm archiso edk2-ovmf git github-cli gnupg grub openssh openssl qemu-desktop rsync sshpass wget # Install also optional deps for archiso
+        run: pacman -Syyu --noconfirm archiso edk2-ovmf git github-cli gnupg openssh openssl qemu-desktop rsync sshpass wget # Install also optional deps for archiso
         
       - name: Build ArchISO
         run: |

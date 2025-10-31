@@ -8,7 +8,7 @@ iso_application="Athena OS Live/Rescue CD"
 iso_version="live"
 install_dir="arch"
 buildmodes=('iso')
-bootmodes=('bios.syslinux' 'uefi.systemd-boot')
+boot_modes=('uefi-x64.systemd-boot')
 arch=('x86_64')
 pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
@@ -21,6 +21,5 @@ file_permissions=(
   ["/root/.automated_script.sh"]="0:0:755"
   ["/etc/polkit-1/rules.d"]="0:0:750"
   ["/etc/sudoers.d"]="0:0:750"
-  ["/etc/grub.d/40_custom"]="0:0:755"
   ["/etc/NetworkManager/dispatcher.d/09-timezone"]="0:0:755"
 )
