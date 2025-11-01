@@ -1,0 +1,107 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = linux-lts
+Target = linux-hardened
+
+[Action]
+Description = Rebuilding and signing Athena OS UKI images...
+When = PostTransaction
+NeedsTargets
+Exec = /bin/bash -c 'set -euo pipefail
+
+EFI_DIR="/boot/efi/EFI/Athena"
+CMDLINE_FILE="/etc/kernel/cmdline"
+KEY_FILE="/etc/secureboot/keys/MOK.key"
+CERT_FILE="/etc/secureboot/keys/MOK.crt"
+
+log() {
+    echo "[athena-rebuild-uki] $*" >&2
+}
+
+need_tool() {
+    if ! command -v "$1" >/dev/null 2>&1; then
+        log "ERROR: missing required tool: $1"
+        exit 1
+    fi
+}
+
+need_tool systemd-ukify
+need_tool sbsign
+
+mkdir -p "${EFI_DIR}"
+
+# pacman passes the affected packages as arguments to Exec because of NeedsTargets
+AFFECTED_PKGS=("$@")
+
+rebuild_one() {
+    local pkg_name="$1"
+    local uki_name="$2"
+    local vmlinuz="$3"
+    local initramfs="$4"
+
+    # if we got a package filter from pacman, only rebuild matching kernels
+    if [ ${#AFFECTED_PKGS[@]} -ne 0 ]; then
+        local match="no"
+        for changed in "${AFFECTED_PKGS[@]}"; do
+            # pacman gives things like linux-lts-6.6.10-1-x86_64
+            if [[ "${changed}" == ${pkg_name}-* ]]; then
+                match="yes"
+                break
+            fi
+        done
+        if [[ "${match}" != "yes" ]]; then
+            return 0
+        fi
+    fi
+
+    if [ ! -f "${vmlinuz}" ]; then
+        log "WARNING: kernel image ${vmlinuz} not found, skipping ${pkg_name}"
+        return 0
+    fi
+
+    if [ ! -f "${initramfs}" ]; then
+        log "WARNING: initramfs ${initramfs} not found, skipping ${pkg_name}"
+        return 0
+    fi
+
+    if [ ! -f "${CMDLINE_FILE}" ]; then
+        log "ERROR: ${CMDLINE_FILE} not found (kernel cmdline). Cannot embed cmdline."
+        exit 1
+    fi
+
+    local unsigned_uki
+    unsigned_uki="$(mktemp --suffix .efi)"
+
+    log "Building unsigned UKI for ${pkg_name}"
+
+    systemd-ukify build \
+        --linux "${vmlinuz}" \
+        --initrd "${initramfs}" \
+        --cmdline "${CMDLINE_FILE}" \
+        --os-release /etc/os-release \
+        --output "${unsigned_uki}"
+
+    local final_path="${EFI_DIR}/${uki_name}"
+
+    log "Signing UKI -> ${final_path}"
+
+    sbsign \
+        --key "${KEY_FILE}" \
+        --cert "${CERT_FILE}" \
+        --output "${final_path}" \
+        "${unsigned_uki}"
+
+    chmod 0600 "${final_path}"
+    rm -f "${unsigned_uki}"
+
+    log "UKI for ${pkg_name} rebuilt and signed at ${final_path}"
+}
+
+rebuild_one "linux-lts" "athena-lts.efi" "/boot/vmlinuz-linux-lts" "/boot/initramfs-linux-lts.img"
+rebuild_one "linux-hardened" "athena-hardened.efi" "/boot/vmlinuz-linux-hardened" "/boot/initramfs-linux-hardened.img"
+
+log "All done."
+'
