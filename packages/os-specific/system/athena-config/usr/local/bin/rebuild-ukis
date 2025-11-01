@@ -1,0 +1,63 @@
+#!/bin/bash
+set -euo pipefail
+
+# Where to put the finished UKIs on the ESP:
+ESP_DIR="/boot/efi/EFI/Athena"
+
+# Secure Boot signing material:
+SB_KEY="/etc/secureboot/keys/MOK.key"
+SB_CRT="/etc/secureboot/keys/MOK.crt"
+
+# Kernel cmdline file:
+CMDLINE_FILE="/etc/kernel/cmdline"
+
+# Make sure target dir exists
+install -d -m755 "${ESP_DIR}"
+
+DO_SIGN=false
+if [[ -f "$SB_KEY" && -f "$SB_CRT" ]]; then
+    DO_SIGN=true
+fi
+
+for vmlinuz in /boot/vmlinuz-*; do
+    kbase="$(basename "$vmlinuz")"          # e.g. vmlinuz-linux
+    kname="${kbase#vmlinuz-}"               # e.g. linux or linux-lts
+
+    initrd="/boot/initramfs-${kname}.img"
+    # If you also ship fallback or microcode separately, you can extend this.
+    # For microcode, you can pass multiple --initrd flags. Example later.
+
+    out="${ESP_DIR}/${kname}.efi"
+
+    MICROCODE=()
+    if [[ -f /boot/intel-ucode.img ]]; then
+        MICROCODE+=( --initrd /boot/intel-ucode.img )
+    elif [[ -f /boot/amd-ucode.img ]]; then
+        MICROCODE+=( --initrd /boot/amd-ucode.img )
+    fi
+
+    echo ">> Building UKI for kernel '${kname}' → ${out}"
+
+    if $DO_SIGN; then
+        /usr/bin/ukify build \
+            --linux "$vmlinuz" \
+            "${MICROCODE[@]}" \
+            --initrd "$initrd" \
+            --cmdline @"${CMDLINE_FILE}" \
+            --os-release /usr/lib/os-release \
+            --uname "${kname}" \
+            --signtool=sbsign \
+            --secureboot-private-key "${SB_KEY}" \
+            --secureboot-certificate "${SB_CRT}" \
+            --output "${out}"
+    else
+        /usr/bin/ukify build \
+            --linux "$vmlinuz" \
+            "${MICROCODE[@]}" \
+            --initrd "$initrd" \
+            --cmdline @"${CMDLINE_FILE}" \
+            --os-release /usr/lib/os-release \
+            --uname "${kname}" \
+            --output "${out}"
+    fi
+done
