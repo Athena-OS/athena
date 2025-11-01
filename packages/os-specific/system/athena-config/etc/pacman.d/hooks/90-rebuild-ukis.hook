@@ -13,6 +13,14 @@ Target = linux-lqx
 Target = linux-xanmod
 Target = linux-mainline
 
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = /boot/initramfs-linux*
+Target = /boot/vmlinuz-linux*
+
 [Action]
 Description = Rebuilding and signing Unified Kernel Image(s) for Secure Boot...
 When = PostTransaction
