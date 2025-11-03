@@ -16,7 +16,7 @@
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <chosen_design>"
     echo "       $0 --auto | -a    # Automatically detect installed design"
-    echo "Available design: Cyborg | Graphite | HackTheBox | RedMoon | Samurai | Sweet | Temple"
+    echo "Available design: Cyborg | Frost | Graphite | HackTheBox | RedMoon | Samurai | Sweet | Temple"
     exit 1
 fi
 
@@ -42,6 +42,7 @@ is_package_installed() {
 
 declare -A design_map=(
     ["cyborg"]="athena-cyborg-design"
+    ["frost"]="athena-frost-design"
     ["graphite"]="athena-graphite-design"
     ["hackthebox"]="athena-htb-design"
     ["redmoon"]="athena-redmoon-design"
@@ -167,7 +168,7 @@ elif [ "$chosen_design" == "temple" ]; then
     TMUX_THEME="sky"
     COLORBASE="cyan"
 else
-    echo "Please choose between the following design: Cyborg, Graphite, HackTheBox, RedMoon, Samurai, Sweet, Temple"
+    echo "Please choose between the following design: Cyborg, Frost, Graphite, HackTheBox, RedMoon, Samurai, Sweet, Temple"
     exit 1
 fi
 
