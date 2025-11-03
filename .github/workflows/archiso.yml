@@ -46,7 +46,7 @@ jobs:
           
       - name: Upload to Athena OS Mirror
         run: |
-          sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena-images/rolling/
+          sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.md5 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha1 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha256 $HOME/Athena-Out/${{env.ATHENA_ID}}-${{env.ISO_VERSION}}-${{env.ISO_ARCHITECTURE}}.iso.sha512 ${{ secrets.MIRROR_USER }}@sync.athenaos.org:/srv/mirrors/athena-images/rolling/
 
       - name: Upload to GitHub Release
         env:
