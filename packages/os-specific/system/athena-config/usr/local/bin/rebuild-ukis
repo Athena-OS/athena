@@ -20,8 +20,8 @@ INIT_PRIV="/etc/systemd/tpm2-pcr-initrd-private-key.pem"
 INIT_PUB="/etc/systemd/tpm2-pcr-initrd-public-key.pem"
 
 # Phases
-PHASES_SYSTEM="enter-initrd:leave-initrd:sysinit:ready"
-PHASES_INITRD="enter-initrd:leave-initrd"
+PHASES_SYSTEM="enter-initrd"
+PHASES_INITRD="enter-initrd"
 
 # --- Prep ----------------------------------------------------------------
 
