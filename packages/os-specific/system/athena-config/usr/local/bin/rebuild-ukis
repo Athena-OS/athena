@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Where to put the finished UKIs on the ESP:
-ESP_DIR="/boot/efi/EFI/Athena"
+ESP_DIR="/efi/EFI/Athena"
 
 # Secure Boot signing material:
 SB_KEY="/etc/secureboot/keys/MOK.key"
