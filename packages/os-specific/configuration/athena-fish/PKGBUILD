@@ -1,5 +1,5 @@
 pkgname=athena-fish
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Fish for Athena."
 arch=('any')
@@ -15,5 +15,5 @@ package() {
   install -Dm 644 "fish_prompt.fish" "${pkgdir}/etc/skel/.config/fish/functions/fish_prompt.fish"  
 }
 
-sha512sums=('8a24347a974eb148a046cdfdfc6ba1a61ea35f488a7c5b800d1d71a020f814d0a78b4c542cde3a6cd3e0f5e6d66e037ccdc136528346cf5d2e339839a49c8184'
+sha512sums=('b4b33c229e228a6e34e0773f784f313c0c4a45d5f274a8e65b9ac9bd52324beeebe5eff05c0116d1a50daf13134abbcafc489b2340dcdf806ef8d1b526d6d7a6'
             'ea3560e2e377804d71ecc21da6d7265e8ee1728b7108b2e06f3d51ef1d9081d386c43fa4794d5fc6ca9403c97dfc1d55a1530d78c50b6d50051a69ae46c358ef')
