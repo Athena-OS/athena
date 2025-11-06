@@ -1,11 +1,11 @@
 pkgname=cyber-toolkit
-pkgver=30.5742bc0
+pkgver=39.05f6fdc
 pkgrel=1
 pkgdesc='Set your Cyber Security role.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Athena-OS/cyber-toolkit'
 license=('MIT')
-depends=('rate-mirrors')
+depends=()
 makedepends=('git' 'cargo')
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
