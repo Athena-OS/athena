@@ -18,6 +18,7 @@ jobs:
       matrix:
         config_installer:
           - { base: "Athena Arch", design: "temple", desktop: "gnome", display_manager: "astronaut", hostname: "athenaos", keyboard_layout: "us", locale: "en_US.UTF-8 UTF-8", root_passwd_hash: "$y$j9T$PvxwcqCC6Hdvd2Ordjyou.$YUqNgUIkMsI9FKtr7DwpO/d9ZKmQmgMMnD9EbPC5sH7", timezone: "Europe/Rome", username: "athena", password_hash: "$y$j9T$PvxwcqCC6Hdvd2Ordjyou.$YUqNgUIkMsI9FKtr7DwpO/d9ZKmQmgMMnD9EbPC5sH7", shell: "fish", job_name: "Arch-based Install Test (GNOME)"}
+          - { base: "Athena Nix", design: "frost", desktop: "gnome", display_manager: "astronaut", hostname: "athenaos", keyboard_layout: "us", locale: "en_US.UTF-8 UTF-8", root_passwd_hash: "$y$j9T$PvxwcqCC6Hdvd2Ordjyou.$YUqNgUIkMsI9FKtr7DwpO/d9ZKmQmgMMnD9EbPC5sH7", timezone: "Europe/Rome", username: "athena", password_hash: "$y$j9T$PvxwcqCC6Hdvd2Ordjyou.$YUqNgUIkMsI9FKtr7DwpO/d9ZKmQmgMMnD9EbPC5sH7", shell: "zsh", job_name: "Nix-based Install Test (GNOME)"}
 
     name: ${{ matrix.config_installer.job_name }}  # Dynamically assign the job name based on the matrix
 
