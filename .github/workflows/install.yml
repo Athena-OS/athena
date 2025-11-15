@@ -35,8 +35,9 @@ jobs:
         run: |
           dd if=/dev/zero of=virtual_disk.img bs=1M count=20480  # Create a 20GB disk image
           parted -s virtual_disk.img mklabel msdos
-          parted -s virtual_disk.img mkpart primary ext4 1MiB 512MiB
-          parted -s virtual_disk.img mkpart primary btrfs 512MiB 100%
+          parted -s virtual_disk.img mkpart primary fat32 1MiB 1024MiB
+          parted -s virtual_disk.img mkpart primary fat32 1024MiB 1536MiB
+          parted -s virtual_disk.img mkpart primary btrfs 1536MiB 100%
           losetup -fP virtual_disk.img
           LOOP_DEV=$(losetup -j virtual_disk.img | cut -d':' -f1)
           kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
@@ -47,8 +48,9 @@ jobs:
             .drives.device = $d
             | .drives.content.type = "msdos"
             | .drives.content.partitions = [
-                {action:"modify", blockdevice:($d+"p1"), end:"1026047", filesystem:"ext4", flags:["boot"], label:"BOOT", mountpoint:"/boot", sectors:1024000, size:"524M", start:"2048", type:"filesystem"},
-                {action:"modify", blockdevice:($d+"p2"), end:"28614655", filesystem:"btrfs", flags:[], label:"ROOT", mountpoint:"/",     sectors:27588608, size:"14G",  start:"1026048", type:"filesystem"}
+                {action:"modify", blockdevice:($d+"p1"), end:"2099199", filesystem:"fat32", flags:["boot"], label:"XBOOTLDR", mountpoint:"/boot", sectors:2097152, size:"1024M", start:"2048", type:"filesystem"},
+                {action:"modify", blockdevice:($d+"p2"), end:"3147775", filesystem:"fat32", flags:["esp"], label:"EFI", mountpoint:"/efi", sectors:1048576, size:"512M", start:"2099200", type:"filesystem"},
+                {action:"modify", blockdevice:($d+"p3"), end:"40896511", filesystem:"btrfs", flags:[], label:"ROOT", mountpoint:"/", sectors:37748736, size:"18G",  start:"3147776", type:"filesystem"}
               ]
           ' drives.json > drives.json.tmp && mv drives.json.tmp drives.json
       
