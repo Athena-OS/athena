@@ -89,12 +89,6 @@ jobs:
       - name: Run the installer
         run: aegis --system-file ./system.json --drives-file ./drives.json
 
-      - name: Check disk layout
-        run: |
-          fdisk -l /dev/mapper/loop0
-          fdisk -l /dev/sda
-          fdisk -l /dev/sdb
-
   # Final job to send summary to webhook
   notify-result:
     runs-on: ubuntu-latest
