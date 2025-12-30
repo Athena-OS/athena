@@ -39,6 +39,7 @@ jobs:
           parted -s virtual_disk.img mkpart primary fat32 1MiB 1024MiB
           parted -s virtual_disk.img mkpart primary fat32 1024MiB 1536MiB
           parted -s virtual_disk.img mkpart primary btrfs 1536MiB 100%
+          parted -s virtual_disk.img set 1 bios_grub on # GitHub runners are not UEFI
           losetup -fP virtual_disk.img
           LOOP_DEV=$(losetup -j virtual_disk.img | cut -d':' -f1)
           ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
