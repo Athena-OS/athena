@@ -33,7 +33,7 @@ jobs:
 
       - name: Modify install configuration
         run: |
-          dd if=/dev/zero of=virtual_disk.img bs=1M count=15360  # Create a 15GB disk image
+          dd if=/dev/zero of=virtual_disk.img bs=1M count=20480  # Create a 20GB disk image
           parted -s virtual_disk.img mklabel gpt
           parted -s virtual_disk.img mkpart primary fat32 1MiB 1024MiB
           parted -s virtual_disk.img mkpart primary fat32 1024MiB 1536MiB
