@@ -45,7 +45,8 @@ jobs:
           ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
           kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
           TARGET_DISK="/dev/mapper/${LOOP_DEV#/dev/}"
-          
+
+          # Note: GitHub runners are not UEFI. I use EFI partition but it won't be used. It is still ok since this workflow is used just to test the system installation
           jq --arg d "$TARGET_DISK" '
             .drives.device = $d
             | .drives.content.type = "gpt"
