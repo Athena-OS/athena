@@ -41,10 +41,9 @@ jobs:
           parted -s virtual_disk.img mkpart primary btrfs 1536MiB 100%
           losetup -fP virtual_disk.img
           LOOP_DEV=$(losetup -j virtual_disk.img | cut -d':' -f1)
-          kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
           ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
+          kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
           TARGET_DISK="/dev/mapper/${LOOP_DEV#/dev/}"
-          ls -la /sys/firmware
           
           jq --arg d "$TARGET_DISK" '
             .drives.device = $d
