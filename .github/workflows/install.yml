@@ -44,6 +44,7 @@ jobs:
           kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
           ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
           TARGET_DISK="/dev/mapper/${LOOP_DEV#/dev/}"
+          ls -la /sys/firmware
           
           jq --arg d "$TARGET_DISK" '
             .drives.device = $d
