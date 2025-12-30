@@ -46,7 +46,7 @@ jobs:
           
           jq --arg d "$TARGET_DISK" '
             .drives.device = $d
-            | .drives.content.type = "msdos"
+            | .drives.content.type = "gpt"
             | .drives.content.partitions = [
                 {action:"modify", blockdevice:($d+"p1"), end:"2099199", filesystem:"fat32", flags:["boot"], label:"XBOOTLDR", mountpoint:"/boot", sectors:2097152, size:"1024M", start:"2048", type:"filesystem"},
                 {action:"modify", blockdevice:($d+"p2"), end:"3147775", filesystem:"fat32", flags:["esp"], label:"EFI", mountpoint:"/efi", sectors:1048576, size:"512M", start:"2099200", type:"filesystem"},
