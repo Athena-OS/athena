@@ -30,7 +30,6 @@ jobs:
           remove-android: 'true'
           remove-haskell: 'true'
           remove-codeql: 'true'
-          remove-docker-images: 'true'
 
       - name: Install dependencies
         run: pacman -Syyu --noconfirm aegis grub mkinitcpio jq multipath-tools
