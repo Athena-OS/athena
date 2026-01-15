@@ -34,7 +34,7 @@ jobs:
       - name: Modify install configuration
         run: |
           df -h
-          dd if=/dev/zero of=virtual_disk.img bs=1M count=16384  # Create a 16GB disk image
+          dd if=/dev/zero of=virtual_disk.img bs=1M count=20480  # Create a 20GB disk image
           parted -s virtual_disk.img mklabel gpt
           parted -s virtual_disk.img mkpart primary fat32 1MiB 1024MiB
           parted -s virtual_disk.img mkpart primary fat32 1024MiB 1536MiB
@@ -53,7 +53,7 @@ jobs:
             | .drives.content.partitions = [
                 {action:"modify", blockdevice:($d+"p1"), end:"2099199", filesystem:"fat32", flags:["boot"], label:"XBOOTLDR", mountpoint:"/boot", sectors:2097152, size:"1024M", start:"2048", type:"filesystem"},
                 {action:"modify", blockdevice:($d+"p2"), end:"3147775", filesystem:"fat32", flags:["esp"], label:"EFI", mountpoint:"/efi", sectors:1048576, size:"512M", start:"2099200", type:"filesystem"},
-                {action:"modify", blockdevice:($d+"p3"), end:"32507903", filesystem:"btrfs", flags:[], label:"ROOT", mountpoint:"/", sectors:29360128, size:"14G", start:"3147776", type:"filesystem"}
+                {action:"modify", blockdevice:($d+"p3"), end:"41943039", filesystem:"btrfs", flags:[], label:"ROOT", mountpoint:"/", sectors:38795264, size:"18.5G", start:"3147776", type:"filesystem"}
               ]
           ' drives.json > drives.json.tmp && mv drives.json.tmp drives.json
       
