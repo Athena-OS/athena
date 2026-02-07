@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=grokevt-parselog
+Comment=Parse a windows event log and generate human-readable output based on message resources stored in a database.
+Exec=shell-rocket -b grokevt-parselog -p grokevt -x '-h'
+Icon=athena-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=athena-sleuth-kit-suite;mitre-detect;red-forensic-suites;blue-detect;
+X-Athena-Package=grokevt

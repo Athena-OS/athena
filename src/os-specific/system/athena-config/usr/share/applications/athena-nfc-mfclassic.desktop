@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=nfc-mfclassic
+Comment=MIFARE Classic command line tool
+Exec=shell-rocket -b nfc-mfclassic -p libnfc
+Icon=athena-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-nfc
+X-Athena-Package=libnfc

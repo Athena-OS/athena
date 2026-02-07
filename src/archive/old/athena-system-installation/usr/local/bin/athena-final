@@ -1,0 +1,111 @@
+#!/bin/bash
+echo
+echo "#################################"
+echo "Start athena-final"
+echo "#################################"
+echo
+echo "#################################################################"
+echo "Rename Xsessions for running Wayland as default for Login Manager"
+echo "#################################################################"
+echo
+mv /usr/share/xsessions/gnome.desktop /usr/share/xsessions/gnome.desktop.disable
+mv /usr/share/xsessions/gnome-classic.desktop /usr/share/xsessions/gnome-classic.desktop.disable
+mv /usr/share/xsessions/gnome-classic-xorg.desktop /usr/share/xsessions/gnome-classic-xorg.desktop.disable
+mv /usr/share/wayland-sessions/gnome.desktop /usr/share/wayland-sessions/gnome.desktop.disable
+mv /usr/share/wayland-sessions/gnome-classic-wayland.desktop /usr/share/wayland-sessions/gnome-classic-wayland.desktop.disable
+mv /usr/share/wayland-sessions/gnome-classic.desktop /usr/share/wayland-sessions/gnome-classic.desktop.disable
+echo
+echo "#################################"
+echo "Permissions of important folders"
+echo "#################################"
+chmod 750 /etc/sudoers.d
+chmod 750 /etc/polkit-1/rules.d
+chmod 711 /home/*
+chgrp polkitd /etc/polkit-1/rules.d
+echo
+echo "#################################"
+echo "Copy /etc/skel to /root"
+echo "#################################"
+cp -aT /etc/skel/ /root/
+echo
+echo "#################################"
+echo "Cleanup autologin root"
+echo "#################################"
+rm -rf /etc/systemd/system/getty@tty1.service.d
+echo
+#echo "#################################"
+#echo "Fix for pamac icons not showing"
+#echo "#################################"
+#zcat /usr/share/app-info/xmls/community.xml.gz | sed 's|<em>||g;s|<\/em>||g;' | gzip > "new.xml.gz"
+#mv new.xml.gz /usr/share/app-info/xmls/community.xml.gz
+#appstreamcli refresh-cache --force
+echo
+echo "#################################"
+echo "Setting editor to nano"
+echo "#################################"
+echo "EDITOR=nano" >> /etc/profile
+echo
+echo "#################################"
+echo "Bluetooth improvements"
+echo "#################################"
+sed -i "s/#AutoEnable=false/AutoEnable=true/g" /etc/bluetooth/main.conf
+echo 'load-module module-switch-on-connect' | sudo tee --append /etc/pulse/default.pa
+echo
+echo "#################################"
+echo "Cleanup original files"
+echo "#################################"
+rm -f /etc/sudoers.d/g_wheel
+rm -rf /usr/share/backgrounds/xfce
+rm -f /etc/polkit-1/rules.d/49-nopasswd_global.rules
+#rm -r /etc/systemd/system/etc-pacman.d-gnupg.mount
+rm /root/{.automated_script.sh,.zlogin}
+mv /etc/athena-release /etc/lsb-release
+echo
+echo "#################################"
+echo "Permission of root"
+echo "#################################"
+chmod -v 750 /root
+echo
+# Do not do here - extra /home/root folder
+#echo "Hardcode-fixer" 
+#echo "#################################"
+#hardcode-fixer
+#echo
+
+echo "#################################"
+echo "Athena virtual machine check"
+echo "#################################"
+/usr/local/bin/athena-virtual-machine-check
+echo
+
+echo "#################################"
+echo "Improving compilation times"
+echo "#################################"
+sed -i 's/MAKEFLAGS=.*/MAKEFLAGS="-j$(nproc)"/g' /etc/makepkg.conf
+sed -i 's/#BUILDDIR=.*/BUILDDIR=\/tmp\/makepkg/g' /etc/makepkg.conf
+echo
+
+echo "#########################################"
+echo "      Setting Athena Plymouth theme      "
+echo "#########################################"
+echo
+#plymouth-set-default-theme -R vortex-athena
+echo
+
+echo "#################################"
+echo "Anacron Jobs"
+echo "#################################"
+echo "15      5       htb-update              /usr/local/bin/htb-update" >> /etc/anacrontab
+echo "#################################"
+echo "Enable last services"
+echo "#################################"
+systemctl enable set-cfs-tweaks.service
+systemctl enable ananicy
+systemctl enable irqbalance
+systemctl enable nohang.service
+systemctl enable vnstat.service
+echo
+echo "#################################"
+echo "End athena-final"
+echo "#################################"
+echo

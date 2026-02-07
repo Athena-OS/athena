@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=smbmap
+Comment=SMB enumeration tool
+Exec=shell-rocket -b smbmap -x '-h'
+Icon=athena-smbmap
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-pass-the-hash;mitre-network-share-discovery;red-smb-analysis;red-pass-hash;
+X-Athena-Package=smbmap

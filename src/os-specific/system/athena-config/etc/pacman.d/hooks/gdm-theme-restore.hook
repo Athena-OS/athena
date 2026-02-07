@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = gnome-shell
+Target = gnome-shell-performance
+
+[Action]
+Description = Restore gnome-shell-theme.gresource after installation
+When = PostTransaction
+Exec = /bin/sh -c "if [ -f /usr/share/gnome-shell/gnome-shell-theme.gresource.bak ]; then mv /usr/share/gnome-shell/gnome-shell-theme.gresource.bak /usr/share/gnome-shell/gnome-shell-theme.gresource; fi"

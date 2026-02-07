@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=netcat
+Comment=TCP/IP swiss army knife
+Exec=shell-rocket -b nc -p netcat -x '-h'
+Icon=athena-netcat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-non-application-layer-protocol;mitre-exfiltration;red-identify-live-hosts;red-10-maintaining-access;
+X-Athena-Package=openbsd-netcat

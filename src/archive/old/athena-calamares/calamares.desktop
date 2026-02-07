@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Athena OS
+Name[da]=Installer Athena OS
+GenericName=Live Installer
+GenericName[da]=Live-installationsprogram
+Comment=Install the operating system to disk
+Comment[da]=Installer styresystemet på disk
+Comment[de]=Athena OS installieren
+Exec=/usr/bin/calamares_polkit %f
+Icon=calamares
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Qt;System;

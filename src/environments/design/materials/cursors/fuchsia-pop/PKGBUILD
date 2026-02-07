@@ -1,0 +1,15 @@
+pkgname=fuchsia-pop
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="First OpenSource port of FuchsiaOS's cursors for Linux and Windows."
+arch=('any')
+license=('GPL-3.0-or-later')
+source=("https://github.com/ful1e5/fuchsia-cursor/releases/download/v$pkgver/Fuchsia-Pop.tar.xz")
+sha512sums=('f9562ca03605d6e4045f92918441967d4e6068ec9a19a9d7d22ece72fd7da6f8dbc3b132c2727e36257f77bd6d4dea2e1ac7b274e89ed97ef9bc1aff35563eee')
+
+package() {
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  cp -a Fuchsia-Pop "$pkgdir/usr/share/icons/"
+}
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ewfacquire
+Comment=Acquires data in the EWF format
+Exec=shell-rocket -b ewfacquire -p libewf -x '-h'
+Icon=athena-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=athena-forensic-imaging-tools;mitre-respond;red-forensic-imaging-tools;blue-respond;
+X-Athena-Package=libewf

@@ -1,0 +1,19 @@
+pkgname=athena-fish
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="Fish for Athena."
+arch=('any')
+license=("custom")
+depends=('fastfetch' 'fish' 'zoxide')
+source=("config.fish"
+        "fish_prompt.fish")
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.config/fish/functions"
+
+  install -Dm 644 "config.fish" "${pkgdir}/etc/skel/.config/fish/config.fish"  
+  install -Dm 644 "fish_prompt.fish" "${pkgdir}/etc/skel/.config/fish/functions/fish_prompt.fish"  
+}
+
+sha512sums=('b4b33c229e228a6e34e0773f784f313c0c4a45d5f274a8e65b9ac9bd52324beeebe5eff05c0116d1a50daf13134abbcafc489b2340dcdf806ef8d1b526d6d7a6'
+            'ea3560e2e377804d71ecc21da6d7265e8ee1728b7108b2e06f3d51ef1d9081d386c43fa4794d5fc6ca9403c97dfc1d55a1530d78c50b6d50051a69ae46c358ef')

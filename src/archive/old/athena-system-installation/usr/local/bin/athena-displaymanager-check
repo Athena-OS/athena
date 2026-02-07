@@ -1,0 +1,85 @@
+#!/bin/bash
+#set -e
+###############################################################################
+# Author	:	Erik Dubois
+# Website	:	https://www.erikdubois.be
+# Website	:	https://www.arcolinux.info
+# Website	:	https://www.arcolinux.com
+# Website	:	https://www.arcolinuxd.com
+# Website	:	https://www.arcolinuxb.com
+# Website	:	https://www.arcolinuxiso.com
+# Website	:	https://www.arcolinuxforum.com
+###############################################################################
+#
+#   ADAPTED FOR ATHENA
+#
+###############################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+###############################################################################
+echo
+echo
+echo "#################################"
+echo "Start athena-displaymanager-check"
+echo "#################################"
+echo
+
+package=gdm
+package_alt=gdm-prime
+if pacman -Qq $package > /dev/null || pacman -Qq $package_alt > /dev/null ; then
+  ln -sf /usr/lib/systemd/system/gdm.service /etc/systemd/system/display-manager.service
+  
+  if pacman -Qq athena-gnome-config > /dev/null ; then
+    if grep -Rq "WaylandEnable" /etc/gdm/custom.conf
+    then
+        sed -i 's/.*WaylandEnable=.*/WaylandEnable=false/g' /etc/gdm/custom.conf
+    else
+        echo "WaylandEnable=false" >> /etc/gdm/custom.conf
+    fi
+  elif pacman -Qq hyprland-nvidia > /dev/null ; then
+    mv /usr/lib/udev/rules.d/61-gdm.rules /usr/lib/udev/rules.d/61-gdm.rules.bak # otherwise the gear icon is not shown for multiple DEs and NVIDIA is blacklisted
+    mv /usr/share/xsessions/gnome-xorg.desktop /usr/share/xsessions/gnome-xorg.desktop.disable
+    mv /usr/share/wayland-sessions/gnome-wayland.desktop /usr/share/wayland-sessions/gnome-wayland.desktop.disable
+  fi  
+fi
+
+package=sddm
+if pacman -Qq $package > /dev/null ; then
+  ln -sf /usr/lib/systemd/system/sddm.service /etc/systemd/system/display-manager.service
+  echo -e "[Theme]\nCurrent=astronaut" | tee -a /etc/sddm.conf
+  rm -rf /etc/gdm
+fi
+
+package=lightdm
+if pacman -Qq $package > /dev/null ; then
+  ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
+  #lighdm user must have exec permission to user home folder for retrieving .face avatar
+  chmod 711 /home/*
+  sed -i "/^webkit_theme .*/c\webkit_theme = lightdm-webkit-theme-aether" /etc/lightdm/lightdm-webkit2-greeter.conf
+  rm -rf /etc/gdm
+
+  if pacman -Qq athena-gnome-config > /dev/null ; then
+    sed -i 's/^#user-session=.*/user-session=gnome-xorg/g' /etc/lightdm/lightdm.conf
+  elif pacman -Qq hyprland-nvidia > /dev/null ; then
+    sed -i 's/^#user-session=.*/user-session=hyprland/g' /etc/lightdm/lightdm.conf
+  fi
+fi
+
+package=lxdm
+if pacman -Qq $package > /dev/null ; then
+  ln -sf /usr/lib/systemd/system/lxdm.service /etc/systemd/system/display-manager.service
+  rm -rf /etc/gdm
+fi
+
+package=ly
+if pacman -Qq $package > /dev/null ; then
+  ln -sf /usr/lib/systemd/system/ly.service /etc/systemd/system/display-manager.service
+  rm -rf /etc/gdm
+fi
+
+echo
+echo "#################################"
+echo "End athena-displaymanager-check"
+echo "#################################"
+echo

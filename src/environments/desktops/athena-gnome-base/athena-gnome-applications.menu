@@ -1,0 +1,484 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+
+  <Name>Applications</Name>
+  <Directory>X-GNOME-Menu-Applications.directory</Directory>
+
+  <!-- Read standard .directory and .desktop file locations -->
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+
+  <!-- Read in overrides and child menus from applications-merged/ -->
+  <DefaultMergeDirs/>
+
+  <Menu>
+    <Name>Red Team</Name>
+    <Directory>00-red-team.directory</Directory>
+    <MergeFile>../red-applications.menu</MergeFile>
+  </Menu>
+
+  <Menu>
+    <Name>Blue Team</Name>
+    <Directory>00-blue-team.directory</Directory>
+    <MergeFile>../blue-applications.menu</MergeFile>
+  </Menu>
+
+  <Menu>
+    <Name>MITRE</Name>
+    <Directory>00-mitre-menu.directory</Directory>
+    <MergeFile>../mitre-applications.menu</MergeFile>
+  </Menu>
+
+  <!-- Accessories submenu -->
+  <Menu>
+    <Name>Accessories</Name>
+    <Directory>Utility.directory</Directory>
+    <Include>
+      <And>
+        <Category>Utility</Category>
+	<!-- Accessibility spec must have either the Utility or Settings
+             category, and we display an accessibility submenu already for
+             the ones that do not have Settings, so don't display accessibility
+             applications here -->
+        <Not><Category>Accessibility</Category></Not>
+        <Not><Category>System</Category></Not>
+        <Not><Category>X-GNOME-Utilities</Category></Not>
+      </And>
+    </Include>
+    <Exclude>
+      <!-- Exclude everything we put in the X-GNOME-Utilities whitelist.
+
+           Please keep the list alphabetically sorted! -->
+      <Filename>eog.desktop</Filename>
+      <Filename>gucharmap.desktop</Filename>
+      <Filename>org.gnome.Calculator.desktop</Filename>
+      <Filename>org.gnome.DejaDup.desktop</Filename>
+      <Filename>org.gnome.Dictionary.desktop</Filename>
+      <Filename>org.gnome.DiskUtility.desktop</Filename>
+      <Filename>org.gnome.Evince.desktop</Filename>
+      <Filename>org.gnome.FileRoller.desktop</Filename>
+      <Filename>org.gnome.font-viewer.desktop</Filename>
+      <Filename>org.gnome.Screenshot.desktop</Filename>
+      <Filename>org.gnome.seahorse.Application.desktop</Filename>
+      <Filename>org.gnome.Terminal.desktop</Filename>
+      <Filename>org.gnome.tweaks.desktop</Filename>
+      <Filename>org.gnome.Usage.desktop</Filename>
+      <Filename>simple-scan.desktop</Filename>
+      <Filename>vinagre.desktop</Filename>
+      <Filename>yelp.desktop</Filename>
+
+    </Exclude>
+  </Menu> <!-- End Accessories -->
+
+
+  <!-- Accessibility submenu -->
+  <Menu>
+    <Name>Universal Access</Name>
+    <Directory>Utility-Accessibility.directory</Directory>
+    <Include>
+      <And>
+        <Category>Accessibility</Category>
+        <Not><Category>Settings</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Accessibility -->
+
+  <!-- Development Tools -->
+  <Menu>
+    <Name>Development</Name>
+    <Directory>Development.directory</Directory>
+    <Include>
+      <And>
+        <Category>Development</Category>
+      </And>
+      <Filename>emacs.desktop</Filename>
+    </Include>
+  </Menu> <!-- End Development Tools -->
+
+  <!-- Education -->
+  <Menu>
+    <Name>Education</Name>
+    <Directory>Education.directory</Directory>
+    <Include>
+      <And>
+        <Category>Education</Category>
+        <Not><Category>Science</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Education -->
+
+  <!-- Science -->
+  <Menu>
+    <Name>Science</Name>
+    <Directory>GnomeScience.directory</Directory>
+    <Include>
+      <And>
+        <Category>Education</Category>
+        <Category>Science</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Science -->
+
+  <!-- Games -->
+  <Menu>
+    <Name>Games</Name>
+    <Directory>Game.directory</Directory>
+    <Include>
+      <And>
+        <Category>Game</Category>
+        <Not><Category>ActionGame</Category></Not>
+        <Not><Category>AdventureGame</Category></Not>
+        <Not><Category>ArcadeGame</Category></Not>
+        <Not><Category>BoardGame</Category></Not>
+        <Not><Category>BlocksGame</Category></Not>
+        <Not><Category>CardGame</Category></Not>
+        <Not><Category>KidsGame</Category></Not>
+        <Not><Category>LogicGame</Category></Not>
+        <Not><Category>Simulation</Category></Not>
+        <Not><Category>SportsGame</Category></Not>
+        <Not><Category>StrategyGame</Category></Not>
+      </And>
+    </Include>
+    <DefaultLayout inline="true" inline_limit="6" inline_header="false">
+      <Merge type="menus"/>
+      <Merge type="files"/>
+    </DefaultLayout>
+    <Menu>
+      <Name>Action</Name>
+      <Directory>ActionGames.directory</Directory>
+      <Include>
+        <Category>ActionGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Adventure</Name>
+      <Directory>AdventureGames.directory</Directory>
+      <Include>
+        <Category>AdventureGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Arcade</Name>
+      <Directory>ArcadeGames.directory</Directory>
+      <Include>
+        <Category>ArcadeGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Board</Name>
+      <Directory>BoardGames.directory</Directory>
+      <Include>
+        <Category>BoardGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Blocks</Name>
+      <Directory>BlocksGames.directory</Directory>
+      <Include>
+        <Category>BlocksGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Cards</Name>
+      <Directory>CardGames.directory</Directory>
+      <Include>
+        <Category>CardGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Kids</Name>
+      <Directory>KidsGames.directory</Directory>
+      <Include>
+        <Category>KidsGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Logic</Name>
+      <Directory>LogicGames.directory</Directory>
+      <Include>
+        <Category>LogicGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Role Playing</Name>
+      <Directory>RolePlayingGames.directory</Directory>
+      <Include>
+        <Category>RolePlaying</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Simulation</Name>
+      <Directory>SimulationGames.directory</Directory>
+      <Include>
+        <Category>Simulation</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Sports</Name>
+      <Directory>SportsGames.directory</Directory>
+      <Include>
+        <Category>SportsGame</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Strategy</Name>
+      <Directory>StrategyGames.directory</Directory>
+      <Include>
+        <Category>StrategyGame</Category>
+      </Include>
+    </Menu>
+  </Menu> <!-- End Games -->
+
+  <!-- Graphics -->
+  <Menu>
+    <Name>Graphics</Name>
+    <Directory>Graphics.directory</Directory>
+    <Include>
+      <And>
+        <Category>Graphics</Category>
+        <Not><Filename>eog.desktop</Filename></Not>
+        <Not><Filename>org.gnome.Evince.desktop</Filename></Not>
+        <Not><Filename>simple-scan.desktop</Filename></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Graphics -->
+
+  <!-- Internet -->
+  <Menu>
+    <Name>Internet</Name>
+    <Directory>Network.directory</Directory>
+    <Include>
+      <And>
+        <Category>Network</Category>
+	<Not><Category>X-GNOME-WebApplication</Category></Not>
+      </And>
+    </Include>
+
+    <Exclude>
+      <!-- Utilities exclusions -->
+      <Filename>vinagre.desktop</Filename>
+    </Exclude>
+  </Menu>   <!-- End Internet -->
+
+  <!-- FIXME: BROKEN: Web Applications -->
+  <Menu>
+    <Name>Web Applications</Name>
+    <Directory>X-GNOME-WebApplications.directory</Directory>
+    <Include>
+      <And>
+	<Category>Network</Category>
+	<Category>X-GNOME-WebApplication</Category>
+      </And>
+    </Include>
+  </Menu>
+
+  <!-- Multimedia -->
+  <Menu>
+    <Name>Multimedia</Name>
+    <Directory>AudioVideo.directory</Directory>
+    <Include>
+      <And>
+        <Category>AudioVideo</Category>
+      </And>
+    </Include>
+  </Menu>   <!-- End Multimedia -->
+
+  <!-- Office -->
+  <Menu>
+    <Name>Office</Name>
+    <Directory>Office.directory</Directory>
+    <Include>
+      <And>
+        <Category>Office</Category>
+        <Not><Filename>org.gnome.Dictionary.desktop</Filename></Not>
+        <Not><Filename>org.gnome.Evince.desktop</Filename></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Office -->
+
+  <!-- System Tools-->
+  <Menu>
+    <Name>System</Name>
+    <Directory>System-Tools.directory</Directory>
+    <Include>
+      <And>
+        <Category>System</Category>
+        <Not><Category>Game</Category></Not>
+        <Not><Category>Settings</Category></Not>
+        <Not><Category>X-GNOME-Utilities</Category></Not>
+      </And>
+    </Include>
+
+    <Exclude>
+      <!-- Utilities exclusions -->
+      <Filename>gnome-abrt.desktop</Filename>
+      <Filename>gnome-system-log.desktop</Filename>
+      <Filename>gnome-system-monitor.desktop</Filename>
+      <Filename>org.gnome.baobab.desktop</Filename>
+      <Filename>org.gnome.Terminal.desktop</Filename>
+      <Filename>org.gnome.Usage.desktop</Filename>
+    </Exclude>
+
+    <Menu>
+      <Name>Preferences</Name>
+      <Directory>Settings.directory</Directory>
+      <Include>
+        <And>
+          <Category>Settings</Category>
+          <Not>
+            <Or>
+              <Category>System</Category>
+              <Category>X-GNOME-Settings-Panel</Category>
+              <Filename>authconfig.desktop</Filename>
+              <Filename>ca.desrt.dconf-editor.desktop</Filename>
+              <Filename>fedora-release-notes.desktop</Filename>
+              <Filename>firewall-config.desktop</Filename>
+              <Filename>flash-player-properties.desktop</Filename>
+              <Filename>gconf-editor.desktop</Filename>
+              <Filename>gnome-abrt.desktop</Filename>
+              <Filename>ibus-setup-anthy.desktop</Filename>
+              <Filename>ibus-setup.desktop</Filename>
+              <Filename>ibus-setup-hangul.desktop</Filename>
+              <Filename>ibus-setup-libbopomofo.desktop</Filename>
+              <Filename>ibus-setup-libpinyin.desktop</Filename>
+              <Filename>ibus-setup-m17n.desktop</Filename>
+              <Filename>ibus-setup-typing-booster.desktop</Filename>
+              <Filename>im-chooser.desktop</Filename>
+              <Filename>itweb-settings.desktop</Filename>
+              <Filename>jhbuild.desktop</Filename>
+              <Filename>javaws.desktop</Filename>
+              <Filename>java-1.7.0-openjdk-jconsole.desktop</Filename>
+              <Filename>java-1.7.0-openjdk-policytool.desktop</Filename>
+              <Filename>log4j-chainsaw.desktop</Filename>
+              <Filename>log4j-logfactor5.desktop</Filename>
+              <Filename>nm-connection-editor.desktop</Filename>
+              <Filename>org.gnome.PowerStats.desktop</Filename>
+              <Filename>setroubleshoot.desktop</Filename>
+              <Filename>system-config-date.desktop</Filename>
+              <Filename>system-config-firewall.desktop</Filename>
+              <Filename>system-config-keyboard.desktop</Filename>
+              <Filename>system-config-language.desktop</Filename>
+              <Filename>system-config-printer.desktop</Filename>
+              <Filename>system-config-users.desktop</Filename>
+              <Filename>vino-preferences.desktop</Filename>
+            </Or>
+          </Not>
+        </And>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>Administration</Name>
+      <Directory>Settings-System.directory</Directory>
+      <Include>
+        <And>
+          <Category>Settings</Category>
+          <Category>System</Category>
+          <Not>
+            <Or>
+              <Category>X-GNOME-Settings-Panel</Category>
+              <Filename>authconfig.desktop</Filename>
+              <Filename>ca.desrt.dconf-editor.desktop</Filename>
+              <Filename>fedora-release-notes.desktop</Filename>
+              <Filename>firewall-config.desktop</Filename>
+              <Filename>flash-player-properties.desktop</Filename>
+              <Filename>gconf-editor.desktop</Filename>
+              <Filename>gnome-abrt.desktop</Filename>
+              <Filename>ibus-setup-anthy.desktop</Filename>
+              <Filename>ibus-setup.desktop</Filename>
+              <Filename>ibus-setup-hangul.desktop</Filename>
+              <Filename>ibus-setup-libbopomofo.desktop</Filename>
+              <Filename>ibus-setup-libpinyin.desktop</Filename>
+              <Filename>ibus-setup-m17n.desktop</Filename>
+              <Filename>ibus-setup-typing-booster.desktop</Filename>
+              <Filename>im-chooser.desktop</Filename>
+              <Filename>itweb-settings.desktop</Filename>
+              <Filename>jhbuild.desktop</Filename>
+              <Filename>javaws.desktop</Filename>
+              <Filename>java-1.7.0-openjdk-jconsole.desktop</Filename>
+              <Filename>java-1.7.0-openjdk-policytool.desktop</Filename>
+              <Filename>log4j-chainsaw.desktop</Filename>
+              <Filename>log4j-logfactor5.desktop</Filename>
+              <Filename>nm-connection-editor.desktop</Filename>
+              <Filename>org.gnome.PowerStats.desktop</Filename>
+              <Filename>setroubleshoot.desktop</Filename>
+              <Filename>system-config-date.desktop</Filename>
+              <Filename>system-config-firewall.desktop</Filename>
+              <Filename>system-config-keyboard.desktop</Filename>
+              <Filename>system-config-language.desktop</Filename>
+              <Filename>system-config-printer.desktop</Filename>
+              <Filename>system-config-users.desktop</Filename>
+              <Filename>vino-preferences.desktop</Filename>
+            </Or>
+          </Not>
+        </And>
+      </Include>
+    </Menu>
+  </Menu>   <!-- End System Tools -->
+
+  <!-- System Settings -->
+  <Menu>
+    <Name>System Settings</Name>
+    <Directory>X-GNOME-SystemSettings.directory</Directory>
+    <Include>
+      <Category>X-GNOME-Settings-Panel</Category>
+    </Include>
+  </Menu>
+
+  <!-- Utilities submenu -->
+  <Menu>
+    <Name>Utilities</Name>
+    <Directory>X-GNOME-Utilities.directory</Directory>
+    <Include>
+      <Category>X-GNOME-Utilities</Category>
+      <Filename>eog.desktop</Filename>
+      <Filename>gnome-abrt.desktop</Filename>
+      <Filename>gnome-system-log.desktop</Filename>
+      <Filename>gnome-system-monitor.desktop</Filename>
+      <Filename>gucharmap.desktop</Filename>
+      <Filename>nm-connection-editor.desktop</Filename>
+      <Filename>org.gnome.baobab.desktop</Filename>
+      <Filename>org.gnome.Calculator.desktop</Filename>
+      <Filename>org.gnome.DejaDup.desktop</Filename>
+      <Filename>org.gnome.Dictionary.desktop</Filename>
+      <Filename>org.gnome.DiskUtility.desktop</Filename>
+      <Filename>org.gnome.Evince.desktop</Filename>
+      <Filename>org.gnome.FileRoller.desktop</Filename>
+      <Filename>org.gnome.fonts.desktop</Filename>
+      <Filename>org.gnome.Screenshot.desktop</Filename>
+      <Filename>org.gnome.seahorse.Application.desktop</Filename>
+      <Filename>org.gnome.Terminal.desktop</Filename>
+      <Filename>org.gnome.tweaks.desktop</Filename>
+      <Filename>org.gnome.Usage.desktop</Filename>
+      <Filename>simple-scan.desktop</Filename>
+      <Filename>vinagre.desktop</Filename>
+      <Filename>yelp.desktop</Filename>
+    </Include>
+  </Menu>
+
+  <!-- Other -->
+  <Menu>
+    <Name>Other</Name>
+    <Directory>X-GNOME-Other.directory</Directory>
+    <OnlyUnallocated/>
+    <Include>
+      <And>
+        <Not><Category>Core</Category></Not>
+        <Not><Category>Screensaver</Category></Not>
+        <Not><Category>AudioVideo</Category></Not>
+        <Not><Category>Graphics</Category></Not>
+        <Not><Category>Network</Category></Not>
+        <Not><Category>Office</Category></Not>
+        <Not><Category>Utility</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Other -->
+
+   <Layout>
+     <Merge type="menus" />
+     <Menuname>Other</Menuname>
+     <Merge type="files" />
+   </Layout>
+
+</Menu> <!-- End Applications -->

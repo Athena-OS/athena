@@ -1,0 +1,15 @@
+pkgname=athena-powershell-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="PowerShell configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('powershell-bin')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+
+  cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
+}
+sha512sums=('2b102ec8a423212951ef0d278a98a18184adb1daf1e098ffe6c6483d5432ae8cb105bee256a55465274330bbbc450cd43814cacb0149f67a665c2495a2de95ff')

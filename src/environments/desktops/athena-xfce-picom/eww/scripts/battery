@@ -1,0 +1,33 @@
+#!/bin/bash
+
+BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
+dir="/sys/class/power_supply/${BAT}/status"
+
+# Battery percentage
+bat_perc() {
+    cat /sys/class/power_supply/${BAT}/capacity
+}
+
+# Battery status
+bat_stat() {
+    cat /sys/class/power_supply/${BAT}/status
+}
+
+# Icon indicating if device is charging or not
+# Requires icomoon feather font
+bat_icon() {
+    read -r status < "$dir"
+    if [ $status == "Discharging" ]; then
+        printf "";
+    else
+        printf "";
+    fi
+}
+
+if [[ "$1" == "--perc" ]]; then
+    bat_perc
+elif [[ "$1" == "--stat" ]]; then
+    bat_stat
+elif [[ "$1" == "--icon" ]]; then
+    bat_icon
+fi

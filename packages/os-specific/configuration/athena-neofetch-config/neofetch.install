@@ -1,8 +1,0 @@
-post_install() {
-    rm -rf /usr/bin/neofetch
-    mv /usr/bin/neofetch.new /usr/bin/neofetch
-}
-
-post_upgrade() {
-    post_install $1
-}

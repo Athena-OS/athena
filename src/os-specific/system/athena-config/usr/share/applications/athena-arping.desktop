@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=arping
+Comment=Sends arp and/or ip pings to a given host
+Exec=shell-rocket -b arping -p iputils
+Icon=athena-arping
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-remote-system-discovery;mitre-discovery;red-identify-live-hosts;
+X-Athena-Package=arping

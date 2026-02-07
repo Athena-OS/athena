@@ -1,0 +1,42 @@
+pkgname=athena-cyan-base
+pkgver=11.9070224
+pkgrel=1
+pkgdesc="Cyan colorbase resources."
+arch=('any')
+license=('GPL-3.0-or-later')
+makedepends=('git')
+source=("git+https://github.com/Athena-OS/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/share/athena-cyan-base/icons"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/athena"
+  install -Dm 644 "wallpapers/frost-daughter.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/nike.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/nike-holo.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/samurai-girl.png" "$pkgdir/usr/share/backgrounds/athena/"
+  install -Dm 644 "wallpapers/temple.png" "$pkgdir/usr/share/backgrounds/athena/"
+
+  cp -a "icons/apps" "$pkgdir/usr/share/athena-cyan-base/icons/"
+  cp -a "icons/categories" "$pkgdir/usr/share/athena-cyan-base/icons/"
+
+  install -dm 755 "$pkgdir/usr/share/gnome-background-properties"
+  install -Dm 644 "gnome-background-properties/frost-daughter.xml" "$pkgdir/usr/share/athena-cyan-base/"
+  install -Dm 644 "gnome-background-properties/nike.xml" "$pkgdir/usr/share/athena-cyan-base/"
+  install -Dm 644 "gnome-background-properties/nike-holo.xml" "$pkgdir/usr/share/athena-cyan-base/"
+  install -Dm 644 "gnome-background-properties/samurai-girl.xml" "$pkgdir/usr/share/athena-cyan-base/"
+  install -Dm 644 "gnome-background-properties/temple.xml" "$pkgdir/usr/share/athena-cyan-base/"
+}

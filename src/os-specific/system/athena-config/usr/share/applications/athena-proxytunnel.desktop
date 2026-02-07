@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=proxytunnel
+Comment=Program to tunnel a connection through a standard HTTPS proxy
+Exec=shell-rocket -b proxytunnel -x '-h'
+Icon=athena-proxytunnel
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-protocol-tunneling;red-tunneling;
+X-Athena-Package=proxytunnel

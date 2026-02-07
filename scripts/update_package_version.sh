@@ -46,7 +46,7 @@ update_package_version() {
     cd $src_dir
 }
 
-src_dir="$(pwd)/../packages" # pwd depends on the dir where the script is stored (currently 'scripts')
+src_dir="$(pwd)/../src" # pwd depends on the dir where the script is stored (currently 'scripts')
 
 # Get user input if provided
 if [ "$#" -gt 0 ]; then

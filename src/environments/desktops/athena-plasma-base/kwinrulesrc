@@ -1,0 +1,12 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
+
+[General]
+count=1
+rules=ff905e3a-ed23-46dc-949b-0e8e7cb94ac2
+
+[ff905e3a-ed23-46dc-949b-0e8e7cb94ac2]
+Description=Force Decorations for GTK3 apps
+noborderrule=5
+wmclass=^(gedit|nautilus|lollypop|gtg|totem|corebird|gnome-music|gnome-boxes|evince|baobab|epiphany|dconf-editor|file-roller|five-or-more|four-in-a-row|gnome-calculator|gnome-chess|gnome-clocks|gnome-contacts|gnome-control-center|gnome-dictionary|gnome-disks|gnome-builder|gnome-font-viewer|gnome-klotski|gnome-logs|gnome-mahjongg|gnome-mines|gnome-multi-writer|gnome-robots|gnome-sudoku|gnome-taquin|gnome-tetravex|gnome-usage|hitori|iagno|simple-scan|sysprof|notes-up|gnome-mpv|glade|eolie|gnome-calendar|gnome-todo|marker|pitivi|pamac-manager)$
+wmclassmatch=3

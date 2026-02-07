@@ -8,7 +8,7 @@ on:
   pull_request_target:
     types: [opened, reopened, edited, synchronize, ready_for_review]
     paths:
-      - 'packages/**/PKGBUILD'
+      - 'src/**/PKGBUILD'
 jobs:
   labeling:
     runs-on: ubuntu-latest

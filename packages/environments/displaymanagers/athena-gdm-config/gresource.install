@@ -1,8 +1,0 @@
-post_install() {
-    rm -rf /usr/share/gnome-shell/gnome-shell-theme.gresource
-    mv /usr/share/gnome-shell/gnome-shell-theme.gresource.new /usr/share/gnome-shell/gnome-shell-theme.gresource
-}
-
-post_upgrade() {
-    post_install $1
-}

@@ -1,0 +1,30 @@
+(defwidget profile []
+	(box :class "genwin profile"
+    	(box :orientation "h"
+    	 	 :valign "center"
+    	 	 :halign "start"
+    	 	 :space-evenly "false"
+    	 	 :spacing 17
+
+            (box :class "profile-picture"
+                 :height 48
+                 :width 48
+            )
+                
+            (box :orientation "v"
+                 :space-evenly "false"
+                 :valign "center"
+
+                (label  :text "Hello ${username} !"
+                        :class "username"
+                        :halign "start"
+                )
+
+                (label  :text "Uptime: ${uptime}"
+                        :class "extra-info"
+                        :halign "start"
+                )
+            )
+        )
+    )
+)

@@ -1,0 +1,273 @@
+{
+	"name": "gruvbox-material",
+	"displayName": "Gruvbox Material",
+	"description": "Gruvbox with Material Palette",
+	"author": "sainnhe (https://github.com/sainnhe)",
+	"publisher": "sainnhe",
+	"version": "6.5.2",
+	"homepage": "https://github.com/sainnhe/gruvbox-material-vscode",
+	"bugs": {
+		"url": "https://github.com/sainnhe/gruvbox-material-vscode/issues"
+	},
+	"icon": "icon.png",
+	"license": "MIT",
+	"keywords": [
+		"gruvbox",
+		"theme"
+	],
+	"categories": [
+		"Themes"
+	],
+	"galleryBanner": {
+		"color": "#32302f",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sainnhe/gruvbox-material-vscode.git"
+	},
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		},
+		"virtualWorkspaces": true
+	},
+	"main": "dist/index-client.js",
+	"browser": "dist/index-web.js",
+	"contributes": {
+		"themes": [
+			{
+				"label": "Gruvbox Material Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/gruvbox-material-dark.json"
+			},
+			{
+				"label": "Gruvbox Material Light",
+				"uiTheme": "vs",
+				"path": "./themes/gruvbox-material-light.json"
+			}
+		],
+		"configuration": {
+			"title": "Gruvbox Material",
+			"properties": {
+				"gruvboxMaterial.darkContrast": {
+					"type": "string",
+					"default": "medium",
+					"description": "Background contrast for the dark variant.",
+					"enum": [
+						"soft",
+						"medium",
+						"hard"
+					]
+				},
+				"gruvboxMaterial.lightContrast": {
+					"type": "string",
+					"default": "medium",
+					"description": "Background contrast for the light variant.",
+					"enum": [
+						"soft",
+						"medium",
+						"hard"
+					]
+				},
+				"gruvboxMaterial.darkWorkbench": {
+					"type": "string",
+					"default": "material",
+					"description": "Workbench style for the dark variant.",
+					"enum": [
+						"material",
+						"flat",
+						"high-contrast"
+					]
+				},
+				"gruvboxMaterial.lightWorkbench": {
+					"type": "string",
+					"default": "material",
+					"description": "Workbench style for the light variant.",
+					"enum": [
+						"material",
+						"flat",
+						"high-contrast"
+					]
+				},
+				"gruvboxMaterial.darkCursor": {
+					"type": "string",
+					"default": "white",
+					"description": "The cursor color in the dark variant.",
+					"enum": [
+						"white",
+						"red",
+						"orange",
+						"yellow",
+						"green",
+						"aqua",
+						"blue",
+						"purple"
+					]
+				},
+				"gruvboxMaterial.lightCursor": {
+					"type": "string",
+					"default": "black",
+					"description": "The cursor color in the light variant.",
+					"enum": [
+						"black",
+						"red",
+						"orange",
+						"yellow",
+						"green",
+						"aqua",
+						"blue",
+						"purple"
+					]
+				},
+				"gruvboxMaterial.darkSelection": {
+					"type": "string",
+					"default": "grey",
+					"description": "The background color of selected text in the dark variant.",
+					"enum": [
+						"grey",
+						"red",
+						"orange",
+						"yellow",
+						"green",
+						"aqua",
+						"blue",
+						"purple"
+					]
+				},
+				"gruvboxMaterial.lightSelection": {
+					"type": "string",
+					"default": "grey",
+					"description": "The background color of selected text in the light variant.",
+					"enum": [
+						"grey",
+						"red",
+						"orange",
+						"yellow",
+						"green",
+						"aqua",
+						"blue",
+						"purple"
+					]
+				},
+				"gruvboxMaterial.darkPalette": {
+					"type": "string",
+					"default": "material",
+					"markdownDescription": "The color palette used in the dark variant. [Preview](https://github.com/sainnhe/gruvbox-material#introduction)",
+					"enum": [
+						"material",
+						"mix",
+						"original"
+					],
+					"enumDescriptions": [
+						"Carefully designed to have a soft contrast.",
+						"Color palette obtained by calculating the mean of the other two.",
+						"The color palette used in the original gruvbox."
+					]
+				},
+				"gruvboxMaterial.lightPalette": {
+					"type": "string",
+					"default": "material",
+					"markdownDescription": "The color palette used in the light variant. [Preview](https://github.com/sainnhe/gruvbox-material#introduction)",
+					"enum": [
+						"material",
+						"mix",
+						"original"
+					],
+					"enumDescriptions": [
+						"Carefully designed to have a soft contrast.",
+						"Color palette obtained by calculating the mean of the other two.",
+						"The color palette used in the original gruvbox."
+					]
+				},
+				"gruvboxMaterial.colorfulSyntax": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enabling this option will cause more tokens to be colored. By default, only the minimum but necessary tokens will be colored.\n\n**Note:** This design is deprecated, there are a lot of bugs and that's why I redesigned the syntax highlighting logic and set it as default."
+				},
+				"gruvboxMaterial.italicKeywords": {
+					"type": "boolean",
+					"default": false,
+					"description": "Italicize keywords or not."
+				},
+				"gruvboxMaterial.italicComments": {
+					"type": "boolean",
+					"default": true,
+					"description": "Italicize comments or not."
+				},
+				"gruvboxMaterial.diagnosticTextBackgroundOpacity": {
+					"type": "string",
+					"default": "0%",
+					"markdownDescription": "The opacity of the background color of [diagnostic text](https://code.visualstudio.com/updates/v1_52#_error-background-colors).",
+					"enum": [
+						"0%",
+						"12.5%",
+						"25%",
+						"37.5%",
+						"50%"
+					]
+				},
+				"gruvboxMaterial.highContrast": {
+					"type": "boolean",
+					"default": false,
+					"description": "Whether to add an additional border around items across the UI to increase the contrast."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"clean": "rimraf dist *.vsix icon.png",
+		"compile:ts": "tsc",
+		"compile:themes": "node dist/hook/generateThemes.js",
+		"compile:icon": "node dist/hook/generateIcon.js",
+		"compile": "npm run clean && npm run compile:ts && npm run compile:themes && npm run compile:icon",
+		"package": "vsce package && git checkout -- themes",
+		"lint": "eslint . --ext .ts",
+		"browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. .",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"*.ts": "eslint --fix",
+		"*.{js,json,md}": "prettier --write"
+	},
+	"engines": {
+		"vscode": "^1.55.0"
+	},
+	"devDependencies": {
+		"@types/node": "18.11.14",
+		"@types/sharp": "0.31.0",
+		"@types/vscode": "1.55.0",
+		"@typescript-eslint/eslint-plugin": "5.46.1",
+		"@typescript-eslint/parser": "5.46.1",
+		"@vscode/test-web": "0.0.33",
+		"@vscode/vsce": "^2.15.0",
+		"eslint": "8.29.0",
+		"eslint-config-prettier": "8.5.0",
+		"eslint-plugin-prettier": "4.2.1",
+		"husky": "8.0.2",
+		"lint-staged": "13.1.0",
+		"prettier": "2.8.1",
+		"rimraf": "3.0.2",
+		"sharp": "0.32.6",
+		"typescript": "4.9.4"
+	},
+	"__metadata": {
+		"id": "d9437be1-e21c-4e9a-9548-e63650468296",
+		"publisherId": "cd5355a7-bbfb-4a47-8f70-727aed458bc8",
+		"publisherDisplayName": "sainnhe",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1672634596474,
+		"preRelease": false
+	}
+}

@@ -1,0 +1,33 @@
+pkgname=athena-xfce-base
+pkgver=1.0.4
+pkgrel=4
+pkgdesc="XFCE base configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('mugshot' 'network-manager-applet' 'ristretto' 'xdg-user-dirs' 'xfce4-appfinder' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfce4-taskmanager' 'xfce4-whiskermenu-plugin' 'xfdesktop' 'xfwm4' 'xorg-xrandr')
+source=("athena-xfce-applications.menu"
+        "xfce-init.desktop"
+        "xfce-init"
+        "xfce4-keyboard-shortcuts.xml"
+        "$pkgname.tar.gz")
+sha512sums=('5653bb6a304f7c5c624857f0d7268b3ac21228f2586e654c7dd6fb94f518f7fe2dd0c6ec93ec1d5547acf7f636f93ca0cf6261e7caa2762ed9e9a88640957cc2'
+            '12c16f08a8d503a76277f984ef8493bcc8eb22bae52a414b0d23222b27f93c2a89612f678fcf334c0d8dc27a03ae12672e2ccc52b6850b4c0265161ead125589'
+            '1aea18bd30ade994114b658ba10cbd6dad4066736e49edd6a0f74c3420ec8f53b2c1b37c2bc6d2d7a28792544cc3d9a63a1b5f9b1e052123742a6b2738f4120b'
+            'a532187402d8034bda78620dd9e23ec2c8b1a2868489ef5439893b0f3250a5bb5b8fbcea3a58531bcd7a6a09b8e084cb52a2236d6a779af6853178fda800cd7b'
+            '3b0a15a0334045a1325b16b555fcfde0a7f7b340812d047bfeffa060ec8230f401113717fc040c0bfe472f0df8b2221b34759a0936ef50361c58a0a91d8178e9')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/etc/xdg/menus/applications-merged"
+  install -dm 755 "${pkgdir}/usr/bin"
+  install -dm 755 "${pkgdir}/usr/share/xfce4"
+  install -dm 755 "${pkgdir}/usr/share/themes"
+
+  install -Dm644 "${srcdir}/xfce4-keyboard-shortcuts.xml" "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/"
+  install -Dm644 "${srcdir}/xfce-init.desktop" "${pkgdir}/etc/xdg/autostart/"
+  install -Dm755 "${srcdir}/xfce-init" "${pkgdir}/usr/bin/"
+  install -Dm644 "${srcdir}/athena-xfce-applications.menu" "${pkgdir}/etc/xdg/menus/applications-merged/athena-xfce-applications.menu"
+  cp -a "$srcdir/Everblush-xfwm" "$pkgdir/usr/share/themes/"
+  touch "${pkgdir}/etc/skel/.flag-xfce-once"
+}

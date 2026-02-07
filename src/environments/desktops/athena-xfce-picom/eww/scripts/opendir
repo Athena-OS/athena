@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "--path" ]]; then
+    thunar $2
+else
+    notify-send -i "notification" "No such directory!"
+fi
+
+# vim:ft=bash:nowrap

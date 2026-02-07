@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=starkiller
+Comment=Frontend for Powershell Empire
+Encoding=UTF-8
+Exec=sh -c 'until nc red-127.0.0.1 red-1337 -w 1 -z; do :; done && xdg-open http://localhost:red-1337/index.html & sudo empire-server'
+Icon=athena-starkiller
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=red-10-maintaining-access;
+X-Athena-Package=starkiller
+StartupWMClass=starkiller

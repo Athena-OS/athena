@@ -1,0 +1,398 @@
+/*
+
+A branding component can ship a stylesheet (like this one)
+which is applied to parts of the Calamares user-interface.
+In principle, all parts can be styled through CSS.
+Missing parts should be filed as issues.
+
+The IDs are based on the object names in the C++ code.
+You can use the Debug Dialog to find out object names:
+  - Open the debug dialog
+  - Choose tab *Tools*
+  - Click *Widget Tree* button
+The list of object names is printed in the log.
+
+Documentation for styling Qt Widgets through a stylesheet
+can be found at
+    https://doc.qt.io/qt-5/stylesheet-examples.html
+    https://doc.qt.io/qt-5/stylesheet-reference.html
+In Calamares, styling widget classes is supported (e.g.
+using `QComboBox` as a selector).
+
+This example stylesheet has all the actual styling commented out.
+The examples are not exhaustive.
+
+Use gammaray
+
+*/
+
+
+/* ########## MAIN APPLICATION WINDOW ########## */
+
+#mainApp {
+}
+
+#mainText{
+	font : bold 16px;
+}
+
+#sidebarApp {
+
+}
+
+#logoApp {
+}
+
+#sidebarMenuApp {
+	padding: 3px;
+	background-color: #353945;
+}
+
+QWidget {
+	font: 16px;
+}
+
+QTextEdit, QListView {
+}
+QDialogButtonBox {
+}
+QAbstractSpinBox {
+}
+QListWidget::item:alternate {
+}
+
+#view-button-back:hover {
+	color: #58B2D7;
+}
+#view-button-next:hover {
+	color: #58B2D7;
+}
+#view-button-cancel:hover {
+	color: #58B2D7;
+}
+
+#debugButton {
+	font: bold 8px;
+	color: #FFFFFF;
+}
+#debugButton:hover {
+	color: #58B2D7;
+}
+
+#aboutButton:hover {
+	color: #58B2D7;
+}
+#donateButton:hover {
+	color: #58B2D7;
+}
+#supportButton:hover {
+	color: #58B2D7;
+}
+#knownIssuesButton:hover {
+	color: #58B2D7;
+}
+#releaseNotesButton:hover {
+	color: #58B2D7;
+}
+
+/* ########## TOOLTIP ########## */
+
+QToolTip {
+	background-color: #58B2D7;
+  font : 16px;
+	color: white;
+	padding: 3px;
+	border: none;
+}
+
+QPushButton {
+    font : 16px;
+}
+
+QDialogButtonBox {
+	dialogbuttonbox-buttons-have-icons: 0;
+}
+
+/* ########## SCROLL BAR ########## */
+
+QScrollBar:vertical {
+     background: #efefef;
+     width: 20px;
+     margin: 38px 0 20px 0;
+}
+
+QScrollBar::handle:vertical {
+     background: #58B2D7;
+     max-height: 25px;
+}
+
+QScrollBar::sub-line:vertical {
+     border: none;
+     background: none;
+     height: 20px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical {
+     border: none;
+     background: none;
+     height: 20px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+}
+
+/* ########## QLIST VIEW ########## */
+
+QListView {
+		font: 16px;
+}
+
+QListView::item:alternate {
+	color: #58B2D7;
+	color: white;
+}
+
+QListView::item:!alternate:selected:active {
+	background: #58B2D7;
+	color: white;
+}
+
+QListView::item:selected:active {
+	background: #58B2D7;
+	color: white;
+}
+
+QListView::item:selected:!active {
+	background: #58B2D7;
+	color: white;
+}
+
+QListView::item:hover {
+	background: #58B2D7;
+	color: white;
+}
+
+QListView#listLayout::item:!alternate:selected:active {
+	background: #58B2D7;
+	color: white;
+}
+
+QListView#listVariant::item:!alternate:selected:active {
+	background: #58B2D7;
+	color: white;
+}
+
+
+
+/* ########## QLINE EDIT ########## */
+
+QLineEdit#LE_TestKeyboard {
+	font: 16px;
+}
+
+QLineEdit#m_passphraseLineEdit, QLineEdit#vgName,
+QLineEdit#m_confirmLineEdit {
+	font: 16px;
+}
+
+QLineEdit#textBoxUserVerifiedPassword, QLineEdit#textBoxVerifiedRootPassword {
+	font: 16px;
+}
+
+QLineEdit#textBoxFullName, QLineEdit#textBoxLoginName, QLineEdit#textBoxHostName,
+QLineEdit#textBoxUserPassword, QLineEdit#textBoxRootPassword {
+	font: 16px;
+}
+
+#textBoxFullName, #textBoxLoginName, #textBoxHostName, #textBoxUserPassword,
+#textBoxRootPassword, #textBoxAutoLogin, #vgName {
+	font: 16px;
+}
+
+#textBoxUserVerifiedPassword, #textBoxVerifiedRootPassword,
+#LE_TestKeyboard, #m_confirmLineEdit, #m_passphraseLineEdit {
+	font: 16px;
+}
+
+/* ##########PARTITION ########## */
+
+#partitionLabel {
+}
+
+#partitionLabelsView {
+}
+
+#CreatePartitionDialog {
+}
+
+#partResizerWidget {
+	font: 16px;
+}
+
+/* ########## PAGE_USERSETUP ########## */
+
+ #labelWhatIsYourName {
+	font: 16px;
+}
+ #textBoxFullName {
+	font: 16px;
+}
+ #labelFullName {
+	font: 16px;
+}
+ #labelFullNameError {
+	font: 16px;
+}
+ #username_label_2 {
+	font: 16px;
+}
+ #textBoxLoginName {
+	font: 16px;
+}
+ #labelUsername {
+	font: 16px;
+}
+ #labelUsernameError {
+	font: 16px;
+}
+ #hostname_label_2 {
+	font: 16px;
+}
+ #textBoxHostName {
+	font: 16px;
+}
+ #labelHostname {
+	font: 16px;
+}
+ #labelHostnameError {
+	font: 16px;
+}
+ #password_label_2 {
+	font: 16px;
+}
+ #textBoxUserPassword {
+	font: 16px;
+}
+ #textBoxUserVerifiedPassword {
+	font: 16px;
+}
+ #labelUserPassword {
+	font: 16px;
+}
+ #labelUserPasswordError {
+	font: 16px;
+}
+ #checkBoxRequireStrongPassword {
+	font: 16px;
+}
+ #checkBoxDoAutoLogin {
+	font: 16px;
+}
+ #checkBoxReusePassword {
+	font: 16px;
+}
+ #labelChooseRootPassword {
+	font: 16px;
+}
+ #textBoxRootPassword {
+	font: 16px;
+}
+ #textBoxVerifiedRootPassword {
+	font: 16px;
+}
+ #labelRootPassword {
+	font: 16px;
+}
+ #labelRootPasswordError {
+	font: 16px;
+}
+
+/* ########## COMBO BOX ########## */
+
+QComboBox {
+	font: 16px;
+}
+
+QComboBox::item:selected {
+	background: #58B2D7;
+	color: white;
+}
+
+#mountPointComboBox::drop-down {
+	font: 16px;
+}
+
+/* ########## SPIN BOX ########## */
+
+QSpinBox {
+	font: 16px;
+}
+
+QLineEdit {
+	font: 16px;
+}
+
+/* ########## TREE VIEW ########## */
+
+QTreeView {
+	font: 16px;
+	show-decoration-selected: 0;
+}
+
+QTreeView::item {
+	padding: 2px;
+}
+
+QTreeView::item:selected {
+	background: #58B2D7;
+	font: bold;
+}
+
+QTreeView::branch:has-siblings:!adjoins-item {
+}
+QTreeView::branch:has-siblings:adjoins-item {
+}
+QTreeView::branch:!has-children:!has-siblings:adjoins-item {
+}
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings {
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings  {
+}
+
+/* ########## CHECK BOX ########## */
+
+QCheckBox {
+}
+QCheckBox::indicator:unchecked {
+}
+QCheckBox::indicator:checked {
+}
+QItemSelectionModel::Select {
+}
+
+/* ########## HEADER VIEW ########## */
+
+QHeaderView::section {
+  font : 16px;
+}
+
+/* ########## PROGRESS BAR ########## */
+
+QProgressBar {
+	text-align: center;
+}
+
+QProgressBar::chunk {
+	background-color: #58B2D7;
+}
+
+#debugButton {
+	font: bold 8px;
+	color: #353945;
+}
+#debugButton:hover {
+	color: #353945;
+}

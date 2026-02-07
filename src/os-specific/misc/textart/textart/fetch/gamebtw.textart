@@ -1,0 +1,42 @@
+#!/bin/sh
+
+#  ┌───┐
+#  │▐█▌│
+#  │+ ⠔│
+#  └───'
+# GameBtw
+
+# File:         gamebtw.textart
+# Description:  Game boy + Arch Btw = Game Btw
+# Author:       NNB
+#               └─ https://github.com/NNBnh
+# URL:          https://github.com/NNBnh/nnbs-text-art/blob/main/other/gamebtw.textart
+# License:      GPLv3
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+# Values
+COLOR="${1:-32}"
+
+
+# Start
+printf " \033[90m┌───┐\033[0m
+ \033[90m│\033[100;${COLOR}m▐█▌\033[0;90m│\033[0m
+ \033[90m│\033[1m+ \033[91m⠔\033[0;90m│\033[0m
+ \033[90m└───'\033[0m
+\033[1;${COLOR}mGameBtw\033[0m"
+
+
+exit 0

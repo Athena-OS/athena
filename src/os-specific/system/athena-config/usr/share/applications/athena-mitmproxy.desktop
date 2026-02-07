@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=mitmproxy
+Comment=SSL-capable man-in-the-middle HTTP proxy
+Exec=shell-rocket -b mitmproxy -x '-h'
+Icon=athena-mitmproxy
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-collection;red-09-sniffing-spoofing;
+X-Athena-Package=mitmproxy

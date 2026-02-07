@@ -11,13 +11,13 @@ RUN usermod -aG wheel -u "$PUID" $PUSER && echo "$PUSER ALL=(ALL) NOPASSWD: ALL"
 RUN chmod 044 /etc/sudoers.d/$PUSER
 
 # Copy the PKGBUILD files
-COPY packages/ /src/packages/
-RUN mkdir -p /src/output
+COPY src/ /src/
+RUN mkdir -p /output
 
 USER $PUSER
-WORKDIR /src
+WORKDIR /
 
 COPY --chown=$PUSER:$PUSER . .
 
 # Define the entry point
-ENTRYPOINT ["/src/packages/hephaestus"]
+ENTRYPOINT ["/src/hephaestus"]

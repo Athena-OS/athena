@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=svcrack
+Comment=Online password guessing tool for SIP devices
+Exec=shell-rocket -b sipvicious-svcrack -p sipvicious -x '-h'
+Icon=athena-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-voip-credential-access
+X-Athena-Package=sipvicious

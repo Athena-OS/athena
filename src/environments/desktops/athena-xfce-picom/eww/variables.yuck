@@ -1,0 +1,45 @@
+;;  Resource vars 
+
+(defpoll CPU_USAGE :interval "1s"  "~/.config/eww/scripts/cpu")
+
+(defpoll MEM_USAGE :interval "1s"  "~/.config/eww/scripts/mem --mem_val")
+(defpoll MEM_USAGE_PERC :interval "1s"  "~/.config/eww/scripts/mem --mem_perc")
+(defpoll SWAP_USAGE :interval "1s"  "~/.config/eww/scripts/mem --swap_val")
+(defpoll SWAP_USAGE_PERC :interval "1s"  "~/.config/eww/scripts/mem --swap_perc")
+
+(defpoll DISK_USAGE :interval "1s"  "~/.config/eww/scripts/disk")
+
+(defpoll brightness :interval "1s" "~/.config/eww/scripts/blight")
+(defpoll volume :interval "1s" "~/.config/eww/scripts/vol --vol")
+(defpoll micro :interval "1s" "~/.config/eww/scripts/vol --micro")
+
+(defpoll BAT_PERCENTAGE :interval "1s" "~/.config/eww/scripts/battery --perc")
+(defpoll BAT_ICON :interval "1s" "~/.config/eww/scripts/battery --icon")
+(defpoll BAT_STATUS :interval "1s" "~/.config/eww/scripts/battery --stat")
+
+
+
+;; Weather vars
+(defpoll weathericon :interval "1h" "~/.config/eww/scripts/weather --icon")
+(defpoll tempt :interval "1h" "~/.config/eww/scripts/weather --temp" )
+(defpoll descr :interval "1h" "~/.config/eww/scripts/weather --desc")
+(defpoll location :interval "1h" "~/.config/eww/scripts/weather --location")
+
+
+
+;; Date vars
+(defpoll date :interval "1s"  "date '+%d'")
+(defpoll month :interval "1s"  "date '+%b'")
+(defpoll day :interval "1s"  "date '+%A'")
+
+
+
+;; Profile stuffs
+(defpoll username :interval "69420s" `whoami`)
+(defpoll host :interval "69420s" `hostname`)
+(defpoll uptime :interval "1s" `~/.config/eww/scripts/uptime`)
+
+
+
+;; Available updates (FOR PACMAN ONLY)
+(defpoll UPDATES :interval "900s" `checkupdates | wc -l`)

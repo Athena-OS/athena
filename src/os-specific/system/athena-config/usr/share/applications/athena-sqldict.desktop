@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sqldict
+Comment=Dictionary attack tool for SQL Server
+Exec=shell-rocket -b sqldict -d /usr/share/windows/sqldict
+Icon=athena-sqldict
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-brute-force
+X-Athena-Package=sqldict

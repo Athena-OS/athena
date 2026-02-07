@@ -1,0 +1,427 @@
+#!/usr/bin/env bash
+set -o pipefail  # Ensure pipeline exit code reflects failures in any command in the pipeline
+
+#Color variables
+#W="\033[00;37m"
+W="\033[0m"
+B="\033[01;36m"
+R="\033[01;31m"
+G="\033[01;32m"
+Y="\033[01;33m"
+N="\033[0m"
+
+makepkg_settings() {
+    if [[ "$buildcores" ]]; then
+        ncores=$coresnum
+    else
+        ncores=$(nproc)
+    fi
+    if [ $ncores != 1 ]
+    then
+        echo "$ncores cores available."
+        echo "Changing the makeflags to $ncores cores."
+        echo "Changing the compression settings for $ncores cores."
+    else
+        echo "$ncores core available."
+        echo "Changing the makeflags to $ncores core."
+        echo "Changing the compression settings for $ncores core."
+    fi
+    sudo sed -i 's/#MAKEFLAGS=.*/MAKEFLAGS="-j'$ncores'"/g' /etc/makepkg.conf;
+    sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
+}
+
+prebuild_command() {
+    #* Run pre-build commands
+    if [[ -n "$PRE_EXEC" ]]
+    then
+      echo "Run pre-build commands..."
+      echo "${PRE_EXEC}"
+      ${PRE_EXEC}
+    fi
+}
+
+postbuild_command() {
+    #* Run post-build commands
+    if [[ -n "$POST_EXEC" ]]
+    then
+      echo "Run post-build commands..."
+      echo "${POST_EXEC}"
+      ${POST_EXEC}
+    fi
+}
+
+# Function to find directories containing PKGBUILD files
+find_pkgbuild_dirs() {
+    local pkgbuild_paths=()
+    local search_dir="/src/"
+
+    # If I'm running the builder outside a container
+    if [ ! -d "$search_dir" ]; then
+      search_dir="$PWD"
+    fi
+
+    # If user input is provided, use it as package names to search for
+    if [ $# -gt 0 ]; then
+        # Loop through provided package names
+        for pkg_name in "$@"; do
+            # Use find to locate PKGBUILD files in subdirectories
+            while IFS= read -r -d '' pkgbuild_path; do
+                # Print the package name and PKGBUILD path
+                pkgbuild_paths+=("$pkgbuild_path")
+            done < <(find "$search_dir" -type d -name "$pkg_name" -exec find {} -type f -name PKGBUILD -print0 \;)
+        done
+    else
+        # Use find to locate PKGBUILD files in subdirectories
+        while IFS= read -r -d '' pkgbuild_path; do
+            # Consider only packages not in 'archive' directory
+            if [[ ! $pkgbuild_path =~ "archive" ]]; then
+                # Extract package name from PKGBUILD path
+                pkgbuild_paths+=("$pkgbuild_path")
+            fi
+        done < <(find "$search_dir" -type f -name PKGBUILD -print0)
+    fi
+
+    # Return the array of PKGBUILD paths
+    echo "${pkgbuild_paths[@]}"
+}
+
+# Function to build and sign packages
+build_package() {
+    pkg_dir=$1
+    cpu_arch=$2
+    src_dir=$3
+    out_dir=$4
+    logs_dir=$5
+    pkg_missing=false
+
+    echo -e "\n${Y}Building package in $pkg_dir...${W}"
+    cd $pkg_dir
+
+    makepkg -do --noprepare
+
+    pkgbase=$(grep "^pkgbase=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
+    pkgname=($(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/[\[('\'')]//g' -e 's/"//g'))
+    pkgdesc=$(grep "^pkgdesc=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
+    pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    pkgepoch=$(grep "^epoch=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1] ":"}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    groups=$(awk '/^groups=/{g=1} g {gsub(/\047/, ""); if ($0 ~ /\)/) {g=0}; print}' PKGBUILD | tr -d '\n' | sed -e "s/groups=(//" -e "s/)//" | tr -s ' ' '\n' | grep -v '^athena$' | sed 's/^athena-//' | awk 'NF {printf "%s, ", $0}' | sed 's/, $//')
+    arch=$(awk -v cpu_arch="x86_64" -F"['\" ]" '/^arch=\(/ { for (i=2; i<=NF; i++) if ($i == cpu_arch || $i == "any") print $i }' PKGBUILD)
+    pkgurl=$(grep "^url=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^["'\'']//g' -e 's/["'\'']$//g')
+    license=$(grep "^license=" PKGBUILD | sed -e "s/license=(//" -e "s/)//" -e "s/'//g" -e 's/"//g' | tr ' ' '\n' | awk '{printf "%s, ", $0}' | sed 's/, $//')
+    pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}' | sed -e 's/^"\|'\''//g' -e 's/"\|'\''$//g')
+    pkgsource="https://github.com/Athena-OS/athena/tree/main/${pkg_dir#/src/}"
+
+    if [[ -z "$pkgbase" ]]; then
+        logfile="$pkgname-$arch.log"
+    else
+        logfile="$pkgbase-$arch.log"
+    fi
+
+    for pname in "${pkgname[@]}"; do
+        pkgfile="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
+        if [ ! -f "$out_dir/$pkgfile" ]; then
+            # if a package of a pkgbase is missing, the entire pkgbase PKGBUILD needs to be rebuilt
+            pkg_missing=true
+            break
+        fi
+    done
+
+    if $pkg_missing || [[ "$overwrite" ]]; then
+        if [ -f "build.sh" ]; then
+            ./build.sh 2>&1 | tee "$logs_dir/$logfile" || {
+                >&2 echo -e "${R}ERROR: Failed to execute build.sh in $pkg_dir${W}"
+                build_status="Fail"
+                build_status_api
+                return 1
+            }
+        else
+            updpkgsums 2>&1 | tee "$logs_dir/$logfile"
+            makepkg -f -src $NODEPS --noconfirm 2>&1 | tee -a "$logs_dir/$logfile" || {
+                >&2 echo -e "${R}ERROR: Failed to execute makepkg in $pkg_dir${W}"
+                build_status="Fail"
+                build_status_api
+                return 1
+            }
+            sudo rm -rf src pkg
+        fi
+        build_status="Done"
+
+        # A PKGBUILD could contain more than one package (i.e., python- packages)
+        for pname in "${pkgname[@]}"; do
+            pfile="${pname}-${pkgepoch}${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
+            installed_size="$(pacman -Qip $pfile | grep 'Installed Size' | awk '{print $4, $5}')"
+            sign_package
+            echo -e "${G}Moving $pfile to $out_dir${W}"
+            cp -f $pfile* $out_dir
+            rm -f $pfile*
+
+            build_status_api
+            package_list_api
+
+            # Add the package to the pkg_array
+            pkg_array+=("$pfile")
+        done
+        
+    else
+        >&2 echo -e "${Y}$pkgfile already exists in $out_dir${W}"
+    fi
+    cd $src_dir
+}
+
+# Currently works only on x86_64. Need to be adapted for other archs
+build_status_api() {
+    curl -X POST https://cms.athenaos.org/api/builders -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"package_source\":\"$pkgsource\",\"status_x86_64\":\"$build_status\",\"status_x86_64_version\":\"$pkgepoch$pkgver-$pkgrel\",\"status_x86_64_logs\":\"$logfile\",\"status_i686\":\"Skip\",\"status_i686_version\":\"0\",\"status_i686_logs\":\"-\",\"status_ARMv6h\":\"Skip\",\"status_ARMv6h_version\":\"0\",\"status_ARMv6h_logs\":\"-\",\"Status_ARMv7h\":\"Skip\",\"status_ARMv7h_version\":\"0\",\"status_ARMv7h_logs\":\"-\",\"status_AArch64\":\"Skip\",\"status_AArch64_version\":\"0\",\"status_AArch64_logs\":\"-\"}}"
+}
+
+package_list_api() {
+    curl -X POST https://cms.athenaos.org/api/packages -H "Authorization: Bearer $(cat /run/secrets/strapi-sec)" -H "Content-Type: application/json" -d "{\"data\":{\"package_name\":\"$pname\",\"version\":\"$pkgepoch$pkgver-$pkgrel\",\"category\":\"$groups\",\"description\":\"$pkgdesc\",\"installed_size\":\"$installed_size\",\"license\":\"$license\",\"upstream_url\":\"$pkgurl\"}}"
+}
+
+git_bump_package() {
+    pkg_dir=$1
+    src_dir=$2
+
+    echo -e "\nBumping package in $pkg_dir..."
+    cd $pkg_dir
+
+    updpkgsums
+    makepkg -do --noprepare
+    git add PKGBUILD
+    sudo rm -rf /tmp/makepkg/*
+
+    cd $src_dir
+}
+
+sign_package() {
+    #* If env $sign is false, do not sign packages
+    if [[ "$sign" ]]
+    then
+        echo "Signing the package..."
+        if id "builder" >/dev/null 2>&1; then
+            user="builder"
+        else
+            user="$(whoami)"
+        fi
+
+        if [ -n "$passphrase" ]; then
+            for filename in "${pfile[@]}"; do
+                echo "Creating $filename.sig"
+                echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $filename.sig $filename
+            done
+        else
+            echo "Error: 'PASSPHRASE' environment variable not set."
+            exit 1
+        fi
+    fi
+}
+
+printf '%b\n' "$(base64 -d <<<"H4sIAAAAAAAAA6VRWwqAMAz79xR+ahF3Am8yqAfp4W36Yn4IopGFJjbdxoiO7yCaRGaA2VfhJp5ckcg3/3wKGCJqN8BsLSm0yDx8DOC5N+wx8lk2g2Inl5G3PmX/XS1Zq72gYXWtK2Tkw+02cgeXsYVth++cnt9luH+imf0amqd/73cBIZJnZ/8BAAA=" | gunzip)" #User printf for colored output
+echo
+echo "The Athena OS CI/CD Builder"
+echo
+
+# Parse command-line options
+while getopts "abc:dhrstuwx" opt; do
+    case $opt in
+        a)
+            all=true
+            ;;
+        b)
+            bump=true
+            ;;
+        c)
+            buildcores=true
+            if [[ $OPTARG =~ ^[0-9]+$ ]]; then
+                coresnum=$((OPTARG))
+            else
+                echo "Error: Number of cores must be a positive integer." >&2
+                exit 1
+            fi
+            ;;
+        d)
+            rmdb=true
+            ;;
+        h)
+            echo "Usage: $0 [-a] [-b] [-c <ncores>] [-d <package-name>] [-h] [-n] [-r] [-s] [-t] [-u] [-w] [-x] [package1 package2 ...]"
+            echo
+            echo "Options:"
+            echo "-a     Build all packages."
+            echo "-b     Bump git packages to the latest version."
+            echo "-c     Set number of cores for building (maximum $(nproc))."
+            echo "-d     Delete packages from the repository database."
+            echo "-h     Print this Help."
+            echo "-n     Skip all dependency checks."
+            echo "-r     Upload packages to the specified repository server."
+            echo "-s     Sign packages."
+            echo "-t     Test PKGBUILD on the current directory."
+            echo "-u     Update the entire package repository database."
+            echo "-w     Overwrite existing packages in the output directory."
+            echo "-x     Search for the fastest mirrors."
+            echo
+            echo "Examples:"
+            echo "$0 -a -s -u -x       --> Build and sign all packages by using the fastest mirrors and update the repository database."
+            echo "$0 -s -u aegis ffuf  --> Build and sign 'aegis' and 'ffuf' packages and update the repository database."
+            echo "$0 -a -b             --> Bump version of all git packages."
+            echo "$0 -s -u             --> Update and sign the repository database."
+            exit 0
+            ;;
+        n)
+            NODEPS="-d"
+            ;;
+        r)
+            rsync=true
+            sshsec="$(cat /run/secrets/ssh-sec)"
+            if [[ -z "$sshsec" || -z "${REPOSITORY_SERVER}" ]]; then
+                if [[ -z "$sshsec" ]]; then
+                    echo "Error -r argument: Missing 'ssh-sec' podman secret variable."
+                fi
+                if [[ -z "${REPOSITORY_SERVER}" ]]; then
+                    echo "Error -r argument: Missing 'REPOSITORY_SERVER' environment variable passed as container argument."
+                fi
+                exit 1
+            fi
+            ;;
+        s)
+            sign=true
+            ;;
+        t)
+            test=true
+            ;;
+        u)
+            db=true
+            ;;
+        w)
+            overwrite=true
+            ;;
+        x)
+            mirr=true
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [[ "$test" ]]
+then
+    makepkg -s -f --noconfirm --needed
+    exit 0
+fi
+
+if [[ "$sign" ]]
+then
+    # Import the signing key
+    passphrase="$(cat /run/secrets/key-sec)"
+    if [ -z "$passphrase" ]; then
+        echo "No secret found for GPG key object key-sec."
+    else
+        echo -n "$passphrase"| gpg --batch --yes --passphrase-fd 0 --import /src/keydir/key.asc
+    fi
+fi
+
+if [[ "$mirr" ]]
+then
+    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+    sudo rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
+fi
+
+# Need to sync Hephaestus with the updated repository
+sudo pacman -Syy
+
+# Set the CPU Architecture for packaging
+cpu_arch="x86_64"
+src_dir="$(pwd)"
+out_dir="$(df -P /src/output | awk 'NR==2 {print $6}')/$cpu_arch"
+logs_dir="$(df -P /src/logs | awk 'NR==2 {print $6}')"
+
+# Initialize an empty array to store package filenames
+pkg_array=()
+cnt=1
+
+makepkg_settings
+prebuild_command
+
+# Get user input if provided
+if [ "$#" -gt 0 ] && [[ -z "$rmdb" ]]; then
+    result=($(find_pkgbuild_dirs "$@"))
+elif [[ "$all" ]]; then
+    result=($(find_pkgbuild_dirs))
+fi
+
+# Only bump git package version
+if [[ "$bump" ]]
+then
+    for path in "${result[@]}"; do
+        echo -e "${G}Found PKGBUILD: $path [$cnt/${#result[@]}]${W}"
+        git_bump_package "$(dirname $path)" "$src_dir"
+        echo
+        ((cnt++))
+    done
+    echo "Here the updated PKGBUILDs:"
+    git diff --name-only HEAD
+    echo "Commit these changes and push!"
+else
+    # Print the result array
+    for path in "${result[@]}"; do
+        echo -e "${G}Found PKGBUILD: $path [$cnt/${#result[@]}]${W}"
+        # Build and sign packages
+        build_package "$(dirname $path)" "$cpu_arch" "$src_dir" "$out_dir" "$logs_dir"
+        echo
+        ((cnt++))
+    done
+
+    # Loop over the pkg_array to run repo-add for each package to update the database
+    if [[ "${#pkg_array[@]}" -gt 0 ]]; then
+        for fpkg in "${pkg_array[@]}"; do
+            echo "Adding $fpkg to athena.db..."
+            repo-add --verify --sign -R "$out_dir/athena.db.tar.gz" "$out_dir/$fpkg"
+            echo
+        done
+    fi
+fi
+
+if [[ "$db" ]]
+then
+    echo "Invoking the key..."
+    if id "builder" >/dev/null 2>&1; then
+        user="builder"
+    else
+        user="$(whoami)"
+    fi
+
+    if [ -n "$passphrase" ]; then
+        echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0
+    else
+        echo "Error: 'PASSPHRASE' environment variable not set."
+        exit 1
+    fi
+    # rm $out_dir/athena.db* $out_dir/athena.files*
+    # Note that if only one package fails to be processed (i.e., packages with 0 size), athena.db won't be created
+    repo-add --verify --sign -R $out_dir/athena.db.tar.gz $out_dir/*.pkg.tar.zst
+fi
+
+if [[ "$rmdb" ]]
+then
+    echo "Invoking the key..."
+    if id "builder" >/dev/null 2>&1; then
+        user="builder"
+    else
+        user="$(whoami)"
+    fi
+
+    if [ -n "$passphrase" ]; then
+        echo $passphrase | sudo -E -u $user gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0
+    else
+        echo "Error: 'PASSPHRASE' environment variable not set."
+        exit 1
+    fi
+    repo-remove --verify --sign $out_dir/athena.db.tar.gz "$@"
+fi
+
+if [[ -n "$rsync" && -n "$sshsec" && -n "${REPOSITORY_SERVER}" ]]; then
+    sshpass -p "$sshsec" rsync -avzzlr --delete -e "ssh -p 1027 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" "$out_dir/" "${REPOSITORY_SERVER}"
+fi
+
+postbuild_command

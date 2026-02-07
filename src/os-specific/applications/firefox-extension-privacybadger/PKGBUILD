@@ -1,0 +1,44 @@
+# Credits AUR
+# Maintainer: darkelectron <darkelectron(at)mailfence.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+
+pkgname=firefox-extension-privacybadger
+_pkgname=${pkgname#firefox-extension-}
+pkgver=2025.5.30
+pkgrel=1
+pkgdesc='Block third party tracking in your browser.'
+arch=('any')
+url="https://www.eff.org/privacybadger"
+license=('GPL-3.0-or-later')
+groups=('firefox-addons')
+makedepends=("unzip")
+source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi")
+noextract=("${_pkgname}-${pkgver}.xpi")
+sha512sums=('6c8be5544ee2c32e597e8883c20ce8774465920e2c6d708bee2e1b618baa408021855709e86ab0c0d06c73cbf052b2f2c2c2d1596805c6df5ad25025e2aef004')
+
+prepare() {
+  cd "$srcdir"
+
+  unzip -qqo "${_pkgname}-${pkgver}.xpi" -d "${_pkgname}-${pkgver}"
+}
+
+package() {
+  depends=("firefox")
+  cd "${srcdir}"
+
+  if [[ -f ${_pkgname}-${pkgver}/install.rdf ]]; then
+    _extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${_pkgname}-${pkgver}/install.rdf)"
+  else
+    _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' ${_pkgname}-${pkgver}/manifest.json)"
+  fi
+  _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
+  # Should this extension be unpacked or not?
+  if grep -q '<em:unpack>true</em:unpack>' ${_pkgname}-${pkgver}/install.rdf 2>/dev/null; then
+    install -dm755 "${_extension_dest}"
+    cp -R ${_pkgname}-${pkgver}/* "${_extension_dest}"
+    chmod -R ugo+rX "${_extension_dest}"
+  else
+    install -Dm644 ${_pkgname}-${pkgver}.xpi "${_extension_dest}.xpi"
+  fi
+}

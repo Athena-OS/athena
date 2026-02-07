@@ -1,0 +1,18 @@
+post_install() {
+
+  if grep -q GRUB_THEME= /etc/default/grub; then
+    sed -i 's/.*GRUB_THEME=.*/GRUB_THEME="\/boot\/grub\/themes\/athena\/theme.txt"/g' /etc/default/grub
+  else
+    echo "GRUB_THEME=\"/boot/grub/themes/athena/theme.txt\"" >> /etc/default/grub
+  fi
+  
+  sed -i 's/GRUB_ENABLE_BLSCFG=.*/GRUB_ENABLE_BLSCFG=false/g' /etc/default/grub
+  sed -i -e '/^GRUB_TIMEOUT_STYLE/s/^/#/' /etc/default/grub
+  sed -i -e '/^GRUB_TERMINAL_OUTPUT/s/^/#/' /etc/default/grub
+
+  grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+post_upgrade() {
+  post_install $1
+}

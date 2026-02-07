@@ -1,0 +1,15 @@
+pkgname=athena-alacritty-config
+pkgver=1.0.0
+pkgrel=3
+pkgdesc="Alacritty configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('alacritty' 'ttf-jetbrains-mono-nerd')
+source=("alacritty.toml")
+sha512sums=('02a10805ade86ff7ca8296887c3cadeefcb8854a1c30bb1cc5ba2d5fa616ae47e2f8892a494cb2d49989bcc04b61484ca15f4ed8e8f9c0999706cd11d13121cb')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.config/alacritty"
+
+  install -Dm644 "${srcdir}/alacritty.toml" "${pkgdir}/etc/skel/.config/alacritty/"
+}

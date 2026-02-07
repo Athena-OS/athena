@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=mimikatz
+Comment=Uses admin rights on Windows to display passwords in plaintext
+Exec=shell-rocket -b mimikatz -d /usr/share/windows/mimikatz
+Icon=athena-mimikatz
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-os-credential-dumping;mitre-pass-the-hash;red-10-maintaining-access;red-pass-hash;
+X-Athena-Package=mimikatz

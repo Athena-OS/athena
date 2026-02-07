@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=unix-privesc-check
+Comment=Script to check for simple privilege escalation vectors
+Exec=shell-rocket -b unix-privesc-check
+Icon=athena-unix-privesc-check
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-privilege-escalation;red-02-vulnerability-analysis;
+X-Athena-Package=unix-privesc-check

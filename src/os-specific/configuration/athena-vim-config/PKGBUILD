@@ -1,0 +1,17 @@
+pkgname=athena-vim-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Vim configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('vim')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+
+  cp -rf "${srcdir}/etc/skel/.vim_runtime" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.viminfo" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.vimrc" "${pkgdir}/etc/skel/"
+}
+sha512sums=('d15720e3d9dc1189f32d0dc2744df914a2a6e055c55730b92c08db20a1d2092615de47861ad78f2ca9a90b3b9c665a670307e0b7138ae74f7cf7fc7375f3cba0')

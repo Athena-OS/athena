@@ -1,0 +1,94 @@
+;; **** Variables ******************************************
+(include "variables.yuck")
+
+
+;; **** Widgets ********************************************
+
+;; Weather
+(include "sidebar/weather.yuck")
+
+;; Memory
+(include "sidebar/memory.yuck")
+
+;; Battery
+(include "sidebar/battery.yuck")
+
+;; Date
+(include "sidebar/date.yuck")
+
+;; Updates
+(include "sidebar/pacman_updates.yuck")
+
+;; Profile
+(include "sidebar/profile.yuck")
+
+;; Disk/Storage
+(include "sidebar/disk.yuck")
+
+;; System stuffs
+(include "sidebar/system.yuck")
+
+;; *********************************************************
+
+
+;; **** Sidebar ********************************************
+
+(defwidget sidebar []
+
+	(box :class "container"
+		 :orientation "v"
+		 :space-evenly false
+
+		(box :orientation "h"
+			 :height 118
+			(profile)
+		)
+
+		(box :orientation "h"
+			 :space-evenly false
+			(box :width 170
+				 :height 340
+				 :orientation "v"
+				 :space-evenly false
+				(box :height 170
+			 		(weather))
+				(box :height 170
+					(memory))
+			)
+
+			(box :width 170
+				 :height 340
+				 :orientation "v"
+				 :space-evenly false
+				(box :height 85
+					(date))
+				(box :height 170
+			 		(battery))
+				(box :height 85
+					(updates))
+			)
+		)
+
+        (box :orientation "v"
+         	(system)
+         )
+
+		(box :orientation "v"
+         	(disk)
+         )
+	)
+)
+
+;; **** Sidebar Window ************************************
+
+(defwindow sidebar :stacking "fg"
+				  :focusable "false"
+				  :screen 1
+				  :windowtype "dock"
+	    		  :geometry (geometry   :x 0
+	    								:y 0
+	    								:anchor "center right")
+					(sidebar)
+)
+
+;; *********************************************************

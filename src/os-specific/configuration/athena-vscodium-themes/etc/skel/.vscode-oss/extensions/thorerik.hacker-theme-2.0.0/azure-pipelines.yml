@@ -1,0 +1,34 @@
+trigger:
+  branches:
+    include:
+    - master
+  tags:
+    include:
+    - refs/tags/v*
+
+strategy:
+  matrix:
+    linux:
+      imageName: 'ubuntu-20.04'
+
+pool:
+  vmImage: $(imageName)
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- bash: |
+    echo ">>> Install tools"
+    npm install -g vsce
+    echo ">>> Install packages"
+    npm ci
+    echo ">>> Publish extension"
+    npm run deploy
+  displayName: Publish extension
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['Agent.OS'], 'Linux'))
+  env:
+    VSCE_PAT: $(VSCE_PAT)

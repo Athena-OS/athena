@@ -1,0 +1,32 @@
+pkgname=nightfox-gtk-theme
+_pkgname=Nightfox-GTK-Theme
+pkgver=53.f0212f2
+pkgrel=1
+pkgdesc='A GTK theme based on the Nightfox colour palette.'
+arch=('any')
+license=('AGPL-3.0-or-later')
+makedepends=('git')
+source=("git+https://github.com/Fausto-Korpsvart/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+package() {
+  cd $_pkgname/themes
+
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  ./install.sh -l --tweaks macos -d "$pkgdir/usr/share/themes"
+
+  cp -a ../icons/Duskfox "$pkgdir/usr/share/icons/"
+}

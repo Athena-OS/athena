@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action>
+		<name>Bugz</name>
+		<regex>bug\s*#?\s*([0-9]+)</regex>
+		<group>0</group>
+		<commands>
+			<command>
+				<name>GNOME Bug</name>
+				<exec>exo-open http://bugzilla.gnome.org/show_bug.cgi?id=\1</exec>
+			</command>
+			<command>
+				<name>Xfce Bug</name>
+				<exec>exo-open http://bugzilla.xfce.org/show_bug.cgi?id=\1</exec>
+			</command>
+		</commands>
+	</action>
+	<action>
+		<name>Image</name>
+		<regex>(http|ftp).+\.(jpg|png|gif)</regex>
+		<group>0</group>
+		<commands>
+			<command>
+				<name>View with Ristretto</name>
+				<exec>ristretto &quot;\0&quot;</exec>
+			</command>
+			<command>
+				<name>Edit with Gimp</name>
+				<exec>gimp-remote &quot;\0&quot;</exec>
+			</command>
+		</commands>
+	</action>
+	<action>
+		<name>Long URL</name>
+		<regex>http://[^\s]{120,}</regex>
+		<group>0</group>
+		<commands>
+			<command>
+				<name>Shrink the URL</name>
+				<exec>exo-open http://tinyurl.com/create.php?url=\0</exec>
+			</command>
+		</commands>
+	</action>
+</actions>

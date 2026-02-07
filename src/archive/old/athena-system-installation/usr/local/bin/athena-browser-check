@@ -1,0 +1,42 @@
+#!/bin/bash
+#set -e
+###############################################################################
+# Author	:	Antonio Voza
+###############################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+###############################################################################
+echo
+echo
+echo "#################################"
+echo "Start athena-browser-check"
+echo "#################################"
+echo
+
+package=athena-brave-config
+if pacman -Qq $package > /dev/null ; then
+  if pacman -Qq athena-gnome-config > /dev/null || pacman -Qq athena-gnome-material-shell-config > /dev/null ; then
+    sed -i 's/{\\\"name\\\":\\\"Firefox ESR\\\",\\\"icon\\\":\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/firefox-logo.svg\\\",\\\"type\\\":\\\"Command\\\",\\\"data\\\":{\\\"command\\\":\\\"firefox-esr\\\"},\\\"angle\\\":-1}/{\\\"name\\\":\\\"Brave\\\",\\\"icon\\\":\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/brave.svg\\\",\\\"type\\\":\\\"Command\\\",\\\"data\\\":{\\\"command\\\":\\\"brave\\\"},\\\"angle\\\":-1}/g' /usr/share/athena-gnome-config/dconf-shell.ini
+  fi
+fi
+
+package=athena-firefox-config
+if pacman -Qq $package > /dev/null ; then
+  if pacman -Qq athena-gnome-config > /dev/null || pacman -Qq athena-gnome-material-shell-config > /dev/null ; then
+    sed -i 's/{\\\"name\\\":\\\"Brave\\\",\\\"icon\\\":\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/brave.svg\\\",\\\"type\\\":\\\"Command\\\",\\\"data\\\":{\\\"command\\\":\\\"brave\\\"},\\\"angle\\\":-1}/{\\\"name\\\":\\\"Firefox ESR\\\",\\\"icon\\\":\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/firefox-logo.svg\\\",\\\"type\\\":\\\"Command\\\",\\\"data\\\":{\\\"command\\\":\\\"firefox-esr\\\"},\\\"angle\\\":-1}/g' /usr/share/athena-gnome-config/dconf-shell.ini
+  fi
+fi
+
+package=athena-mullvad-config
+if pacman -Qq $package > /dev/null ; then
+  if pacman -Qq athena-gnome-config > /dev/null || pacman -Qq athena-gnome-material-shell-config > /dev/null ; then
+    sed -i 's/{\\\"name\\\":\\\"Firefox ESR\\\",\\\"icon\\\":\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/firefox-logo.svg\\\",\\\"type\\\":\\\"Command\\\",\\\"data\\\":{\\\"command\\\":\\\"firefox-esr\\\"},\\\"angle\\\":-1}/{\\\"name\\\":\\\"Mullvad\\\",\\\"icon\\\":\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/mullvad-browser.svg\\\",\\\"type\\\":\\\"Command\\\",\\\"data\\\":{\\\"command\\\":\\\"mullvad-browser\\\"},\\\"angle\\\":-1}/g' /usr/share/athena-gnome-config/dconf-shell.ini
+  fi
+fi
+
+echo
+echo "#################################"
+echo "End athena-browser-check"
+echo "#################################"
+echo

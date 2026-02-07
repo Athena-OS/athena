@@ -1,0 +1,42 @@
+#!/bin/bash
+#set -e
+###############################################################################
+# Author	:	Antonio Voza
+###############################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+###############################################################################
+echo
+echo
+echo "#################################"
+echo "Start athena-fs-check"
+echo "#################################"
+echo
+
+while [ -e "/var/lib/pacman/db.lck" ];
+do
+    echo 'Pacman is not ready yet. Will try again in 5 seconds.'
+    seconds=$(($seconds + 5))
+    sleep 5
+    if [[ "$seconds" == "30" ]]; then
+        echo 'Warning: removing pacman db.lck!'
+        rm /var/lib/pacman/db.lck
+    fi
+done
+
+fsdetect=$(lsblk -o FSTYPE)
+
+if [[ $fsdetect =~ "btrfs" ]]; then
+    echo "BTRFS file system detected."
+    pacman -S --noconfirm btrfs-assistant btrfs-progs btrfsmaintenance grub-btrfs inotify-tools snap-pac snap-pac-grub snapper-support
+    systemctl enable grub-btrfsd.service
+    sed -in '/^HOOKS*/ s/"$/ grub-btrfs-overlayfs"/g' /etc/mkinitcpio.conf
+    mkinitcpio -P
+fi
+
+echo
+echo "#################################"
+echo "End athena-fs-check"
+echo "#################################"
+echo

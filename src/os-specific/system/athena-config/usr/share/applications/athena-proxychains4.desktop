@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=proxychains4
+Comment=Redirect connections through proxy servers
+Exec=shell-rocket -b proxychains4 -p proxychains-ng
+Icon=athena-proxychains4
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-protocol-tunneling
+X-Athena-Package=proxychains-ng

@@ -1,0 +1,41 @@
+- name: "Display Manager: GDM"
+  description: "Install GDM (default)"
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - gdm
+- name: "Display Manager: SDDM"
+  description: "Install SDDM"
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - sddm
+    - simplicity-sddm-theme-git
+- name: "Display Manager: LightDM"
+  description: "Install LightDM"
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - lightdm
+    - lightdm-gtk-greeter
+    - lightdm-gtk-greeter-settings
+    - lightdm-webkit-theme-aether
+    - lightdm-webkit2-theme-reactive
+    - lightdm-slick-greeter
+- name: "Display Manager: LXDM"
+  description: "Install LXDM"
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - lxdm
+- name: "Display Manager: Ly"
+  description: "Install Ly"
+  critical: false
+  hidden: false
+  selected: false
+  packages:
+    - ly

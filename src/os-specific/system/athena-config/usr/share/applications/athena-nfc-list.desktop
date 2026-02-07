@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=nfc-list
+Comment=List NFC targets
+Exec=shell-rocket -b nfc-list -p libnfc -x '-h'
+Icon=athena-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-nfc
+X-Athena-Package=libnfc

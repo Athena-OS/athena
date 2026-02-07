@@ -1,0 +1,30 @@
+pkgname=nist-feed
+pkgver=12.775bd87
+pkgrel=1
+pkgdesc="NIST NVD feed and popup notifications."
+arch=('any')
+url='https://github.com/D3vil0p3r/NIST-Feed'
+license=('GPL-3.0-or-later')
+install=nist-feed.install
+depends=('cron' 'dunst')
+makedepends=('git')
+source=("git+https://github.com/D3vil0p3r/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/pixmaps"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 icons/cve.png "$pkgdir/usr/share/pixmaps/"
+  install -Dm 755 "nist-feed" "$pkgdir/usr/bin/"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ncat
+Comment=Concatenate and redirect sockets
+Exec=shell-rocket -b ncat -p nmap -x '-h'
+Icon=athena-ncat
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-non-application-layer-protocol
+X-Athena-Package=nmap

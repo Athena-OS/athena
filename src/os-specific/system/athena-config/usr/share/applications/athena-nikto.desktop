@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=nikto
+Comment=Scan web server for known vulnerabilities
+Exec=shell-rocket -b nikto -x '-h'
+Icon=athena-nikto
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-web-vulnerability-scanning;red-02-vulnerability-analysis;red-web-vulnerability-scanners;
+X-Athena-Package=nikto

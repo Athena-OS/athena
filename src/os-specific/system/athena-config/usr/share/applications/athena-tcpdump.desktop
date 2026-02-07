@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=tcpdump
+Comment=Dump traffic on a network
+Exec=shell-rocket -b tcpdump -x '-h'
+Icon=athena-tcpdump
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-network-sniffing;mitre-discovery;red-09-sniffing-spoofing;
+X-Athena-Package=tcpdump

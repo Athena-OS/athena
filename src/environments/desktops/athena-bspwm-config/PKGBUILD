@@ -1,0 +1,40 @@
+pkgname=athena-bspwm-config
+_pkgname=bspwm
+pkgver=13.d701077
+pkgrel=5
+pkgdesc="Bspwm configuration for Athena."
+arch=('any')
+url='https://github.com/Athena-OS/bspwm'
+license=('GPL-3.0-or-later')
+depends=('athena-alacritty-config' 'athena-vim-config' 'athena-zsh' 'bat' 'bluez-utils' 'bluez' 'boo-sddm-git' 'brightnessctl' 'bspwm' 'btop' 'dunst' 'eww-git' 'feh' 'ffcast' 'ffmpegthumbnailer' 'geany' 'git' 'glfw-wayland' 'gnome-keyring' 'goofcord-bin' 'i3lock' 'imagemagick' 'jq' 'libwebp' 'lsd' 'maim' 'mlocate' 'mpc' 'mpd' 'ncmpcpp' 'net-tools' 'networkmanager' 'ntfs-3g' 'nvchad-git' 'oh-my-zsh-git' 'openvpn' 'otf-droid-nerd' 'pacman-contrib' 'pamixer' 'papirus-icon-theme' 'pavucontrol' 'picom' 'playerctl' 'polkit-gnome' 'polybar' 'powerline' 'qt6-5compat' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'ranger' 'rofi' 'scrot' 'sddm' 'sxhkd' 'tdrop' 'thunar' 'tokyonight-gtk-theme-git' 'ttf-hack-nerd' 'ttf-inconsolata' 'ttf-jetbrains-mono-nerd' 'ttf-jetbrains-mono' 'ttf-terminus-nerd' 'ueberzug' 'vim-airline' 'vim-airline-themes' 'vundle-git' 'webp-pixbuf-loader' 'xclip' 'xdg-user-dirs' 'xdotool' 'xfce4-taskmanager' 'xorg-xinit' 'xorg-xkill' 'xorg-xlsclients' 'xorg-xprop' 'xorg-xrandr' 'xorg-xsetroot' 'xorg-xwayland' 'xorg-xwininfo' 'zoxide' 'zsh-theme-powerlevel10k')
+makedepends=('git' 'rsync')
+source=("git+https://github.com/Athena-OS/$_pkgname.git"
+        "$pkgname.tar.gz")
+sha512sums=('SKIP'
+            'e614190ef503ab5f038c3e9842274a85bef4661f8c15476a695fc671c64908d855f9dad24dc8a8fb0f2d208ccbdeea6a909d6347aa19418a51b61b9726101ccb')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/etc/skel/.local/bin"
+  install -dm 755 "$pkgdir/etc/skel/.local/share/applications"
+  install -dm 755 "$pkgdir/etc/skel/.local/share/fonts"
+  install -dm 755 "$pkgdir/etc/systemd/system/multi-user.target.wants"
+  install -dm 755 "$pkgdir/etc/systemd/system/sockets.target.wants"
+  
+  rsync -av --progress .config/ "$pkgdir/etc/skel/.config/"
+  rsync -av --progress .p10k.zsh "$pkgdir/etc/skel/.p10k.zsh"
+  rsync -av --progress .local/share/applications/ "$pkgdir/etc/skel/.local/share/applications/"
+  rsync -av --progress .local/share/asciiart/ "$pkgdir/etc/skel/.local/share/asciiart/"
+  rsync -av --progress .local/bin/ "$pkgdir/etc/skel/.local/bin/"
+  rsync -av --progress .local/share/fonts/ "$pkgdir/etc/skel/.local/share/fonts/"
+
+  cp -P "$srcdir/mpd.service" "$pkgdir/etc/systemd/system/multi-user.target.wants/"
+  cp -P "$srcdir/mpd.socket" "$pkgdir/etc/systemd/system/sockets.target.wants/"
+}

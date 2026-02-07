@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dns2tcpd
+Comment=A tunneling tool that encapsulate TCP traffic over DNS.
+Exec=shell-rocket -b dns2tcpd -p dns2tcp
+Icon=athena-dns2tcpd
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=mitre-protocol-tunneling;red-tunneling;
+X-Athena-Package=dns2tcp

@@ -1,0 +1,15 @@
+(defwidget updates []
+    (box :class "genwin"
+    	(box :orientation "v"
+    	 	 :space-evenly "false"
+    	 	 :halign "start"
+    	 	 :valign "center"
+    	 	(label  :text "Updates"
+    	 			:halign "start"
+    	 			:class "title")
+        	(label  :text "${UPDATES} available"
+        			:class "description"
+        			:halign "start")
+        )
+    )
+)
