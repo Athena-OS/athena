@@ -38,7 +38,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0   # full history so we can diff against the merge base
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
 
       # ---------------------------------------------------------------
       # 3. Detect which packages changed in this PR
@@ -46,17 +47,14 @@ jobs:
       - name: Detect changed packages
         id: changed
         run: |
-          BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          HEAD_SHA="${{ github.event.pull_request.merge_commit_sha }}"
-
-          CHANGED_PKGBUILDS=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
-            | grep '^src/.*/PKGBUILD$' || true)
+          CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
+            origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} \
+            | grep 'src/.*/PKGBUILD$' || true)
 
           if [ -z "$CHANGED_PKGBUILDS" ]; then
             echo "No PKGBUILD changes found. Skipping."
             echo "packages=" >> "$GITHUB_OUTPUT"
           else
-            # Extract unique package directories (space-separated for later steps)
             DIRS=$(echo "$CHANGED_PKGBUILDS" | xargs -I{} dirname {} | sort -u | tr '\n' ' ')
             echo "Packages to build: $DIRS"
             echo "packages=$DIRS" >> "$GITHUB_OUTPUT"
