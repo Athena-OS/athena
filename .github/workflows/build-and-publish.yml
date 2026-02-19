@@ -68,20 +68,7 @@ jobs:
           fi
 
       # ---------------------------------------------------------------
-      # 5. Import GPG signing key
-      # ---------------------------------------------------------------
-      - name: Import GPG key
-        if: steps.changed.outputs.packages != ''
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-        run: |
-          echo -n "$GPG_PRIVATE_KEY" | gpg --batch --import
-          echo "$GPG_KEY_ID:6:" | gpg --import-ownertrust
-          echo "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
-
-      # ---------------------------------------------------------------
-      # 6. Create a non-root build user (makepkg refuses to run as root)
+      # 5. Create a non-root build user (makepkg refuses to run as root)
       # ---------------------------------------------------------------
       - name: Create build user
         if: steps.changed.outputs.packages != ''
@@ -89,6 +76,21 @@ jobs:
           useradd -m builder
           echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           chown -R builder:builder "$GITHUB_WORKSPACE"
+
+      # ---------------------------------------------------------------
+      # 6. Import GPG signing key
+      # ---------------------------------------------------------------
+      - name: Import GPG key
+        if: steps.changed.outputs.packages != ''
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        run: |
+          # Import into builder's keyring, not root's one
+          echo -n "$GPG_PRIVATE_KEY" | su builder -c "gpg --batch --import"
+          FINGERPRINT=$(su builder -c "gpg --with-colons --fingerprint '$GPG_KEY_ID'" | grep '^fpr' | head -1 | cut -d: -f10)
+          echo "$FINGERPRINT:6:" | su builder -c "gpg --import-ownertrust"
+          echo "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
 
       # ---------------------------------------------------------------
       # 7. Build each changed package
