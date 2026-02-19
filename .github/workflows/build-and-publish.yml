@@ -38,8 +38,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
           fetch-depth: 0
 
       # ---------------------------------------------------------------
@@ -47,6 +46,7 @@ jobs:
       # ---------------------------------------------------------------
       - name: Detect changed packages
         id: changed
+        working-directory: ${{ github.workspace }}
         run: |
           pwd
           ls -la
