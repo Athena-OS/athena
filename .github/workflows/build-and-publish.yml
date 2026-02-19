@@ -36,44 +36,35 @@ jobs:
       # 2. Checkout the repository
       # ---------------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # full history so we can diff against the merge base
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
 
       # ---------------------------------------------------------------
-      # 3. Detect which packages changed in this PR
+      # 3. Trust the workspace directory (Git safe.directory)
+      # ---------------------------------------------------------------
+      - name: Trust workspace directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      # ---------------------------------------------------------------
+      # 4. Detect which packages changed in this PR
       # ---------------------------------------------------------------
       - name: Detect changed packages
         id: changed
         run: |
-          BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          HEAD_SHA="${{ github.event.pull_request.merge_commit_sha }}"
-
-          CHANGED_PKGBUILDS=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
-            | grep '^src/.*/PKGBUILD$' || true)
+          CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
+            HEAD^1...HEAD \
+            | grep 'src/.*/PKGBUILD$' || true)
 
           if [ -z "$CHANGED_PKGBUILDS" ]; then
             echo "No PKGBUILD changes found. Skipping."
             echo "packages=" >> "$GITHUB_OUTPUT"
           else
-            # Extract unique package directories (space-separated for later steps)
             DIRS=$(echo "$CHANGED_PKGBUILDS" | xargs -I{} dirname {} | sort -u | tr '\n' ' ')
             echo "Packages to build: $DIRS"
             echo "packages=$DIRS" >> "$GITHUB_OUTPUT"
           fi
-
-      # ---------------------------------------------------------------
-      # 4. Import GPG signing key
-      # ---------------------------------------------------------------
-      - name: Import GPG key
-        if: steps.changed.outputs.packages != ''
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-        run: |
-          echo -n "$GPG_PRIVATE_KEY" | gpg --batch --import
-          echo -n "$GPG_KEY_ID:6:" | gpg --import-ownertrust
-          echo -n "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
 
       # ---------------------------------------------------------------
       # 5. Create a non-root build user (makepkg refuses to run as root)
@@ -86,7 +77,36 @@ jobs:
           chown -R builder:builder "$GITHUB_WORKSPACE"
 
       # ---------------------------------------------------------------
-      # 6. Build each changed package
+      # 6. Import GPG signing key into builder's keyring
+      # ---------------------------------------------------------------
+      - name: Import GPG key
+        if: steps.changed.outputs.packages != ''
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          # Import into builder's keyring (makepkg and repo-add run as builder)
+          echo -n "$GPG_PRIVATE_KEY" | su builder -c \
+            "gpg --batch --passphrase '$GPG_PASSPHRASE' --pinentry-mode loopback --import"
+
+          FINGERPRINT=$(su builder -c "gpg --with-colons --fingerprint '$GPG_KEY_ID'" \
+            | grep '^fpr' | head -1 | cut -d: -f10)
+          echo "$FINGERPRINT:6:" | su builder -c "gpg --import-ownertrust"
+          echo "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
+
+          # Configure GPG agent for non-interactive passphrase use
+          su builder -c "mkdir -p ~/.gnupg && echo 'pinentry-mode loopback' >> ~/.gnupg/gpg.conf"
+          su builder -c "echo 'allow-loopback-pinentry' >> ~/.gnupg/gpg-agent.conf"
+          su builder -c "echo 'default-cache-ttl 86400' >> ~/.gnupg/gpg-agent.conf"
+
+          # Pre-cache the passphrase in the agent so makepkg/repo-add are not prompted
+          echo "$GPG_PASSPHRASE" | su builder -c \
+            "gpg --batch --passphrase-fd 0 --pinentry-mode loopback \
+             --sign --armor --output /dev/null /dev/null" 2>/dev/null || true
+
+      # ---------------------------------------------------------------
+      # 7. Build each changed package
       # ---------------------------------------------------------------
       - name: Build packages
         if: steps.changed.outputs.packages != ''
@@ -121,7 +141,7 @@ jobs:
           ls -lh /tmp/athena-repo/
 
       # ---------------------------------------------------------------
-      # 7. Download current repo DB from R2, add new packages, re-upload
+      # 8. Download current repo DB from R2, add new packages, re-sign
       # ---------------------------------------------------------------
       - name: Update repository database
         if: steps.changed.outputs.packages != ''
@@ -137,7 +157,7 @@ jobs:
           REMOTE_PREFIX="s3://$R2_BUCKET/$REPO_NAME/$REPO_ARCH"
 
           # Pull down the existing database files (silently fails on first run)
-          aws s3 cp "$REMOTE_PREFIX/$REPO_NAME.db.tar.gz"    "$DB_PATH/$REPO_NAME.db.tar.gz" \
+          aws s3 cp "$REMOTE_PREFIX/$REPO_NAME.db.tar.gz" "$DB_PATH/$REPO_NAME.db.tar.gz" \
             --endpoint-url "$R2_ENDPOINT" || true
           aws s3 cp "$REMOTE_PREFIX/$REPO_NAME.files.tar.gz" "$DB_PATH/$REPO_NAME.files.tar.gz" \
             --endpoint-url "$R2_ENDPOINT" || true
@@ -148,14 +168,17 @@ jobs:
           [ -f "$DB_PATH/$REPO_NAME.files.tar.gz" ] && \
             ln -sf "$REPO_NAME.files.tar.gz" "$DB_PATH/$REPO_NAME.files"
 
-          # Add every new package to the database (--sign also signs the DB)
+          # Ensure builder owns the repo directory (GPG key is in builder's keyring)
+          chown -R builder:builder "$DB_PATH"
+
+          # Run repo-add as builder so it has access to the GPG key
           for pkg in "$DB_PATH"/*.pkg.tar.zst; do
             echo "Adding $(basename $pkg) to repo DB..."
-            repo-add --sign "$DB_PATH/$REPO_NAME.db.tar.gz" "$pkg"
+            su builder -c "repo-add --sign '$DB_PATH/$REPO_NAME.db.tar.gz' '$pkg'"
           done
 
       # ---------------------------------------------------------------
-      # 8. Upload packages + updated DB to R2
+      # 9. Upload packages + updated DB to R2, then remove old versions
       # ---------------------------------------------------------------
       - name: Upload to R2
         if: steps.changed.outputs.packages != ''
@@ -169,7 +192,7 @@ jobs:
         run: |
           REMOTE_PREFIX="s3://$R2_BUCKET/$REPO_NAME/$REPO_ARCH"
 
-          # Upload package files and signatures
+          # Upload package files and their signatures
           for file in /tmp/athena-repo/*.pkg.tar.zst \
                       /tmp/athena-repo/*.pkg.tar.zst.sig; do
             [ -f "$file" ] || continue
@@ -187,19 +210,42 @@ jobs:
               --endpoint-url "$R2_ENDPOINT"
           done
 
-          # Also expose unversioned symlink-style names (.db and .files)
-          # by copying the archives under those names too
-          for name in db files; do
-            aws s3 cp \
-              "/tmp/athena-repo/$REPO_NAME.$name.tar.gz" \
-              "$REMOTE_PREFIX/$REPO_NAME.$name" \
-              --endpoint-url "$R2_ENDPOINT" || true
+          # Expose unversioned names (.db and .files) with their matching signatures.
+          # The .sig files must correspond exactly to the content being served —
+          # uploading .db.tar.gz.sig as .db.sig ensures pacman can verify correctly.
+          echo "Uploading unversioned DB names..."
+          aws s3 cp "/tmp/athena-repo/$REPO_NAME.db.tar.gz" \
+            "$REMOTE_PREFIX/$REPO_NAME.db" --endpoint-url "$R2_ENDPOINT"
+          aws s3 cp "/tmp/athena-repo/$REPO_NAME.db.tar.gz.sig" \
+            "$REMOTE_PREFIX/$REPO_NAME.db.sig" --endpoint-url "$R2_ENDPOINT"
+          aws s3 cp "/tmp/athena-repo/$REPO_NAME.files.tar.gz" \
+            "$REMOTE_PREFIX/$REPO_NAME.files" --endpoint-url "$R2_ENDPOINT"
+          aws s3 cp "/tmp/athena-repo/$REPO_NAME.files.tar.gz.sig" \
+            "$REMOTE_PREFIX/$REPO_NAME.files.sig" --endpoint-url "$R2_ENDPOINT"
+
+          # Remove old package versions from R2.
+          # Done AFTER uploading the new version so the repo is never left empty.
+          for pkg in /tmp/athena-repo/*.pkg.tar.zst; do
+            [ -f "$pkg" ] || continue
+            PKGNAME=$(basename "$pkg" | rev | cut -d- -f4- | rev)
+            NEWFILE=$(basename "$pkg")
+
+            aws s3 ls "$REMOTE_PREFIX/" --endpoint-url "$R2_ENDPOINT" \
+              | awk '{print $4}' \
+              | grep "^${PKGNAME}-" \
+              | grep '\.pkg\.tar\.zst$' \
+              | grep -v "^${NEWFILE}$" \
+              | while read -r old_file; do
+                  echo "Removing old: $old_file"
+                  aws s3 rm "$REMOTE_PREFIX/$old_file" --endpoint-url "$R2_ENDPOINT"
+                  aws s3 rm "$REMOTE_PREFIX/$old_file.sig" --endpoint-url "$R2_ENDPOINT" || true
+                done
           done
 
       # ---------------------------------------------------------------
-      # 9. Purge Cloudflare CDN cache for updated files
+      # 10. Purge Cloudflare CDN cache for updated files
       # ---------------------------------------------------------------
-      - name: Purge Cloudflare cache
+      - name: Purge edge cache
         if: steps.changed.outputs.packages != ''
         env:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
@@ -216,9 +262,9 @@ jobs:
             URLS+=("$REPO_BASE_URL/$(basename $f)")
           done
 
-          # Always purge the DB URLs
-          for name in db db.tar.gz files files.tar.gz \
-                      db.tar.gz.sig files.tar.gz.sig; do
+          # Always purge all DB-related URLs including unversioned names
+          for name in db db.sig db.tar.gz db.tar.gz.sig \
+                      files files.sig files.tar.gz files.tar.gz.sig; do
             URLS+=("$REPO_BASE_URL/$REPO_NAME.$name")
           done
 
