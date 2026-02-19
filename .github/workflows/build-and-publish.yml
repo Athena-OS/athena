@@ -42,14 +42,18 @@ jobs:
           fetch-depth: 0
 
       # ---------------------------------------------------------------
-      # 3. Detect which packages changed in this PR
+      # 3. Trust the workspace directory (so .git dir can be detected)
+      # ---------------------------------------------------------------
+      - name: Trust workspace directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      # ---------------------------------------------------------------
+      # 4. Detect which packages changed in this PR
       # ---------------------------------------------------------------
       - name: Detect changed packages
         id: changed
         working-directory: ${{ github.workspace }}
         run: |
-          pwd
-          ls -la
           CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
             origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} \
             | grep 'src/.*/PKGBUILD$' || true)
@@ -64,7 +68,7 @@ jobs:
           fi
 
       # ---------------------------------------------------------------
-      # 4. Import GPG signing key
+      # 5. Import GPG signing key
       # ---------------------------------------------------------------
       - name: Import GPG key
         if: steps.changed.outputs.packages != ''
@@ -77,7 +81,7 @@ jobs:
           echo -n "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
 
       # ---------------------------------------------------------------
-      # 5. Create a non-root build user (makepkg refuses to run as root)
+      # 6. Create a non-root build user (makepkg refuses to run as root)
       # ---------------------------------------------------------------
       - name: Create build user
         if: steps.changed.outputs.packages != ''
@@ -87,7 +91,7 @@ jobs:
           chown -R builder:builder "$GITHUB_WORKSPACE"
 
       # ---------------------------------------------------------------
-      # 6. Build each changed package
+      # 7. Build each changed package
       # ---------------------------------------------------------------
       - name: Build packages
         if: steps.changed.outputs.packages != ''
@@ -122,7 +126,7 @@ jobs:
           ls -lh /tmp/athena-repo/
 
       # ---------------------------------------------------------------
-      # 7. Download current repo DB from R2, add new packages, re-upload
+      # 8. Download current repo DB from R2, add new packages, re-upload
       # ---------------------------------------------------------------
       - name: Update repository database
         if: steps.changed.outputs.packages != ''
@@ -156,7 +160,7 @@ jobs:
           done
 
       # ---------------------------------------------------------------
-      # 8. Upload packages + updated DB to R2
+      # 9. Upload packages + updated DB to R2
       # ---------------------------------------------------------------
       - name: Upload to R2
         if: steps.changed.outputs.packages != ''
@@ -198,7 +202,7 @@ jobs:
           done
 
       # ---------------------------------------------------------------
-      # 9. Purge Cloudflare CDN cache for updated files
+      # 10. Purge Cloudflare CDN cache for updated files
       # ---------------------------------------------------------------
       - name: Purge Cloudflare cache
         if: steps.changed.outputs.packages != ''
