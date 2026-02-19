@@ -38,42 +38,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0   # full history so we can diff against the merge base
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
 
       # ---------------------------------------------------------------
-      # 3. Detect which packages changed in this PR
+      # 3. Trust the workspace directory (so .git dir can be detected)
+      # ---------------------------------------------------------------
+      - name: Trust workspace directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      # ---------------------------------------------------------------
+      # 4. Detect which packages changed in this PR
       # ---------------------------------------------------------------
       - name: Detect changed packages
         id: changed
+        working-directory: ${{ github.workspace }}
         run: |
-          BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          HEAD_SHA="${{ github.event.pull_request.merge_commit_sha }}"
-
-          CHANGED_PKGBUILDS=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
-            | grep '^src/.*/PKGBUILD$' || true)
+          CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
+            HEAD^1...HEAD \
+            | grep 'src/.*/PKGBUILD$' || true)
 
           if [ -z "$CHANGED_PKGBUILDS" ]; then
             echo "No PKGBUILD changes found. Skipping."
             echo "packages=" >> "$GITHUB_OUTPUT"
           else
-            # Extract unique package directories (space-separated for later steps)
             DIRS=$(echo "$CHANGED_PKGBUILDS" | xargs -I{} dirname {} | sort -u | tr '\n' ' ')
             echo "Packages to build: $DIRS"
             echo "packages=$DIRS" >> "$GITHUB_OUTPUT"
           fi
-
-      # ---------------------------------------------------------------
-      # 4. Import GPG signing key
-      # ---------------------------------------------------------------
-      - name: Import GPG key
-        if: steps.changed.outputs.packages != ''
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-        run: |
-          echo -n "$GPG_PRIVATE_KEY" | gpg --batch --import
-          echo -n "$GPG_KEY_ID:6:" | gpg --import-ownertrust
-          echo -n "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
 
       # ---------------------------------------------------------------
       # 5. Create a non-root build user (makepkg refuses to run as root)
@@ -86,7 +78,35 @@ jobs:
           chown -R builder:builder "$GITHUB_WORKSPACE"
 
       # ---------------------------------------------------------------
-      # 6. Build each changed package
+      # 6. Import GPG signing key
+      # ---------------------------------------------------------------
+      - name: Import GPG key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          # Import the key into builder's keyring with passphrase
+          echo -n "$GPG_PRIVATE_KEY" | su builder -c \
+            "gpg --batch --passphrase '$GPG_PASSPHRASE' --pinentry-mode loopback --import"
+
+          FINGERPRINT=$(su builder -c "gpg --with-colons --fingerprint '$GPG_KEY_ID'" \
+            | grep '^fpr' | head -1 | cut -d: -f10)
+          echo "$FINGERPRINT:6:" | su builder -c "gpg --import-ownertrust"
+          echo "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
+
+          # Configure GPG agent to always use loopback pinentry and supply passphrase
+          su builder -c "mkdir -p ~/.gnupg && echo 'pinentry-mode loopback' >> ~/.gnupg/gpg.conf"
+          su builder -c "echo 'allow-loopback-pinentry' >> ~/.gnupg/gpg-agent.conf"
+          su builder -c "echo 'default-cache-ttl 86400' >> ~/.gnupg/gpg-agent.conf"
+
+          # Pre-cache the passphrase in the agent so makepkg doesn't get prompted
+          echo "$GPG_PASSPHRASE" | su builder -c \
+            "gpg --batch --passphrase-fd 0 --pinentry-mode loopback \
+             --sign --armor --output /dev/null /dev/null" 2>/dev/null || true
+
+      # ---------------------------------------------------------------
+      # 7. Build each changed package
       # ---------------------------------------------------------------
       - name: Build packages
         if: steps.changed.outputs.packages != ''
@@ -121,7 +141,7 @@ jobs:
           ls -lh /tmp/athena-repo/
 
       # ---------------------------------------------------------------
-      # 7. Download current repo DB from R2, add new packages, re-upload
+      # 8. Download current repo DB from R2, add new packages, re-upload
       # ---------------------------------------------------------------
       - name: Update repository database
         if: steps.changed.outputs.packages != ''
@@ -155,7 +175,7 @@ jobs:
           done
 
       # ---------------------------------------------------------------
-      # 8. Upload packages + updated DB to R2
+      # 9. Upload packages + updated DB to R2
       # ---------------------------------------------------------------
       - name: Upload to R2
         if: steps.changed.outputs.packages != ''
@@ -197,9 +217,9 @@ jobs:
           done
 
       # ---------------------------------------------------------------
-      # 9. Purge Cloudflare CDN cache for updated files
+      # 10. Purge CDN cache for updated files
       # ---------------------------------------------------------------
-      - name: Purge Cloudflare cache
+      - name: Purge edge cache
         if: steps.changed.outputs.packages != ''
         env:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
