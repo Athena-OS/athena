@@ -225,7 +225,7 @@ jobs:
             aws s3 ls "$REMOTE_PREFIX/" --endpoint-url "$R2_ENDPOINT" \
               | awk '{print $4}' \
               | grep "^${PKGNAME}-" \
-              | grep '\.pkg\.tar\.zst' \
+              | grep '\.pkg\.tar\.zst$' \
               | grep -v "^${NEWFILE}$" \
               | while read -r old_file; do
                   echo "Removing old: $old_file"
