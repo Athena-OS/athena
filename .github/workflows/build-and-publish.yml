@@ -168,10 +168,13 @@ jobs:
           [ -f "$DB_PATH/$REPO_NAME.files.tar.gz" ] && \
             ln -sf "$REPO_NAME.files.tar.gz" "$DB_PATH/$REPO_NAME.files"
 
-          # Add every new package to the database (--sign also signs the DB)
+          # Ensure builder owns the repo directory
+          chown -R builder:builder "$DB_PATH"
+
+          # Run repo-add as builder so it has access to the GPG key
           for pkg in "$DB_PATH"/*.pkg.tar.zst; do
             echo "Adding $(basename $pkg) to repo DB..."
-            repo-add --sign "$DB_PATH/$REPO_NAME.db.tar.gz" "$pkg"
+            su builder -c "repo-add --sign '$DB_PATH/$REPO_NAME.db.tar.gz' '$pkg'"
           done
 
       # ---------------------------------------------------------------
