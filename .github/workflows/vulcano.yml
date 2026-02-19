@@ -35,8 +35,10 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Check Styling
         run: |
-          CHANGED_FILES=($(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} | tr '\n' ' '))
-          for FILE in "${CHANGED_FILES[@]}"; do
+          CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
+            HEAD^1...HEAD \
+            | grep 'src/.*/PKGBUILD$' || true)
+          for FILE in "${CHANGED_PKGBUILDS[@]}"; do
             if [[ $(basename "$FILE") == "PKGBUILD" ]]; then
               echo "Checking $FILE..."
               pkgcheck "$FILE"
@@ -53,8 +55,10 @@ jobs:
           fetch-depth: 0
       - name: Build Package
         run: |
-          CHANGED_FILES=($(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} | tr '\n' ' '))
-          for FILE in "${CHANGED_FILES[@]}"; do
+          CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
+            HEAD^1...HEAD \
+            | grep 'src/.*/PKGBUILD$' || true)
+          for FILE in "${CHANGED_PKGBUILDS[@]}"; do
             if [[ $(basename "$FILE") == "PKGBUILD" ]]; then
               echo "Building $FILE..."
               podman build --load -t builder -f vulcano/Dockerfile $(dirname $FILE)
