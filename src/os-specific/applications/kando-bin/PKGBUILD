@@ -2,7 +2,7 @@ pkgname=kando-bin
 _pkgname=Kando
 pkgver=2.2.0
 _electronversion=31
-pkgrel=14
+pkgrel=15
 pkgdesc='A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.'
 arch=('aarch64' 'x86_64')
 url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
@@ -47,7 +47,7 @@ prepare() {
         s/@runname@/app/
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
