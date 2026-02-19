@@ -1,7 +1,6 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kando-bin
 _pkgname=Kando
-pkgver=2.1.2
+pkgver=2.2.0
 _electronversion=31
 pkgrel=1
 pkgdesc='A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.'
@@ -39,8 +38,8 @@ sha512sums=('046d3429e40271479fcdd731c793ea9c20533d1be46701ced689925778b8949f0b8
             '3578476802bbcd6680830bd3853e76c4999bed73fce55ff955baf82cee24204c8b5639ff3e2ca915147caed1ddf9d8380923ca37bf80c138e524da2456dfe0cf'
             '81064df4033091749b989a1be6c2be4ebc1fa63ab59c893cfb9ce806c0da9c8b531e3c218561909568444fe41d1592722ef7f5dd53e7f9159e4cf6e49659656b'
             '374572c23e16a9d76c2f48f08b538cdc3a73e4657013fe158f5eccc591b5d16521663e9ada9766ee840079ae0d0832303fa64f9ef2a3a0da667a01f466c9a3c6')
-sha512sums_aarch64=('186059e6ddf5e96b5e89f563b98ef861616bef3f6c8a3ac447af4cd212b08c23deffbd67042dc1a4027710c40568da9b2ec55cb1ea2bd3c31f7fac22dc387133')
-sha512sums_x86_64=('463dcd4cc24f5ad36f78ee945f20a92e4f99bc89507b8e2fbc34391cff5199ccee4e162966ff7f4e007579b598fb8ce3bf14abeb935b80b57e72d67bc41520a6')
+sha512sums_aarch64=('c716cba8fd25997016a3e0dd22915fef725238aae722c1076845e269b349fec2fd54b76e1d8ce4a6425f02cd0b816b51adf3ceb8d2c02542d6c8d0d201366069')
+sha512sums_x86_64=('6db02ecb5d1f7ca06a6a0719d8bae10c1aba56c60e3c62459a40beba19b65b05f2bb3776b5f25b350d3449e37f87b78685e453ea763c9073e01c2de03708d480')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/
