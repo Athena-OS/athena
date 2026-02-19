@@ -46,6 +46,7 @@ jobs:
       # ---------------------------------------------------------------
       - name: Detect changed packages
         id: changed
+        working-directory: ${{ github.workspace }}
         run: |
           CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
             origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} \
