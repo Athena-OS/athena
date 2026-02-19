@@ -23,14 +23,14 @@ jobs:
       image: athenaos/base-devel:latest
       options: --privileged 
     steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syyu --noconfirm pkgcheck-arch git
       - name: Checkout code
         uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-      - name: Install dependencies
-        run: |
-          pacman -Syyu --noconfirm pkgcheck-arch git
       - name: Trust workspace directory
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Check Styling
