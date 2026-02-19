@@ -55,7 +55,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
-            origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} \
+            HEAD^1...HEAD \
             | grep 'src/.*/PKGBUILD$' || true)
 
           if [ -z "$CHANGED_PKGBUILDS" ]; then
