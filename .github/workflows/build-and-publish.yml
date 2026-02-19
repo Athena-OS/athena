@@ -1,0 +1,231 @@
+name: Build & Publish Packages to R2
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+    paths:
+      - "src/**/PKGBUILD"
+
+jobs:
+  build-and-publish:
+    # Only run when the PR was actually merged (not just closed/rejected)
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+      # ---------------------------------------------------------------
+      # 1. System setup
+      # ---------------------------------------------------------------
+      - name: Install base dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm \
+            base-devel \
+            git \
+            gnupg \
+            aws-cli \
+            curl \
+            jq
+
+      # ---------------------------------------------------------------
+      # 2. Checkout the repository
+      # ---------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # full history so we can diff against the merge base
+
+      # ---------------------------------------------------------------
+      # 3. Detect which packages changed in this PR
+      # ---------------------------------------------------------------
+      - name: Detect changed packages
+        id: changed
+        run: |
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.merge_commit_sha }}"
+
+          CHANGED_PKGBUILDS=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
+            | grep '^src/.*/PKGBUILD$' || true)
+
+          if [ -z "$CHANGED_PKGBUILDS" ]; then
+            echo "No PKGBUILD changes found. Skipping."
+            echo "packages=" >> "$GITHUB_OUTPUT"
+          else
+            # Extract unique package directories (space-separated for later steps)
+            DIRS=$(echo "$CHANGED_PKGBUILDS" | xargs -I{} dirname {} | sort -u | tr '\n' ' ')
+            echo "Packages to build: $DIRS"
+            echo "packages=$DIRS" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ---------------------------------------------------------------
+      # 4. Import GPG signing key
+      # ---------------------------------------------------------------
+      - name: Import GPG key
+        if: steps.changed.outputs.packages != ''
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        run: |
+          echo -n "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo -n "$GPG_KEY_ID:6:" | gpg --import-ownertrust
+          echo -n "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
+
+      # ---------------------------------------------------------------
+      # 5. Create a non-root build user (makepkg refuses to run as root)
+      # ---------------------------------------------------------------
+      - name: Create build user
+        if: steps.changed.outputs.packages != ''
+        run: |
+          useradd -m builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          chown -R builder:builder "$GITHUB_WORKSPACE"
+
+      # ---------------------------------------------------------------
+      # 6. Build each changed package
+      # ---------------------------------------------------------------
+      - name: Build packages
+        if: steps.changed.outputs.packages != ''
+        env:
+          PACKAGES: ${{ steps.changed.outputs.packages }}
+        run: |
+          mkdir -p /tmp/athena-repo
+
+          for pkg_dir in $PACKAGES; do
+            echo "=============================="
+            echo "Building: $pkg_dir"
+            echo "=============================="
+
+            su builder -c "
+              cd '$GITHUB_WORKSPACE/$pkg_dir'
+              makepkg \
+                --noconfirm \
+                --syncdeps \
+                --sign \
+                --cleanbuild \
+                2>&1
+            "
+
+            # Collect built packages and their signatures
+            find "$GITHUB_WORKSPACE/$pkg_dir" \
+              -maxdepth 1 \
+              \( -name "*.pkg.tar.zst" -o -name "*.pkg.tar.zst.sig" \) \
+              -exec mv {} /tmp/athena-repo/ \;
+          done
+
+          echo "Built artifacts:"
+          ls -lh /tmp/athena-repo/
+
+      # ---------------------------------------------------------------
+      # 7. Download current repo DB from R2, add new packages, re-upload
+      # ---------------------------------------------------------------
+      - name: Update repository database
+        if: steps.changed.outputs.packages != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          REPO_NAME: athena
+          REPO_ARCH: x86_64
+        run: |
+          DB_PATH="/tmp/athena-repo"
+          REMOTE_PREFIX="s3://$R2_BUCKET/$REPO_NAME/$REPO_ARCH"
+
+          # Pull down the existing database files (silently fails on first run)
+          aws s3 cp "$REMOTE_PREFIX/$REPO_NAME.db.tar.gz"    "$DB_PATH/$REPO_NAME.db.tar.gz" \
+            --endpoint-url "$R2_ENDPOINT" || true
+          aws s3 cp "$REMOTE_PREFIX/$REPO_NAME.files.tar.gz" "$DB_PATH/$REPO_NAME.files.tar.gz" \
+            --endpoint-url "$R2_ENDPOINT" || true
+
+          # Recreate the symlinks repo-add expects
+          [ -f "$DB_PATH/$REPO_NAME.db.tar.gz" ] && \
+            ln -sf "$REPO_NAME.db.tar.gz" "$DB_PATH/$REPO_NAME.db"
+          [ -f "$DB_PATH/$REPO_NAME.files.tar.gz" ] && \
+            ln -sf "$REPO_NAME.files.tar.gz" "$DB_PATH/$REPO_NAME.files"
+
+          # Add every new package to the database (--sign also signs the DB)
+          for pkg in "$DB_PATH"/*.pkg.tar.zst; do
+            echo "Adding $(basename $pkg) to repo DB..."
+            repo-add --sign "$DB_PATH/$REPO_NAME.db.tar.gz" "$pkg"
+          done
+
+      # ---------------------------------------------------------------
+      # 8. Upload packages + updated DB to R2
+      # ---------------------------------------------------------------
+      - name: Upload to R2
+        if: steps.changed.outputs.packages != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          REPO_NAME: athena
+          REPO_ARCH: x86_64
+        run: |
+          REMOTE_PREFIX="s3://$R2_BUCKET/$REPO_NAME/$REPO_ARCH"
+
+          # Upload package files and signatures
+          for file in /tmp/athena-repo/*.pkg.tar.zst \
+                      /tmp/athena-repo/*.pkg.tar.zst.sig; do
+            [ -f "$file" ] || continue
+            echo "Uploading $(basename $file)..."
+            aws s3 cp "$file" "$REMOTE_PREFIX/$(basename $file)" \
+              --endpoint-url "$R2_ENDPOINT"
+          done
+
+          # Upload DB archives and their signatures
+          for ext in db.tar.gz db.tar.gz.sig files.tar.gz files.tar.gz.sig; do
+            file="/tmp/athena-repo/$REPO_NAME.$ext"
+            [ -f "$file" ] || continue
+            echo "Uploading $REPO_NAME.$ext..."
+            aws s3 cp "$file" "$REMOTE_PREFIX/$REPO_NAME.$ext" \
+              --endpoint-url "$R2_ENDPOINT"
+          done
+
+          # Also expose unversioned symlink-style names (.db and .files)
+          # by copying the archives under those names too
+          for name in db files; do
+            aws s3 cp \
+              "/tmp/athena-repo/$REPO_NAME.$name.tar.gz" \
+              "$REMOTE_PREFIX/$REPO_NAME.$name" \
+              --endpoint-url "$R2_ENDPOINT" || true
+          done
+
+      # ---------------------------------------------------------------
+      # 9. Purge Cloudflare CDN cache for updated files
+      # ---------------------------------------------------------------
+      - name: Purge Cloudflare cache
+        if: steps.changed.outputs.packages != ''
+        env:
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          REPO_NAME: athena
+        run: |
+          REPO_BASE_URL="https://hub.athenaos.org/$REPO_NAME/x86_64"
+          URLS=()
+
+          # Add every uploaded package to the purge list
+          for f in /tmp/athena-repo/*.pkg.tar.zst \
+                   /tmp/athena-repo/*.pkg.tar.zst.sig; do
+            [ -f "$f" ] || continue
+            URLS+=("$REPO_BASE_URL/$(basename $f)")
+          done
+
+          # Always purge the DB URLs
+          for name in db db.tar.gz files files.tar.gz \
+                      db.tar.gz.sig files.tar.gz.sig; do
+            URLS+=("$REPO_BASE_URL/$REPO_NAME.$name")
+          done
+
+          # Cloudflare allows up to 30 URLs per call; build JSON and POST
+          JSON_URLS=$(printf '%s\n' "${URLS[@]}" | jq -R . | jq -s .)
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+            -H "Authorization: Bearer $CF_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "{\"files\": $JSON_URLS}" | jq .
