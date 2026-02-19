@@ -204,9 +204,9 @@ jobs:
           done
 
       # ---------------------------------------------------------------
-      # 10. Purge Cloudflare CDN cache for updated files
+      # 10. Purge CDN cache for updated files
       # ---------------------------------------------------------------
-      - name: Purge Cloudflare cache
+      - name: Purge edge cache
         if: steps.changed.outputs.packages != ''
         env:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
