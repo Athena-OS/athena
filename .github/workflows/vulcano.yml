@@ -26,9 +26,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+      - name: Trust workspace directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Install dependencies
         run: |
           pacman -Syyu --noconfirm pkgcheck-arch git
@@ -37,7 +38,7 @@ jobs:
           CHANGED_FILES=($(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.sha }} | tr '\n' ' '))
           for FILE in "${CHANGED_FILES[@]}"; do
             if [[ $(basename "$FILE") == "PKGBUILD" ]]; then
-              echo "Validating $FILE..."
+              echo "Checking $FILE..."
               pkgcheck "$FILE"
             fi
           done
