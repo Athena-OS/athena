@@ -216,6 +216,24 @@ jobs:
               --endpoint-url "$R2_ENDPOINT" || true
           done
 
+          # Remove old version packages
+          for pkg in /tmp/athena-repo/*.pkg.tar.zst; do
+            [ -f "$pkg" ] || continue
+            PKGNAME=$(basename "$pkg" | rev | cut -d- -f4- | rev)
+            NEWFILE=$(basename "$pkg")
+
+            aws s3 ls "$REMOTE_PREFIX/" --endpoint-url "$R2_ENDPOINT" \
+              | awk '{print $4}' \
+              | grep "^${PKGNAME}-" \
+              | grep '\.pkg\.tar\.zst' \
+              | grep -v "^${NEWFILE}$" \
+              | while read -r old_file; do
+                  echo "Removing old: $old_file"
+                  aws s3 rm "$REMOTE_PREFIX/$old_file" --endpoint-url "$R2_ENDPOINT"
+                  aws s3 rm "$REMOTE_PREFIX/$old_file.sig" --endpoint-url "$R2_ENDPOINT" || true
+                done
+          done
+
       # ---------------------------------------------------------------
       # 10. Purge CDN cache for updated files
       # ---------------------------------------------------------------
