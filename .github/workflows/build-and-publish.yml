@@ -87,9 +87,9 @@ jobs:
           GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
         run: |
           # Import into builder's keyring, not root's one
-          echo -n "$GPG_PRIVATE_KEY" | su builder -c "gpg --batch --import"
-          FINGERPRINT=$(su builder -c "gpg --with-colons --fingerprint '$GPG_KEY_ID'" | grep '^fpr' | head -1 | cut -d: -f10)
-          echo "$FINGERPRINT:6:" | su builder -c "gpg --import-ownertrust"
+          echo -n "$GPG_PRIVATE_KEY" | su builder -c "GNUPGHOME=/home/builder/.gnupg gpg --batch --import"
+          FINGERPRINT=$(su builder -c "GNUPGHOME=/home/builder/.gnupg gpg --with-colons --fingerprint '$GPG_KEY_ID'" | grep '^fpr' | head -1 | cut -d: -f10)
+          echo "$FINGERPRINT:6:" | su builder -c "GNUPGHOME=/home/builder/.gnupg gpg --import-ownertrust"
           echo "GPGKEY=$GPG_KEY_ID" >> /etc/makepkg.conf
 
       # ---------------------------------------------------------------
@@ -108,6 +108,7 @@ jobs:
             echo "=============================="
 
             su builder -c "
+              export GNUPGHOME=/home/builder/.gnupg
               cd '$GITHUB_WORKSPACE/$pkg_dir'
               makepkg \
                 --noconfirm \
