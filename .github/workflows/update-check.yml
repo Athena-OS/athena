@@ -241,6 +241,14 @@ jobs:
           PREOF
 
             else
+              # Skip if pkgver in PKGBUILD already matches the detected version
+              if [ "$CURRENT_VER" = "$NEW_VER" ]; then
+                echo "  -> pkgver already at $NEW_VER (pkgrel=$CURRENT_REL preserved), skipping."
+                git checkout main
+                git branch -D "$BRANCH_NAME" 2>/dev/null || true
+                continue
+              fi
+
               sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" "$PKGBUILD"
               sed -i "s/^pkgrel=.*/pkgrel=${NEW_REL}/" "$PKGBUILD"
 
