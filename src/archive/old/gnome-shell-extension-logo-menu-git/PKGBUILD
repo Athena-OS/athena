@@ -13,9 +13,14 @@ source=(${pkgname%-git}::git+$url.git)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd $pkgname
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {
