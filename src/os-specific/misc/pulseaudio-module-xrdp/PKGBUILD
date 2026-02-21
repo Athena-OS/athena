@@ -31,10 +31,8 @@ source=(
   "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v${pkgver}.$_pkgext"
   "$_pkgsrc_pulse"::"git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git"
 )
-sha256sums=(
-  'f0cc39b67421511c28395329a4091f8c5be79d861414b7d67313aa760e3b9db4'
-  'SKIP'
-)
+sha256sums=('f0cc39b67421511c28395329a4091f8c5be79d861414b7d67313aa760e3b9db4'
+            'SKIP')
 
 _build_pulse() (
   echo "Building pulseaudio..."
