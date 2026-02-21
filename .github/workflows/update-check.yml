@@ -78,10 +78,19 @@ jobs:
 
           OUTDATED=$(python3 - <<'PYEOF'
           import json
-          with open(".nvchecker/oldver.json") as f:
-              old = json.load(f)
-          with open(".nvchecker/newver.json") as f:
-              new = json.load(f)
+
+          def load_verfile(path):
+              with open(path) as f:
+                  data = json.load(f)
+              # nvchecker v2 wraps versions in {"version": 2, "data": {...}}
+              if isinstance(data, dict) and "data" in data and "version" in data:
+                  return {pkg: info["version"] for pkg, info in data["data"].items()}
+              # flat format {"pkg": "ver"}
+              return data
+
+          old = load_verfile(".nvchecker/oldver.json")
+          new = load_verfile(".nvchecker/newver.json")
+
           for pkg, new_ver in new.items():
               old_ver = old.get(pkg, "")
               if old_ver != new_ver:
@@ -209,7 +218,20 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"
           git checkout main
-          cp .nvchecker/newver.json .nvchecker/oldver.json
+
+          # Flatten nvchecker v2 envelope to simple {"pkg": "ver"} for oldver.json
+          python3 - <<'PYEOF'
+          import json
+          with open(".nvchecker/newver.json") as f:
+              data = json.load(f)
+          if isinstance(data, dict) and "data" in data and "version" in data:
+              flat = {pkg: info["version"] for pkg, info in data["data"].items()}
+          else:
+              flat = data
+          with open(".nvchecker/oldver.json", "w") as f:
+              json.dump(flat, f, indent=2)
+          PYEOF
+
           rm -f .nvchecker/keyfile.toml
           if git diff --quiet .nvchecker/oldver.json; then
             echo "No version state change to commit."
