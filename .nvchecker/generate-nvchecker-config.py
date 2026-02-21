@@ -321,6 +321,5 @@ if skipped:
     print(f"\n[WARNING] {len(skipped)} package(s) need manual attention:")
     for name, reason in skipped:
         print(f"  - {name}: {reason}")
-    sys.exit(1)
 else:
     print("\nAll packages processed successfully.")
