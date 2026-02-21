@@ -23,7 +23,8 @@ jobs:
             python-pip \
             github-cli \
             jq \
-            curl
+            curl \
+            pacman-contrib
           pip install nvchecker --break-system-packages
 
       - name: Checkout repository
@@ -69,6 +70,12 @@ jobs:
           nvchecker -c .nvchecker/nvchecker.toml -l warning
           echo "=== Current versions detected ==="
           cat .nvchecker/newver.json
+
+      - name: Ensure auto-update label exists
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          gh label create "auto-update"             --description "Automated PKGBUILD update by nvchecker"             --color "0075ca"             --repo "$GITHUB_REPOSITORY" 2>/dev/null || true
 
       - name: Update PKGBUILDs and open PRs
         env:
