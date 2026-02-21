@@ -2,7 +2,7 @@ name: Auto-update PKGBUILDs (nvchecker)
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 6 * * *'   # daily at 06:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -13,6 +13,7 @@ jobs:
       options: --privileged
 
     steps:
+      # -----------------------------------------------------------------------
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm
@@ -27,44 +28,41 @@ jobs:
             pacman-contrib
           pip install nvchecker --break-system-packages
 
-          # Create a non-root user for updpkgsums/makepkg (refuses to run as root)
+          # makepkg / updpkgsums refuse to run as root — create a build user
           useradd -m builduser
           echo "builduser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+      # -----------------------------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
 
+      # -----------------------------------------------------------------------
       - name: Grant builduser workspace access
         run: |
-          # updpkgsums needs write access to the package directory
           chown -R builduser:builduser "$GITHUB_WORKSPACE"
-          # Also allow builduser to write to /tmp
           chmod 1777 /tmp
 
+      # -----------------------------------------------------------------------
       - name: Configure git
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config --global user.name "github-actions[bot]"
+          git config --global user.name  "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+      # -----------------------------------------------------------------------
+      # keyfile.toml is listed in .nvchecker/.gitignore — it is never committed.
+      # nvchecker expects the [github] section (not [keys]).
       - name: Write nvchecker keyfile
         run: |
-          cat > "$GITHUB_WORKSPACE/.nvchecker/keyfile.toml" <<EOF
-          [keys]
-          github = "${{ secrets.GH_PAT }}"
+          cat > "$GITHUB_WORKSPACE/.nvchecker/keyfile.toml" <<'EOF'
+          [github]
+          token = "${{ secrets.GH_PAT }}"
           EOF
-        # The keyfile provides the GitHub token to avoid API rate limiting.
-        # If GH_PAT is not set, nvchecker will still work but may hit rate limits
-        # for repos with many packages. Alternatively set NVCHECKER_GITHUB_TOKEN env var.
 
-      - name: Write git URL extraction helper
-        run: |
-          cp "$GITHUB_WORKSPACE/.nvchecker/extract-git-url.py"              "$GITHUB_WORKSPACE/.nvchecker/extract-git-url.py" 2>/dev/null || true
-          # Script is committed to the repo alongside generate-nvchecker-config.py
-
+      # -----------------------------------------------------------------------
       - name: Generate nvchecker.toml
         run: |
           cd "$GITHUB_WORKSPACE"
@@ -74,47 +72,67 @@ jobs:
           echo "=== Generated nvchecker.toml ==="
           cat .nvchecker/nvchecker.toml
 
+      # -----------------------------------------------------------------------
+      # oldver.json is committed in the repo (initially "{}").
+      # newver.json is written by nvchecker into .nvchecker/ (gitignored).
       - name: Ensure oldver.json exists
         run: |
           if [ ! -f "$GITHUB_WORKSPACE/.nvchecker/oldver.json" ]; then
             echo "{}" > "$GITHUB_WORKSPACE/.nvchecker/oldver.json"
           fi
 
+      # -----------------------------------------------------------------------
+      # nvchecker resolves oldver/newver/keyfile relative to the config file's
+      # directory, so we must cd into .nvchecker/ before running it.
       - name: Run nvchecker
         run: |
-          cd "$GITHUB_WORKSPACE"
-          nvchecker -c .nvchecker/nvchecker.toml -l warning
+          cd "$GITHUB_WORKSPACE/.nvchecker"
+          nvchecker -c nvchecker.toml
           echo "=== Current versions detected ==="
-          cat .nvchecker/newver.json
+          cat newver.json
 
+      # -----------------------------------------------------------------------
       - name: Ensure auto-update label exists
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          gh label create "auto-update"             --description "Automated PKGBUILD update by nvchecker"             --color "0075ca"             --repo "$GITHUB_REPOSITORY" 2>/dev/null || true
+          gh label create "auto-update" \
+            --description "Automated PKGBUILD update by nvchecker" \
+            --color "0075ca" \
+            --repo "$GITHUB_REPOSITORY" 2>/dev/null || true
 
+      # -----------------------------------------------------------------------
       - name: Update PKGBUILDs and open PRs
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           cd "$GITHUB_WORKSPACE"
 
+          # ------------------------------------------------------------------
+          # Parse oldver.json and newver.json (handles both nvchecker v1 flat
+          # format and v2 envelope format) and print "pkg|old|new" for each
+          # package whose version has changed.
+          # ------------------------------------------------------------------
           OUTDATED=$(python3 - <<'PYEOF'
-          import json
+          import json, sys
 
-          def load_verfile(path):
-              with open(path) as f:
-                  data = json.load(f)
-              # nvchecker v2 wraps versions in {"version": 2, "data": {...}}
-              if isinstance(data, dict) and "data" in data and "version" in data:
-                  return {pkg: info["version"] for pkg, info in data["data"].items()}
-              # flat format {"pkg": "ver"}
-              return data
+          def load_ver(path):
+              try:
+                  with open(path) as f:
+                      data = json.load(f)
+              except (FileNotFoundError, json.JSONDecodeError):
+                  return {}
+              # nvchecker v2: {"version": 2, "data": {"pkg": {"version": "x.y"}}}
+              if isinstance(data, dict) and data.get("version") == 2 and "data" in data:
+                  return {pkg: info["version"] for pkg, info in data["data"].items()
+                          if isinstance(info, dict) and "version" in info}
+              # nvchecker v1 flat: {"pkg": "x.y"}
+              return {k: v for k, v in data.items() if isinstance(v, str)}
 
-          old = load_verfile(".nvchecker/oldver.json")
-          new = load_verfile(".nvchecker/newver.json")
+          old = load_ver(".nvchecker/oldver.json")
+          new = load_ver(".nvchecker/newver.json")
 
-          for pkg, new_ver in new.items():
+          for pkg, new_ver in sorted(new.items()):
               old_ver = old.get(pkg, "")
               if old_ver != new_ver:
                   print(f"{pkg}|{old_ver}|{new_ver}")
@@ -129,13 +147,16 @@ jobs:
           echo "=== Packages with updates ==="
           echo "$OUTDATED"
 
-          echo "$OUTDATED" | while IFS='|' read -r PKG_NAME OLD_VER NEW_VER; do
-            echo ""
-            echo "────────────────────────────────"
-            echo "Processing: $PKG_NAME  ($OLD_VER -> $NEW_VER)"
-            echo "────────────────────────────────"
+          # Make sure we start every iteration on main
+          git checkout main
 
-            # Strip leading 'v' from version -- pkgver in Arch must not start with 'v'
+          while IFS='|' read -r PKG_NAME OLD_VER NEW_VER; do
+            echo ""
+            echo "────────────────────────────────────────────────"
+            echo "Processing: $PKG_NAME  ($OLD_VER -> $NEW_VER)"
+            echo "────────────────────────────────────────────────"
+
+            # Strip leading 'v' — pkgver in Arch must not start with 'v'
             NEW_VER="${NEW_VER#v}"
             OLD_VER="${OLD_VER#v}"
 
@@ -146,75 +167,155 @@ jobs:
             fi
             PKG_DIR=$(dirname "$PKGBUILD")
 
+            # Detect VCS packages: have a pkgver() function AND a git+https source
             IS_VCS=false
-            if grep -qE '^pkgver\(\)' "$PKGBUILD" && grep -qE 'git\+https://' "$PKGBUILD"; then
+            if grep -qE '^pkgver\s*\(\)' "$PKGBUILD" && grep -qE 'git\+https://' "$PKGBUILD"; then
               IS_VCS=true
             fi
 
-            CURRENT_VER=$(grep -E '^pkgver=' "$PKGBUILD" | head -1 \
-              | cut -d= -f2 | tr -d '"' | tr -d "'")
-            CURRENT_REL=$(grep -E '^pkgrel=' "$PKGBUILD" | head -1 \
-              | cut -d= -f2 | tr -d '"' | tr -d "'")
+            CURRENT_VER=$(grep -E '^pkgver=' "$PKGBUILD" | head -1 | cut -d= -f2 | tr -d '"' | tr -d "'")
+            CURRENT_REL=$(grep -E '^pkgrel=' "$PKGBUILD" | head -1 | cut -d= -f2 | tr -d '"' | tr -d "'")
 
+            # ------------------------------------------------------------------
+            # VCS packages: nvchecker reports the latest commit hash.  We need
+            # to actually clone the repo and run the pkgver() function to get
+            # the real Arch-style version string (e.g. 131.940a5d3).
+            # ------------------------------------------------------------------
             if [ "$IS_VCS" = true ]; then
-              # Clone the repo and compute pkgver() output directly
-              echo "  -> Computing pkgver() for $PKG_NAME..."
-              CLONE_DIR=$(sudo -u builduser mktemp -d)
+              echo "  -> VCS package — computing pkgver() from upstream..."
 
-              # Extract and expand git URL from PKGBUILD (base64-encoded to avoid YAML quoting issues)
-              GIT_URL=$(echo "aW1wb3J0IHJlLCBzeXMKY29udGVudCA9IG9wZW4oc3lzLmFyZ3ZbMV0pLnJlYWQoKQp2YXJzID0ge30KZm9yIG0gaW4gcmUuZmluZGl0ZXIocicoP20pXihbYS16QS1aX11bYS16QS1aMC05X10qKT1bIlwnXT8oW14iXCcoKVxuXSspWyJcJ10/JywgY29udGVudCk6CiAgICBuYW1lLCB2YWwgPSBtLmdyb3VwKDEpLCBtLmdyb3VwKDIpLnN0cmlwKCkKICAgIGlmICckJyBub3QgaW4gdmFsIGFuZCBsZW4odmFsKSA8IDIwMDoKICAgICAgICB2YXJzW25hbWVdID0gdmFsCm0gPSByZS5zZWFyY2gocidnaXRcK2h0dHBzOi8vKFteXHMiXCcoKVxuXSspJywgY29udGVudCkKaWYgbm90IG06CiAgICBzeXMuZXhpdCgwKQp1cmwgPSAnaHR0cHM6Ly8nICsgbS5ncm91cCgxKQp1cmwgPSB1cmwuc3BsaXQoJyMnKVswXS5yc3RyaXAoJyJcJyknKQpmb3IgayBpbiBzb3J0ZWQodmFycywga2V5PWxlbiwgcmV2ZXJzZT1UcnVlKToKICAgIHVybCA9IHVybC5yZXBsYWNlKCckeycraysnfScsIHZhcnNba10pLnJlcGxhY2UoJyQnK2ssIHZhcnNba10pCnByaW50KHVybCk=" | base64 -d | python3 - "$PKGBUILD")
+              # Extract the git clone URL and all simple shell variable assignments
+              # from the PKGBUILD so we can both clone and reconstruct the environment
+              # that pkgver() expects (e.g. $pkgname, $_pkgname, etc.).
+              PKGBUILD_ENV=$(python3 - "$PKGBUILD" <<'PYEOF'
+          import re, sys, json
+
+          content = open(sys.argv[1]).read()
+
+          # Collect all simple (non-dynamic) variable assignments
+          vars_ = {}
+          for m in re.finditer(
+              r'^([a-zA-Z_][a-zA-Z0-9_]*)=["\']?([^"\'\(\)\n]+)["\']?',
+              content, re.MULTILINE
+          ):
+              name, val = m.group(1), m.group(2).strip()
+              if '$' not in val and len(val) < 200:
+                  vars_[name] = val
+
+          # Expand variable references within collected values (longest key first)
+          changed = True
+          passes = 0
+          while changed and passes < 5:
+              changed = False
+              passes += 1
+              for k in sorted(vars_, key=len, reverse=True):
+                  for name in list(vars_):
+                      new_val = vars_[name].replace('${' + k + '}', vars_[k])
+                      new_val = new_val.replace('$' + k, vars_[k])
+                      if new_val != vars_[name]:
+                          vars_[name] = new_val
+                          changed = True
+
+          # Find git+https:// source URL and expand it
+          m = re.search(r'git\+https://([^\s"\'\(\)\n]+)', content)
+          git_url = ''
+          if m:
+              url = 'https://' + m.group(1)
+              url = url.split('#')[0].rstrip('"\')')
+              for k in sorted(vars_, key=len, reverse=True):
+                  url = url.replace('${' + k + '}', vars_[k])
+                  url = url.replace('$' + k, vars_[k])
+              git_url = url
+
+          # Output as shell-sourceable variable exports + a GIT_URL= line
+          for name, val in vars_.items():
+              # Single-quote the value to prevent re-expansion in the shell
+              safe = val.replace("'", "'\\''")
+              print(f"export {name}='{safe}'")
+          print(f"export __GIT_URL__='{git_url}'")
+          PYEOF
+              )
+
+              # Source the extracted variables into this shell
+              eval "$PKGBUILD_ENV"
+              GIT_URL="$__GIT_URL__"
 
               if [ -z "$GIT_URL" ]; then
                 echo "  -> Could not extract git URL, skipping."
-                rm -rf "$CLONE_DIR"
                 continue
               fi
 
-              echo "  -> Cloning $GIT_URL..."
+              echo "  -> Cloning $GIT_URL ..."
+              CLONE_DIR=$(mktemp -d)
 
-              # Use --tags so git describe works; limit depth for speed
-              if ! sudo -u builduser git clone --filter=blob:none --no-checkout --tags "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
+              # Full shallow clone WITH checkout so that git describe and
+              # git rev-list work correctly inside the pkgver() function.
+              # --tags fetches all tag refs needed by git describe.
+              if ! git clone --depth=1 --tags "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
                 echo "  -> Clone failed, skipping."
                 rm -rf "$CLONE_DIR"
                 continue
               fi
 
-              # Extract pkgver() function body and run it in the cloned dir
-              PKGVER_FUNC=$(awk '/^pkgver\(\)/,/^\}/' "$PKGBUILD" | tail -n +2 | head -n -1)
-              COMPUTED_VER=$(cd "$CLONE_DIR/$PKG_NAME" && eval "$PKGVER_FUNC" 2>/dev/null | tr -d '\n')
+              # Fetch enough history for git describe --long (needs tag ancestry).
+              # depth=100 covers virtually all real-world cases without full clone.
+              git -C "$CLONE_DIR/$PKG_NAME" fetch --tags --depth=100 2>/dev/null || true
+
+              # Extract pkgver() body (strip the function header and closing brace)
+              PKGVER_FUNC=$(awk '/^pkgver\s*\(\)/,/^\}/' "$PKGBUILD" | tail -n +2 | head -n -1)
+
+              # Run pkgver() in the cloned directory with all PKGBUILD variables
+              # pre-exported so that bare `cd $pkgname` style references resolve.
+              COMPUTED_VER=$(
+                eval "$PKGBUILD_ENV"
+                cd "$CLONE_DIR/$PKG_NAME"
+                bash -c "$PKGVER_FUNC" 2>/dev/null
+              | tr -d '\n')
               rm -rf "$CLONE_DIR"
 
               if [ -z "$COMPUTED_VER" ]; then
-                echo "  -> Could not compute pkgver(), skipping."
+                echo "  -> pkgver() returned empty, skipping."
                 continue
               fi
 
-              # Sanity check: pkgver must not be just dots or start with a dot
-              if echo "$COMPUTED_VER" | grep -qE '^\.+$|^\.|[^a-zA-Z0-9._+]'; then
-                echo "  -> Computed pkgver '$COMPUTED_VER' is invalid, skipping."
+              # Arch pkgver must only contain alphanumerics, dots, underscores, plus signs
+              if echo "$COMPUTED_VER" | grep -qE '[^a-zA-Z0-9._+]'; then
+                echo "  -> Computed pkgver '$COMPUTED_VER' contains invalid characters, skipping."
                 continue
               fi
 
-              echo "  -> Computed pkgver: $CURRENT_VER -> $COMPUTED_VER"
+              echo "  -> pkgver: $CURRENT_VER -> $COMPUTED_VER"
 
               if [ "$COMPUTED_VER" = "$CURRENT_VER" ]; then
-                echo "  -> pkgver unchanged ($CURRENT_VER), skipping."
+                echo "  -> pkgver unchanged, skipping."
                 continue
               fi
 
+              EFFECTIVE_NEW_VER="$COMPUTED_VER"
               NEW_REL=1
               BRANCH_NAME="auto-update/${PKG_NAME}-${COMPUTED_VER}"
+
             else
+              # ------------------------------------------------------------------
+              # Release package: nvchecker already gives us the new tag/version.
+              # ------------------------------------------------------------------
+              if [ "$CURRENT_VER" = "$NEW_VER" ]; then
+                echo "  -> pkgver already at $NEW_VER (pkgrel=$CURRENT_REL preserved), skipping."
+                continue
+              fi
+
+              EFFECTIVE_NEW_VER="$NEW_VER"
               NEW_REL=1
               BRANCH_NAME="auto-update/${PKG_NAME}-${NEW_VER}"
             fi
 
+            # Skip if this update branch already exists remotely
             if git ls-remote --exit-code origin "refs/heads/$BRANCH_NAME" > /dev/null 2>&1; then
-              echo "  -> Branch already exists, skipping."
+              echo "  -> Branch '$BRANCH_NAME' already exists remotely, skipping."
               continue
             fi
 
-            # Check if an open PR already exists for this package
+            # Skip if an open PR already targets this package
             EXISTING_PR=$(gh pr list \
               --state open \
               --label "auto-update" \
@@ -227,6 +328,7 @@ jobs:
               continue
             fi
 
+            # Always branch from a clean main
             git checkout main
             git checkout -b "$BRANCH_NAME"
 
@@ -234,42 +336,38 @@ jobs:
 
             if [ "$IS_VCS" = true ]; then
               sed -i "s/^pkgver=.*/pkgver=${COMPUTED_VER}/" "$PKGBUILD"
-              sed -i "s/^pkgrel=.*/pkgrel=${NEW_REL}/" "$PKGBUILD"
+              sed -i "s/^pkgrel=.*/pkgrel=${NEW_REL}/"     "$PKGBUILD"
 
               COMMIT_MSG="auto-update($PKG_NAME): ${CURRENT_VER} -> ${COMPUTED_VER}"
               PR_TITLE="auto-update($PKG_NAME): ${CURRENT_VER} -> ${COMPUTED_VER}"
 
-              cat > "$PR_BODY_FILE" << PREOF
+              cat > "$PR_BODY_FILE" <<PREOF
           ## Automated PKGBUILD update
 
-          **Package:** ${PKG_NAME} (VCS package)
-          **Previous pkgver:** ${CURRENT_VER}
-          **New pkgver:** ${COMPUTED_VER}
+          **Package:** \`${PKG_NAME}\` (VCS — git commit tracking)
+          **Previous pkgver:** \`${CURRENT_VER}\`
+          **New pkgver:** \`${COMPUTED_VER}\`
           **pkgrel reset to:** 1
 
-          pkgver computed by running the pkgver() function against the latest upstream commit.
+          \`pkgver\` was computed by running the \`pkgver()\` function against the
+          latest upstream commit. Checksums use \`SKIP\` (standard for VCS packages).
+
+          Please verify before merging:
+          - [ ] Package builds correctly with \`makepkg -si\`
+          - [ ] No breaking changes in recent upstream commits
 
           ---
           *Automatically generated by the nvchecker workflow.*
           PREOF
 
             else
-              # Skip if pkgver in PKGBUILD already matches the detected version
-              if [ "$CURRENT_VER" = "$NEW_VER" ]; then
-                echo "  -> pkgver already at $NEW_VER (pkgrel=$CURRENT_REL preserved), skipping."
-                git checkout main
-                git branch -D "$BRANCH_NAME" 2>/dev/null || true
-                continue
-              fi
-
               sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" "$PKGBUILD"
               sed -i "s/^pkgrel=.*/pkgrel=${NEW_REL}/" "$PKGBUILD"
 
               echo "  -> Regenerating checksums with updpkgsums..."
               cd "$PKG_DIR"
-              # makepkg refuses to run as root - use the builduser created at setup
               if ! sudo -u builduser updpkgsums 2>&1; then
-                echo "  -> ERROR: updpkgsums failed for $PKG_NAME — skipping PR."
+                echo "  -> ERROR: updpkgsums failed for $PKG_NAME — aborting PR."
                 cd "$GITHUB_WORKSPACE"
                 git checkout -- "$PKGBUILD"
                 git checkout main
@@ -281,18 +379,18 @@ jobs:
               COMMIT_MSG="auto-update($PKG_NAME): ${OLD_VER} -> ${NEW_VER}"
               PR_TITLE="auto-update($PKG_NAME): ${OLD_VER} -> ${NEW_VER}"
 
-              cat > "$PR_BODY_FILE" << PREOF
+              cat > "$PR_BODY_FILE" <<PREOF
           ## Automated PKGBUILD update
 
-          **Package:** ${PKG_NAME}
-          **Previous version:** ${OLD_VER}
-          **New version:** ${NEW_VER}
+          **Package:** \`${PKG_NAME}\`
+          **Previous version:** \`${OLD_VER}\`
+          **New version:** \`${NEW_VER}\`
           **pkgrel reset to:** 1
 
-          Checksums regenerated with updpkgsums (covers sha512sums, sha512sums_x86_64, sha512sums_aarch64).
+          Checksums regenerated with \`updpkgsums\`.
 
           Please verify before merging:
-          - [ ] Package builds correctly with the new version
+          - [ ] Package builds correctly with \`makepkg -si\`
           - [ ] No breaking changes in the upstream release notes
           - [ ] Checksums match the downloaded sources
 
@@ -301,48 +399,74 @@ jobs:
           PREOF
             fi
 
+            # Stage only the PKGBUILD (updpkgsums modifies it in-place)
             git add "$PKG_DIR/PKGBUILD"
+
             if git diff --cached --quiet; then
-              echo "  -> No changes to commit (updpkgsums failed), skipping PR."
+              echo "  -> No staged changes (updpkgsums produced identical sums?), skipping PR."
               git checkout main
               git branch -D "$BRANCH_NAME" 2>/dev/null || true
+              rm -f "$PR_BODY_FILE"
               continue
             fi
+
             git commit -m "$COMMIT_MSG"
             git push origin "$BRANCH_NAME"
 
             gh pr create \
-              --title "$PR_TITLE" \
+              --title   "$PR_TITLE" \
               --body-file "$PR_BODY_FILE" \
-              --base main \
-              --head "$BRANCH_NAME" \
-              --label "auto-update"
+              --base    main \
+              --head    "$BRANCH_NAME" \
+              --label   "auto-update"
 
             rm -f "$PR_BODY_FILE"
             echo "  -> PR opened: $PR_TITLE"
-          done
 
-      - name: Save version state
+            # Return to main for the next package
+            git checkout main
+
+          done <<< "$OUTDATED"
+
+          # Final safety net
+          git checkout main
+
+      # -----------------------------------------------------------------------
+      # Flatten the newver.json (v1 or v2) into the simple {"pkg":"ver"} format
+      # that nvchecker expects in oldver.json, then commit it so the next run
+      # knows what versions were current today.
+      # -----------------------------------------------------------------------
+      - name: Save version state (update oldver.json)
         run: |
           cd "$GITHUB_WORKSPACE"
           git checkout main
 
-          # Flatten nvchecker v2 envelope to simple {"pkg": "ver"} for oldver.json
           python3 - <<'PYEOF'
           import json
-          with open(".nvchecker/newver.json") as f:
-              data = json.load(f)
-          if isinstance(data, dict) and "data" in data and "version" in data:
-              flat = {pkg: info["version"] for pkg, info in data["data"].items()}
-          else:
-              flat = data
+
+          def load_ver(path):
+              try:
+                  with open(path) as f:
+                      data = json.load(f)
+              except (FileNotFoundError, json.JSONDecodeError):
+                  return {}
+              if isinstance(data, dict) and data.get("version") == 2 and "data" in data:
+                  return {pkg: info["version"] for pkg, info in data["data"].items()
+                          if isinstance(info, dict) and "version" in info}
+              return {k: v for k, v in data.items() if isinstance(v, str)}
+
+          flat = load_ver(".nvchecker/newver.json")
           with open(".nvchecker/oldver.json", "w") as f:
-              json.dump(flat, f, indent=2)
+              json.dump(flat, f, indent=2, sort_keys=True)
+              f.write("\n")
+          print(f"oldver.json updated with {len(flat)} entries.")
           PYEOF
 
+          # Never commit keyfile.toml — it was written at runtime and is gitignored
           rm -f .nvchecker/keyfile.toml
+
           if git diff --quiet .nvchecker/oldver.json; then
-            echo "No version state change to commit."
+            echo "No version-state change — nothing to commit."
           else
             git add .nvchecker/oldver.json
             git commit -m "chore(nvchecker): update oldver.json [skip ci]"
