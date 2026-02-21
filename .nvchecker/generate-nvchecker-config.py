@@ -236,7 +236,7 @@ with open(OUTPUT, "w") as f:
     f.write("[__config__]\n")
     f.write('oldver = ".nvchecker/oldver.json"\n')
     f.write('newver = ".nvchecker/newver.json"\n')
-    f.write('keyfile = ".nvchecker/keyfile.toml"\n')
+    f.write('keyfile = "keyfile.toml"\n')  # relative to the config file location
 
     if release_packages:
         f.write("\n\n# -- Release packages " + "-" * 60 + "\n\n")
