@@ -273,7 +273,7 @@ with open(OUTPUT, "w") as f:
 
     if release_packages:
         f.write("\n\n# ── Release packages " + "─" * 60 + "\n\n")
-        for pkgname, info in sorted(release_packages):
+        for pkgname, info in sorted(release_packages, key=lambda x: x[0]):
             f.write(f"[{pkgname}]\n")
             if info["platform"] == "github":
                 f.write('source = "github"\n')
@@ -300,7 +300,7 @@ with open(OUTPUT, "w") as f:
 
     if vcs_packages:
         f.write("\n# ── VCS packages (pkgver() computed by makepkg) " + "─" * 32 + "\n\n")
-        for pkgname, info in sorted(vcs_packages):
+        for pkgname, info in sorted(vcs_packages, key=lambda x: x[0]):
             f.write(f"[{pkgname}]\n")
             # All VCS packages use git source + commit tracking regardless of platform
             f.write('source = "git"\n')
