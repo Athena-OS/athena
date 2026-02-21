@@ -234,8 +234,8 @@ with open(OUTPUT, "w") as f:
     f.write("#   nvdiff .nvchecker/oldver.json .nvchecker/newver.json\n")
     f.write("\n")
     f.write("[__config__]\n")
-    f.write('oldver = ".nvchecker/oldver.json"\n')
-    f.write('newver = ".nvchecker/newver.json"\n')
+    f.write('oldver = "oldver.json"\n')  # relative to config file location
+    f.write('newver = "newver.json"\n')  # relative to config file location
     f.write('keyfile = "keyfile.toml"\n')  # relative to the config file location
 
     if release_packages:
@@ -270,7 +270,7 @@ with open(OUTPUT, "w") as f:
             f.write(f"[{pkgname}]\n")
             f.write('source = "git"\n')
             f.write(f'git = "{info["git_url"]}"\n')
-            f.write('use = "commit"\n')
+            f.write('use = "branch"\n')
             f.write("\n")
 
 # -- Summary -------------------------------------------------------------------
