@@ -23,7 +23,7 @@ import os
 import re
 import sys
 
-# ── Argument parsing ──────────────────────────────────────────────────────────
+# -- Argument parsing ----------------------------------------------------------
 
 parser = argparse.ArgumentParser(description="Generate nvchecker.toml from PKGBUILDs")
 parser.add_argument("--src-dir", default="src", help="Path to the src/ directory")
@@ -45,7 +45,7 @@ SRC_DIR     = args.src_dir
 OUTPUT      = args.output
 IGNORE_DIRS = [os.path.normpath(d) for d in args.ignore]
 
-# ── Platform definitions ──────────────────────────────────────────────────────
+# -- Platform definitions ------------------------------------------------------
 
 PLATFORMS = [
     (
@@ -77,7 +77,7 @@ PLATFORMS = [
 
 REMOTE_URL_RE = re.compile(r"https?://|git\+")
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# -- Helpers -------------------------------------------------------------------
 
 def extract_var(content, varname):
     m = re.search(
@@ -161,7 +161,7 @@ def find_source_info(content):
     return None
 
 
-# ── Scan PKGBUILDs ────────────────────────────────────────────────────────────
+# -- Scan PKGBUILDs ------------------------------------------------------------
 
 release_packages = []
 vcs_packages     = []
@@ -214,7 +214,7 @@ for root, dirs, files in os.walk(SRC_DIR):
         else:
             skipped.append((pkgname, "no known hosting platform found in source="))
 
-# ── Write nvchecker.toml ──────────────────────────────────────────────────────
+# -- Write nvchecker.toml ------------------------------------------------------
 
 os.makedirs(os.path.dirname(OUTPUT) or ".", exist_ok=True)
 
@@ -233,7 +233,7 @@ with open(OUTPUT, "w") as f:
     f.write('keyfile = ".nvchecker/keyfile.toml"\n')
 
     if release_packages:
-        f.write("\n\n# ── Release packages " + "─" * 60 + "\n\n")
+        f.write("\n\n# -- Release packages " + "-" * 60 + "\n\n")
         for pkgname, info in sorted(release_packages, key=lambda x: x[0]):
             f.write(f"[{pkgname}]\n")
             if info["platform"] == "github":
@@ -259,7 +259,7 @@ with open(OUTPUT, "w") as f:
             f.write("\n")
 
     if vcs_packages:
-        f.write("\n# ── VCS packages (pkgver() computed by makepkg) " + "─" * 32 + "\n\n")
+        f.write("\n# -- VCS packages (pkgver() computed by makepkg) " + "-" * 32 + "\n\n")
         for pkgname, info in sorted(vcs_packages, key=lambda x: x[0]):
             f.write(f"[{pkgname}]\n")
             f.write('source = "git"\n')
@@ -267,7 +267,7 @@ with open(OUTPUT, "w") as f:
             f.write('use = "commit"\n')
             f.write("\n")
 
-# ── Summary ───────────────────────────────────────────────────────────────────
+# -- Summary -------------------------------------------------------------------
 
 print(f"Generated {OUTPUT}")
 print(f"  Release packages : {len(release_packages)}")
