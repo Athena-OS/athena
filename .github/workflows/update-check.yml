@@ -60,6 +60,11 @@ jobs:
         # If GH_PAT is not set, nvchecker will still work but may hit rate limits
         # for repos with many packages. Alternatively set NVCHECKER_GITHUB_TOKEN env var.
 
+      - name: Write git URL extraction helper
+        run: |
+          cp "$GITHUB_WORKSPACE/.nvchecker/extract-git-url.py"              "$GITHUB_WORKSPACE/.nvchecker/extract-git-url.py" 2>/dev/null || true
+          # Script is committed to the repo alongside generate-nvchecker-config.py
+
       - name: Generate nvchecker.toml
         run: |
           cd "$GITHUB_WORKSPACE"
@@ -156,16 +161,8 @@ jobs:
               echo "  -> Computing pkgver() for $PKG_NAME..."
               CLONE_DIR=$(sudo -u builduser mktemp -d)
 
-              # Extract git URL from PKGBUILD, expanding shell variables first.
-              # We source only the scalar variable assignments (safe subset) into
-              # a subshell so that $_pkgname, $_name, etc. are resolved correctly.
-              GIT_URL=$(bash -c "
-                $(grep -E '^[a-zA-Z_][a-zA-Z0-9_]*=[^(]' "$PKGBUILD" | grep -v '^source' | head -30)
-                url=\$(grep -oP 'git\+https://[^\"'"'"'\s)]+' '$PKGBUILD' | head -1)
-                url=\${url#git+}          # strip git+ prefix
-                url=\${url%%#*}           # strip #branch=... or #tag=... fragment
-                echo \$url
-              " 2>/dev/null)
+              # Extract and expand git URL from PKGBUILD (base64-encoded to avoid YAML quoting issues)
+              GIT_URL=$(echo "aW1wb3J0IHJlLCBzeXMKY29udGVudCA9IG9wZW4oc3lzLmFyZ3ZbMV0pLnJlYWQoKQp2YXJzID0ge30KZm9yIG0gaW4gcmUuZmluZGl0ZXIocicoP20pXihbYS16QS1aX11bYS16QS1aMC05X10qKT1bIlwnXT8oW14iXCcoKVxuXSspWyJcJ10/JywgY29udGVudCk6CiAgICBuYW1lLCB2YWwgPSBtLmdyb3VwKDEpLCBtLmdyb3VwKDIpLnN0cmlwKCkKICAgIGlmICckJyBub3QgaW4gdmFsIGFuZCBsZW4odmFsKSA8IDIwMDoKICAgICAgICB2YXJzW25hbWVdID0gdmFsCm0gPSByZS5zZWFyY2gocidnaXRcK2h0dHBzOi8vKFteXHMiXCcoKVxuXSspJywgY29udGVudCkKaWYgbm90IG06CiAgICBzeXMuZXhpdCgwKQp1cmwgPSAnaHR0cHM6Ly8nICsgbS5ncm91cCgxKQp1cmwgPSB1cmwuc3BsaXQoJyMnKVswXS5yc3RyaXAoJyJcJyknKQpmb3IgayBpbiBzb3J0ZWQodmFycywga2V5PWxlbiwgcmV2ZXJzZT1UcnVlKToKICAgIHVybCA9IHVybC5yZXBsYWNlKCckeycraysnfScsIHZhcnNba10pLnJlcGxhY2UoJyQnK2ssIHZhcnNba10pCnByaW50KHVybCk=" | base64 -d | python3 - "$PKGBUILD")
 
               if [ -z "$GIT_URL" ]; then
                 echo "  -> Could not extract git URL, skipping."
