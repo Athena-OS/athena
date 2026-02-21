@@ -1,7 +1,7 @@
 pkgname=gnome-shell-extension-kando-integration
 pkgver=0.9.0
 pkgrel=1
-pkgdesc="GNOME Shell extension required for Kando to work on Wayland."
+pkgdesc='GNOME Shell extension required for Kando to work on Wayland.'
 arch=('any')
 url='https://github.com/kando-menu/gnome-shell-integration'
 license=('MIT')
@@ -25,3 +25,4 @@ package() {
 
   glib-compile-schemas "$pkgdir/usr/share/gnome-shell/extensions/kando-integration@kando-menu.github.io/schemas"
 }
+
