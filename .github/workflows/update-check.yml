@@ -56,7 +56,7 @@ jobs:
       # keyfile.toml is listed in .nvchecker/.gitignore — it is never committed.
       - name: Write nvchecker keyfile
         run: |
-          cat > "$GITHUB_WORKSPACE/.nvchecker/keyfile.toml" <<'EOF'
+          cat > "$GITHUB_WORKSPACE/.nvchecker/keyfile.toml" <<EOF
           [keys]
           github = "${{ secrets.GH_PAT }}"
           EOF
