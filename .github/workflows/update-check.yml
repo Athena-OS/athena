@@ -27,6 +27,12 @@ jobs:
             pacman-contrib
           pip install nvchecker --break-system-packages
 
+          # Create a non-root user for updpkgsums/makepkg (refuses to run as root)
+          useradd -m builduser
+          echo "builduser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          # Give builduser access to the workspace
+          chmod o+rx /root 2>/dev/null || true
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -178,7 +184,8 @@ jobs:
 
               echo "  -> Regenerating checksums with updpkgsums..."
               cd "$PKG_DIR"
-              if ! updpkgsums 2>&1; then
+              # makepkg refuses to run as root - use the builduser created at setup
+              if ! sudo -u builduser updpkgsums 2>&1; then
                 echo "  -> WARNING: updpkgsums failed. Manual checksum update required."
               fi
               cd "$GITHUB_WORKSPACE"
@@ -207,6 +214,12 @@ jobs:
             fi
 
             git add "$PKG_DIR/PKGBUILD"
+            if git diff --cached --quiet; then
+              echo "  -> No changes to commit (updpkgsums failed), skipping PR."
+              git checkout main
+              git branch -D "$BRANCH_NAME" 2>/dev/null || true
+              continue
+            fi
             git commit -m "$COMMIT_MSG"
             git push origin "$BRANCH_NAME"
 
