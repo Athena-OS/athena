@@ -156,8 +156,16 @@ jobs:
               echo "  -> Computing pkgver() for $PKG_NAME..."
               CLONE_DIR=$(sudo -u builduser mktemp -d)
 
-              # Extract git URL from PKGBUILD source= line
-              GIT_URL=$(grep -oP 'git\+https://[^"'"'"'\s)]+' "$PKGBUILD" | head -1 | sed 's/^git+//')
+              # Extract git URL from PKGBUILD, expanding shell variables first.
+              # We source only the scalar variable assignments (safe subset) into
+              # a subshell so that $_pkgname, $_name, etc. are resolved correctly.
+              GIT_URL=$(bash -c "
+                $(grep -E '^[a-zA-Z_][a-zA-Z0-9_]*=[^(]' "$PKGBUILD" | grep -v '^source' | head -30)
+                url=\$(grep -oP 'git\+https://[^\"'"'"'\s)]+' '$PKGBUILD' | head -1)
+                url=\${url#git+}          # strip git+ prefix
+                url=\${url%%#*}           # strip #branch=... or #tag=... fragment
+                echo \$url
+              " 2>/dev/null)
 
               if [ -z "$GIT_URL" ]; then
                 echo "  -> Could not extract git URL, skipping."
@@ -165,15 +173,17 @@ jobs:
                 continue
               fi
 
-              # Clone (shallow enough to get rev-list count + describe)
-              if ! sudo -u builduser git clone --depth=50 "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
+              echo "  -> Cloning $GIT_URL..."
+
+              # Use --tags so git describe works; limit depth for speed
+              if ! sudo -u builduser git clone --filter=blob:none --tags "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
                 echo "  -> Clone failed, skipping."
                 rm -rf "$CLONE_DIR"
                 continue
               fi
 
-              # Extract pkgver() function body and run it
-              PKGVER_FUNC=$(awk '/^pkgver\(\)/,/^}/' "$PKGBUILD" | tail -n +2 | head -n -1)
+              # Extract pkgver() function body and run it in the cloned dir
+              PKGVER_FUNC=$(awk '/^pkgver\(\)/,/^\}/' "$PKGBUILD" | tail -n +2 | head -n -1)
               COMPUTED_VER=$(cd "$CLONE_DIR/$PKG_NAME" && eval "$PKGVER_FUNC" 2>/dev/null | tr -d '\n')
               rm -rf "$CLONE_DIR"
 
