@@ -2,8 +2,7 @@
 
 # Contributor: Jat <chat@jat.email>
 
-_pkgname="pulseaudio-module-xrdp"
-pkgname="$_pkgname"
+pkgname=pulseaudio-module-xrdp
 pkgver=0.8
 pkgrel=1
 pkgdesc="xrdp pulseaudio module"
@@ -18,13 +17,8 @@ makedepends=(
   'meson'
   'tdb'
 )
-
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-
-install="$_pkgname.install"
-
-_pkgsrc="$_pkgname-$pkgver"
+install="$pkgname.install"
+_pkgsrc="$pkgname-$pkgver"
 _pkgsrc_pulse="pulseaudio.gitlab"
 _pkgext="tar.gz"
 source=(
@@ -81,3 +75,4 @@ package() {
   cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
 }
+
