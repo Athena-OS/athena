@@ -173,7 +173,7 @@ jobs:
               echo "  -> Cloning $GIT_URL..."
 
               # Use --tags so git describe works; limit depth for speed
-              if ! sudo -u builduser git clone --filter=blob:none --tags "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
+              if ! sudo -u builduser git clone --filter=blob:none --no-checkout --tags "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
                 echo "  -> Clone failed, skipping."
                 rm -rf "$CLONE_DIR"
                 continue
@@ -186,6 +186,12 @@ jobs:
 
               if [ -z "$COMPUTED_VER" ]; then
                 echo "  -> Could not compute pkgver(), skipping."
+                continue
+              fi
+
+              # Sanity check: pkgver must not be just dots or start with a dot
+              if echo "$COMPUTED_VER" | grep -qE '^\.+$|^\.|[^a-zA-Z0-9._+]'; then
+                echo "  -> Computed pkgver '$COMPUTED_VER' is invalid, skipping."
                 continue
               fi
 
