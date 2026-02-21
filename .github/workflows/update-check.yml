@@ -125,6 +125,10 @@ jobs:
             echo "Processing: $PKG_NAME  ($OLD_VER -> $NEW_VER)"
             echo "────────────────────────────────"
 
+            # Strip leading 'v' from version -- pkgver in Arch must not start with 'v'
+            NEW_VER="${NEW_VER#v}"
+            OLD_VER="${OLD_VER#v}"
+
             PKGBUILD=$(find "$GITHUB_WORKSPACE/src" -path "*/${PKG_NAME}/PKGBUILD" | head -1)
             if [ -z "$PKGBUILD" ]; then
               echo "  -> PKGBUILD not found, skipping."
