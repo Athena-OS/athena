@@ -54,6 +54,10 @@ jobs:
 
       # -----------------------------------------------------------------------
       # keyfile.toml is listed in .nvchecker/.gitignore — it is never committed.
+      # nvchecker's KeyManager requires a [keys] section containing per-source
+      # tokens as named entries.  Ref: nvchecker docs / util.py KeyManager.
+      # The heredoc must NOT use single-quote ('EOF') so that the shell expands
+      # the GH_PAT secret into the file.
       - name: Write nvchecker keyfile
         run: |
           cat > "$GITHUB_WORKSPACE/.nvchecker/keyfile.toml" <<EOF
@@ -257,19 +261,22 @@ jobs:
               fi
 
               # Fetch enough history for git describe --long (needs tag ancestry).
-              # depth=100 covers virtually all real-world cases without full clone.
-              git -C "$CLONE_DIR/$PKG_NAME" fetch --tags --depth=100 2>/dev/null || true
+              # depth=50 covers virtually all real-world cases without full clone.
+              git -C "$CLONE_DIR/$PKG_NAME" fetch --tags --depth=50 2>/dev/null || true
 
               # Extract pkgver() body (strip the function header and closing brace)
               PKGVER_FUNC=$(awk '/^pkgver\s*\(\)/,/^\}/' "$PKGBUILD" | tail -n +2 | head -n -1)
 
               # Run pkgver() in the cloned directory with all PKGBUILD variables
               # pre-exported so that bare `cd $pkgname` style references resolve.
+              # Note: the pipe must be INSIDE the $(...) substitution — placing it
+              # outside causes a shell syntax error. We use a temp file instead,
+              # which also avoids any subshell pipe-grouping ambiguity.
               COMPUTED_VER=$(
                 eval "$PKGBUILD_ENV"
                 cd "$CLONE_DIR/$PKG_NAME"
-                bash -c "$PKGVER_FUNC" 2>/dev/null
-              | tr -d '\n')
+                bash -c "$PKGVER_FUNC" 2>/dev/null | tr -d '\n'
+              )
               rm -rf "$CLONE_DIR"
 
               if [ -z "$COMPUTED_VER" ]; then
