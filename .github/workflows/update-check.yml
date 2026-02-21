@@ -260,9 +260,7 @@ jobs:
                 continue
               fi
 
-              # Fetch enough history for git describe --long (needs tag ancestry).
-              # depth=50 covers virtually all real-world cases without full clone.
-              git -C "$CLONE_DIR/$PKG_NAME" fetch --tags --depth=50 2>/dev/null || true
+              git -C "$CLONE_DIR/$PKG_NAME" fetch --tags 2>/dev/null || true
 
               # Extract pkgver() body (strip the function header and closing brace)
               PKGVER_FUNC=$(awk '/^pkgver\s*\(\)/,/^\}/' "$PKGBUILD" | tail -n +2 | head -n -1)
