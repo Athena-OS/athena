@@ -44,6 +44,9 @@ jobs:
           [keys]
           github = "${{ secrets.GH_PAT }}"
           EOF
+        # The keyfile provides the GitHub token to avoid API rate limiting.
+        # If GH_PAT is not set, nvchecker will still work but may hit rate limits
+        # for repos with many packages. Alternatively set NVCHECKER_GITHUB_TOKEN env var.
 
       - name: Generate nvchecker.toml
         run: |
