@@ -10,13 +10,6 @@ makedepends=('git' 'cargo' 'npm' 'pkg-config')
 source=("git+https://github.com/Athena-OS/mitre-attack-navigator.git")
 sha512sums=('SKIP')
 
-prepare() {
-  cd $pkgname
-
-  git submodule sync --recursive
-  git submodule update --init --recursive
-}
-
 pkgver() {
   cd $pkgname
 
@@ -26,6 +19,13 @@ pkgver() {
     printf "%s.%s" "$(git rev-list --count HEAD)" \
       "$(git rev-parse --short=7 HEAD)"
   )
+}
+
+prepare() {
+  cd $pkgname
+
+  git submodule sync --recursive
+  git submodule update --init --recursive
 }
 
 build() {

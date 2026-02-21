@@ -15,9 +15,14 @@ sha512sums=('SKIP'
             '77734fbae5cb2b87788af3646ec0a62a31e98be238d63dfe476e294bd941c3a6b999b58f5f479373adcada9ace3806184a46b271112990f4ec54261ba245930c')
 
 pkgver() {
-    cd Nordzy-icon
+  cd Nordzy-icon
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {

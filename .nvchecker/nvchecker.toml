@@ -12,13 +12,7 @@ newver = ".nvchecker/newver.json"
 keyfile = ".nvchecker/keyfile.toml"
 
 
-# ── Release packages ────────────────────────────────────────────────────────────
-
-[$_pkgname]
-source = "github"
-github = "neutrinolabs/pulseaudio-module-xrdp"
-use_max_tag = true
-prefix = "v"
+# -- Release packages ------------------------------------------------------------
 
 [athena-lightdm-neon-theme]
 source = "github"
@@ -52,6 +46,12 @@ github = "kando-menu/kando"
 use_max_tag = true
 prefix = "v"
 
+[pulseaudio-module-xrdp]
+source = "github"
+github = "neutrinolabs/pulseaudio-module-xrdp"
+use_max_tag = true
+prefix = "v"
+
 [sweet-dark-gtk-theme]
 source = "github"
 github = "EliverLara/Sweet"
@@ -59,7 +59,7 @@ use_max_tag = true
 prefix = "v"
 
 
-# ── VCS packages (pkgver() computed by makepkg) ────────────────────────────────
+# -- VCS packages (pkgver() computed by makepkg) --------------------------------
 
 [aegis]
 source = "git"
