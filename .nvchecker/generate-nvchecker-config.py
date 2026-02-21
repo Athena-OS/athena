@@ -4,9 +4,9 @@ generate-nvchecker-config.py
 Scans all PKGBUILDs under src/ and auto-generates .nvchecker/nvchecker.toml
 
 Usage:
-    python3 generate-nvchecker-config.py
-    python3 generate-nvchecker-config.py --src-dir src --output .nvchecker/nvchecker.toml
-    python3 generate-nvchecker-config.py --ignore src/misc src/deprecated
+    python3 .nvchecker/generate-nvchecker-config.py
+    python3 .nvchecker/generate-nvchecker-config.py --src-dir src --output .nvchecker/nvchecker.toml
+    python3 .nvchecker/generate-nvchecker-config.py --ignore src/misc src/deprecated
 
 Rules:
   - If PKGBUILD has a pkgver() function  -> VCS package  -> tracked by latest commit
@@ -80,8 +80,9 @@ REMOTE_URL_RE = re.compile(r"https?://|git\+")
 # -- Helpers -------------------------------------------------------------------
 
 def extract_var(content, varname):
+    """Extract a simple scalar variable assignment from a shell script."""
     m = re.search(
-        r"^" + varname + r'=["\']?([^"\'\n]+)["\']?',
+        r"^" + re.escape(varname) + r'=["\']?([^"\'\n]+)["\']?',
         content,
         re.MULTILINE,
     )
@@ -89,6 +90,10 @@ def extract_var(content, varname):
 
 
 def expand_vars(content, text):
+    """Expand shell variable references found in content into text."""
+    # Collect all simple (non-dynamic) variable assignments, longest first so
+    # e.g. $_pkgname is expanded before $_pkg if both exist.
+    assignments = {}
     for m in re.finditer(
         r'^([a-zA-Z_][a-zA-Z0-9_]*)=["\']?([^"\'\(\)\n]+)["\']?',
         content,
@@ -96,34 +101,64 @@ def expand_vars(content, text):
     ):
         varname, value = m.group(1), m.group(2).strip()
         if len(value) < 200 and "$" not in value:
-            text = text.replace("${" + varname + "}", value)
-            text = text.replace("$" + varname, value)
+            assignments[varname] = value
+
+    # Expand longest variable names first to avoid partial substitutions
+    for varname in sorted(assignments, key=len, reverse=True):
+        value = assignments[varname]
+        text = text.replace("${" + varname + "}", value)
+        text = text.replace("$" + varname, value)
+
     return text
 
 
+def is_ignored(path):
+    """Return True if path is inside any of the ignored directories."""
+    norm = os.path.normpath(path)
+    for ig in IGNORE_DIRS:
+        if norm == ig or norm.startswith(ig + os.sep):
+            return True
+    return False
+
+
 def has_only_local_sources(content):
+    """Return True when every source line is a local file (no http/git+ URL)."""
     in_block = False
+    has_source = False
     for line in content.splitlines():
         stripped = line.strip()
         if re.match(r"source[_a-z0-9]*\s*=\s*\(", stripped):
             in_block = True
+            has_source = True
         if in_block:
             if REMOTE_URL_RE.search(stripped):
                 return False
-            if ")" in stripped:
+            if ")" in stripped and stripped.index(")") > stripped.find("(") or (
+                ")" in stripped and not stripped.startswith("source")
+            ):
                 in_block = False
-    return True
+    return has_source  # only "local" if we found a source block at all
 
 
 def is_vcs_package(content):
+    """Return True when the PKGBUILD declares a pkgver() function."""
     return bool(re.search(r"^pkgver\s*\(\)", content, re.MULTILINE))
 
 
 def find_source_info(content):
+    """
+    Scan candidate lines for a recognisable hosting platform URL and return a
+    dict with platform metadata, or None if nothing is found.
+    """
+    # Expand variable references in the whole file content first so that
+    # patterns like source=("git+https://github.com/$_user/$_repo.git") resolve.
+    expanded_content = expand_vars(content, content)
+
+    # Gather candidate lines: explicit helper vars + source= lines
     candidates = []
-    for line in content.splitlines():
+    for line in expanded_content.splitlines():
         if re.match(r"\s*(_ghurl|_giturl|_url|url|source)\s*[=(]", line):
-            candidates.append(expand_vars(content, line))
+            candidates.append(line)
 
     has_v = bool(re.search(r"/v\$\{?pkgver\}?", content))
 
@@ -163,51 +198,55 @@ def find_source_info(content):
 
 # -- Scan PKGBUILDs ------------------------------------------------------------
 
-release_packages = []
-vcs_packages     = []
-local_packages   = []
-skipped          = []
+release_packages = []   # list of (pkgname, info)
+vcs_packages     = []   # list of (pkgname, info)
+local_packages   = []   # list of pkgname strings
+skipped          = []   # list of (identifier, reason)
+
+seen_pkgnames = set()   # track duplicates across all categories
 
 for root, dirs, files in os.walk(SRC_DIR):
-    dirs[:] = [
+    # Prune ignored directories in-place so os.walk won't descend into them
+    dirs[:] = sorted(
         d for d in dirs
-        if os.path.normpath(os.path.join(root, d)) not in IGNORE_DIRS
-        and not any(
-            os.path.normpath(os.path.join(root, d)).startswith(ig + os.sep)
-            for ig in IGNORE_DIRS
-        )
-    ]
+        if not is_ignored(os.path.join(root, d))
+    )
 
     if "PKGBUILD" not in files:
         continue
 
     pkgbuild_path = os.path.join(root, "PKGBUILD")
-    with open(pkgbuild_path) as f:
-        content = f.read()
+    try:
+        with open(pkgbuild_path) as f:
+            content = f.read()
+    except OSError as e:
+        skipped.append((pkgbuild_path, f"could not read file: {e}"))
+        continue
 
     pkgname = extract_var(content, "pkgname")
     if not pkgname:
         skipped.append((pkgbuild_path, "could not parse pkgname"))
         continue
 
-    # Expand all variable references in pkgname (e.g. pkgname=$_pkgname)
+    # Expand variable references (e.g. pkgname=$_pkgname)
     pkgname = expand_vars(content, pkgname).strip('"\'{}')
+
     # If pkgname still contains a $ it could not be resolved — skip it
     if "$" in pkgname:
         skipped.append((pkgbuild_path, f"could not resolve pkgname variable: {pkgname}"))
         continue
+
+    # Detect duplicates across all categories
+    if pkgname in seen_pkgnames:
+        skipped.append((pkgbuild_path, f"duplicate pkgname '{pkgname}', skipping"))
+        continue
+    seen_pkgnames.add(pkgname)
 
     if has_only_local_sources(content):
         local_packages.append(pkgname)
         continue
 
     info = find_source_info(content)
-
-    # Check for duplicate pkgnames before appending
-    all_known = [p for p, _ in release_packages + vcs_packages]
-    if pkgname in all_known:
-        skipped.append((pkgname, f"duplicate pkgname '{pkgname}' resolved from {pkgbuild_path}, skipping"))
-        continue
 
     if is_vcs_package(content):
         if info:
@@ -222,21 +261,22 @@ for root, dirs, files in os.walk(SRC_DIR):
 
 # -- Write nvchecker.toml ------------------------------------------------------
 
-os.makedirs(os.path.dirname(OUTPUT) or ".", exist_ok=True)
+os.makedirs(os.path.dirname(os.path.abspath(OUTPUT)), exist_ok=True)
 
 with open(OUTPUT, "w") as f:
     f.write("# nvchecker configuration for Athena OS packages\n")
-    f.write("# Auto-generated by generate-nvchecker-config.py — do not edit manually\n")
+    f.write("# Auto-generated by .nvchecker/generate-nvchecker-config.py — do not edit manually\n")
     f.write("# Re-run the script after adding or removing packages\n")
     f.write("#\n")
-    f.write("# Run manually:\n")
+    f.write("# Run manually (from repo root):\n")
     f.write("#   nvchecker -c .nvchecker/nvchecker.toml\n")
     f.write("#   nvdiff .nvchecker/oldver.json .nvchecker/newver.json\n")
     f.write("\n")
     f.write("[__config__]\n")
-    f.write('oldver = "oldver.json"\n')  # relative to config file location
-    f.write('newver = "newver.json"\n')  # relative to config file location
-    f.write('keyfile = "keyfile.toml"\n')  # relative to the config file location
+    # Paths are relative to the directory containing nvchecker.toml (.nvchecker/)
+    f.write('oldver = "oldver.json"\n')
+    f.write('newver = "newver.json"\n')
+    f.write('keyfile = "keyfile.toml"\n')
 
     if release_packages:
         f.write("\n\n# -- Release packages " + "-" * 60 + "\n\n")
@@ -252,7 +292,7 @@ with open(OUTPUT, "w") as f:
                 f.write('source = "gitlab"\n')
                 f.write(f'gitlab = "{info["repo"]}"\n')
                 if info["host"] != "gitlab.com":
-                    f.write(f'host = "{info["host"]}"\n')
+                    f.write(f'host = "https://{info["host"]}"\n')
                 f.write("use_max_tag = true\n")
                 if info["has_v_prefix"]:
                     f.write('prefix = "v"\n')
@@ -270,7 +310,7 @@ with open(OUTPUT, "w") as f:
             f.write(f"[{pkgname}]\n")
             f.write('source = "git"\n')
             f.write(f'git = "{info["git_url"]}"\n')
-            f.write('use = "branch"\n')
+            f.write('use_commit = true\n')
             f.write("\n")
 
 # -- Summary -------------------------------------------------------------------
