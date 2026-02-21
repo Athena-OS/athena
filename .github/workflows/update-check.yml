@@ -2,8 +2,8 @@ name: Auto-update PKGBUILDs (nvchecker)
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # every day at 6 AM UTC
-  workflow_dispatch:        # allow manual trigger
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   nvchecker:
@@ -13,9 +13,6 @@ jobs:
       options: --privileged
 
     steps:
-      # ---------------------------------------------------------------
-      # 1. System setup
-      # ---------------------------------------------------------------
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm
@@ -29,27 +26,18 @@ jobs:
             curl
           pip install nvchecker --break-system-packages
 
-      # ---------------------------------------------------------------
-      # 2. Checkout
-      # ---------------------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
 
-      # ---------------------------------------------------------------
-      # 3. Git config
-      # ---------------------------------------------------------------
       - name: Configure git
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      # ---------------------------------------------------------------
-      # 4. Write keyfile for nvchecker (GitHub token for API auth)
-      # ---------------------------------------------------------------
       - name: Write nvchecker keyfile
         run: |
           cat > "$GITHUB_WORKSPACE/.nvchecker/keyfile.toml" <<EOF
@@ -57,59 +45,40 @@ jobs:
           github = "${{ secrets.GH_PAT }}"
           EOF
 
-      # ---------------------------------------------------------------
-      # 5. Auto-generate nvchecker.toml by scanning all PKGBUILDs
-      # ---------------------------------------------------------------
       - name: Generate nvchecker.toml
         run: |
           cd "$GITHUB_WORKSPACE"
           python3 .nvchecker/generate-nvchecker-config.py \
             --src-dir src \
             --output .nvchecker/nvchecker.toml
-
           echo "=== Generated nvchecker.toml ==="
           cat .nvchecker/nvchecker.toml
 
-      # ---------------------------------------------------------------
-      # 6. Ensure oldver.json exists (first run)
-      # ---------------------------------------------------------------
       - name: Ensure oldver.json exists
         run: |
           if [ ! -f "$GITHUB_WORKSPACE/.nvchecker/oldver.json" ]; then
             echo "{}" > "$GITHUB_WORKSPACE/.nvchecker/oldver.json"
           fi
 
-      # ---------------------------------------------------------------
-      # 7. Run nvchecker
-      # ---------------------------------------------------------------
       - name: Run nvchecker
         run: |
           cd "$GITHUB_WORKSPACE"
-          nvchecker \
-            -c .nvchecker/nvchecker.toml \
-            -l warning
-
+          nvchecker -c .nvchecker/nvchecker.toml -l warning
           echo "=== Current versions detected ==="
           cat .nvchecker/newver.json
 
-      # ---------------------------------------------------------------
-      # 8. Diff versions and update PKGBUILDs
-      # ---------------------------------------------------------------
       - name: Update PKGBUILDs and open PRs
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           cd "$GITHUB_WORKSPACE"
 
-          # Find packages where version changed between oldver and newver
           OUTDATED=$(python3 - <<'PYEOF'
           import json
-
           with open(".nvchecker/oldver.json") as f:
               old = json.load(f)
           with open(".nvchecker/newver.json") as f:
               new = json.load(f)
-
           for pkg, new_ver in new.items():
               old_ver = old.get(pkg, "")
               if old_ver != new_ver:
@@ -128,12 +97,9 @@ jobs:
           echo "$OUTDATED" | while IFS='|' read -r PKG_NAME OLD_VER NEW_VER; do
             echo ""
             echo "────────────────────────────────"
-            echo "Processing: $PKG_NAME"
-            echo "  Old: $OLD_VER"
-            echo "  New: $NEW_VER"
+            echo "Processing: $PKG_NAME  ($OLD_VER -> $NEW_VER)"
             echo "────────────────────────────────"
 
-            # Locate the PKGBUILD
             PKGBUILD=$(find "$GITHUB_WORKSPACE/src" -path "*/${PKG_NAME}/PKGBUILD" | head -1)
             if [ -z "$PKGBUILD" ]; then
               echo "  -> PKGBUILD not found, skipping."
@@ -141,18 +107,14 @@ jobs:
             fi
             PKG_DIR=$(dirname "$PKGBUILD")
 
-            # Detect package type:
-            # VCS packages have a pkgver() shell function in the PKGBUILD
             IS_VCS=false
             if grep -qE '^pkgver\(\)' "$PKGBUILD"; then
               IS_VCS=true
             fi
 
-            # Current pkgrel
             CURRENT_REL=$(grep -E '^pkgrel=' "$PKGBUILD" | head -1 \
               | cut -d= -f2 | tr -d '"' | tr -d "'")
 
-            # ── Branch name ─────────────────────────────────────────
             if [ "$IS_VCS" = true ]; then
               NEW_REL=$((CURRENT_REL + 1))
               BRANCH_NAME="auto-update/${PKG_NAME}-r${NEW_REL}"
@@ -161,7 +123,6 @@ jobs:
               BRANCH_NAME="auto-update/${PKG_NAME}-${NEW_VER}"
             fi
 
-            # Skip if branch/PR already exists
             if git ls-remote --exit-code origin "refs/heads/$BRANCH_NAME" > /dev/null 2>&1; then
               echo "  -> Branch already exists, skipping."
               continue
@@ -170,33 +131,32 @@ jobs:
             git checkout main
             git checkout -b "$BRANCH_NAME"
 
-            # ── Apply changes ────────────────────────────────────────
+            PR_BODY_FILE=$(mktemp)
+
             if [ "$IS_VCS" = true ]; then
-              # VCS package: only bump pkgrel
-              # makepkg computes the real pkgver via pkgver() at build time
               sed -i "s/^pkgrel=.*/pkgrel=${NEW_REL}/" "$PKGBUILD"
 
               COMMIT_MSG="auto-update($PKG_NAME): bump pkgrel to ${NEW_REL} (new upstream commits)"
               PR_TITLE="auto-update($PKG_NAME): rebuild for new upstream commits"
-              PR_BODY="## Automated PKGBUILD update
 
-**Package:** \`${PKG_NAME}\` (VCS package)
-**Type:** New upstream commits detected
-**pkgrel:** \`${CURRENT_REL}\` → \`${NEW_REL}\`
-**Latest commit:** \`${NEW_VER:0:12}\`
+              cat > "$PR_BODY_FILE" << PREOF
+          ## Automated PKGBUILD update
 
-> \`pkgver\` is computed at build time by the \`pkgver()\` function — no manual version update needed.
+          **Package:** ${PKG_NAME} (VCS package)
+          **Type:** New upstream commits detected
+          **pkgrel:** ${CURRENT_REL} -> ${NEW_REL}
+          **Latest commit:** ${NEW_VER}
 
----
-*Automatically generated by the nvchecker workflow.*"
+          pkgver is computed at build time by the pkgver() function - no manual version update needed.
+
+          ---
+          *Automatically generated by the nvchecker workflow.*
+          PREOF
 
             else
-              # Release package: update pkgver, reset pkgrel to 1
               sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" "$PKGBUILD"
               sed -i "s/^pkgrel=.*/pkgrel=${NEW_REL}/" "$PKGBUILD"
 
-              # updpkgsums handles sha512sums, sha512sums_x86_64,
-              # sha512sums_aarch64 — all checksum arrays in one pass
               echo "  -> Regenerating checksums with updpkgsums..."
               cd "$PKG_DIR"
               if ! updpkgsums 2>&1; then
@@ -204,58 +164,50 @@ jobs:
               fi
               cd "$GITHUB_WORKSPACE"
 
-              COMMIT_MSG="auto-update($PKG_NAME): ${OLD_VER} → ${NEW_VER}"
-              PR_TITLE="auto-update($PKG_NAME): ${OLD_VER} → ${NEW_VER}"
-              PR_BODY="## Automated PKGBUILD update
+              COMMIT_MSG="auto-update($PKG_NAME): ${OLD_VER} -> ${NEW_VER}"
+              PR_TITLE="auto-update($PKG_NAME): ${OLD_VER} -> ${NEW_VER}"
 
-**Package:** \`${PKG_NAME}\`
-**Previous version:** \`${OLD_VER}\`
-**New version:** \`${NEW_VER}\`
-**pkgrel reset to:** \`1\`
+              cat > "$PR_BODY_FILE" << PREOF
+          ## Automated PKGBUILD update
 
-Checksums regenerated with \`updpkgsums\` (covers \`sha512sums\`, \`sha512sums_x86_64\`, \`sha512sums_aarch64\`).
+          **Package:** ${PKG_NAME}
+          **Previous version:** ${OLD_VER}
+          **New version:** ${NEW_VER}
+          **pkgrel reset to:** 1
 
-Please verify before merging:
-- [ ] Package builds correctly with the new version
-- [ ] No breaking changes in the upstream release notes
-- [ ] Checksums match the downloaded sources
+          Checksums regenerated with updpkgsums (covers sha512sums, sha512sums_x86_64, sha512sums_aarch64).
 
----
-*Automatically generated by the nvchecker workflow.*"
+          Please verify before merging:
+          - [ ] Package builds correctly with the new version
+          - [ ] No breaking changes in the upstream release notes
+          - [ ] Checksums match the downloaded sources
+
+          ---
+          *Automatically generated by the nvchecker workflow.*
+          PREOF
             fi
 
-            # ── Commit ───────────────────────────────────────────────
             git add "$PKG_DIR/PKGBUILD"
             git commit -m "$COMMIT_MSG"
-
-            # ── Push ─────────────────────────────────────────────────
             git push origin "$BRANCH_NAME"
 
-            # ── Open PR ──────────────────────────────────────────────
             gh pr create \
               --title "$PR_TITLE" \
-              --body "$PR_BODY" \
+              --body-file "$PR_BODY_FILE" \
               --base main \
               --head "$BRANCH_NAME" \
               --label "auto-update"
 
+            rm -f "$PR_BODY_FILE"
             echo "  -> PR opened: $PR_TITLE"
           done
 
-      # ---------------------------------------------------------------
-      # 9. Persist newver.json → oldver.json for the next run
-      #    [skip ci] prevents this commit from triggering other workflows
-      # ---------------------------------------------------------------
       - name: Save version state
         run: |
           cd "$GITHUB_WORKSPACE"
           git checkout main
-
           cp .nvchecker/newver.json .nvchecker/oldver.json
-
-          # Remove keyfile — must never be committed
           rm -f .nvchecker/keyfile.toml
-
           if git diff --quiet .nvchecker/oldver.json; then
             echo "No version state change to commit."
           else
