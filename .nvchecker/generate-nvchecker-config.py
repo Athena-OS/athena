@@ -203,6 +203,12 @@ for root, dirs, files in os.walk(SRC_DIR):
 
     info = find_source_info(content)
 
+    # Check for duplicate pkgnames before appending
+    all_known = [p for p, _ in release_packages + vcs_packages]
+    if pkgname in all_known:
+        skipped.append((pkgname, f"duplicate pkgname '{pkgname}' resolved from {pkgbuild_path}, skipping"))
+        continue
+
     if is_vcs_package(content):
         if info:
             vcs_packages.append((pkgname, info))
