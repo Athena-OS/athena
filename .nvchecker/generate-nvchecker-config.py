@@ -12,7 +12,7 @@ Rules:
   - If PKGBUILD has a pkgver() function  -> VCS package  -> tracked by latest commit
   - If source= contains a known host URL -> release pkg  -> tracked by latest release/tag
   - If all sources are local files       -> local pkg    -> skipped silently (no upstream)
-  - If source host is unknown            -> skipped with a warning
+  - If source host is unknown            -> skipped with an info note (no error)
 
 Supported platforms:
   GitHub, GitLab (gitlab.com + self-hosted), Codeberg, Gitea, Sourcehut
@@ -46,39 +46,28 @@ OUTPUT      = args.output
 IGNORE_DIRS = [os.path.normpath(d) for d in args.ignore]
 
 # ── Platform definitions ──────────────────────────────────────────────────────
-#
-# Each entry: (compiled_regex, nvchecker_source_type, git_url_template_or_None)
-#
-# "gitlab" is special: regex captures (host, owner/repo) -> URL built dynamically.
-# All others capture (owner/repo) and use the template.
-# Platforms are checked in order — more specific patterns should come first.
 
 PLATFORMS = [
-    # GitHub
     (
         re.compile(r"github\.com/([a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)"),
         "github",
         "https://github.com/{repo}.git",
     ),
-    # GitLab — gitlab.com and self-hosted (e.g. gitlab.freedesktop.org)
     (
         re.compile(r"(gitlab\.[a-zA-Z0-9.-]+)/([a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)"),
         "gitlab",
         None,
     ),
-    # Codeberg
     (
         re.compile(r"codeberg\.org/([a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)"),
         "git",
         "https://codeberg.org/{repo}.git",
     ),
-    # Gitea (gitea.com or any self-hosted gitea.* domain)
     (
         re.compile(r"gitea\.[a-zA-Z0-9.-]+/([a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)"),
         "git",
         None,
     ),
-    # Sourcehut
     (
         re.compile(r"git\.sr\.ht/(~[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)"),
         "git",
@@ -86,13 +75,11 @@ PLATFORMS = [
     ),
 ]
 
-# Detects any remote URL in source= entries
 REMOTE_URL_RE = re.compile(r"https?://|git\+")
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def extract_var(content, varname):
-    """Extract a simple scalar variable value from a PKGBUILD."""
     m = re.search(
         r"^" + varname + r'=["\']?([^"\'\n]+)["\']?',
         content,
@@ -102,11 +89,6 @@ def extract_var(content, varname):
 
 
 def expand_vars(content, text):
-    """
-    Substitute PKGBUILD scalar variables into text before regex matching.
-    Only expands short values that contain no further variable references,
-    to avoid accidentally expanding arrays or compound expressions.
-    """
     for m in re.finditer(
         r'^([a-zA-Z_][a-zA-Z0-9_]*)=["\']?([^"\'\(\)\n]+)["\']?',
         content,
@@ -120,10 +102,6 @@ def expand_vars(content, text):
 
 
 def has_only_local_sources(content):
-    """
-    Return True if every entry in all source= arrays is a local filename
-    with no remote URL. These packages are self-contained in the repo.
-    """
     in_block = False
     for line in content.splitlines():
         stripped = line.strip()
@@ -138,27 +116,10 @@ def has_only_local_sources(content):
 
 
 def is_vcs_package(content):
-    """Return True if the PKGBUILD defines a pkgver() function."""
     return bool(re.search(r"^pkgver\s*\(\)", content, re.MULTILINE))
 
 
 def find_source_info(content):
-    """
-    Detect the upstream hosting platform and extract repository information.
-
-    Searches _ghurl, _giturl, _url, url, and source= lines (expanding
-    PKGBUILD variables first) and matches against all known platforms.
-
-    Returns a dict on success:
-        {
-            "platform":     "github" | "gitlab" | "git",
-            "repo":         "owner/repo",
-            "host":         "gitlab.example.org"  (GitLab only, else None),
-            "git_url":      "https://...",
-            "has_v_prefix": True | False,
-        }
-    Returns None if no known platform is detected.
-    """
     candidates = []
     for line in content.splitlines():
         if re.match(r"\s*(_ghurl|_giturl|_url|url|source)\s*[=(]", line):
@@ -188,9 +149,7 @@ def find_source_info(content):
                     git_url = git_tmpl.format(repo=repo)
                 else:
                     raw = re.search(r"https?://\S+", expanded)
-                    git_url = (
-                        re.sub(r"\.git$", "", raw.group(0)) + ".git"
-                    ) if raw else ""
+                    git_url = (re.sub(r"\.git$", "", raw.group(0)) + ".git") if raw else ""
                 return {
                     "platform":     nvchecker_src,
                     "repo":         repo,
@@ -204,13 +163,12 @@ def find_source_info(content):
 
 # ── Scan PKGBUILDs ────────────────────────────────────────────────────────────
 
-release_packages = []   # [(pkgname, source_info)]
-vcs_packages     = []   # [(pkgname, source_info)]
-local_packages   = []   # [pkgname]  — local sources, no upstream
-skipped          = []   # [(pkgname, reason)]
+release_packages = []
+vcs_packages     = []
+local_packages   = []
+skipped          = []
 
 for root, dirs, files in os.walk(SRC_DIR):
-    # Prune ignored directories in-place so os.walk never descends into them
     dirs[:] = [
         d for d in dirs
         if os.path.normpath(os.path.join(root, d)) not in IGNORE_DIRS
@@ -232,10 +190,13 @@ for root, dirs, files in os.walk(SRC_DIR):
         skipped.append((pkgbuild_path, "could not parse pkgname"))
         continue
 
-    # Strip any variable references from pkgname itself
-    pkgname = pkgname.replace("$pkgname", "").strip("{}")
+    # Expand all variable references in pkgname (e.g. pkgname=$_pkgname)
+    pkgname = expand_vars(content, pkgname).strip('"\'{}')
+    # If pkgname still contains a $ it could not be resolved — skip it
+    if "$" in pkgname:
+        skipped.append((pkgbuild_path, f"could not resolve pkgname variable: {pkgname}"))
+        continue
 
-    # Local-only packages — nothing to track upstream
     if has_only_local_sources(content):
         local_packages.append(pkgname)
         continue
@@ -290,7 +251,6 @@ with open(OUTPUT, "w") as f:
                 if info["has_v_prefix"]:
                     f.write('prefix = "v"\n')
             else:
-                # Codeberg, Gitea, Sourcehut — generic git tag tracking
                 f.write('source = "git"\n')
                 f.write(f'git = "{info["git_url"]}"\n')
                 f.write('use = "tag"\n')
@@ -302,7 +262,6 @@ with open(OUTPUT, "w") as f:
         f.write("\n# ── VCS packages (pkgver() computed by makepkg) " + "─" * 32 + "\n\n")
         for pkgname, info in sorted(vcs_packages, key=lambda x: x[0]):
             f.write(f"[{pkgname}]\n")
-            # All VCS packages use git source + commit tracking regardless of platform
             f.write('source = "git"\n')
             f.write(f'git = "{info["git_url"]}"\n')
             f.write('use = "commit"\n')
@@ -318,8 +277,8 @@ if local_packages:
     print(f"  => {', '.join(sorted(local_packages))}")
 
 if skipped:
-    print(f"\n[WARNING] {len(skipped)} package(s) need manual attention:")
+    print(f"\n[INFO] {len(skipped)} package(s) have no detectable upstream and were skipped:")
     for name, reason in skipped:
         print(f"  - {name}: {reason}")
-else:
-    print("\nAll packages processed successfully.")
+
+print("\nDone.")
