@@ -30,14 +30,19 @@ jobs:
           # Create a non-root user for updpkgsums/makepkg (refuses to run as root)
           useradd -m builduser
           echo "builduser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          # Give builduser access to the workspace
-          chmod o+rx /root 2>/dev/null || true
 
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
+
+      - name: Grant builduser workspace access
+        run: |
+          # updpkgsums needs write access to the package directory
+          chown -R builduser:builduser "$GITHUB_WORKSPACE"
+          # Also allow builduser to write to /tmp
+          chmod 1777 /tmp
 
       - name: Configure git
         run: |
@@ -149,7 +154,7 @@ jobs:
             if [ "$IS_VCS" = true ]; then
               # Clone the repo and compute pkgver() output directly
               echo "  -> Computing pkgver() for $PKG_NAME..."
-              CLONE_DIR=$(mktemp -d)
+              CLONE_DIR=$(sudo -u builduser mktemp -d)
 
               # Extract git URL from PKGBUILD source= line
               GIT_URL=$(grep -oP 'git\+https://[^"'"'"'\s)]+' "$PKGBUILD" | head -1 | sed 's/^git+//')
@@ -243,7 +248,12 @@ jobs:
               cd "$PKG_DIR"
               # makepkg refuses to run as root - use the builduser created at setup
               if ! sudo -u builduser updpkgsums 2>&1; then
-                echo "  -> WARNING: updpkgsums failed. Manual checksum update required."
+                echo "  -> ERROR: updpkgsums failed for $PKG_NAME — skipping PR."
+                cd "$GITHUB_WORKSPACE"
+                git checkout -- "$PKGBUILD"
+                git checkout main
+                git branch -D "$BRANCH_NAME" 2>/dev/null || true
+                continue
               fi
               cd "$GITHUB_WORKSPACE"
 
