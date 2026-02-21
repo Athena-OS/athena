@@ -1,30 +1,16 @@
-# Credits Athena OS ( https://athenaos.org )
-
+# Maintainer:
 # Contributor: Jat <chat@jat.email>
 
-_pkgname="pulseaudio-module-xrdp"
-pkgname="$_pkgname"
+pkgname=pulseaudio-module-xrdp
 pkgver=0.8
-pkgrel=1
-pkgdesc="xrdp pulseaudio module"
-url="https://github.com/neutrinolabs/pulseaudio-module-xrdp"
+pkgrel=2
+pkgdesc='xrdp pulseaudio module.'
+url='https://github.com/neutrinolabs/pulseaudio-module-xrdp'
 license=('LGPL-2.1-only')
-arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
-
-makedepends=(
-  'check'
-  'git'
-  'libpulse'
-  'meson'
-  'tdb'
-)
-
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-
-install="$_pkgname.install"
-
-_pkgsrc="$_pkgname-$pkgver"
+arch=('x86_64' 'aarch64')
+makedepends=('check' 'git' 'libpulse' 'meson' 'tdb')
+install="$pkgname.install"
+_pkgsrc="$pkgname-$pkgver"
 _pkgsrc_pulse="pulseaudio.gitlab"
 _pkgext="tar.gz"
 source=(
@@ -51,8 +37,8 @@ _build_pulse() (
   git -c advice.detachedHead=false checkout -f "${_ref:?}"
 
   local _meson_options=(
-    -Ddoxygen=false
-    -Dtests=false
+    -Ddoxygen=disabled
+    -Dtests=disabled
   )
 
   meson build "${_meson_options[@]}"
@@ -83,3 +69,4 @@ package() {
   cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
 }
+
