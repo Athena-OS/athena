@@ -37,6 +37,7 @@ package() {
   install -Dm 755 usr/bin/kex "$pkgdir/usr/bin/"
   install -Dm 644 etc/profile.d/win-kex.sh "$pkgdir/etc/profile.d/"
   install -Dm 644 etc/sudoers.d/athena-win-kex "$pkgdir/etc/sudoers.d/"
-  
+
   cp -rf usr/lib/win-kex "$pkgdir/usr/lib/"
 }
+
