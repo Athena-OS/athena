@@ -251,16 +251,22 @@ jobs:
               echo "  -> Cloning $GIT_URL ..."
               CLONE_DIR=$(mktemp -d)
 
-              # Full shallow clone WITH checkout so that git describe and
-              # git rev-list work correctly inside the pkgver() function.
-              # --tags fetches all tag refs needed by git describe.
-              if ! git clone --depth=1 --tags "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
+              # Treeless clone: fetches ALL commits (so git rev-list --count HEAD
+              # returns the real number, e.g. 492 not 1) but skips blob/tree
+              # objects for speed.  --tags ensures git describe can find tags.
+              # We then do a sparse checkout of just the root so the working tree
+              # exists for `cd $pkgname` (pkgver() expects to be inside the repo).
+              if ! git clone --filter=blob:none --tags \
+                    "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
                 echo "  -> Clone failed, skipping."
                 rm -rf "$CLONE_DIR"
                 continue
               fi
 
-              git -C "$CLONE_DIR/$PKG_NAME" fetch --tags 2>/dev/null || true
+              # Checkout HEAD so that the working directory is populated.
+              # pkgver() functions typically do `cd $pkgname` and then run
+              # git commands that need a real working tree with HEAD set.
+              git -C "$CLONE_DIR/$PKG_NAME" checkout HEAD -- . 2>/dev/null || true
 
               # Extract pkgver() body (strip the function header and closing brace)
               PKGVER_FUNC=$(awk '/^pkgver\s*\(\)/,/^\}/' "$PKGBUILD" | tail -n +2 | head -n -1)
@@ -459,11 +465,19 @@ jobs:
                           if isinstance(info, dict) and "version" in info}
               return {k: v for k, v in data.items() if isinstance(v, str)}
 
-          flat = load_ver(".nvchecker/newver.json")
+          # Read newver.json exactly as nvchecker wrote it (v2 envelope or flat)
+          # and write oldver.json in the identical v2 envelope format so that:
+          #   1. nvchecker can use it as a baseline on the next run
+          #   2. our diff script reads both files with the same parser
+          with open(".nvchecker/newver.json") as f:
+              newver_raw = json.load(f)
+
           with open(".nvchecker/oldver.json", "w") as f:
-              json.dump(flat, f, indent=2, sort_keys=True)
+              json.dump(newver_raw, f, indent=2, sort_keys=True)
               f.write("\n")
-          print(f"oldver.json updated with {len(flat)} entries.")
+
+          entry_count = len(newver_raw.get("data", newver_raw))
+          print(f"oldver.json updated with {entry_count} entries (v2 envelope preserved).")
           PYEOF
 
           # Never commit keyfile.toml — it was written at runtime and is gitignored
