@@ -1,12 +1,13 @@
 pkgname=athena-neofetch-config
 pkgver=259.ee84d09
 pkgrel=1
-pkgdesc="Neofetch configuration for Athena."
+pkgdesc='Neofetch configuration for Athena.'
 arch=('any')
 license=("custom")
 install=neofetch.install
 depends=('neofetch' 'ttf-jetbrains-mono-nerd' 'ttf-nerd-fonts-symbols' 'ttf-sharetech-mono-nerd')
-source=("git+https://github.com/Chick2D/neofetch-themes"
+makedepends=('git')
+source=("git+https://github.com/Chick2D/neofetch-themes.git"
         "alien.txt"
         "config.conf"
         "neofetch.new")
