@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  
+
   cargo clean
   cargo build --release --locked
 }
@@ -37,3 +37,4 @@ package() {
 
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
