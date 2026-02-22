@@ -25,8 +25,9 @@ package() {
 
   install -dm 755 "$pkgdir/usr/share/themes"
 
-  ./install.sh -n Graphite -c dark -d $pkgdir/usr/share/themes
-  ./install.sh -n Graphite-Rimless -c dark --tweaks rimless -d $pkgdir/usr/share/themes
+  ./install.sh -n Graphite -c dark -d "$pkgdir/usr/share/themes"
+  ./install.sh -n Graphite-Rimless -c dark --tweaks rimless -d "$pkgdir/usr/share/themes"
 
-  rm -rf $pkgdir/usr/share/themes/Graphite-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Dark-xhdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-xhdpi
+  rm -rf "$pkgdir/usr/share/themes/Graphite-Dark-hdpi" "$pkgdir/usr/share/themes/Graphite-Dark-xhdpi" "$pkgdir/usr/share/themes/Graphite-Rimless-Dark-hdpi" "$pkgdir/usr/share/themes/Graphite-Rimless-Dark-xhdpi"
 }
+
