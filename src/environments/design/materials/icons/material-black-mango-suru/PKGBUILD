@@ -1,8 +1,8 @@
 pkgname=material-black-mango-suru
 _pkgname=rtl88-Themes
-pkgver=205.3864d851aa
+pkgver=1.0.r97.g0924abf
 pkgrel=1
-pkgdesc="Material Black Mango Suru icons."
+pkgdesc='Material Black Mango Suru icons.'
 arch=('any')
 license=("custom:unknown")
 makedepends=('git')
@@ -26,3 +26,4 @@ package() {
   install -dm 755 "$pkgdir/usr/share/icons"
   cp -a Material-Black-Mango-Suru "$pkgdir/usr/share/icons/"
 }
+
