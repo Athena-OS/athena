@@ -37,6 +37,7 @@ build() {
 
 package() {
     cd $pkgname
-    
+
     install -Dm 755 "target/release/$pkgname" "${pkgdir}/usr/bin/$pkgname"
 }
+
