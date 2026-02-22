@@ -1,5 +1,5 @@
 pkgname=aegis
-pkgver=472.90eb153
+pkgver=492.bef8389
 pkgrel=1
 pkgdesc='Scriptable backend installer for Athena OS.'
 arch=('x86_64' 'aarch64')
@@ -37,6 +37,7 @@ build() {
 
 package() {
     cd $pkgname
-    
+
     install -Dm 755 "target/release/$pkgname" "${pkgdir}/usr/bin/$pkgname"
 }
+
