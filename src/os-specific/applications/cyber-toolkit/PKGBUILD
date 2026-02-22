@@ -43,3 +43,4 @@ package() {
     install -Dm 644 "$f" "$pkgdir/usr/share/$pkgname/roles/$(basename "$f")"
   done
 }
+
