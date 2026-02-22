@@ -34,20 +34,20 @@ depends=(
     'hyprpicker'
     'noto-fonts'
     'noto-fonts-extra'
-    'xdg-desktop-portal-hyprland' 
-    'libnotify' 
+    'xdg-desktop-portal-hyprland'
+    'libnotify'
     'dunst'
     'kitty'
-    'qt5-wayland' 
+    'qt5-wayland'
     'qt6-wayland'
     'uwsm'
     'fastfetch'
     'xdg-desktop-portal-gtk'
     'eza'
-    'python-pip' 
+    'python-pip'
     'python-gobject'
     'python-screeninfo'
-    'tumbler' 
+    'tumbler'
     'brightnessctl'
     'nm-connection-editor'
     'network-manager-applet'
@@ -56,7 +56,7 @@ depends=(
     'fuse2'
     'imagemagick'
     'jq'
-    'xclip'    
+    'xclip'
     'firefox'
     'neovim'
     'htop'
@@ -64,18 +64,18 @@ depends=(
     'nautilus-open-any-terminal'
     'python-pywal'
     'blueman'
-    'grim' 
+    'grim'
     'slurp'
     'cliphist'
     'nwg-look'
     'qt6ct'
-    'waybar' 
+    'waybar'
     'rofi-wayland'
     'polkit-gnome'
     'zsh'
     'zsh-completions'
     'fzf'
-    'pavucontrol' 
+    'pavucontrol'
     'papirus-icon-theme'
     'breeze'
     'flatpak'
@@ -89,9 +89,9 @@ depends=(
     'grimblast-git'
     'bibata-cursor-theme'
     'pacseek'
-    'otf-font-awesome' 
-    'ttf-fira-sans' 
-    'ttf-fira-code' 
+    'otf-font-awesome'
+    'ttf-fira-sans'
+    'ttf-fira-code'
     'ttf-firacode-nerd'
     'nwg-dock-hyprland'
     'oh-my-posh-bin'
@@ -114,21 +114,21 @@ pkgver() {
 
 package() {
   # share
-  install -dm 755 ${pkgdir}/usr/share/ml4w-hyprland
-  cp -r ${srcdir}/${pkgname}/share/. ${pkgdir}/usr/share/ml4w-hyprland
+  install -dm 755 "${pkgdir}/usr/share/ml4w-hyprland"
+  cp -r "${pkgname}/share/." "${pkgdir}/usr/share/ml4w-hyprland"
 
    # lib
-  install -dm 755 ${pkgdir}/usr/lib/ml4w-hyprland
-  cp -r ${srcdir}/${pkgname}/lib/. ${pkgdir}/usr/lib/ml4w-hyprland
+  install -dm 755 "${pkgdir}/usr/lib/ml4w-hyprland"
+  cp -r "${pkgname}/lib/." "${pkgdir}/usr/lib/ml4w-hyprland"
 
   # bin
-  install -Dm 755 ${srcdir}/${pkgname}/bin/ml4w-hyprland-setup ${pkgdir}/usr/bin/ml4w-hyprland-setup
+  install -Dm 755 "${pkgname}/bin/ml4w-hyprland-setup" "${pkgdir}/usr/bin/ml4w-hyprland-setup"
 
   # license
-  install -Dm 755 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm 755 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # doc
-  install -Dm 755 ${srcdir}/${pkgname}/README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+  install -Dm 755 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   # message
   echo
