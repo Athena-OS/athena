@@ -1,6 +1,6 @@
 pkgname=htb-toolkit
-pkgver=74.dd193c2
-pkgrel=2
+pkgver=85.7c95202
+pkgrel=1
 pkgdesc='Play Hack The Box machines directly on your system.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/D3vil0p3r/htb-toolkit'
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  
+
   cargo clean
   cargo build --release --locked
 }
@@ -37,3 +37,4 @@ package() {
 
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
