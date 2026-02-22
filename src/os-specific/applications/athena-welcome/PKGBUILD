@@ -5,6 +5,7 @@ pkgdesc='Welcome App for Athena.'
 arch=('any')
 license=('GPL-3.0-or-later')
 depends=('athena-config' 'cyber-toolkit' 'htb-toolkit' 'rate-mirrors' 'rsync')
+makedepends=('git')
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
 
@@ -44,3 +45,4 @@ EOF
 
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
+
