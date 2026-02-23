@@ -6,7 +6,7 @@ arch=('any')
 license=('custom:unknown')
 backup=('etc/pacman.d/athena-mirrorlist')
 source=("athena-mirrorlist")
-sha512sums=('632da9957e8226e8949542efb51135b4ba8a2360c50a4b9deddd338877ff9ef95df7cb53e5c3eb9e69b839303f17447fd365369ddb9882cb8a59c6db0dcce957')
+sha512sums=('9d6b96bf9a3e2c15bfff807b0ce04e7f2e860c5663a6b2cfef19a21c21c0171561f8f87f227903d95abc124d616922c9845f39fca796a215663935739480cd39')
 
 package() {
   mkdir -p "$pkgdir/etc/pacman.d"
