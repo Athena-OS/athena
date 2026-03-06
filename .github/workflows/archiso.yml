@@ -17,9 +17,6 @@ jobs:
       image: athenaos/base-devel:latest
       options: --privileged 
     steps:
-      - name: Checkout files
-        uses: actions/checkout@v5
-
       - name: Init Keys
         run: | 
           rm -rf /etc/pacman.d/gnupg
@@ -88,5 +85,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for f in $(find $HOME/Athena-Out -name '*.iso*'); do
-            gh release upload v25.11 $f --clobber
+            gh release upload v25.11 $f --clobber --repo "$GITHUB_REPOSITORY"
           done
