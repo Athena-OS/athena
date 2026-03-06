@@ -45,7 +45,6 @@ jobs:
           ./build-iso.sh
           
       - name: Upload to R2
-        if: steps.changed.outputs.packages != ''
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -65,7 +64,6 @@ jobs:
           done
 
       - name: Purge edge cache
-        if: steps.changed.outputs.packages != ''
         env:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
