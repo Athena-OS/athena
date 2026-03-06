@@ -50,10 +50,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
-          REPO_NAME: athena
-          REPO_ARCH: x86_64
         run: |
-          REMOTE_PREFIX="s3://$R2_BUCKET/$REPO_NAME/$REPO_ARCH"
+          REMOTE_PREFIX="s3://$R2_BUCKET/iso"
 
           # Upload package files and their signatures
           for file in $HOME/Athena-Out/*.iso*; do
@@ -67,23 +65,14 @@ jobs:
         env:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          REPO_NAME: athena
-          REPO_ARCH: x86_64
         run: |
-          REPO_BASE_URL="https://hub.athenaos.org/$REPO_NAME/$REPO_ARCH"
+          REPO_BASE_URL="https://hub.athenaos.org/iso"
           URLS=()
 
           # Add every uploaded package to the purge list
-          for f in /tmp/athena-repo/*.pkg.tar.zst \
-                   /tmp/athena-repo/*.pkg.tar.zst.sig; do
+          for f in $HOME/Athena-Out/*.iso*; do
             [ -f "$f" ] || continue
             URLS+=("$REPO_BASE_URL/$(basename $f)")
-          done
-
-          # Always purge all DB-related URLs including unversioned names
-          for name in db db.sig db.tar.gz db.tar.gz.sig \
-                      files files.sig files.tar.gz files.tar.gz.sig; do
-            URLS+=("$REPO_BASE_URL/$REPO_NAME.$name")
           done
 
           # Cloudflare allows up to 30 URLs per call; build JSON and POST
@@ -98,9 +87,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd $GITHUB_WORKSPACE
-          git clone https://github.com/Athena-OS/athena
-          cd athena
           for f in $(find $HOME/Athena-Out -name '*.iso*'); do
             gh release upload v25.11 $f --clobber
           done
