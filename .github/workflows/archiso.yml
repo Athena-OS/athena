@@ -17,6 +17,9 @@ jobs:
       image: athenaos/base-devel:latest
       options: --privileged 
     steps:
+      - name: Checkout files
+        uses: actions/checkout@v6
+  
       - name: Init Keys
         run: | 
           rm -rf /etc/pacman.d/gnupg
