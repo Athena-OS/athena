@@ -251,8 +251,9 @@ jobs:
           CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           REPO_NAME: athena
+          REPO_ARCH: x86_64
         run: |
-          REPO_BASE_URL="https://hub.athenaos.org/$REPO_NAME/x86_64"
+          REPO_BASE_URL="https://hub.athenaos.org/$REPO_NAME/$REPO_ARCH"
           URLS=()
 
           # Add every uploaded package to the purge list
