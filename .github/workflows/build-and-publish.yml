@@ -14,7 +14,7 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     container:
-      image: archlinux:latest
+      image: athenaos/base-devel:latest
       options: --privileged
 
     steps:
@@ -23,8 +23,8 @@ jobs:
       # ---------------------------------------------------------------
       - name: Install base dependencies
         run: |
-          pacman -Syu --noconfirm
-          pacman -S --noconfirm \
+          pacman -Syu --noconfirm --needed
+          pacman -S --noconfirm --needed \
             base-devel \
             git \
             gnupg \
@@ -36,7 +36,7 @@ jobs:
       # 2. Checkout the repository
       # ---------------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha }}
           fetch-depth: 0
