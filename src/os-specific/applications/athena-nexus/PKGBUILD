@@ -7,6 +7,7 @@ url='https://github.com/Athena-OS/athena-nexus'
 license=('MIT')
 depends=('docker' 'webkit2gtk-4.1')
 makedepends=('git' 'cargo' 'cmake' 'npm' 'pkg-config')
+optdepends=('podman: podman support')
 options=(!lto)
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
