@@ -1,10 +1,10 @@
 pkgname=athena-welcome
 pkgver=49.80fc198
-pkgrel=1
+pkgrel=2
 pkgdesc='Welcome App for Athena.'
 arch=('any')
 license=('GPL-3.0-or-later')
-depends=('athena-config' 'cyber-toolkit' 'htb-toolkit' 'rate-mirrors' 'rsync')
+depends=('athena-settings' 'cyber-toolkit' 'htb-toolkit' 'rate-mirrors' 'rsync')
 makedepends=('git')
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
@@ -23,17 +23,11 @@ pkgver() {
 package() {
   cd $pkgname
 
-  install -dm 755 "$pkgdir/etc/skel/.config/autostart"
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/applications"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
-  #install -Dm755 "usr/bin/hacking-variables" "$pkgdir/usr/bin/"
-  #install -Dm755 "usr/bin/role-viewer" "$pkgdir/usr/bin/"
-  #install -Dm755 "usr/bin/tool-recipe" "$pkgdir/usr/bin/"
-  install -Dm644 "athena-welcome.desktop" "$pkgdir/etc/skel/.config/autostart/"
-  install -Dm644 "athena-welcome.desktop" "$pkgdir/usr/share/applications/"
-  install -Dm644 "athenaos.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm 644 athena-welcome.desktop "$pkgdir/etc/skel/.config/autostart/athena-welcome.desktop"
+  install -Dm 644 athena-welcome.desktop "$pkgdir/usr/share/applications/athena-welcome.desktop"
+  install -Dm 644 athenaos.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/athenaos.svg"
   cp -a "athena-welcome" "$pkgdir/usr/share/"
 
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
