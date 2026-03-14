@@ -1,0 +1,67 @@
+pkgname=athena-settings
+_pkgname=${pkgname#athena-}
+pkgver=2.c50b2ad
+pkgrel=1
+pkgdesc='System configuration for Athena.'
+arch=('any')
+license=('MIT')
+depends=('iw' 'terminus-font')
+makedepends=('git')
+backup=(
+    'etc/sudoers.d/sudo_nopasswd_psd'
+    'etc/xdg/menus/blue-applications.menu'
+    'etc/xdg/menus/red-applications.menu'
+    'etc/xdg/menus/mitre-applications.menu'
+)
+source=("git+https://github.com/Athena-OS/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/lib"
+  install -dm 755 "$pkgdir/usr/local/bin"
+  install -dm 755 "$pkgdir/usr/local/share"
+  install -dm 755 "$pkgdir/usr/share/applications"
+  install -dm 755 "$pkgdir/usr/share/desktop-directories"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor"
+  install -dm 755 "$pkgdir/usr/share/icons/htb-toolkit"
+  install -dm 755 "$pkgdir/usr/share/libalpm/hooks"
+  install -dm 755 "$pkgdir/usr/share/pixmaps/faces"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+
+  install -Dm 440 "etc/sudoers.d/sudo_nopasswd_psd" "$pkgdir/etc/sudoers.d/sudo_nopasswd_psd"
+  install -Dm 644 "etc/xdg/menus/blue-applications.menu" "$pkgdir/etc/xdg/menus/blue-applications.menu"
+  install -Dm 644 "etc/xdg/menus/red-applications.menu" "$pkgdir/etc/xdg/menus/red-applications.menu"
+  install -Dm 644 "etc/xdg/menus/mitre-applications.menu" "$pkgdir/etc/xdg/menus/mitre-applications.menu"
+
+  install -Dm 755 "usr/bin/shell-rocket" "$pkgdir/usr/bin/shell-rocket"
+
+  cp -rf "usr/lib/." "$pkgdir/usr/lib/"
+
+  cp -rf "usr/local/bin/." "$pkgdir/usr/local/bin/"
+  cp -rf "usr/local/share/athena" "$pkgdir/usr/local/share/"
+
+  cp -rf "usr/share/applications/." "$pkgdir/usr/share/applications/"
+  cp -rf "usr/share/desktop-directories/." "$pkgdir/usr/share/desktop-directories/"
+  cp -rf "usr/share/icons/hicolor/." "$pkgdir/usr/share/icons/hicolor/"
+  cp -rf "usr/share/icons/htb-toolkit/." "$pkgdir/usr/share/icons/htb-toolkit/"
+  cp -rf "usr/share/libalpm/hooks/." "$pkgdir/usr/share/libalpm/hooks/"
+  cp -rf "usr/share/pixmaps/." "$pkgdir/usr/share/pixmaps/"
+  install -Dm 644 "usr/share/X11/xorg.conf.d/20-touchpad.conf" "$pkgdir/usr/share/X11/xorg.conf.d/20-touchpad.conf"
+  
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
