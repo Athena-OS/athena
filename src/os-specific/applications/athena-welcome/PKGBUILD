@@ -28,7 +28,7 @@ package() {
   install -Dm 644 athena-welcome.desktop "$pkgdir/etc/skel/.config/autostart/athena-welcome.desktop"
   install -Dm 644 athena-welcome.desktop "$pkgdir/usr/share/applications/athena-welcome.desktop"
   install -Dm 644 athenaos.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/athenaos.svg"
-  cp -a "athena-welcome" "$pkgdir/usr/share/"
+  cp -a athena-welcome "$pkgdir/usr/share/"
 
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/usr/bin/env bash
