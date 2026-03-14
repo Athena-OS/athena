@@ -61,7 +61,7 @@ package() {
   cp -rf "usr/share/libalpm/hooks/." "$pkgdir/usr/share/libalpm/hooks/"
   cp -rf "usr/share/pixmaps/." "$pkgdir/usr/share/pixmaps/"
   install -Dm 644 "usr/share/X11/xorg.conf.d/20-touchpad.conf" "$pkgdir/usr/share/X11/xorg.conf.d/20-touchpad.conf"
-  
+
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
