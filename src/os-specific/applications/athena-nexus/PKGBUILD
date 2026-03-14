@@ -1,11 +1,11 @@
 pkgname=athena-nexus
 pkgver=4.f29e8d8
-pkgrel=1
+pkgrel=2
 pkgdesc="Deploy and manage cybersecurity tools as containers."
 arch=('x86_64' 'aarch64')
 url='https://github.com/Athena-OS/athena-nexus'
 license=('MIT')
-depends=('webkit2gtk-4.1')
+depends=('docker' 'webkit2gtk-4.1')
 makedepends=('git' 'cargo' 'cmake' 'npm' 'pkg-config')
 options=(!lto)
 source=("git+https://github.com/Athena-OS/$pkgname.git")
