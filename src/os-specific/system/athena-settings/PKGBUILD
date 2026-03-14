@@ -42,12 +42,12 @@ package() {
 
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 
-  install -Dm 440 "etc/sudoers.d/sudo_nopasswd_psd" "$pkgdir/etc/sudoers.d/sudo_nopasswd_psd"
-  install -Dm 644 "etc/xdg/menus/blue-applications.menu" "$pkgdir/etc/xdg/menus/blue-applications.menu"
-  install -Dm 644 "etc/xdg/menus/red-applications.menu" "$pkgdir/etc/xdg/menus/red-applications.menu"
-  install -Dm 644 "etc/xdg/menus/mitre-applications.menu" "$pkgdir/etc/xdg/menus/mitre-applications.menu"
+  install -Dm 440 etc/sudoers.d/sudo_nopasswd_psd "$pkgdir/etc/sudoers.d/sudo_nopasswd_psd"
+  install -Dm 644 etc/xdg/menus/blue-applications.menu "$pkgdir/etc/xdg/menus/blue-applications.menu"
+  install -Dm 644 etc/xdg/menus/red-applications.menu "$pkgdir/etc/xdg/menus/red-applications.menu"
+  install -Dm 644 etc/xdg/menus/mitre-applications.menu "$pkgdir/etc/xdg/menus/mitre-applications.menu"
 
-  install -Dm 755 "usr/bin/shell-rocket" "$pkgdir/usr/bin/shell-rocket"
+  install -Dm 755 usr/bin/shell-rocket "$pkgdir/usr/bin/shell-rocket"
 
   cp -rf "usr/lib/." "$pkgdir/usr/lib/"
 
@@ -61,7 +61,7 @@ package() {
   cp -rf "usr/share/libalpm/hooks/." "$pkgdir/usr/share/libalpm/hooks/"
   cp -rf "usr/share/pixmaps/." "$pkgdir/usr/share/pixmaps/"
   install -Dm 644 "usr/share/X11/xorg.conf.d/20-touchpad.conf" "$pkgdir/usr/share/X11/xorg.conf.d/20-touchpad.conf"
-  
+
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
