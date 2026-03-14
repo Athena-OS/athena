@@ -1,0 +1,47 @@
+pkgname=athena-nexus
+pkgver=1.a3d6d7f
+pkgrel=1
+pkgdesc="Deploy and manage cybersecurity tools as containers."
+arch=('x86_64' 'aarch64')
+url='https://github.com/Athena-OS/athena-nexus'
+license=('MIT')
+depends=('webkit2gtk-4.1')
+makedepends=('git' 'cargo' 'npm' 'pkg-config')
+options=(!lto)
+source=("git+https://github.com/Athena-OS/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+build() {
+  cd $pkgname
+
+  export AWS_LC_SYS_CMAKE_BUILDER=1
+  npm ci
+  npm run tauri build -- --no-bundle
+}
+
+package() {
+  cd $pkgname
+
+  install -Dm 755 "src-tauri/target/release/$pkgname" \
+    "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+
+  install -Dm 644 "extra/$pkgname.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+
+  install -Dm 644 "extra/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+}
+
