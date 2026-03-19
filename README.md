@@ -62,7 +62,7 @@ Click Docker icon above to explore Athena OS Docker containers!
 <h5 align="center">
 Click the icon above to explore Athena OS WSL in Microsoft Store App!
 </h5>
-
+<br>
 
 ## Automated Package Updates
  
