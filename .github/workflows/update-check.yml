@@ -190,12 +190,20 @@ jobs:
               # Extract the git clone URL and all simple shell variable assignments
               # from the PKGBUILD so we can both clone and reconstruct the environment
               # that pkgver() expects (e.g. $pkgname, $_pkgname, etc.).
+              #
+              # Also handles bash parameter expansion syntax used in variable
+              # assignments, e.g.:
+              #   _pkgname=${pkgname#athena-}   ->  strips "athena-" prefix
+              #   _base=${pkgname%%-git}         ->  strips "-git" suffix
               PKGBUILD_ENV=$(python3 - "$PKGBUILD" <<'PYEOF'
           import re, sys, json
 
           content = open(sys.argv[1]).read()
 
-          # Collect all simple (non-dynamic) variable assignments
+          # ----------------------------------------------------------------
+          # Step 1: collect all simple (non-dynamic) variable assignments
+          # that contain no special shell syntax (no $, no parens).
+          # ----------------------------------------------------------------
           vars_ = {}
           for m in re.finditer(
               r'^([a-zA-Z_][a-zA-Z0-9_]*)=["\']?([^"\'\(\)\n]+)["\']?',
@@ -205,34 +213,88 @@ jobs:
               if '$' not in val and len(val) < 200:
                   vars_[name] = val
 
-          # Expand variable references within collected values (longest key first)
+          # ----------------------------------------------------------------
+          # Step 2: collect assignments that use bash parameter expansion
+          # syntax:  var=${other#prefix}  or  var=${other%suffix}
+          # These are stored raw and resolved after simple vars are known.
+          # ----------------------------------------------------------------
+          strip_re = re.compile(
+              r'^([a-zA-Z_][a-zA-Z0-9_]*)=\$\{([a-zA-Z_][a-zA-Z0-9_]*)([#%])([^}]*)\}',
+              re.MULTILINE
+          )
+          pending_strip = []   # list of (dest_name, src_name, op, pattern)
+          for m in strip_re.finditer(content):
+              pending_strip.append((m.group(1), m.group(2), m.group(3), m.group(4)))
+
+          # ----------------------------------------------------------------
+          # Step 3: expand simple $var / ${var} references (longest first)
+          # ----------------------------------------------------------------
           changed = True
           passes = 0
           while changed and passes < 5:
               changed = False
               passes += 1
               for k in sorted(vars_, key=len, reverse=True):
-                  for name in list(vars_):
-                      new_val = vars_[name].replace('${' + k + '}', vars_[k])
-                      new_val = new_val.replace('$' + k, vars_[k])
-                      if new_val != vars_[name]:
-                          vars_[name] = new_val
-                          changed = True
+                  if '$' not in vars_.get(k, ''):
+                      for name in list(vars_):
+                          new_val = vars_[name].replace('${' + k + '}', vars_[k])
+                          new_val = new_val.replace('$' + k, vars_[k])
+                          if new_val != vars_[name]:
+                              vars_[name] = new_val
+                              changed = True
 
-          # Find git+https:// source URL and expand it
+          # ----------------------------------------------------------------
+          # Step 4: resolve pending ${var#prefix} / ${var%suffix} expansions
+          # now that simple vars are fully expanded.
+          # ----------------------------------------------------------------
+          for dest, src, op, pattern in pending_strip:
+              resolved = vars_.get(src, '')
+              if not resolved:
+                  continue
+              if op == '#' and resolved.startswith(pattern):
+                  vars_[dest] = resolved[len(pattern):]
+              elif op == '%' and resolved.endswith(pattern):
+                  vars_[dest] = resolved[:-len(pattern)]
+              else:
+                  # Pattern did not match — store the resolved source value as-is
+                  vars_[dest] = resolved
+
+          # ----------------------------------------------------------------
+          # Step 5: find the git+https:// source URL and fully expand it
+          # ----------------------------------------------------------------
           m = re.search(r'git\+https://([^\s"\'\(\)\n]+)', content)
           git_url = ''
           if m:
               url = 'https://' + m.group(1)
               url = url.split('#')[0].rstrip('"\')')
+              # Apply both simple and strip expansions to the URL
               for k in sorted(vars_, key=len, reverse=True):
                   url = url.replace('${' + k + '}', vars_[k])
                   url = url.replace('$' + k, vars_[k])
+              # Resolve any remaining ${var#prefix} / ${var%suffix} in the URL
+              strip_inline_re = re.compile(r'\$\{([a-zA-Z_][a-zA-Z0-9_]*)([#%])([^}]*)\}')
+              def _replacer(mm):
+                  ref, op2, pat = mm.group(1), mm.group(2), mm.group(3)
+                  val = vars_.get(ref, '')
+                  if not val:
+                      return mm.group(0)
+                  if op2 == '#' and val.startswith(pat):
+                      return val[len(pat):]
+                  if op2 == '%' and val.endswith(pat):
+                      return val[:-len(pat)]
+                  return val
+              url = strip_inline_re.sub(_replacer, url)
               git_url = url
 
-          # Output as shell-sourceable variable exports + a GIT_URL= line
+          # ----------------------------------------------------------------
+          # Step 6: remove vars that are still unresolved (contain $)
+          # ----------------------------------------------------------------
+          vars_ = {k: v for k, v in vars_.items() if '$' not in v}
+
+          # ----------------------------------------------------------------
+          # Step 7: output as shell-sourceable variable exports + GIT_URL
+          # ----------------------------------------------------------------
           for name, val in vars_.items():
-              # Single-quote the value to prevent re-expansion in the shell
               safe = val.replace("'", "'\\''")
               print(f"export {name}='{safe}'")
           print(f"export __GIT_URL__='{git_url}'")
