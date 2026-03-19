@@ -18,7 +18,7 @@ jobs:
       fail-fast: false  # Ensure all matrix jobs continue even if one fails
       matrix:
         config_installer:
-          - { desktop: "gnome", displaymanager: "Astronaut", theme: "temple", terminal: "gnome terminal", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (GNOME)", config_file: "arch.json", installer: "aegis-arch" }
+          - { desktop: "gnome", displaymanager: "Astronaut", theme: "temple", terminal: "gnome terminal", shell: "fish", browser: "firefox", job_name: "Arch-based Install Test (GNOME)", config_file: "arch.json", installer: "dory-arch" }
 
     name: ${{ matrix.config_installer.job_name }}  # Dynamically assign the job name based on the matrix
 
@@ -29,7 +29,7 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm aegis grub mkinitcpio jq multipath-tools qemu-base openssh rsync sshpass 7zip
+        run: pacman -Syyu --noconfirm dory grub mkinitcpio jq multipath-tools qemu-base openssh rsync sshpass 7zip
 
       # Set environment variables (adjust these as needed)
       - name: Set up environment variables
@@ -55,7 +55,7 @@ jobs:
           losetup -fP ${{env.IMAGE_NAME}}.raw
           LOOP_DEV=$(losetup -j ${{env.IMAGE_NAME}}.raw | cut -d':' -f1)
           kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
-          ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
+          ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Dory expects that the disk and its partitions are in the same directory
           jq --arg target_disk "/dev/mapper/${LOOP_DEV#/dev/}" \
              --arg desktop "${{ matrix.config_installer.desktop }}" \
              --arg displaymanager "${{ matrix.config_installer.displaymanager }}" \

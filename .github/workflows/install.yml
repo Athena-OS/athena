@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm aegis grub mkinitcpio jq multipath-tools
+        run: pacman -Syyu --noconfirm dory grub mkinitcpio jq multipath-tools
 
       - name: Retrieve install configuration
         run: |
@@ -42,7 +42,7 @@ jobs:
           parted -s virtual_disk.img set 1 bios_grub on # GitHub runners are not UEFI
           losetup -fP virtual_disk.img
           LOOP_DEV=$(losetup -j virtual_disk.img | cut -d':' -f1)
-          ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Aegis expects that the disk and its partitions are in the same directory
+          ln -s $LOOP_DEV /dev/mapper/${LOOP_DEV#/dev/} # Dory expects that the disk and its partitions are in the same directory
           kpartx -av $LOOP_DEV # Create partitions in /dev/mapper and map them correctly and making kernel aware
           TARGET_DISK="/dev/mapper/${LOOP_DEV#/dev/}"
 
@@ -90,7 +90,7 @@ jobs:
             ' system.json > system.json.tmp && mv system.json.tmp system.json
 
       - name: Run the installer
-        run: aegis --system-file ./system.json --drives-file ./drives.json
+        run: dory --system-file ./system.json --drives-file ./drives.json
 
   # Final job to send summary to webhook
   notify-result:

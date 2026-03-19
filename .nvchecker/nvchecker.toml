@@ -62,11 +62,6 @@ prefix = "v"
 
 # -- VCS packages (pkgver() computed by makepkg) --------------------------------
 
-[aegis]
-source = "git"
-git = "https://github.com/Athena-OS/aegis.git"
-use_commit = true
-
 [afterglow-recolored-green]
 source = "git"
 git = "https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored.git"
@@ -165,6 +160,11 @@ use_commit = true
 [devotio]
 source = "git"
 git = "https://github.com/Athena-OS/devotio.git"
+use_commit = true
+
+[dory]
+source = "git"
+git = "https://github.com/Athena-OS/dory.git"
 use_commit = true
 
 [graphite-gtk-theme]
