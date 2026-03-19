@@ -63,72 +63,68 @@ Click Docker icon above to explore Athena OS Docker containers!
 Click the icon above to explore Athena OS WSL in Microsoft Store App!
 </h5>
 
-## Hephaestus
-**Hephaestus** is the Athena OS Continuous Integration/Continuous Delivery Builder to improve the integration and delivery of the packages.
-
-As a container, it can be run in every platform supporting Docker or Podman. It is used to automate the building and delivery of Athena OS packages and for package debugging.
+## Automated Package Updates
+ 
+Packages in this repository are kept up to date automatically via a daily GitHub Actions workflow powered by [nvchecker](https://github.com/lilydjwg/nvchecker).
+ 
+### How it works
+ 
+The automation runs every day (and can also be triggered manually) and goes through the following steps:
+ 
+1. **Config generation** — `.nvchecker/generate-nvchecker-config.py` scans every `PKGBUILD` under `src/` and auto-generates `.nvchecker/nvchecker.toml`. Each package is classified as one of:
+   - **Release package** — has a static `pkgver=` and a remote source URL. Tracked by latest tag/release on the hosting platform.
+   - **VCS package** — has a `pkgver()` function and a `git+https://` source. Tracked by latest upstream commit.
+   - **Local-only package** — all sources are local files. Skipped silently (no upstream to track).
+ 
+2. **Version check** — `nvchecker` queries the upstream of every tracked package and writes the results to `.nvchecker/newver.json`. This is compared against `.nvchecker/oldver.json` (committed in the repo) to find packages that have a new version available.
+ 
+3. **PKGBUILD update & PR** — for each outdated package the workflow:
+   - Creates a dedicated branch `auto-update/<pkgname>-<newver>`.
+   - Updates `pkgver` and resets `pkgrel` to `1` in the `PKGBUILD`.
+   - For **release packages**: regenerates checksums with `updpkgsums`.
+   - For **VCS packages**: clones the upstream repo, runs the `pkgver()` function locally to compute the real Arch-style version string (e.g. `131.940a5d3`), and keeps `sha512sums=('SKIP')` as is.
+   - Opens a pull request labelled `auto-update` for human review before anything lands on `main`.
+ 
+4. **State save** — `.nvchecker/oldver.json` is updated with the versions seen in this run and committed back to `main`, so the next run only opens PRs for genuinely new changes.
+ 
+### Supported hosting platforms
+ 
+| Platform | Detection |
+|---|---|
+| GitHub | `github.com/<user>/<repo>` |
+| GitLab (gitlab.com + self-hosted) | `gitlab.*/<user>/<repo>` |
+| Codeberg | `codeberg.org/<user>/<repo>` |
+| Gitea (self-hosted) | `gitea.*/<user>/<repo>` |
+| Sourcehut | `git.sr.ht/~<user>/<repo>` |
+ 
+### Shell variable expansion in PKGBUILDs
+ 
+The config generator and the CI workflow both resolve shell variable references in `source=` lines so that indirect URLs like the following are handled correctly:
+ 
+```bash
+_pkgname=${pkgname#athena-}
+source=("git+https://github.com/Athena-OS/$_pkgname.git")
 ```
-**===========================================================**
-||     __  __           __                    __             ||
-||    / / / /__  ____  / /_  ____ ____  _____/ /___  _______ ||
-||   / /_/ / _ \/ __ \/ __ \/ __ `/ _ \/ ___/ __/ / / / ___/ ||
-||  / __  /  __/ /_/ / / / / /_/ /  __(__  ) /_/ /_/ (__  )  ||
-|| /_/ /_/\___/ .___/_/ /_/\__,_/\___/____/\__/\__,_/____/   ||
-||            /_/                                            ||
-**===========================================================**
-
-The Athena OS CI/CD Builder
-
-Usage: ./hephaestus [-a] [-b] [-c <ncores>] [-d <package-name>] [-h] [-n] [-r] [-s] [-t] [-u] [-w] [-x] [package1 package2 ...]
-
-Options:
--a     Build all packages.
--c     Set number of cores for building (maximum 4).
--d     Delete packages from the repository database.
--h     Print this Help.
--n     Skip all dependency checks.
--r     Upload packages to the specified repository server. Use '-e SSH_SEC=' to specify the SSH secret object and '-e REPOSITORY_SERVER=' to define the target repository server as container environment variable arguments.
--s     Sign packages. Use '-e GPG_SEC' to specify the signing key secret object as container environment variable argument.
--u     Update the package repository database.
--w     Overwrite existing packages in the output directory.
--x     Search for the fastest mirrors.
-```
-It builds the specified packages or all the repository packages if no package names are provided.
-
-First to proceed, it is important to set the secret objects of GPG and SSH keys if needed. To do it in a secure manner:
-1. create a file named `key-sec-file`, write the secret inside it and save it;
-2. create a file named `ssh-sec-file`, write the secret inside it and save it.
-
-Then, run:
-```
-podman secret create key-sec key-sec-file
-podman secret create ssh-sec ssh-sec-file
-```
-Finally, remove the file storing the secrets because no needed anymore:
-```
-rm key-sec-file ssh-sec-file
-```
-
-Hephaestus can be run by using the following parameters:
-```
-systemctl start --user podman
-podman run \
-    -ti \
-    --rm \
-    --secret key-sec \
-    --secret ssh-sec \
-    --secret strapi-sec \
-    --ulimit nofile=1024:524288 \ # Fix fakeroot hanging
-    --userns=keep-id \ # Prevent to set root as owner of mounted volume directories
-    -v "/srv/mirrors/athena:/src/output" \ # Set the target directory to store packages
-    -v "/srv/logs:/src/logs" \ # Set the target directory to store build logs
-    -v "$HOME/keydir:/src/keydir" \ # Set the target directory to retrieve the signing key from the host
-    -e REPOSITORY_SERVER=username@server.com:/path/to/dir// \ # Set the target repository server
-    -e PRE_EXEC="ls -la /src" \ # Pre-build command
-    -e POST_EXEC="ls -la /src/output" # Post-build command
-    docker.io/athenaos/hephaestus -a -d -r -s -x
-```
-Example usage:
-```
-podman run -ti --rm --secret key-sec --ulimit nofile=1024:524288 --userns=keep-id -v "/srv/mirrors/athena:/src/output" -v "$HOME/keydir:/src/keydir" -e GPG_SEC="key-sec" docker.io/athenaos/hephaestus -s -x bloodhound-python certipy
-```
+ 
+The following bash parameter expansion forms are supported:
+ 
+| Syntax | Meaning | Example |
+|---|---|---|
+| `$var` / `${var}` | Simple substitution | `$pkgname` → `athena-settings` |
+| `${var#prefix}` | Strip shortest matching prefix | `${pkgname#athena-}` → `settings` |
+| `${var%suffix}` | Strip shortest matching suffix | `${pkgname%-git}` → `athena-settings` |
+ 
+### Known limitations
+ 
+The following bash constructs are **not** resolved by the automation. PKGBUILDs that rely on them will be skipped gracefully with an informational note — no error is raised, and they can always be updated manually.
+ 
+| Unsupported syntax | Example | Reason |
+|---|---|---|
+| `##` greedy prefix strip | `${var##*/}` | Only non-greedy `#` is implemented |
+| `%%` greedy suffix strip | `${var%%.*}` | Only non-greedy `%` is implemented |
+| Substring extraction | `${var:0:3}` | Different operator, rare in PKGBUILDs |
+| Pattern substitution | `${var//foo/bar}` | Different operator, rare in PKGBUILDs |
+| Arithmetic expansion | `$((pkgver + 1))` | Out of scope for version tracking |
+| Nested expansions | `${${var}#prefix}` | Not valid POSIX; not used in practice |
+ 
+If your PKGBUILD uses any of the above and the automation skips it, you can either rewrite the assignment as a plain `var=value` line or open a PR updating the version manually.
