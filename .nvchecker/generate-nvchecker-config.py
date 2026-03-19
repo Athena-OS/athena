@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 generate-nvchecker-config.py
 Scans all PKGBUILDs under src/ and auto-generates .nvchecker/nvchecker.toml
@@ -90,7 +90,14 @@ def extract_var(content, varname):
 
 
 def expand_vars(content, text):
-    """Expand shell variable references found in content into text."""
+    """
+    Expand shell variable references found in content into text.
+
+    Handles:
+      - Simple assignments:  var=value  ->  $var / ${var}
+      - Prefix stripping:    ${var#prefix}
+      - Suffix stripping:    ${var%suffix}
+    """
     # Collect all simple (non-dynamic) variable assignments, longest first so
     # e.g. $_pkgname is expanded before $_pkg if both exist.
     assignments = {}
@@ -108,6 +115,22 @@ def expand_vars(content, text):
         value = assignments[varname]
         text = text.replace("${" + varname + "}", value)
         text = text.replace("$" + varname, value)
+
+    # Resolve bash parameter expansion: ${var#prefix} and ${var%suffix}
+    strip_re = re.compile(r'\$\{([a-zA-Z_][a-zA-Z0-9_]*)([#%])([^}]*)\}')
+
+    def _strip_replacer(m):
+        ref, op, pattern = m.group(1), m.group(2), m.group(3)
+        resolved = assignments.get(ref, "")
+        if not resolved:
+            return m.group(0)  # leave unresolvable references intact
+        if op == "#" and resolved.startswith(pattern):
+            return resolved[len(pattern):]
+        if op == "%" and resolved.endswith(pattern):
+            return resolved[:-len(pattern)]
+        return resolved
+
+    text = strip_re.sub(_strip_replacer, text)
 
     return text
 
@@ -151,7 +174,8 @@ def find_source_info(content):
     dict with platform metadata, or None if nothing is found.
     """
     # Expand variable references in the whole file content first so that
-    # patterns like source=("git+https://github.com/$_user/$_repo.git") resolve.
+    # patterns like source=("git+https://github.com/$_user/$_repo.git") resolve,
+    # including bash parameter expansions like ${pkgname#athena-}.
     expanded_content = expand_vars(content, content)
 
     # Gather candidate lines: explicit helper vars + source= lines
