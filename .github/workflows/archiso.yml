@@ -83,10 +83,10 @@ jobs:
             -H "Content-Type: application/json" \
             --data "{\"files\": $JSON_URLS}" | jq .
 
-      - name: Upload to GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          for f in $(find $HOME/Athena-Out -name '*.iso*'); do
-            gh release upload v26.03 $f --clobber --repo "$GITHUB_REPOSITORY"
-          done
+      #- name: Upload to GitHub Release
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: |
+      #    for f in $(find $HOME/Athena-Out -name '*.iso*'); do
+      #      gh release upload v26.03 $f --clobber --repo "$GITHUB_REPOSITORY"
+      #    done
