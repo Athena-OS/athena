@@ -227,18 +227,22 @@ jobs:
           # Done AFTER uploading the new version so the repo is never left empty.
           for pkg in /tmp/athena-repo/*.pkg.tar.zst; do
             [ -f "$pkg" ] || continue
-            PKGNAME=$(basename "$pkg" | rev | cut -d- -f4- | rev)
             NEWFILE=$(basename "$pkg")
 
             aws s3 ls "$REMOTE_PREFIX/" --endpoint-url "$R2_ENDPOINT" \
               | awk '{print $4}' \
-              | grep "^${PKGNAME}-" \
               | grep '\.pkg\.tar\.zst$' \
               | grep -v "^${NEWFILE}$" \
               | while read -r old_file; do
-                  echo "Removing old: $old_file"
-                  aws s3 rm "$REMOTE_PREFIX/$old_file" --endpoint-url "$R2_ENDPOINT"
-                  aws s3 rm "$REMOTE_PREFIX/$old_file.sig" --endpoint-url "$R2_ENDPOINT" || true
+                  # Only delete if it is the same package name as NEWFILE
+                  # Strip version-rel-arch suffix from both and compare
+                  new_pkg=$(echo "$NEWFILE" | rev | cut -d- -f4- | rev)
+                  old_pkg=$(echo "$old_file" | rev | cut -d- -f4- | rev)
+                  if [ "$new_pkg" = "$old_pkg" ]; then
+                    echo "Removing old: $old_file"
+                    aws s3 rm "$REMOTE_PREFIX/$old_file" --endpoint-url "$R2_ENDPOINT"
+                    aws s3 rm "$REMOTE_PREFIX/$old_file.sig" --endpoint-url "$R2_ENDPOINT" || true
+                  fi
                 done
           done
 
