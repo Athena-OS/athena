@@ -88,5 +88,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for f in $(find $HOME/Athena-Out -name '*.iso*'); do
-            gh release upload v25.11 $f --clobber --repo "$GITHUB_REPOSITORY"
+            gh release upload v26.03 $f --clobber --repo "$GITHUB_REPOSITORY"
           done
