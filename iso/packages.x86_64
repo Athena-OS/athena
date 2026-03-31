@@ -46,12 +46,14 @@ wpa_supplicant
 #######################################################
 ###           For initcpio image creation           ###
 #######################################################
+
 nbd
 syslinux
 
 #######################################################
 ###                   VPN Plugins                   ###
 #######################################################
+
 network-manager-sstp
 networkmanager-l2tp
 networkmanager-openconnect
@@ -63,6 +65,7 @@ networkmanager-vpnc
 #######################################################
 ###                      FONTS                      ###
 #######################################################
+
 noto-fonts-emoji
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
@@ -114,6 +117,7 @@ dory
 #######################################################
 ###                 GUI ENVIRONMENT                 ###
 #######################################################
+
 #athena-firefox-config
 #athena-kitty-config
 #athena-powershell-config
@@ -129,6 +133,7 @@ dory
 #######################################################
 ###                 LIVE ENVIRONMENT                ###
 #######################################################
+
 #hyperv
 #xf86-video-fbdev
 #open-vm-tools
