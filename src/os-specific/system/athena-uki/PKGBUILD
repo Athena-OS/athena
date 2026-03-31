@@ -1,0 +1,40 @@
+pkgname=athena-uki
+_pkgname=${pkgname#athena-}
+pkgver=1.76e6f37
+pkgrel=1
+pkgdesc='Unified Kernel Image builder and hooks for Athena OS.'
+arch=('any')
+url='https://github.com/Athena-OS/uki'
+license=('MIT')
+depends=('systemd-ukify' 'sbsigntools')
+makedepends=('git')
+source=("git+https://github.com/Athena-OS/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+package() {
+  cd $_pkgname
+
+  install -Dm 755 rebuild-ukis \
+    "$pkgdir/usr/bin/rebuild-ukis"
+
+  install -Dm 644 90-rebuild-ukis.hook \
+    "$pkgdir/usr/share/libalpm/hooks/90-rebuild-ukis.hook"
+  install -Dm 644 95-amd-ucode.hook \
+    "$pkgdir/usr/share/libalpm/hooks/95-amd-ucode.hook"
+  install -Dm 644 95-intel-ucode.hook \
+    "$pkgdir/usr/share/libalpm/hooks/95-intel-ucode.hook"
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

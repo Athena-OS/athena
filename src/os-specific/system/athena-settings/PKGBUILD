@@ -8,9 +8,6 @@ url='https://github.com/Athena-OS/settings'
 license=('MIT')
 depends=('iw' 'terminus-font')
 makedepends=('git')
-provides=('athena-config')
-conflicts=('athena-config')
-replaces=('athena-config')
 backup=(
     'etc/sudoers.d/sudo_nopasswd_psd'
     'etc/xdg/menus/blue-applications.menu'
