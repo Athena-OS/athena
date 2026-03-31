@@ -22,7 +22,6 @@ mkinitcpio-nfs-utils
 mkinitcpio-openswap
 mtools
 nano
-nbd
 net-tools
 netctl
 networkmanager
@@ -37,13 +36,18 @@ rsync
 sof-firmware
 squashfs-tools
 sudo
-syslinux
 systemd-boot-pacman-hook
 testdisk
 usbutils
 wireless_tools
 wireplumber
 wpa_supplicant
+
+#######################################################
+###           For initcpio image creation           ###
+#######################################################
+nbd
+syslinux
 
 #######################################################
 ###                   VPN Plugins                   ###
