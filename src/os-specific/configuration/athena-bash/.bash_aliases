@@ -4,20 +4,20 @@
 alias tmux='tmux -u'
 
 # Alias's for multiple directory listing commands
-alias ls='lsd --color=auto'
-alias la='lsd -a'
+alias ls='lsd --color=auto --group-dirs first'
+alias la='lsd -a --group-dirs first'
 alias lx='lsd -lXh' # sort by extension
 alias lk='lsd -lSrh' # sort by size
-alias lr='lsd -lRh' # recursive ls
+alias lr='lsd -lRh --group-dirs first' # recursive ls
 alias lt='lsd -ltrh' # sort by date
-alias lm='lsd -alh | more' # pipe through 'more'
-alias ll='lsd -alFh' # long listing format
+alias lm='lsd -alh --group-dirs first | more' # pipe through 'more'
+alias ll='lsd -alFh --group-dirs first' # long listing format
 alias lf="lsd -l | grep -E -v '^d'" # files only
 alias ldir="lsd -l | grep -E '^d' --color=never" # directories only
-alias l='lsd'
+alias l='lsd --group-dirs first'
 alias l.="lsd -A | grep -E '^\.' --color=never"
 
-# alias ls='eza --color=auto'
+# alias ls='eza --color=auto --icons'
 # alias la='eza -a'
 # alias lx='eza -lhs extension' # sort by extension
 # alias lk='eza -lhs size' # sort by size
