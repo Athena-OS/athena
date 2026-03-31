@@ -131,9 +131,12 @@ jobs:
             "
 
             # Collect built packages and their signatures
+            # and exclude their debug packages
             find "$GITHUB_WORKSPACE/$pkg_dir" \
               -maxdepth 1 \
               \( -name "*.pkg.tar.zst" -o -name "*.pkg.tar.zst.sig" \) \
+              ! -name "*-debug-*.pkg.tar.zst" \
+              ! -name "*-debug-*.pkg.tar.zst.sig" \
               -exec mv {} /tmp/athena-repo/ \;
           done
 
