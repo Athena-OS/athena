@@ -12,15 +12,15 @@ efibootmgr
 inetutils
 intel-ucode
 linux-aegis-offensive
-linux-aegis-offensive-headers
-linux-atm
+############linux-aegis-offensive-headers
+############linux-atm
 linux-firmware
 lvm2
 mesa
 mkinitcpio-archiso
-mkinitcpio-nfs-utils
-mkinitcpio-openswap
-mtools
+#########################mkinitcpio-nfs-utils
+#########################mkinitcpio-openswap
+#################mtools
 nano
 net-tools
 netctl
@@ -28,7 +28,7 @@ networkmanager
 network-manager-applet
 nfs-utils
 nss-mdns
-ntp
+#############ntp
 pipewire
 pipewire-pulse
 pv
@@ -48,7 +48,7 @@ wpa_supplicant
 #######################################################
 
 nbd
-syslinux
+#########syslinux
 
 #######################################################
 ###                   VPN Plugins                   ###
@@ -81,7 +81,6 @@ git
 lsd
 openbsd-netcat
 #orca
-paru
 polkit
 ufw
 wget
