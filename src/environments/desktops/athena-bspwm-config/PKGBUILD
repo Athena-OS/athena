@@ -37,3 +37,4 @@ package() {
   rsync -av --progress .local/bin/ "$pkgdir/etc/skel/.local/bin/"
   rsync -av --progress .local/share/fonts/ "$pkgdir/etc/skel/.local/share/fonts/"
 }
+
