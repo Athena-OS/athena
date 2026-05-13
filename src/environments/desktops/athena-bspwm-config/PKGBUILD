@@ -32,7 +32,7 @@ package() {
   install -dm 755 "$pkgdir/etc/skel/.local/share/fonts"
   install -dm 755 "$pkgdir/etc/systemd/system/multi-user.target.wants"
   install -dm 755 "$pkgdir/etc/systemd/system/sockets.target.wants"
-  
+
   rsync -av --progress .config/ "$pkgdir/etc/skel/.config/"
   rsync -av --progress .p10k.zsh "$pkgdir/etc/skel/.p10k.zsh"
   rsync -av --progress .local/share/applications/ "$pkgdir/etc/skel/.local/share/applications/"
