@@ -1,7 +1,7 @@
 pkgname=athena-bspwm-config
 _pkgname=bspwm
 pkgver=13.d701077
-pkgrel=7
+pkgrel=8
 pkgdesc="Bspwm configuration for Athena."
 arch=('any')
 url='https://github.com/Athena-OS/bspwm'
@@ -37,3 +37,4 @@ package() {
   rsync -av --progress .local/bin/ "$pkgdir/etc/skel/.local/bin/"
   rsync -av --progress .local/share/fonts/ "$pkgdir/etc/skel/.local/share/fonts/"
 }
+
