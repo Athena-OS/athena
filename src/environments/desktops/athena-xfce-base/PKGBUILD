@@ -1,10 +1,10 @@
 pkgname=athena-xfce-base
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="XFCE base configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('mugshot' 'network-manager-applet' 'ristretto' 'xdg-user-dirs' 'xfce4-appfinder' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfce4-taskmanager' 'xfce4-whiskermenu-plugin' 'xfdesktop' 'xfwm4' 'xorg-xrandr')
+depends=('mugshot' 'network-manager-applet' 'ristretto' 'xdg-user-dirs' 'xfce4-appfinder' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfce4-taskmanager' 'xfce4-whiskermenu-plugin' 'xfdesktop' 'xfwm4' 'xorg-server' 'xorg-xrandr')
 source=("athena-xfce-applications.menu"
         "xfce-init.desktop"
         "xfce-init"
@@ -14,7 +14,7 @@ sha512sums=('5653bb6a304f7c5c624857f0d7268b3ac21228f2586e654c7dd6fb94f518f7fe2dd
             '12c16f08a8d503a76277f984ef8493bcc8eb22bae52a414b0d23222b27f93c2a89612f678fcf334c0d8dc27a03ae12672e2ccc52b6850b4c0265161ead125589'
             '1aea18bd30ade994114b658ba10cbd6dad4066736e49edd6a0f74c3420ec8f53b2c1b37c2bc6d2d7a28792544cc3d9a63a1b5f9b1e052123742a6b2738f4120b'
             'a532187402d8034bda78620dd9e23ec2c8b1a2868489ef5439893b0f3250a5bb5b8fbcea3a58531bcd7a6a09b8e084cb52a2236d6a779af6853178fda800cd7b'
-            '3b0a15a0334045a1325b16b555fcfde0a7f7b340812d047bfeffa060ec8230f401113717fc040c0bfe472f0df8b2221b34759a0936ef50361c58a0a91d8178e9')
+            '83e035956681a4744193e5b1b59709a88fb48307bc82086a2681d79bb75896d5d7a35e52685fe4684973adb071a1c7220189d7a35ccc644376926bc37e9e6b7e')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml"
@@ -31,3 +31,4 @@ package() {
   cp -a "$srcdir/Everblush-xfwm" "$pkgdir/usr/share/themes/"
   touch "${pkgdir}/etc/skel/.flag-xfce-once"
 }
+
