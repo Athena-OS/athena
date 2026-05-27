@@ -111,8 +111,6 @@ jobs:
       - name: Build packages
         if: steps.changed.outputs.packages != ''
         env:
-          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           PACKAGES: ${{ steps.changed.outputs.packages }}
         run: |
           mkdir -p /tmp/athena-repo
@@ -122,41 +120,15 @@ jobs:
             echo "Building: $pkg_dir"
             echo "=============================="
 
-            if [ -f "$GITHUB_WORKSPACE/$pkg_dir/build.sh" ]; then
-              echo "Found build.sh — using it instead of makepkg"
-              chmod +x "$GITHUB_WORKSPACE/$pkg_dir/build.sh"
-              su builder -c "
-                cd '$GITHUB_WORKSPACE/$pkg_dir'
-                ./build.sh 2>&1
-              "
-
-              # Sign every unsigned package produced by build.sh
-              for pkg in "$GITHUB_WORKSPACE/$pkg_dir"/*.pkg.tar.zst; do
-                [ -f "$pkg" ] || continue
-                case "$pkg" in *-debug-*) continue ;; esac
-                if [ ! -f "$pkg.sig" ]; then
-                  echo "Signing $(basename "$pkg")"
-                  su builder -c "
-                    gpg --batch --yes \
-                        --pinentry-mode loopback \
-                        --passphrase '$GPG_PASSPHRASE' \
-                        --local-user '$GPG_KEY_ID' \
-                        --detach-sign --use-agent --no-armor \
-                        '$pkg'
-                  "
-                fi
-              done
-            else
-              su builder -c "
-                cd '$GITHUB_WORKSPACE/$pkg_dir'
-                makepkg \
-                  --noconfirm \
-                  --syncdeps \
-                  --sign \
-                  --cleanbuild \
-                  2>&1
-              "
-            fi
+            su builder -c "
+              cd '$GITHUB_WORKSPACE/$pkg_dir'
+              makepkg \
+                --noconfirm \
+                --syncdeps \
+                --sign \
+                --cleanbuild \
+                2>&1
+            "
 
             # Collect built packages and their signatures
             # and exclude their debug packages
