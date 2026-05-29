@@ -26,3 +26,4 @@ alias nmtui='command nmtui "$@"; tput sgr0; clear; [ -r /etc/issue ] && echo -e 
 
 # Quick command to manually redisplay MOTD
 alias motd='clear; [ -r /etc/issue ] && echo -e "$(cat /etc/issue)"'
+alias kbd='sudo dory --set-keymap'
