@@ -1,5 +1,5 @@
 pkgname=athena-firefox-config
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Mozilla Firefox configuration for Athena."
 arch=('any')
@@ -9,6 +9,8 @@ depends=('athena-nighttab' 'firefox' 'firefox-extension-foxyproxy'
          'profile-sync-daemon')
 source=("psd.conf"
         "$pkgname.tar.gz")
+sha512sums=('07a7f0b209770ef38541041e57af1281fa553c051b22f7256498f9afad16efaf0f058b02c346cc9403f99f9e161c5535ff3a1143b6b01d8a832a3eb8cd2c6798'
+            '253ad90f4247f90022c20b1156f6b205ed5fee5d5ab2390c32359ebeb70c7c055a1dec28b40ce38484ee32920659fff999b86defbd1c58bcad60421e94e8ac79')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.mozilla"
@@ -17,5 +19,4 @@ package() {
   cp -rf "${srcdir}/firefox" "${pkgdir}/etc/skel/.mozilla/"
   install -Dm644 "${srcdir}/psd.conf" "${pkgdir}/etc/skel/.config/psd/"
 }
-sha512sums=('07a7f0b209770ef38541041e57af1281fa553c051b22f7256498f9afad16efaf0f058b02c346cc9403f99f9e161c5535ff3a1143b6b01d8a832a3eb8cd2c6798'
-            '253ad90f4247f90022c20b1156f6b205ed5fee5d5ab2390c32359ebeb70c7c055a1dec28b40ce38484ee32920659fff999b86defbd1c58bcad60421e94e8ac79')
+
