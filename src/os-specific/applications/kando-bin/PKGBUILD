@@ -61,8 +61,8 @@ package() {
     ln -s "/usr/share/icons/hicolor" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/hicolor"
     ln -s "/usr/share/icons/htb-toolkit" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/htb-toolkit"
     ln -s "/usr/share/pixmaps" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/pixmaps"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/etc/xdg/autostart"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.Kando.desktop" -t "${pkgdir}/etc/xdg/autostart"
+    install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.Kando.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
