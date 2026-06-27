@@ -2,7 +2,7 @@ pkgname=kando-bin
 _pkgname=Kando
 pkgver=2.3.1
 _electronversion=41
-pkgrel=2
+pkgrel=3
 pkgdesc='A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.'
 arch=('aarch64' 'x86_64')
 url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
@@ -57,10 +57,6 @@ package() {
     install -Dm644 "config.json" "${pkgdir}/etc/skel/.config/${pkgname%-bin}/config.json"
     install -Dm644 "menus.json" "${pkgdir}/etc/skel/.config/${pkgname%-bin}/menus.json"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -dm755 "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes"
-    ln -s "/usr/share/icons/hicolor" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/hicolor"
-    ln -s "/usr/share/icons/htb-toolkit" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/htb-toolkit"
-    ln -s "/usr/share/pixmaps" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.${_pkgname}.desktop" -t "${pkgdir}/etc/xdg/autostart"
     install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
