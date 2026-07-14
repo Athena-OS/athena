@@ -3,10 +3,11 @@ name: Vulcano
 on:
   pull_request:
     branches: [ master ]
-  pull_request_target:
-    types: [opened, reopened, edited, synchronize, ready_for_review]
     paths:
       - 'src/**/PKGBUILD'
+permissions:
+  contents: read
+  pull-requests: write
 jobs:
   labeling:
     runs-on: ubuntu-latest
@@ -51,14 +52,20 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: Build Package
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # see scope note below
         run: |
-          CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
-            HEAD^1...HEAD \
+          set -euo pipefail
+          mapfile -t CHANGED < <(git diff --name-only --diff-filter=ACMRT \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.pull_request.head.sha }}" \
             | grep 'src/.*/PKGBUILD$' || true)
-          for FILE in "${CHANGED_PKGBUILDS[@]}"; do
-            if [[ $(basename "$FILE") == "PKGBUILD" ]]; then
-              echo "Building $FILE..."
-              podman build --load -t builder -f vulcano/Dockerfile $(dirname $FILE)
-              podman run --rm builder
-            fi
+
+          printf '%s' "$GH_TOKEN" > /tmp/ghtoken
+          for FILE in "${CHANGED[@]}"; do
+            [[ -n "$FILE" ]] || continue
+            podman build --secret id=ghtoken,src=/tmp/ghtoken \
+              -t builder -f vulcano/Dockerfile "$(dirname "$FILE")"
+            podman run --rm builder
           done
+          shred -u /tmp/ghtoken
