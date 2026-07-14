@@ -9,10 +9,9 @@ if [[ -r /run/secrets/ghtoken ]]; then
 fi
 
 if [[ -n "$GH_TOKEN" ]]; then
-  umask 077
-  printf 'https://x-access-token:%s@github.com\n' "$GH_TOKEN" > "$HOME/.git-credentials"
-  git config --global credential.helper store
-  git config --global credential."https://github.com".username x-access-token
+  export GIT_CONFIG_COUNT=1
+  export GIT_CONFIG_KEY_0="url.https://${GH_TOKEN}@github.com/.insteadOf"
+  export GIT_CONFIG_VALUE_0="https://github.com/"
 fi
 
 exec makepkg "$@"
