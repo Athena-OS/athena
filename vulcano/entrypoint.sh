@@ -8,14 +8,11 @@ if [[ -r /run/secrets/ghtoken ]]; then
   GH_TOKEN="$(< /run/secrets/ghtoken)"
 fi
 
-echo "DEBUG: GH_TOKEN length: ${#GH_TOKEN}"
-echo "DEBUG: HOME=$HOME USER=$(id -un)"
-
 if [[ -n "$GH_TOKEN" ]]; then
-  export GH_TOKEN
-  git config --global credential.helper \
-    '!f() { echo username=x-access-token; echo password=$GH_TOKEN; }; f'
-  echo "DEBUG: helper -> $(git config --global --get credential.helper)"
+  umask 077
+  printf 'https://x-access-token:%s@github.com\n' "$GH_TOKEN" > "$HOME/.git-credentials"
+  git config --global credential.helper store
+  git config --global credential."https://github.com".username x-access-token
 fi
 
 exec makepkg "$@"
