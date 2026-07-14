@@ -53,19 +53,24 @@ jobs:
           fetch-depth: 0
       - name: Build Package
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # see scope note below
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}   # or a fine-grained PAT
         run: |
           set -euo pipefail
+          umask 077
+          printf '%s' "$GH_TOKEN" > /tmp/ghtoken
+
           mapfile -t CHANGED < <(git diff --name-only --diff-filter=ACMRT \
             "${{ github.event.pull_request.base.sha }}" \
             "${{ github.event.pull_request.head.sha }}" \
             | grep 'src/.*/PKGBUILD$' || true)
 
-          printf '%s' "$GH_TOKEN" > /tmp/ghtoken
           for FILE in "${CHANGED[@]}"; do
             [[ -n "$FILE" ]] || continue
-            podman build --secret id=ghtoken,src=/tmp/ghtoken \
-              -t builder -f vulcano/Dockerfile "$(dirname "$FILE")"
-            podman run --rm builder
+            podman build --build-arg PKGDIR="$(dirname "$FILE")" \
+              -t builder -f vulcano/Dockerfile .
+            podman run --rm \
+              -v /tmp/ghtoken:/run/secrets/ghtoken:ro \
+              builder
           done
+
           shred -u /tmp/ghtoken
