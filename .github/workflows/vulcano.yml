@@ -56,6 +56,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
+          # NOTE: It can validate also Athena private repos but only for -git packages, not for private tarball sources (i.e., https://github.com/Athena-OS/something/archive/v1.0.tar.gz)
           set -euo pipefail
           printf '%s' "$GH_TOKEN" > /tmp/ghtoken
           chmod 0644 /tmp/ghtoken
