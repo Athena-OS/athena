@@ -1,11 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-export GIT_TERMINAL_PROMPT=0   # fail loudly instead of "No such device or address"
+export GIT_TERMINAL_PROMPT=0
 
-if [[ -f /run/secrets/ghtoken ]]; then
-  GH_TOKEN="$(< /run/secrets/ghtoken)"
-fi
+[[ -f /run/secrets/ghtoken ]] && GH_TOKEN="$(< /run/secrets/ghtoken)"
 
 if [[ -n "${GH_TOKEN:-}" ]]; then
   export GH_TOKEN
