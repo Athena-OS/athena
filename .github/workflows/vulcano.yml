@@ -52,6 +52,14 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+      - name: Check token
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          echo "length: ${#GH_TOKEN}"
+          curl -sS -o /dev/null -w 'api: %{http_code}\n' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            https://api.github.com/repos/Athena-OS/htb-toolkit
       - name: Build Package
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
