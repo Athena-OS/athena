@@ -52,14 +52,12 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-      - name: Check token
+      - name: Isolated clone test
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          echo "length: ${#GH_TOKEN}"
-          curl -sS -o /dev/null -w 'api: %{http_code}\n' \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            https://api.github.com/repos/Athena-OS/htb-toolkit
+          podman run --rm -e GH_TOKEN --entrypoint /bin/bash builder -c \
+            'git clone --depth 1 https://x-access-token:$GH_TOKEN@github.com/Athena-OS/htb-toolkit /tmp/t && echo CLONE_OK'
       - name: Build Package
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
