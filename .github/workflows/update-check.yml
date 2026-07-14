@@ -318,8 +318,11 @@ jobs:
               # objects for speed.  --tags ensures git describe can find tags.
               # We then do a sparse checkout of just the root so the working tree
               # exists for `cd $pkgname` (pkgver() expects to be inside the repo).
-              if ! git clone --filter=blob:none --tags \
-                    "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
+              if ! GIT_CONFIG_COUNT=1 \
+                   GIT_CONFIG_KEY_0="url.https://${GH_TOKEN}@github.com/.insteadOf" \
+                   GIT_CONFIG_VALUE_0="https://github.com/" \
+                   git clone --filter=blob:none --tags \
+                     "$GIT_URL" "$CLONE_DIR/$PKG_NAME" 2>&1; then
                 echo "  -> Clone failed, skipping."
                 rm -rf "$CLONE_DIR"
                 continue
