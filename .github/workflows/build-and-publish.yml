@@ -112,6 +112,7 @@ jobs:
         if: steps.changed.outputs.packages != ''
         env:
           PACKAGES: ${{ steps.changed.outputs.packages }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           mkdir -p /tmp/athena-repo
 
@@ -119,15 +120,13 @@ jobs:
             echo "=============================="
             echo "Building: $pkg_dir"
             echo "=============================="
-
+            
             su builder -c "
+              export GIT_CONFIG_COUNT=1
+              export GIT_CONFIG_KEY_0='url.https://${GH_TOKEN}@github.com/.insteadOf'
+              export GIT_CONFIG_VALUE_0='https://github.com/'
               cd '$GITHUB_WORKSPACE/$pkg_dir'
-              makepkg \
-                --noconfirm \
-                --syncdeps \
-                --sign \
-                --cleanbuild \
-                2>&1
+              makepkg --noconfirm --syncdeps --sign --cleanbuild 2>&1
             "
 
             # Collect built packages and their signatures
