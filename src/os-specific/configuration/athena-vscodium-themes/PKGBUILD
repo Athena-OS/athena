@@ -1,6 +1,6 @@
 pkgname=athena-vscodium-themes
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VSCodium themes for Athena."
 arch=('any')
 license=("custom")
@@ -15,4 +15,4 @@ package() {
 
   cp -rf "${srcdir}/etc/skel/.vscode-oss/extensions" "${pkgdir}/etc/skel/.vscode-oss/"
 }
-sha512sums=('13493cc301adb904badd5705357375e7e3c4af2f7509fc0b7ed67599c5700d5923beb15a390eed72e427e38617147e9d09c0b3d014950958ee623bb45e61b030')
+sha512sums=('99dc7e61e0b501472e41e84211c79dd892119a9010891f57d1f44b11ad640c47180e29440171f26adb4240600ad1dacd710369591f5e710fbc9e0e347cfe1184')
