@@ -1,18 +1,19 @@
 pkgname=athena-vscodium-themes
 pkgver=1.0.1
-pkgrel=2
-pkgdesc="VSCodium themes for Athena."
+pkgrel=3
+pkgdesc='VSCodium themes for Athena.'
 arch=('any')
-license=("custom")
+license=('custom')
 depends=('vscodium')
 source=("$pkgname.tar.gz")
+sha512sums=('99dc7e61e0b501472e41e84211c79dd892119a9010891f57d1f44b11ad640c47180e29440171f26adb4240600ad1dacd710369591f5e710fbc9e0e347cfe1184')
 
 package() {
-  mkdir -p "${pkgdir}/etc/skel/.vscode-oss"
-  mkdir -p "${pkgdir}/etc/skel/.config/VSCodium/User"
-  
-  cp -rf "${srcdir}/etc/skel/.config/VSCodium/User/settings.json" "${pkgdir}/etc/skel/.config/VSCodium/User/"
+  mkdir -p "$pkgdir/etc/skel/.vscode-oss"
+  mkdir -p "$pkgdir/etc/skel/.config/VSCodium/User"
 
-  cp -rf "${srcdir}/etc/skel/.vscode-oss/extensions" "${pkgdir}/etc/skel/.vscode-oss/"
+  cp -rf "$srcdir/etc/skel/.config/VSCodium/User/settings.json" "$pkgdir/etc/skel/.config/VSCodium/User/"
+
+  cp -rf "$srcdir/etc/skel/.vscode-oss/extensions" "$pkgdir/etc/skel/.vscode-oss/"
 }
-sha512sums=('99dc7e61e0b501472e41e84211c79dd892119a9010891f57d1f44b11ad640c47180e29440171f26adb4240600ad1dacd710369591f5e710fbc9e0e347cfe1184')
+
