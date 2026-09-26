@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gnome-shell')
 makedepends=('git' 'zip')
 source=("git+https://github.com/kando-menu/gnome-shell-integration.git#tag=v$pkgver")
-sha512sums=('6bd3f851817a82879b637dd275240653a85c0303f8f766ecf4d478027bbd7df36e68d41baacee7978820bbf777786dbef5a7bc02d05b39dc856bc5b79746492d')
+sha512sums=('SKIP')
 
 build() {
   cd gnome-shell-integration
