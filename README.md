@@ -130,4 +130,4 @@ The following bash constructs are **not** resolved by the automation. PKGBUILDs 
  
 If your PKGBUILD uses any of the above and the automation skips it, you can either rewrite the assignment as a plain `var=value` line or open a PR updating the version manually.
 
-LOL
+LOL Omuamua
