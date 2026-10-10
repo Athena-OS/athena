@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-kando-integration
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='GNOME Shell extension required for Kando to work on Wayland.'
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gnome-shell')
 makedepends=('git' 'zip')
 source=("git+https://github.com/kando-menu/gnome-shell-integration.git#tag=v$pkgver")
-sha512sums=('SKIP')
+sha512sums=('d9ad4240d10cde1c17ba6ede7db5cca11cc2bfba41194197e5da24d8f093824eb80a22a2592841c3c01debfb413c18acee214b7ebd33e58c06f4b3b0b8651408')
 
 build() {
   cd gnome-shell-integration
