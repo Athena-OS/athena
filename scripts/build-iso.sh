@@ -1,331 +1,258 @@
 #!/bin/bash
-#set -e
-##################################################################################################################
-# Author        :       Erik Dubois
-# Website       :       https://www.erikdubois.be
-# Website       :       https://www.arcolinux.info
-# Website       :       https://www.arcolinux.com
-# Website       :       https://www.arcolinuxd.com
-# Website       :       https://www.arcolinuxb.com
-# Website       :       https://www.arcolinuxiso.com
-# Website       :       https://www.arcolinuxforum.com
-##################################################################################################################
 #
-#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+# Build an Arch Linux based ISO with archiso.
 #
-##################################################################################################################
-echo
-echo "################################################################## "
-tput setaf 2
-echo "Phase 1 : "
-echo "- Setting General parameters"
-tput sgr0
-echo "################################################################## "
-echo
+# The distro identity (name, version, arch) is read from the profile's
+# profiledef.sh and can be overridden on the command line or via env vars.
+#
+# Usage: ./build-iso.sh [options]
+#
 
-        #Let us set the desktop"
-        #First letter of desktop is small letter
+set -euo pipefail
 
-        desktop="none"
-        dmDesktop="none"
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+scriptDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repoDir="$(cd "$scriptDir/.." && pwd)"
 
-        athenaVersion='live'
+# ---------------------------------------------------------------------------
+# Defaults (env vars: ISO_PROFILE, ISO_NAME, ISO_VERSION, ISO_ARCH,
+#           ISO_BUILD_DIR, ISO_OUT_DIR, ISO_CHECKSUMS)
+# ---------------------------------------------------------------------------
+profileDir="${ISO_PROFILE:-$repoDir/iso}"
+name="${ISO_NAME:-}"            # empty = take from profiledef.sh
+version="${ISO_VERSION:-}"      # empty = take from profiledef.sh
+arch="${ISO_ARCH:-}"            # empty = take from profiledef.sh
+buildDir="${ISO_BUILD_DIR:-}"   # empty = <repo>/build
+outDir="${ISO_OUT_DIR:-}"       # empty = <repo>/out
+checksums="${ISO_CHECKSUMS:-sha256 sha512}"
+releaseFile="etc/dev-rel"       # relative to airootfs, optional
+cleanCache="no"
+keepBuild="no"
+verbose="-v"
 
-        isoLabel='athenaos-'$athenaVersion'-x86_64.iso'
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+color() { tput setaf "$1" 2> /dev/null || true; }
+reset() { tput sgr0 2> /dev/null || true; }
 
-        # setting of the general parameters
-        archisoRequiredVersion="archiso 86-1"
-        buildFolder=$HOME"/athena-build"
-        outFolder=$HOME"/Athena-Out"
-        # outFolder="/mnt/hgfs/VirtualShare/Athena-Out"
-        archisoVersion=$(sudo pacman -Q archiso)
+die() {
+  color 1; echo "ERROR: $*" >&2; reset
+  exit 1
+}
 
-        # If you are ready to use your personal repo and personal packages
-        # https://arcolinux.com/use-our-knowledge-and-create-your-own-icon-theme-combo-use-github-to-saveguard-your-work/
-        # 1. set variable personalrepo to true in this file (default:false)
-        # 2. change the file personal-repo to reflect your repo
-        # 3. add your applications to the file packages-personal-repo.x86_64
+warn() {
+  color 3; echo "WARNING: $*" >&2; reset
+}
 
-        personalrepo=false
+phase() {
+  echo
+  echo "##################################################################"
+  color 2
+  echo "$1"
+  shift
+  for line in "$@"; do echo "- $line"; done
+  reset
+  echo "##################################################################"
+  echo
+}
 
-        echo "################################################################## "
-        echo "Building the desktop                   : "$desktop
-        echo "Building version                       : "$athenaVersion
-        echo "Iso label                              : "$isoLabel
-        echo "Do you have the right archiso version? : "$archisoVersion
-        echo "What is the required archiso version?  : "$archisoRequiredVersion
-        echo "Build folder                           : "$buildFolder
-        echo "Out folder                             : "$outFolder
-        echo "################################################################## "
+usage() {
+  cat << EOF
+Usage: $(basename "$0") [options]
 
-        if [ "$archisoVersion" == "$archisoRequiredVersion" ]; then
-                tput setaf 2
-                echo "##################################################################"
-                echo "Archiso has the correct version. Continuing ..."
-                echo "##################################################################"
-                tput sgr0
-        else
-        tput setaf 1
-        echo "###################################################################################################"
-        echo "You need to install the correct version of Archiso"
-        echo "Use 'sudo downgrade archiso' to do that"
-        echo "or update your system"
-        echo "###################################################################################################"
-        tput sgr0
-        fi
+Options:
+  -p, --profile DIR       archiso profile directory (default: $profileDir)
+  -n, --name NAME         ISO name prefix        (default: iso_name from profiledef.sh)
+  -V, --version VERSION   ISO version string     (default: iso_version from profiledef.sh)
+  -a, --arch ARCH         Architecture           (default: arch from profiledef.sh)
+  -b, --build-dir DIR     Build/work directory   (default: $repoDir/build)
+  -o, --out-dir DIR       Output directory       (default: $repoDir/out)
+      --checksums LIST    Space separated list   (default: "$checksums")
+                          Any of: md5 sha1 sha256 sha512 b2
+      --release-file PATH File inside airootfs to stamp with build date/version
+                          (default: $releaseFile, skipped if missing)
+      --clean-cache       Run 'pacman -Scc' before building (slow, redownloads everything)
+      --keep-build        Keep the build directory after building
+  -q, --quiet             Less mkarchiso output
+  -h, --help              Show this help
 
-echo
-echo "################################################################## "
-tput setaf 2
-echo "Phase 2 :"
-echo "- Checking if archiso is installed"
-echo "- Saving current archiso version to readme"
-echo "- Making mkarchiso verbose"
-tput sgr0
-echo "################################################################## "
-echo
+Environment variables with the same meaning:
+  ISO_PROFILE ISO_NAME ISO_VERSION ISO_ARCH ISO_BUILD_DIR ISO_OUT_DIR ISO_CHECKSUMS
 
-        package="archiso"
+Examples:
+  $(basename "$0")
+  $(basename "$0") -V 2026.10.17 --keep-build
+  $(basename "$0") --profile ./iso --out-dir /srv/iso
+EOF
+}
 
-        #----------------------------------------------------------------------------------
+need_value() {
+  [ -n "${2:-}" ] && [ "${2:0:1}" != "-" ] || die "Option '$1' requires a value"
+}
 
-        #checking if application is already installed or else install with aur helpers
-        if pacman -Qi $package &> /dev/null; then
+# Run as root without sudo noise if we already are root
+if [ "$EUID" -eq 0 ]; then
+  sudo_cmd() { "$@"; }
+else
+  command -v sudo > /dev/null || die "sudo is required (or run as root)"
+  sudo_cmd() { sudo "$@"; }
+fi
 
-                        echo "Archiso is already installed"
+# Read a variable from profiledef.sh without polluting our environment
+profiledef_var() {
+  ( # shellcheck disable=SC1090
+    declare -A file_permissions
+    source "$profileDir/profiledef.sh" && printf '%s' "${!1:-}" )
+}
 
-        else
-                        sudo pacman -S --noconfirm archiso
-                #checking which helper is installed
-                #if pacman -Qi yay &> /dev/null; then
+# ---------------------------------------------------------------------------
+# Argument parsing
+# ---------------------------------------------------------------------------
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -p|--profile)      need_value "$1" "${2:-}"; profileDir="$2"; shift 2 ;;
+    --profile=*)       profileDir="${1#*=}"; shift ;;
+    -n|--name)         need_value "$1" "${2:-}"; name="$2"; shift 2 ;;
+    --name=*)          name="${1#*=}"; shift ;;
+    -V|--version)      need_value "$1" "${2:-}"; version="$2"; shift 2 ;;
+    --version=*)       version="${1#*=}"; shift ;;
+    -a|--arch)         need_value "$1" "${2:-}"; arch="$2"; shift 2 ;;
+    --arch=*)          arch="${1#*=}"; shift ;;
+    -b|--build-dir)    need_value "$1" "${2:-}"; buildDir="$2"; shift 2 ;;
+    --build-dir=*)     buildDir="${1#*=}"; shift ;;
+    -o|--out-dir)      need_value "$1" "${2:-}"; outDir="$2"; shift 2 ;;
+    --out-dir=*)       outDir="${1#*=}"; shift ;;
+    --checksums)       need_value "$1" "${2:-}"; checksums="$2"; shift 2 ;;
+    --checksums=*)     checksums="${1#*=}"; shift ;;
+    --release-file)    need_value "$1" "${2:-}"; releaseFile="$2"; shift 2 ;;
+    --release-file=*)  releaseFile="${1#*=}"; shift ;;
+    --clean-cache)     cleanCache="yes"; shift ;;
+    --keep-build)      keepBuild="yes"; shift ;;
+    -q|--quiet)        verbose=""; shift ;;
+    -h|--help)         usage; exit 0 ;;
+    *)                 usage; echo; die "Unknown option: $1" ;;
+  esac
+done
 
-                #       echo "################################################################"
-                #       echo "######### Installing with yay"
-                #       echo "################################################################"
-                #       yay -S --noconfirm $package
+# ---------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------
+profileDir="$(cd "$profileDir" 2> /dev/null && pwd)" || die "Profile directory not found: $profileDir"
+[ -f "$profileDir/profiledef.sh" ] || die "Not an archiso profile (missing profiledef.sh): $profileDir"
 
-                #elif pacman -Qi trizen &> /dev/null; then
+name="${name:-$(profiledef_var iso_name)}"
+version="${version:-$(profiledef_var iso_version)}"
+arch="${arch:-$(profiledef_var arch)}"
+[ -n "$name" ]    || die "iso_name is not set in profiledef.sh and no --name given"
+[ -n "$version" ] || die "iso_version is not set in profiledef.sh and no --version given"
+[ -n "$arch" ]    || die "arch is not set in profiledef.sh and no --arch given"
+[ -f "$profileDir/packages.$arch" ] || die "Missing package list: $profileDir/packages.$arch"
 
-                #       echo "################################################################"
-                #       echo "######### Installing with trizen"
-                #       echo "################################################################"
-                #       trizen -S --noconfirm --needed --noedit $package
+for algo in $checksums; do
+  command -v "${algo}sum" > /dev/null || die "Checksum tool not found: ${algo}sum"
+done
 
-                #elif pacman -Qi paru &> /dev/null; then
+buildDir="${buildDir:-$repoDir/build}"
+outDir="${outDir:-$repoDir/out}"
+workDir="$buildDir/work"
+profileCopy="$buildDir/profile"
+isoFile="$name-$version-$arch.iso"
 
-        #                echo "################################################################"
-        #                echo "######### Installing with paru"
-        #                echo "################################################################"
-        #                paru -S --noconfirm --needed $package
+# ---------------------------------------------------------------------------
+phase "Phase 1 :" "Checking archiso" "Setting general parameters"
+# ---------------------------------------------------------------------------
+if ! pacman -Qi archiso &> /dev/null; then
+  echo "archiso is not installed, installing it now"
+  sudo_cmd pacman -S --needed --noconfirm archiso
+fi
+archisoVersion="$(pacman -Q archiso)"
 
-        #        fi
+printf '%-30s: %s\n' \
+  "Profile"           "$profileDir" \
+  "ISO name"          "$name" \
+  "ISO version"       "$version" \
+  "Architecture"      "$arch" \
+  "ISO file"          "$isoFile" \
+  "archiso"           "$archisoVersion" \
+  "Build directory"   "$buildDir" \
+  "Output directory"  "$outDir" \
+  "Checksums"         "$checksums"
 
-                # Just checking if installation was successful
-                if pacman -Qi $package &> /dev/null; then
+# ---------------------------------------------------------------------------
+phase "Phase 2 :" "Preparing a clean build directory" "Copying the profile"
+# ---------------------------------------------------------------------------
+cleanup() {
+  if [ "$keepBuild" != "yes" ] && [ -d "$buildDir" ]; then
+    echo "Removing build directory $buildDir"
+    sudo_cmd rm -rf -- "$buildDir"
+  fi
+}
+trap cleanup EXIT
 
-                        echo "################################################################"
-                        echo "#########  "$package" has been installed"
-                        echo "################################################################"
+[ -d "$buildDir" ] && sudo_cmd rm -rf -- "$buildDir"
+mkdir -p -- "$workDir" "$outDir"
+cp -a -- "$profileDir" "$profileCopy"
 
-                else
+# Apply name/version/arch overrides to the copied profiledef.sh so mkarchiso
+# produces exactly the file name we expect (no renaming afterwards).
+sed -i \
+  -e "s|^iso_name=.*|iso_name=\"$name\"|" \
+  -e "s|^iso_version=.*|iso_version=\"$version\"|" \
+  -e "s|^arch=.*|arch=\"$arch\"|" \
+  "$profileCopy/profiledef.sh"
 
-                        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                        echo "!!!!!!!!!  "$package" has NOT been installed"
-                        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                        exit 1
-                fi
+# ---------------------------------------------------------------------------
+phase "Phase 3 :" "Stamping build information"
+# ---------------------------------------------------------------------------
+buildDate="$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+relPath="$profileCopy/airootfs/$releaseFile"
+if [ -f "$relPath" ]; then
+  echo "Updating $releaseFile (built $buildDate)"
+  sed -i \
+    -e "s|^ISO_BUILD=.*|ISO_BUILD=$buildDate|" \
+    -e "s|^ISO_RELEASE=.*|ISO_RELEASE=$version|" \
+    "$relPath"
+else
+  echo "No airootfs/$releaseFile in profile, skipping"
+fi
 
-        fi
+# ---------------------------------------------------------------------------
+if [ "$cleanCache" == "yes" ]; then
+  phase "Phase 4 :" "Cleaning the pacman package cache"
+  sudo_cmd pacman -Scc --noconfirm || warn "pacman -Scc failed, continuing"
+else
+  phase "Phase 4 :" "Keeping the pacman package cache (use --clean-cache to wipe it)"
+fi
 
-        echo
-        echo "Saving current archiso version to readme"
-        sudo sed -i "s/\(^archiso-version=\).*/\1$archisoVersion/" ../archiso.readme
-        echo
-        echo "Making mkarchiso verbose"
-        sudo sed -i 's/quiet="y"/quiet="n"/g' /usr/bin/mkarchiso
+# ---------------------------------------------------------------------------
+phase "Phase 5 :" "Building $isoFile - this can take a while"
+# ---------------------------------------------------------------------------
+# shellcheck disable=SC2086
+sudo_cmd mkarchiso $verbose -w "$workDir" -o "$outDir" "$profileCopy"
 
-echo
-echo "################################################################## "
-tput setaf 2
-echo "Phase 3 :"
-echo "- Deleting the build folder if one exists"
-echo "- Copying the Archiso folder to build folder"
-tput sgr0
-echo "################################################################## "
-echo
+[ -f "$outDir/$isoFile" ] || die "mkarchiso finished but $outDir/$isoFile was not created"
 
-        echo "Deleting the build folder if one exists - takes some time"
-        [ -d $buildFolder ] && sudo rm -rf $buildFolder
-        echo
-        echo "Copying the Archiso folder to build work"
-        echo
-        mkdir $buildFolder
-        cp -r ../iso/* $buildFolder/
+# Hand the ISO back to the invoking user when running through sudo
+owner="${SUDO_UID:-$(id -u)}:${SUDO_GID:-$(id -g)}"
+sudo_cmd chown "$owner" -- "$outDir/$isoFile"
 
-echo
-echo "################################################################## "
-tput setaf 2
-echo "Phase 4 :"
-echo "- Deleting any files in /etc/skel"
-echo "- Getting the last version of bashrc in /etc/skel"
-echo "- Removing the old packages.x86_64 file from build folder"
-echo "- Copying the new packages.x86_64 file to the build folder"
-echo "- Add our own personal repo + add your packages to packages-personal-repo.x86_64"
-tput sgr0
-echo "################################################################## "
-echo
+# ---------------------------------------------------------------------------
+phase "Phase 6 :" "Creating checksums for $isoFile"
+# ---------------------------------------------------------------------------
+( cd -- "$outDir"   # keeps absolute paths out of the checksum files
+  for algo in $checksums; do
+    echo "Creating ${algo}sum"
+    "${algo}sum" -- "$isoFile" | tee "$isoFile.$algo"
+    sudo_cmd chown "$owner" -- "$isoFile.$algo"
+  done )
 
-        echo "Deleting any files in /etc/skel"
-        rm -rf $buildFolder/airootfs/etc/skel/.bashrc 2> /dev/null
-        echo
-
-        echo "Getting the last version of bashrc in /etc/skel"
-        echo
-        wget https://raw.githubusercontent.com/Athena-OS/athena/main/iso/airootfs/etc/skel/.bashrc -O $buildFolder/airootfs/etc/skel/.bashrc
-
-        echo "Removing the old packages.x86_64 file from build folder"
-        rm $buildFolder/packages.x86_64
-        #rm $buildFolder/packages-personal-repo.x86_64
-        echo
-
-        echo "Copying the new packages.x86_64 file to the build folder"
-        cp -f ../iso/packages.x86_64 $buildFolder/packages.x86_64
-        echo
-
-        if [ $personalrepo == true ]; then
-                echo "Adding packages from your personal repository - packages-personal-repo.x86_64"
-                printf "\n" | sudo tee -a $buildFolder/packages.x86_64
-                #cat ../iso/packages-personal-repo.x86_64 | sudo tee -a $buildFolder/packages.x86_64
-        fi
-
-        if [ $personalrepo == true ]; then
-                echo "Adding our own repo to /etc/pacman.conf"
-                printf "\n" | sudo tee -a $buildFolder/pacman.conf
-                printf "\n" | sudo tee -a $buildFolder/airootfs/etc/pacman.conf
-                cat personal-repo | sudo tee -a $buildFolder/pacman.conf
-                cat personal-repo | sudo tee -a $buildFolder/airootfs/etc/pacman.conf
-        fi
-
-echo
-echo "################################################################## "
-tput setaf 2
-echo "Phase 5 : "
-echo "- Changing all references"
-echo "- Adding time to /etc/dev-rel"
-tput sgr0
-echo "################################################################## "
-echo
-
-        #Setting variables
-
-        #profiledef.sh
-        #oldname1='iso_name="athenaos"'
-        #newname1='iso_name="athenaos"'
-
-        #oldname2='iso_label="ATHENA-OS"'
-        #newname2='iso_label="ATHENA-OS"'
-
-        #oldname3='Athena OS'
-        #newname3='Athena OS'
-
-        #hostname
-        #oldname4='athenaos'
-        #newname4='athenaos'
-
-        #sddm.conf user-session
-        #oldname5='Session=gnome'
-        #newname5='Session='$dmDesktop
-
-        #echo "Changing all references"
-        #echo
-        #sed -i "s/'$oldname1'/'$newname1'/g" $buildFolder/profiledef.sh
-        #sed -i "s/'$oldname2'/'$newname2'/g" $buildFolder/profiledef.sh
-        #sed -i "s/'$oldname3'/'$newname3'/g" $buildFolder/airootfs/etc/dev-rel
-        #sed -i "s/'$oldname4'/'$newname4'/g" $buildFolder/airootfs/etc/hostname
-        #sed -i "s/'$oldname5'/'$newname5'/g" $buildFolder/airootfs/etc/sddm.conf
-
-        echo "Adding time to /etc/dev-rel"
-        date_build=$(date -d now)
-        echo "Iso build on : "$date_build
-        sudo sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/airootfs/etc/dev-rel
-
-
-echo
-echo "###########################################################"
-tput setaf 2
-echo "Phase 6 :"
-echo "- Cleaning the cache from /var/cache/pacman/pkg/"
-tput sgr0
-echo "###########################################################"
-echo
-
-        echo "Cleaning the cache from /var/cache/pacman/pkg/"
-        yes | sudo pacman -Scc
-
-echo
-echo "################################################################## "
-tput setaf 2
-echo "Phase 7 :"
-echo "- Building the iso - this can take a while - be patient"
-tput sgr0
-echo "################################################################## "
-echo
-
-        [ -d $outFolder ] || mkdir $outFolder
-        cd $buildFolder/
-        sudo mkarchiso -v -w $buildFolder -o $outFolder $buildFolder/
-
-
-
-echo
-echo "###################################################################"
-tput setaf 2
-echo "Phase 8 :"
-echo "- Creating checksums"
-echo "- Copying pkglist"
-tput sgr0
-echo "###################################################################"
-echo
-        # Needed to prevent the hash calculation containing the absolute path
-        cd $outFolder
-
-        echo "Creating checksums for : "$isoLabel
-        echo "##################################################################"
-        echo
-        echo "Building md5sum"
-        echo "########################"
-        md5sum $isoLabel | tee $outFolder/$isoLabel.md5
-        echo "Building sha1sum"
-        echo "########################"
-        sha1sum $isoLabel | tee $outFolder/$isoLabel.sha1
-        echo "Building sha256sum"
-        echo "########################"
-        sha256sum $isoLabel | tee $outFolder/$isoLabel.sha256
-        echo "Building sha512sum"
-        echo "########################"
-        sha512sum $isoLabel | tee $outFolder/$isoLabel.sha512
-        echo
-        echo "Moving pkglist.x86_64.txt"
-        echo "########################"
-        cp $buildFolder/arch/pkglist.x86_64.txt  $outFolder/$isoLabel".pkglist.txt"
-
-echo
-echo "##################################################################"
-tput setaf 2
-echo "Phase 9 :"
-echo "- Making sure we start with a clean slate next time"
-tput sgr0
-echo "################################################################## "
-echo
-
-        echo "Deleting the build folder if one exists - takes some time"
-        [ -d $buildFolder ] && sudo rm -rf $buildFolder
-
-echo
-echo "##################################################################"
-tput setaf 2
+# ---------------------------------------------------------------------------
+phase "Phase 7 :" "$( [ "$keepBuild" == "yes" ] && echo "Keeping build directory: $buildDir" || echo "Build directory will be removed" )"
+# ---------------------------------------------------------------------------
+color 2
 echo "DONE"
-echo "- Check your out folder :"$outFolder
-tput sgr0
-echo "################################################################## "
-echo
+echo "ISO: $outDir/$isoFile"
+reset
