@@ -256,6 +256,7 @@ jobs:
             echo "| retry_failed | $(ask "$IN_RETRY") | ${IN_RETRY:-false} |"
             echo
             echo "Planned: **${UPDATES:-0}** updates and **$(( ${COUNT:-0} - ${UPDATES:-0} ))** audit builds."
+            cat .ci-state/state/build-jobs.md 2>/dev/null || true
           } >> "$GITHUB_STEP_SUMMARY"
           if [ "$PUBLISH" != true ]; then
             if [ "$GITHUB_REF" != refs/heads/main ]; then why="the run is on $GITHUB_REF, not main"
@@ -315,7 +316,6 @@ jobs:
 
   # ---------------------------------------------------------------------------
   build:
-    name: build ${{ matrix.shard }} · ${{ matrix.label }}
     needs: [detect, image]
     if: >-
       !cancelled() && needs.detect.result == 'success'
