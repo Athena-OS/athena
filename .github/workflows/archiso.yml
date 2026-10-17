@@ -4,24 +4,25 @@ on:
   workflow_dispatch:
   #schedule:
   #   - cron:  '0 0 */7 * *'
-  
+
 jobs:
   build:
     env:
-      ATHENA_ID: 'athenaos'
-      ATHENA_VERSION: 'rolling'
-      ISO_VERSION: 'live' # It must be the same on profiledef.sh and build-iso.sh
-      ISO_ARCHITECTURE: 'x86_64'
+      ISO_NAME: 'athenaos'
+      ISO_VERSION: 'live'
+      ISO_ARCH: 'x86_64'
+      ISO_OUT_DIR: ${{ github.workspace }}/out
+      RELEASE_TAG: 'v26.03'
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
-      options: --privileged 
+      options: --privileged
     steps:
       - name: Checkout files
         uses: actions/checkout@v6
-  
+
       - name: Init Keys
-        run: | 
+        run: |
           rm -rf /etc/pacman.d/gnupg
           pacman-key --init
           pacman-key --populate
@@ -37,13 +38,11 @@ jobs:
           rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
 
       - name: Install dependencies
-        run: pacman -Syyu --noconfirm archiso aws-cli curl edk2-ovmf git github-cli gnupg jq mtools qemu-desktop rsync wget # Install also optional deps for archiso
-        
+        run: pacman -Syyu --noconfirm archiso aws-cli curl edk2-ovmf git github-cli gnupg jq mtools qemu-desktop rsync wget
+
       - name: Build ArchISO
-        run: |
-          cd scripts
-          ./build-iso.sh
-          
+        run: bash scripts/build-iso.sh
+
       - name: Upload to R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -52,12 +51,10 @@ jobs:
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
         run: |
           REMOTE_PREFIX="s3://$R2_BUCKET/iso"
-
-          # Upload package files and their signatures
-          for file in $HOME/Athena-Out/*.iso*; do
+          for file in "$ISO_OUT_DIR"/*.iso*; do
             [ -f "$file" ] || continue
-            echo "Uploading $(basename $file)..."
-            aws s3 cp "$file" "$REMOTE_PREFIX/$(basename $file)" \
+            echo "Uploading $(basename "$file")..."
+            aws s3 cp "$file" "$REMOTE_PREFIX/$(basename "$file")" \
               --endpoint-url "$R2_ENDPOINT"
           done
 
@@ -68,14 +65,10 @@ jobs:
         run: |
           REPO_BASE_URL="https://hub.athenaos.org/iso"
           URLS=()
-
-          # Add every uploaded package to the purge list
-          for f in $HOME/Athena-Out/*.iso*; do
+          for f in "$ISO_OUT_DIR"/*.iso*; do
             [ -f "$f" ] || continue
-            URLS+=("$REPO_BASE_URL/$(basename $f)")
+            URLS+=("$REPO_BASE_URL/$(basename "$f")")
           done
-
-          # Cloudflare allows up to 30 URLs per call; build JSON and POST
           JSON_URLS=$(printf '%s\n' "${URLS[@]}" | jq -R . | jq -s .)
           curl -s -X POST \
             "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
@@ -87,6 +80,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          for f in $(find $HOME/Athena-Out -name '*.iso*'); do
-            gh release upload v26.03 $f --clobber --repo "$GITHUB_REPOSITORY"
+          for f in "$ISO_OUT_DIR"/*.iso*; do
+            [ -f "$f" ] || continue
+            gh release upload "$RELEASE_TAG" "$f" --clobber --repo "$GITHUB_REPOSITORY"
           done
