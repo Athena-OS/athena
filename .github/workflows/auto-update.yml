@@ -315,6 +315,7 @@ jobs:
 
   # ---------------------------------------------------------------------------
   build:
+    name: build ${{ matrix.shard }} · ${{ matrix.label }}
     needs: [detect, image]
     if: >-
       !cancelled() && needs.detect.result == 'success'

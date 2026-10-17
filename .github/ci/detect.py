@@ -746,7 +746,13 @@ def cmd_plan(a) -> None:
         with open(gh_out, "a") as f:
             f.write(f"count={len(work)}\n")
             f.write(f"updates={len(updates)}\n")
-            f.write("matrix=" + json.dumps({"shard": list(range(n_shards))}) + "\n")
+            # one matrix entry per shard; "label" names the job after its packages
+            entries = []
+            for i, sh in enumerate(shards):
+                names = [u["pkg"] for u in sh]
+                label = ", ".join(names[:4]) + (f" +{len(names) - 4}" if len(names) > 4 else "")
+                entries.append({"shard": i, "label": label[:80]})
+            f.write("matrix=" + json.dumps({"include": entries}) + "\n")
 
 
 # --------------------------------------------------------------------------
