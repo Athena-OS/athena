@@ -51,7 +51,7 @@ ship=() manual=()
 for pkg in "${changed[@]}"; do
   dir=${PKGDIR[$pkg]:-}
   if [[ -n $dir && -f $dir/PKGBUILD && -f $RESULTS/$pkg/PKGBUILD ]] &&
-     cmp -s "$dir/PKGBUILD" "$RESULTS/$pkg/PKGBUILD" &&
+     git diff --no-index --quiet "$dir/PKGBUILD" "$RESULTS/$pkg/PKGBUILD" &&
      compgen -G "$PKGS/$pkg/*.pkg.tar.zst" >/dev/null; then
     ship+=("$pkg")
   elif [[ -n $dir && -f $dir/PKGBUILD ]]; then

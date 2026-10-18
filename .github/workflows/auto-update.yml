@@ -136,6 +136,11 @@ jobs:
           # "repo name version" for core/extra/multilib (not the AUR, not testing);
           # the report flags packages that duplicate one of them
           out=.ci-state/state/arch-official.txt; : > "$out"
+          # the archlinux image has [multilib] commented out: enable it here (detect container only)
+          if ! pacman-conf --repo-list | grep -qx multilib; then
+            printf '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf
+            pacman -Sy --noconfirm --noprogressbar >/dev/null || echo "::warning::pacman -Sy failed after enabling multilib"
+          fi
           for repo in core extra multilib; do
             pacman -Sl "$repo" >> "$out" 2>/dev/null || echo "::warning::repository $repo not available"
           done

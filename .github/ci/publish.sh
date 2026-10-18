@@ -103,7 +103,8 @@ for pkg in "${ship[@]}"; do
   if [[ ! -f $RESULTS/$pkg/PKGBUILD ]] || ! compgen -G "$PKGS/$pkg/*.pkg.tar.zst" >/dev/null; then
     skipped+=("$pkg: build artifacts missing"); continue
   fi
-  if ! git show "origin/$BASE_BRANCH":"$dir/PKGBUILD" 2>/dev/null | cmp -s - "$RESULTS/$pkg/PKGBUILD"; then
+  if ! git show "origin/$BASE_BRANCH":"$dir/PKGBUILD" > "$RESULTS/$pkg/PKGBUILD.base" 2>/dev/null ||
+     ! git diff --no-index --quiet "$RESULTS/$pkg/PKGBUILD.base" "$RESULTS/$pkg/PKGBUILD"; then
     skipped+=("$pkg: PKGBUILD changed on $BASE_BRANCH during the run"); continue
   fi
   shipped+=("$pkg")
