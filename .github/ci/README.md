@@ -208,6 +208,18 @@ secret.
 Cancelling a run stops it: build shards that haven't started don't start,
 and nothing is committed or released. The report still runs.
 
+## Removing packages
+
+**Actions → Remove packages → Run workflow**, with one or more package
+directory names. The run deletes their sources on a branch
+`remove/<date>-<run>` and opens one PR, whose description lists every package
+name that will disappear from the repository (all outputs of a split
+PKGBUILD) and warns if other packages in the tree still depend on them.
+Nothing happens to the repository until the PR is **merged**; closing it
+without merging does nothing. On merge, the release workflow removes the
+entries from the repository database, deletes the package files from R2, purges the cache, verifies the served
+database and comments on the PR.
+
 ## Manual runs (Actions → Auto-update packages → Run workflow)
 
 The run summary opens with a **Run settings** table: what was

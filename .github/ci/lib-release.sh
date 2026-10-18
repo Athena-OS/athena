@@ -169,6 +169,69 @@ release_upload() {
   return 0
 }
 
+# remove_packages <pkgname>...  repo-remove the names from the database, delete
+# their files from R2, purge the cache, verify. Names are package names (not
+# directories): split packages list every output.
+remove_packages() {
+  (( $# )) || return 0
+  local work remote n f rc=0
+  work=$(mktemp -d); remote=$(_remote)
+  (
+    set -e
+    cd "$work"
+    _s3 cp "$remote/$REPO_NAME.db.tar.gz" "./$REPO_NAME.db.tar.gz"
+    _s3 cp "$remote/$REPO_NAME.files.tar.gz" "./$REPO_NAME.files.tar.gz"
+    ln -sf "$REPO_NAME.db.tar.gz" "$REPO_NAME.db"; ln -sf "$REPO_NAME.files.tar.gz" "$REPO_NAME.files"
+    # repo-remove exits non-zero for a name that is not in the db: not an error here
+    for n in "$@"; do repo-remove --sign --key "$GPG_KEY_ID" "$REPO_NAME.db.tar.gz" "$n" || true; done
+    for ext in db.tar.gz db.tar.gz.sig files.tar.gz files.tar.gz.sig; do
+      _s3 cp "./$REPO_NAME.$ext" "$remote/$REPO_NAME.$ext"
+    done
+    _s3 cp "./$REPO_NAME.db.tar.gz"        "$remote/$REPO_NAME.db"
+    _s3 cp "./$REPO_NAME.db.tar.gz.sig"    "$remote/$REPO_NAME.db.sig"
+    _s3 cp "./$REPO_NAME.files.tar.gz"     "$remote/$REPO_NAME.files"
+    _s3 cp "./$REPO_NAME.files.tar.gz.sig" "$remote/$REPO_NAME.files.sig"
+  ) || { rm -rf "$work"; _fail "repo-remove or database upload failed"; return 1; }
+
+  # the files, after the database no longer points at them
+  local listing old deleted=()
+  listing=$(_s3 ls "$remote/" | awk '{print $4}' | grep '\.pkg\.tar\.zst$' || true)
+  for n in "$@"; do
+    while read -r old; do
+      [[ -n $old && $(_pkgname_of "$old") == "$n" ]] || continue
+      _s3 rm "$remote/$old" >/dev/null && deleted+=("$old") || rc=1
+      _s3 rm "$remote/$old.sig" >/dev/null 2>&1 || true
+    done <<<"$listing"
+  done
+  echo "deleted files: ${deleted[*]:-none}"
+
+  local chk; chk=$(mktemp -d)
+  if ! _s3 cp "$remote/$REPO_NAME.db" "$chk/db" >/dev/null 2>&1 ||
+     ! _s3 cp "$remote/$REPO_NAME.db.sig" "$chk/db.sig" >/dev/null 2>&1 ||
+     ! gpg --batch --verify "$chk/db.sig" "$chk/db" 2>/dev/null; then
+    rm -rf "$chk" "$work"; _fail "UPLOADED, BUT THE SERVED DATABASE SIGNATURE DOES NOT VERIFY - check the repo now"; return 1
+  fi
+  local still=()
+  for n in "$@"; do tar -tzf "$chk/db" | sed 's|^\./||' | grep -qE "^$n-[^-]+-[^-]+/" && still+=("$n"); done
+  rm -rf "$chk" "$work"
+  (( ${#still[@]} == 0 )) || { _fail "still in the repo database after removal: ${still[*]}"; return 1; }
+
+  if [[ -n ${CF_ZONE_ID:-} && -n ${CF_API_TOKEN:-} ]]; then
+    local urls=() x
+    for x in "${deleted[@]}"; do urls+=("$REPO_BASE_URL/$x" "$REPO_BASE_URL/$x.sig"); done
+    for x in db db.sig db.tar.gz db.tar.gz.sig files files.sig files.tar.gz files.tar.gz.sig; do urls+=("$REPO_BASE_URL/$REPO_NAME.$x"); done
+    local i
+    for ((i = 0; i < ${#urls[@]}; i += 30)); do
+      printf '%s\n' "${urls[@]:i:30}" | jq -R . | jq -sc '{files: .}' |
+        curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+          -H "Authorization: Bearer $CF_API_TOKEN" -H "Content-Type: application/json" --data @- |
+        jq -e '.success' >/dev/null || echo "::warning::Cloudflare cache purge failed"
+    done
+  fi
+  (( rc == 0 )) || { _fail "some package files could not be deleted from R2"; return 1; }
+  released=true
+}
+
 _queue_after_failure() {
   release_error+="; packages added to lists/to-release"
   queue_for_humans "auto-update packages awaiting release" "$@" ||

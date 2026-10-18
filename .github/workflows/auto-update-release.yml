@@ -1,6 +1,8 @@
-# Release the packages of a merged auto-update PR (PUBLISH_MODE=pr).
-# The packages were already built and install-tested by the auto-update run
-# whose id is recorded in the PR body; nothing is rebuilt here.
+# Release the packages of a merged auto-update PR (PUBLISH_MODE=pr): the
+# packages were already built and install-tested by the auto-update run whose
+# id is recorded in the PR body; nothing is rebuilt here.
+# Also handles a merged remove/* PR (remove-packages.yml): removes the listed
+# packages from the package repository.
 name: Auto-update release (merged PR)
 
 # pull_request_target, not pull_request: the job then runs with ref main
@@ -23,7 +25,8 @@ jobs:
   release:
     if: >-
       github.event.pull_request.merged
-      && startsWith(github.event.pull_request.head.ref, 'auto-update/')
+      && (startsWith(github.event.pull_request.head.ref, 'auto-update/')
+          || startsWith(github.event.pull_request.head.ref, 'remove/'))
       && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     container: archlinux:latest
@@ -44,6 +47,7 @@ jobs:
 
       - id: run
         name: Find the run that built this PR
+        if: startsWith(github.event.pull_request.head.ref, 'auto-update/')
         env:
           BODY: ${{ github.event.pull_request.body }}
         run: |
@@ -52,6 +56,7 @@ jobs:
           echo "id=$id" >> "$GITHUB_OUTPUT"
 
       - uses: actions/download-artifact@v8
+        if: startsWith(github.event.pull_request.head.ref, 'auto-update/')
         continue-on-error: true      # expired results -> lists/to-release
         with:
           run-id: ${{ steps.run.outputs.id }}
@@ -61,6 +66,7 @@ jobs:
           merge-multiple: true
 
       - uses: actions/download-artifact@v8
+        if: startsWith(github.event.pull_request.head.ref, 'auto-update/')
         continue-on-error: true      # expired artifacts -> lists/to-release
         with:
           run-id: ${{ steps.run.outputs.id }}
@@ -72,6 +78,8 @@ jobs:
       - name: Release
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_BODY: ${{ github.event.pull_request.body }}
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           # relative on purpose: ${{ github.workspace }} is the host path in container jobs
