@@ -28,7 +28,7 @@ packages share a name.
   fails). Release packages are compared with pacman's `vercmp` rules (ported
   to Python), so downgrades and odd tags are never applied. VCS packages
   (`pkgver()` + git source, ~1800) are checked with `git ls-remote` against the
-  commit hash already in `pkgver` — no cloning unless something changed.
+  commit hash already in `pkgver` - no cloning unless something changed.
 * **Supported upstreams** (generated automatically from the source URLs):
   GitHub tags, GitLab tags, PyPI, RubyGems, CPAN, SourceForge (RSS), git
   commits. On the current tree this tracks ~3150 of 4613 packages. Anything
@@ -226,15 +226,15 @@ The run summary opens with a **Run settings** table: what was
 chosen for each input and the value actually used (after the repository
 variables filled in `default`/`auto`).
 
-* `packages: "foo bar"` — **added** to the normal run and built first:
+* `packages: "foo bar"` - **added** to the normal run and built first:
   updated if upstream is newer, else rebuilt with `pkgrel+1` (handy after a
   library soname bump). Tick `only_these` to build **only** these packages
   (same as `max_updates: 0` + `audit: 0`).
-* `publish: false` — test without touching main or the repo.
-* `publish_mode: pr|push` — override `PUBLISH_MODE` for this run.
-* `probe_sources: on|off|sundays` — run the URL probe now, skip it, or only
+* `publish: false` - test without touching main or the repo.
+* `publish_mode: pr|push` - override `PUBLISH_MODE` for this run.
+* `probe_sources: on|off|sundays` - run the URL probe now, skip it, or only
   on Sundays. `default` follows the `PROBE_SOURCES` variable (`sundays` if unset).
-* `retry_failed: true` — ignore the failure cache.
+* `retry_failed: true` - ignore the failure cache.
 * **Build test only** (no updates): `max_updates: 0`, `audit: 300` (or
   `4613` for the whole repo in one run: up to 200 shards, 20 at a time,
   roughly half a day), `publish: false`. Packages named in `packages` are
@@ -242,10 +242,10 @@ variables filled in `default`/`auto`).
 
 ## Tuning files
 
-* `exclude.txt` — never auto-update; `lists/to-remove` is honoured too if it
+* `exclude.txt` - never auto-update; `lists/to-remove` is honoured too if it
   exists. Package names matching `^python2-|-py2$` are skipped (change with
   `--exclude-regex` in the workflow if Athena ever needs that).
-* `nvchecker-overrides.toml` — hand-written nvchecker entries win over the
+* `nvchecker-overrides.toml` - hand-written nvchecker entries win over the
   generated ones.
 
 ## Limits / ideas for later

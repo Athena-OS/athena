@@ -72,21 +72,21 @@ Packages in this repository are kept up to date automatically via a daily GitHub
  
 The automation runs every day (and can also be triggered manually) and goes through the following steps:
  
-1. **Config generation** — `.nvchecker/generate-nvchecker-config.py` scans every `PKGBUILD` under `src/` and auto-generates `.nvchecker/nvchecker.toml`. Each package is classified as one of:
-   - **Release package** — has a static `pkgver=` and a remote source URL. Tracked by latest tag/release on the hosting platform.
-   - **VCS package** — has a `pkgver()` function and a `git+https://` source. Tracked by latest upstream commit.
-   - **Local-only package** — all sources are local files. Skipped silently (no upstream to track).
+1. **Config generation** - `.nvchecker/generate-nvchecker-config.py` scans every `PKGBUILD` under `src/` and auto-generates `.nvchecker/nvchecker.toml`. Each package is classified as one of:
+   - **Release package** - has a static `pkgver=` and a remote source URL. Tracked by latest tag/release on the hosting platform.
+   - **VCS package** - has a `pkgver()` function and a `git+https://` source. Tracked by latest upstream commit.
+   - **Local-only package** - all sources are local files. Skipped silently (no upstream to track).
  
-2. **Version check** — `nvchecker` queries the upstream of every tracked package and writes the results to `.nvchecker/newver.json`. This is compared against `.nvchecker/oldver.json` (committed in the repo) to find packages that have a new version available.
+2. **Version check** - `nvchecker` queries the upstream of every tracked package and writes the results to `.nvchecker/newver.json`. This is compared against `.nvchecker/oldver.json` (committed in the repo) to find packages that have a new version available.
  
-3. **PKGBUILD update & PR** — for each outdated package the workflow:
+3. **PKGBUILD update & PR** - for each outdated package the workflow:
    - Creates a dedicated branch `auto-update/<pkgname>-<newver>`.
    - Updates `pkgver` and resets `pkgrel` to `1` in the `PKGBUILD`.
    - For **release packages**: regenerates checksums with `updpkgsums`.
    - For **VCS packages**: clones the upstream repo, runs the `pkgver()` function locally to compute the real Arch-style version string (e.g. `131.940a5d3`), and keeps `sha512sums=('SKIP')` as is.
    - Opens a pull request labelled `auto-update` for human review before anything lands on `main`.
  
-4. **State save** — `.nvchecker/oldver.json` is updated with the versions seen in this run and committed back to `main`, so the next run only opens PRs for genuinely new changes.
+4. **State save** - `.nvchecker/oldver.json` is updated with the versions seen in this run and committed back to `main`, so the next run only opens PRs for genuinely new changes.
  
 ### Supported hosting platforms
  
@@ -117,7 +117,7 @@ The following bash parameter expansion forms are supported:
  
 ### Known limitations
  
-The following bash constructs are **not** resolved by the automation. PKGBUILDs that rely on them will be skipped gracefully with an informational note — no error is raised, and they can always be updated manually.
+The following bash constructs are **not** resolved by the automation. PKGBUILDs that rely on them will be skipped gracefully with an informational note - no error is raised, and they can always be updated manually.
  
 | Unsupported syntax | Example | Reason |
 |---|---|---|

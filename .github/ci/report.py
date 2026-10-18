@@ -214,7 +214,7 @@ def main() -> None:
         if prov:   # via provides=()
             parts.append("via provides: " + ", ".join(f'{r["pkg"]} ({SHORT.get(r["type"])})'
                                                      for r in prov[:limit]))
-        return "; ".join(parts) or "—"
+        return "; ".join(parts) or "-"
 
     for c in CATS:
         for x in lists[c]:
@@ -327,9 +327,9 @@ def main() -> None:
         if full:
             lim = None
         t = totals
-        L = [f"# {DISTRO} auto-update report — {now:%Y-%m-%d}", ""]
+        L = [f"# {DISTRO} auto-update report - {now:%Y-%m-%d}", ""]
         if a.run_url:
-            L += [f"Run: {a.run_url} — full report and logs in the `auto-update-report` artifact", ""]
+            L += [f"Run: {a.run_url} - full report and logs in the `auto-update-report` artifact", ""]
         L += ["| | |", "|---|---:|",
               f"| Packages / tracked upstream | {t['packages']} / {t['tracked']} |",
               f"| Updates found (deferred to next run) | {t['updates_planned']} ({t['deferred']}) |",
@@ -346,7 +346,7 @@ def main() -> None:
               f"| 🐍 python2 packages nothing hard-depends on | {t['python2_unused']} |",
               f"| 📦 Also in Arch official repositories | {t['also_in_arch']} |", ""]
         if publish.get("pr_url"):
-            L += [f"> 📬 **Pull request:** {publish['pr_url']} — packages are released when it is merged.", ""]
+            L += [f"> 📬 **Pull request:** {publish['pr_url']} - packages are released when it is merged.", ""]
         if publish.get("release_error"):
             L += [f"> ⚠️ **Release:** {publish['release_error']}", ""]
 
@@ -393,8 +393,8 @@ def main() -> None:
             L += ["| Package | From PKGBUILD | Also builds | Latest build | optdepends of | Suggested action |",
                   "|---|---|---|---|---|---|"]
             for x in py2[:lim]:
-                L.append(f"| `{x['name']}` | {x['dir']} | {', '.join(x['also_builds']) or '—'} | {x['build']} "
-                         f"| {', '.join(x['optdepends_of']) or '—'} | {x['action']} |")
+                L.append(f"| `{x['name']}` | {x['dir']} | {', '.join(x['also_builds']) or '-'} | {x['build']} "
+                         f"| {', '.join(x['optdepends_of']) or '-'} | {x['action']} |")
         L.append("")
         if lim and len(py2) > lim:
             L += [f"_… {len(py2) - lim} more in report.md / report.json_", ""]
@@ -409,7 +409,7 @@ def main() -> None:
             L += [f"| Package | PKGBUILD | {DISTRO} | Arch | | In lists/official | {DISTRO} dependents | Suggested action |",
                   "|---|---|---|---|---|---|---|---|"]
             for x in in_arch[:lim]:
-                arch_col = f"{x['arch']} ({x['arch_repo']})" if x["arch"] else "—"
+                arch_col = f"{x['arch']} ({x['arch_repo']})" if x["arch"] else "-"
                 L.append(f"| `{x['pkg']}` | {x['dir']} | {esc(x['blackarch'])} | {esc(arch_col)} | {x['compare']} "
                          f"| {'yes' if x['in_lists_official'] else 'no'} | {x['blackarch_dependents']} "
                          f"| {esc(x['action'])} |")
@@ -437,7 +437,7 @@ def main() -> None:
                 L += ["", "| Package | Check | Message |", "|---|---|---|"]
                 L += [f"| `{w['pkg']}` | {w['check']} | {esc(w['message'])[:250]} |" for w in warnings]
             L += ["</details>", ""]
-        L += [f"<details><summary>Packages not tracked upstream ({len(untracked)}) — "
+        L += [f"<details><summary>Packages not tracked upstream ({len(untracked)}) - "
               "add entries to .github/ci/nvchecker-overrides.toml</summary>", ""]
         L += [f"- {r}: {n}" for r, n in Counter(untracked.values()).most_common(25)]
         L += ["</details>", ""]

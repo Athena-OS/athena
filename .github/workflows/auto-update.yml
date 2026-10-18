@@ -237,7 +237,7 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             started="manually by $GITHUB_ACTOR"; ask() { esc "$1"; }
           else
-            started="by the daily schedule (no inputs)"; ask() { printf '%s' '—'; }
+            started="by the daily schedule (no inputs)"; ask() { printf '%s' '-'; }
           fi
           {
             echo "## Run settings"
