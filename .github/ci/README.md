@@ -184,7 +184,11 @@ A dry run of the static checks on today's tree already finds real bugs, e.g.
    * `CF_ZONE_ID`, `CF_API_TOKEN` (cache purge; optional)
    * `BOT_TOKEN` (optional: a token allowed to push to a protected `main`)
    * environment variables (optional): `REPO_NAME` (default `athena`),
-     `REPO_ARCH` (default `x86_64`)
+     `REPO_ARCH` (default `x86_64`), `REPO_PATH` (key prefix in the bucket,
+     default `REPO_NAME/os/REPO_ARCH`, i.e. `athena/os/x86_64`) and
+     `REPO_BASE_URL` (public URL of that prefix, default
+     `https://hub.athenaos.org/REPO_PATH`; used for the post-upload check and
+     the Cloudflare purge)
 4. Repository variables: `AUTO_PUBLISH=true` turns publishing on for the
    daily run (default **off**: builds and reports only). `PUBLISH_MODE=pr`
    opens a PR instead of pushing (see above). `AUTO_RELEASE=false` commits

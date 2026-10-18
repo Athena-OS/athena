@@ -20,19 +20,22 @@
 #
 # Env: PKGS GPG_KEY_ID GPG_PRIVATE_KEY [GPG_PASSPHRASE]
 #      AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY R2_ENDPOINT R2_BUCKET
-#      [REPO_NAME=athena] [REPO_ARCH=x86_64] [REPO_BASE_URL]
+#      [REPO_NAME=athena] [REPO_ARCH=x86_64]
+#      [REPO_PATH=$REPO_NAME/os/$REPO_ARCH]  key prefix in the bucket
+#      [REPO_BASE_URL=https://hub.athenaos.org/$REPO_PATH]  public URL of that prefix
 #      [CF_ZONE_ID CF_API_TOKEN]   (cache purge, skipped if unset)
 #      [RELEASE=true|false] [BASE_BRANCH=main]
 # shellcheck disable=SC2034  # released/release_error are read by the callers
 
 REPO_NAME=${REPO_NAME:-athena}
 REPO_ARCH=${REPO_ARCH:-x86_64}
-REPO_BASE_URL=${REPO_BASE_URL:-https://hub.athenaos.org/$REPO_NAME/$REPO_ARCH}
+REPO_PATH=${REPO_PATH:-$REPO_NAME/os/$REPO_ARCH}; REPO_PATH=${REPO_PATH#/}; REPO_PATH=${REPO_PATH%/}
+REPO_BASE_URL=${REPO_BASE_URL:-https://hub.athenaos.org/$REPO_PATH}
 BASE_BRANCH=${BASE_BRANCH:-main}
 
 _fail() { release_error=$1; echo "release: $1" >&2; return 1; }
 _s3() { aws s3 "$@" --endpoint-url "$R2_ENDPOINT"; }
-_remote() { echo "s3://$R2_BUCKET/$REPO_NAME/$REPO_ARCH"; }
+_remote() { echo "s3://$R2_BUCKET/$REPO_PATH"; }
 
 # pkgs-<shard> artifacts are tars (package names may contain ':'); unpack them
 # into $PKGS/<pkg>/. They were written by the runner after verification.
@@ -74,7 +77,9 @@ release_setup() {
     { _fail "the signing key cannot sign (wrong key id or passphrase?)"; rm -rf "$t"; return 1; }
   rm -rf "$t"
 
-  _s3 ls "$(_remote)/" >/dev/null 2>&1 || { _fail "cannot list the R2 bucket (credentials, endpoint or bucket?)"; return 1; }
+  # head-bucket, not `s3 ls <prefix>`: ls exits 1 on an empty prefix (new repo path)
+  aws s3api head-bucket --bucket "$R2_BUCKET" --endpoint-url "$R2_ENDPOINT" >/dev/null 2>&1 ||
+    { _fail "cannot access the R2 bucket (credentials, endpoint or bucket?)"; return 1; }
   return 0
 }
 
