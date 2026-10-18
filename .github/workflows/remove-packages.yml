@@ -31,9 +31,9 @@ jobs:
 
       - name: Read the package tree
         run: |
-          .github/ci/pkgtree.sh src .ci-state/pkgtree
+          bash .github/ci/pkgtree.sh src .ci-state/pkgtree
           mkdir -p .ci-state/state && mkdir -p lists && touch lists/to-remove
-          .github/ci/meta-all.sh .ci-state/pkgtree .ci-state/meta.txt
+          bash .github/ci/meta-all.sh .ci-state/pkgtree .ci-state/meta.txt
           python3 .github/ci/detect.py scan --meta .ci-state/meta.txt --out .ci-state/state \
             --packages .ci-state/pkgtree --exclude .github/ci/exclude.txt --exclude lists/to-remove \
             --overrides .github/ci/nvchecker-overrides.toml >/dev/null
@@ -50,4 +50,4 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GIT_USER_NAME: athena-ci[bot]
           GIT_USER_EMAIL: info@athenaos.org
-        run: .github/ci/remove-prepare.sh .ci-state/pkgtree "$PACKAGES"
+        run: bash .github/ci/remove-prepare.sh .ci-state/pkgtree "$PACKAGES"

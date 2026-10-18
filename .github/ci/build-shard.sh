@@ -126,6 +126,13 @@ while read -r u; do
     fi
   fi
   jq -r '"result: \(.result) - \(.reason)"' "$results/$pkg/status.json"
+  # failures: show the end of the build log on the console too (the full log
+  # is in the results-N artifact, the same tail is in report.md)
+  if [[ $(jq -r .result "$results/$pkg/status.json") != ok && -s $results/$pkg/build.log ]]; then
+    echo "--- last 40 lines of build.log ---"
+    tail -n 40 "$results/$pkg/build.log" | cut -c1-300
+    echo "--- end of build.log ---"
+  fi
   sudo rm -rf "$work" "$host"
   echo "::endgroup::"
 done < <(jq -c '.[]' "$shard")

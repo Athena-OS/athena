@@ -120,10 +120,10 @@ jobs:
         run: |
           useradd -m ci                       # makepkg refuses to run as root
           # flat <name> -> src/.../<name> view of the nested package tree
-          .github/ci/pkgtree.sh src .ci-state/pkgtree
+          bash .github/ci/pkgtree.sh src .ci-state/pkgtree
           mkdir -p .ci-state/state && chown -R ci: .ci-state src
-          runuser -u ci -- .github/ci/meta-all.sh .ci-state/pkgtree .ci-state/meta.txt
-          .github/ci/pkgcheck-all.sh .ci-state/pkgtree .ci-state/state/pkgcheck.out
+          runuser -u ci -- bash .github/ci/meta-all.sh .ci-state/pkgtree .ci-state/meta.txt
+          bash .github/ci/pkgcheck-all.sh .ci-state/pkgtree .ci-state/state/pkgcheck.out
           touch lists/to-remove 2>/dev/null || mkdir -p lists && touch lists/to-remove
           python3 .github/ci/detect.py scan \
             --meta .ci-state/meta.txt --out .ci-state/state \
@@ -369,8 +369,8 @@ jobs:
           JOB_START: ${{ steps.start.outputs.t }}
           JOB_TIMEOUT_MIN: '340'        # keep equal to this job's timeout-minutes
         run: |
-          .github/ci/pkgtree.sh src .ci-state/pkgtree
-          .github/ci/build-shard.sh ".ci-state/state/shards/${{ matrix.shard }}.json" \
+          bash .github/ci/pkgtree.sh src .ci-state/pkgtree
+          bash .github/ci/build-shard.sh ".ci-state/state/shards/${{ matrix.shard }}.json" \
             .ci-state/pkgtree out/results out/pkgs .ci-state/state/meta.json
 
       - uses: actions/upload-artifact@v7
@@ -466,8 +466,8 @@ jobs:
           REPO_ARCH: ${{ vars.REPO_ARCH || 'x86_64' }}
         run: |
           # publish needs the <name> -> real path map of this run's tree
-          .github/ci/pkgtree.sh src .ci-state/pkgtree >/dev/null
-          .github/ci/publish.sh
+          bash .github/ci/pkgtree.sh src .ci-state/pkgtree >/dev/null
+          bash .github/ci/publish.sh
 
       - uses: actions/upload-artifact@v7
         if: always()

@@ -99,4 +99,4 @@ jobs:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           REPO_NAME: ${{ vars.REPO_NAME || 'athena' }}
           REPO_ARCH: ${{ vars.REPO_ARCH || 'x86_64' }}
-        run: .github/ci/release-merged.sh
+        run: bash .github/ci/release-merged.sh
