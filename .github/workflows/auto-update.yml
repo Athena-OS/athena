@@ -542,7 +542,7 @@ jobs:
             --seen-in .ci-state/seen.json --seen-out .ci-state/seen.json \
             --out report --run-url "$RUN_URL"
           cp -r results report/logs
-          cp .ci-state/state/depgraph.json .ci-state/state/pkgcheck.out report/
+          cp .ci-state/state/depgraph.json .ci-state/state/pkgcheck.out .ci-state/state/untracked.json report/
           cp .ci-state/seen.json report/status-db.json
           head -c 1000000 report/issue.md >> "$GITHUB_STEP_SUMMARY"
 

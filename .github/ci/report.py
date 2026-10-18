@@ -330,7 +330,8 @@ def main() -> None:
                            "released": r["pkg"] in published}
                           for r in ok],
               "publish": publish, "warnings": warnings,
-              "untracked_by_reason": Counter(untracked.values()).most_common()}
+              "untracked_by_reason": Counter(untracked.values()).most_common(),
+              "untracked": untracked}
     (out / "report.json").write_text(json.dumps(report, indent=1))
 
     # ------------------------------------------------------------ markdown
@@ -456,8 +457,16 @@ def main() -> None:
             L += ["</details>", ""]
         L += [f"<details><summary>Packages not tracked upstream ({len(untracked)}) - "
               "add entries to .github/ci/nvchecker-overrides.toml</summary>", ""]
-        L += [f"- {r}: {n}" for r, n in Counter(untracked.values()).most_common(25)]
-        L += ["</details>", ""]
+        if full:   # report.md: the package names, grouped by reason
+            by_reason = {}
+            for pkg, r in sorted(untracked.items()):
+                by_reason.setdefault(r, []).append(pkg)
+            for r, n in Counter(untracked.values()).most_common():
+                L += [f"- **{r}: {n}**", "  " + ", ".join(f"`{x}`" for x in by_reason[r])]
+            L += ["", "The issue shows only the counts; see also `untracked.json` in this artifact.", "</details>", ""]
+        else:
+            L += [f"- {r}: {n}" for r, n in Counter(untracked.values()).most_common(25)]
+            L += ["", "_Package names per reason: `report.md` in the `auto-update-report` artifact._", "</details>", ""]
         return "\n".join(L)
 
     (out / "report.md").write_text(md(True))
