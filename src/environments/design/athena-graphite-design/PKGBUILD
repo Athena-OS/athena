@@ -10,7 +10,7 @@ source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes
 sha512sums=('77a508f7dd252b33c2a5977989495d0d604b186244ce1686d81edd7f330cfa9abd3570a05943087fdecf522644582c154d1d4dd87719e047fc7cc4f04d6304da')
 
 package() {
-  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -Dm 644 "Atom.conf" "$pkgdir/etc/skel/.config/kitty/"
+  install -dm755 "$pkgdir/etc/skel/.config/kitty"
+  install -Dm644 Atom.conf "$pkgdir/etc/skel/.config/kitty/Atom.conf"
 }
 

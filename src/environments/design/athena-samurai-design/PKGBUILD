@@ -9,7 +9,7 @@ source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes
 sha512sums=('2855b3fae8f0a8e627db4ce118f27fe91c7b66e25f4d31b98ef4b54708ebdb11553059de0948883c411dd03cf18dec4fa060c694c1e85bfbec8d24a070e9ac15')
 
 package() {
-  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/"
+  install -dm755 "$pkgdir/etc/skel/.config/kitty"
+  install -Dm644 tokyo_night_storm.conf "$pkgdir/etc/skel/.config/kitty/tokyo_night_storm.conf"
 }
 

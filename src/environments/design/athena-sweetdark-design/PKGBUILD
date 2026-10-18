@@ -7,10 +7,10 @@ license=('GPL-3.0-or-later')
 depends=('athena-purple-base' 'candy-icons-git' 'oreo-spark-purple-cursors'
          'sweet-dark-gtk-theme' 'sweet-folders-icons-git')
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/AdventureTime.conf")
-sha512sums=('0dcd9eca5833d3c3a910c7a3ddd59d2fc8598cf0109fd5408388fc9f88d8cae364d8ac857d09674399cbdab26ea04a4f4585ff2c935ea04d916bf337087aa577')
+sha512sums=('0a7393c12e6a4bc5a15a61cfe9be350fa91bba912d081afc19c18c7a13b8c1731ae37f68723a60494ba19192d2ff0a176ee854e4d24dd9798852c31861ed77ff')
 
 package() {
-  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -Dm 644 "AdventureTime.conf" "$pkgdir/etc/skel/.config/kitty/"
+  install -dm755 "$pkgdir/etc/skel/.config/kitty"
+  install -Dm644 AdventureTime.conf "$pkgdir/etc/skel/.config/kitty/AdventureTime.conf"
 }
 

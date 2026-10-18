@@ -12,9 +12,9 @@ sha512sums=('2855b3fae8f0a8e627db4ce118f27fe91c7b66e25f4d31b98ef4b54708ebdb11553
             'SKIP')
 
 package() {
-  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -dm 755 "$pkgdir/usr/share/icons"
-  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/"
+  install -dm755 "$pkgdir/etc/skel/.config/kitty"
+  install -dm755 "$pkgdir/usr/share/icons"
+  install -Dm644 tokyo_night_storm.conf "$pkgdir/etc/skel/.config/kitty/tokyo_night_storm.conf"
 
   cd FairyWren-Icons
 

@@ -7,10 +7,10 @@ license=('GPL-3.0-or-later')
 depends=('athena-red-base' 'bibata-modern-darkred' 'material-black-cherry-suru'
          'nightfox-gtk-theme')
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/CrayonPonyFish.conf")
-sha512sums=('797558a0b42356b3f7c6f209cae70c9fb2dff95a7f48dead322083079fd8cb5b256ca0a6856784457d1d68969d7c513c4ffbd613d3a706658bfaa47a86ea8529')
+sha512sums=('0547b34886687979448b374eb6784e252c04a2bed3509cd08c5405f20f2f318df9c04921f581592a0a1161b0afb4736ff34826a46ba09341d7618a865c07e222')
 
 package() {
-  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -Dm 644 "CrayonPonyFish.conf" "$pkgdir/etc/skel/.config/kitty/"
+  install -dm755 "$pkgdir/etc/skel/.config/kitty"
+  install -Dm644 CrayonPonyFish.conf "$pkgdir/etc/skel/.config/kitty/CrayonPonyFish.conf"
 }
 

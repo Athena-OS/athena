@@ -6,7 +6,7 @@ arch=('any')
 license=('custom:unknown')
 depends=('powershell-bin')
 source=("Microsoft.PowerShell_profile.ps1")
-sha512sums=('2b102ec8a423212951ef0d278a98a18184adb1daf1e098ffe6c6483d5432ae8cb105bee256a55465274330bbbc450cd43814cacb0149f67a665c2495a2de95ff')
+sha512sums=('80d3fa9cf3f6784f4a7204f30d3700899f8420c91c7d78605a0abb4dd6a61eaeac74ac995385269107870411ca6a3d40efe9f92b284f8b1e6d8551272cd08623')
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/powershell"
