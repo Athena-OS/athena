@@ -86,8 +86,12 @@ case $KIND in
     esac
     newver=$(pkgver_of)
     [[ $newver =~ ^[A-Za-z0-9._+]+$ ]] || status pkgbuild_invalid "pkgver() produced invalid version '$newver'"
-    [[ $newver != "$CUR" ]] || status no_change "pkgver() still returns $CUR"
-    sed -i -E "s|^pkgrel=.*|pkgrel=1|" PKGBUILD
+    if [[ $newver == "$CUR" ]]; then
+      # SHIP=1: the tree is ahead of the repo; build this version as it is
+      [[ ${SHIP:-0} == 1 ]] || status no_change "pkgver() still returns $CUR"
+    else
+      sed -i -E "s|^pkgrel=.*|pkgrel=1|" PKGBUILD
+    fi
     ;;
   test|ship)
     ;;  # rolling audit / ship: build the PKGBUILD exactly as it is on the base branch

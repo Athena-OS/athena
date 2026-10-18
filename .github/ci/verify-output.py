@@ -232,6 +232,7 @@ def main() -> None:
     for k in ("pkg", "kind", "cur", "target", "orig", "work", "meta",
               "status-out", "verified-out", "valid-list"):
         ap.add_argument("--" + k, required=True)
+    ap.add_argument("--ship", default="0", help="1: planned because the tree is ahead of the repo")
     a = ap.parse_args()
     work = Path(a.work)
     meta = json.loads(Path(a.meta).read_text()).get(a.pkg, {})
@@ -258,6 +259,7 @@ def main() -> None:
             result, reason, valid = "build_failed", "output rejected: " + clean(e), []
 
     out = {"pkg": a.pkg, "kind": a.kind, "cur": a.cur, "target": a.target,
+           "ship": a.ship == "1",
            "result": result, "reason": reason, "pkgver": pkgver,
            "seconds": st.get("seconds") if isinstance(st.get("seconds"), int) else None,
            "log_tail": clean(st.get("log_tail"), 6000)}

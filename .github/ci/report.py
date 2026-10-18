@@ -69,12 +69,12 @@ def vercmp(a: str, b: str) -> int:
     return rpm(ra, rb)
 
 
-def update_text(kind: str, cur: str, new: str, repo: str = "") -> str:
+def update_text(kind: str, cur: str, new: str, repo: str = "", ship: bool = False) -> str:
     """VCS updates are detected by upstream commit, not by version; ship = the
     tree is ahead of the repo (cur is the pkgver, new the full version)"""
     if kind == "vcs":
         return f"{cur} → upstream commit {new[:7]}"
-    if kind == "ship":
+    if kind == "ship" or ship:
         return f"{repo or 'not in repo'} (repo) → {new} (tree)"
     return f"{cur} → {new}"
 
@@ -155,7 +155,8 @@ def main() -> None:
         if r["result"] in CATS:
             this_run.add(r["pkg"])
             upd = "current PKGBUILD" if r["kind"] in ("test", "rebuild") else \
-                update_text(r["kind"], r["cur"], r["target"], planned.get(r["pkg"], {}).get("repo", ""))
+                update_text(r["kind"], r["cur"], planned.get(r["pkg"], {}).get("tree") or r["target"],
+                            planned.get(r["pkg"], {}).get("repo", ""), bool(r.get("ship")))
             lists[r["result"]].append({"pkg": r["pkg"], "found_by": "build " + r["kind"],
                                        "severity": "error", "detail": r["reason"], "update": upd,
                                        "since": today[:10], "log_tail": r.get("log_tail", "")})
@@ -163,7 +164,8 @@ def main() -> None:
         if c.get("result") in CATS:
             lists[c["result"]].append({"pkg": c["pkg"], "found_by": "update (earlier run)",
                                        "severity": "error", "detail": c.get("reason", ""),
-                                       "update": update_text(c["kind"], c["cur"], c["new"], c.get("repo", "")),
+                                       "update": update_text(c["kind"], c["cur"], c.get("tree") or c["new"],
+                                                             c.get("repo", ""), bool(c.get("ship"))),
                                        "since": (c.get("date") or "")[:10], "log_tail": "",
                                        "run_url": c.get("run_url")})
     for p, b in known.items():
@@ -436,9 +438,9 @@ def main() -> None:
             for r in ok[:lim]:
                 state = "yes" if r["pkg"] in published else (
                     ("in PR" if publish.get("pr_url") else "committed") if r["pkg"] in committed else "no")
-                if r["kind"] == "ship":
+                if r["kind"] == "ship" or (r.get("ship") and r["pkg"] in shipped):
                     frm = (planned.get(r["pkg"], {}).get("repo") or "not in repo") + " (repo)"
-                    to = r["target"] + " (tree, shipped as-is)"
+                    to = (planned.get(r["pkg"], {}).get("tree") or r["target"]) + " (tree, shipped as-is)"
                 else:
                     frm, to = r["cur"], r.get("pkgver") or r["target"]
                 L.append(f"| `{r['pkg']}` | {esc(frm)} | {esc(to)} | {state} |")

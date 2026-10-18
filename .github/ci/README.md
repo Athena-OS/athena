@@ -60,8 +60,10 @@ packages share a name.
   publish modes: it changes no PKGBUILD, the review already happened when it
   was merged. Shown as `ship` in the Build jobs table and as
   `1.0.2-1 (repo) → 1.0.3-1 (tree, shipped as-is)` in the report. VCS packages
-  are not compared (their pkgver is only known after a fetch); a repo version
-  *newer* than the tree is reported as a warning. If the database cannot be
+  are compared too: they are built through the normal `pkgver()` path, and if
+  upstream has not moved since the manual bump the tree version is shipped
+  as-is, otherwise the newer commit is committed/PR'd like any VCS update. A
+  repo version *newer* than the tree is reported as a warning. If the database cannot be
   downloaded, nothing is shipped that run. Override the URL with the
   `REPO_DB_URL` variable.
 * **Failures are not retried every day.** A package that failed for upstream

@@ -709,8 +709,10 @@ def cmd_plan(a) -> None:
             if d in busy or not buildable(m) or "fatal" in m or "syntax_error" in m \
                     or not m.get("pkgver") or not m.get("pkgrel"):
                 continue
-            if tracking.get(d, {}).get("kind") == "vcs" or "has_pkgver_func" in m:
-                continue   # the real pkgver is only known after a fetch
+            rec = tracking.get(d, {})
+            is_vcs = rec.get("kind") == "vcs"
+            if "has_pkgver_func" in m and not is_vcs:
+                continue   # pkgver() without a trackable git source: version unknown until built
             full = full_version(m)
             names = m.get("pkgname") or [d]
             in_repo = [n for n in names if n in repo]
@@ -722,14 +724,22 @@ def cmd_plan(a) -> None:
                 continue
             if in_repo and all(vercmp(full, repo[n]) == 0 for n in in_repo) and len(in_repo) == len(names):
                 continue
-            # cur = pkgver (verify-output falls back to it); new = the full version
-            upd = {"pkg": d, "kind": "ship", "cur": m["pkgver"], "new": full,
-                   "repo": repo[in_repo[0]] if in_repo else ""}
+            if is_vcs:
+                # VCS: pkgver() runs at build time. Plan it as a vcs update that
+                # may legitimately find nothing new (build-one.sh: SHIP=1 keeps
+                # going instead of 'no_change'); publish.sh ships it as-is when
+                # the PKGBUILD came back unchanged, commits it when it moved on.
+                upd = {"pkg": d, "kind": "vcs", "cur": m["pkgver"], "new": newver.get(d) or rec["old"],
+                       "ship": True, "repo": repo[in_repo[0]] if in_repo else "", "tree": full}
+            else:
+                # cur = pkgver (verify-output falls back to it); new = the full version
+                upd = {"pkg": d, "kind": "ship", "cur": m["pkgver"], "new": full,
+                       "repo": repo[in_repo[0]] if in_repo else ""}
             if d in pending:
                 waiting.append({**upd, "pr": pending[d]})
                 continue
             s = seen.get(d)
-            if s and s.get("target") == full and not a.retry_failed:
+            if s and s.get("target") == upd["new"] and not a.retry_failed:
                 age = (now - dt.datetime.fromisoformat(s["date"])).days
                 if a.skip_built_ok and s.get("result") == "ok":
                     continue
@@ -751,7 +761,7 @@ def cmd_plan(a) -> None:
             print(f"warning: forced package '{p}' does not exist", file=sys.stderr)
         elif d not in forced:
             forced.append(d)
-    shipping = {u["pkg"]: u for u in updates if u["kind"] == "ship"}
+    shipping = {u["pkg"]: u for u in updates if u["kind"] == "ship" or u.get("ship")}
     for p in forced:
         if shipping.get(p):
             updates = [u for u in updates if u["pkg"] != p]
@@ -836,7 +846,8 @@ def cmd_plan(a) -> None:
         with open(summary, "w") as f:
             f.write("\n### Build jobs\n\n| Job | Packages |\n|---|---|\n")
             for i, sh in enumerate(shards):
-                cells = [f"`{u['pkg']}`" + ("" if u["kind"] == "test" else f" ({kinds.get(u['kind'], u['kind'])})")
+                cells = [f"`{u['pkg']}`" + ("" if u["kind"] == "test" else
+                                              f" ({kinds['ship'] if u.get('ship') else kinds.get(u['kind'], u['kind'])})")
                          for u in sh]
                 f.write(f"| build {i} | {', '.join(cells)} |\n")
             f.write("\nPackages without a tag are audit builds (built as they are, never published).\n")

@@ -61,13 +61,16 @@ trap write_out EXIT
 # ------------------------------------------------------------------ select
 # status.json was rewritten on the runner host by verify-output.py; the
 # package name is the directory name, never a value from the build container
-ok=() ship=()
+ok=() ship=() vcs_ship=()
 for d in "$RESULTS"/*/; do
   pkg=$(basename "$d")
   [[ -f $d/status.json ]] || continue
   case $(jq -r '.result + "/" + .kind' "$d/status.json") in
     ok/release|ok/vcs|ok/rebuild) ok+=("$pkg") ;;
     ok/ship) ship+=("$pkg") ;;
+  esac
+  case $(jq -r '.result + "/" + (.ship // false | tostring)' "$d/status.json") in
+    ok/true) vcs_ship+=("$pkg") ;;   # may turn out unchanged -> shipped as-is
   esac
 done
 echo "built OK: ${#ok[@]} to commit, ${#ship[@]} to ship as-is  (mode: $MODE)"
@@ -113,7 +116,7 @@ done
 # push mode: make sure the upload can work BEFORE anything reaches the base branch
 # (and before shipping anything, in either mode)
 need_setup=false
-(( ${#shipped[@]} > 0 )) && need_setup=true
+(( ${#shipped[@]} + ${#vcs_ship[@]} > 0 )) && need_setup=true
 [[ $MODE == push && ${#todo[@]} -gt 0 ]] && need_setup=true
 if [[ ${RELEASE:-true} == true && $need_setup == true ]]; then
   if ! release_setup; then
@@ -123,15 +126,6 @@ if [[ ${RELEASE:-true} == true && $need_setup == true ]]; then
   fi
 fi
 
-# pr mode: ship now, the PR only carries the bumps. push mode: ship together
-# with the pushed bumps below (one repo-add).
-if [[ $MODE == pr && ${#shipped[@]} -gt 0 ]]; then
-  if [[ ${RELEASE:-true} == true ]]; then
-    do_release "${shipped[@]}" || echo "shipping failed: $release_error"
-  else
-    release_packages "${shipped[@]}"     # AUTO_RELEASE=false -> lists/to-release
-  fi
-fi
 
 # ------------------------------------------------------------------ commit
 if [[ $MODE == pr ]]; then
@@ -147,12 +141,30 @@ git checkout -q -B "$branch" "origin/$BASE_BRANCH"
 for pkg in "${todo[@]}"; do
   cp "$RESULTS/$pkg/PKGBUILD" "${PKGDIR[$pkg]}/PKGBUILD"
   git add "${PKGDIR[$pkg]}/PKGBUILD"
-  git diff --cached --quiet && { skipped+=("$pkg: no diff"); continue; }
+  if git diff --cached --quiet; then
+    # a VCS package planned as ship whose pkgver() found nothing new: the tree
+    # version is what the repo lacks, release it as it is
+    if [[ $(jq -r '.ship // false' "$RESULTS/$pkg/status.json") == true ]]; then
+      shipped+=("$pkg")
+    else
+      skipped+=("$pkg: no diff")
+    fi
+    continue
+  fi
   ver=$(jq -r .pkgver "$RESULTS/$pkg/status.json")
   git commit -q -m "$pkg: auto-update to $ver." \
     -m "Built in a clean container and install-tested by $RUN_URL" "${trailer[@]}"
   committed+=("$pkg")
 done
+# pr mode: ship now, the PR only carries the bumps. push mode: ship together
+# with the pushed bumps below (one repo-add).
+if [[ $MODE == pr && ${#shipped[@]} -gt 0 ]]; then
+  if [[ ${RELEASE:-true} == true ]]; then
+    do_release "${shipped[@]}" || echo "shipping failed: $release_error"
+  else
+    release_packages "${shipped[@]}"     # AUTO_RELEASE=false -> lists/to-release
+  fi
+fi
 if (( ${#committed[@]} == 0 )); then
   if [[ $MODE == push && ${#shipped[@]} -gt 0 ]]; then
     if [[ ${RELEASE:-true} == true ]]; then do_release "${shipped[@]}" || exit 1

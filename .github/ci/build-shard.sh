@@ -33,6 +33,7 @@ write_status() { # <pkg> <kind> <cur> <new> <result> <reason>
 while read -r u; do
   pkg=$(jq -r .pkg <<<"$u"); kind=$(jq -r .kind <<<"$u")
   cur=$(jq -r .cur <<<"$u"); new=$(jq -r .new <<<"$u")
+  ship=$(jq -r 'if .ship == true then 1 else 0 end' <<<"$u")
   mkdir -p "$results/$pkg"
   case $kind in
     vcs)          echo "::group::$pkg (vcs: $cur, upstream now at commit ${new:0:7})" ;;
@@ -62,7 +63,7 @@ while read -r u; do
   started=$(date +%s)
   timeout --kill-after=2m "${PER_PKG_TIMEOUT_MIN}m" \
     docker run --rm --name "$cname" \
-      -e PKG="$pkg" -e KIND="$kind" -e CUR="$cur" -e NEW="$new" -e GIT_TERMINAL_PROMPT=0 \
+      -e PKG="$pkg" -e KIND="$kind" -e CUR="$cur" -e NEW="$new" -e SHIP="$ship" -e GIT_TERMINAL_PROMPT=0 \
       -v "$work:/build" -v "$work/.out:/out" \
       -v "$CACHE:/var/cache/pacman/pkg" \
       ba-builder < /dev/null
@@ -86,7 +87,7 @@ while read -r u; do
     sudo chown -R "$(id -u):$(id -g)" "$work/.out"
     # only regular files and directories survive (no symlinks, FIFOs, devices)
     find "$work/.out" ! -type f ! -type d -delete
-    python3 "$here/verify-output.py" --pkg "$pkg" --kind "$kind" --cur "$cur" --target "$new" \
+    python3 "$here/verify-output.py" --pkg "$pkg" --kind "$kind" --cur "$cur" --target "$new" --ship "$ship" \
       --orig "$pkgsrc/$pkg/PKGBUILD" --work "$work/.out" --meta "$meta" \
       --status-out "$host/status.json" --verified-out "$host/PKGBUILD" --valid-list "$host/valid.txt"
     cp "$host/status.json" "$results/$pkg/status.json"
