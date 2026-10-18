@@ -142,6 +142,21 @@ jobs:
           : > .ci-state/state/lists-official.txt   # Athena has no lists/official
           echo "official packages listed: $(wc -l < "$out")"
 
+      - name: List packages in the package repo
+        env:
+          REPO_DB_URL: ${{ vars.REPO_DB_URL || format('{0}/{1}.db', vars.REPO_BASE_URL || 'https://hub.athenaos.org/athena/os/x86_64', vars.REPO_NAME || 'athena') }}
+        run: |
+          # "name version" per repo entry; the plan ships tree versions the repo
+          # does not have yet (manual bumps merged to the base branch, new packages)
+          out=.ci-state/state/repo-db.txt
+          if curl -fsSL --retry 3 --max-time 120 -o .ci-state/repo.db "$REPO_DB_URL"; then
+            tar -tf .ci-state/repo.db | sed -n 's|^\./||; s|/$||p' | grep -v / \
+              | sed -E 's/^(.+)-([^-]+-[^-]+)$/\1 \2/' > "$out"
+            echo "repo entries: $(wc -l < "$out")"
+          else
+            echo "::warning::cannot download $REPO_DB_URL; nothing is shipped this run"
+          fi
+
       - name: Check upstream versions (nvchecker)
         env:
           GH_TOKEN: ${{ github.token }}
@@ -205,7 +220,7 @@ jobs:
           fi
           set -- --state .ci-state/state --seen .ci-state/seen.json \
                  --pending .ci-state/state/pending.json --force "$FORCE" --max "$MAX" \
-                 --audit "$AUDIT"
+                 --audit "$AUDIT" --repo-db .ci-state/state/repo-db.txt
           # dry runs: don't rebuild what already built fine for the same version
           [ "$PUBLISH" = true ] || set -- "$@" --skip-built-ok
           [ "$RETRY" = true ] && set -- "$@" --retry-failed

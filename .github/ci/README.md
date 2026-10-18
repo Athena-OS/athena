@@ -51,6 +51,19 @@ packages share a name.
   was before). Symlinks, FIFOs and oversized files in the output are
   discarded, and the verified results are written to a directory the
   container never had access to. Build jobs hold no secrets.
+* **Manual bumps and new packages are shipped.** Every run downloads
+  `athena.db` from the R2 URL and compares each PKGBUILD's `epoch:pkgver-pkgrel` with the
+  repo. A tree version the repo does not have (you fixed a PKGBUILD by hand
+  and pushed 1.0.3 while the repo still serves 1.0.2, a pkgrel bump, a new
+  package) is built **exactly as it is on main** (any change to the PKGBUILD
+  by the build is rejected), install-tested and released right away, in both
+  publish modes: it changes no PKGBUILD, the review already happened when it
+  was merged. Shown as `ship` in the Build jobs table and as
+  `1.0.2-1 (repo) → 1.0.3-1 (tree, shipped as-is)` in the report. VCS packages
+  are not compared (their pkgver is only known after a fetch); a repo version
+  *newer* than the tree is reported as a warning. If the database cannot be
+  downloaded, nothing is shipped that run. Override the URL with the
+  `REPO_DB_URL` variable.
 * **Failures are not retried every day.** A package that failed for upstream
   version X is skipped (but still listed in the report as "previous run")
   until upstream moves past X, 7 days pass, or you run with `retry_failed`.
@@ -85,6 +98,10 @@ mode with the repository variable `PUBLISH_MODE`, or per run with the
 `publish_mode` input. If PRs are opened with the default token, enable
 *Settings → Actions → Allow GitHub Actions to create and approve pull
 requests*, or set `BA_BOT_TOKEN`.
+
+In both modes, `ship` packages (tree ahead of the repo, see above) are
+released directly by the run and never go through a PR: there is no PKGBUILD
+change to review.
 
 ## Builder image
 
@@ -234,6 +251,8 @@ variables filled in `default`/`auto`).
   updated if upstream is newer, else rebuilt with `pkgrel+1` (handy after a
   library soname bump). Tick `only_these` to build **only** these packages
   (same as `max_updates: 0` + `audit: 0`).
+* A package named in `packages` whose tree version is ahead of the repo is
+  shipped as-is (no `pkgrel+1`).
 * `publish: false` - test without touching main or the repo.
 * `publish_mode: pr|push` - override `PUBLISH_MODE` for this run.
 * `probe_sources: on|off|sundays` - run the URL probe now, skip it, or only

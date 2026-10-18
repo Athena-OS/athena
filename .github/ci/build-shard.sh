@@ -37,6 +37,7 @@ while read -r u; do
   case $kind in
     vcs)          echo "::group::$pkg (vcs: $cur, upstream now at commit ${new:0:7})" ;;
     test|rebuild) echo "::group::$pkg ($kind: $cur)" ;;
+    ship) echo "::group::$pkg (ship: $new, not in the repo yet)" ;;
     *)            echo "::group::$pkg ($kind: $cur -> $new)" ;;
   esac
 

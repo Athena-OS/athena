@@ -7,6 +7,11 @@
 #                      whole run; release-merged.sh uploads the packages when
 #                      that PR is merged (workflow auto-update-release.yml)
 #
+# "ship" results (the tree already has a version the repo lacks: a manual bump
+# or a new package, built exactly as it is on the base branch) change no
+# PKGBUILD, so they are released right away in both modes: the PKGBUILD was
+# reviewed when it was merged.
+#
 # Runs in the publish job (archlinux container, repo checked out, as root).
 # Env:
 #   BASE_SHA            commit the run started from (detect job)
@@ -32,29 +37,41 @@ PUBLISH_OUT=$(realpath -m "$PUBLISH_OUT")
 export PKGS
 unpack_pkgs || { echo "cannot unpack the built packages"; exit 1; }
 
-committed=() skipped=() released=false release_error="" pr_url=""
+committed=() shipped=() released_pkgs=() skipped=() released=false release_error="" pr_url=""
+_json() { printf '%s\n' "$@" | jq -R . | jq -sc 'map(select(. != ""))'; }
 write_out() {
   jq -n --arg mode "$MODE" --arg pr_url "$pr_url" \
-        --argjson committed "$(printf '%s\n' "${committed[@]}" | jq -R . | jq -sc 'map(select(. != ""))')" \
-        --argjson skipped "$(printf '%s\n' "${skipped[@]}" | jq -R . | jq -sc 'map(select(. != ""))')" \
+        --argjson committed "$(_json "${committed[@]}")" \
+        --argjson shipped "$(_json "${shipped[@]}")" \
+        --argjson released_pkgs "$(_json "${released_pkgs[@]}")" \
+        --argjson skipped "$(_json "${skipped[@]}")" \
         --argjson released "$released" --arg release_error "$release_error" \
-        '{mode:$mode, pr_url:$pr_url, committed:$committed, skipped:$skipped,
+        '{mode:$mode, pr_url:$pr_url, committed:$committed, shipped:$shipped,
+          released_pkgs:$released_pkgs, skipped:$skipped,
           released:$released, release_error:$release_error}' > "$PUBLISH_OUT"
+}
+# release_upload + bookkeeping of what actually went out
+do_release() { # <pkg>...
+  (( $# )) || return 0
+  if release_upload "$@"; then released_pkgs+=("$@"); return 0; fi
+  return 1
 }
 trap write_out EXIT
 
 # ------------------------------------------------------------------ select
 # status.json was rewritten on the runner host by verify-output.py; the
 # package name is the directory name, never a value from the build container
-ok=()
+ok=() ship=()
 for d in "$RESULTS"/*/; do
   pkg=$(basename "$d")
   [[ -f $d/status.json ]] || continue
-  [[ $(jq -r '.result + "/" + .kind' "$d/status.json") =~ ^ok/(release|vcs|rebuild)$ ]] || continue
-  ok+=("$pkg")
+  case $(jq -r '.result + "/" + .kind' "$d/status.json") in
+    ok/release|ok/vcs|ok/rebuild) ok+=("$pkg") ;;
+    ok/ship) ship+=("$pkg") ;;
+  esac
 done
-echo "built OK: ${#ok[@]}  (mode: $MODE)"
-(( ${#ok[@]} )) || exit 0
+echo "built OK: ${#ok[@]} to commit, ${#ship[@]} to ship as-is  (mode: $MODE)"
+(( ${#ok[@]} + ${#ship[@]} )) || exit 0
 
 git config --global --add safe.directory "$PWD"
 git config user.name  "athena-ci[bot]"
@@ -77,12 +94,41 @@ for pkg in "${ok[@]}"; do
   todo+=("$pkg")
 done
 
+# ship: the built PKGBUILD must be byte-identical to the one on the base branch
+for pkg in "${ship[@]}"; do
+  dir=${PKGDIR[$pkg]:-}
+  if [[ -z $dir || ! -d $dir ]]; then
+    skipped+=("$pkg: no such package on $BASE_BRANCH"); continue
+  fi
+  if [[ ! -f $RESULTS/$pkg/PKGBUILD ]] || ! compgen -G "$PKGS/$pkg/*.pkg.tar.zst" >/dev/null; then
+    skipped+=("$pkg: build artifacts missing"); continue
+  fi
+  if ! git show "origin/$BASE_BRANCH":"$dir/PKGBUILD" 2>/dev/null | cmp -s - "$RESULTS/$pkg/PKGBUILD"; then
+    skipped+=("$pkg: PKGBUILD changed on $BASE_BRANCH during the run"); continue
+  fi
+  shipped+=("$pkg")
+done
+
 # push mode: make sure the upload can work BEFORE anything reaches the base branch
-if [[ $MODE == push && ${RELEASE:-true} == true && ${#todo[@]} -gt 0 ]]; then
+# (and before shipping anything, in either mode)
+need_setup=false
+(( ${#shipped[@]} > 0 )) && need_setup=true
+[[ $MODE == push && ${#todo[@]} -gt 0 ]] && need_setup=true
+if [[ ${RELEASE:-true} == true && $need_setup == true ]]; then
   if ! release_setup; then
     release_error="not published: $release_error"
     echo "$release_error"
     exit 1
+  fi
+fi
+
+# pr mode: ship now, the PR only carries the bumps. push mode: ship together
+# with the pushed bumps below (one repo-add).
+if [[ $MODE == pr && ${#shipped[@]} -gt 0 ]]; then
+  if [[ ${RELEASE:-true} == true ]]; then
+    do_release "${shipped[@]}" || echo "shipping failed: $release_error"
+  else
+    release_packages "${shipped[@]}"     # AUTO_RELEASE=false -> lists/to-release
   fi
 fi
 
@@ -106,7 +152,13 @@ for pkg in "${todo[@]}"; do
     -m "Built in a clean container and install-tested by $RUN_URL" "${trailer[@]}"
   committed+=("$pkg")
 done
-(( ${#committed[@]} )) || exit 0
+if (( ${#committed[@]} == 0 )); then
+  if [[ $MODE == push && ${#shipped[@]} -gt 0 ]]; then
+    if [[ ${RELEASE:-true} == true ]]; then do_release "${shipped[@]}" || exit 1
+    else release_packages "${shipped[@]}"; fi
+  fi
+  exit 0
+fi
 
 # ------------------------------------------------------------------ pr mode
 if [[ $MODE == pr ]]; then
@@ -163,7 +215,7 @@ fi
 echo "pushed ${#committed[@]} commits"
 
 if [[ ${RELEASE:-true} != true ]]; then
-  release_packages "${committed[@]}"     # AUTO_RELEASE=false -> lists/to-release
+  release_packages "${committed[@]}" "${shipped[@]}"     # AUTO_RELEASE=false -> lists/to-release
   exit 0
 fi
-release_upload "${committed[@]}" || exit 1
+do_release "${committed[@]}" "${shipped[@]}" || exit 1

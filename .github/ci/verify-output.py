@@ -184,6 +184,8 @@ def check(a, meta: dict, work: Path) -> tuple[str, list[str], str]:
         raise Bad(f"pkgver {ver} is not the requested {a.target}")
     if a.kind == "rebuild" and ver is not None and ver != a.cur and "has_pkgver_func" not in meta:
         raise Bad(f"pkgver changed during a rebuild ({a.cur} -> {ver})")
+    if a.kind in ("test", "ship") and new != orig:
+        raise Bad("PKGBUILD was modified by the build")
     # a computed pkgver=/pkgrel= line (unchanged from master, so allowed above):
     # the expected value is the evaluated one detect read from the PKGBUILD
     if ver is None:
@@ -196,6 +198,8 @@ def check(a, meta: dict, work: Path) -> tuple[str, list[str], str]:
     names = set(meta.get("pkgname") or [a.pkg])
     epoch = meta.get("epoch", "")
     full = (f"{epoch}:" if epoch else "") + f"{ver}-{rel}"
+    if a.kind == "ship" and full != a.target:
+        raise Bad(f"version {full} is not the planned {a.target}")
     pdir = work / "pkgs"
     if pdir.is_symlink() or not pdir.is_dir():
         raise Bad("no packages")

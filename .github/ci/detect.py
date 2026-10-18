@@ -119,6 +119,40 @@ def suspicious_jump(cur: str, new: str) -> bool:
     return (len(a) <= 3 and len(b) >= 4) or (len(a) >= 4 and len(b) <= 3)
 
 
+def vercmp(a: str, b: str) -> int:
+    """pacman's vercmp on full versions: [epoch:]pkgver[-pkgrel]"""
+    def split(v):
+        e, _, rest = v.partition(":") if ":" in v else ("0", "", v)
+        ver, _, rel = rest.rpartition("-") if "-" in rest else (rest, "", "")
+        return int(e) if e.isdigit() else 0, ver, rel
+    (ea, va, ra), (eb, vb, rb) = split(a), split(b)
+    if ea != eb:
+        return 1 if ea > eb else -1
+    c = rpmvercmp(va, vb)
+    if c or not ra or not rb:
+        return c
+    return rpmvercmp(ra, rb)
+
+
+def full_version(m: dict) -> str:
+    e = m.get("epoch") or ""
+    return (f"{e}:" if e else "") + f"{m.get('pkgver', '')}-{m.get('pkgrel', '')}"
+
+
+def load_repo_db(path) -> dict[str, str] | None:
+    """'name version' per line (what the workflow extracted from the repo db);
+    None when the file does not exist = the db could not be fetched this run"""
+    p = Path(path) if path else None
+    if not p or not p.exists():
+        return None
+    repo: dict[str, str] = {}
+    for line in p.read_text().splitlines():
+        parts = line.split()
+        if len(parts) == 2:
+            repo[parts[0]] = parts[1]
+    return repo
+
+
 def buildable(m: dict) -> bool:
     """the CI only builds x86_64 (any packages included)"""
     return not m.get("arch") or bool({"any", "x86_64"} & set(m["arch"]))
@@ -663,6 +697,48 @@ def cmd_plan(a) -> None:
                 continue
         updates.append(upd)
 
+    # ship: the tree already carries a version the repo does not have (manual
+    # bump merged to the base branch, new package). Build as-is and publish.
+    repo = load_repo_db(a.repo_db)
+    if repo is None and a.repo_db:
+        print("warning: repo database not available, 'ship' detection skipped", file=sys.stderr)
+    shipped = 0
+    if repo is not None:
+        busy = {u["pkg"] for u in updates}
+        for d, m in sorted(meta.items()):
+            if d in busy or not buildable(m) or "fatal" in m or "syntax_error" in m \
+                    or not m.get("pkgver") or not m.get("pkgrel"):
+                continue
+            if tracking.get(d, {}).get("kind") == "vcs" or "has_pkgver_func" in m:
+                continue   # the real pkgver is only known after a fetch
+            full = full_version(m)
+            names = m.get("pkgname") or [d]
+            in_repo = [n for n in names if n in repo]
+            if any(vercmp(full, repo[n]) < 0 for n in in_repo):
+                issues.append({"pkg": d, "category": "upstream_check", "severity": "warning",
+                               "check": "repo-newer",
+                               "message": f"the repo has {repo[in_repo[0]]} but the tree only {full}; "
+                                          "was the PKGBUILD downgraded?"})
+                continue
+            if in_repo and all(vercmp(full, repo[n]) == 0 for n in in_repo) and len(in_repo) == len(names):
+                continue
+            # cur = pkgver (verify-output falls back to it); new = the full version
+            upd = {"pkg": d, "kind": "ship", "cur": m["pkgver"], "new": full,
+                   "repo": repo[in_repo[0]] if in_repo else ""}
+            if d in pending:
+                waiting.append({**upd, "pr": pending[d]})
+                continue
+            s = seen.get(d)
+            if s and s.get("target") == full and not a.retry_failed:
+                age = (now - dt.datetime.fromisoformat(s["date"])).days
+                if a.skip_built_ok and s.get("result") == "ok":
+                    continue
+                if s.get("result") in FAILED_RESULTS and age < a.retry_days:
+                    carried.append({**upd, **{k: s.get(k) for k in ("result", "reason", "date", "run_url")}})
+                    continue
+            updates.append(upd)
+            shipped += 1
+
     # names may be split packages (python2-foo) -> their PKGBUILD directory
     by_name = {}
     for d, m in meta.items():
@@ -675,7 +751,12 @@ def cmd_plan(a) -> None:
             print(f"warning: forced package '{p}' does not exist", file=sys.stderr)
         elif d not in forced:
             forced.append(d)
+    shipping = {u["pkg"]: u for u in updates if u["kind"] == "ship"}
     for p in forced:
+        if shipping.get(p):
+            updates = [u for u in updates if u["pkg"] != p]
+            updates.insert(0, {**shipping[p], "forced": True})
+            continue
         updates = [u for u in updates if u["pkg"] != p]
         rec = tracking.get(p)
         new = newver.get(p, "")
@@ -689,7 +770,8 @@ def cmd_plan(a) -> None:
                            "forced": True})
 
     # releases first (they matter most to users), then VCS; cap the batch
-    updates.sort(key=lambda u: (not u.get("forced"), u["kind"] != "release", u["pkg"]))
+    order = {"release": 0, "ship": 1, "vcs": 2}
+    updates.sort(key=lambda u: (not u.get("forced"), order.get(u["kind"], 3), u["pkg"]))
     # the cap never drops packages named in --force; 0 means "no updates"
     forced_u = [u for u in updates if u.get("forced")]
     normal = [u for u in updates if not u.get("forced")]
@@ -737,7 +819,7 @@ def cmd_plan(a) -> None:
          "pending": waiting}, indent=1))
 
     print(f"updates: {len(updates)} (release {sum(u['kind'] == 'release' for u in updates)}, "
-          f"vcs {sum(u['kind'] == 'vcs' for u in updates)}, forced {len(forced)})  "
+          f"vcs {sum(u['kind'] == 'vcs' for u in updates)}, ship {shipped}, forced {len(forced)})  "
           f"still failing (not retried): {len(carried)}  deferred: {len(deferred)}  "
           f"waiting in open PRs: {len(waiting)}  audit builds: {len(audit)}  "
           f"shards: {n_shards}")
@@ -749,7 +831,8 @@ def cmd_plan(a) -> None:
             f.write("matrix=" + json.dumps({"shard": list(range(n_shards))}) + "\n")
     summary = str(st / "build-jobs.md")
     if shards:
-        kinds = {"release": "update", "vcs": "update (git)", "rebuild": "rebuild", "test": "audit"}
+        kinds = {"release": "update", "vcs": "update (git)", "rebuild": "rebuild", "test": "audit",
+                 "ship": "ship: tree newer than repo"}
         with open(summary, "w") as f:
             f.write("\n### Build jobs\n\n| Job | Packages |\n|---|---|\n")
             for i, sh in enumerate(shards):
@@ -824,6 +907,8 @@ def main() -> None:
     q.add_argument("--pending", help="JSON {pkg: pr_url} from `detect.py pending`")
     q.add_argument("--skip-built-ok", action="store_true",
                    help="skip updates that already built OK for the same version (dry runs)")
+    q.add_argument("--repo-db", help="'name version' lines extracted from the package repo db; "
+                   "tree versions newer than it (or missing from it) are built and shipped")
     q.add_argument("--audit", type=int, default=0,
                    help="also build N not-updated packages as-is (rolling full-repo build test)")
     q.set_defaults(func=cmd_plan)

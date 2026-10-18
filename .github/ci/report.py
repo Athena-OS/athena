@@ -69,10 +69,13 @@ def vercmp(a: str, b: str) -> int:
     return rpm(ra, rb)
 
 
-def update_text(kind: str, cur: str, new: str) -> str:
-    """VCS updates are detected by upstream commit, not by version"""
+def update_text(kind: str, cur: str, new: str, repo: str = "") -> str:
+    """VCS updates are detected by upstream commit, not by version; ship = the
+    tree is ahead of the repo (cur is the pkgver, new the full version)"""
     if kind == "vcs":
         return f"{cur} → upstream commit {new[:7]}"
+    if kind == "ship":
+        return f"{repo or 'not in repo'} (repo) → {new} (tree)"
     return f"{cur} → {new}"
 
 
@@ -151,7 +154,8 @@ def main() -> None:
     for r in results.values():
         if r["result"] in CATS:
             this_run.add(r["pkg"])
-            upd = "current PKGBUILD" if r["kind"] in ("test", "rebuild") else update_text(r["kind"], r["cur"], r["target"])
+            upd = "current PKGBUILD" if r["kind"] in ("test", "rebuild") else \
+                update_text(r["kind"], r["cur"], r["target"], planned.get(r["pkg"], {}).get("repo", ""))
             lists[r["result"]].append({"pkg": r["pkg"], "found_by": "build " + r["kind"],
                                        "severity": "error", "detail": r["reason"], "update": upd,
                                        "since": today[:10], "log_tail": r.get("log_tail", "")})
@@ -159,7 +163,7 @@ def main() -> None:
         if c.get("result") in CATS:
             lists[c["result"]].append({"pkg": c["pkg"], "found_by": "update (earlier run)",
                                        "severity": "error", "detail": c.get("reason", ""),
-                                       "update": update_text(c["kind"], c["cur"], c["new"]),
+                                       "update": update_text(c["kind"], c["cur"], c["new"], c.get("repo", "")),
                                        "since": (c.get("date") or "")[:10], "log_tail": "",
                                        "run_url": c.get("run_url")})
     for p, b in known.items():
@@ -292,8 +296,12 @@ def main() -> None:
                             "arch": aver, "compare": newer, "in_lists_official": n in official_list,
                             "blackarch_dependents": nb, "action": action.replace("  ", " ")})
 
-    published = set(publish.get("committed", [])) if publish.get("released") else set()
     committed = set(publish.get("committed", []))
+    shipped = set(publish.get("shipped", []))
+    if "released_pkgs" in publish:
+        published = set(publish["released_pkgs"])
+    else:   # older publish.json
+        published = committed if publish.get("released") else set()
     ok = sorted((r for r in results.values() if r["result"] == "ok" and r["kind"] != "test"),
                 key=lambda r: r["pkg"])
     audit_ok = sum(1 for r in results.values() if r["kind"] == "test" and r["result"] == "ok")
@@ -304,7 +312,8 @@ def main() -> None:
         "updates_planned": len(plan["updates"]), "deferred": len(plan["deferred"]),
         "waiting_in_pr": len(plan["pending"]), "audit_builds": len(plan["audit"]),
         "audit_ok": audit_ok, "build_status_known": len(known), "build_status_stale": stale,
-        "built_ok": len(ok), "committed": len(committed), "released": len(published),
+        "built_ok": len(ok), "committed": len(committed), "shipped": len(shipped),
+        "released": len(published),
         "no_change": sum(r["result"] == "no_change" for r in results.values()),
         "skipped": sum(r["result"] == "skipped" for r in results.values()),
         **{c: len({x["pkg"] for x in lists[c]}) for c in CATS},
@@ -314,8 +323,11 @@ def main() -> None:
     report = {"generated": today, "run_url": a.run_url, "totals": totals, **lists,
               "removal_candidates": removal, "python2_without_hard_dependents": py2,
               "also_in_arch_official": in_arch,
-              "updated": [{"pkg": r["pkg"], "from": r["cur"], "to": r.get("pkgver") or r["target"],
-                           "committed": r["pkg"] in committed, "released": r["pkg"] in published}
+              "updated": [{"pkg": r["pkg"], "kind": r["kind"],
+                           "from": planned.get(r["pkg"], {}).get("repo", "") if r["kind"] == "ship" else r["cur"],
+                           "to": r["target"] if r["kind"] == "ship" else (r.get("pkgver") or r["target"]),
+                           "committed": r["pkg"] in committed, "shipped": r["pkg"] in shipped,
+                           "released": r["pkg"] in published}
                           for r in ok],
               "publish": publish, "warnings": warnings,
               "untracked_by_reason": Counter(untracked.values()).most_common()}
@@ -334,7 +346,7 @@ def main() -> None:
               f"| Packages / tracked upstream | {t['packages']} / {t['tracked']} |",
               f"| Updates found (deferred to next run) | {t['updates_planned']} ({t['deferred']}) |",
               f"| Built + install-tested OK | {t['built_ok']} |",
-              f"| Committed / released | {t['committed']} / {t['released']} |",
+              f"| Committed / shipped as-is / released | {t['committed']} / {t['shipped']} / {t['released']} |",
               f"| Waiting in open auto-update PRs | {t['waiting_in_pr']} |",
               f"| Audit builds this run (OK) | {t['audit_builds']} ({t['audit_ok']}) |",
               f"| Build status known for current PKGBUILDs | {t['build_status_known']} / {t['packages']}"
@@ -423,7 +435,12 @@ def main() -> None:
             for r in ok[:lim]:
                 state = "yes" if r["pkg"] in published else (
                     ("in PR" if publish.get("pr_url") else "committed") if r["pkg"] in committed else "no")
-                L.append(f"| `{r['pkg']}` | {esc(r['cur'])} | {esc(r.get('pkgver') or r['target'])} | {state} |")
+                if r["kind"] == "ship":
+                    frm = (planned.get(r["pkg"], {}).get("repo") or "not in repo") + " (repo)"
+                    to = r["target"] + " (tree, shipped as-is)"
+                else:
+                    frm, to = r["cur"], r.get("pkgver") or r["target"]
+                L.append(f"| `{r['pkg']}` | {esc(frm)} | {esc(to)} | {state} |")
         L.append("")
         if lim and len(ok) > lim:
             L += [f"_… {len(ok) - lim} more in report.md / report.json_", ""]
