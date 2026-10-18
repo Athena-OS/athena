@@ -6,7 +6,7 @@ arch=('any')
 license=("custom")
 depends=('alacritty' 'ttf-jetbrains-mono-nerd')
 source=("alacritty.toml")
-sha512sums=('02a10805ade86ff7ca8296887c3cadeefcb8854a1c30bb1cc5ba2d5fa616ae47e2f8892a494cb2d49989bcc04b61484ca15f4ed8e8f9c0999706cd11d13121cb')
+sha512sums=('184c72c6a53fbd49377b3234618688de6ece26ed360806347185e78d84fc6147dfbfd615638361c467ede86f4319a138e760e080663cd2282fe505338c39b43e')
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel/.config/alacritty"

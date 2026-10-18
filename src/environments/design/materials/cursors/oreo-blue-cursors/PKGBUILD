@@ -1,15 +1,15 @@
 pkgname=oreo-blue-cursors
 pkgver=1.0.1
-pkgrel=1
-pkgdesc="Oreo Blue cursor."
+pkgrel=2
+pkgdesc='Oreo Blue cursor.'
 arch=('any')
 license=('GPL-2.0-or-later')
 source=("$pkgname.tar.gz")
-sha512sums=('913c065b5742e083aaae877cb5bfb48226d6f19e1074ba2112db458d2b7a13ae9e42398a5326fd093ff41c8be894297ea251a82da721d82b6e3106373633d528')
-
+sha512sums=('d8964d6b5f3cdbc0eb231b21c81d207046fb9fbf53dc4dfdbae12bd92f64f5400bbfafaf2d0d70612df7e4e78bcb300ea3d017a42742be3c783d243e47419f47')
 
 package() {
-  install -dm 755 "$pkgdir/usr/share/icons"
+  install -dm755 "$pkgdir/usr/share/icons"
 
-  cp -a "$srcdir/oreo_blue_cursors" "$pkgdir/usr/share/icons/"
+  cp -a ./oreo_blue_cursors "$pkgdir/usr/share/icons/"
 }
+

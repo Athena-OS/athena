@@ -1,10 +1,11 @@
 pkgname=athena-keyring
-pkgver=1.0.0
-pkgrel=2
-pkgdesc="Keyring for Athena."
+pkgver=1.0.1
+pkgrel=1
+pkgdesc='Keyring for Athena.'
 arch=('any')
-license=("custom")
+license=('custom:unknown')
 source=("$pkgname.tar.gz")
+sha512sums=('52aa9127e90e45042266d3a12f3dfebb6fefe5e6ec2c87af0b6e0be9a3e99510caf1d1b9a4a37a77da811a6b776cd0165e5796fff55c660ef2f36644afa498c4')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/pacman/keyrings"
@@ -12,4 +13,3 @@ package() {
   cp -rf "${srcdir}"/usr/share/pacman/keyrings/* "${pkgdir}/usr/share/pacman/keyrings/"
 }
 
-sha512sums=('2f2525266547a512a43227baa7000b32c29efb264d5a70dbb8d84eb84694ce9e5c3da32fa1b961af4149d13ae70028327fd7755af7fa78672aa6e03b5fee19cf')

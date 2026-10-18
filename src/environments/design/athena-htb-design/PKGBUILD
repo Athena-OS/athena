@@ -1,7 +1,7 @@
 pkgname=athena-htb-design
 pkgver=1.0.3
-pkgrel=1
-pkgdesc="Hack The Box design for Athena."
+pkgrel=2
+pkgdesc='Hack The Box design for Athena.'
 arch=('any')
 license=('GPL-3.0-or-later')
 depends=('athena-green-base' 'afterglow-recolored-green' 'matrix-gtk-theme')
@@ -12,3 +12,4 @@ package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -Dm 644 "Box.conf" "$pkgdir/etc/skel/.config/kitty/"
 }
+

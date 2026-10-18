@@ -1,16 +1,16 @@
 pkgname=athena-nighttab
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="NightTab browser themes for Athena."
+pkgrel=3
+pkgdesc='NightTab browser themes for Athena.'
 arch=('any')
-license=("custom")
+license=('custom:unknown')
 source=("$pkgname.tar.gz")
+sha512sums=('609d34cc688c7c8cd647ddc3748bcbf902d97220ec08d48674a4615fa59c980445a3246ea2031619b8ede6681247a998b90a8c533e8676735ba1f2f721cd2016')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/nighttab"
+  install -dm755 "$pkgdir/usr/share/nighttab"
 
-  cp -rf "${srcdir}/usr/share/nighttab/athena_astronaut.json" "${pkgdir}/usr/share/nighttab/"
-  cp -rf "${srcdir}/usr/share/nighttab/athena_persona_5.json" "${pkgdir}/usr/share/nighttab/"
-  
+  install -Dm644 ./usr/share/nighttab/athena_astronaut.json "$pkgdir/usr/share/nighttab/"
+  install -Dm644 ./usr/share/nighttab/athena_persona_5.json "$pkgdir/usr/share/nighttab/"
 }
-sha256sums=('4454763d394f1d49bd6a158f1f88cd102f94e652c2f83c95d5d0a16537e206b1')
+

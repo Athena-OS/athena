@@ -1,14 +1,16 @@
 pkgname=athena-graphite-design
 pkgver=1.0.3
-pkgrel=1
-pkgdesc="Graphite Dark design for Athena."
+pkgrel=2
+pkgdesc='Graphite Dark design for Athena.'
 arch=('any')
 license=('GPL-3.0-or-later')
-depends=('athena-blue-base' 'bibata-modern-ice' 'graphite-gtk-theme' 'tela-circle-icon-theme-black')
+depends=('athena-blue-base' 'bibata-modern-ice' 'graphite-gtk-theme'
+         'tela-circle-icon-theme-black')
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Atom.conf")
-sha512sums=('a23c6f6e71c544110aa576a57174145a72eb7d2389a3927c154a7cb528fa2fb4a6baffd4f1287f53edcbf2553827af271acb24cdbc1d7369fc2820810f4194e4')
+sha512sums=('77a508f7dd252b33c2a5977989495d0d604b186244ce1686d81edd7f330cfa9abd3570a05943087fdecf522644582c154d1d4dd87719e047fc7cc4f04d6304da')
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -Dm 644 "Atom.conf" "$pkgdir/etc/skel/.config/kitty/"
 }
+
