@@ -1,4 +1,3 @@
-
 name: Vulcano
 on:
   pull_request:
@@ -11,6 +10,8 @@ permissions:
   pull-requests: write
 jobs:
   labeling:
+    # remove/* PRs (remove-packages workflow) only delete PKGBUILDs: nothing to check
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Labeling
@@ -18,43 +19,51 @@ jobs:
         with:
           labels: '1.has: package'
   pkgcheck:
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') }}
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
-      options: --privileged 
+      options: --privileged
     steps:
       - name: Install dependencies
         run: |
           pacman -Syyu --noconfirm pkgcheck-arch git
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: Trust workspace directory
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Check Styling
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          CHANGED_PKGBUILDS=$(git diff --name-only --diff-filter=ACMRT \
-            HEAD^1...HEAD \
-            | grep 'src/.*/PKGBUILD$' || true)
+          # whole PR (base..head), not only the last commit; deleted files excluded
+          mapfile -t CHANGED_PKGBUILDS < <(git diff --name-only --diff-filter=ACMRT \
+            "$BASE_SHA" "$HEAD_SHA" | grep 'src/.*/PKGBUILD$' || true)
+          rc=0
           for FILE in "${CHANGED_PKGBUILDS[@]}"; do
-            if [[ $(basename "$FILE") == "PKGBUILD" ]]; then
-              echo "Checking $FILE..."
-              pkgcheck "$FILE"
-            fi
+            [[ -n "$FILE" ]] || continue
+            echo "Checking $FILE..."
+            pkgcheck "$FILE" || rc=1
           done
+          exit $rc
   validate:
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: Build Package
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           # NOTE: It can validate also Athena private repos but only for -git packages, not for private tarball sources (i.e., https://github.com/Athena-OS/something/archive/v1.0.tar.gz)
           set -euo pipefail
@@ -62,9 +71,7 @@ jobs:
           chmod 0644 /tmp/ghtoken
 
           mapfile -t CHANGED < <(git diff --name-only --diff-filter=ACMRT \
-            "${{ github.event.pull_request.base.sha }}" \
-            "${{ github.event.pull_request.head.sha }}" \
-            | grep 'src/.*/PKGBUILD$' || true)
+            "$BASE_SHA" "$HEAD_SHA" | grep 'src/.*/PKGBUILD$' || true)
 
           for FILE in "${CHANGED[@]}"; do
             [[ -n "$FILE" ]] || continue
