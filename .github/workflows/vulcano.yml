@@ -11,7 +11,7 @@ permissions:
 jobs:
   labeling:
     # remove/* PRs (remove-packages workflow) only delete PKGBUILDs: nothing to check
-    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') }}
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') || github.event.pull_request.head.repo.full_name != github.repository }}
     runs-on: ubuntu-latest
     steps:
       - name: Labeling
@@ -19,7 +19,7 @@ jobs:
         with:
           labels: '1.has: package'
   pkgcheck:
-    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') }}
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') || github.event.pull_request.head.repo.full_name != github.repository }}
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
@@ -51,7 +51,7 @@ jobs:
           done
           exit $rc
   validate:
-    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') }}
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') || github.event.pull_request.head.repo.full_name != github.repository }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

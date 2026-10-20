@@ -217,7 +217,9 @@ remove_packages() {
     rm -rf "$chk" "$work"; _fail "UPLOADED, BUT THE SERVED DATABASE SIGNATURE DOES NOT VERIFY - check the repo now"; return 1
   fi
   local still=()
-  for n in "$@"; do tar -tzf "$chk/db" | sed 's|^\./||' | grep -qE "^$n-[^-]+-[^-]+/" && still+=("$n"); done
+  tar -tzf "$chk/db" > "$chk/list" || { rm -rf "$chk"; _fail "cannot read the served database to verify the removal"; return 1; }
+  sed -nE 's|^(\./)?([^/]+)/$|\2|p' "$chk/list" | sed -E 's/-[^-]+-[^-]+$//' | sort -u > "$chk/names"
+  for n in "$@"; do grep -qxF -- "$n" "$chk/names" && still+=("$n"); done
   rm -rf "$chk" "$work"
   (( ${#still[@]} == 0 )) || { _fail "still in the repo database after removal: ${still[*]}"; return 1; }
 

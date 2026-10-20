@@ -38,6 +38,7 @@ export PKGS
 unpack_pkgs || { echo "cannot unpack the built packages"; exit 1; }
 
 committed=() shipped=() released_pkgs=() skipped=() released=false release_error="" pr_url=""
+declare -A commit_of
 _json() { printf '%s\n' "$@" | jq -R . | jq -sc 'map(select(. != ""))'; }
 write_out() {
   jq -n --arg mode "$MODE" --arg pr_url "$pr_url" \
@@ -106,9 +107,13 @@ for pkg in "${ship[@]}"; do
   if [[ ! -f $RESULTS/$pkg/PKGBUILD ]] || ! compgen -G "$PKGS/$pkg/*.pkg.tar.zst" >/dev/null; then
     skipped+=("$pkg: build artifacts missing"); continue
   fi
+  # the whole directory (patches, .install files) must be what was built
+  if ! git diff --quiet "$BASE_SHA" "origin/$BASE_BRANCH" -- "$dir"; then
+    skipped+=("$pkg: package directory changed on $BASE_BRANCH during the run"); continue
+  fi
   if ! git show "origin/$BASE_BRANCH":"$dir/PKGBUILD" > "$RESULTS/$pkg/PKGBUILD.base" 2>/dev/null ||
      ! git diff --no-index --quiet "$RESULTS/$pkg/PKGBUILD.base" "$RESULTS/$pkg/PKGBUILD"; then
-    skipped+=("$pkg: PKGBUILD changed on $BASE_BRANCH during the run"); continue
+    skipped+=("$pkg: built PKGBUILD differs from $BASE_BRANCH"); continue
   fi
   shipped+=("$pkg")
 done
@@ -155,6 +160,7 @@ for pkg in "${todo[@]}"; do
   git commit -q -m "$pkg: auto-update to $ver." \
     -m "Built in a clean container and install-tested by $RUN_URL" "${trailer[@]}"
   committed+=("$pkg")
+  commit_of[$pkg]=$(git rev-parse HEAD)
 done
 # pr mode: ship now, the PR only carries the bumps. push mode: ship together
 # with the pushed bumps below (one repo-add).
@@ -175,7 +181,9 @@ fi
 
 # ------------------------------------------------------------------ pr mode
 if [[ $MODE == pr ]]; then
-  git push -q origin "HEAD:refs/heads/$branch"
+  # by name, not HEAD: shipping above may have checked out the base branch
+  # (queue_for_humans) and HEAD would then be the wrong commit
+  git push -q origin "$branch:refs/heads/$branch"
   body=$(mktemp)
   {
     echo "<!-- auto-update-run-id: $RUN_ID -->"
@@ -213,11 +221,34 @@ if [[ $MODE == pr ]]; then
 fi
 
 # ------------------------------------------------------------------ push mode
+# Someone may have pushed to $BASE_BRANCH while we were building. Never rebase
+# blindly: a change in a package directory that landed after our check would
+# end up under a bump that was built without it. On a rejected push, rebuild
+# the branch on the new $BASE_BRANCH from the per-package commits, keeping only
+# packages whose directory is still untouched since BASE_SHA.
 pushed=false
 for try in 1 2 3; do
   if git push -q origin "HEAD:$BASE_BRANCH"; then pushed=true; break; fi
   git fetch -q origin "$BASE_BRANCH"
-  git rebase -q "origin/$BASE_BRANCH" || { git rebase --abort; break; }
+  git checkout -q -B "$branch" "origin/$BASE_BRANCH"
+  keep=()
+  for pkg in "${committed[@]}"; do
+    if git diff --quiet "$BASE_SHA" "origin/$BASE_BRANCH" -- "${PKGDIR[$pkg]}"; then
+      git cherry-pick "${commit_of[$pkg]}" >/dev/null && keep+=("$pkg") ||
+        { git cherry-pick --abort 2>/dev/null; skipped+=("$pkg: conflicts with $BASE_BRANCH"); }
+    else
+      skipped+=("$pkg: changed on $BASE_BRANCH during the run")
+    fi
+  done
+  committed=("${keep[@]}")
+  still=()
+  for pkg in "${shipped[@]}"; do
+    if git diff --quiet "$BASE_SHA" "origin/$BASE_BRANCH" -- "${PKGDIR[$pkg]}"; then still+=("$pkg")
+    else skipped+=("$pkg: changed on $BASE_BRANCH during the run"); fi
+  done
+  shipped=("${still[@]}")
+  (( ${#committed[@]} + ${#shipped[@]} )) || { echo "nothing left to publish after $BASE_BRANCH moved"; exit 0; }
+  (( ${#committed[@]} )) || { pushed=true; break; }      # only ships left: nothing to push
 done
 if ! $pushed; then
   committed=()

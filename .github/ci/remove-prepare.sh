@@ -35,6 +35,19 @@ meta = json.load(open(sys.argv[1])); dirs = sys.argv[2:]
 def dep_name(d): return re.split(r"[<>=:]", d, 1)[0].strip()
 produced = {d: (meta.get(d, {}).get("pkgname") or [d]) for d in dirs}
 removed = {n for v in produced.values() for n in v}
+# names these packages provide (top level and per split package) count too,
+# unless another package that stays in the tree produces or provides them
+def provided(d):
+    m = meta.get(d, {})
+    out = {dep_name(x) for x in m.get("provides", [])}
+    out |= {dep_name(x.split(" ", 1)[1]) for x in m.get("sdep_provides", []) if " " in x}
+    return out
+others = set()
+for y, m in meta.items():
+    if y not in dirs:
+        others |= set(m.get("pkgname") or [y]) | provided(y)
+for d in dirs:
+    removed |= provided(d) - others
 users = {}
 for y, m in meta.items():
     if y in dirs: continue
@@ -58,7 +71,9 @@ git push -q origin "HEAD:refs/heads/$branch"
 
 body=$(mktemp)
 {
-  echo "<!-- remove-packages: $(python3 -c 'import json,sys; print(" ".join(sorted({n for v in json.loads(sys.argv[1])["produced"].values() for n in v})))' "$info") -->"
+  # <dir>=<name>,<name>: release-merged.sh removes the names only if this PR
+  # really deleted <dir>/PKGBUILD and the directory is gone after the merge
+  echo "<!-- remove-packages: $(python3 -c 'import json,sys; d=json.loads(sys.argv[1])["produced"]; print(" ".join(k + "=" + ",".join(sorted(v)) for k, v in sorted(d.items())))' "$info") -->"
   echo "Removes **${#todo[@]}** package(s) from the tree ([run]($RUN_URL))."
   echo
   echo "**Merging this PR also removes the packages below from the package repository** (database entries and files)."
