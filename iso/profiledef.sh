@@ -22,4 +22,5 @@ file_permissions=(
   ["/etc/polkit-1/rules.d"]="0:0:750"
   ["/etc/sudoers.d"]="0:0:750"
   ["/etc/NetworkManager/dispatcher.d/09-timezone"]="0:0:755"
+  ["/usr/local/bin/livecd-sound"]="0:0:755"
 )
