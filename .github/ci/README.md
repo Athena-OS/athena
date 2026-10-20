@@ -79,6 +79,12 @@ packages share a name.
   the push, the packages are appended to `lists/to-release` for a manual
   release.
 
+Releases take a lock object in the bucket (`<REPO_PATH>/.release.lock`,
+atomic `If-None-Match` put), so two release jobs never touch the database at
+the same time; a lock older than 3 hours (`LOCK_STALE_MIN`) is taken over,
+since a killed job cannot clean up. After the upload every package object is
+checked for presence and exact size before the run is marked released.
+
 ## Publish modes (`PUBLISH_MODE`)
 
 | | `push` (default) | `pr` |

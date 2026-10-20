@@ -29,6 +29,9 @@ while IFS= read -r f; do d=${f%/PKGBUILD}; PKGDIR[${d##*/}]=$d; done < <(find "$
 
 # ---- a merged remove/* PR: remove the listed packages from the repo
 if [[ ${HEAD_REF:-} == remove/* ]]; then
+  [[ -n ${PR_BASE_SHA:-} ]] || { echo "PR_BASE_SHA is not set"; exit 1; }
+  git fetch -q --depth=1 origin "$PR_BASE_SHA" 2>/dev/null || true
+  git cat-file -e "$PR_BASE_SHA^{commit}" 2>/dev/null || { echo "cannot fetch the PR base commit $PR_BASE_SHA"; exit 1; }
   marker=$(printf '%s\n' "${PR_BODY:-}" | sed -nE 's/.*<!-- remove-packages: ([^>]*) -->.*/\1/p' | head -n1)
   marker=$(printf '%s' "$marker" | tr -cs 'A-Za-z0-9._+@=,-' ' ')
   [[ -n $marker ]] || { echo "no remove-packages marker in the PR body"; exit 1; }
@@ -88,7 +91,12 @@ if [[ ${HEAD_REF:-} == remove/* ]]; then
   exit "$rc"
 fi
 
-[[ -z ${PR_BASE_SHA:-} ]] || git fetch -q --depth=1 origin "$PR_BASE_SHA" 2>/dev/null || true
+# BUILD_SHA: the commit the originating run built from (from the validated
+# run, not from the editable PR body). Required: without it the directory
+# comparison below could not tell whether patches/.install changed.
+[[ -n ${BUILD_SHA:-} ]] || { echo "BUILD_SHA is not set"; exit 1; }
+git fetch -q --depth=1 origin "$BUILD_SHA" 2>/dev/null || true
+git cat-file -e "$BUILD_SHA^{commit}" 2>/dev/null || { echo "cannot fetch the build commit $BUILD_SHA"; exit 1; }
 mapfile -t changed < <(
   gh api --paginate "repos/$GH_REPO/pulls/$PR_NUMBER/files" -q '.[].filename' |
     sed -nE 's|^(.*/)?([^/]+)/PKGBUILD$|\2|p' | sort -u)
@@ -101,7 +109,7 @@ for pkg in "${changed[@]}"; do
   # fix in the PR, or another commit on the base branch, was never built
   if [[ -n $dir && -f $dir/PKGBUILD && -f $RESULTS/$pkg/PKGBUILD ]] &&
      git diff --no-index --quiet "$dir/PKGBUILD" "$RESULTS/$pkg/PKGBUILD" &&
-     { [[ -z ${PR_BASE_SHA:-} ]] || git diff --quiet "$PR_BASE_SHA" HEAD -- "$dir" ":(exclude)$dir/PKGBUILD"; } &&
+     git diff --quiet "$BUILD_SHA" HEAD -- "$dir" ":(exclude)$dir/PKGBUILD" &&
      compgen -G "$PKGS/$pkg/*.pkg.tar.zst" >/dev/null; then
     ship+=("$pkg")
   elif [[ -n $dir && -f $dir/PKGBUILD ]]; then

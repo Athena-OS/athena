@@ -26,6 +26,7 @@
 #      [CF_ZONE_ID CF_API_TOKEN]   (cache purge, skipped if unset)
 #      [RELEASE=true|false] [BASE_BRANCH=main]
 # shellcheck disable=SC2034  # released/release_error are read by the callers
+_locked=false
 
 REPO_NAME=${REPO_NAME:-athena}
 REPO_ARCH=${REPO_ARCH:-x86_64}
@@ -36,6 +37,38 @@ BASE_BRANCH=${BASE_BRANCH:-main}
 _fail() { release_error=$1; echo "release: $1" >&2; return 1; }
 _s3() { aws s3 "$@" --endpoint-url "$R2_ENDPOINT"; }
 _remote() { echo "s3://$R2_BUCKET/$REPO_PATH"; }
+
+# Repo lock in the bucket: PutObject with If-None-Match:* is atomic on R2, so
+# two release jobs (per-PR concurrency, or a manual run) never update the
+# database at the same time. A lock older than LOCK_STALE_MIN (180) is taken
+# over: a killed job cannot clean up.
+_lock_key() { echo "$REPO_PATH/.release.lock"; }
+_lock() {
+  local deadline=$(( $(date +%s) + ${LOCK_WAIT_MIN:-60} * 60 )) body age mod
+  body=$(mktemp); printf '%s\n' "$(date -u +%FT%TZ) ${GITHUB_RUN_ID:-local} ${GITHUB_REPOSITORY:-}" > "$body"
+  while :; do
+    if aws s3api put-object --bucket "$R2_BUCKET" --key "$(_lock_key)" --body "$body" \
+         --if-none-match '*' --endpoint-url "$R2_ENDPOINT" >/dev/null 2>&1; then
+      rm -f "$body"; _locked=true; return 0
+    fi
+    mod=$(aws s3api head-object --bucket "$R2_BUCKET" --key "$(_lock_key)" --endpoint-url "$R2_ENDPOINT" \
+            --query LastModified --output text 2>/dev/null) || { sleep 5; continue; }   # vanished: retry at once
+    age=$(( $(date +%s) - $(date -d "$mod" +%s 2>/dev/null || echo 0) ))
+    if (( age > ${LOCK_STALE_MIN:-180} * 60 )); then
+      echo "::warning::repo lock is $(( age / 60 )) min old ($(aws s3 cp "s3://$R2_BUCKET/$(_lock_key)" - --endpoint-url "$R2_ENDPOINT" 2>/dev/null | head -c 200)); taking it over"
+      aws s3api delete-object --bucket "$R2_BUCKET" --key "$(_lock_key)" --endpoint-url "$R2_ENDPOINT" >/dev/null 2>&1 || true
+      continue
+    fi
+    (( $(date +%s) < deadline )) || { rm -f "$body"; _fail "repo lock still held after ${LOCK_WAIT_MIN:-60} min"; return 1; }
+    echo "repo is locked by another release; waiting..."
+    sleep 30
+  done
+}
+_unlock() {
+  [[ ${_locked:-false} == true ]] || return 0
+  aws s3api delete-object --bucket "$R2_BUCKET" --key "$(_lock_key)" --endpoint-url "$R2_ENDPOINT" >/dev/null 2>&1 || true
+  _locked=false
+}
 
 # pkgs-<shard> artifacts are tars (package names may contain ':'); unpack them
 # into $PKGS/<pkg>/. They were written by the runner after verification.
@@ -88,6 +121,12 @@ _pkgname_of() { local b=${1##*/}; b=${b%.pkg.tar.zst}; b=${b%-*}; b=${b%-*}; ech
 
 release_upload() {
   (( $# )) || return 0
+  _lock || { _queue_after_failure "$@"; return 1; }
+  _release_upload_locked "$@"; local rc=$?
+  _unlock
+  return $rc
+}
+_release_upload_locked() {
   local work pkg f rc=0
   work=$(mktemp -d)
   for pkg in "$@"; do cp "$PKGS/$pkg"/*.pkg.tar.zst "$work/" || { _fail "missing packages for $pkg"; rc=1; }; done
@@ -140,6 +179,17 @@ release_upload() {
     rm -rf "$work"; _fail "not in the repo database after upload: ${missing[*]}"
     _queue_after_failure "$@"; return 1
   fi
+  # the package objects themselves: present with the exact local size
+  local bad=() size
+  for f in "$work"/*.pkg.tar.zst "$work"/*.pkg.tar.zst.sig; do
+    size=$(aws s3api head-object --bucket "$R2_BUCKET" --key "$REPO_PATH/${f##*/}" \
+             --endpoint-url "$R2_ENDPOINT" --query ContentLength --output text 2>/dev/null) || size=missing
+    [[ $size == "$(stat -c %s "$f")" ]] || bad+=("${f##*/} ($size)")
+  done
+  if (( ${#bad[@]} )); then
+    rm -rf "$work"; _fail "UPLOADED FILES ARE MISSING OR TRUNCATED: ${bad[*]} - the db points at them, check the repo now"
+    _queue_after_failure "$@"; return 1
+  fi
 
   # superseded versions of the same package names: delete after the upload
   local listing new old name
@@ -179,6 +229,12 @@ release_upload() {
 # directories): split packages list every output.
 remove_packages() {
   (( $# )) || return 0
+  _lock || return 1
+  _remove_packages_locked "$@"; local rc=$?
+  _unlock
+  return $rc
+}
+_remove_packages_locked() {
   local work remote n f rc=0
   work=$(mktemp -d); remote=$(_remote)
   (
