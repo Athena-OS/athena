@@ -1,0 +1,13 @@
+[Unit]
+Description=Short login message for the speech boot entry
+# The regular /etc/issue is a decorated screen of separators and commands;
+# speakup would read all of it before the prompt.
+ConditionKernelCommandLine=accessibility=on
+Before=getty@tty1.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cp /usr/local/share/athena/issue.accessible /etc/issue
+
+[Install]
+WantedBy=multi-user.target
