@@ -43,7 +43,7 @@ jobs:
       - name: Install tools
         run: pacman -Syu --noconfirm --needed --noprogressbar git jq gnupg aws-cli curl github-cli
 
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
           token: ${{ secrets.BOT_TOKEN || github.token }}
@@ -76,7 +76,7 @@ jobs:
           echo "id=$id" >> "$GITHUB_OUTPUT"
           echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         if: startsWith(github.event.pull_request.head.ref, 'auto-update/')
         continue-on-error: true      # expired results -> lists/to-release
         with:
@@ -86,7 +86,7 @@ jobs:
           path: results
           merge-multiple: true
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         if: startsWith(github.event.pull_request.head.ref, 'auto-update/')
         continue-on-error: true      # expired artifacts -> lists/to-release
         with:

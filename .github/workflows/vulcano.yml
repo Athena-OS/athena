@@ -15,9 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Labeling
-        uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: '1.has: package'
+        # no third-party action: gh is preinstalled on the runner
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr edit "$PR" --add-label "1.has: package"
   pkgcheck:
     if: ${{ !startsWith(github.event.pull_request.head.ref, 'remove/') || github.event.pull_request.head.repo.full_name != github.repository }}
     runs-on: ubuntu-latest
@@ -29,7 +33,7 @@ jobs:
         run: |
           pacman -Syyu --noconfirm pkgcheck-arch git
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
@@ -55,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0

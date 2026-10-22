@@ -83,7 +83,7 @@ jobs:
 
       # the triggering branch: lets you test CI changes on a branch (publishing
       # is only allowed from main, see the gate below)
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -110,7 +110,7 @@ jobs:
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
 
       - name: Restore cache of earlier results
-        uses: actions/cache/restore@v6
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .ci-state/seen.json
           key: auto-update-seen-${{ github.run_id }}
@@ -288,7 +288,7 @@ jobs:
             echo "::notice title=Publishing::$UPDATES updates, mode: $MODE"
           fi
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: state
           path: |
@@ -311,7 +311,7 @@ jobs:
     outputs:
       ok: ${{ steps.save.outputs.ok }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
           sparse-checkout: .github/ci
@@ -324,7 +324,7 @@ jobs:
           ls -lh ba-builder.tar.zst
           echo "ok=true" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: steps.save.outputs.ok == 'true'
         continue-on-error: true
         with:
@@ -352,12 +352,12 @@ jobs:
       - id: start
         run: echo "t=$(date +%s)" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ needs.detect.outputs.base_sha }}
           persist-credentials: false
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: state
           path: .ci-state
@@ -369,7 +369,7 @@ jobs:
           docker image prune -af >/dev/null
           df -h .
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         if: needs.image.outputs.ok == 'true'
         continue-on-error: true          # fall back to building the image here
         with:
@@ -393,7 +393,7 @@ jobs:
           bash .github/ci/build-shard.sh ".ci-state/state/shards/${{ matrix.shard }}.json" \
             .ci-state/pkgtree out/results out/pkgs .ci-state/state/meta.json
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: results-${{ matrix.shard }}
@@ -412,7 +412,7 @@ jobs:
             tar -cf "out/pkgs-$SHARD.tar" -C out/pkgs .
           fi
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: pkgs-${{ matrix.shard }}
@@ -440,18 +440,18 @@ jobs:
       - name: Install tools
         run: pacman -Syu --noconfirm --needed --noprogressbar git jq gnupg aws-cli curl github-cli
 
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
           token: ${{ secrets.BOT_TOKEN || github.token }}
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: results-*
           path: results
           merge-multiple: true
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         continue-on-error: true            # no package built OK -> no pkgs-* artifact
         with:
           pattern: pkgs-*
@@ -491,7 +491,7 @@ jobs:
           bash .github/ci/pkgtree.sh src .ci-state/pkgtree >/dev/null
           bash .github/ci/publish.sh
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: publish
@@ -507,24 +507,24 @@ jobs:
       contents: read
       issues: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           sparse-checkout: .github/ci
           persist-credentials: false
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: state
           path: .ci-state
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         continue-on-error: true
         with:
           pattern: results-*
           path: results
           merge-multiple: true
 
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         # only exists when the publish job ran (it is skipped on dry runs)
         if: needs.publish.result == 'success' || needs.publish.result == 'failure'
         continue-on-error: true
@@ -546,7 +546,7 @@ jobs:
           cp .ci-state/seen.json report/status-db.json
           head -c 1000000 report/issue.md >> "$GITHUB_STEP_SUMMARY"
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: auto-update-report
           path: report/
@@ -554,7 +554,7 @@ jobs:
           overwrite: true
 
       - name: Remember results for the next run
-        uses: actions/cache/save@v6
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .ci-state/seen.json
           key: auto-update-seen-${{ github.run_id }}-${{ github.run_attempt }}
