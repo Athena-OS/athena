@@ -1,6 +1,6 @@
 pkgname=kando-bin
 _pkgname=Kando
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=43
 pkgrel=1
 pkgdesc='A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.'
@@ -38,8 +38,8 @@ sha512sums=('046d3429e40271479fcdd731c793ea9c20533d1be46701ced689925778b8949f0b8
             '3578476802bbcd6680830bd3853e76c4999bed73fce55ff955baf82cee24204c8b5639ff3e2ca915147caed1ddf9d8380923ca37bf80c138e524da2456dfe0cf'
             '81064df4033091749b989a1be6c2be4ebc1fa63ab59c893cfb9ce806c0da9c8b531e3c218561909568444fe41d1592722ef7f5dd53e7f9159e4cf6e49659656b'
             '374572c23e16a9d76c2f48f08b538cdc3a73e4657013fe158f5eccc591b5d16521663e9ada9766ee840079ae0d0832303fa64f9ef2a3a0da667a01f466c9a3c6')
-sha512sums_aarch64=('b79180e5ba202dcc31eeaa0300d18ffd05e00d11e9ed93337a8754ea40074bd5fa99fa81ffa6b49ba2a940ff198f47096cf24a7b67c69a66fb015d7bdc3fcb60')
-sha512sums_x86_64=('51a20cc576dd0de3d780d6d8affdf909b5f1ccbc9ff46163f48e66eac05fefccfd948f05ced9eef23f44b91c29d714524263101d4df2d4e31c9f02fc65c0346d')
+sha512sums_aarch64=('fec791b1f69bf5be6e25b46b8e9a85a8d03cb061052cb6afb37f0ff211e53e816a18401e950409b616678226bba867e656394df38e87c71bd6b301a0dfc09902')
+sha512sums_x86_64=('d1575434aaff8590dad54d661896ac85887f1fbada088ffa0758ba22db8da314884148d09ca6381dd3970f4bafa6265b2686d9266f9711f55c2383308f8c4598')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/
