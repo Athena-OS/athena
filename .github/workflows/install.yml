@@ -32,6 +32,13 @@ jobs:
           curl -O https://raw.githubusercontent.com/Athena-OS/athena/refs/heads/main/tests/drives.json
 
       - name: Modify install configuration
+        # Password hashes contain '$' ($y$j9T$...): inlined in the script, the
+        # shell would expand them as variables and dory would get a mangled hash
+        # ("./d9ZK..."), which chpasswd rejects. Environment variables are
+        # never parsed by the shell.
+        env:
+          ROOT_HASH: ${{ matrix.config_installer.root_passwd_hash }}
+          USER_HASH: ${{ matrix.config_installer.password_hash }}
         run: |
           df -h
           dd if=/dev/zero of=virtual_disk.img bs=1M count=20480  # Create a 20GB disk image
@@ -66,10 +73,10 @@ jobs:
             --arg hostname         "${{ matrix.config_installer.hostname }}" \
             --arg keyboard_layout  "${{ matrix.config_installer.keyboard_layout }}" \
             --arg locale           "${{ matrix.config_installer.locale }}" \
-            --arg root_hash        "${{ matrix.config_installer.root_passwd_hash }}" \
+            --arg root_hash        "$ROOT_HASH" \
             --arg timezone         "${{ matrix.config_installer.timezone }}" \
             --arg username         "${{ matrix.config_installer.username }}" \
-            --arg user_hash        "${{ matrix.config_installer.password_hash }}" \
+            --arg user_hash        "$USER_HASH" \
             --arg shell            "${{ matrix.config_installer.shell }}" \
             '
             .config.base               = $base
