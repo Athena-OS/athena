@@ -2,13 +2,13 @@ pkgname=kando-bin
 _pkgname=Kando
 pkgver=3.0.1
 _electronversion=43
-pkgrel=1
+pkgrel=2
 pkgdesc='A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.'
 arch=('aarch64' 'x86_64')
 url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
 _ghurl="https://github.com/kando-menu/kando"
 license=("MIT")
-provides=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=$pkgver")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
@@ -27,43 +27,50 @@ options=(
     '!emptydirs'
 )
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver}/LICENSE.md"
+    "LICENSE-$pkgver::https://raw.githubusercontent.com/kando-menu/kando/v$pkgver/LICENSE.md"
     "${pkgname%-bin}.sh"
     "config.json"
     "menus.json"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.arm64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-$pkgver-aarch64.rpm::${_ghurl}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-1.arm64.rpm")
+source_x86_64=("${pkgname%-bin}-$pkgver-x86_64.rpm::${_ghurl}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-1.x86_64.rpm")
 sha512sums=('046d3429e40271479fcdd731c793ea9c20533d1be46701ced689925778b8949f0b87f4b1b1d0f231428f4524141c9e4c885be632e382a538f6cca25137cec3a1'
             '3578476802bbcd6680830bd3853e76c4999bed73fce55ff955baf82cee24204c8b5639ff3e2ca915147caed1ddf9d8380923ca37bf80c138e524da2456dfe0cf'
             '81064df4033091749b989a1be6c2be4ebc1fa63ab59c893cfb9ce806c0da9c8b531e3c218561909568444fe41d1592722ef7f5dd53e7f9159e4cf6e49659656b'
             '374572c23e16a9d76c2f48f08b538cdc3a73e4657013fe158f5eccc591b5d16521663e9ada9766ee840079ae0d0832303fa64f9ef2a3a0da667a01f466c9a3c6')
 sha512sums_aarch64=('fec791b1f69bf5be6e25b46b8e9a85a8d03cb061052cb6afb37f0ff211e53e816a18401e950409b616678226bba867e656394df38e87c71bd6b301a0dfc09902')
 sha512sums_x86_64=('d1575434aaff8590dad54d661896ac85887f1fbada088ffa0758ba22db8da314884148d09ca6381dd3970f4bafa6265b2686d9266f9711f55c2383308f8c4598')
+
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app/
-        s/@cfgdirname@/${_pkgname}/
+        s/@cfgdirname@/$_pkgname/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${pkgname%-bin}.sh"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -dm755 "${pkgdir}/etc/skel/.config/${pkgname%-bin}"
-    install -dm755 "${pkgdir}/etc/xdg/autostart"
-    install -dm755 "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "config.json" "${pkgdir}/etc/skel/.config/${pkgname%-bin}/config.json"
-    install -Dm644 "menus.json" "${pkgdir}/etc/skel/.config/${pkgname%-bin}/menus.json"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -dm755 "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes"
-    ln -s "/usr/share/icons/hicolor" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/hicolor"
-    ln -s "/usr/share/icons/htb-toolkit" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/htb-toolkit"
-    ln -s "/usr/share/pixmaps" "${pkgdir}/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/pixmaps"
-    install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.${_pkgname}.desktop" -t "${pkgdir}/etc/xdg/autostart"
-    install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "$srcdir/${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
+    install -dm755 "$pkgdir/etc/skel/.config/${pkgname%-bin}"
+    install -dm755 "$pkgdir/etc/xdg/autostart"
+    install -dm755 "$pkgdir/usr/lib/${pkgname%-bin}"
+    install -Dm644 "config.json" "$pkgdir/etc/skel/.config/${pkgname%-bin}/config.json"
+    install -Dm644 "menus.json" "$pkgdir/etc/skel/.config/${pkgname%-bin}/menus.json"
+    # htb-toolkit -u downloads the HTB machine avatars here. Kando lists icon
+    # themes once, at start, so the folder must exist before it starts or the
+    # avatars stay blank until Kando restarts. The placeholder keeps the folder
+    # in the package (options=('!emptydirs')); Kando lists images only.
+    install -Dm644 /dev/null "$pkgdir/etc/skel/.config/${pkgname%-bin}/icon-themes/avatar/.keep"
+
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "$pkgdir/usr/lib/${pkgname%-bin}"
+    install -dm755 "$pkgdir/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes"
+    ln -s "/usr/share/icons/hicolor" "$pkgdir/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/hicolor"
+    ln -s "/usr/share/icons/htb-toolkit" "$pkgdir/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/htb-toolkit"
+    ln -s "/usr/share/pixmaps" "$pkgdir/usr/lib/${pkgname%-bin}/app/.webpack/renderer/assets/icon-themes/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.$_pkgname.desktop" -t "$pkgdir/etc/xdg/autostart"
+    install -Dm644 "${srcdir}/usr/share/applications/menu.${pkgname%-bin}.$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
